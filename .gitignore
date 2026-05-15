@@ -144,3 +144,10 @@ vite.config.ts.timestamp-*
 
 # Lab session notes (private, written by the lab-session Skill)
 lab/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc

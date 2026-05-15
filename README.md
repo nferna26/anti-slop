@@ -1,7 +1,7 @@
 # anti-slop
 
-AI-assisted work by non-technical operators produces output that senior practitioners can dismantle. The fix isn't a better model — it's putting senior judgment in the loop, with provenance.
+A Claude Code Skills pack and MCP server that turns a folder of decision-rule cards into a consultation surface — with receipts.
 
-**Status:** Under construction. Public launch coming soon.
+v0 — substrate. Methodology page and install command coming in v0.1.
 
-→ [anti-slop.dev](https://anti-slop.dev)
+MIT.
