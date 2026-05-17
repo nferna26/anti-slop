@@ -22,11 +22,21 @@ A sixth directory, `lab/`, holds session notes. Lab is committed to private KBs 
 
 Ingest. Add a source to `raw/`, draft a card in `cards/`, propose 5–10 canon pages it touches, append to the log. The Skill for this step does not modify canon pages directly — it surfaces candidates for the operator to accept.
 
-Query. Read the index, rank candidates, fetch the top cards, synthesize with citations. Every claim cites a card; every card cites a chapter, section, or figure. A query that cannot cite is a query that has not been answered.
+Query. Read the index, rank candidates, fetch the top pages, synthesize with citations. Every claim cites a page. Source cards cite at the chapter, section, or figure level; canon pages cite at the page-id level via `source_refs`. A query that cannot cite is a query that has not been answered.
 
 Lint. Scan for contradictions (two pages making opposite claims without a `contradicts` link), orphan pages, schema violations, and staleness (`review_by` past due). Lint runs on a fixed weekly slot, not "when needed."
 
-Index/log. Rebuild `cards/index.md` (content-oriented) and append to `log.md` (chronological) after any ingest or edit. They serve different queries and are not redundant.
+Index/log. After any ingest or edit, rebuild the content-oriented index of queryable pages (cards and canon) and append to `log.md` (chronological). By convention the index lives at `<kb-root>/index.md`, though operators with an existing root index can place it at `<kb-root>/cards/index.md` instead — the consult Skill reads whichever path is present. The two surfaces serve different queries and are not redundant.
+
+## Retrieval
+
+Query is the operation; ranking is how the operation picks what to retrieve. The consult Skill enumerates every page under `cards/` and `canon/`, reads each page's frontmatter (not its body), and scores candidates by overlap between the question and the page's `tags` plus `domains`. Ties break by `trust_level` (A > B > C > D), then by `confidence` (high > medium > low). The top three pages are fetched in full for synthesis.
+
+Canon pages get a boost. By default the boost is +2 added to canon's tag-overlap score before ranking. The rationale: source cards (broad anchors) tend to carry rich tag sets, while canon pages (focused judgment) carry narrower tags, so surface-overlap ranking systematically under-weights canon relative to where operator expectation places it. Without the boost, compiled judgment loses to source cards on questions where the operator would have chosen canon.
+
+The +2 default is calibrated against the reference KB and may not transfer cleanly to KBs with different tag-density profiles. Operators override per-KB by placing a `.consult.yaml` at `<kb-root>/` with `canon_boost: <integer>`. The Skill reads this file at retrieval time and falls back to +2 if absent. Calibrate by running the Skill on five to ten representative queries: if compiled-judgment pages systematically fall outside the top three despite operator expectation, raise the boost; if they crowd out clearly-relevant source cards, lower it.
+
+Surface-tag overlap has known lossy recall when the question's vocabulary names the problem while the relevant card's tags name the solution. Three documented cases in the reference KB: a question about "shipping multiple times a day" did not surface a card tagged `feature-flag, progressive-rollout, canary` because the question used no feature-flag vocabulary; a question about replacing change advisory boards missed the same card for the same reason; a question about LLM agent failure modes did not surface a paper tagged `prompt-injection, instruction-following`. Semantic or embedding-augmented ranking, or a maintained tag-synonym table, closes the gap. Surface-overlap is the current ranker; the limitation is documented and the eval set deliberately exercises it.
 
 ## The frontmatter contract
 
@@ -41,7 +51,7 @@ summary:      <one-line distilled takeaway>
 created:      YYYY-MM-DD
 updated:      YYYY-MM-DD
 owners:       [<role>]
-source_refs:  [<page-ids>]                  # upstream cards this page cites
+source_refs:  [<page-ids>]                  # upstream pages this page cites
 trust_level:  A | B | C | D                 # property of the source
 freshness:    timeless | stable | volatile | live
 review_by:    YYYY-MM-DD
@@ -81,3 +91,5 @@ Two more rules sit underneath the schema and do the rest of the work.
 **Every claim cites at the page-and-section level.** A decision rule that says "follow X" without naming the chapter, section, figure, or page number it came from is a candidate for deletion. Vague citation is the surface failure mode that the rest of the schema exists to prevent.
 
 **Trust is a source attribute, not a tone setting.** A confident-sounding canon page sourced from D-trust material is not honestly confident. The schema separates `trust_level` and `confidence` so the operator cannot accidentally calibrate one to the other. The propagation rule for canon pages — trust calibrated to the lowest of *primary* anchors, not the lowest of every cited source — is the operational consequence of this principle.
+
+**Quoted text appears verbatim, or it is not quoted.** When the synthesis frames a passage as quoted (with quotation marks), the quoted text must appear verbatim in the cited card. If a gate or constraint forces a banned word out of a quoted span, the synthesis drops the quote framing and paraphrases — it does not partially-rewrite quoted text. Partially-rewritten quotes misrepresent the source; honest paraphrase signals that the operator is summarizing rather than reporting verbatim.
