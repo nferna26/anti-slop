@@ -66,6 +66,8 @@ stage:        raw | card | canon | execution
 
 Paper cards add six fields: `paper_type`, `venue`, `date_published`, `authors`, `extends`, `extended_by`.
 
+Card body shapes vary by `type`. Source cards distill books or operational documents (Bibliographic, Decision rules, Anti-patterns, Checklists, When this matters, Open questions, Citations). Paper cards add Summary, Limitations & non-claims, Lineage, and Key evidence sections. Repo candidates carry URL, license, verdict, and scores rather than decision rules. Postmortem source cards (id-prefix `src-postmortem-`) add Summary and Timeline sections and drop Checklists, since a one-off incident's rules carry the operational weight without a reusable checklist. The canonical body-shape-per-type enumeration is maintained in `skills/ingest/SKILL.md`; this schema describes the frontmatter and discipline contracts that apply across all body shapes.
+
 Three fields earn specific attention.
 
 `trust_level` calibrates the source, not the claim. A book carries a trust level; a paper carries one; a repository carries one. When a canon page is compiled from multiple sources, its trust is calibrated to the lowest of its *primary* anchors — not the lowest of every source it touches. This is the difference between an honestly-anchored claim and a hedged one.

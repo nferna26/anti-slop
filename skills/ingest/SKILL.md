@@ -15,7 +15,7 @@ Run this Skill when an operator has a new source — book, paper, repo, postmort
 
 ## Step 1 — Read
 
-Read end-to-end if short; for books, skim the structure and select 3–5 high-signal chapters. Store a working copy at `<kb_root>/lab/<batch>/raw/<slug>.md` (committable for public sources) or `<kb_root>/raw/` (gitignored, for copyrighted or private material). Citations in the card will resolve to this path.
+Read end-to-end if short; for books, skim the structure and select 3–5 high-signal chapters. Store a working copy at `<kb_root>/lab/<batch>/source/<slug>.md` (committable for public sources; the `source/` naming avoids collision with the substrate-protection `raw/` gitignore convention) or `<kb_root>/raw/` (gitignored, for copyrighted or private material). Citations in the card will resolve to this path.
 
 ## Step 2 — Summarize
 
