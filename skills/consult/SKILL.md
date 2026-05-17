@@ -18,8 +18,8 @@ The schema calls for a content-oriented index at `<kb_root>/cards/index.md`, but
 - Enumerate all `.md` files under `<kb_root>/cards/*/` and `<kb_root>/canon/*/` (any subdirectory; KB-agnostic). Skip files that are missing or empty.
 - For each file, read only the YAML frontmatter — the lines between the leading `---` and the next `---`. Extract `id`, `title`, `type`, `summary`, `tags`, `domains`, `trust_level`, `confidence`. Do not read the body yet.
 - Rank pages by the overlap between the question and each page's `tags` plus `domains`. Treat the question's noun phrases as candidate tags; do not require exact string matches. Break ties by `trust_level` (A > B > C > D) then `confidence` (high > medium > low).
-- Most operator queries land in `canon/` (the compiled-judgment layer), not `cards/` (the source distillation layer). Don't down-rank canon pages for being synthetic — canon is where the operator's judgment lives.
-- Take the top 3.
+- Most operator queries land in `canon/` (the compiled-judgment layer), not `cards/` (the source distillation layer). Canon pages carry narrower tag sets by design, so surface-tag overlap systematically under-weights them relative to broad source-cards. **Apply a `+2` score boost to any page whose path begins with `canon/` before ranking.** Chosen over a reserved-canon-slot rule because it preserves score-based ordering while correcting the under-weighting; the constant `+2` was calibrated against this KB on Day 3 and may need re-calibration if your KB's tag-density profile differs.
+- Take the top 3 from the boosted scores.
 
 If `<kb_root>/cards/index.md` exists, prefer it over the walk — read it instead and apply the same ranking to the entries it lists.
 
@@ -35,6 +35,24 @@ Write the answer. Constraints:
 - Separate evidence from judgment from unknowns the way the schema's body shape calls for. If two cited pages disagree, surface the disagreement — don't smooth it over.
 - Close with a `## Caveats` section listing: what the answer does not cover; where the cited sources disagree; which open questions the KB has not yet answered.
 - No marketing words. No "comprehensive," "powerful," "robust," "seamless," "deep dive," "essential," or similar. If a sentence sounds like a SaaS landing page, rewrite it.
+
+## Step 3.5 — Gate
+
+The synthesis runs through deterministic gates at `skills/consult/gates.py` before the operator sees it. The gates check: at least one `[page-id]` citation is present; a `## Caveats` (or `## Gap`) section is present; no banned marketing words or LLM-tells appear; every cited numeric figure appears in at least one retrieved card; every `[page-id]` in the synthesis matches a real card in the retrieval set.
+
+Run the gates with the synthesis file and the retrieval set as inputs:
+
+```
+python3 skills/consult/gates.py --synthesis <synthesis.md> --cards <card-1.md> <card-2.md> <card-3.md>
+```
+
+Exit code 0 means all gates passed and the synthesis can ship. Non-zero means one or more gates failed; the failure summary lists each failed gate and the reason.
+
+On first gate failure, retry the synthesis once with explicit guidance — tell the synthesis layer which gate failed and why, and ask for a rewrite that fixes the specific issue while preserving the cited cards. Example: *"the previous answer failed gate `banned_phrases` because it included the word `powerful`. Rewrite the synthesis without that word while keeping the citations and the caveats section."*
+
+On second failure, fall back to Step 4's `## Gap` output, naming the gate that couldn't be satisfied. Do not escalate to a different model — that is outside this Skill's scope.
+
+Gate failure is not an error. It is what an honest substrate does when the synthesis layer drifts from what the cards say.
 
 ## Step 4 — Gap fallback
 
