@@ -1,3 +1,3 @@
 # mcp/
 
-An MCP (Model Context Protocol) server that exposes a KB to an LLM as a structured consultation surface. The server reads the card, canon, and execution layers and serves queries with citations, so a model can call into the methodology rather than reinvent its judgment per session. This is the second installable shape alongside the Skills pack — operators who run their KB inside an MCP-aware client mount it here. Currently empty; the server lands here when it ships.
+A custom MCP server lands here when the Month 3 capability ships — exposing `search_index`, `read_card`, `list_canon`, and `list_gaps` for any KB conforming to the schema. See [`../methodology/schema.md`](../methodology/schema.md) for the rules layer the server will operate against.

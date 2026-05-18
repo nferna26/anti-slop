@@ -2,7 +2,7 @@
 
 # CLAUDE.md — Session Rules
 
-You are working inside the **<your-kb-name>** knowledge base. <!-- e.g. cto-kb, finance-ops-kb, research-kb --> This repo binds to the schema described at `anti-slop/methodology/schema.md`. (Operators with their own shared-kernel SCHEMA can swap the path; the rules below are unchanged.) Quality over speed.
+You are working inside the **<your-kb-name>** knowledge base. <!-- e.g. engineering-kb, design-kb, ops-kb --> This repo binds to the schema described at `anti-slop/methodology/schema.md`. (Operators with their own shared-kernel SCHEMA can swap the path; the rules below are unchanged.) Quality over speed.
 
 ## Architecture
 

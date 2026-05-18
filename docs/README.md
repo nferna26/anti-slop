@@ -1,3 +1,3 @@
 # docs/
 
-Operator-facing documentation that is not part of the rules layer — install instructions, FAQs, contributing guidelines, and any reading-order or onboarding guides that come later. Lives separately from `methodology/` so the rules stay short and the surface around them can grow without polluting them. Currently empty.
+Getting-started prose and worked-example walkthroughs land here through Month 5. Until then, the methodology page at [anti-slop.dev](https://anti-slop.dev) and [`../methodology/schema.md`](../methodology/schema.md) are the canonical reference.

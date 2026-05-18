@@ -1,3 +1,3 @@
 # evals/
 
-Evaluation harnesses for the methodology itself — prompt sets, scoring rubrics, and replay logs that test whether a KB built to this schema actually produces cited, source-anchored answers under load. The discipline this directory enforces is in `methodology/schema.md` (every claim cites at the page-and-section level); the evals are what catches drift away from it. Currently empty.
+Hostile eval sets and run results land here starting Day 9 — prompts a senior practitioner would write to embarrass an LLM, scored with deterministic gates first and LLM-as-judge second on the survivors. Eval-set rot review every two months: retire prompts the system now passes trivially, replace with harder ones.
