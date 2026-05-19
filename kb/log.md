@@ -24,6 +24,8 @@ This is the chronological memory layer for public-safe KB changes.
 - Tooling: added `scripts/validate_acquisition_registry.py` (checks 1:1 IDs, no raw paths, boolean fields, deep-card alignment) and `scripts/manifest_report.py` (public-safe counts and wave-1 progress). Updated `Makefile` so `make validate` covers both manifests and added `make report`.
 - Lint: hardened `scripts/check_no_raw_text.py` to emit clearer informational text for the two structured-manifest paths that legitimately exceed the size heuristic; did not weaken raw-text detection or broaden the allowlist.
 - Source ID registry: added `first_30_deep_card_candidate` flag for the 30 wave-1 IDs identified in the playbook. Existing `map_candidate` and `deep_card_candidate` sets unchanged.
+- Baseline commit created: `e417681` (`chore: initialize books-kb scaffold`).
+- Phase 2 starter lane: added `docs/phase-2-readiness.md`, `corpus/manifests/phase-2-verification-queue.yaml`, and `make phase2-queue`. First verification batch is BK-0001, BK-0003, BK-0007, BK-0042, and BK-0048.
 
 ## Log Entry Template
 

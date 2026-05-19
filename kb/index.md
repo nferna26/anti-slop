@@ -23,16 +23,19 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - [WIP limits](../docs/wip-limits.md): per-layer caps on draft / pending artifacts.
 - [Phase 0 closeout](../docs/phase-0-closeout.md): scaffold and rules closed.
 - [Phase 1 closeout](../docs/phase-1-closeout.md): manifest and acquisition registry closed.
+- [Phase 2 readiness](../docs/phase-2-readiness.md): first verification batch and operator checklist.
 
 ## Active Corpus
 
 - [200-book manifest](../corpus/manifests/books-200.yaml)
 - [Acquisition registry](../corpus/manifests/acquisition-registry.yaml)
 - [Source ID registry — wave-1](../corpus/manifests/source-id-registry.yaml)
+- [Phase 2 verification queue](../corpus/manifests/phase-2-verification-queue.yaml)
 - [Manifest schema](../corpus/manifests/schema.yaml)
 - [Acquisition statuses](../corpus/manifests/acquisition-statuses.yaml)
 - [Publication statuses](../corpus/manifests/publication-statuses.yaml)
 - Status report: `make report` (output is read-only; no commits required).
+- Phase 2 queue: `make phase2-queue` (prints the first verification batch).
 
 ## Artifact Templates
 

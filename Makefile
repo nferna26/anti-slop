@@ -15,6 +15,9 @@ kb-lint:
 report:
 	python3 scripts/manifest_report.py
 
+phase2-queue:
+	python3 scripts/phase2_queue.py
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 

@@ -1,0 +1,78 @@
+status: active
+phase: phase-2
+purpose: "Start edition, rights, and locator verification for the first book-map-ready sources."
+selection_rule: "Prioritize wave-1 sources that are already sourced locally, marked as map candidates, and marked as first-five deep-card candidates."
+publication_rule: no_raw_copyrighted_text_in_public_repo
+
+operator_constraints:
+  - "Verify lawful access before mapping."
+  - "Verify edition metadata from the actual lawful source, not from filenames."
+  - "Choose a locator system before creating a book map."
+  - "Do not copy raw book text into the public repo."
+  - "Do not draft source cards until a map or direct locator notes exist."
+
+verification_batch:
+  - queue_rank: 1
+    source_id: BK-0001
+    title: "Good Strategy Bad Strategy"
+    author: "Rumelt, Richard"
+    reason: "Strategy diagnosis anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: false
+    locator_status: not_started
+    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+  - queue_rank: 2
+    source_id: BK-0003
+    title: "Working Backwards"
+    author: "Bryar, Colin; Carr, Bill"
+    reason: "Operator artifact discipline; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: false
+    locator_status: not_started
+    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+  - queue_rank: 3
+    source_id: BK-0007
+    title: "The Lean Startup"
+    author: "Ries, Eric"
+    reason: "Famous-source adversary anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: false
+    locator_status: not_started
+    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+  - queue_rank: 4
+    source_id: BK-0042
+    title: "The Challenger Launch Decision"
+    author: "Vaughan, Diane"
+    reason: "Normalization-of-deviance anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: false
+    locator_status: not_started
+    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+  - queue_rank: 5
+    source_id: BK-0048
+    title: "The Halo Effect"
+    author: "Rosenzweig, Phil"
+    reason: "Anti-case-study hygiene anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: false
+    locator_status: not_started
+    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+
+rights_watchlist:
+  - source_id: BK-0020
+    title: "Shape Up"
+    reason: "Currently metadata_only; rights/access status needs operator verification before any excerpting or mapping."
+  - source_id: BK-0046
+    title: "To Err Is Human"
+    reason: "Currently metadata_only; rights/access status needs operator verification before any excerpting or mapping."
+
+done_when:
+  - "At least one verification_batch source has edition_verified: true in acquisition-registry.yaml."
+  - "The matching books-200.yaml entry has edition, year, publisher, owned_format, and locator_system updated where verified."
+  - "No public raw paths, filenames, raw text, or long excerpts have been added."
+  - "make validate, make check-raw, make kb-lint, and make report pass."
