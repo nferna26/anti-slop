@@ -39,9 +39,9 @@ verification_batch:
     reason: "Famous-source adversary anchor; map candidate and deep-card candidate."
     acquisition_status: sourced
     raw_source_status: local_only
-    edition_verified: false
-    locator_status: not_started
-    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+    edition_verified: true
+    locator_status: chosen
+    next_operator_action: "Use verified metadata and chapter_section locator to draft the public-safe book map."
   - queue_rank: 4
     source_id: BK-0042
     title: "The Challenger Launch Decision"
