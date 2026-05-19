@@ -4155,12 +4155,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "first edition (2007)"
+    year: "2007"
+    publisher: "Free Press"
+    isbn: "978-1-4165-3858-5"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -4168,7 +4168,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "anti-case-study slop; load-bearing"
-    notes: "Wave-1 map and deep-card candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map and deep-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section"
   - source_id: BK-0049
     category: epistemology
     author: "Muller, Jerry Z."

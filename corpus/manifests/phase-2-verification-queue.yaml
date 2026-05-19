@@ -59,9 +59,9 @@ verification_batch:
     reason: "Anti-case-study hygiene anchor; map candidate and deep-card candidate."
     acquisition_status: sourced
     raw_source_status: local_only
-    edition_verified: false
-    locator_status: not_started
-    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+    edition_verified: true
+    locator_status: chosen
+    next_operator_action: "Use verified metadata and chapter_section locator to draft the public-safe book map."
 
 rights_watchlist:
   - source_id: BK-0020
