@@ -2315,12 +2315,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "first edition (1996)"
+    year: "1996"
+    publisher: "University of Chicago Press"
+    isbn: "0-226-85176-1"
+    owned_format: "pdf"
+    locator_system: "pdf_page"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -2328,7 +2328,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "normalization of deviance; load-bearing for the methodology"
-    notes: "Wave-1 map and deep-card candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map and deep-card candidate; bibliographic metadata operator-verified; locator scheme pdf_page"
   - source_id: BK-0110
     category: biography
     author: "Finkelstein, Sydney"
