@@ -1,0 +1,6 @@
+statuses:
+  - metadata_public
+  - short_excerpt_public_ok
+  - page_refs_only
+  - local_only
+  - public_domain

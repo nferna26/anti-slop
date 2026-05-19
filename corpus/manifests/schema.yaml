@@ -1,0 +1,133 @@
+schema_version: 1
+book:
+  required:
+    - source_id
+    - category
+    - author
+    - title
+    - status_tag
+    - availability_tier
+    - acquisition_status
+    - publication_status
+    - raw_source_status
+    - eval_relevance
+    - rationale
+  fields:
+    source_id:
+      required: true
+      type: string
+    category:
+      required: true
+      type: enum
+      enum:
+        - cognition
+        - decision_quality
+        - epistemology
+        - evidence
+        - rhetoric
+        - media
+        - systems
+        - institutions
+        - governance
+        - strategy
+        - operations
+        - management
+        - product
+        - design
+        - technology
+        - economics
+        - psychology
+        - sociology
+        - anthropology
+        - philosophy
+        - history
+        - science
+        - writing
+        - education
+        - risk
+        - safety
+        - ethics
+        - law_policy
+        - biography
+        - other
+    author:
+      required: true
+      type: string
+    title:
+      required: true
+      type: string
+    status_tag:
+      required: true
+      type: enum
+      enum:
+        - COMMITTED
+        - NEW
+        - RESTORED
+    availability_tier:
+      required: true
+      type: enum
+      enum:
+        - MM
+        - AP
+        - UB
+        - PD
+    acquisition_status:
+      required: true
+      type: enum
+      enum_ref: acquisition-statuses.yaml
+    publication_status:
+      required: true
+      type: enum
+      enum_ref: publication-statuses.yaml
+    raw_source_status:
+      required: true
+      type: enum
+      enum:
+        - not_acquired
+        - local_only
+        - unavailable
+        - public_domain
+        - metadata_only
+    edition:
+      required: false
+      type: string
+    year:
+      required: false
+      type: string
+    publisher:
+      required: false
+      type: string
+    isbn:
+      required: false
+      type: string
+    owned_format:
+      required: false
+      type: string
+    locator_system:
+      required: false
+      type: string
+    eval_relevance:
+      required: true
+      type: object
+      fields:
+        bibliographic_adversary:
+          required: true
+          type: boolean
+        contradiction_preservation:
+          required: true
+          type: boolean
+        canon_promotion_tournament:
+          required: true
+          type: boolean
+        long_tail_transfer:
+          required: true
+          type: boolean
+        source_lineage_hostile:
+          required: true
+          type: boolean
+    rationale:
+      required: true
+      type: string
+    notes:
+      required: false
+      type: string

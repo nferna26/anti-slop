@@ -1,0 +1,39 @@
+# Defensive ignore rules for Anti-Slop books-kb.
+# This file reduces accidental commits. It is not a substitute for operator review.
+
+# Local-only source shelf
+local-only/
+**/local-only/
+raw/
+**/raw/
+_raw/
+**/_raw/
+
+# Copyrighted source files
+*.pdf
+*.epub
+*.mobi
+*.azw
+*.azw3
+*.djvu
+*.cbz
+*.cbr
+
+# Extracted / OCR text
+*.ocr.txt
+*.extracted.txt
+*_ocr.txt
+*_extracted.txt
+extracted-text/
+ocr-output/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# Env
+.env
+.env.*
