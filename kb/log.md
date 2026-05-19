@@ -27,6 +27,8 @@ This is the chronological memory layer for public-safe KB changes.
 - Baseline commit created: `e417681` (`chore: initialize books-kb scaffold`).
 - Phase 2 starter lane: added `docs/phase-2-readiness.md`, `corpus/manifests/phase-2-verification-queue.yaml`, and `make phase2-queue`. First verification batch is BK-0001, BK-0003, BK-0007, BK-0042, and BK-0048.
 - BK-0001 verification: operator verified public-safe front-matter metadata for Rumelt, `Good Strategy Bad Strategy`; updated manifest/acquisition registry with Profile Books Ltd, 2011, eISBN metadata, `epub` owned format, and `chapter_section` locator. Created public-safe noncanonical book-map shell at `corpus/book-maps/BK-0001.md`.
+- Drafted the first public-safe book map body for `corpus/book-maps/BK-0001.md` (Rumelt, *Good Strategy Bad Strategy*). Status remains `machine_generated_not_canon`, `operator_review_status: unreviewed`, `quote_word_count: 0`. Paraphrase + chapter-locator references only; no raw book text, no quotes, no private paths included.
+- BK-0001 book-map review fixes: filled in verified Source metadata (Profile Books Ltd, 2011, ISBN 978-1-84765-746-6, epub, chapter_section); switched all locator references from `Part X / Chapter N` to chapter-only form since part dividers are not preserved in the extracted markdown; rewrote Possible contradictions as tensions/questions to investigate (no assertions about comparison sources). Frontmatter unchanged.
 
 ## Log Entry Template
 
