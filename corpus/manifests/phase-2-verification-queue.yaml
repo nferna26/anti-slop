@@ -19,9 +19,9 @@ verification_batch:
     reason: "Strategy diagnosis anchor; map candidate and deep-card candidate."
     acquisition_status: sourced
     raw_source_status: local_only
-    edition_verified: false
-    locator_status: not_started
-    next_operator_action: "Verify edition, publisher, year, ISBN if available, owned format, and locator system."
+    edition_verified: true
+    locator_status: chosen
+    next_operator_action: "Use verified metadata and chapter_section locator to draft the first public-safe book map."
   - queue_rank: 2
     source_id: BK-0003
     title: "Working Backwards"

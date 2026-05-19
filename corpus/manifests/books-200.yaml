@@ -15,12 +15,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "first published 2011 UK/US ebook"
+    year: "2011"
+    publisher: "Profile Books Ltd"
+    isbn: "978-1-84765-746-6"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -28,7 +28,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "strategy diagnosis vs. fluff; anchor for hostile attribution on bad-strategy patterns"
-    notes: "Wave-1 map and deep-card candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map and deep-card candidate; operator-verified front matter on 2026-05-19; Profile Books UK and Crown Business US publication noted; print ISBN 978-1-84668-480-7; eISBN recorded in isbn field"
   - source_id: BK-0002
     category: management
     author: "Grove, Andrew S."

@@ -26,6 +26,7 @@ This is the chronological memory layer for public-safe KB changes.
 - Source ID registry: added `first_30_deep_card_candidate` flag for the 30 wave-1 IDs identified in the playbook. Existing `map_candidate` and `deep_card_candidate` sets unchanged.
 - Baseline commit created: `e417681` (`chore: initialize books-kb scaffold`).
 - Phase 2 starter lane: added `docs/phase-2-readiness.md`, `corpus/manifests/phase-2-verification-queue.yaml`, and `make phase2-queue`. First verification batch is BK-0001, BK-0003, BK-0007, BK-0042, and BK-0048.
+- BK-0001 verification: operator verified public-safe front-matter metadata for Rumelt, `Good Strategy Bad Strategy`; updated manifest/acquisition registry with Profile Books Ltd, 2011, eISBN metadata, `epub` owned format, and `chapter_section` locator. Created public-safe noncanonical book-map shell at `corpus/book-maps/BK-0001.md`.
 
 ## Log Entry Template
 
