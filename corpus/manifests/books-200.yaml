@@ -61,12 +61,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "First edition ebook"
+    year: "2021"
+    publisher: "St. Martin's Press"
+    isbn: "978-1-250-26760-3"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -74,7 +74,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "PR-FAQ and six-pager discipline; load-bearing for pat-pr-faq-working-backwards"
-    notes: "Wave-1 map and deep-card candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map and deep-card candidate; operator-verified front matter on 2026-05-19; ebook ISBN recorded in isbn field; hardcover ISBN 978-1-250-26759-7 and international ISBN 978-1-250-27571-4 noted in source front matter"
   - source_id: BK-0004
     category: strategy
     author: "Lafley, A.G.; Martin, Roger L."
