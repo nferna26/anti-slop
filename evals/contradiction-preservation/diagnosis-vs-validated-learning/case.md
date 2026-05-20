@@ -101,13 +101,14 @@ If `substrate_workflow` answers are no better than `vanilla` — both flatten to
 
 ## Model outputs
 
-Six model-output files exist — two runs each for the three conditions run so far:
+Seven model-output files exist; all four conditions have now been run at least once:
 
 - `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md` — the `vanilla` condition.
 - `model-outputs/famous_sources_supplied.md`, `model-outputs/famous_sources_supplied-02.md` — the `famous_sources_supplied` condition.
 - `model-outputs/substrate_workflow.md`, `model-outputs/substrate_workflow-02.md` — the `substrate_workflow` condition.
+- `model-outputs/optional_local_model.md` — the `optional_local_model` condition.
 
-All six are in-session good-faith simulations — dry-run test artifacts. A model output is never an authority and never citable as a source. The `optional_local_model` condition has not been run; each future run is recorded as one further file under `model-outputs/`, labelled by `model_condition`.
+The first six files are in-session good-faith simulations. `optional_local_model.md` is different: it is a real local-model run — `qwen3.5:latest` executed locally via Ollama on the Advisor prompt only — and its body reproduces the model's verbatim output. All seven are dry-run test artifacts: a model output is never an authority and never citable as a source. Each future run is recorded as one further file under `model-outputs/`, labelled by `model_condition`.
 
 ## Score sheet
 
