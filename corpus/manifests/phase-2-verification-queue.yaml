@@ -21,8 +21,8 @@ verification_batch:
     raw_source_status: local_only
     edition_verified: true
     locator_status: chosen
-    map_status: drafted
-    next_operator_action: "Review the drafted book map at corpus/book-maps/BK-0001.md, drain Operator review notes, and begin source-card selection from the mapped chapters."
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0001.md; draft source cards one at a time with operator review per card."
   - queue_rank: 2
     source_id: BK-0003
     title: "Working Backwards"
@@ -32,8 +32,8 @@ verification_batch:
     raw_source_status: local_only
     edition_verified: true
     locator_status: chosen
-    map_status: drafted
-    next_operator_action: "Review the drafted book map at corpus/book-maps/BK-0003.md, drain Operator review notes, and begin source-card selection from the mapped chapters."
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0003.md; draft source cards one at a time with operator review per card."
   - queue_rank: 3
     source_id: BK-0007
     title: "The Lean Startup"
@@ -43,8 +43,8 @@ verification_batch:
     raw_source_status: local_only
     edition_verified: true
     locator_status: chosen
-    map_status: drafted
-    next_operator_action: "Review the drafted book map at corpus/book-maps/BK-0007.md, drain Operator review notes, and begin source-card selection from the mapped chapters."
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0007.md; draft source cards one at a time with operator review per card."
   - queue_rank: 4
     source_id: BK-0042
     title: "The Challenger Launch Decision"
@@ -54,8 +54,8 @@ verification_batch:
     raw_source_status: local_only
     edition_verified: true
     locator_status: chosen
-    map_status: drafted
-    next_operator_action: "Review the drafted book map at corpus/book-maps/BK-0042.md, drain Operator review notes, and begin source-card selection from the mapped chapters."
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0042.md; draft source cards one at a time with operator review per card."
   - queue_rank: 5
     source_id: BK-0048
     title: "The Halo Effect"
@@ -65,8 +65,8 @@ verification_batch:
     raw_source_status: local_only
     edition_verified: true
     locator_status: chosen
-    map_status: drafted
-    next_operator_action: "Review the drafted book map at corpus/book-maps/BK-0048.md, drain Operator review notes, and begin source-card selection from the mapped chapters."
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0048.md; draft source cards one at a time with operator review per card."
 
 rights_watchlist:
   - source_id: BK-0020
