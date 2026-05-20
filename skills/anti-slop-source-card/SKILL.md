@@ -1,6 +1,6 @@
 ---
 name: anti-slop-source-card
-description: "Four-workflow source-card pipeline for the books-kb: select-source-card-target, draft-source-card, review-source-card, and mark-source-card-reviewed. Judgment rails for keeping source cards grounded in the local source rather than promoted from book maps."
+description: "Five-workflow source-card pipeline for the books-kb: select-source-card-target, draft-source-card, review-source-card, mark-source-card-reviewed, and draft-approval-ready-source-card. Judgment rails for keeping source cards grounded in the local source rather than promoted from book maps."
 ---
 
 # anti-slop-source-card
@@ -9,7 +9,7 @@ This skill encodes the source-card workflow for the books-kb. It is judgment rai
 
 ## When to invoke
 
-Invoke this skill when the operator asks Claude to select a source-card target, draft a source card, review a source card, or mark a source card reviewed.
+Invoke this skill when the operator asks Claude to select a source-card target, draft a source card, review a source card, mark a source card reviewed, or produce an approval-ready source-card draft with review and one repair cycle included.
 
 ## Workflow selector
 
@@ -19,6 +19,7 @@ Invoke this skill when the operator asks Claude to select a source-card target, 
 | `draft-source-card` | `## Workflow 2` | Yes |
 | `review-source-card` | `## Workflow 3` | No |
 | `mark-source-card-reviewed` | `## Workflow 4` | Yes |
+| `draft-approval-ready-source-card` | `## Workflow 5` | Yes |
 
 ## Shared contract
 
@@ -154,6 +155,47 @@ Every workflow inherits these rules. If a workflow violates any rule, stop and s
 5. Run the closing-gate suite.
 6. Do not create a claim/tension card or canon candidate in the same workflow.
 
+## Workflow 5 — draft-approval-ready-source-card
+
+**When to use it.** Drafting exactly one source card and absorbing the normal draft-review-repair loop before asking the operator for approval.
+
+**Inputs.**
+- Everything required by Workflow 2.
+- Everything required by Workflow 3.
+- The selected source-card target: source ID, locator, candidate claim, and reviewed-map discovery hint.
+
+**Outputs.**
+- One public source card in `corpus/source-cards/` with `operator_review_status: unreviewed`.
+- One local-only review report under `local-only/phase-2-verification/<source_id>/source-card-review/`.
+- One public-safe `kb/log.md` bullet for the draft, plus a repair note if the loop had to fix a blocker.
+
+**Hard limits.**
+- Draft exactly one card.
+- Run at most one repair cycle after the first review.
+- Do not mark the card reviewed. Workflow 4 still requires explicit operator approval.
+- Do not create a claim/tension card, canon candidate, graph edge, or additional source card.
+- Do not `git add` or `git commit` unless the operator explicitly requested a commit in this prompt.
+
+**Steps.**
+
+1. Run the drafting steps from Workflow 2, including local-source verification at the target locator. The card must be source-grounded before it is public.
+2. Immediately run the Workflow 3 review checklist on the drafted card. Write the local-only review report.
+3. If all checks pass, run the closing-gate suite and report `READY FOR OPERATOR APPROVAL`. Leave the card unreviewed.
+4. If the review finds blockers, repair only the blocked sections. Keep the original claim boundary, locator, source ID, and one-card-one-claim discipline unless the blocker proves the target itself is invalid.
+5. Rerun the Workflow 3 review checklist after the repair and update the local-only review report so it supersedes the first pass.
+6. If the rerun passes, run the closing-gate suite and report `READY FOR OPERATOR APPROVAL`, including the repair summary. Leave the card unreviewed.
+7. If the rerun still has a blocker, stop and report `SEND BACK` with the blocker, file path, line reference when available, and the smallest safe next instruction. Do not keep repairing.
+
+**Final report format.**
+- Verdict: `READY FOR OPERATOR APPROVAL` or `SEND BACK`.
+- Card path and card ID.
+- Source-grounding summary: what local locator was read and how the boundary was confirmed.
+- Claim boundary and `claim_type` rationale.
+- Review result: all-pass or named blockers.
+- Repair summary, if a repair cycle happened.
+- Closing-gate results.
+- Explicit statement that `operator_review_status` remains `unreviewed` and no higher artifact was created.
+
 ## Commands to run
 
 After any workflow that touches public files, run:
@@ -173,4 +215,4 @@ The final `rg` sweep must return zero matches. `make kb-lint` carries the raw-so
 
 ## Batch rules
 
-Do not batch source-card drafts in v1. Draft one card, review one card, then decide whether the next card should be drafted. A backlog of unreviewed source cards is not evidence; it is WIP debt.
+Do not batch source-card drafts in v1. Draft one card, review one card, then decide whether the next card should be drafted. Workflow 5 is the preferred single-card loop when the operator wants fewer handoffs: Claude drafts, self-reviews, repairs blockers once, and stops for operator approval. A backlog of unreviewed source cards is not evidence; it is WIP debt.
