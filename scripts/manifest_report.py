@@ -187,10 +187,10 @@ def main() -> int:
 
     # Next suggested manual actions
     print("== Next suggested manual actions ==")
-    print("- Verify rights/access for BK-0020 (Shape Up) and BK-0046 (To Err Is Human); both currently raw_source_status=metadata_only.")
-    print("- Verify edition and locator for the wave-1 map candidates with local filename evidence.")
-    print("- Choose the next acquisition batch from wave-1 entries with acquisition_status=not_started.")
-    print("- Decide whether to seed an initial book map or wait for additional acquisitions.")
+    print("- Review the five drafted first-five book maps (corpus/book-maps/BK-0001.md, BK-0003.md, BK-0007.md, BK-0042.md, BK-0048.md) and drain their Operator review notes.")
+    print("- Begin source-card selection from the reviewed maps; do not start cards on maps that have not been operator-reviewed.")
+    print("- Keep the BK-0020 (Shape Up) and BK-0046 (To Err Is Human) rights/access watchlist; both currently raw_source_status=metadata_only.")
+    print("- Choose the next acquisition batch only after first-five map review and source-card WIP are under control (see docs/wip-limits.md).")
     return 0
 
 
