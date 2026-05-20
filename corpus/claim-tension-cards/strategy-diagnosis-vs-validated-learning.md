@@ -3,7 +3,7 @@ card_id: strategy-diagnosis-vs-validated-learning
 card_type: tension
 title: Strategy diagnosis vs validated learning
 question: Does disciplined strategy diagnosis precede experimentation, run alongside it, or is validated learning itself a form of diagnosis?
-operator_review_status: unreviewed
+operator_review_status: reviewed
 tension_status: open
 publication_status: metadata_public
 ---
@@ -63,4 +63,4 @@ This card could later feed a canon candidate on how operator advice should seque
 
 ## Operator notes
 
-First claim/tension card in the substrate. Drafted from `docs/claim-tension-card-workflow.md`. `card_type: tension` — the two source cards foreground different first moves under uncertainty and genuinely pull against each other; this is not a `claim`-type synthesis where the cards agree. Both cited source cards were re-opened before drafting and confirmed `operator_review_status: reviewed` — `BK-0001-card-001` and `BK-0007-card-001`; both are `claim_type: method` source cards. No book map is cited as evidence: the BK-0001 and BK-0007 book maps were used only as discovery hints — each map's possible-contradictions section flagged this pairing, and `BK-0007-card-001`'s own "Tensions with" section already names `BK-0001-card-001` and this exact question. `tension_status: open` — the card preserves the tension and states no advice. `operator_review_status: unreviewed`; operator review of the card itself is pending.
+First claim/tension card in the substrate. Drafted from `docs/claim-tension-card-workflow.md`. `card_type: tension` — the two source cards foreground different first moves under uncertainty and genuinely pull against each other; this is not a `claim`-type synthesis where the cards agree. Both cited source cards were re-opened before drafting and confirmed `operator_review_status: reviewed` — `BK-0001-card-001` and `BK-0007-card-001`; both are `claim_type: method` source cards. No book map is cited as evidence: the BK-0001 and BK-0007 book maps were used only as discovery hints — each map's possible-contradictions section flagged this pairing, and `BK-0007-card-001`'s own "Tensions with" section already names `BK-0001-card-001` and this exact question. `tension_status: open` — the card preserves the tension and states no advice. `operator_review_status: reviewed` — operator-approved on 2026-05-20 after the eight-point claim/tension review checklist passed.
