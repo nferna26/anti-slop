@@ -10,7 +10,7 @@ model_conditions:
   - famous_sources_supplied
   - substrate_workflow
   - optional_local_model
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
