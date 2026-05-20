@@ -44,6 +44,8 @@ Discovery aid only. A book map's claim about what a chapter argues is a discover
 
 One claim from one source, with the locator (chapter/section/page) and a conservative paraphrase or short excerpt. Each card cites the source and stays within the per-source excerpt budget defined in `legal-publication-policy.md` and the per-card cap in the acquisition registry.
 
+Each card frontmatter also carries `issue_or_question` (the question the claim addresses) and `claim_type` (exactly one of `factual`, `diagnostic`, `mechanism`, `method`, `norm`, `warning`, `boundary_condition`, `open_question`). Three relation sections — `Supports`, `Tensions with`, `Qualifies` — record how the card connects to other cards, maps, and sources, using public-safe references only (source IDs, card IDs, reviewed-map refs, locators).
+
 Evidence unit. Not synthesis. A source card never says "and the right rule is X" — it says "this source claims X, on these pages, in this context."
 
 Workflow: `docs/source-card-workflow.md`.

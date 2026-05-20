@@ -40,7 +40,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 ## Artifact Templates
 
 - [Book map template](../corpus/book-maps/_template.md)
-- [Source card template](../corpus/source-cards/_template.md)
+- [Source card template](../corpus/source-cards/_template.md) — field guide: [source-card workflow](../docs/source-card-workflow.md)
 - [Claim/tension card template](../corpus/claim-tension-cards/_template.md)
 - [Canon candidate template](../corpus/canon-candidates/_template.md)
 - [Gate log template](../runs/gate-logs/_template.yaml)
