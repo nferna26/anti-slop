@@ -101,15 +101,16 @@ If `substrate_workflow` answers are no better than `vanilla` — both flatten to
 
 ## Model outputs
 
-Two model-output files exist, from the first evaluation pass — one per condition run:
+Three model-output files exist, one per condition run so far:
 
 - `model-outputs/vanilla.md` — the `vanilla` condition.
+- `model-outputs/famous_sources_supplied.md` — the `famous_sources_supplied` condition.
 - `model-outputs/substrate_workflow.md` — the `substrate_workflow` condition.
 
-Both are first-pass, in-session good-faith simulations — dry-run test artifacts. A model output is never an authority and never citable as a source. The `famous_sources_supplied` and `optional_local_model` conditions have not been run; each future run is recorded as one further file under `model-outputs/`, labelled by `model_condition`.
+All three are in-session good-faith simulations — dry-run test artifacts. A model output is never an authority and never citable as a source. The `optional_local_model` condition has not been run; each future run is recorded as one further file under `model-outputs/`, labelled by `model_condition`.
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It has been filled for the `vanilla` and `substrate_workflow` conditions; `scoring_status` is now `scored`. The `famous_sources_supplied` and `optional_local_model` columns remain blank until those conditions are run.
+See `score-sheet.md` in this case folder. It has been filled for the `vanilla`, `famous_sources_supplied`, and `substrate_workflow` conditions; `scoring_status` is `scored`. The `optional_local_model` column remains blank until that condition is run.
 
 ## Judge notes
