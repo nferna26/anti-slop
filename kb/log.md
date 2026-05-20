@@ -2,6 +2,10 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-20
+
+- Repaired the first source card `corpus/source-cards/BK-0048-card-001.md`: grounded it in the local Chapter 4 source by reading and verifying the chapter (the halo-effect chapter of Rosenzweig, *The Halo Effect*), rather than promoting the claim from the book map. Confirmed the Chapter 4 boundary against the source. Corrected the Operator notes and the Supports section so the BK-0048 book map is named only as a discovery aid that located the chapter, not as the card's authority; removed the "operator-reviewed evidence unit" and "upgrades map note to evidence" framing. `operator_review_status` remains `unreviewed`; `Short excerpt` remains `None.`; no source prose, quotes, or private paths added.
+
 ## 2026-05-19
 
 - Created books-kb scaffold.
