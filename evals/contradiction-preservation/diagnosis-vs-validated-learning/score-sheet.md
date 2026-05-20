@@ -33,7 +33,7 @@ First-pass result: `substrate_workflow` 5/5 vs `vanilla` 2/5 — a gap of 3, con
 
 ## Judge Notes
 
-First evaluation pass — 2026-05-20. Two of four conditions run, `vanilla` and `substrate_workflow`, one run each. `famous_sources_supplied` and `optional_local_model` were not run; their columns are left blank. Both runs are recorded under `model-outputs/`; both are test artifacts, not authorities.
+First evaluation pass — 2026-05-20. Two of four conditions run, `vanilla` and `substrate_workflow`, one run each. `famous_sources_supplied` and `optional_local_model` were not run; their columns are left blank. Both runs are recorded under `model-outputs/`; both are test artifacts, not authorities. This is a first-pass dry run using in-session simulated outputs — useful for validating the eval harness end to end, but not yet a settled empirical benchmark.
 
 **vanilla — 2/5.**
 
