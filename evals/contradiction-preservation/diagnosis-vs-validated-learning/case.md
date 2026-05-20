@@ -101,13 +101,13 @@ If `substrate_workflow` answers are no better than `vanilla` — both flatten to
 
 ## Model outputs
 
-Three model-output files exist, one per condition run so far:
+Six model-output files exist — two runs each for the three conditions run so far:
 
-- `model-outputs/vanilla.md` — the `vanilla` condition.
-- `model-outputs/famous_sources_supplied.md` — the `famous_sources_supplied` condition.
-- `model-outputs/substrate_workflow.md` — the `substrate_workflow` condition.
+- `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md` — the `vanilla` condition.
+- `model-outputs/famous_sources_supplied.md`, `model-outputs/famous_sources_supplied-02.md` — the `famous_sources_supplied` condition.
+- `model-outputs/substrate_workflow.md`, `model-outputs/substrate_workflow-02.md` — the `substrate_workflow` condition.
 
-All three are in-session good-faith simulations — dry-run test artifacts. A model output is never an authority and never citable as a source. The `optional_local_model` condition has not been run; each future run is recorded as one further file under `model-outputs/`, labelled by `model_condition`.
+All six are in-session good-faith simulations — dry-run test artifacts. A model output is never an authority and never citable as a source. The `optional_local_model` condition has not been run; each future run is recorded as one further file under `model-outputs/`, labelled by `model_condition`.
 
 ## Score sheet
 
