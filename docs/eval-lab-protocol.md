@@ -7,7 +7,7 @@ It complements two existing documents and does not restate them:
 - `docs/eval-result-status-policy.md` — the controlled vocabulary for a case's `## Result`.
 - `docs/eval-benchmark-upgrade.md` — the step-by-step checklist for moving a case from `dry_run_supported` toward `benchmark_supported`.
 
-Run `make eval-lab-status` for a read-only dashboard of every case's current readiness.
+Run `make eval-lab-status` for a read-only dashboard of every case's current readiness, and `make eval-benchmark-readiness` for a read-only dashboard of the gap between each case's current evidence and a `benchmark_supported` Result.
 
 ## Evals are proof-surface artifacts, not world evidence
 

@@ -56,6 +56,7 @@ The current handoff is:
 - `first50-queue` routes verified unmapped books into **deep-map** or **map-lite** lanes.
 - `anti-slop-book-map` Workflow 3/6 drafts the selected map class.
 - `eval-lab-status` reports the proof surface: per-case eval readiness, real vs simulated outputs, and the blockers that keep a case from benchmark evidence (`docs/eval-lab-protocol.md` is its operating frame).
+- `eval-benchmark-readiness` reports, per eval case, the specific gap list between its current evidence and a `benchmark_supported` Result — real-vs-simulated outputs, repeat-run count, the equal-length control, and the independent-judge requirement (`docs/eval-benchmark-upgrade.md` is its operating frame).
 - Operator review still decides whether any map becomes reviewed.
 
 No dashboard or coordinating skill marks artifacts reviewed, promotes canon, resolves tensions, or changes eval status.

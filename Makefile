@@ -33,6 +33,9 @@ packet-status:
 eval-lab-status:
 	python3 scripts/eval_lab_status.py
 
+eval-benchmark-readiness:
+	python3 scripts/eval_benchmark_readiness.py
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 
