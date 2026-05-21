@@ -982,18 +982,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0038-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -1008,18 +1008,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0039-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -1034,18 +1034,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0040-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -1060,18 +1060,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0041-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -1112,18 +1112,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0043-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -1268,18 +1268,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0049-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:

@@ -1694,12 +1694,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "third edition"
+    year: "2010"
+    publisher: "McGraw-Hill"
+    isbn: "978-0-07-170308-6"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -1707,7 +1707,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "accounting-distortion catalog; source-lineage hostile eval"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section; print ISBN 978-0-07-170307-9 also appears in front matter; heading layer is rich but deeply nested"
   - source_id: BK-0087
     category: economics
     author: "Desai, Mihir"
@@ -2085,12 +2085,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "edition with new foreword and afterword (2013)"
+    year: "2013"
+    publisher: "Portfolio / Penguin"
+    isbn: "978-0-698-15882-5"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -2098,7 +2098,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "Enron"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section; first U.S. publication 2003 and updated paperback 2004 also noted in front matter; print ISBNs also appear"
   - source_id: BK-0040
     category: biography
     author: "Carreyrou, John"
@@ -2108,12 +2108,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "First Edition (2018)"
+    year: "2018"
+    publisher: "Alfred A. Knopf"
+    isbn: "9781524731663"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -2121,7 +2121,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "Theranos"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section; hardback ISBN 9781524731656 also appears in front matter; heading layer contains markup noise"
   - source_id: BK-0103
     category: biography
     author: "Kidder, Tracy"
@@ -2200,12 +2200,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "second ebook edition (August 2014)"
+    year: "2014"
+    publisher: "Little, Brown and Company"
+    isbn: "978-0-316-21925-9"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -2213,7 +2213,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "Amazon; bibliographic adversary against shallow Amazon mimicry"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with caveats for markup-heavy headings and eight replacement characters; copyright 2013 and epilogue copyright 2014 noted in local front matter"
   - source_id: BK-0106
     category: biography
     author: "Levy, Steven"
@@ -3097,12 +3097,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "Princeton paperback reprint (1999), with new afterword and Y2K postscript"
+    year: "1999"
+    publisher: "Princeton University Press"
+    isbn: "978-0-691-00412-9"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -3110,7 +3110,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "tight-coupling/complex-interaction theory"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer; first published by Basic Books in 1984"
   - source_id: BK-0044
     category: safety
     author: "Reason, James"
@@ -4178,12 +4178,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "Princeton University Press edition (2018; edition statement not explicit)"
+    year: "2018"
+    publisher: "Princeton University Press"
+    isbn: "978-0-691-17495-2"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -4191,7 +4191,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "metrics misuse"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer"
   - source_id: BK-0184
     category: epistemology
     author: "Power, Michael"
