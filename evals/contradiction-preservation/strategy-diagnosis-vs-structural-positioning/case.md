@@ -11,7 +11,7 @@ model_conditions:
   - substrate_workflow
   - vanilla_long_prompt
   - optional_local_model
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
@@ -113,12 +113,18 @@ If `substrate_workflow` answers are no better than `vanilla` and the `vanilla_lo
 
 ## Model outputs
 
-No model-output files exist yet. This case is a draft: no model condition has been run and nothing has been scored. When the case is run, each run is recorded as one file under `model-outputs/` (`<condition>.md`, or `<condition>-NN.md` for a repeat run). A model output is a test artifact — never an authority, never citable as a source. Runs are deferred to a separate evaluation pass so the case design can be operator-reviewed first and the receipts stay clean.
+Three model-output files exist, all real local-model runs (`qwen3.5:latest` via Ollama), produced in the first real-run pass on 2026-05-21:
+
+- `model-outputs/vanilla.md` — the `vanilla` condition.
+- `model-outputs/famous_sources_supplied.md` — the `famous_sources_supplied` condition.
+- `model-outputs/substrate_workflow.md` — the `substrate_workflow` condition.
+
+All three are real local-model runs — there are no in-session simulations in this pass. The remaining two conditions, `vanilla_long_prompt` and `optional_local_model`, were attempted as real runs and timed out at 900s; they are deferred this pass and have no model-output file (not fabricated). See `run-packet.md` for the freeze, packet hashes, decoding parameters, and run receipts. A model output is a test artifact — never an authority, never citable as a source. Each future run is recorded as one further file under `model-outputs/`, labelled `<condition>` or `<condition>-NN`.
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is the unfilled scaffold: `scoring_status` is `unscored` and `## Result` is `partial` — this case is a draft, no condition has been run, and the v1 requirements in `docs/eval-result-status-policy.md` for a `dry_run_supported` or `benchmark_supported` status are not met. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
+See `score-sheet.md` in this case folder. It is filled for the three conditions that produced real runs — `vanilla` (2/5), `famous_sources_supplied` (1/5), and `substrate_workflow` (5/5); `vanilla_long_prompt` and `optional_local_model` are marked `deferred`. `scoring_status` is `scored` and `## Result` is `partial`: `substrate_workflow` beats both scored baselines, but the equal-length control is deferred, the runs are single, and the judge is model-family-separated but not independent, so the result is held at `partial` — below `dry_run_supported` and `benchmark_supported`. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
 
 ## Judge notes
 
-No model output has been produced or scored. This case is a draft awaiting operator review of the case design before any evaluation pass (`anti-slop-eval-run`) is run.
+The first real-run pass (2026-05-21) ran three conditions as real local-model runs and scored them against the five-criterion rubric; per-condition pass/fail, the comparative signal, and the deferred conditions are recorded in `score-sheet.md` → `## Judge Notes`. Generation was `qwen3.5:latest` (local, via Ollama); judging was Claude Opus 4.7 — a separate model family — with the limitation, recorded in `score-sheet.md` and `run-packet.md`, that the judge is the same agent orchestrating the pass rather than an independent third-party judge.
