@@ -1434,19 +1434,19 @@ books:
     notes: ""
   - source_id: BK-0034
     category: economics
-    author: "Brealey, Richard A.; Myers, Stewart C.; Allen, Franklin"
+    author: "Brealey, Richard A.; Myers, Stewart C.; Allen, Franklin; Edmans, Alex"
     title: "Principles of Corporate Finance"
     status_tag: COMMITTED
     availability_tier: AP
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "fourteenth edition (2023)"
+    year: "2023"
+    publisher: "McGraw Hill LLC"
+    isbn: "978-1-265-07415-9"
+    owned_format: "pdf"
+    locator_system: "pdf_page"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -1454,7 +1454,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "corporate finance textbook foundation"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 sourced first-50 candidate; bibliographic metadata operator-verified; locator scheme pdf_page with extraction-noise caveat; author field updated to match the inspected fourteenth-edition local source"
   - source_id: BK-0080
     category: economics
     author: "Koller, Tim; Goedhart, Marc; Wessels, David"
@@ -1579,12 +1579,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "revised and expanded second edition (2013)"
+    year: "2013"
+    publisher: "Harvard Business Review Press"
+    isbn: "978-1-4221-4411-4"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -1592,7 +1592,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "non-finance-manager finance"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 sourced first-50 candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer; John Case appears as contributor in the local source"
   - source_id: BK-0083
     category: economics
     author: "Mullins, John"
@@ -3166,12 +3166,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "MIT Press new paperback edition (2017)"
+    year: "2017"
+    publisher: "The MIT Press"
+    isbn: "978-0-262-01662-9"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -3179,7 +3179,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "STAMP framework"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 sourced first-50 safety candidate; bibliographic metadata operator-verified; locator scheme chapter_section with dense-heading caveat; original copyright 2011 preserved; ISBN labels should be operator-confirmed before applying"
   - source_id: BK-0144
     category: safety
     author: "Hollnagel, Erik"
@@ -4247,12 +4247,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "first edition (2011)"
+    year: "2011"
+    publisher: "Crown Business"
+    isbn: "978-0-385-53169-6"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -4260,7 +4260,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: false
     rationale: "anti-hindsight discipline"
-    notes: "local filename evidence present; edition unverified"
+    notes: "Wave-1 sourced first-50 candidate; bibliographic metadata operator-verified; locator scheme chapter_section with split chapter-number/title heading caveat"
   - source_id: BK-0186
     category: philosophy
     author: "Frankfurt, Harry G."
