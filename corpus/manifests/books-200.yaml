@@ -3120,12 +3120,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "first edition (1990)"
+    year: "1990"
+    publisher: "Cambridge University Press"
+    isbn: "978-0-521-30669-0"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -3133,7 +3133,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "Swiss-cheese model foundation"
-    notes: "local filename evidence present; edition unverified"
+    notes: "bibliographic metadata operator-verified; locator scheme chapter_section; local file is a later printing (2009) of the 1990 first edition, not a new edition; Human Error (1990) predates Reason's named Swiss-cheese model — do not attribute that named metaphor to this source"
   - source_id: BK-0143
     category: safety
     author: "Dekker, Sidney"
