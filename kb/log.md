@@ -2,6 +2,10 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-21
+
+- Phase 2 verification — first map-candidate metadata batch (`anti-slop-book-map` Workflow 2, apply-verified-metadata): operator approved and applied bibliographic metadata and locator scheme for five sourced first-50 books — BK-0002 (*High Output Management*), BK-0023 (*Competitive Strategy*), BK-0029 (*Thinking, Fast and Slow*), BK-0030 (*Sources of Power*), BK-0047 (*On War*). For each, set edition / year / publisher / isbn / owned_format / locator_system and the verification note in `books-200.yaml`, and lifted `edition_verified` to `true` with `locator_scheme: chapter_section` and `locator_confidence: medium` in `acquisition-registry.yaml`, applying `rights_notes_public` and `local_source_status.local_locator_key` from each operator-approved local-only packet. BK-0047 preserves the public-domain-original / copyrighted-modern-translation rights caveat. `raw_file_path_public` and `local_checksum_public` stay null; `processing_status` is unchanged — no `mapped` or `source_cards_started` lifted. No raw text, raw paths, or raw filenames added. No book maps, source cards, claim/tension cards, evals, canon candidates, graph edges, or model outputs created.
+
 ## 2026-05-20
 
 - Repaired the first source card `corpus/source-cards/BK-0048-card-001.md`: grounded it in the local Chapter 4 source by reading and verifying the chapter (the halo-effect chapter of Rosenzweig, *The Halo Effect*), rather than promoting the claim from the book map. Confirmed the Chapter 4 boundary against the source. Corrected the Operator notes and the Supports section so the BK-0048 book map is named only as a discovery aid that located the chapter, not as the card's authority; removed the "operator-reviewed evidence unit" and "upgrades map note to evidence" framing. `operator_review_status` remains `unreviewed`; `Short excerpt` remains `None.`; no source prose, quotes, or private paths added.

@@ -38,12 +38,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "Vintage Books edition (2015)"
+    year: "2015"
+    publisher: "Vintage Books"
+    isbn: "9781101972366"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -51,7 +51,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "operating-cadence canon; output and managerial leverage"
-    notes: "Wave-1 map candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; Vintage edition lineage preserves original 1983 publication and 1995 revision context"
   - source_id: BK-0003
     category: management
     author: "Bryar, Colin; Carr, Bill"
@@ -705,12 +705,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "First Free Press edition (1980), with new introduction (1998)"
+    year: "1980"
+    publisher: "The Free Press"
+    isbn: "978-1-4165-9035-4"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: false
@@ -718,7 +718,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "five-forces foundation; bibliographic adversary anchor"
-    notes: "Wave-1 map candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; local artifact includes a new introduction copyright 1998"
   - source_id: BK-0024
     category: strategy
     author: "Mintzberg, Henry"
@@ -843,12 +843,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "first edition"
+    year: "2011"
+    publisher: "Farrar, Straus and Giroux"
+    isbn: "978-0-3742-7563-1"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -856,7 +856,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "System 1/System 2 framing, widely misapplied; bibliographic adversary"
-    notes: "Wave-1 map candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; fine-grained subsection locators require local spot-check because extraction is mostly H2 chapter headings"
   - source_id: BK-0030
     category: decision_quality
     author: "Klein, Gary A."
@@ -866,12 +866,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "second MIT Press paperback edition (1999)"
+    year: "1999"
+    publisher: "MIT Press"
+    isbn: "9780585078175"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -879,7 +879,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "naturalistic decision making, counter to TFAS defaults"
-    notes: "Wave-1 map candidate; local filename evidence present; edition unverified"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; local extraction is table-heavy and has no Markdown heading layer, so chapter boundaries require manual spot-check before source-card drafting"
   - source_id: BK-0031
     category: decision_quality
     author: "Tetlock, Philip E."
@@ -3925,12 +3925,12 @@ books:
     acquisition_status: sourced
     publication_status: metadata_public
     raw_source_status: local_only
-    edition: ""
-    year: ""
-    publisher: ""
-    isbn: ""
-    owned_format: ""
-    locator_system: ""
+    edition: "Princeton paperback edition (1989), Howard and Paret translation"
+    year: "1989"
+    publisher: "Princeton University Press"
+    isbn: "0-691-01854-5"
+    owned_format: "epub"
+    locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
       contradiction_preservation: true
@@ -3938,7 +3938,7 @@ books:
       long_tail_transfer: true
       source_lineage_hostile: true
     rationale: "friction, fog, the trinity"
-    notes: "Wave-1 map candidate; local filename evidence present; edition unverified; original Clausewitz (1832) is public domain; local artifact is a copyrighted modern translation"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; original 1832 work is public domain, but the local artifact is a copyrighted modern translation"
   - source_id: BK-0175
     category: management
     author: "McChrystal, Stanley"

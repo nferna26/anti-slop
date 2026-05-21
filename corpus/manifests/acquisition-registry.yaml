@@ -46,18 +46,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0002-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -592,18 +592,18 @@ entries:
     availability_tier: AP
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0023-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -748,18 +748,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0029-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -774,18 +774,18 @@ entries:
     availability_tier: MM
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
       max_public_excerpt_words_per_card: 25
       max_public_excerpt_words_per_source_total: 100
-      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0030-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
@@ -1216,9 +1216,9 @@ entries:
     availability_tier: PD
     publication_status: metadata_public
     raw_source_status: local_only
-    edition_verified: false
-    locator_scheme: ""
-    locator_confidence: none
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
     rights:
       raw_text_public_allowed: false
       excerpt_policy: conservative
@@ -1227,7 +1227,7 @@ entries:
       rights_notes_public: "original 1832 work is public domain; local artifact is a copyrighted modern translation; for public excerpts use a public-domain translation"
     local_source_status:
       raw_source_exists_local: true
-      local_locator_key: null
+      local_locator_key: "BK-0047-local-source"
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
