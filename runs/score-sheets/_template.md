@@ -10,7 +10,7 @@ Score against the rubric in this case's `case.md` → `## Scoring rubric`. Copy 
 
 ## Result
 
-pass | partial | fail
+One of: `partial` | `inconclusive` | `falsified` | `dry_run_supported` | `benchmark_supported`, plus a one-line justification. See `docs/eval-result-status-policy.md` for the definitions and the bar a result must clear before it may support a canon candidate.
 
 ## Scores
 

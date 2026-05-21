@@ -10,7 +10,7 @@ Score against the rubric in `case.md` → `## Scoring rubric`. Each of the five 
 
 ## Result
 
-partial — all 4 conditions have now been run (`vanilla`, `famous_sources_supplied`, and `substrate_workflow` twice each; `optional_local_model` once). `substrate_workflow` (5/5 in both runs) beats every other condition — `vanilla` 2/5, `famous_sources_supplied` 2/5, `optional_local_model` 1/5. The result stays `partial`: the workflow defines no threshold for moving beyond `partial`, and `optional_local_model` has only a single run. See Judge Notes.
+dry_run_supported — all four conditions have been run, and `substrate_workflow` (5/5 in both runs) beats every baseline by the case's `## Positive result` criterion (`vanilla` 2/5, `famous_sources_supplied` 2/5, `optional_local_model` 1/5); receipt files exist for all seven runs, and the limitations are recorded below. The status is `dry_run_supported`, not `benchmark_supported`, because six of the seven outputs — including every `substrate_workflow` run — are in-session simulations rather than real external model runs; only `optional_local_model` is a real run. Per `docs/eval-result-status-policy.md`, this result may inform methodology but is **not** eligible to support a canon candidate. See Judge Notes.
 
 ## Scores — run 01
 
@@ -105,7 +105,8 @@ The repeat runs hold the first-run signal: `substrate_workflow` 5/5 in both runs
 
 ## Follow-up
 
-- All four conditions have now been run. `optional_local_model` has a single run; `vanilla`, `famous_sources_supplied`, and `substrate_workflow` have two runs each.
-- Further repeat runs — especially a second `optional_local_model` run — would tighten the signal but are not blocking.
+- All four conditions have been run. `optional_local_model` has a single run; `vanilla`, `famous_sources_supplied`, and `substrate_workflow` have two runs each.
+- `Result` is `dry_run_supported` per `docs/eval-result-status-policy.md`. To reach `benchmark_supported` — the only status eligible to support a canon candidate — the `vanilla`, `famous_sources_supplied`, and `substrate_workflow` conditions would need real external model runs in place of the in-session simulations.
+- Further repeat runs would tighten the signal but are not blocking.
 - If `substrate_workflow` stops beating `vanilla` in later runs, treat the case as falsified per `case.md` → `## Falsifier`.
-- The eval result is not yet eligible to support any canon candidate. `Result` stays `partial`: the workflow defines no threshold for moving beyond `partial`. Defining that threshold is the next methodology step before this eval can be called settled.
+- This result is not eligible to support a canon candidate while it is `dry_run_supported`.
