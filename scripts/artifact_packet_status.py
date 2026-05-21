@@ -294,31 +294,42 @@ def main() -> int:
         out.append("  " + ", ".join(sorted(unknown)))
     out.append("")
 
-    # -- operator review queue (each packet source assigned once) --
-    out.append("-- Operator review queue --")
-    out.append("Each packet source appears once, by precedence.")
-    anchors, q_first30, q_map, q_remaining = [], [], [], []
-    for sid in sorted(packet_ids):
+    # -- operator review queue (state-driven; awaiting lanes are PENDING only) --
+    # Awaiting-approval lanes carry ONLY pending packets. APPLIED packets are
+    # done and STALE packets are superseded; neither belongs in an awaiting lane.
+    q_map, q_first30, q_remaining = [], [], []
+    for sid in sorted(pending):
         flags = wave1_by_id.get(sid, {})
-        if sid in book_map_ids:
-            anchors.append(sid)
-        elif bool(flags.get("first_30_deep_card_candidate")):
+        if bool(flags.get("first_30_deep_card_candidate")):
             q_first30.append(sid)
         elif bool(flags.get("map_candidate")):
             q_map.append(sid)
         else:
             q_remaining.append(sid)
-    out.append(f"Already further along / artifact-bearing anchors ({len(anchors)}):")
-    out.append("  " + (", ".join(anchors) or "none"))
-    out.append("  -> packets here are superseded; do NOT apply blind (see STALE/APPLIED above).")
-    out.append(f"First-30 deep-card candidates awaiting metadata/locator approval ({len(q_first30)}):")
-    out.append("  " + (", ".join(q_first30) or "none"))
-    out.append(f"Map candidates awaiting metadata/locator approval ({len(q_map)}):")
-    out.append("  " + (", ".join(q_map) or "none"))
-    out.append(f"Remaining sourced first-50 awaiting approval ({len(q_remaining)}):")
-    out.append("  " + (", ".join(q_remaining) or "none"))
-    out.append(f"Rights/access blockers — separate workflow, no packet ({len(rights_blocked)}):")
-    out.append("  " + (", ".join(rights_blocked) or "none"))
+    anchors = sorted(sid for sid in packet_ids if sid in book_map_ids)
+
+    out.append("-- Operator review queue --")
+    out.append(f"Awaiting operator approval — PENDING packets only ({len(pending)}), "
+               "grouped by candidate type:")
+    out.append(f"  Map candidates ({len(q_map)}):")
+    out.append("    " + (", ".join(q_map) or "none"))
+    out.append(f"  First-30 deep-card candidates ({len(q_first30)}):")
+    out.append("    " + (", ".join(q_first30) or "none"))
+    out.append(f"  Remaining sourced first-50 ({len(q_remaining)}):")
+    out.append("    " + (", ".join(q_remaining) or "none"))
+    out.append("Not awaiting approval:")
+    out.append(f"  Applied — metadata/locator already in the public manifests ({len(applied)}):")
+    out.append("    " + (", ".join(sorted(applied)) or "none"))
+    out.append(f"  Superseded — STALE packets, do NOT apply ({len(stale)}):")
+    out.append("    " + (", ".join(sorted(stale)) or "none"))
+    if unknown:
+        out.append(f"  Unparseable packets — needs inspection ({len(unknown)}):")
+        out.append("    " + ", ".join(sorted(unknown)))
+    out.append(f"  Rights/access blockers — separate workflow, no packet ({len(rights_blocked)}):")
+    out.append("    " + (", ".join(rights_blocked) or "none"))
+    out.append(f"  Note — artifact-bearing anchors ({len(anchors)}), already have a public book map:")
+    out.append("    " + (", ".join(anchors) or "none"))
+    out.append("    Their packets are APPLIED or STALE above; never apply an anchor packet blind.")
     out.append("")
 
     out.append("-- How to read this board --")

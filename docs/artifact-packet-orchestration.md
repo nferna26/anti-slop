@@ -36,7 +36,7 @@ If `first50-queue` read the packets, a prepared-but-unapproved proposal would si
   - **PENDING** — public manifest fields still blank; the packet is a live proposal awaiting review;
   - **APPLIED** — the public manifest already carries the packet's values;
   - **STALE** — the public manifest was verified to *different* values; the packet is superseded and must not be applied;
-- the operator review queue, grouped (map candidates, first-30 candidates, remaining sourced first-50, artifact-bearing anchors, rights/access blockers).
+- the operator review queue. Its awaiting-approval lanes (map candidates, first-30 candidates, remaining sourced first-50) carry **only PENDING packets** — APPLIED packets are done and STALE packets are superseded, so neither appears as awaiting approval; both are listed separately, along with the artifact-bearing anchors and the rights/access blockers.
 
 It is a dashboard, not a gate. It always exits 0, reads no raw source files, and is not part of the closing-gate suite.
 
