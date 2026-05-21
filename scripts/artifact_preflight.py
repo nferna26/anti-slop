@@ -12,8 +12,10 @@ This script turns the highest-value artifact guardrails into a report:
 By default it is report-only and always exits 0, so false positives can be
 studied before this becomes part of the closing-gate suite. With `--strict` it
 exits nonzero when blockers are found (warnings, including WIP-cap warnings,
-never fail). It changes nothing, reads no local-only source files, makes no
-model/API calls, and creates no artifacts.
+never fail). `--self-test` runs the deterministic checks for the
+judge-independence guard and exits nonzero on a regression. It changes nothing,
+reads no local-only source files, makes no model/API calls, and creates no
+artifacts.
 """
 
 from __future__ import annotations
@@ -255,8 +257,24 @@ def output_is_real(fm: dict[str, str]) -> bool:
 
 LONG_PROMPT_MARKERS = ("vanilla_long_prompt", "long_prompt", "long-prompt",
                        "equal_length", "equal-length")
-JUDGE_INDEPENDENT_TOKENS = ("independent", "third-party", "third party",
-                            "two-judge", "two judge", "human")
+
+# A judge_independence value affirms an independent judge ONLY when it matches
+# one of these controlled values exactly (after lowercasing and treating '-'
+# and ' ' as '_'). A loose 'independent' or 'human' inside arbitrary prose does
+# not affirm, and any negation/limitation disqualifies the value outright.
+JUDGE_INDEPENDENCE_AFFIRMATIVE = frozenset({
+    "true", "yes",
+    "independent", "independent_judge", "third_party",
+    "human_independent", "independent_human",
+    "two_judge", "independent_third_party",
+})
+# Whole-token negations, checked against the '_'-split value.
+JUDGE_INDEPENDENCE_NEGATION_TOKENS = frozenset({"no", "not", "non"})
+# Substring negations / limitations, checked against the normalized value.
+JUDGE_INDEPENDENCE_NEGATION_MARKERS = (
+    "false", "without", "same_agent", "orchestrator",
+    "model_family_separated", "family_separated",
+)
 
 
 def is_long_prompt_condition(name: str) -> bool:
@@ -266,16 +284,31 @@ def is_long_prompt_condition(name: str) -> bool:
 
 
 def value_affirms_independence(value: str | None) -> bool:
-    """True only when a judge_independence value affirmatively records a judge
-    separate from the generator. Negations ('not independent') do not affirm."""
-    v = (value or "").strip().lower()
-    if not v:
+    """True only for an exact, controlled affirmative judge_independence value.
+
+    The value affirms an independent judge only when, after lowercasing and
+    treating '-' and ' ' as '_', it matches one of JUDGE_INDEPENDENCE_AFFIRMATIVE
+    exactly. Negations and limitations — 'no independent judge', 'non-independent',
+    'without independent judge', 'model-family-separated only', 'same agent',
+    'orchestrator' — never affirm, even when an affirmative word also appears.
+    A loose 'independent' or 'human' inside arbitrary prose never affirms.
+    Absence of a value is not an affirmation.
+    """
+    raw = (value or "").strip().lower()
+    if not raw:
         return False
-    if "not " in v or v.startswith("non") or "false" in v:
+    normalized = raw.replace("-", "_").replace(" ", "_").replace("/", "_")
+    while "__" in normalized:
+        normalized = normalized.replace("__", "_")
+    normalized = normalized.strip("_")
+    if not normalized:
         return False
-    if v in ("true", "yes"):
-        return True
-    return any(tok in v for tok in JUDGE_INDEPENDENT_TOKENS)
+    tokens = normalized.split("_")
+    if any(tok in JUDGE_INDEPENDENCE_NEGATION_TOKENS for tok in tokens):
+        return False
+    if any(marker in normalized for marker in JUDGE_INDEPENDENCE_NEGATION_MARKERS):
+        return False
+    return normalized in JUDGE_INDEPENDENCE_AFFIRMATIVE
 
 
 def judge_independence_affirmed(model_dir: Path, score_sheet: Path) -> bool:
@@ -296,6 +329,46 @@ def judge_independence_affirmed(model_dir: Path, score_sheet: Path) -> bool:
                 if value_affirms_independence(ofm.get(key)):
                     return True
     return False
+
+
+def run_self_test() -> int:
+    """Deterministic self-test for value_affirms_independence(). Stdlib only.
+
+    Run with `python3 scripts/artifact_preflight.py --self-test`. Exits nonzero
+    on any regression — so a future loosening of the judge-independence guard
+    is caught before a benchmark_supported Result could slip past --strict.
+    """
+    affirmative = [
+        "true", "yes", "independent", "independent_judge",
+        "third_party", "third-party", "two_judge", "two-judge",
+        "human_independent", "independent_human", "independent_third_party",
+        "  Independent_Judge  ",  # case/whitespace-insensitive
+    ]
+    negative = [
+        "", "   ", "false", "not independent", "non-independent",
+        "no independent judge", "no human judge", "without independent judge",
+        "model-family-separated only", "model_family_separated",
+        "same agent", "orchestrator", "same agent/orchestrator",
+        "human", "judge", "the judge was independent of the generator",
+        "no", "not", "non",
+    ]
+    failures: list[str] = []
+    for v in affirmative:
+        if not value_affirms_independence(v):
+            failures.append(f"expected affirmative, got False: {v!r}")
+    for v in negative:
+        if value_affirms_independence(v):
+            failures.append(f"expected non-affirmative, got True: {v!r}")
+
+    print("== artifact_preflight self-test: value_affirms_independence ==")
+    print(f"Affirmative cases: {len(affirmative)}    Negative cases: {len(negative)}")
+    if failures:
+        for line in failures:
+            print(f"  FAIL {line}")
+        print(f"Self-test FAILED ({len(failures)} failure(s)).")
+        return 1
+    print("All cases passed. Self-test OK.")
+    return 0
 
 
 def book_map_line_is_evidence(line: str) -> bool:
@@ -589,7 +662,10 @@ def wip_report() -> list[tuple[str, int, int]]:
 
 
 def main() -> int:
-    strict = "--strict" in sys.argv[1:]
+    argv = sys.argv[1:]
+    if "--self-test" in argv:
+        return run_self_test()
+    strict = "--strict" in argv
     findings: list[Finding] = []
     source_cards = source_card_inventory()
     claim_cards = claim_card_inventory()
