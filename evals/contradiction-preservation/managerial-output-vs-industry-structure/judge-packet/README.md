@@ -3,7 +3,7 @@ case_id: managerial-output-vs-industry-structure
 benchmark_version: managerial-output-vs-industry-structure-v1
 artifact: judge-packet-readme
 judge_status: prepared_not_judged
-frozen_judge_prompt_sha256: 691eec0e5b28111e75fef6e7ffc05355dc41dc5f8b800ad64bc3de963ef26a44
+frozen_judge_prompt_sha256: 15fe01ae0e7044ba7b0cfd6e7e4c34e6ef6918bfa7d4daa3e87482306c4e02f7
 ---
 
 # Independent-Judge Packet — managerial-output-vs-industry-structure
@@ -24,7 +24,7 @@ produced which answer.
 
 - `judge-instructions.md` — the frozen judge prompt: the judge's role, the
   scoring procedure, and the prohibitions. Frozen; sha256
-  `691eec0e5b28111e75fef6e7ffc05355dc41dc5f8b800ad64bc3de963ef26a44` (recorded
+  `15fe01ae0e7044ba7b0cfd6e7e4c34e6ef6918bfa7d4daa3e87482306c4e02f7` (recorded
   in this file's frontmatter as `frozen_judge_prompt_sha256`). A receipt for
   the independent pass should carry this hash as `judge_prompt_sha256`.
 - `case-context.md` — verbatim, condition-neutral excerpts of the frozen

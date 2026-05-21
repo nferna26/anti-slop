@@ -71,7 +71,7 @@ judge as independent.
 
 ## What to produce
 
-Fill in `blank-score-sheet.md`: every cell, the per-condition totals, your
+Fill in `blank-score-sheet.md`: every cell, the per-output totals, your
 judge identity, the sha256 of this instructions file (from README.md), the
 date, and the per-output reasoning. Return the filled sheet. Do not change any
 model output, the rubric, the case context, or any eval Result or status — a
