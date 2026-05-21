@@ -88,7 +88,7 @@ entries:
       raw_file_path_public: null
     processing_status:
       mapped: true
-      source_cards_started: false
+      source_cards_started: true
       deep_card_candidate: true
       canon_candidate_exists: false
   - source_id: BK-0004
