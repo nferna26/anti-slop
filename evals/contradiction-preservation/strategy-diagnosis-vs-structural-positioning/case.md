@@ -113,18 +113,20 @@ If `substrate_workflow` answers are no better than `vanilla` and the `vanilla_lo
 
 ## Model outputs
 
-Three model-output files exist, all real local-model runs (`qwen3.5:latest` via Ollama), produced in the first real-run pass on 2026-05-21:
+Five model-output files exist, one per `model_condition`, all real local-model runs (`qwen3.5:latest` via Ollama) — there are no in-session simulations anywhere in this case:
 
 - `model-outputs/vanilla.md` — the `vanilla` condition.
 - `model-outputs/famous_sources_supplied.md` — the `famous_sources_supplied` condition.
 - `model-outputs/substrate_workflow.md` — the `substrate_workflow` condition.
+- `model-outputs/vanilla_long_prompt.md` — the `vanilla_long_prompt` equal-length control.
+- `model-outputs/optional_local_model.md` — the `optional_local_model` condition.
 
-All three are real local-model runs — there are no in-session simulations in this pass. The remaining two conditions, `vanilla_long_prompt` and `optional_local_model`, were attempted as real runs and timed out at 900s; they are deferred this pass and have no model-output file (not fabricated). See `run-packet.md` for the freeze, packet hashes, decoding parameters, and run receipts. A model output is a test artifact — never an authority, never citable as a source. Each future run is recorded as one further file under `model-outputs/`, labelled `<condition>` or `<condition>-NN`.
+The first three were produced in the first real-run pass (2026-05-21). `vanilla_long_prompt` and `optional_local_model` timed out in that first pass and were completed in a v2 follow-up pass (2026-05-21): the equal-length control was rebuilt with non-repetitive filler, and `optional_local_model` was retried on a fresh seed — see `run-packet.md` for the freeze, packet hashes, decoding parameters, and run receipts. A model output is a test artifact — never an authority, never citable as a source. Each future run is recorded as one further file under `model-outputs/`, labelled `<condition>` or `<condition>-NN`.
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is filled for the three conditions that produced real runs — `vanilla` (2/5), `famous_sources_supplied` (1/5), and `substrate_workflow` (5/5); `vanilla_long_prompt` and `optional_local_model` are marked `deferred`. `scoring_status` is `scored` and `## Result` is `partial`: `substrate_workflow` beats both scored baselines, but the equal-length control is deferred, the runs are single, and the judge is model-family-separated but not independent, so the result is held at `partial` — below `dry_run_supported` and `benchmark_supported`. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
+See `score-sheet.md` in this case folder. It is filled for all five conditions, scored against the five-criterion rubric — `vanilla` (2/5), `famous_sources_supplied` (1/5), `substrate_workflow` (5/5), `vanilla_long_prompt` (3/5), and `optional_local_model` (2/5). `scoring_status` is `scored` and `## Result` is `partial`: `substrate_workflow` beats every baseline, including the equal-length control `vanilla_long_prompt` by two points, but the runs are single and the judge is model-family-separated but not independent, so the result is held at `partial` — below `benchmark_supported`, and `dry_run_supported` does not apply because there are no simulated outputs. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
 
 ## Judge notes
 
-The first real-run pass (2026-05-21) ran three conditions as real local-model runs and scored them against the five-criterion rubric; per-condition pass/fail, the comparative signal, and the deferred conditions are recorded in `score-sheet.md` → `## Judge Notes`. Generation was `qwen3.5:latest` (local, via Ollama); judging was Claude Opus 4.7 — a separate model family — with the limitation, recorded in `score-sheet.md` and `run-packet.md`, that the judge is the same agent orchestrating the pass rather than an independent third-party judge.
+All five conditions have been run as real local-model runs and scored against the five-criterion rubric — three in the first real-run pass (2026-05-21) and the two deferred conditions in a v2 follow-up pass (2026-05-21). Per-condition pass/fail, the comparative signal, and the run history are recorded in `score-sheet.md` → `## Judge Notes` and `run-packet.md`. Generation was `qwen3.5:latest` (local, via Ollama); judging was Claude Opus 4.7 — a separate model family — with the limitation, recorded in `score-sheet.md` and `run-packet.md`, that the judge is the same agent orchestrating the passes rather than an independent third-party judge.
