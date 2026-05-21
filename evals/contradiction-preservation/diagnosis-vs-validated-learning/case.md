@@ -112,6 +112,6 @@ The first six files are in-session good-faith simulations. `optional_local_model
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It has been filled for the `vanilla`, `famous_sources_supplied`, and `substrate_workflow` conditions; `scoring_status` is `scored`. The `optional_local_model` column remains blank until that condition is run.
+See `score-sheet.md` in this case folder. It has been filled for all four conditions — `vanilla`, `famous_sources_supplied`, `substrate_workflow`, and `optional_local_model`; `scoring_status` is `scored` and `Result` is `dry_run_supported`. That status is dry-run supported, not `benchmark_supported`: six of the seven scored outputs are in-session simulations, so the result may inform methodology but is not eligible to support a canon candidate.
 
 ## Judge notes
