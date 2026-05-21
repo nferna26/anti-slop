@@ -10,7 +10,7 @@ model_conditions:
   - famous_sources_supplied
   - substrate_workflow
   - optional_local_model
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
@@ -116,10 +116,17 @@ If `substrate_workflow` answers are no better than `vanilla` — both flatten to
 
 ## Model outputs
 
-No model outputs yet. The case is drafted and `scoring_status` is `unscored`; no condition has been run. Each future run will be recorded as one file under `model-outputs/`, labelled by `model_condition` (and `-NN` for repeat runs), and stating in its frontmatter and condition note whether it is an in-session simulation or a real external model run. A model output is a test artifact — never an authority and never citable as a source.
+Four model-output files exist; all four conditions have been run once.
+
+- `model-outputs/vanilla.md` — the `vanilla` condition.
+- `model-outputs/famous_sources_supplied.md` — the `famous_sources_supplied` condition.
+- `model-outputs/substrate_workflow.md` — the `substrate_workflow` condition.
+- `model-outputs/optional_local_model.md` — the `optional_local_model` condition.
+
+The first three files are in-session good-faith simulations. `optional_local_model.md` is different: it is a real local-model run — `qwen3.5:latest` executed locally via Ollama on the Advisor prompt only — and its body reproduces the model's verbatim output. All four are dry-run test artifacts: a model output is never an authority and never citable as a source. Each future repeat run would be recorded as one further file under `model-outputs/`, labelled `<condition>-NN`.
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It carries the five rubric criteria and one column per `model_condition`; it is unfilled. `scoring_status` is `unscored` and `Result` is `partial` — the case is drafted and awaiting an evaluation pass.
+See `score-sheet.md` in this case folder. It has been filled for all four conditions — `vanilla` (3/5), `famous_sources_supplied` (2/5), `substrate_workflow` (5/5), and `optional_local_model` (2/5); `scoring_status` is `scored` and `Result` is `dry_run_supported`. That status is dry-run supported, not `benchmark_supported`: three of the four scored outputs are in-session simulations, so the result may inform methodology but is not eligible to support a canon candidate. The sample is one run per condition.
 
 ## Judge notes
