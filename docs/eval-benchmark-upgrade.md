@@ -1,6 +1,6 @@
 # Eval Benchmark Upgrade Path
 
-This document turns `docs/eval-result-status-policy.md` into an operating plan for moving a case from `dry_run_supported` toward `benchmark_supported`.
+This document turns `docs/eval-result-status-policy.md` into an operating plan for moving a case from `dry_run_supported` toward `benchmark_supported`. The wider operating frame for the proof surface — design vs benchmark evidence, design vs holdout cases, required conditions, and judge separation — is `docs/eval-lab-protocol.md`; `make eval-lab-status` reports which cases still need this upgrade.
 
 The current contradiction-preservation cases are useful methodology evidence, but not canon-relevant benchmark evidence:
 

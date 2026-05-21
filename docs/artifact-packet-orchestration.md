@@ -55,6 +55,7 @@ The current handoff is:
 - `packet-status` handles metadata/locator packet application state.
 - `first50-queue` routes verified unmapped books into **deep-map** or **map-lite** lanes.
 - `anti-slop-book-map` Workflow 3/6 drafts the selected map class.
+- `eval-lab-status` reports the proof surface: per-case eval readiness, real vs simulated outputs, and the blockers that keep a case from benchmark evidence (`docs/eval-lab-protocol.md` is its operating frame).
 - Operator review still decides whether any map becomes reviewed.
 
 No dashboard or coordinating skill marks artifacts reviewed, promotes canon, resolves tensions, or changes eval status.

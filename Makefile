@@ -30,6 +30,9 @@ first50-queue:
 packet-status:
 	python3 scripts/artifact_packet_status.py
 
+eval-lab-status:
+	python3 scripts/eval_lab_status.py
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 

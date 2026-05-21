@@ -4,7 +4,7 @@ Every eval case carries a result status in its `score-sheet.md` → `## Result`.
 
 It is a v1 policy: lightweight and judgment-based, with no automation. The status is set by hand by whoever scores the case, against the definitions below.
 
-For the practical operating checklist that turns a `dry_run_supported` case into a benchmark candidate, see `docs/eval-benchmark-upgrade.md`.
+For the practical operating checklist that turns a `dry_run_supported` case into a benchmark candidate, see `docs/eval-benchmark-upgrade.md`. For the operating frame of the proof surface — design vs benchmark evidence, the required equal-length control, judge separation, and the canon-promotion limit — see `docs/eval-lab-protocol.md`, and run `make eval-lab-status` for a read-only readiness dashboard over every eval case.
 
 ## Why this exists
 

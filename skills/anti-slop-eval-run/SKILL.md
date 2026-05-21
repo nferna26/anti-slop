@@ -9,6 +9,8 @@ This skill encodes the eval-run workflow for the books-kb proof surface — the 
 
 It applies to any eval case under `evals/`, and is shaped for contradiction-preservation cases in particular.
 
+The operating frame for the proof surface — design vs benchmark evidence, the required equal-length control, judge separation, and the canon-promotion limit — is `docs/eval-lab-protocol.md`. Run `make eval-lab-status` for a read-only dashboard of every case's readiness (conditions run, real vs simulated outputs, Result status, missing controls, receipt blockers); it runs and scores nothing.
+
 ## When to invoke
 
 Invoke this skill when the operator asks Claude to run an eval condition, score an eval output, repair eval receipt drift, summarise an eval result, or run a complete approval-ready eval pass for a books-kb eval case.
