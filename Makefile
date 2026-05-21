@@ -24,6 +24,9 @@ artifact-status:
 artifact-preflight:
 	python3 scripts/artifact_preflight.py
 
+first50-queue:
+	python3 scripts/first50_queue.py
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 
