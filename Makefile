@@ -21,6 +21,9 @@ phase2-queue:
 artifact-status:
 	python3 scripts/artifact_status.py
 
+artifact-preflight:
+	python3 scripts/artifact_preflight.py
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 
