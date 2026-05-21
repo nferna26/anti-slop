@@ -873,7 +873,7 @@ entries:
       canon_candidate_exists: false
   - source_id: BK-0034
     title: "Principles of Corporate Finance"
-    author: "Brealey, Richard A.; Myers, Stewart C.; Allen, Franklin"
+    author: "Brealey, Richard A.; Myers, Stewart C.; Allen, Franklin; Edmans, Alex"
     acquisition_status: sourced
     availability_tier: AP
     publication_status: metadata_public
