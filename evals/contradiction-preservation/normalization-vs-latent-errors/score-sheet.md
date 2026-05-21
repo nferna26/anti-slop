@@ -21,7 +21,7 @@ One column per `model_condition` from the case; mark each cell `pass` or `fail` 
 | Tension recognised |  |  |  |  |
 | Scenario located |  |  |  |  |
 | Acceptance-threshold check |  |  |  |  |
-| No flatten |  |  |  |  |
+| Lineage and authority discipline |  |  |  |  |
 | Honest recommendation |  |  |  |  |
 | **Per-condition score (0–5)** |  |  |  |  |
 
