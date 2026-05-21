@@ -9,7 +9,7 @@ It complements two existing documents and does not restate them:
 
 Run `make eval-lab-status` for a read-only dashboard of every case's current readiness, and `make eval-benchmark-readiness` for a read-only dashboard of the gap between each case's current evidence and a `benchmark_supported` Result.
 
-Before a benchmark-candidate case's `## Result` is lifted toward `benchmark_supported`, its model-output receipts must pass `make eval-receipt-lint` (full provenance, including the benchmark-only fields), the case must carry a regenerated `receipt-index.yaml` (`make receipt-index`), and an independent judge — not the agent that ran the eval — must have scored it. Receipt lint and the receipt index are read-only; they change no Result.
+Before a benchmark-candidate case's `## Result` is lifted toward `benchmark_supported`, its model-output receipts must pass the targeted strict receipt lint — `python3 scripts/eval_receipt_lint.py --benchmark-candidates-only --strict-benchmark` checks full base and benchmark-only provenance and exits nonzero until every benchmark-candidate receipt is complete (old dry-run cases never affect it) — the case must carry a current `receipt-index.yaml` validated by `make receipt-index-check` (`make receipt-index` regenerates the index; the `-check` target writes nothing and fails on a missing or stale index), and an independent judge — not the agent that ran the eval — must have scored it. Receipt lint and the receipt index are read-only; they change no Result.
 
 ## Evals are proof-surface artifacts, not world evidence
 

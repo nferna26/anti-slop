@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 """Receipt lint for the books-kb eval proof surface.
 
-Read-only. Scans every eval model-output receipt under evals/ and reports
-missing or empty provenance fields. A receipt with thin provenance is not
-benchmark evidence — this lint surfaces the gaps before a status lift.
+Read-only. Scans eval model-output receipts and reports missing or empty
+provenance fields. A receipt with thin provenance is not benchmark evidence —
+this lint surfaces the gaps before a status lift.
 
 - Standard library only. No model/API calls, no embeddings, no network.
 - Reads model-output frontmatter and the per-case benchmark-readiness
   classification only; reads no raw source files.
 - Public-safe output: prints file paths, field names, and counts.
-- Default: report-only, always exits 0. With `--strict`: exits nonzero when
-  any base provenance field is missing (the benchmark-candidate extra-field
-  checks are forward-looking warnings and never fail, even under --strict).
+
+Options:
+- (default)                  report-only; always exits 0.
+- --strict                   exit nonzero if any base provenance field is
+                             missing, in any scanned case.
+- --strict-benchmark         exit nonzero if any benchmark-candidate case has a
+                             receipt missing base or benchmark-only provenance.
+                             Old dry-run / design cases never affect this mode.
+- --benchmark-candidates-only  scan only benchmark-candidate cases.
+- --case <case_id>           scan only the named case.
 
 See docs/eval-benchmark-upgrade.md for the receipt fields a benchmark pass needs.
 """
@@ -49,43 +56,66 @@ def field_missing(fm: dict[str, str], key: str) -> bool:
 def lint_receipt(path: Path, benchmark_case: bool) -> tuple[list[str], list[str]]:
     """Return (missing base fields, missing benchmark fields) for one receipt."""
     fm = read_frontmatter(path)
-    base: list[str] = []
-    for key in BASE_FIELDS:
-        if field_missing(fm, key):
-            base.append(key)
-    # provider/runtime — at least one must be present
+    base: list[str] = [k for k in BASE_FIELDS if field_missing(fm, k)]
     if field_missing(fm, "provider") and field_missing(fm, "runtime"):
         base.append("provider/runtime")
     bench: list[str] = []
     if benchmark_case:
-        for key in BENCHMARK_FIELDS:
-            if field_missing(fm, key):
-                bench.append(key)
+        bench = [k for k in BENCHMARK_FIELDS if field_missing(fm, k)]
     return base, bench
 
 
+def parse_args(argv: list[str]) -> dict:
+    opts = {
+        "strict": "--strict" in argv,
+        "strict_benchmark": "--strict-benchmark" in argv,
+        "bc_only": "--benchmark-candidates-only" in argv,
+        "case": None,
+    }
+    for i, arg in enumerate(argv):
+        if arg == "--case" and i + 1 < len(argv):
+            opts["case"] = argv[i + 1]
+        elif arg.startswith("--case="):
+            opts["case"] = arg.split("=", 1)[1]
+    return opts
+
+
 def main() -> int:
-    strict = "--strict" in sys.argv[1:]
+    opts = parse_args(sys.argv[1:])
     case_paths = sorted(EVALS_DIR.rglob("case.md")) if EVALS_DIR.is_dir() else []
 
     out: list[str] = []
     out.append("== Anti-Slop eval receipt lint ==")
-    if strict:
-        out.append("Read-only lint (--strict). Exits nonzero if any base provenance")
-        out.append("field is missing; benchmark-candidate extra fields only warn.")
-    else:
-        out.append("Read-only lint (scripts/eval_receipt_lint.py). Reports missing")
-        out.append("provenance fields in eval model-output receipts. Always exits 0.")
+    mode_bits = []
+    if opts["strict"]:
+        mode_bits.append("--strict")
+    if opts["strict_benchmark"]:
+        mode_bits.append("--strict-benchmark")
+    if opts["bc_only"]:
+        mode_bits.append("--benchmark-candidates-only")
+    if opts["case"]:
+        mode_bits.append(f"--case {opts['case']}")
+    out.append("Read-only lint (scripts/eval_receipt_lint.py). Reports missing "
+               "provenance in eval model-output receipts.")
+    out.append("Mode: " + (" ".join(mode_bits) if mode_bits else "default (report-only)"))
     out.append("")
 
     total_receipts = 0
     total_base_findings = 0
     total_bench_findings = 0
+    # benchmark-candidate receipts that are not benchmark-complete (base or bench gaps)
+    benchmark_candidate_incomplete = 0
+    scanned_cases = 0
 
     for case_path in case_paths:
         case_dir = case_path.parent
         rep = scan_case(case_path)
         benchmark_case = rep.classification in BENCHMARK_CLASSES
+        if opts["case"] and rep.case_id != opts["case"]:
+            continue
+        if opts["bc_only"] and not benchmark_case:
+            continue
+        scanned_cases += 1
         outputs_dir = case_dir / "model-outputs"
         receipts = sorted(outputs_dir.glob("*.md")) if outputs_dir.is_dir() else []
 
@@ -100,6 +130,8 @@ def main() -> int:
             base, bench = lint_receipt(receipt, benchmark_case)
             total_base_findings += len(base)
             total_bench_findings += len(bench)
+            if benchmark_case and (base or bench):
+                benchmark_candidate_incomplete += 1
             rel = receipt.relative_to(ROOT)
             if not base and not bench:
                 out.append(f"  OK   {rel}")
@@ -108,21 +140,33 @@ def main() -> int:
             if base:
                 out.append(f"    missing base provenance: {', '.join(base)}")
             if bench:
-                out.append(f"    missing benchmark provenance (warn): {', '.join(bench)}")
+                out.append(f"    missing benchmark provenance: {', '.join(bench)}")
         out.append("")
 
     out.append("-- Summary --")
-    out.append(f"Receipts scanned: {total_receipts}")
+    out.append(f"Cases scanned: {scanned_cases}    Receipts scanned: {total_receipts}")
     out.append(f"Missing base-provenance fields: {total_base_findings}")
-    out.append(f"Missing benchmark-provenance fields (warn): {total_bench_findings}")
-    if strict:
-        exit_code = 1 if total_base_findings else 0
-        out.append("Mode: --strict (missing base provenance fails; benchmark-field "
-                   "warnings do not)")
-        out.append(f"Exit status: {exit_code}")
-    else:
-        exit_code = 0
+    out.append(f"Missing benchmark-provenance fields: {total_bench_findings}")
+    out.append(f"Benchmark-candidate receipts not benchmark-complete: "
+               f"{benchmark_candidate_incomplete}")
+
+    exit_code = 0
+    reasons: list[str] = []
+    if opts["strict"] and total_base_findings:
+        exit_code = 1
+        reasons.append(f"--strict: {total_base_findings} missing base-provenance field(s)")
+    if opts["strict_benchmark"] and benchmark_candidate_incomplete:
+        exit_code = 1
+        reasons.append(f"--strict-benchmark: {benchmark_candidate_incomplete} "
+                       f"benchmark-candidate receipt(s) not benchmark-complete")
+    if not (opts["strict"] or opts["strict_benchmark"]):
         out.append("Exit status: 0 (report-only)")
+    else:
+        if reasons:
+            out.append("Fails: " + "; ".join(reasons))
+        else:
+            out.append("Strict checks passed.")
+        out.append(f"Exit status: {exit_code}")
     out.append("")
     out.append("A model output is a test artifact, never an authority. Thin provenance")
     out.append("is not benchmark evidence; see docs/eval-benchmark-upgrade.md.")

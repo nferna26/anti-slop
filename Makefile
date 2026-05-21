@@ -42,6 +42,9 @@ eval-receipt-lint:
 receipt-index:
 	python3 scripts/receipt_index.py
 
+receipt-index-check:
+	python3 scripts/receipt_index.py --check
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 

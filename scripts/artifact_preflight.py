@@ -195,6 +195,43 @@ def section(text: str, heading: str) -> str:
     return "\n".join(out)
 
 
+def case_model_conditions(case_text: str) -> list[str]:
+    """Parse the declared model_conditions list from a case.md frontmatter.
+
+    Handles both a block list and an inline `[a, b]` form. Returns [] when no
+    model_conditions key is present.
+    """
+    lines = case_text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return []
+    fm_end = None
+    for idx, raw in enumerate(lines[1:], start=1):
+        if raw.strip() == "---":
+            fm_end = idx
+            break
+    if fm_end is None:
+        return []
+
+    conds: list[str] = []
+    collecting = False
+    for raw in lines[1:fm_end]:
+        stripped = raw.strip()
+        indented = raw[:1] in (" ", "\t")
+        if not collecting:
+            if not indented and stripped.startswith("model_conditions:"):
+                inline = stripped.split(":", 1)[1].strip()
+                if inline:
+                    inline = inline.strip("[]")
+                    return [c.strip().strip("'\"") for c in inline.split(",") if c.strip()]
+                collecting = True
+            continue
+        if indented and stripped.startswith("- "):
+            conds.append(stripped[2:].strip().strip("'\""))
+        elif not indented and stripped:
+            break
+    return conds
+
+
 def result_status(score_sheet: Path) -> str | None:
     lines = read_text(score_sheet).splitlines()
     for i, raw in enumerate(lines):
@@ -213,6 +250,51 @@ def output_is_real(fm: dict[str, str]) -> bool:
         return True
     if (fm.get("runtime") or "").strip() and "simulation" not in notes and "simulated" not in notes:
         return True
+    return False
+
+
+LONG_PROMPT_MARKERS = ("vanilla_long_prompt", "long_prompt", "long-prompt",
+                       "equal_length", "equal-length")
+JUDGE_INDEPENDENT_TOKENS = ("independent", "third-party", "third party",
+                            "two-judge", "two judge", "human")
+
+
+def is_long_prompt_condition(name: str) -> bool:
+    """True if a condition name marks the equal-length / long-prompt control."""
+    lowered = name.lower()
+    return any(marker in lowered for marker in LONG_PROMPT_MARKERS)
+
+
+def value_affirms_independence(value: str | None) -> bool:
+    """True only when a judge_independence value affirmatively records a judge
+    separate from the generator. Negations ('not independent') do not affirm."""
+    v = (value or "").strip().lower()
+    if not v:
+        return False
+    if "not " in v or v.startswith("non") or "false" in v:
+        return False
+    if v in ("true", "yes"):
+        return True
+    return any(tok in v for tok in JUDGE_INDEPENDENT_TOKENS)
+
+
+def judge_independence_affirmed(model_dir: Path, score_sheet: Path) -> bool:
+    """True only when an explicit judge_independence record (in the score sheet
+    or a model-output receipt) affirms an independent / human / two-judge setup.
+    Absence of the record is not an affirmation."""
+    if score_sheet.exists():
+        sfm = read_frontmatter(score_sheet)
+        for key in ("judge_independence", "judge_independent"):
+            if value_affirms_independence(sfm.get(key)):
+                return True
+    if model_dir.exists():
+        for path in sorted(model_dir.glob("*.md")):
+            if path.name.startswith("."):
+                continue
+            ofm = read_frontmatter(path)
+            for key in ("judge_independence", "judge_independent"):
+                if value_affirms_independence(ofm.get(key)):
+                    return True
     return False
 
 
@@ -365,17 +447,22 @@ def check_eval_cases(
         if not actual and case_status == "scored":
             findings.append(Finding("BLOCKER", case_path, "case is scored but no model-output files exist"))
 
-        # A benchmark_supported Result must rest on all-real outputs with at least
-        # MIN_BENCHMARK_RUNS runs per condition (docs/eval-benchmark-upgrade.md).
+        # A benchmark_supported Result must rest on real outputs for *every
+        # declared* condition (>= MIN_BENCHMARK_RUNS real runs each, not just
+        # whichever conditions happen to have files), carry an equal-length
+        # control among the declared conditions, and have an affirmatively
+        # independent judge (docs/eval-benchmark-upgrade.md, eval-lab-protocol.md).
         if result == "benchmark_supported":
-            runs_by_cond: dict[str, int] = {}
+            declared = case_model_conditions(case_text)
+            real_by_cond: dict[str, int] = {}
             non_real = 0
             for name in sorted(actual):
                 ofm = read_frontmatter(model_dir / name)
                 cond = (ofm.get("model_condition")
                         or re.sub(r"-\d+$", "", Path(name).stem)).strip()
-                runs_by_cond[cond] = runs_by_cond.get(cond, 0) + 1
-                if not output_is_real(ofm):
+                if output_is_real(ofm):
+                    real_by_cond[cond] = real_by_cond.get(cond, 0) + 1
+                else:
                     non_real += 1
             if non_real:
                 findings.append(Finding(
@@ -383,19 +470,31 @@ def check_eval_cases(
                     f"Result is benchmark_supported but {non_real} model output(s) "
                     "are simulated or not classifiable as real runs",
                 ))
-            thin = sorted(c for c, n in runs_by_cond.items() if n < MIN_BENCHMARK_RUNS)
-            if thin:
+            if not declared:
                 findings.append(Finding(
                     "BLOCKER", case_path,
-                    f"Result is benchmark_supported but conditions with fewer than "
-                    f"{MIN_BENCHMARK_RUNS} runs: {', '.join(thin)}",
+                    "Result is benchmark_supported but case.md declares no "
+                    "model_conditions to verify real-run coverage against",
                 ))
-            if not any("long_prompt" in c or "long-prompt" in c or "equal_length" in c
-                       for c in runs_by_cond):
+            thin = [c for c in declared if real_by_cond.get(c, 0) < MIN_BENCHMARK_RUNS]
+            if thin:
+                detail = ", ".join(f"{c} ({real_by_cond.get(c, 0)} real)" for c in thin)
+                findings.append(Finding(
+                    "BLOCKER", case_path,
+                    f"Result is benchmark_supported but declared conditions with fewer "
+                    f"than {MIN_BENCHMARK_RUNS} real runs: {detail}",
+                ))
+            if not any(is_long_prompt_condition(c) for c in declared):
                 findings.append(Finding(
                     "BLOCKER", case_path,
                     "Result is benchmark_supported but no equal-length "
-                    "(vanilla_long_prompt) control run is present",
+                    "(vanilla_long_prompt) control is among the declared conditions",
+                ))
+            if not judge_independence_affirmed(model_dir, score_sheet):
+                findings.append(Finding(
+                    "BLOCKER", case_path,
+                    "Result is benchmark_supported but judge independence is not "
+                    "affirmatively recorded in the model-output receipts or score sheet",
                 ))
 
         lineage = section(case_text, "## Lineage")

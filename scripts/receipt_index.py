@@ -9,9 +9,10 @@ does not summarise the model outputs away. A model output is a test artifact,
 never an authority.
 
 Modes:
-- (default) generate — (re)write receipt-index.yaml in the case folder.
-- --check          — recompute the index and report any drift from the file
-                     on disk; writes nothing.
+- (default) generate — (re)write receipt-index.yaml in the case folder; exits 0.
+- --check          — recompute the index and compare it to the file on disk;
+                     writes nothing. Exits nonzero if the index is missing or
+                     stale, so it can be used as a gate.
 
 Both modes are read-only with respect to model outputs, scores, and statuses,
 make no model/API calls, and read no raw source files.
@@ -139,17 +140,20 @@ def main() -> int:
         print("No model-output receipts found in the case folder.")
         return 0
 
+    exit_code = 0
     if check:
         existing = INDEX_PATH.read_text(encoding="utf-8") if INDEX_PATH.is_file() else ""
         if not existing:
-            print(f"--check: {INDEX_PATH.relative_to(ROOT)} does not exist; "
+            print(f"--check: FAIL — {INDEX_PATH.relative_to(ROOT)} does not exist; "
                   f"run `make receipt-index` to generate it.")
+            exit_code = 1
         elif existing == rendered:
-            print(f"--check: {INDEX_PATH.relative_to(ROOT)} is up to date "
+            print(f"--check: OK — {INDEX_PATH.relative_to(ROOT)} is up to date "
                   f"({len(receipts)} receipts).")
         else:
-            print(f"--check: {INDEX_PATH.relative_to(ROOT)} is STALE — "
+            print(f"--check: FAIL — {INDEX_PATH.relative_to(ROOT)} is STALE; "
                   f"regenerate with `make receipt-index`.")
+            exit_code = 1
         print("Read-only; nothing written.")
     else:
         INDEX_PATH.write_text(rendered, encoding="utf-8")
@@ -164,7 +168,9 @@ def main() -> int:
     print(f"Receipts: {len(receipts)} — {real} real, {sim} simulated, {unk} unclassified.")
     print("By condition: " + ", ".join(f"{c}×{n}" for c, n in sorted(by_cond.items())))
     print("The index points to receipts; it does not replace them.")
-    return 0
+    if check:
+        print(f"Exit status: {exit_code}")
+    return exit_code
 
 
 if __name__ == "__main__":
