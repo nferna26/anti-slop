@@ -114,20 +114,20 @@ If `substrate_workflow` answers are no better than `vanilla` and the `vanilla_lo
 
 ## Model outputs
 
-Five model-output files exist, one per `model_condition`, all real local-model runs (`qwen3.5:latest` via Ollama) — there are no in-session simulations anywhere in this case:
+Fourteen model-output files exist, all real local-model runs (`qwen3.5:latest` via Ollama) — there are no in-session simulations anywhere in this case. Three passes were run: run 01 (one per condition), and runs 02 and 03 (two more repeats per condition):
 
-- `model-outputs/vanilla.md` — the `vanilla` condition.
-- `model-outputs/famous_sources_supplied.md` — the `famous_sources_supplied` condition.
-- `model-outputs/substrate_workflow.md` — the `substrate_workflow` condition.
-- `model-outputs/vanilla_long_prompt.md` — the `vanilla_long_prompt` equal-length control.
-- `model-outputs/optional_local_model.md` — the `optional_local_model` condition.
+- `vanilla` — `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md`, `model-outputs/vanilla-03.md` (3 runs).
+- `famous_sources_supplied` — `model-outputs/famous_sources_supplied.md`, `model-outputs/famous_sources_supplied-02.md`, `model-outputs/famous_sources_supplied-03.md` (3 runs).
+- `substrate_workflow` — `model-outputs/substrate_workflow.md`, `model-outputs/substrate_workflow-02.md`, `model-outputs/substrate_workflow-03.md` (3 runs).
+- `vanilla_long_prompt` — `model-outputs/vanilla_long_prompt.md`, `model-outputs/vanilla_long_prompt-02.md` (2 runs); run 03 timed out at 420s and is deferred — no output file, not fabricated.
+- `optional_local_model` — `model-outputs/optional_local_model.md`, `model-outputs/optional_local_model-02.md`, `model-outputs/optional_local_model-03.md` (3 runs).
 
-All five were produced in the first real-run pass (2026-05-21); none was deferred. See `run-packet.md` for the freeze, packet hashes, decoding parameters, and run receipts. A model output is a test artifact — never an authority, never citable as a source. Each future run is recorded as one further file under `model-outputs/`, labelled `<condition>` or `<condition>-NN`.
+See `run-packet.md` for the freeze, packet hashes, decoding parameters, per-run seeds, and run receipts (including the deferred run). A model output is a test artifact — never an authority, never citable as a source. Each future run is recorded as one further file under `model-outputs/`, labelled `<condition>` or `<condition>-NN`.
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is filled for all five conditions, scored against the five-criterion rubric — `vanilla` (2/5), `famous_sources_supplied` (1/5), `substrate_workflow` (5/5), `vanilla_long_prompt` (2/5), and `optional_local_model` (2/5). `scoring_status` is `scored` and `## Result` is `partial`: `substrate_workflow` beats every baseline, including the equal-length control `vanilla_long_prompt` by three points, but the runs are single and the judge is model-family-separated but not independent, so the result is held at `partial` — below `benchmark_supported`, and `dry_run_supported` does not apply because there are no simulated outputs. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
+See `score-sheet.md` in this case folder. It is filled for all three runs per condition (two for `vanilla_long_prompt`), scored against the five-criterion rubric, with per-run tables and an aggregate by condition: `substrate_workflow` 5/5 on every run, `vanilla` / `vanilla_long_prompt` / `optional_local_model` 2/5 on every run, `famous_sources_supplied` 1/5 on every run. `scoring_status` is `scored` and `## Result` is `partial`: `substrate_workflow` beats every baseline on every run, including the equal-length control by three points, but `vanilla_long_prompt` has only two completed runs (run 03 deferred on a timeout) and the judge is model-family-separated but not independent, so the result is held at `partial` — below `benchmark_supported`, and `dry_run_supported` does not apply because there are no simulated outputs. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
 
 ## Judge notes
 
-All five conditions have been run as real local-model runs and scored against the five-criterion rubric in the first real-run pass (2026-05-21). Per-condition pass/fail, the comparative signal, and the run history are recorded in `score-sheet.md` → `## Judge Notes` and `run-packet.md`. Generation was `qwen3.5:latest` (local, via Ollama); judging was Claude Opus 4.7 — a separate model family — with the limitation, recorded in `score-sheet.md` and `run-packet.md`, that the judge is the same agent orchestrating the pass rather than an independent third-party judge.
+All conditions have been run as real local-model runs across three passes (2026-05-21) and scored against the five-criterion rubric — three completed runs per condition, two for `vanilla_long_prompt` (run 03 deferred on a timeout). Per-run pass/fail, the aggregate by condition, the comparative signal, and the run history are recorded in `score-sheet.md` → `## Judge Notes` and `run-packet.md`. Generation was `qwen3.5:latest` (local, via Ollama); judging was Claude Opus 4.7 — a separate model family — with the limitation, recorded in `score-sheet.md` and `run-packet.md`, that the judge is the same agent orchestrating the passes rather than an independent third-party judge.

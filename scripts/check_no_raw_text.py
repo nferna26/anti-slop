@@ -46,6 +46,14 @@ STRUCTURED_MANIFESTS = {
     Path("corpus/manifests/acquisition-registry.yaml"),
 }
 
+# Public-safe chronological change log that legitimately grows past the size
+# heuristic as the project accumulates history. Like the structured manifests,
+# it still warns (informational only) with a clearer message; this is a
+# large-file-size exception only and changes no other leak check.
+CHANGE_LOGS = {
+    Path("kb/log.md"),
+}
+
 
 def is_excluded(path: Path) -> bool:
     try:
@@ -87,6 +95,11 @@ def main() -> int:
                     warnings.append(
                         f"{relative}: structured manifest is {size} bytes (above {THRESHOLD_BYTES} threshold); "
                         f"informational only — this file is curated metadata, not raw source text"
+                    )
+                elif relative in CHANGE_LOGS:
+                    warnings.append(
+                        f"{relative}: change log is {size} bytes (above {THRESHOLD_BYTES} threshold); "
+                        f"informational only — this file is the curated public-safe change log, not raw source text"
                     )
                 else:
                     warnings.append(

@@ -7,7 +7,7 @@ frozen: 2026-05-21
 
 # Run Packet — managerial-output-vs-industry-structure
 
-Public-safe freeze and run receipt for the contradiction-preservation eval case in this folder. It records the condition packets, their `sha256` hashes, the decoding parameters, and the outcome of the first real-run pass. A model output is a test artifact — never an authority and never citable as a source.
+Public-safe freeze and run receipt for the contradiction-preservation eval case in this folder. It records the condition packets, their `sha256` hashes, the decoding parameters, and the outcomes of the real-run passes — the first pass and the runs 02/03 repeats. A model output is a test artifact — never an authority and never citable as a source.
 
 **This is not a frozen benchmark pass.** See `## Status` below: the `Result` stays `partial`.
 
@@ -58,16 +58,35 @@ Every condition was run as a **real local-model run** against `qwen3.5:latest`. 
 
 All five conditions produced real outputs and have model-output files in `model-outputs/`. Each model-output file records its full provenance; the model also emitted a separate reasoning/thinking block per run, captured in the git-ignored local-only run receipts and not reproduced in the public files.
 
+## Repeat runs — runs 02 and 03, 2026-05-21
+
+Two further real local-model repeats were run for each condition, toward the three-repeats-per-condition bar for a benchmark pass. The frozen packet text files from the first pass were reused unchanged; before running, each packet's `sha256` was re-verified against the frozen hashes in `## Condition packets` above — all five matched. Decoding unchanged — `temperature 0.7`, `top_p 0.9`; per-call timeout 420s. Fresh deterministic seeds: run 02 uses `2NN`, run 03 uses `3NN`.
+
+| Condition / run | Seed | Outcome | Generation | Tokens (prompt_eval / output) | Output file |
+|---|---|---|---|---|---|
+| `vanilla-02` | 201 | real run — OK | 49.2s | 342 / 2480 | `model-outputs/vanilla-02.md` |
+| `vanilla-03` | 301 | real run — OK | 60.3s | 342 / 3051 | `model-outputs/vanilla-03.md` |
+| `famous_sources_supplied-02` | 202 | real run — OK | 76.4s | 524 / 3429 | `model-outputs/famous_sources_supplied-02.md` |
+| `famous_sources_supplied-03` | 302 | real run — OK | 99.5s | 524 / 4480 | `model-outputs/famous_sources_supplied-03.md` |
+| `substrate_workflow-02` | 203 | real run — OK | 97.0s | 7566 / 3503 | `model-outputs/substrate_workflow-02.md` |
+| `substrate_workflow-03` | 303 | real run — OK | 158.1s | 7566 / 4431 | `model-outputs/substrate_workflow-03.md` |
+| `vanilla_long_prompt-02` | 204 | real run — OK | 184.4s | 5781 / 3400 | `model-outputs/vanilla_long_prompt-02.md` |
+| `vanilla_long_prompt-03` | 304 | **deferred** — timed out at 420s | — | — | none (not fabricated) |
+| `optional_local_model-02` | 205 | real run — OK | 101.8s | 342 / 4657 | `model-outputs/optional_local_model-02.md` |
+| `optional_local_model-03` | 305 | real run — OK | 65.1s | 342 / 3121 | `model-outputs/optional_local_model-03.md` |
+
+Nine of the ten repeat runs completed as real local-model runs; **`vanilla_long_prompt-03` (seed 304) timed out at 420s** and is deferred — no output file was written and no output was fabricated. With this pass `vanilla`, `famous_sources_supplied`, `substrate_workflow`, and `optional_local_model` have three completed real runs each; `vanilla_long_prompt` has two (runs 01 and 02). All fourteen completed runs are real; there are no simulations anywhere in this case.
+
 ## Judge separation
 
-Generator: `qwen3.5:latest` (local, via Ollama). Judge: Claude Opus 4.7 (`claude-opus-4-7`) — a different model family and provider from the generator, so generation and scoring are performed by separate models. **Limitation:** the judge is the same agent orchestrating this pass; this is model-family separation, not an independent third-party or human judge. No independent human judging occurred. A benchmark pass should add an independent judge per `docs/eval-benchmark-upgrade.md`.
+Generator: `qwen3.5:latest` (local, via Ollama). Judge: Claude Opus 4.7 (`claude-opus-4-7`) — a different model family and provider from the generator, so generation and scoring are performed by separate models. **Limitation:** the judge is the same agent orchestrating these passes; this is model-family separation, not an independent third-party or human judge. No independent human judging occurred. A benchmark pass should add an independent judge per `docs/eval-benchmark-upgrade.md`.
 
 ## Status
 
-This is **not** a benchmark pass and does not move the case to `benchmark_supported`. All five `model_conditions` completed as **real local-model runs** — there are no in-session simulations anywhere in this case. The `score-sheet.md` `## Result` stays **`partial`**:
+This is **not** a benchmark pass and does not move the case to `benchmark_supported`. Across three passes, every run completed as a **real local-model run** — there are no in-session simulations anywhere in this case. The `score-sheet.md` `## Result` stays **`partial`**:
 
-- the runs are single — one real run per condition — and a benchmark pass needs at least three repeats per condition (`docs/eval-benchmark-upgrade.md`);
+- `vanilla`, `famous_sources_supplied`, `substrate_workflow`, and `optional_local_model` have three completed real runs each, but the equal-length control `vanilla_long_prompt` has only two — `vanilla_long_prompt-03` timed out and is deferred — one short of the three-repeats-per-condition bar in `docs/eval-benchmark-upgrade.md`;
 - the judge is model-family-separated from the generator but is not an independent third-party judge;
-- `dry_run_supported` does not fit either, since that status is defined by in-session simulated outputs and this case has none — the evidence is all-real but single-run, which is mid-evaluation toward a benchmark, i.e. `partial`.
+- `dry_run_supported` does not fit either, since that status is defined by in-session simulated outputs and this case has none.
 
-`substrate_workflow` (5/5) beats every baseline, including the equal-length control `vanilla_long_prompt` (2/5) by three points, so the substrate advantage on this pass is not explained by prompt length. Per `docs/eval-result-status-policy.md` a `partial` result informs methodology only and is **not** eligible to support a canon candidate or any "the substrate produces better advice" claim.
+`substrate_workflow` scored 5/5 on all three runs and beats every baseline on every run, including the equal-length control `vanilla_long_prompt` (2/5 on both its runs) by three points, so the substrate advantage is stable across runs and is not a prompt-length effect. Per `docs/eval-result-status-policy.md` a `partial` result informs methodology only and is **not** eligible to support a canon candidate or any "the substrate produces better advice" claim.
