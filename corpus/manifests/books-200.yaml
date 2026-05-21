@@ -3128,7 +3128,7 @@ books:
     locator_system: "chapter_section"
     eval_relevance:
       bibliographic_adversary: true
-      contradiction_preservation: false
+      contradiction_preservation: true
       canon_promotion_tournament: true
       long_tail_transfer: true
       source_lineage_hostile: true
