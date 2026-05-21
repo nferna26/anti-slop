@@ -14,21 +14,24 @@ It ranks the next useful work from public manifests and public artifacts only. I
 - A ranked table of recommended next actions.
 - Ready lanes:
   - reviewed maps with no source card;
-  - verified and map-ready sources with no map;
+  - verified and deep-map-ready sources with no map;
+  - verified and map-lite-ready sources with no map;
   - sourced books that still need metadata/locator packets;
   - rights/access blocked books;
   - not-yet-sourced books.
 - A single suggested immediate move.
 
-## Current Baseline
+## Map Class Routing
 
-The first run reports:
+The queue distinguishes map depth because first-50 coverage should not require a full deep map for every verified source.
 
-- L4: 4 sources already participate in a reviewed claim/tension card or eval case.
-- L3: 1 source has at least one reviewed source card but no reviewed tension/eval participation.
-- L2: 1 source has a reviewed book map but no source card.
-- L0: 44 sources are registered but blocked, unsourced, or not yet metadata/locator verified.
+- **Deep map** is recommended for source-id registry `map_candidate` or `deep_card_candidate` sources. These are anchors likely to produce several source cards, tensions, or evals.
+- **Map-lite** is recommended for other verified first-50 breadth sources. It is still public-safe and reviewable, but it limits the map to verified metadata, locator scheme, source structure, 3-5 candidate claims, 3-5 candidate tensions, eval relevance, and misuse risks.
 
-The immediate move is `BK-0003` (`Working Backwards`): its book map is reviewed, but it has no source card. The report recommends drafting the first approval-ready source card via `anti-slop-source-card` Workflow 5.
+Both classes remain `machine_generated_not_canon`; the distinction is workflow depth, not authority.
 
-The next planning lane is metadata/locator packets for sourced-but-unverified first-50 books, especially map candidates and first-30 deep-card candidates.
+## Current Operating Use
+
+After the first metadata/locator packet drain, `first50-queue` became the main breadth/depth router: metadata packets are no longer the bottleneck for sourced first-50 books, and the next decision is whether each verified unmapped source should get map-lite or a deep map.
+
+Use the suggested immediate move for the next single artifact pass. Use the ready lanes to batch only compatible map classes under `anti-slop-book-map` Workflow 6.

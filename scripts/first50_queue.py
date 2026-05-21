@@ -75,6 +75,19 @@ class SourceRow:
         }
         return labels[self.level]
 
+    @property
+    def recommended_map_class(self) -> str:
+        """Return the map depth this source should receive next."""
+        if self.map_candidate or self.deep_card_candidate:
+            return "deep"
+        return "lite"
+
+    @property
+    def recommended_map_label(self) -> str:
+        if self.recommended_map_class == "deep":
+            return "deep book map"
+        return "map-lite"
+
     def blockers(self) -> list[str]:
         out: list[str] = []
         if self.raw_source_status == "metadata_only":
@@ -102,7 +115,7 @@ class SourceRow:
         if not self.edition_verified or not self.locator_scheme:
             return "Run book-map Workflow 1/2 metadata + locator verification."
         if self.map_status is None:
-            return "Draft approval-ready book map."
+            return f"Draft approval-ready {self.recommended_map_label}."
         if self.map_status == "unreviewed":
             return "Review and approve/send back book map."
         if self.source_cards_total == 0:
@@ -135,9 +148,10 @@ class SourceRow:
             band = 7
         return (
             band,
+            self.recommended_map_class != "deep",
             not self.map_candidate,
-            not self.first30_candidate,
             not self.deep_card_candidate,
+            not self.first30_candidate,
             self.priority_rank,
         )
 
@@ -259,13 +273,23 @@ def flags(row: SourceRow) -> str:
 
 
 def print_table(rows: list[SourceRow], limit: int = 15) -> None:
-    print(f"{'Rank':<4} {'Source':<7} {'Level':<4} {'Flags':<18} {'Next action'}")
-    print(f"{'-' * 4} {'-' * 7} {'-' * 4} {'-' * 18} {'-' * 48}")
+    print(f"{'Rank':<4} {'Source':<7} {'Level':<4} {'Flags':<18} {'Map':<5} {'Next action'}")
+    print(f"{'-' * 4} {'-' * 7} {'-' * 4} {'-' * 18} {'-' * 5} {'-' * 48}")
     for index, row in enumerate(rows[:limit], start=1):
+        map_class = row.recommended_map_class if row.map_status is None and row.level == 1 else "-"
         print(
             f"{index:<4} {row.source_id:<7} L{row.level:<3} "
-            f"{flags(row):<18} {row.next_action()}"
+            f"{flags(row):<18} {map_class:<5} {row.next_action()}"
         )
+
+
+def is_map_ready(row: SourceRow) -> bool:
+    return (
+        row.acquisition_status == "sourced"
+        and row.edition_verified
+        and bool(row.locator_scheme)
+        and row.map_status is None
+    )
 
 
 def main() -> int:
@@ -298,12 +322,13 @@ def main() -> int:
         row.source_id for row in rows
         if row.map_status == "reviewed" and row.source_cards_total == 0
     ]
-    map_ready = [
+    map_ready_deep = [
         row.source_id for row in rows
-        if row.acquisition_status == "sourced"
-        and row.edition_verified
-        and row.locator_scheme
-        and row.map_status is None
+        if is_map_ready(row) and row.recommended_map_class == "deep"
+    ]
+    map_ready_lite = [
+        row.source_id for row in rows
+        if is_map_ready(row) and row.recommended_map_class == "lite"
     ]
     metadata_ready = [
         row.source_id for row in rows
@@ -319,7 +344,8 @@ def main() -> int:
         if row.acquisition_status != "sourced" and row.raw_source_status != "metadata_only"
     ]
     print(f"Reviewed maps with no source card: {', '.join(source_card_ready) or 'none'}")
-    print(f"Verified and map-ready, no map yet: {', '.join(map_ready) or 'none'}")
+    print(f"Verified and deep-map-ready, no map yet: {', '.join(map_ready_deep) or 'none'}")
+    print(f"Verified and map-lite-ready, no map yet: {', '.join(map_ready_lite) or 'none'}")
     print(f"Sourced but needs metadata/locator packet: {', '.join(metadata_ready) or 'none'}")
     print(f"Rights/access blocked: {', '.join(rights_blocked) or 'none'}")
     print(f"Not sourced yet: {', '.join(not_sourced) or 'none'}")
@@ -335,9 +361,12 @@ def main() -> int:
             f"Draft the first source card for {first.source_id} ({first.title}) "
             "via anti-slop-source-card Workflow 5."
         )
-    elif map_ready:
-        first = sorted([row for row in rows if row.source_id in map_ready], key=lambda row: row.sort_key())[0]
-        print(f"Draft a book map for {first.source_id} ({first.title}).")
+    elif map_ready_deep:
+        first = sorted([row for row in rows if row.source_id in map_ready_deep], key=lambda row: row.sort_key())[0]
+        print(f"Draft a deep book map for {first.source_id} ({first.title}).")
+    elif map_ready_lite:
+        first = sorted([row for row in rows if row.source_id in map_ready_lite], key=lambda row: row.sort_key())[0]
+        print(f"Draft a map-lite for {first.source_id} ({first.title}).")
     elif metadata_ready:
         first = sorted(
             [row for row in rows if row.source_id in metadata_ready],

@@ -28,6 +28,7 @@ Every workflow inherits these rules. If a workflow violates any rule, stop and s
 - **Bright-line source-grounding rule.** If Claude has not checked the local source at the target locator, Claude may write a local-only selection note, but may not draft a public source card.
 - **Book maps are discovery aids only.** Reviewed book maps may help choose a target chapter or claim. They are not authority for a source card. The source card's authority is the local source at the verified locator.
 - **Source cards are evidence units, not canon.** A source card records what one source supports at one locator. Synthesis belongs in claim/tension cards; advice belongs in canon.
+- **Keep the unit compact.** Target roughly 700-1,000 words for ordinary source cards. Exceed that only for an operator-selected anchor where the extra scope conditions or lineage detail reduce review risk.
 - **Raw source text stays local-only.** Public cards use locator + paraphrase by default. `Short excerpt` should be `None.` unless the operator explicitly approves a short excerpt and the quote budget is counted.
 - **One card, one claim.** Split multi-claim evidence into separate cards.
 - **Use the controlled `claim_type` set.** Exactly one of `factual`, `diagnostic`, `mechanism`, `method`, `norm`, `warning`, `boundary_condition`, `open_question`.
@@ -93,7 +94,7 @@ Every workflow inherits these rules. If a workflow violates any rule, stop and s
    - `claim_type`
    - `operator_review_status: unreviewed`
    - `publication_status`
-5. Fill the body with one claim, one locator, `Short excerpt: None.` by default, a conservative paraphrase, why it matters, relation sections, scope conditions, misuse risk, related canon, and operator notes.
+5. Fill the body with one claim, one locator, `Short excerpt: None.` by default, a conservative paraphrase, why it matters, relation sections, scope conditions, misuse risk, related canon, and operator notes. Keep the card compact unless the operator selected it as anchor evidence.
 6. In `Supports`, the reviewed map may appear only as the discovery aid that identified the chapter or claim. State explicitly that the evidence is the local source at the locator, not the map note.
 7. In `Tensions with`, write questions to investigate. Do not claim that comparison books argue, prove, reject, or show anything unless a source card already verifies it.
 8. In `Operator notes`, state that the card is grounded in the local source, the local locator was checked, no source prose is reproduced, and operator review is still pending.

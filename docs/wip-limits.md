@@ -29,6 +29,8 @@ Once 20 acquired sources are sitting without a book map, no more sources get pul
 
 If five machine-drafted book maps are sitting without operator review, the bottleneck is review, not generation. Stop generating more until five become operator-reviewed (which often means edited or rejected outright).
 
+Map-lite and deep maps count against the same awaiting-review cap. Map-lite reduces review time; it does not create a separate review lane.
+
 ### Draft source cards awaiting review: 20
 
 Source cards are evidence units. An unreviewed source card is not yet evidence. A backlog of 20 unreviewed cards is a signal to drain before drafting more. The reviewer is usually the source owner; the GM may rotate the review role.

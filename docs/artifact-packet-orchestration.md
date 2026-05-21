@@ -46,6 +46,15 @@ It is a dashboard, not a gate. It always exits 0, reads no raw source files, and
 
 No artifact authority changes — no metadata applied, no `operator_review_status` lifted, no `edition_verified` flipped — ever happen from `packet-status` or `first50-queue`. Those scripts are inert with respect to public state by design.
 
-## A note on a future orchestration skill
+## Coordinating skill
 
-A coordinating skill (`anti-slop-artifact-packet`) that sequences the existing per-artifact skills — `anti-slop-book-map`, `anti-slop-source-card`, `anti-slop-eval-run` — into a single first-50 control-plane loop has been sketched but is deliberately deferred. The dashboards (`artifact-status`, `artifact-preflight`, `first50-queue`, `packet-status`) and the existing per-artifact skills already cover the work; a coordinating skill should be designed once a few more verification batches show which hand-offs are actually friction. Until then, the operator drives the sequence by hand, one operator-approved Workflow 2 application at a time.
+The coordinating skill now exists at `skills/anti-slop-artifact-packet/SKILL.md`. It sequences the existing per-artifact skills — `anti-slop-book-map`, `anti-slop-source-card`, `anti-slop-eval-run` — into a first-50 control-plane loop, but it remains an orchestration layer rather than an authority layer.
+
+The current handoff is:
+
+- `packet-status` handles metadata/locator packet application state.
+- `first50-queue` routes verified unmapped books into **deep-map** or **map-lite** lanes.
+- `anti-slop-book-map` Workflow 3/6 drafts the selected map class.
+- Operator review still decides whether any map becomes reviewed.
+
+No dashboard or coordinating skill marks artifacts reviewed, promotes canon, resolves tensions, or changes eval status.

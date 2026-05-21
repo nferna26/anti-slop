@@ -103,9 +103,9 @@ Packet files live under `local-only/phase-2-verification/` or another local-only
    - receipt/status drift
 4. Rank next work by value and readiness:
    - first: drift and receipt repairs that preserve trust
-   - second: map-ready sources that unlock multiple cards
+   - second: deep-map-ready sources that unlock multiple cards, tensions, or evals
    - third: source-card targets needed by a planned tension/eval
-   - fourth: breadth targets for first-50 coverage
+   - fourth: map-lite breadth targets for first-50 coverage
 5. Output a compact queue. Do not draft artifacts in this workflow.
 
 ## Workflow 2 — prepare-source-packet
@@ -126,12 +126,12 @@ Packet files live under `local-only/phase-2-verification/` or another local-only
 1. Snapshot the source's public state: metadata verification, locator scheme, processing status, map status, source-card counts, and eval/tension references.
 2. Identify the next rung:
    - no verified metadata or locator: route to `anti-slop-book-map` Workflow 1 or 2
-   - verified and unmapped: route to `anti-slop-book-map` Workflow 3
+   - verified and unmapped: route to `anti-slop-book-map` Workflow 3 with a `map_class` (`deep` for anchor/map-candidate sources, otherwise `lite`)
    - reviewed map and no target: prepare source-card target candidates
    - reviewed source cards: prepare possible synthesis or eval targets
 3. List allowed and forbidden inputs for the next rung.
 4. Record operator decisions needed. Be explicit when the operator must approve rights/access, locator granularity, source-card status, tension status, eval Result status, or canon relevance.
-5. Name exactly one recommended next workflow. If multiple are possible, rank them but mark only one as recommended.
+5. Name exactly one recommended next workflow and, for book maps, the map class. If multiple are possible, rank them but mark only one as recommended.
 6. Do not edit public files.
 
 ## Workflow 3 — batch-plan-card-targets
@@ -283,4 +283,3 @@ Report:
 - Gate results.
 - Remaining human-gated decisions.
 - Explicit no-higher-artifact statement when relevant: no canon candidate, graph edge, unapproved status lift, or batch approval was created.
-

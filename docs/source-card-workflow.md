@@ -12,6 +12,8 @@ python3 scripts/new_source_card.py <source_id>
 
 Keep excerpts short. Prefer locators and paraphrase over copied text.
 
+For ordinary first-50 throughput, keep source cards compact: roughly 700-1,000 words unless the operator has selected the card as anchor evidence. Longer cards are allowed only when the added scope, lineage, or misuse detail reduces review risk rather than adding essay-like explanation.
+
 ## Frontmatter fields
 
 - `card_id` — assigned by `new_source_card.py` (`<source_id>-card-NNN`).

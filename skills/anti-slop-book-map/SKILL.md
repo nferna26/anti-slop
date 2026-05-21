@@ -1,11 +1,11 @@
 ---
 name: anti-slop-book-map
-description: Six-workflow book-map pipeline for the books-kb. v1 is judgment rails — Claude follows the discipline by hand. No automation yet.
+description: Six-workflow book-map pipeline for the books-kb, now with map-lite and deep-map classes. v1 is judgment rails — Claude follows the discipline by hand. No automation yet.
 ---
 
 # anti-slop-book-map
 
-This skill encodes the hand-rolled workflow used for BK-0001 (Rumelt, *Good Strategy Bad Strategy*) and BK-0003 (Bryar & Carr, *Working Backwards*) — operator-approval packets, applying verified metadata, drafting public-safe book maps, and reviewing maps for drift. It is judgment rails, not a tooling framework. There are no `.py` scripts; Claude follows the discipline by reading the relevant workflow section and the matching template.
+This skill encodes the hand-rolled workflow used for BK-0001 (Rumelt, *Good Strategy Bad Strategy*) and BK-0003 (Bryar & Carr, *Working Backwards*) — operator-approval packets, applying verified metadata, drafting public-safe map-lite or deep book maps, and reviewing maps for drift. It is judgment rails, not a tooling framework. There are no `.py` scripts; Claude follows the discipline by reading the relevant workflow section and the matching template.
 
 ## When to invoke
 
@@ -34,6 +34,15 @@ Every workflow inherits these rules. A workflow that violates any of them must s
 - **No model or API calls.**
 - **No private paths or source filenames in any public file.** Paths under `local-only/`, `extracted-md/`, `/Users/`, `Desktop/`, and the `Archive.zip` shelf bundle never appear in public artifacts. Filename extensions for EPUB, PDF, MOBI, AZW, AZW3, DJVU, CBZ, and CBR formats are similarly blocked — `scripts/kb_lint.py` carries the exact regex. Public/local discipline is enforced by hand and by `make kb-lint`.
 - **`books_200_yaml.owned_format` is a canonical public value.** Allowed values are bare lowercase tokens like `epub`, `pdf`, `mobi`, `print`, or `audiobook`. Never include conversion-tool detail in this field — phrases like `"ebook (PDF) extracted via pdftotext -layout"` belong in the local-only `approval-summary.md` and `quality-audit.md`, not in any public manifest value. The same rule applies to the book map's `owned format` line in `## Source metadata`: render the verified canonical token verbatim. Conversion tool, conversion status, and extraction signals are extraction *evidence* and stay under the local-only "Extraction / conversion quality" sections.
+
+## Map classes
+
+Book maps now have two depth classes. The class controls how much reviewer attention the map is allowed to consume; it does not change authority. Both classes remain public-safe discovery aids with `status: machine_generated_not_canon`.
+
+- **Map-lite** is the default for first-50 breadth. It records verified metadata, locator scheme, a compact source-structure note, 3-5 candidate source-card claims, 3-5 candidate tensions, eval relevance, misuse risks, and operator notes. Use it when the immediate goal is coverage and triage.
+- **Deep map** is the current full map shape. Use it for anchors, source-id registry `map_candidate` / `deep_card_candidate` sources, or operator-selected books expected to yield multiple source cards, tensions, or evals.
+
+Do not upgrade a map-lite to a deep map just because it is available to draft. Upgrade only when the operator or `make first50-queue` identifies a reason.
 
 ## Workflow 1 — prepare-operator-approval
 
@@ -122,14 +131,14 @@ Every workflow inherits these rules. A workflow that violates any of them must s
 
 ## Workflow 3 — draft-book-map
 
-**When to use it.** A source has verified metadata (Workflow 2 has been applied; `acquisition-registry.yaml` row has `edition_verified: true` and `locator_scheme` populated). The skill drafts the public book map.
+**When to use it.** A source has verified metadata (Workflow 2 has been applied; `acquisition-registry.yaml` row has `edition_verified: true` and `locator_scheme` populated). The skill drafts a public map-lite or deep book map.
 
 **Inputs.**
 - The verified row in `corpus/manifests/books-200.yaml`.
 - The verified row in `corpus/manifests/acquisition-registry.yaml`.
 - `local-only/extracted-md/<source_id>/source.md` — read only the heading structure (collect H1/H2/H3/H4 headings as a structural outline). Do not read body prose.
 - `corpus/book-maps/BK-0001.md` and `BK-0003.md` as accepted-quality references.
-- `templates/book-map.md.tmpl`.
+- `templates/map-lite.md.tmpl` for map-lite or `templates/book-map.md.tmpl` for a deep map.
 
 **Outputs (public).**
 - `corpus/book-maps/<source_id>.md`.
@@ -140,16 +149,19 @@ Every workflow inherits these rules. A workflow that violates any of them must s
 
 **Steps.**
 
+0. **Choose the map class before reading local structure.** Use the operator's explicit `map_class` if provided. Otherwise use `make first50-queue`: `deep` for deep-map-ready sources and `lite` for map-lite-ready sources. If neither applies, default to `lite` unless the source is a known anchor.
 1. **Render the frontmatter.** Eleven fields in this order: `source_id`, `title`, `author`, `status: machine_generated_not_canon`, `operator_review_status: unreviewed`, `public_safe: true`, `raw_text_used_local_only: false`, `edition_verified: true`, `locator_system: <verified>`, `canonical_status: noncanonical`, `quote_word_count: 0`. Values for `title`, `author`, `locator_system` come from the verified manifest row.
 2. **Outline the source structure.** Walk the H1/H2/H3/H4 of `source.md`. Identify which headings are chapter markers (numbered chapters), which are part dividers, which are front/back matter (Contents, Notes, Index, Appendix). Do not copy heading text into the public map verbatim — paraphrase the structural role. If part dividers did not survive as headings, do not use `Part I / Chapter N` locators anywhere in the map (the BK-0001 lesson — use chapter-only locators).
-3. **Fill the body: one `# Book Map` H1 (with its short intro paragraph and the "what this is / what this is not" framing) plus the following thirteen `##` sections in this exact order:** `## What this is`; `## What this is not`; `## Source metadata`; `## Source structure` (table); `## Central thesis` (≤150 words, ends with `(Locators: …)`); `## Argument structure` (5–8 bullets each with locator); `## Key concepts` (table ≤8 rows); `## Claims relevant to Anti-Slop` (table ≤10 rows, priorities A/B/C); `## Possible contradictions` (table ≤8 rows, framed as questions); `## Possible canon touchpoints` (≤6 bullets); `## Eval relevance` (5 booleans with one sentence each); `## Misuse risks` (5–7 bullets); `## Operator review notes` (checklist + `quote_word_count: 0` + `operator_review_status: unreviewed` + `locator_quality_note:` if locator confidence is medium or lower). The accepted reference shape is `corpus/book-maps/BK-0001.md` and `BK-0003.md` — match them.
+3. **Fill the body for the selected class.**
+   - **Map-lite:** one `# Book Map` H1 with the short "not canon" intro plus these nine `##` sections in this exact order: `## What this is`; `## What this is not`; `## Source metadata`; `## Source structure`; `## Candidate source-card claims` (3-5 rows); `## Candidate tensions` (3-5 rows, framed as questions); `## Eval relevance`; `## Misuse risks`; `## Operator review notes`. Match `templates/map-lite.md.tmpl`.
+   - **Deep map:** one `# Book Map` H1 (with its short intro paragraph and the "what this is / what this is not" framing) plus the following thirteen `##` sections in this exact order: `## What this is`; `## What this is not`; `## Source metadata`; `## Source structure` (table); `## Central thesis` (≤150 words, ends with `(Locators: …)`); `## Argument structure` (5–8 bullets each with locator); `## Key concepts` (table ≤8 rows); `## Claims relevant to Anti-Slop` (table ≤10 rows, priorities A/B/C); `## Possible contradictions` (table ≤8 rows, framed as questions); `## Possible canon touchpoints` (≤6 bullets); `## Eval relevance` (5 booleans with one sentence each); `## Misuse risks` (5–7 bullets); `## Operator review notes` (checklist + `quote_word_count: 0` + `operator_review_status: unreviewed` + `locator_quality_note:` if locator confidence is medium or lower). The accepted reference shape is `corpus/book-maps/BK-0001.md` and `BK-0003.md` — match them.
 4. **Source metadata section uses verified values.** Pull publisher / year / ISBN / owned format / locator system / edition_verified directly from the verified manifest row — never re-derive from the local source.
 5. **Possible contradictions uses questions, never claims.** Every row in the contradictions table follows the shape `Compare BK-XXXX's <X> with BK-YYYY on <Y>` or `Question whether/how <Z>`. No assertion verbs about comparison authors.
 6. **Label all map inferences.** Any claim that is the map's own synthesis (not supported by a specific chapter locator) gets `(map inference)` or equivalent in-line marker, both in the bullet and in the candidate-card table.
 7. **Hand-check against the review checklist.** Run the 10-point review checklist (below) against the draft before saving.
 8. **Run the closing-gate suite.** See `## Commands to run` below.
 
-**Output template.** `templates/book-map.md.tmpl`.
+**Output template.** `templates/map-lite.md.tmpl` or `templates/book-map.md.tmpl`.
 
 **Reference fixtures.** `corpus/book-maps/BK-0001.md` and `corpus/book-maps/BK-0003.md`.
 
@@ -217,10 +229,11 @@ Every workflow inherits these rules. A workflow that violates any of them must s
 
 ## Workflow 6 — batch-map-draft
 
-**When to use it.** Drafting public book maps for 2–3 sources whose metadata has already been verified (the per-batch cap from `## Batch rules` below).
+**When to use it.** Drafting public book maps for a small batch whose metadata has already been verified (the per-batch caps from `## Batch rules` below).
 
 **Inputs.**
-- A list of 2–3 `source_ids`, all with `edition_verified: true` in the acquisition registry.
+- A list of `source_ids`, all with `edition_verified: true` in the acquisition registry.
+- One map class for the batch: `lite` or `deep`. Mixed batches are allowed only if the operator explicitly asks, and the smaller deep-map cap applies.
 - Per-source inputs as in Workflow 3.
 
 **Outputs (public).**
@@ -228,7 +241,7 @@ Every workflow inherits these rules. A workflow that violates any of them must s
 - `local-only/phase-2-verification/batch-summary.md` updated with per-source draft status.
 
 **Pre-checks.**
-- The source-id list is between 2 and 3 entries inclusive.
+- The source-id list is 3-5 entries for an all-map-lite batch, or 2-3 entries for any batch containing a deep map.
 - Each source has `edition_verified: true` in the acquisition registry. Any source that does not is dropped from the batch with a note pointing to Workflow 2.
 
 **Steps.**
@@ -237,7 +250,7 @@ Every workflow inherits these rules. A workflow that violates any of them must s
 2. **Final batch-summary update.** Record per-source draft status (saved / blocked / review-checklist-failed).
 3. **Run the full closing-gate suite once at the end** to confirm the cumulative effect on the public repo.
 
-**Output template.** Per-source: `templates/book-map.md.tmpl`. Batch-level: short Markdown appended to `batch-summary.md`.
+**Output template.** Per-source: `templates/map-lite.md.tmpl` or `templates/book-map.md.tmpl`. Batch-level: short Markdown appended to `batch-summary.md`.
 
 **Reference fixture.** None yet.
 
@@ -254,14 +267,15 @@ The ten checks every map review (Workflow 4) runs through. Workflows 1, 3, 5, an
 5. **Hidden canon drift.** Assertion-style prose attributing claims to comparison sources (e.g. `BK-0024 says …`, `Mintzberg treats …`, `Ries argues …`). Fix: rephrase as a question or comparison invitation.
 6. **Unsupported comparison claims.** Possible-contradictions rows that assert what another book contains rather than naming a question to investigate. Fix: re-frame the row's "Question to investigate" cell as `Compare … with … on …` or `Question whether/how …`.
 7. **Locator mismatch.** Locators reference structural divisions (`Part I`, parts, sub-parts) that did not survive in the extraction; or the locator format does not match `locator_system` in frontmatter. For `pdf_page`, every locator must use a stable page or page range; open-ended ranges such as `pp. 404–~` fail review. Fix: drop the unsupported prefix, replace open-ended page ranges with stable ranges from the preserved page boundaries, or update `locator_system` (rarely; prefer the first two).
-8. **Over-summary.** Section length exceeds caps: Argument structure 5–8 bullets; Key concepts ≤8 rows; Claims relevant ≤10 rows; Possible contradictions ≤8 rows; Possible canon touchpoints ≤6 bullets; Misuse risks 5–7 bullets; Central thesis ≤150 words. Fix: trim to the cap; move detail into source cards later.
+8. **Over-summary.** Section length exceeds caps. Deep map caps: Argument structure 5–8 bullets; Key concepts ≤8 rows; Claims relevant ≤10 rows; Possible contradictions ≤8 rows; Possible canon touchpoints ≤6 bullets; Misuse risks 5–7 bullets; Central thesis ≤150 words. Map-lite caps: Candidate source-card claims 3–5 rows; Candidate tensions 3–5 rows; Misuse risks 3–5 bullets. Fix: trim to the cap; move detail into source cards later.
 9. **Universalization.** Map text treats the source's domain as universally applicable without flagging boundary conditions (BK-0001 lesson: anchored in large-org examples; transferring kernel to 2-person teams without adaptation is misuse). Fix: add a misuse-risks bullet that names the universalization risk.
 10. **Map inference not labeled.** A claim that is the map's own synthesis (rather than supported by a specific chapter locator) is presented without the `(map inference)` label or equivalent in-line marker. Fix: add the label, or replace the claim with a chapter-cited claim.
 
 ## Batch rules
 
 - **Metadata verification batch:** 3–5 books per batch. Larger batches dilute operator focus; smaller batches forfeit batch economics.
-- **Map drafting batch:** 2–3 books per batch. Map drafting is heavier than metadata work; small batches keep review attention high.
+- **Map-lite drafting batch:** 3–5 books per batch. The artifact is deliberately compact, so breadth batches are acceptable while review remains manageable.
+- **Deep-map drafting batch:** 2–3 books per batch. Deep maps are heavier than metadata work; small batches keep review attention high.
 - **Reviews:** individually, or in small batches of 2–3 maps. Reviewing more than 3 maps in one pass tends to surface the same fix repeatedly with diminishing returns.
 - **Source cards and canon candidates:** not batched in v1. Drafted one at a time with operator review per artifact. The skill does not produce source cards or canon candidates.
 
