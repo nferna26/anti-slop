@@ -35,8 +35,8 @@ entries:
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
-      mapped: false
-      source_cards_started: false
+      mapped: true
+      source_cards_started: true
       deep_card_candidate: true
       canon_candidate_exists: false
   - source_id: BK-0002
@@ -87,7 +87,7 @@ entries:
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
-      mapped: false
+      mapped: true
       source_cards_started: false
       deep_card_candidate: true
       canon_candidate_exists: false
@@ -191,8 +191,8 @@ entries:
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
-      mapped: false
-      source_cards_started: false
+      mapped: true
+      source_cards_started: true
       deep_card_candidate: true
       canon_candidate_exists: false
   - source_id: BK-0008
@@ -1101,8 +1101,8 @@ entries:
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
-      mapped: false
-      source_cards_started: false
+      mapped: true
+      source_cards_started: true
       deep_card_candidate: true
       canon_candidate_exists: false
   - source_id: BK-0043
@@ -1153,8 +1153,8 @@ entries:
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
-      mapped: false
-      source_cards_started: false
+      mapped: true
+      source_cards_started: true
       deep_card_candidate: false
       canon_candidate_exists: false
   - source_id: BK-0045
@@ -1257,8 +1257,8 @@ entries:
       local_checksum_public: null
       raw_file_path_public: null
     processing_status:
-      mapped: false
-      source_cards_started: false
+      mapped: true
+      source_cards_started: true
       deep_card_candidate: true
       canon_candidate_exists: false
   - source_id: BK-0049
