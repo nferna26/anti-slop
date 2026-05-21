@@ -73,7 +73,7 @@ Every workflow inherits these rules. If a workflow would violate any rule, stop 
 5. Update the Comparative signal.
 6. Evaluate `## Result` against `docs/eval-result-status-policy.md`. Change the Result status only if the policy's requirements for the new status are met; never overclaim.
 7. Update `case.md` → `## Score sheet` so it states which conditions are scored, `scoring_status`, and the Result.
-8. Append one public-safe `kb/log.md` bullet.
+8. Append one public-safe `kb/log.md` bullet — unless this scoring is being run inside Workflow 5 (`run-approval-ready-eval-pass`), in which case skip the bullet here and let Workflow 5 write one consolidated bullet for the whole pass.
 9. Run the receipt-consistency check and the closing-gate suite.
 
 ## Workflow 3 — repair-eval-receipts
@@ -114,7 +114,7 @@ Every workflow inherits these rules. If a workflow would violate any rule, stop 
 1. For each condition in scope, run Workflow 1 then Workflow 2. Defer any real-model condition that cannot be run, and record the deferral.
 2. After every condition in the pass is scored, run Workflow 4 to evaluate the `## Result` status against the policy.
 3. Run the receipt-consistency check and the closing-gate suite.
-4. Report: per-condition scores, the comparative signal, the Result status, what it is eligible to support, and any deferred conditions. Append one consolidated `kb/log.md` bullet for the pass, rather than one per condition.
+4. Report: per-condition scores, the comparative signal, the Result status, what it is eligible to support, and any deferred conditions. Workflow 2's per-condition `kb/log.md` bullet is suppressed inside this pass (Workflow 2, step 8); append exactly one consolidated `kb/log.md` bullet for the whole pass instead.
 
 ## Receipt-consistency check
 
