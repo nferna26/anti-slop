@@ -49,7 +49,9 @@ Canon promotion is the rarest, slowest move. Three candidates pending is plenty 
 
 ## How caps are tracked
 
-In the early scaffold, caps are tracked by inspection: `ls corpus/source-cards/` shows the draft count; `manifest_report.py` reports relevant counts where computable. As the substrate grows, a small inventory script may move into `scripts/`.
+In the early scaffold, caps are tracked by inspection: `ls corpus/source-cards/` shows the draft count; `manifest_report.py` reports relevant counts where computable.
+
+The inventory script now exists: `scripts/artifact_status.py` (run `make artifact-status`) is a read-only scanner that derives current artifact state from files on disk and reports the awaiting-review counts at each layer, per-source artifact state, a first-50 level summary, and drift between on-disk artifacts and the acquisition registry. It is a dashboard, not a gate — it changes nothing and is not part of the closing-gate suite.
 
 The caps are not enforced by automation today. They are operator discipline. Per `AGENTS.md`, gates exist to catch failures the discipline missed; the caps are part of the discipline that does not need a gate to be real.
 

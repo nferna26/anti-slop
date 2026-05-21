@@ -18,6 +18,9 @@ report:
 phase2-queue:
 	python3 scripts/phase2_queue.py
 
+artifact-status:
+	python3 scripts/artifact_status.py
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 
