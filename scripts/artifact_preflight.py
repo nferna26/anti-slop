@@ -9,10 +9,11 @@ This script turns the highest-value artifact guardrails into a report:
 - WIP counts are visible against docs/wip-limits.md caps;
 - public artifact files avoid private path markers and raw-source extensions.
 
-It is intentionally not a hard gate yet. It always exits 0 so false positives can
-be studied before this becomes part of the closing-gate suite. It changes
-nothing, reads no local-only source files, makes no model/API calls, and creates
-no artifacts.
+By default it is report-only and always exits 0, so false positives can be
+studied before this becomes part of the closing-gate suite. With `--strict` it
+exits nonzero when blockers are found (warnings, including WIP-cap warnings,
+never fail). It changes nothing, reads no local-only source files, makes no
+model/API calls, and creates no artifacts.
 """
 
 from __future__ import annotations
@@ -20,6 +21,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import re
+import sys
+
+MIN_BENCHMARK_RUNS = 3  # per docs/eval-benchmark-upgrade.md
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -201,6 +205,17 @@ def result_status(score_sheet: Path) -> str | None:
     return None
 
 
+def output_is_real(fm: dict[str, str]) -> bool:
+    """True only when a model-output receipt clearly records a real model run."""
+    notes = (fm.get("operator_notes") or "").lower()
+    if any(p in notes for p in ("real local-model run", "real external model run",
+                                "real model run", "genuine local-model output")):
+        return True
+    if (fm.get("runtime") or "").strip() and "simulation" not in notes and "simulated" not in notes:
+        return True
+    return False
+
+
 def book_map_line_is_evidence(line: str) -> bool:
     lowered = line.lower()
     if "book map" not in lowered and "book-map" not in lowered and "corpus/book-maps" not in lowered:
@@ -350,6 +365,39 @@ def check_eval_cases(
         if not actual and case_status == "scored":
             findings.append(Finding("BLOCKER", case_path, "case is scored but no model-output files exist"))
 
+        # A benchmark_supported Result must rest on all-real outputs with at least
+        # MIN_BENCHMARK_RUNS runs per condition (docs/eval-benchmark-upgrade.md).
+        if result == "benchmark_supported":
+            runs_by_cond: dict[str, int] = {}
+            non_real = 0
+            for name in sorted(actual):
+                ofm = read_frontmatter(model_dir / name)
+                cond = (ofm.get("model_condition")
+                        or re.sub(r"-\d+$", "", Path(name).stem)).strip()
+                runs_by_cond[cond] = runs_by_cond.get(cond, 0) + 1
+                if not output_is_real(ofm):
+                    non_real += 1
+            if non_real:
+                findings.append(Finding(
+                    "BLOCKER", case_path,
+                    f"Result is benchmark_supported but {non_real} model output(s) "
+                    "are simulated or not classifiable as real runs",
+                ))
+            thin = sorted(c for c, n in runs_by_cond.items() if n < MIN_BENCHMARK_RUNS)
+            if thin:
+                findings.append(Finding(
+                    "BLOCKER", case_path,
+                    f"Result is benchmark_supported but conditions with fewer than "
+                    f"{MIN_BENCHMARK_RUNS} runs: {', '.join(thin)}",
+                ))
+            if not any("long_prompt" in c or "long-prompt" in c or "equal_length" in c
+                       for c in runs_by_cond):
+                findings.append(Finding(
+                    "BLOCKER", case_path,
+                    "Result is benchmark_supported but no equal-length "
+                    "(vanilla_long_prompt) control run is present",
+                ))
+
         lineage = section(case_text, "## Lineage")
         for line in lineage.splitlines():
             if book_map_line_is_evidence(line):
@@ -442,6 +490,7 @@ def wip_report() -> list[tuple[str, int, int]]:
 
 
 def main() -> int:
+    strict = "--strict" in sys.argv[1:]
     findings: list[Finding] = []
     source_cards = source_card_inventory()
     claim_cards = claim_card_inventory()
@@ -452,7 +501,11 @@ def main() -> int:
     check_public_sweep(findings)
 
     print("== Anti-Slop artifact preflight ==")
-    print("Read-only report. Changes nothing and always exits 0.")
+    if strict:
+        print("Read-only report (--strict). Changes nothing; exits nonzero only when "
+              "blockers are found — warnings never fail.")
+    else:
+        print("Read-only report. Changes nothing and always exits 0.")
     print("Scope: lineage, receipt consistency, WIP counts, and public-safety markers.")
     print()
 
@@ -477,6 +530,11 @@ def main() -> int:
     print("-- Summary --")
     print(f"Blockers: {blockers}")
     print(f"Warnings: {warnings}")
+    if strict:
+        exit_code = 1 if blockers else 0
+        print("Mode: --strict (blockers fail; WIP and other warnings do not)")
+        print(f"Exit status: {exit_code}")
+        return exit_code
     print("Exit status: 0 (report-only; not a hard gate)")
     return 0
 

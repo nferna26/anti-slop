@@ -36,6 +36,12 @@ eval-lab-status:
 eval-benchmark-readiness:
 	python3 scripts/eval_benchmark_readiness.py
 
+eval-receipt-lint:
+	python3 scripts/eval_receipt_lint.py
+
+receipt-index:
+	python3 scripts/receipt_index.py
+
 new-book-map:
 	python3 scripts/new_book_map.py $(SOURCE_ID)
 

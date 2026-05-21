@@ -2,6 +2,8 @@
 
 This document turns `docs/eval-result-status-policy.md` into an operating plan for moving a case from `dry_run_supported` toward `benchmark_supported`. The wider operating frame for the proof surface — design vs benchmark evidence, design vs holdout cases, required conditions, and judge separation — is `docs/eval-lab-protocol.md`; `make eval-lab-status` reports which cases still need this upgrade, and `make eval-benchmark-readiness` reports, per case, the specific gap list between its current evidence and `benchmark_supported` (real-vs-simulated outputs, repeat-run count, equal-length control, and the independent-judge requirement).
 
+A benchmark candidate is not ready for a `## Result` lift until its model-output receipts pass `make eval-receipt-lint` (every base and benchmark-only provenance field present), the case carries a regenerated `receipt-index.yaml` (`make receipt-index`), and an independent judge — not the agent that ran the eval — has scored it. These are read-only auditing aids; they change no Result and promote nothing.
+
 The current contradiction-preservation cases are useful methodology evidence, but not canon-relevant benchmark evidence:
 
 - `evals/contradiction-preservation/diagnosis-vs-validated-learning/` — `dry_run_supported`
