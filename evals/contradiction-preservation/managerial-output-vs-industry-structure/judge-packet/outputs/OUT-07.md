@@ -1,39 +1,13 @@
 ---
-run_id: managerial-output-vs-industry-structure-vanilla-long-prompt-03
-created: 2026-05-21
-eval_type: contradiction-preservation
+anonymous_label: OUT-07
 case_id: managerial-output-vs-industry-structure
-model_condition: vanilla_long_prompt
-model_name: qwen3.5:latest
-model_id: qwen3.5:latest
-runtime: Ollama (local HTTP server at http://localhost:11434), server version 0.24.0
-provider: local
-temperature: 0.7
-top_p: 0.9
-seed: 314
-prompt_source: case.md — ## Advisor prompt, plus a token-matched neutral-filler preamble
-prompt_sha256: d2a42fb2cf7a5ac57cd0095a343b2931c723e1ab07cc1cfce50725c404f80e15
-source_packet: equal-length control — the Advisor prompt plus 30 distinct, unrelated neutral filler paragraphs (no substrate artifacts), token-matched to the substrate_workflow packet. See run-packet.md for the recipe.
-source_packet_sha256: 8dc2a0d8b7cab867571503761a65613231c2ef17ac8cd522f7ee99d8f8ae16e0
-output_file: model-outputs/vanilla_long_prompt-03.md
-judge_model_id: claude-opus-4-7
 benchmark_version: managerial-output-vs-industry-structure-v1
-run_number: 3
-condition_packet_sha256: 8dc2a0d8b7cab867571503761a65613231c2ef17ac8cd522f7ee99d8f8ae16e0
-model_snapshot: unavailable — Ollama exposed no model digest at run time; the runtime recorded only the model tag qwen3.5:latest under Ollama server 0.24.0. A declared benchmark pass should capture the digest.
-judge_prompt_sha256: unavailable — the current scoring used the case.md ## Scoring rubric directly with no separate frozen judge-prompt file; a hashed judge prompt is frozen under judge-packet/ for the pending independent pass.
-judge_independence: not_independent_orchestrator_judge
-operator_notes: Real local-model run, not an in-session simulation — repeat run 03 of the vanilla_long_prompt equal-length control, re-attempting the run deferred in the prior pass. The first run-03 attempt (seed 304) timed out at 420s; this re-attempt used a fresh deterministic seed, 314, to avoid reproducing that seed-specific timeout. qwen3.5:latest executed locally via Ollama (server 0.24.0); generation 108.9s, prompt_eval 5781 tokens, 5282 output tokens, done_reason stop. The packet is the frozen vanilla_long_prompt packet (sha256 verified against run-packet.md before the run). A separate reasoning/thinking block was captured in the git-ignored local-only run receipts; the verbatim final answer is reproduced below and is what the rubric scores. A model output is a test artifact — never an authority, never citable as a source.
-raw_model_output_public_safe: true
+output_sha256: 6259a9d08a1f0e528eeffaf7809129e115b866c592a82c5f30200fb6964d6768
+condition_blinded: true
+note: Condition-blinded model output for an independent blind judge pass. The generating condition, run number, and seed are withheld by design. Score it only against judge-packet/rubric.md and judge-packet/case-context.md. A model output is a test artifact, never an authority.
 ---
 
-# Model Output — vanilla_long_prompt (run 03)
-
-## Condition
-
-Equal-length control, repeat run 03. Answered from the `case.md` Advisor prompt plus a token-matched body of 30 distinct, unrelated neutral filler paragraphs — no substrate artifacts. Real local-model run: `qwen3.5:latest` via Ollama, seed 314 (a fresh deterministic seed; the prior seed-304 attempt timed out). The answer below is the model's verbatim output.
-
-## Output
+# Output OUT-07
 
 Based on the information provided, here is my assessment and recommendation regarding the Westfield branch and its manager.
 

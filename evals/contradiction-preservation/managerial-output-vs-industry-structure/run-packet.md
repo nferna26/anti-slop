@@ -3,6 +3,7 @@ case_id: managerial-output-vs-industry-structure
 artifact: run-packet
 eval_type: contradiction-preservation
 frozen: 2026-05-21
+benchmark_version: managerial-output-vs-industry-structure-v1
 ---
 
 # Run Packet — managerial-output-vs-industry-structure
@@ -80,6 +81,18 @@ Two further real local-model repeats were run for each condition, toward the thr
 ## Judge separation
 
 Generator: `qwen3.5:latest` (local, via Ollama). Judge: Claude Opus 4.7 (`claude-opus-4-7`) — a different model family and provider from the generator, so generation and scoring are performed by separate models. **Limitation:** the judge is the same agent orchestrating these passes; this is model-family separation, not an independent third-party or human judge. No independent human judging occurred. A benchmark pass should add an independent judge per `docs/eval-benchmark-upgrade.md`.
+
+## Benchmark version
+
+This case's frozen packet state is identified as **`managerial-output-vs-industry-structure-v1`**. Every model-output receipt in `model-outputs/` records `benchmark_version: managerial-output-vs-industry-structure-v1`, and `receipt-index.yaml` carries it per receipt. The version names the frozen packet state these fifteen runs were produced against (see `## Freeze`); any later edit to the frozen case packet starts a new version — `…-v2` — rather than silently re-basing v1. The identifier records provenance only; it does not assert the case has reached `benchmark_supported`.
+
+The fifteen receipts also now carry the benchmark-only provenance fields `run_number`, `condition_packet_sha256` (the exact frozen per-condition packet hash from `## Condition packets`), `model_snapshot`, `judge_prompt_sha256`, and `judge_independence`. `model_snapshot` and `judge_prompt_sha256` are recorded as explicit `unavailable — <reason>` values: the Ollama runtime exposed no model digest at run time, and the current scoring used the `case.md` `## Scoring rubric` directly with no separate frozen judge-prompt file. `judge_independence` is `not_independent_orchestrator_judge` — the current scoring is not independent, and the field says so plainly.
+
+## Judge packet
+
+A condition-blinded independent-judge packet for `managerial-output-vs-industry-structure-v1` is prepared under `judge-packet/`: the fifteen model answers anonymised as `OUT-01`–`OUT-15` (ordered by output-body sha256, so the order carries no condition information), a verbatim rubric and condition-neutral case-context copy, frozen judge instructions, an output-hash manifest, and a blank score sheet. The output bodies are unaltered; the generating condition, run number, and seed are withheld.
+
+It is **prepared, not judged**: no independent judge has scored it, and it changes no score and no `## Result`. The `OUT-NN` → condition answer key is kept local-only (git-ignored); the `output_sha256` in `judge-packet/output-manifest.yaml` is the bridge for reconciling an independent judge's scores afterwards. Running the pass requires an independent judge — a different model family, a human, or a two-judge panel, none of them the agent that orchestrated this eval. Until that judge scores the packet and its independence is affirmatively recorded, the case stays `partial`.
 
 ## Status
 

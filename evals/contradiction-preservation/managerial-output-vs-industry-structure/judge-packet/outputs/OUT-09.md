@@ -1,39 +1,13 @@
 ---
-run_id: managerial-output-vs-industry-structure-famous-sources-supplied-01
-created: 2026-05-21
-eval_type: contradiction-preservation
+anonymous_label: OUT-09
 case_id: managerial-output-vs-industry-structure
-model_condition: famous_sources_supplied
-model_name: qwen3.5:latest
-model_id: qwen3.5:latest
-runtime: Ollama (local HTTP server at http://localhost:11434), server version 0.24.0
-provider: local
-temperature: 0.7
-top_p: 0.9
-seed: 102
-prompt_source: case.md — ## Advisor prompt, plus a name-level framework-awareness preamble
-prompt_sha256: d2a42fb2cf7a5ac57cd0095a343b2931c723e1ab07cc1cfce50725c404f80e15
-source_packet: name-level awareness of two famous management ideas only — the manager's-output-is-team-output idea and the industry-structure idea; no source cards, no claim/tension card. See run-packet.md for the verbatim preamble.
-source_packet_sha256: 74d1c708a5552a5713a16667ae830faf4c8b98c5b153d603815a3dd5e5eaf432
-output_file: model-outputs/famous_sources_supplied.md
-judge_model_id: claude-opus-4-7
 benchmark_version: managerial-output-vs-industry-structure-v1
-run_number: 1
-condition_packet_sha256: 74d1c708a5552a5713a16667ae830faf4c8b98c5b153d603815a3dd5e5eaf432
-model_snapshot: unavailable — Ollama exposed no model digest at run time; the runtime recorded only the model tag qwen3.5:latest under Ollama server 0.24.0. A declared benchmark pass should capture the digest.
-judge_prompt_sha256: unavailable — the current scoring used the case.md ## Scoring rubric directly with no separate frozen judge-prompt file; a hashed judge prompt is frozen under judge-packet/ for the pending independent pass.
-judge_independence: not_independent_orchestrator_judge
-operator_notes: Real local-model run, not an in-session simulation. qwen3.5:latest was executed locally via Ollama (server 0.24.0) on the Advisor prompt plus a name-level famous-framework preamble (no source cards, no tension card); generation 83.4s, prompt_eval 524 tokens, 3601 output tokens, done_reason stop. The model also emitted a separate reasoning/thinking block, captured in the git-ignored local-only run receipts; the verbatim final answer is reproduced below and is what the rubric scores. A model output is a test artifact — never an authority, never citable as a source. Packet frozen 2026-05-21T20:02:30Z; see run-packet.md.
-raw_model_output_public_safe: true
+output_sha256: 8ef47068518d4ff3355990d5cc69dbca447dacb046d23bdeb58057f3461663c6
+condition_blinded: true
+note: Condition-blinded model output for an independent blind judge pass. The generating condition, run number, and seed are withheld by design. Score it only against judge-packet/rubric.md and judge-packet/case-context.md. A model output is a test artifact, never an authority.
 ---
 
-# Model Output — famous_sources_supplied
-
-## Condition
-
-Antipattern comparison. Answered from the `case.md` Advisor prompt plus a short preamble giving name-level awareness of two famous management ideas only — the idea that a manager's output is the output of the teams the manager runs and influences, and the idea that industry structure governs the profitability achievable in a line of business. No source cards and no claim/tension card were supplied. Real local-model run: `qwen3.5:latest` via Ollama. The answer below is the model's verbatim output.
-
-## Output
+# Output OUT-09
 
 This is a classic case of distinguishing between **controllable operational failures** and **uncontrollable market forces**. As an experienced business advisor, I recommend you **do not simply accept the "hard territory" excuse.** Based on the evidence you provided, the Westfield manager is failing on controllable metrics, and the existence of the Donner branch proves that the "structural ceiling" is not absolute.
 

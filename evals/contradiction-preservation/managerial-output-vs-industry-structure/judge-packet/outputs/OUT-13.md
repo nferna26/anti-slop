@@ -1,39 +1,13 @@
 ---
-run_id: managerial-output-vs-industry-structure-substrate-workflow-02
-created: 2026-05-21
-eval_type: contradiction-preservation
+anonymous_label: OUT-13
 case_id: managerial-output-vs-industry-structure
-model_condition: substrate_workflow
-model_name: qwen3.5:latest
-model_id: qwen3.5:latest
-runtime: Ollama (local HTTP server at http://localhost:11434), server version 0.24.0
-provider: local
-temperature: 0.7
-top_p: 0.9
-seed: 203
-prompt_source: case.md — ## Advisor prompt, plus the substrate packet
-prompt_sha256: d2a42fb2cf7a5ac57cd0095a343b2931c723e1ab07cc1cfce50725c404f80e15
-source_packet: the reviewed claim/tension card managerial-output-vs-industry-structure and the reviewed source cards BK-0002-card-001 and BK-0023-card-001, supplied verbatim. See run-packet.md for the packet recipe.
-source_packet_sha256: df7988d08e481cafa310263694efe3c0c139bb527fd43de4590f4a1351ef3fa4
-output_file: model-outputs/substrate_workflow-02.md
-judge_model_id: claude-opus-4-7
 benchmark_version: managerial-output-vs-industry-structure-v1
-run_number: 2
-condition_packet_sha256: df7988d08e481cafa310263694efe3c0c139bb527fd43de4590f4a1351ef3fa4
-model_snapshot: unavailable — Ollama exposed no model digest at run time; the runtime recorded only the model tag qwen3.5:latest under Ollama server 0.24.0. A declared benchmark pass should capture the digest.
-judge_prompt_sha256: unavailable — the current scoring used the case.md ## Scoring rubric directly with no separate frozen judge-prompt file; a hashed judge prompt is frozen under judge-packet/ for the pending independent pass.
-judge_independence: not_independent_orchestrator_judge
-operator_notes: Real local-model run, not an in-session simulation — repeat run 02 of the substrate_workflow condition. qwen3.5:latest executed locally via Ollama (server 0.24.0) on the Advisor prompt plus the three reviewed substrate artifacts; generation 97.0s, prompt_eval 7566 tokens, 3503 output tokens, done_reason stop. The packet is the frozen substrate_workflow packet (sha256 verified against run-packet.md before the run). A separate reasoning/thinking block was captured in the git-ignored local-only run receipts; the verbatim final answer is reproduced below and is what the rubric scores. A model output is a test artifact — never an authority, never citable as a source; the substrate artifacts are evidence-level (source cards) and synthesis-level (the claim/tension card), not canon.
-raw_model_output_public_safe: true
+output_sha256: d3ae0e8e0f7f8504744ca82b25c5eda4af2eb3dd4fae6ad3b4a83842b7be9bd1
+condition_blinded: true
+note: Condition-blinded model output for an independent blind judge pass. The generating condition, run number, and seed are withheld by design. Score it only against judge-packet/rubric.md and judge-packet/case-context.md. A model output is a test artifact, never an authority.
 ---
 
-# Model Output — substrate_workflow (run 02)
-
-## Condition
-
-Substrate condition under test, repeat run 02. Answered from the `case.md` Advisor prompt plus the substrate packet: the reviewed claim/tension card `managerial-output-vs-industry-structure` and the reviewed source cards `BK-0002-card-001` and `BK-0023-card-001`. Real local-model run: `qwen3.5:latest` via Ollama, seed 203. The answer below is the model's verbatim output.
-
-## Output
+# Output OUT-13
 
 Based on the reference artifacts provided, here is an analysis of your situation and a framework for decision-making. I am not providing canon advice, but rather applying the diagnostic logic contained in the source cards and the tension card to your specific case.
 

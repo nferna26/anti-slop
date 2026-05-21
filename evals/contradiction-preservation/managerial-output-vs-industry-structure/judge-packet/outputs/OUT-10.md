@@ -1,39 +1,13 @@
 ---
-run_id: managerial-output-vs-industry-structure-vanilla-02
-created: 2026-05-21
-eval_type: contradiction-preservation
+anonymous_label: OUT-10
 case_id: managerial-output-vs-industry-structure
-model_condition: vanilla
-model_name: qwen3.5:latest
-model_id: qwen3.5:latest
-runtime: Ollama (local HTTP server at http://localhost:11434), server version 0.24.0
-provider: local
-temperature: 0.7
-top_p: 0.9
-seed: 201
-prompt_source: case.md — ## Advisor prompt
-prompt_sha256: d2a42fb2cf7a5ac57cd0095a343b2931c723e1ab07cc1cfce50725c404f80e15
-source_packet: none — Advisor prompt only, no substrate
-source_packet_sha256: d2a42fb2cf7a5ac57cd0095a343b2931c723e1ab07cc1cfce50725c404f80e15
-output_file: model-outputs/vanilla-02.md
-judge_model_id: claude-opus-4-7
 benchmark_version: managerial-output-vs-industry-structure-v1
-run_number: 2
-condition_packet_sha256: d2a42fb2cf7a5ac57cd0095a343b2931c723e1ab07cc1cfce50725c404f80e15
-model_snapshot: unavailable — Ollama exposed no model digest at run time; the runtime recorded only the model tag qwen3.5:latest under Ollama server 0.24.0. A declared benchmark pass should capture the digest.
-judge_prompt_sha256: unavailable — the current scoring used the case.md ## Scoring rubric directly with no separate frozen judge-prompt file; a hashed judge prompt is frozen under judge-packet/ for the pending independent pass.
-judge_independence: not_independent_orchestrator_judge
-operator_notes: Real local-model run, not an in-session simulation — repeat run 02 of the vanilla condition. qwen3.5:latest executed locally via Ollama (server 0.24.0) on the Advisor prompt alone; generation 49.2s, prompt_eval 342 tokens, 2480 output tokens, done_reason stop. The packet is the frozen vanilla packet (sha256 verified against run-packet.md before the run). A separate reasoning/thinking block was captured in the git-ignored local-only run receipts; the verbatim final answer is reproduced below and is what the rubric scores. A model output is a test artifact — never an authority, never citable as a source.
-raw_model_output_public_safe: true
+output_sha256: a9accbfb3ad05eaf66c808dabb1abf6c18329a475577c330964f91d3810d51d1
+condition_blinded: true
+note: Condition-blinded model output for an independent blind judge pass. The generating condition, run number, and seed are withheld by design. Score it only against judge-packet/rubric.md and judge-packet/case-context.md. A model output is a test artifact, never an authority.
 ---
 
-# Model Output — vanilla (run 02)
-
-## Condition
-
-Baseline, repeat run 02. Answered from the `case.md` Advisor prompt only — no substrate. Real local-model run: `qwen3.5:latest` via Ollama, seed 201. The answer below is the model's verbatim output.
-
-## Output
+# Output OUT-10
 
 This is a classic management dilemma: distinguishing between **market conditions** (which you cannot control) and **management execution** (which you can).
 

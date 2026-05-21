@@ -1,39 +1,13 @@
 ---
-run_id: managerial-output-vs-industry-structure-vanilla-long-prompt-01
-created: 2026-05-21
-eval_type: contradiction-preservation
+anonymous_label: OUT-03
 case_id: managerial-output-vs-industry-structure
-model_condition: vanilla_long_prompt
-model_name: qwen3.5:latest
-model_id: qwen3.5:latest
-runtime: Ollama (local HTTP server at http://localhost:11434), server version 0.24.0
-provider: local
-temperature: 0.7
-top_p: 0.9
-seed: 104
-prompt_source: case.md — ## Advisor prompt, plus a token-matched neutral-filler preamble
-prompt_sha256: d2a42fb2cf7a5ac57cd0095a343b2931c723e1ab07cc1cfce50725c404f80e15
-source_packet: equal-length control — the Advisor prompt plus 30 distinct, unrelated neutral filler paragraphs (no substrate artifacts), token-matched to the substrate_workflow packet. See run-packet.md for the recipe.
-source_packet_sha256: 8dc2a0d8b7cab867571503761a65613231c2ef17ac8cd522f7ee99d8f8ae16e0
-output_file: model-outputs/vanilla_long_prompt.md
-judge_model_id: claude-opus-4-7
 benchmark_version: managerial-output-vs-industry-structure-v1
-run_number: 1
-condition_packet_sha256: 8dc2a0d8b7cab867571503761a65613231c2ef17ac8cd522f7ee99d8f8ae16e0
-model_snapshot: unavailable — Ollama exposed no model digest at run time; the runtime recorded only the model tag qwen3.5:latest under Ollama server 0.24.0. A declared benchmark pass should capture the digest.
-judge_prompt_sha256: unavailable — the current scoring used the case.md ## Scoring rubric directly with no separate frozen judge-prompt file; a hashed judge prompt is frozen under judge-packet/ for the pending independent pass.
-judge_independence: not_independent_orchestrator_judge
-operator_notes: Real local-model run, not an in-session simulation. qwen3.5:latest was executed locally via Ollama (server 0.24.0) on the Advisor prompt plus the equal-length filler packet; generation 72.1s, prompt_eval 5781 tokens, 2657 output tokens, done_reason stop. The filler is 30 distinct, non-repetitive neutral paragraphs on everyday topics, scanned to contain no management/strategy/competition/industry/branch/distribution/manager/accountability/market/source/framework vocabulary. The model also emitted a separate reasoning/thinking block, captured in the git-ignored local-only run receipts; the verbatim final answer is reproduced below and is what the rubric scores. A model output is a test artifact — never an authority, never citable as a source. Packet frozen 2026-05-21T20:02:30Z; see run-packet.md.
-raw_model_output_public_safe: true
+output_sha256: 169e39f8e30d2c5a429aff840122be3348d17c6489f3a0fae3500edebd0ce7fd
+condition_blinded: true
+note: Condition-blinded model output for an independent blind judge pass. The generating condition, run number, and seed are withheld by design. Score it only against judge-packet/rubric.md and judge-packet/case-context.md. A model output is a test artifact, never an authority.
 ---
 
-# Model Output — vanilla_long_prompt
-
-## Condition
-
-Equal-length control. Answered from the `case.md` Advisor prompt plus a token-matched body of 30 distinct, unrelated neutral filler paragraphs — no substrate artifacts. This separates a substrate advantage from a mere more-tokens effect. Real local-model run: `qwen3.5:latest` via Ollama. The answer below is the model's verbatim output.
-
-## Output
+# Output OUT-03
 
 This is a classic case of distinguishing between **structural constraints** (factors outside your control) and **operational inefficiencies** (factors under your control).
 
