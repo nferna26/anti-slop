@@ -10,7 +10,7 @@ Score against the rubric in this case's `case.md` → `## Scoring rubric`. Copy 
 
 ## Result
 
-One of: `partial` | `inconclusive` | `falsified` | `dry_run_supported` | `benchmark_supported`, plus a one-line justification. See `docs/eval-result-status-policy.md` for the definitions and the bar a result must clear before it may support a canon candidate.
+One of: `partial` | `inconclusive` | `falsified` | `dry_run_supported` | `benchmark_supported`, plus a one-line justification. See `docs/eval-result-status-policy.md` for the definitions and `docs/eval-benchmark-upgrade.md` for the practical benchmark-upgrade checklist. A `benchmark_supported` result is still evidence about model behavior under this eval, not canon by itself.
 
 ## Scores
 

@@ -4,6 +4,8 @@ Every eval case carries a result status in its `score-sheet.md` → `## Result`.
 
 It is a v1 policy: lightweight and judgment-based, with no automation. The status is set by hand by whoever scores the case, against the definitions below.
 
+For the practical operating checklist that turns a `dry_run_supported` case into a benchmark candidate, see `docs/eval-benchmark-upgrade.md`.
+
 ## Why this exists
 
 `docs/public-writing-rules.md` (Claim boundary) forbids "Anti-Slop produces better advice" claims without an eval result that says so. This policy defines what "an eval result that says so" means — so a score sheet cannot drift into implying more than its evidence supports, and so canon promotion has a stated evidentiary bar.
@@ -54,3 +56,5 @@ Dry-run support and benchmark support are not the same strength of evidence. Dry
 ## Recording the status
 
 In `score-sheet.md` → `## Result`, write the status word followed by a one-line justification that names the deciding facts — which conditions ran, the substrate-vs-baseline scores, and why the status is not higher. Keep `scoring_status` in the score-sheet frontmatter as the separate `unscored` / `scored` flag for whether any run has been judged at all.
+
+Before lifting a result to `benchmark_supported`, verify the case against `docs/eval-benchmark-upgrade.md`: frozen packet, real model outputs for every comparison condition, exact model IDs and runtime metadata, prompt/source-packet hashes, repeat runs, judge separation, and receipt consistency.
