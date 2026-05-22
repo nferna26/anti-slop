@@ -28,10 +28,15 @@ occurred and no `## Result` decision is made here — see `## Judge Notes`.
 
 partial - the frozen `diagnosis-vs-validated-learning-benefits-renewal-v3-v1`
 benchmark pass has been run (forty real `gemma4:31b` outputs, eight per
-condition, no simulations and no deferrals — see `run-packet.md`), but **no
-scoring has been done**: `scoring_status` is `unscored` and the surfaces below
-are empty. This result supports no public advice claim and is not eligible to
-support a canon candidate.
+condition, no simulations and no deferrals — see `run-packet.md`); two
+blind-judge score receipts now exist under `judge-packet/` — Claude Opus 4.7
+(non-independent and circularly calibrated; a judge-variance data point only)
+and hosted OpenAI `gpt-5.4-mini` (calibration passed exactly; the first
+eligible, independent pass) — but **no `OUT-NN` → condition reconciliation has
+occurred, no post-reconciliation condition aggregate exists, and no
+`## Positive result` decision has been made**, so `scoring_status` is `unscored`
+and the post-reconciliation surface below stays empty. This result supports no
+public advice claim and is not eligible to support a canon candidate.
 
 This score sheet has two separate surfaces, and they must not be merged:
 
