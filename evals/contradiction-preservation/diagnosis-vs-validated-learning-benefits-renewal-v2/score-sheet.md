@@ -8,7 +8,7 @@ scoring_status: unscored
 
 Score against the rubric in this case's `case.md` → `## Scoring rubric`: six binary criteria C1–C6, each `pass` or `fail` per model condition per run. Per-run per-condition score is the count of criteria passed (0–6). Apply the pre-registered `## Criterion dependency rule` and the `## Judge protocol` from `case.md`. Do not score against generic or remembered criteria.
 
-This is an **unscored scaffold**. The case is `status: draft`, `scoring_status: unscored`; no model has been run. The tables below are the shape the judges fill after a frozen, anonymised run.
+This is an **unscored scaffold**. The case is `status: draft`, `scoring_status: unscored`; no model has been run. The tables below are the shape the judges fill after a frozen, anonymised run. The frozen-run definition — the five condition packet recipes, the equal-length filler recipe, run parameters, seeds, the anonymisation rule, the answer-key locality, the judge-packet protocol, and a freeze checklist — is in `run-packet.md` for benchmark version `diagnosis-vs-validated-learning-benefits-renewal-v2-v1`; that packet is **prepared but not yet frozen or run**.
 
 ## Result
 
