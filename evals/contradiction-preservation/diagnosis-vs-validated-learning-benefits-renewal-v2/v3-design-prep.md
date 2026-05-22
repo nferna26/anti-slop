@@ -274,6 +274,11 @@ v3 case:
    the optional graded-ladder second control.
 5. The exact judge anchor-divergence threshold for the run packet.
 
+**Update (2026-05-22):** the v3 case scaffold now exists at
+`../diagnosis-vs-validated-learning-benefits-renewal-v3/`. The scaffold resolves
+the case-drafting questions at draft level, creates the calibration-anchor
+requirement file, and remains unrun / unscored.
+
 ## Discipline note
 
 This is design prep. It promotes nothing, scores nothing, runs no model, and confers
