@@ -92,6 +92,9 @@ No v3 judge notes yet. Future judge notes must record:
 
 ## Follow-up
 
-- Complete `judge-packet/calibration-anchors.md` before any v3 freeze/run.
-- Draft a run packet only after the calibration anchors, condition recipes, and
-  judge instructions are ready to freeze.
+- `judge-packet/calibration-anchors.md` is operator-accepted (`filled_pre_run`).
+- `run-packet.md` freezes the v3 condition packet recipes, packet hashes, the
+  equal-length filler scan, the run parameters, and the judge-packet structure
+  for benchmark version `diagnosis-vs-validated-learning-benefits-renewal-v3-v1`.
+  Its inputs are frozen, but **no run has occurred and no model outputs exist**.
+- A later run goal performs the benchmark pass against the frozen packet.

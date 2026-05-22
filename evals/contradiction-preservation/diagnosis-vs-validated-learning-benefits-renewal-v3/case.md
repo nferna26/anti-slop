@@ -338,6 +338,11 @@ None yet for v3. `model-outputs/.gitkeep` is present only to hold the folder. An
 future output must be a real model-output receipt with full provenance before it can
 contribute to a benchmark result.
 
+`run-packet.md` freezes the v3 condition packet recipes, packet hashes, the
+equal-length filler and its scan, the run parameters, and the judge-packet
+structure for benchmark version `diagnosis-vs-validated-learning-benefits-renewal-v3-v1`.
+Its inputs are frozen, but **no run has occurred and no model outputs exist**.
+
 ## Score sheet
 
 See `score-sheet.md` in this case folder. It is an unscored scaffold with
