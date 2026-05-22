@@ -280,7 +280,8 @@ outputs and C6 for 22/40 outputs, triggering the third-judge rule.
 `score-sheet.md` has `scoring_status: scored`, but `## Result` remains
 `partial`; `eval-decision.md` records `do_not_promote`. No model output,
 condition packet, rubric, Result status, source card, tension card, or canon
-artifact is changed by the reconciliation.
+artifact is changed by the reconciliation. `postmortem.md` analyses why the
+case was not promoted and proposes a v3 eval-design direction.
 
 ## Formatting rehearsal
 
