@@ -106,10 +106,10 @@ generic-advice control on total score and on C3-C6, under eligible blind judges.
 (non-Gemma) attempted the calibration gate; see
 `judge-packet/judge-calibration-gpt-oss-20b.md`. It **failed** the gate — it
 disagreed with the reference verdicts on C5 and C6 for the borderline anchor —
-so per the `## Judge protocol` it scored **no** `OUT-NN` outputs. No eligible
-judge exists yet; a second judge pass with an eligible (calibrated) judge, and
-only then reconciliation, are still pending. The scoring surfaces above stay
-empty, `scoring_status` stays `unscored`, and `## Result` stays `partial`.
+so per the `## Judge protocol` it scored **no** `OUT-NN` outputs. At the time of
+this update no eligible judge had yet scored; later updates below record the
+subsequent attempts. `scoring_status` stays `unscored`, and `## Result` stays
+`partial`.
 
 **Update (2026-05-22) — second blind-judge attempt (Claude Opus 4.7).** Claude
 Opus 4.7 scored all 40 `OUT-NN` against C1-C6; see
@@ -120,8 +120,9 @@ Opus authored the rubric and the calibration anchors/reference — and the pass 
 **not independent**: Claude Opus is the orchestrating agent. Per the
 `## Judge protocol`, this pass is a judge-variance data point only; it does
 **not** count toward the two-judge minimum and **cannot** support a `## Result`
-lift. No eligible, independent judge pass exists yet, and no reconciliation has
-occurred. `scoring_status` stays `unscored`; `## Result` stays `partial`.
+lift. At the time of this update no eligible, independent judge pass existed —
+see the next update, which records one. `scoring_status` stays `unscored`;
+`## Result` stays `partial`.
 
 **Update (2026-05-22) — independent blind judge pass (OpenAI gpt-5.4-mini).**
 Hosted OpenAI `gpt-5.4-mini`, operated by the human operator outside Claude

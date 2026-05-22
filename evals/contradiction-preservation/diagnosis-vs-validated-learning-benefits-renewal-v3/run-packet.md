@@ -17,9 +17,11 @@ judge-packet structure — the frozen inputs the benchmark pass was run against.
 **The inputs were frozen first; the benchmark pass has now been run.** Forty real
 model outputs exist under `model-outputs/` — eight per condition — and the
 condition-blind judge packet has been built under `judge-packet/`; see
-`## Status` and `## Run`. **One blind-judge calibration attempt is on record —
-`gpt-oss:20b` failed the calibration gate — so zero `OUT-NN` outputs have been
-scored, and nothing has been reconciled:** `score-sheet.md` stays
+`## Status` and `## Run`. **Three blind-judge attempts are on record — `gpt-oss:20b`
+failed calibration, Claude Opus 4.7 scored all 40 `OUT-NN` (non-independent,
+circular calibration), and hosted OpenAI `gpt-5.4-mini` passed calibration and
+scored all 40 `OUT-NN` (the first eligible, independent pass); no `OUT-NN` →
+condition reconciliation has occurred:** `score-sheet.md` stays
 `scoring_status: unscored` and `## Result` stays `partial`. A model output is a
 test artifact — never an authority, never citable as a source.
 
@@ -35,12 +37,14 @@ and the Advisor prompt derived and hashed (see `## Freeze checklist`); the
 benchmark pass has since been **run** — see `## Run`. Forty real `gemma4:31b`
 outputs (eight per condition) are recorded under `model-outputs/`, with zero
 simulated outputs and zero deferrals. The outputs were anonymised and a
-condition-blind judge packet was built under `judge-packet/`. **One blind-judge
-calibration attempt is on record — `gpt-oss:20b` failed the calibration gate, so
-zero `OUT-NN` outputs have been scored, no eligible judge exists yet, and no
-reconciliation has occurred** (see `## Run`). `score-sheet.md` stays
-`scoring_status: unscored` and `## Result` stays `partial`. The run promotes
-nothing and lifts no status.
+condition-blind judge packet was built under `judge-packet/`. **Three blind-judge
+attempts are on record — `gpt-oss:20b` failed the calibration gate and scored
+no `OUT-NN`; Claude Opus 4.7 scored all 40 `OUT-NN` (non-independent, circular
+calibration — a judge-variance data point only); and hosted OpenAI `gpt-5.4-mini`
+passed the calibration gate and scored all 40 `OUT-NN` (the first eligible,
+independent pass). No `OUT-NN` → condition reconciliation has occurred** (see
+`## Run`). `score-sheet.md` stays `scoring_status: unscored` and `## Result`
+stays `partial`. The run promotes nothing and lifts no status.
 
 The byte-exact assembled condition packets, the filler, the runner, and the raw
 interactions are held in the case's git-ignored local-only run folder. The
@@ -371,9 +375,12 @@ and scored all 40 `OUT-NN` — the first eligible, independent v3 judge pass.
 This packet froze the v3 inputs and recorded the benchmark run; the run itself
 produced no scores. Forty model outputs now exist as test artifacts under
 `model-outputs/`. Judge scoring is recorded separately under `judge-packet/`: a
-`gpt-oss:20b` calibration receipt (calibration failed, zero `OUT-NN` scored) and
-a non-independent Claude Opus judge-score receipt (40 `OUT-NN` scored, a
-judge-variance data point only) — no eligible, independent judge pass exists, so
+`gpt-oss:20b` calibration receipt (calibration failed, zero `OUT-NN` scored), a
+non-independent Claude Opus judge-score receipt (40 `OUT-NN` scored, a
+judge-variance data point only), and a hosted OpenAI `gpt-5.4-mini` judge-score
+receipt (calibration passed, 40 `OUT-NN` scored — the first eligible, independent
+pass). `OUT-NN` → condition reconciliation has not occurred and no
+`## Positive result` decision has been made, so
 `## Result` stays `partial` and `scoring_status` stays `unscored`, and no canon
 or authority follows from this file. A model output is a test artifact — never
 an authority, never citable as a source.

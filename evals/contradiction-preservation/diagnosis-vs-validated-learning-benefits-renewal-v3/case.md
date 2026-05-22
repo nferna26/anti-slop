@@ -345,9 +345,10 @@ real `gemma4:31b` runs (via local Ollama) for each of the five conditions, with
 no in-session simulations and no deferrals. See `run-packet.md` → `## Run` for
 the freeze, packet hashes, decoding parameters, seeds, and run record. The forty
 outputs were anonymised into `judge-packet/outputs/OUT-01.md … OUT-40.md` and a
-condition-blind judge packet was built. Blind-judge attempts to date are
-summarised in `## Judge notes`; **no eligible, independent judge pass exists
-yet**. `scoring_status` stays `unscored` and `## Result` stays `partial`. A
+condition-blind judge packet was built. Three blind-judge attempts are
+summarised in `## Judge notes` — including the first eligible, independent pass
+(hosted OpenAI `gpt-5.4-mini`). No `OUT-NN` → condition reconciliation has
+occurred; `scoring_status` stays `unscored` and `## Result` stays `partial`. A
 model output is a test artifact — never an authority, never citable as a source.
 
 - `vanilla` — `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md`, `model-outputs/vanilla-03.md`, `model-outputs/vanilla-04.md`, `model-outputs/vanilla-05.md`, `model-outputs/vanilla-06.md`, `model-outputs/vanilla-07.md`, `model-outputs/vanilla-08.md` (8 runs).
