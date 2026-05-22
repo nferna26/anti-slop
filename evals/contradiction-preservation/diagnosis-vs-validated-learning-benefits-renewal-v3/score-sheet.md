@@ -15,8 +15,10 @@ This score sheet is **unscored**. The frozen
 `diagnosis-vs-validated-learning-benefits-renewal-v3-v1` benchmark pass has been
 **run** — forty real `gemma4:31b` outputs, eight per condition, recorded under
 `model-outputs/` and anonymised into the condition-blind `judge-packet/` (see
-`run-packet.md` → `## Run`) — but **no judge has scored anything** and no
-condition aggregate has been reconciled.
+`run-packet.md` → `## Run`). One blind-judge calibration attempt (`gpt-oss:20b`)
+has since **failed the calibration gate**, so **zero `OUT-NN` outputs have been
+scored**, no eligible judge exists yet, and no condition aggregate has been
+reconciled.
 
 ## Result
 
@@ -79,10 +81,13 @@ condition with the local-only answer key.
 
 ## Comparative signal
 
-None yet - v3 has not been run or scored. The future comparative signal is defined
-by `case.md` -> `## Positive result` and `## Falsifier`: the substrate must separate
-from both the equal-length control and the generic-advice control on total score and
-on C3-C6, under eligible blind judges.
+None yet - the frozen v3-v1 run exists (40 real outputs), but **zero `OUT-NN`
+outputs have been scored** — the first blind-judge calibration attempt failed
+the calibration gate, so no comparative signal can be computed. The future
+comparative signal is defined by `case.md` -> `## Positive result` and
+`## Falsifier`: the substrate must separate from both the equal-length control
+and the generic-advice control on total score and on C3-C6, under eligible blind
+judges.
 
 ## Judge Notes
 
@@ -111,7 +116,10 @@ Future judge notes must record:
 - The frozen `diagnosis-vs-validated-learning-benefits-renewal-v3-v1` benchmark
   pass has been **run** — forty real `gemma4:31b` outputs under `model-outputs/`,
   anonymised into the condition-blind `judge-packet/` (see `run-packet.md` →
-  `## Run`). No judge has scored anything.
-- A later judge goal runs the calibration step and the blind scoring; only then
-  is reconciliation done. `scoring_status` stays `unscored` and `## Result` stays
-  `partial` until the case is fully scored and reconciled.
+  `## Run`).
+- One blind-judge calibration attempt is on record — `gpt-oss:20b` failed the
+  calibration gate (`judge-packet/judge-calibration-gpt-oss-20b.md`) and scored
+  no `OUT-NN`. **Zero `OUT-NN` outputs are scored; no eligible judge exists yet.**
+- A later judge goal must seat an eligible (calibrated) judge, run the blind
+  scoring, and only then reconcile. `scoring_status` stays `unscored` and
+  `## Result` stays `partial` until the case is fully scored and reconciled.

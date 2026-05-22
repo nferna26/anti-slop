@@ -340,9 +340,11 @@ real `gemma4:31b` runs (via local Ollama) for each of the five conditions, with
 no in-session simulations and no deferrals. See `run-packet.md` → `## Run` for
 the freeze, packet hashes, decoding parameters, seeds, and run record. The forty
 outputs were anonymised into `judge-packet/outputs/OUT-01.md … OUT-40.md` and a
-condition-blind judge packet was built; **nothing has been judged or scored**.
-`scoring_status` stays `unscored` and `## Result` stays `partial`. A model output
-is a test artifact — never an authority, never citable as a source.
+condition-blind judge packet was built. A first blind-judge calibration attempt
+is on record — `gpt-oss:20b` failed the calibration gate — so **zero `OUT-NN`
+outputs have been scored** (see `## Judge notes`). `scoring_status` stays
+`unscored` and `## Result` stays `partial`. A model output is a test artifact —
+never an authority, never citable as a source.
 
 - `vanilla` — `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md`, `model-outputs/vanilla-03.md`, `model-outputs/vanilla-04.md`, `model-outputs/vanilla-05.md`, `model-outputs/vanilla-06.md`, `model-outputs/vanilla-07.md`, `model-outputs/vanilla-08.md` (8 runs).
 - `famous_sources_supplied` — `model-outputs/famous_sources_supplied.md`, `model-outputs/famous_sources_supplied-02.md`, `model-outputs/famous_sources_supplied-03.md`, `model-outputs/famous_sources_supplied-04.md`, `model-outputs/famous_sources_supplied-05.md`, `model-outputs/famous_sources_supplied-06.md`, `model-outputs/famous_sources_supplied-07.md`, `model-outputs/famous_sources_supplied-08.md` (8 runs).
@@ -358,13 +360,14 @@ post-reconciliation aggregate surface.
 
 ## Judge notes
 
-No judge pass exists for v3. The condition-blind judge packet has been built
-under `judge-packet/` — `README.md`, `judge-instructions.md`, `case-context.md`,
-`rubric.md`, `calibration-exercise.md` (calibration Surface 1 only),
-`output-manifest.yaml`, `blank-score-sheet.md`, and `outputs/OUT-01.md …
-OUT-40.md`. A first blind-judge calibration attempt (`gpt-oss:20b`) **failed the
-calibration gate** — see `judge-packet/judge-calibration-gpt-oss-20b.md` — and
-scored no `OUT-NN`; no eligible judge exists yet. No judge has scored anything.
-The `OUT-NN` -> condition answer key is local-only and is not committed; the
+No completed judge pass exists for v3: **zero `OUT-NN` outputs have been
+scored**. The condition-blind judge packet has been built under `judge-packet/`
+— `README.md`, `judge-instructions.md`, `case-context.md`, `rubric.md`,
+`calibration-exercise.md` (calibration Surface 1 only), `output-manifest.yaml`,
+`blank-score-sheet.md`, and `outputs/OUT-01.md … OUT-40.md`. One blind-judge
+calibration attempt is on record — `gpt-oss:20b` **failed the calibration gate**
+(see `judge-packet/judge-calibration-gpt-oss-20b.md`) and therefore scored no
+`OUT-NN`; no eligible judge exists yet, and no reconciliation has occurred. The
+`OUT-NN` -> condition answer key is local-only and is not committed; the
 Surface 2 reference verdicts stay operator-only in
 `judge-packet/calibration-anchors.md`.

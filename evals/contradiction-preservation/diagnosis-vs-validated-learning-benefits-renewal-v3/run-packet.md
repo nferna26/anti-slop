@@ -17,10 +17,11 @@ judge-packet structure — the frozen inputs the benchmark pass was run against.
 **The inputs were frozen first; the benchmark pass has now been run.** Forty real
 model outputs exist under `model-outputs/` — eight per condition — and the
 condition-blind judge packet has been built under `judge-packet/`; see
-`## Status` and `## Run`. **Nothing has been judged, scored, or reconciled:**
-`score-sheet.md` stays `scoring_status: unscored` and `## Result` stays
-`partial`. A model output is a test artifact — never an authority, never citable
-as a source.
+`## Status` and `## Run`. **One blind-judge calibration attempt is on record —
+`gpt-oss:20b` failed the calibration gate — so zero `OUT-NN` outputs have been
+scored, and nothing has been reconciled:** `score-sheet.md` stays
+`scoring_status: unscored` and `## Result` stays `partial`. A model output is a
+test artifact — never an authority, never citable as a source.
 
 **This run packet is operator-facing.** It names the model conditions because it
 is the operator's run specification; it is **not** part of the blind judge
