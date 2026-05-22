@@ -9,15 +9,18 @@ created: 2026-05-22
 
 # Run Packet — diagnosis-vs-validated-learning-benefits-renewal-v3-v1
 
-A run packet for the eval case in this folder. It freezes the condition packet
+A run packet for the eval case in this folder. It records the condition packet
 recipes, the exact packet hashes, the equal-length filler recipe and scan, the
 run parameters, the output / anonymisation / answer-key rules, and the
-judge-packet structure — everything a later run goal needs so it can generate
-outputs without editing `case.md`, the rubric, or the calibration anchors.
+judge-packet structure — the frozen inputs the benchmark pass was run against.
 
-**No model has been run. No model outputs exist.** This packet is freeze-prep
-only: the inputs are frozen and hashed, but the benchmark pass has not been run.
-`model-outputs/` holds only `.gitkeep`.
+**The inputs were frozen first; the benchmark pass has now been run.** Forty real
+model outputs exist under `model-outputs/` — eight per condition — and the
+condition-blind judge packet has been built under `judge-packet/`; see
+`## Status` and `## Run`. **Nothing has been judged, scored, or reconciled:**
+`score-sheet.md` stays `scoring_status: unscored` and `## Result` stays
+`partial`. A model output is a test artifact — never an authority, never citable
+as a source.
 
 **This run packet is operator-facing.** It names the model conditions because it
 is the operator's run specification; it is **not** part of the blind judge
@@ -201,7 +204,8 @@ Filler scan and length, computed at freeze:
 
 ## Run parameters
 
-Recorded now; **no run has been performed**.
+The pre-registered run parameters the benchmark pass was run under; the run
+record itself is in `## Run`.
 
 - **Run count.** **Eight** real runs per condition **minimum** for the
   `…-v3-v1` benchmark pass — five conditions × 8 = **40 outputs** minimum; **ten**
