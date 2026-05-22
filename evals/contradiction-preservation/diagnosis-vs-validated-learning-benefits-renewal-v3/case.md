@@ -299,8 +299,9 @@ evidence.
 ## Calibration-anchor requirement
 
 The future frozen judge packet must include `judge-packet/calibration-anchors.md`.
-This scaffold already creates the requirement file, but the anchors are **not yet
-authored** and the case may not be frozen or run until that file is completed.
+That file now holds three **agent-proposed** anchors at `status: proposed_unreviewed`;
+they require operator review and acceptance (moving the file to `filled_pre_run`)
+before the case may be frozen or run, and before any judge calibrates against them.
 
 The anchor file must contain three synthetic, hand-authored illustrative answers to
 this v3 scenario:
