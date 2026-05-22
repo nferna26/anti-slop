@@ -23,7 +23,7 @@ A judge sees only the first. Mixing the condition labels into the judge-facing s
 
 ## Blind judge scoring surface
 
-Judge-facing. No runs scored yet. When a frozen run exists, every model output is anonymised to a stable label `OUT-NN` **before any judge sees it** — the generating condition is **withheld** and does not appear on this surface. Each judge records `pass`/`fail` for every criterion C1–C6 on every `OUT-NN`, applies the pre-registered `## Criterion dependency rule` from `case.md`, and writes one short reasoning note per output. At freeze time the output count is fixed (≥3 runs × 5 conditions) and one `OUT-NN` row is added per output.
+Judge-facing. No runs scored yet. When a frozen run exists, every model output is anonymised to a stable label `OUT-NN` **before any judge sees it** — the generating condition is **withheld** and does not appear on this surface. Each judge records `pass`/`fail` for every criterion C1–C6 on every `OUT-NN`, applies the pre-registered `## Criterion dependency rule` from `case.md`, and writes one short reasoning note per output. At freeze time the output count is fixed (≥8 runs × 5 conditions for the benchmark pass; see `run-packet.md`) and one `OUT-NN` row is added per output.
 
 Template — one table per judge; `OUT-NN` rows added at freeze/scoring time:
 

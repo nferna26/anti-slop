@@ -65,7 +65,7 @@ five; the condition is the only deliberate variable.
 | Condition | Added material before the Advisor prompt |
 |---|---|
 | `vanilla` | None. The Advisor prompt alone. |
-| `famous_sources_supplied` | A two-paragraph preamble, name-level only. |
+| `famous_sources_supplied` | A name-level list of famous book titles + authors; no claims, no summaries. |
 | `substrate_workflow` | A substrate preamble + the three reviewed artifacts, verbatim. |
 | `vanilla_long_prompt` | The equal-length filler (see `## Equal-length filler recipe`). |
 | `criteria_prompted_no_sources` | A paraphrased statement of the six rubric qualities, no sources. |
@@ -73,15 +73,22 @@ five; the condition is the only deliberate variable.
 ### Packet recipes (deterministic)
 
 - **`vanilla`** — the Advisor prompt verbatim, nothing else.
-- **`famous_sources_supplied`** — a two-paragraph preamble, then a blank line,
-  then the Advisor prompt verbatim. Paragraph 1 states, as a widely-cited
-  principle, that purposeful work should begin by judging what is genuinely
-  critical about a confusing situation before committing to a course of
-  action. Paragraph 2 states, as a widely-cited principle, that a team facing
-  deep uncertainty about what will work should make progress by running cheap
-  tests against real-world behaviour rather than committing to an untested
-  plan. Name-level awareness only: no source card, no claim/tension card, no
-  card text, no quotation, no book or author named.
+- **`famous_sources_supplied`** — a short preamble that lists, **by title and
+  author only**, well-known books on business, strategy, and decision-making,
+  then a blank line, then the Advisor prompt verbatim. The list contains the
+  two famous books behind this case's substrate — one for each side of the
+  tension, *Good Strategy Bad Strategy* (Richard Rumelt) and *The Lean Startup*
+  (Eric Ries) — mixed with at least three unrelated famous decoys, for example
+  *Competitive Strategy* (Michael Porter), *Thinking, Fast and Slow* (Daniel
+  Kahneman), and *The Innovator's Dilemma* (Clayton Christensen), in a fixed
+  order set at freeze. The preamble states only that these are widely-known
+  titles sometimes mentioned for questions like this one. It makes **no** claim
+  about what any book argues, gives **no** summary of any idea or framework,
+  supplies **no** source-card or claim/tension-card content, marks **no** book
+  as relevant or authoritative, and carries no hidden answer key. This is
+  name-level priming only — the condition tests whether bare awareness of
+  famous source names reproduces the substrate effect, with the model supplying
+  any recall itself.
 - **`substrate_workflow`** — a short preamble naming the artifacts and their
   authority levels (source cards are evidence-level, the claim/tension card is
   synthesis-level, none of it is canon, the tension is explicitly open), then
@@ -136,15 +143,20 @@ cannot be a more-tokens effect.
 
 ## Run parameters
 
-- **Run count.** Three real runs per condition for the `…-v2-v1` benchmark
-  pass — five conditions × 3 = **15 outputs** minimum; five runs per condition
-  preferred if feasible. Single-run results are not a benchmark pass.
+- **Run count.** **Eight** real runs per condition **minimum** for the
+  `…-v2-v1` benchmark pass — five conditions × 8 = **40 outputs** minimum; **ten**
+  runs per condition (50 outputs) preferred if feasible. The earlier v2 design's
+  three-runs-per-condition figure is **not** the benchmark pass: a three-run
+  pass may be run first only as an **optional rehearsal / candidate pass** to
+  smoke-test the harness, and cannot meet `## Positive result` or the
+  `## Falsifier`. Single-run results are not a benchmark pass.
 - **Seeds (deterministic).** Condition index 1–5 in the order `vanilla`,
   `famous_sources_supplied`, `substrate_workflow`, `vanilla_long_prompt`,
   `criteria_prompted_no_sources`. Run *r*, condition *i* → seed `r*100 + i`:
-  run 1 = 101–105, run 2 = 201–205, run 3 = 301–305 (run 4 = 401–405, run 5 =
-  501–505 if used). A call that times out is re-attempted on a fresh
-  deterministic seed (`seed + 10`), recorded as such, never fabricated.
+  run 1 = 101–105, run 2 = 201–205, run 3 = 301–305, run 4 = 401–405, run 5 =
+  501–505, run 6 = 601–605, run 7 = 701–705, run 8 = 801–805 (runs 9–10 =
+  901–905 and 1001–1005 if used). A call that times out is re-attempted on a
+  fresh deterministic seed (`seed + 10`), recorded as such, never fabricated.
 - **Decoding.** Generation `temperature 0.7`, `top_p 0.9`, held constant across
   all conditions and runs. Per-call timeout 600 s.
 - **Generator model.** One fixed real model, held constant across every
@@ -204,13 +216,15 @@ not complete — and no model may be run — until every box is checked.
       since this packet; if changed, a new benchmark version is opened.
 - [ ] Freeze timestamp recorded.
 
-| Condition | Packet word count | Packet `sha256` | Seeds (runs 1–3) |
+| Condition | Packet word count | Packet `sha256` | Seeds (runs 1–8) |
 |---|---|---|---|
-| `vanilla` | _freeze_ | _freeze_ | 101 / 201 / 301 |
-| `famous_sources_supplied` | _freeze_ | _freeze_ | 102 / 202 / 302 |
-| `substrate_workflow` | _freeze_ | _freeze_ | 103 / 203 / 303 |
-| `vanilla_long_prompt` | _freeze_ | _freeze_ | 104 / 204 / 304 |
-| `criteria_prompted_no_sources` | _freeze_ | _freeze_ | 105 / 205 / 305 |
+| `vanilla` | _freeze_ | _freeze_ | 101 / 201 / 301 / 401 / 501 / 601 / 701 / 801 |
+| `famous_sources_supplied` | _freeze_ | _freeze_ | 102 / 202 / 302 / 402 / 502 / 602 / 702 / 802 |
+| `substrate_workflow` | _freeze_ | _freeze_ | 103 / 203 / 303 / 403 / 503 / 603 / 703 / 803 |
+| `vanilla_long_prompt` | _freeze_ | _freeze_ | 104 / 204 / 304 / 404 / 504 / 604 / 704 / 804 |
+| `criteria_prompted_no_sources` | _freeze_ | _freeze_ | 105 / 205 / 305 / 405 / 505 / 605 / 705 / 805 |
+
+Runs 9–10 (if used): seeds `901–905` and `1001–1005`, same condition-index order.
 
 Generator model ID: _freeze_ — snapshot/digest: _freeze_ — freeze timestamp: _freeze_.
 
