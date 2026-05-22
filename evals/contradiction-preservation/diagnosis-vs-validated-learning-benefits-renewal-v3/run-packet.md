@@ -355,13 +355,16 @@ label-blind — no `OUT-NN` → condition map is committed — consistent with t
 pass.
 
 **No reconciliation.** `score-sheet.md` stays `scoring_status: unscored`;
-`## Result` stays `partial`; no `eval-decision.md`, no canon. Two blind-judge
+`## Result` stays `partial`; no `eval-decision.md`, no canon. Three blind-judge
 attempts have since been recorded: `gpt-oss:20b` failed the pre-registered
 calibration gate and scored no `OUT-NN`
 (`judge-packet/judge-calibration-gpt-oss-20b.md`); Claude Opus 4.7 scored all 40
 `OUT-NN` (`judge-packet/judge-score-claude-opus.md`) but is the orchestrating
-agent with a circular calibration — a judge-variance data point only, not an
-eligible independent pass. No eligible, independent judge pass exists yet.
+agent with a circular calibration — a judge-variance data point only; and hosted
+OpenAI `gpt-5.4-mini` (`judge-packet/judge-score-openai-gpt-5.4-mini.md`),
+operated by the human operator outside Claude Code, passed the calibration gate
+and scored all 40 `OUT-NN` — the first eligible, independent v3 judge pass.
+`OUT-NN` -> condition reconciliation has not occurred.
 
 ## Discipline note
 

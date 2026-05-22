@@ -15,12 +15,14 @@ This score sheet is **unscored**. The frozen
 `diagnosis-vs-validated-learning-benefits-renewal-v3-v1` benchmark pass has been
 **run** — forty real `gemma4:31b` outputs, eight per condition, recorded under
 `model-outputs/` and anonymised into the condition-blind `judge-packet/` (see
-`run-packet.md` → `## Run`). Two blind-judge attempts are on record: `gpt-oss:20b`
-**failed the calibration gate** and scored nothing; Claude Opus 4.7 scored all 40
-`OUT-NN` (`judge-packet/judge-score-claude-opus.md`) but is **not independent of
-the orchestrator** and its calibration is **circular**, so it cannot support a
-Result lift. **No eligible, independent judge pass exists yet**, and no condition
-aggregate has been reconciled — see `## Judge Notes`.
+`run-packet.md` → `## Run`). Three blind-judge attempts are on record:
+`gpt-oss:20b` **failed the calibration gate** and scored nothing; Claude Opus 4.7
+scored all 40 `OUT-NN` (`judge-packet/judge-score-claude-opus.md`) but is **not
+independent of the orchestrator** with a **circular** calibration; and hosted
+OpenAI `gpt-5.4-mini` (`judge-packet/judge-score-openai-gpt-5.4-mini.md`) **passed
+the calibration gate** and scored all 40 `OUT-NN` — the first eligible,
+**independent** v3 judge pass. No `OUT-NN` -> condition reconciliation has
+occurred and no `## Result` decision is made here — see `## Judge Notes`.
 
 ## Result
 
@@ -52,10 +54,12 @@ above `partial`.
 ## Blind judge scoring surface
 
 Judge-facing. The frozen run is complete: its forty outputs are anonymised in
-`judge-packet/outputs/` as `OUT-01 … OUT-40`. This surface is not yet filled — no
-*eligible, independent* judge has scored. (A non-independent Claude Opus pass is
-recorded at `judge-packet/judge-score-claude-opus.md`; see `## Judge Notes`.) The
-generating condition is withheld and must not appear here.
+`judge-packet/outputs/` as `OUT-01 … OUT-40`. This surface (the per-judge tables
+below) is not yet transcribed; the recorded judge passes live in their own
+receipts under `judge-packet/` — a non-independent Claude Opus pass
+(`judge-score-claude-opus.md`) and an independent, calibration-passing hosted
+OpenAI `gpt-5.4-mini` pass (`judge-score-openai-gpt-5.4-mini.md`); see
+`## Judge Notes`. The generating condition is withheld and must not appear here.
 
 Template - one table per eligible judge:
 
@@ -85,14 +89,16 @@ condition with the local-only answer key.
 
 ## Comparative signal
 
-None yet. The frozen v3-v1 run exists (40 real outputs). One blind-judge attempt
-(`gpt-oss:20b`) failed the calibration gate; a second (Claude Opus 4.7) scored
-all 40 `OUT-NN` but is non-independent with a circular calibration, so it cannot
-ground a comparative signal. No comparative signal can be computed from a
-non-independent pass alone. The future comparative signal is defined by
-`case.md` -> `## Positive result` and `## Falsifier`: the substrate must
-separate from both the equal-length control and the generic-advice control on
-total score and on C3-C6, under eligible blind judges.
+None computed. The frozen v3-v1 run exists (40 real outputs). Three blind-judge
+attempts are on record: `gpt-oss:20b` failed the calibration gate; Claude Opus
+4.7 scored all 40 `OUT-NN` but is non-independent with a circular calibration;
+and hosted OpenAI `gpt-5.4-mini` passed the calibration gate and scored all 40
+`OUT-NN` (one eligible, independent pass). A comparative signal still requires
+`OUT-NN` -> condition reconciliation, which has not occurred, and the
+`## Positive result` rule judged under eligible judges. The future comparative
+signal is defined by `case.md` -> `## Positive result` and `## Falsifier`: the
+substrate must separate from both the equal-length control and the
+generic-advice control on total score and on C3-C6, under eligible blind judges.
 
 ## Judge Notes
 
@@ -117,6 +123,20 @@ Opus authored the rubric and the calibration anchors/reference — and the pass 
 lift. No eligible, independent judge pass exists yet, and no reconciliation has
 occurred. `scoring_status` stays `unscored`; `## Result` stays `partial`.
 
+**Update (2026-05-22) — independent blind judge pass (OpenAI gpt-5.4-mini).**
+Hosted OpenAI `gpt-5.4-mini`, operated by the human operator outside Claude
+Code, **passed the calibration gate exactly** (0 criteria differences, no C5/C6
+disagreement) and scored all 40 `OUT-NN` against C1-C6; see
+`judge-packet/judge-score-openai-gpt-5.4-mini.md` (distribution 2/6 ×2,
+3/6 ×24, 6/6 ×14). It is the first v3 judge that is both eligible at the
+calibration gate and **independent of the orchestrating agent** (it did not
+author the rubric or the calibration anchors/reference, and is a different model
+family from the generator). This step records the pass only — **no
+reconciliation, no `OUT-NN` -> condition mapping, no `## Result` lift.** A
+Result decision requires the full `## Positive result` rule met under eligible
+judges and a separate reconciliation step. `scoring_status` stays `unscored`;
+`## Result` stays `partial`.
+
 Future judge notes must record:
 
 - judge identity, model family or human role, and whether the judge is independent
@@ -134,13 +154,13 @@ Future judge notes must record:
   pass has been **run** — forty real `gemma4:31b` outputs under `model-outputs/`,
   anonymised into the condition-blind `judge-packet/` (see `run-packet.md` →
   `## Run`).
-- Two blind-judge attempts are on record: `gpt-oss:20b` failed the calibration
+- Three blind-judge attempts are on record: `gpt-oss:20b` failed the calibration
   gate (`judge-packet/judge-calibration-gpt-oss-20b.md`) and scored no `OUT-NN`;
   Claude Opus 4.7 scored all 40 `OUT-NN` (`judge-packet/judge-score-claude-opus.md`)
-  but is non-independent with a circular calibration. **No eligible, independent
-  judge pass exists yet.**
-- A later judge goal must seat an eligible judge that is independent of the
-  orchestrator and did not author the rubric/anchors, run the blind scoring, and
-  only then reconcile. `scoring_status` stays `unscored` and `## Result` stays
-  `partial` until the case is fully scored by eligible independent judges and
-  reconciled.
+  but is non-independent with a circular calibration; hosted OpenAI `gpt-5.4-mini`
+  (`judge-packet/judge-score-openai-gpt-5.4-mini.md`) passed the calibration gate
+  and scored all 40 `OUT-NN` — the first eligible, independent v3 judge pass.
+- A later goal reconciles the recorded judge passes against `## Positive result`
+  and `## Falsifier`, and only then is any `## Result` decision made.
+  `scoring_status` stays `unscored` and `## Result` stays `partial` until the
+  case is fully scored by eligible judges and reconciled.

@@ -367,17 +367,24 @@ post-reconciliation aggregate surface.
 The condition-blind judge packet has been built under `judge-packet/`
 — `README.md`, `judge-instructions.md`, `case-context.md`, `rubric.md`,
 `calibration-exercise.md` (calibration Surface 1 only), `output-manifest.yaml`,
-`blank-score-sheet.md`, and `outputs/OUT-01.md … OUT-40.md`. Two blind-judge
-attempts are on record: `gpt-oss:20b` **failed the calibration gate**
-(`judge-packet/judge-calibration-gpt-oss-20b.md`) and scored no `OUT-NN`; and
-Claude Opus 4.7 (`judge-packet/judge-score-claude-opus.md`) was mechanically
-eligible at the calibration gate and scored all 40 `OUT-NN`, **but its
-calibration is circular and the pass is not independent** — Claude Opus is the
-orchestrating agent and authored the rubric and the calibration
-anchors/reference — so that pass is a judge-variance data point only and
-**cannot support a `## Result` lift**. **No eligible, independent judge pass
-exists yet**, and no reconciliation has occurred; `scoring_status` stays
-`unscored` and `## Result` stays `partial`. The
-`OUT-NN` -> condition answer key is local-only and is not committed; the
-Surface 2 reference verdicts stay operator-only in
-`judge-packet/calibration-anchors.md`.
+`blank-score-sheet.md`, and `outputs/OUT-01.md … OUT-40.md`. Three blind-judge
+attempts are on record:
+
+- `gpt-oss:20b` **failed the calibration gate**
+  (`judge-packet/judge-calibration-gpt-oss-20b.md`) and scored no `OUT-NN`;
+- Claude Opus 4.7 (`judge-packet/judge-score-claude-opus.md`) was mechanically
+  eligible at the calibration gate and scored all 40 `OUT-NN`, **but its
+  calibration is circular and the pass is not independent** — Claude Opus is the
+  orchestrating agent and authored the rubric and the calibration
+  anchors/reference — so that pass is a judge-variance data point only;
+- hosted OpenAI `gpt-5.4-mini` (`judge-packet/judge-score-openai-gpt-5.4-mini.md`),
+  operated by the human operator outside Claude Code, **passed the calibration
+  gate exactly** (0 criteria differences) and scored all 40 `OUT-NN` — the first
+  v3 judge pass that is both eligible and **independent of the orchestrator**.
+
+No `## Result` lift follows from this step: a Result lift needs the full
+`## Positive result` rule met under eligible judges, and reconciliation of
+`OUT-NN` to conditions has **not** occurred. `scoring_status` stays
+`unscored` and `## Result` stays `partial`. The `OUT-NN` -> condition answer key
+is local-only and is not committed; the Surface 2 reference verdicts stay
+operator-only in `judge-packet/calibration-anchors.md`.
