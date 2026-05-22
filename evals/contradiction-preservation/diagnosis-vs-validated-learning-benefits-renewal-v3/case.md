@@ -27,11 +27,18 @@ It is drafted from the v2 postmortem and `v3-design-prep.md`. The v2 case remain
 the design / dry-run record and stays `partial` / `do_not_promote`; this v3 scaffold
 does not edit or supersede v2 receipts. The frozen
 `diagnosis-vs-validated-learning-benefits-renewal-v3-v1` run exists (40 real
-`gemma4:31b` outputs) and a condition-blind judge packet has been built;
-blind-judge attempts to date are summarised in `## Judge notes`. No eligible,
-independent judge pass and no `OUT-NN` → condition reconciliation exist yet —
-`scoring_status` stays `unscored`, `## Result` stays `partial`, and no canon
-status is promoted.
+`gemma4:31b` outputs); a condition-blind judge packet has been built; three
+blind-judge attempts are recorded — `gpt-oss:20b` failed calibration and scored
+zero `OUT-NN`, Claude Opus 4.7 scored all 40 `OUT-NN` but is non-independent and
+circularly calibrated (judge-variance only), and hosted OpenAI `gpt-5.4-mini`
+passed calibration and scored all 40 `OUT-NN` — the first eligible, independent
+pass; and aggregate-only `OUT-NN` → condition reconciliation has been done from
+committed hashes (no per-`OUT-NN` → condition mapping is committed). The
+pre-registered `## Positive result` rule is **not met** and `eval-decision.md`
+records **`do_not_promote`** (`decision_class:
+c4_saturation_and_judge_count_insufficient`). `scoring_status` is now `scored`,
+`## Result` stays `partial`, and no canon status is promoted. See
+`## Judge notes` for the per-receipt summary.
 
 ## Lineage
 

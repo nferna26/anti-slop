@@ -33,7 +33,7 @@ packet, and a judge never sees it.
 
 ## Status
 
-**Frozen, run, and judge-packet built — not scored.** The five condition packets
+**Frozen, run, judge-packet built, judged, reconciled — `do_not_promote`.** The five condition packets
 were assembled and hashed, the `vanilla_long_prompt` filler built and scanned,
 and the Advisor prompt derived and hashed (see `## Freeze checklist`); the
 benchmark pass has since been **run** — see `## Run`. Forty real `gemma4:31b`
