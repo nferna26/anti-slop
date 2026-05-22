@@ -33,6 +33,7 @@ from eval_lab_status import (
     case_model_conditions,
     classify_output,
     condition_of,
+    read_eval_decision,
     result_status,
 )
 
@@ -78,8 +79,14 @@ class CaseReadiness:
         self.missing_cards: list[str] = []
         self.judge_recorded = False
         self.judge_limitation_noted = False
+        self.eval_decision: dict | None = None
         self.classification = "not_started"
         self.gaps: list[str] = []
+
+    @property
+    def non_promotion_decision(self) -> bool:
+        return bool(self.eval_decision
+                    and self.eval_decision.get("eval_decision") == "do_not_promote")
 
     @property
     def output_total(self) -> int:
@@ -126,6 +133,7 @@ def scan_case(case_path: Path) -> CaseReadiness:
     score_sheet = case_dir / "score-sheet.md"
     run_packet = case_dir / "run-packet.md"
     rep.result = result_status(score_sheet)
+    rep.eval_decision = read_eval_decision(case_dir)
 
     rep.declared = case_model_conditions(case_text)
     rep.long_prompt_declared = any(is_long_prompt(c) for c in rep.declared)
@@ -286,8 +294,21 @@ def main() -> int:
         out.append(f"  case:            {rep.rel}")
         out.append(f"  scoring_status:  {rep.scoring_status}    Result: "
                    f"{rep.result or '(none)'}")
-        out.append(f"  classification:  {rep.classification} "
-                   f"— {CLASSIFICATION_NOTE[rep.classification]}")
+        if rep.non_promotion_decision:
+            dclass = rep.eval_decision.get("decision_class") or "non_promotion"
+            out.append(f"  classification:  {rep.classification} (structural) "
+                       f"— SUPERSEDED by eval decision: {dclass} — NOT benchmark-ready")
+        else:
+            out.append(f"  classification:  {rep.classification} "
+                       f"— {CLASSIFICATION_NOTE[rep.classification]}")
+        if rep.eval_decision:
+            dec = rep.eval_decision.get("eval_decision", "(unspecified)")
+            dclass = rep.eval_decision.get("decision_class", "")
+            out.append(f"  eval decision:   {dec}" + (f" [{dclass}]" if dclass else ""))
+            summary = rep.eval_decision.get("decision_summary", "")
+            if summary:
+                out.append(f"                   {summary}")
+            out.append(f"                   see {rep.eval_decision['_path']}")
         out.append(f"  conditions:      {', '.join(rep.declared) or '(none declared)'}")
         if rep.runs_by_condition:
             per = ", ".join(f"{c}×{n}" for c, n in sorted(rep.runs_by_condition.items()))
@@ -327,10 +348,15 @@ def main() -> int:
                 "benchmark_candidate", "benchmark_supported_claimed"):
         if by_class.get(key):
             out.append(f"  {key}: {by_class[key]}")
+    non_promoted = [r.case_id for r in reports if r.non_promotion_decision]
     candidates = [r.case_id for r in reports
-                  if r.classification == "benchmark_candidate"]
+                  if r.classification == "benchmark_candidate"
+                  and not r.non_promotion_decision]
     out.append("Cases ready for an independent-judge benchmark pass: "
                + (", ".join(candidates) or "none"))
+    if non_promoted:
+        out.append("Cases with a recorded non-promotion decision (NOT benchmark-ready): "
+                   + ", ".join(non_promoted))
     closest = [r.case_id for r in reports if r.classification == "real_single_run"]
     out.append("Cases all-real but short of benchmark (need repeats + independent judge): "
                + (", ".join(closest) or "none"))

@@ -102,6 +102,23 @@ def listed_outputs(case_text: str) -> set[str]:
     return set(re.findall(r"model-outputs/([A-Za-z0-9_.-]+\.md)", case_text))
 
 
+def read_eval_decision(case_dir: Path) -> dict | None:
+    """Frontmatter of a case's eval-decision.md receipt, if present.
+
+    An eval-decision receipt is a public-safe, operator-facing decision record
+    that sits on top of the score-sheet ## Result. It records a decision — for
+    example `eval_decision: do_not_promote` — without changing or replacing the
+    Result status. See docs/eval-lab-protocol.md. Returns None when no
+    eval-decision.md exists for the case.
+    """
+    path = case_dir / "eval-decision.md"
+    if not path.is_file():
+        return None
+    fm = read_frontmatter(path)
+    fm["_path"] = str(path.relative_to(ROOT))
+    return fm
+
+
 # --- per-case scan ---------------------------------------------------------
 
 class CaseReport:
@@ -120,6 +137,7 @@ class CaseReport:
         self.has_long_prompt_control = False
         self.unreviewed_cards: list[str] = []
         self.missing_cards: list[str] = []
+        self.eval_decision: dict | None = None
         self.blockers: list[str] = []
         self.warnings: list[str] = []
 
@@ -145,6 +163,7 @@ def scan_case(case_path: Path) -> CaseReport:
     score_sheet = case_dir / "score-sheet.md"
     rep.has_score_sheet = score_sheet.is_file()
     rep.result = result_status(score_sheet)
+    rep.eval_decision = read_eval_decision(case_dir)
 
     # model outputs
     outputs_dir = case_dir / "model-outputs"
@@ -271,6 +290,14 @@ def main() -> int:
                 parts.append(f"missing: {', '.join(rep.missing_cards)}")
             cards_line = "; ".join(parts)
         out.append(f"  source cards:   {cards_line}")
+        if rep.eval_decision:
+            dec = rep.eval_decision.get("eval_decision", "(unspecified)")
+            dclass = rep.eval_decision.get("decision_class", "")
+            label = dec + (f" [{dclass}]" if dclass else "")
+            out.append(f"  eval decision:  {label}  (see {rep.eval_decision['_path']})")
+            summary = rep.eval_decision.get("decision_summary", "")
+            if summary:
+                out.append(f"                  {summary}")
         for b in rep.blockers:
             out.append(f"  BLOCKER: {b}")
         for w in rep.warnings:
@@ -308,6 +335,13 @@ def main() -> int:
     out.append(
         f"Cases at benchmark_supported with clean receipts ({len(benchmark_ready)}): "
         + (", ".join(benchmark_ready) or "none")
+    )
+    non_promoted = [r.case_id for r in reports
+                    if r.eval_decision
+                    and r.eval_decision.get("eval_decision") == "do_not_promote"]
+    out.append(
+        f"Cases with a recorded non-promotion decision ({len(non_promoted)}): "
+        + (", ".join(non_promoted) or "none")
     )
     total_blockers = sum(len(r.blockers) for r in reports)
     total_warnings = sum(len(r.warnings) for r in reports)

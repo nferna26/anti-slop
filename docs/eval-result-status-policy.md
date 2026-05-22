@@ -58,3 +58,5 @@ Dry-run support and benchmark support are not the same strength of evidence. Dry
 In `score-sheet.md` → `## Result`, write the status word followed by a one-line justification that names the deciding facts — which conditions ran, the substrate-vs-baseline scores, and why the status is not higher. Keep `scoring_status` in the score-sheet frontmatter as the separate `unscored` / `scored` flag for whether any run has been judged at all.
 
 Before lifting a result to `benchmark_supported`, verify the case against `docs/eval-benchmark-upgrade.md`: frozen packet, real model outputs for every comparison condition, exact model IDs and runtime metadata, prompt/source-packet hashes, repeat runs, judge separation, and receipt consistency.
+
+A case may also carry a separate **eval-decision receipt** (`<case>/eval-decision.md`) recording an operator-facing decision — for example a non-promotion decision after an independent blind judge pass. That receipt sits on top of `## Result`; it does not change or replace the status word, and `decision_class` values such as `weakened_by_blind_judge` are not Result statuses. See `docs/eval-lab-protocol.md` → "Eval-decision receipts".

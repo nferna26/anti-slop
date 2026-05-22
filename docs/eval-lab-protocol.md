@@ -70,6 +70,19 @@ The model that generates an output must not be the sole judge of that output. Fo
 
 In-session design passes that are self-scored are design evidence only; they cannot lift a result past `dry_run_supported`.
 
+## Eval-decision receipts
+
+An **eval-decision receipt** is a public-safe, operator-facing decision record for a case, written at `<case>/eval-decision.md`. It sits *on top of* `score-sheet.md` → `## Result`: it records a decision about the case but does **not** change, lower, or replace the Result status, and it is not itself a status — the controlled Result vocabulary in `docs/eval-result-status-policy.md` is unchanged.
+
+Write one when something outside the score sheet's own scoring produces a decision a reader needs even though the Result word has not moved. The first use is the outcome of an independent blind judge pass: when blind judging diverges from the original (often non-independent) scoring, the case may stay `partial` while still earning an explicit decision. The receipt frontmatter carries:
+
+- `eval_decision` — the decision, e.g. `do_not_promote` (do not advance toward `benchmark_supported`; do not cite as benchmark-supported evidence).
+- `decision_class` — the outcome class, e.g. `weakened_by_blind_judge` (an independent blind judge pass weakened a previously clean substrate result), `confirmed`, or `inconclusive`.
+- `result_status` — the unchanged `## Result` word, recorded for cross-check.
+- `decision_summary` — a one-line plain-language summary.
+
+`make eval-lab-status` and `make eval-benchmark-readiness` read the receipt and surface it: a case carrying `eval_decision: do_not_promote` is shown with its decision and is **not** listed as ready for a benchmark pass, even when its structural classification is otherwise `benchmark_candidate`. A `decision_class` like `weakened_by_blind_judge` is a dashboard/decision label, not a Result status. The receipt promotes nothing and changes no score.
+
 ## Canon promotion limit
 
 Canon promotion is operator-gated and is a separate, later artifact action. An eval result never promotes itself. A canon candidate that cites an eval result must cite a `benchmark_supported` one, and may cite it only as proof about model behaviour under that eval — not as proof about the world. A `dry_run_supported` result may inform methodology and substrate iteration; it may not back a canon candidate or a "the substrate produces better advice" claim.
