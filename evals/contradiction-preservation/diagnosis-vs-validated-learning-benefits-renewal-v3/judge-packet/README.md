@@ -28,13 +28,28 @@ nothing that would reveal how any answer was produced.
   answer body, for integrity checking. It carries no origin information.
 - `blank-score-sheet.md` — the template a judge fills, one row per `OUT-NN`.
 
-## Operator-only file (not judge-facing)
+## Consolidated copy-paste packet (for a hosted-API or human judge)
+
+- `independent-judge-packet-calibration.md` — Part 1 of 2: a self-contained,
+  copy-paste-ready calibration packet (instructions, case context, rubric, the
+  three Surface-1 calibration answers, the return format, and the stop rule).
+- `independent-judge-packet-scoring.md` — Part 2 of 2: a self-contained scoring
+  packet with the rubric, case context, and all forty `OUT-NN` answers, released
+  to the judge only after calibration is cleared.
+
+Each consolidated packet embeds only content already present in the modular
+judge-facing files above; the modular files remain the source of truth.
+
+## Operator-only files (not judge-facing)
 
 - `calibration-anchors.md` — the full calibration artifact. It contains the
   Surface 2 reference verdicts for the three calibration anchors. **It is
   operator-only.** A judge sees `calibration-exercise.md` (Surface 1) and must
   not be shown the reference verdicts until after submitting the calibration
   grid. Do not read `calibration-anchors.md` while judging.
+- `operator-calibration-check.md` — operator-only procedure for comparing a
+  judge's returned anchor verdicts against the Surface 2 reference and deciding
+  whether to release Part 2. Not sent to the judge.
 
 ## Blind protocol
 
