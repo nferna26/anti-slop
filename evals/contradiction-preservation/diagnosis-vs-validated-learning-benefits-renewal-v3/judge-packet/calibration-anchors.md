@@ -1,18 +1,22 @@
 ---
 case_id: diagnosis-vs-validated-learning-benefits-renewal-v3
 artifact: calibration-anchors
-status: proposed_unreviewed
+status: filled_pre_run
 created: 2026-05-22
 proposed_date: 2026-05-22
-proposed_by: orchestrating agent (Claude Opus 4.7) — not operator-reviewed
+proposed_by: orchestrating agent (Claude Opus 4.7)
+approved_date: 2026-05-22
+approved_by: operator — status-only approval (anchors accepted as written)
 ---
 
 # Calibration Anchors
 
 This is the calibration-anchor artifact for the future v3 blind judge packet. It is
-public-safe and condition-blind. It now contains **three proposed, agent-drafted
-anchors** — it is **not yet operator-reviewed** and is **not** cleared for a freeze
-or for judge calibration. Status is `proposed_unreviewed`.
+public-safe and condition-blind. It contains **three agent-drafted anchors** that the
+operator has reviewed and accepted as written (status-only approval, 2026-05-22).
+Status is `filled_pre_run`: the anchors are accepted for pre-run judge calibration.
+This approval is **status-only** — it performs no freeze, no run, and no judge
+calibration; see `## Operator approval`.
 
 The file is organised into two surfaces: a **judge-facing calibration-exercise
 surface** (anchor texts only) and an **operator reference surface** (the C1–C6
@@ -27,21 +31,47 @@ outputs and are never part of the result.
 
 ## Status and approval gate
 
-These anchors were **drafted by the orchestrating agent**, not authored or reviewed
-by the operator. They are proposals only.
+These anchors were **drafted by the orchestrating agent** and were **operator-reviewed
+and accepted as written** on 2026-05-22 (status-only approval — see
+`## Operator approval`).
 
-- **Current status: `proposed_unreviewed`.** The anchor texts and reference verdicts
-  in this file are a proposal for operator review.
-- **Operator approval is required before any use.** This file may **not** be used to
-  freeze a v3 benchmark packet, and judges may **not** calibrate against it, while it
-  is `proposed_unreviewed`. The operator must review each anchor text, each C1–C6
-  reference verdict, and each rationale, and either accept, amend, or reject them.
-- **Only operator acceptance** moves the status to `filled_pre_run`. That transition,
-  and the freeze that depends on it, are separate operator actions — they are **not**
-  performed here.
-- The anchors were drafted against the v3 `case.md` scenario, Advisor prompt, rubric,
+- **Current status: `filled_pre_run`.** The anchor texts and reference verdicts in
+  this file are accepted for pre-run judge calibration.
+- **The approval was status-only.** The operator accepted the three anchors as
+  written; no anchor text, reference verdict, total, rationale, or dependency note was
+  changed at approval.
+- **Freeze and calibration are still separate steps.** `filled_pre_run` makes the
+  anchors eligible to be frozen into the v3 judge packet and used for judge
+  calibration; it does **not** itself freeze the packet, run any model, or run a
+  calibration. Those remain separate operator actions.
+- The anchors were accepted against the v3 `case.md` scenario, Advisor prompt, rubric,
   and dependency rule **as currently drafted**. If any of those frozen-inputs-to-be
   changes, these anchors and their reference verdicts must be re-validated.
+
+## Operator approval
+
+**2026-05-22 — status-only approval.** The operator reviewed the three proposed v3
+calibration anchors and accepts them **as written**. This is a status-only approval:
+it changes the artifact status from `proposed_unreviewed` to `filled_pre_run` and
+records this note; it changes no anchor text, no reference verdict, no total, no
+rationale, and no dependency note.
+
+Focused review confirmed before approval:
+
+- **Provenance.** The anchors are recorded as agent-drafted proposals (synthetic
+  illustrative material), not human-authored.
+- **Surface 1** is judge-facing and contains the three anchor texts and a blank
+  scoring grid only — no reference verdicts.
+- **Surface 2** is the operator reference surface, withheld from a judge until that
+  judge has completed Surface 1.
+- **Anchor profiles.** Anchor A demonstrates a clear high-score case (6/6), Anchor B
+  a clear low-score / flattening case (0/6), and Anchor C a deliberate borderline
+  C5/C6 case (4/6).
+- **Public-safe.** No raw source text, private paths, condition labels, model
+  outputs, or source IDs appear in the file.
+
+The approval performs no model run, no judging, no scoring, no run packet, no freeze,
+no eval Result lift, and no canon.
 
 ## The three anchors
 
@@ -183,8 +213,8 @@ this surface, or the reference-verdict summary table below, to a judge before th
 judge has read the Surface 1 anchor texts and recorded its own pass/fail verdicts for
 all three anchors.
 
-All verdicts below are **proposed** (`status: proposed_unreviewed`) and await
-operator review.
+The verdicts below were reviewed and accepted by the operator on 2026-05-22 as
+written (`status: filled_pre_run`); see `## Operator approval`.
 
 ## Reference verdict summary (proposed)
 
@@ -255,14 +285,14 @@ answered.
 ## Provenance and limitations
 
 - The three anchor texts and all reference verdicts in this file were **drafted by
-  the orchestrating agent** (Claude Opus 4.7) on 2026-05-22. They are synthetic
-  illustrative material and **proposals** — not operator-authored, not
-  operator-reviewed.
+  the orchestrating agent** (Claude Opus 4.7) on 2026-05-22 as synthetic illustrative
+  material. They are **not operator-authored**. The operator reviewed and accepted
+  them as written on 2026-05-22 (status-only approval — see `## Operator approval`).
 - They were written against the v3 `case.md` scenario, Advisor prompt, scoring
   rubric, and criterion dependency rule **as currently drafted**. Those inputs are
   not yet frozen; if any changes, these anchors and their reference verdicts must be
   re-validated.
-- This artifact stays `proposed_unreviewed` until the operator reviews and accepts
-  it. No freeze, no run, no judge calibration, and no Result or status change follows
-  from this file. Anchors are illustrative test artifacts — never authorities, never
-  citable as sources.
+- This artifact is `filled_pre_run`: the anchors are accepted for pre-run judge
+  calibration. The approval is status-only — no freeze, no run, no judge calibration,
+  and no eval Result or status change follows from this file. Anchors are illustrative
+  test artifacts — never authorities, never citable as sources.

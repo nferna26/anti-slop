@@ -299,12 +299,13 @@ evidence.
 ## Calibration-anchor requirement
 
 The future frozen judge packet must include `judge-packet/calibration-anchors.md`.
-That file now holds three **agent-proposed** anchors at `status: proposed_unreviewed`;
-they require operator review and acceptance (moving the file to `filled_pre_run`)
-before the case may be frozen or run, and before any judge calibrates against them.
+That file holds three agent-drafted anchors that the operator reviewed and accepted
+as written on 2026-05-22 (status-only approval); the file is now
+`status: filled_pre_run` — the anchors are accepted for pre-run judge calibration. A
+separate operator action is still required to freeze the v3 benchmark packet.
 
-The anchor file must contain three synthetic illustrative answers (agent-drafted,
-proposed) to this v3 scenario:
+The anchor file must contain three synthetic illustrative answers (agent-drafted) to
+this v3 scenario:
 
 1. a clear high-score answer that weighs both objections and makes a concrete
    recommendation under the funding constraint;
