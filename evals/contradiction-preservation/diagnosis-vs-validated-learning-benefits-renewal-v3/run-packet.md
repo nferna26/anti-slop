@@ -35,10 +35,12 @@ and the Advisor prompt derived and hashed (see `## Freeze checklist`); the
 benchmark pass has since been **run** — see `## Run`. Forty real `gemma4:31b`
 outputs (eight per condition) are recorded under `model-outputs/`, with zero
 simulated outputs and zero deferrals. The outputs were anonymised and a
-condition-blind judge packet was built under `judge-packet/`. **Nothing has been
-judged, scored, or reconciled.** `score-sheet.md` stays `scoring_status:
-unscored` and `## Result` stays `partial`. The run promotes nothing and lifts no
-status.
+condition-blind judge packet was built under `judge-packet/`. **One blind-judge
+calibration attempt is on record — `gpt-oss:20b` failed the calibration gate, so
+zero `OUT-NN` outputs have been scored, no eligible judge exists yet, and no
+reconciliation has occurred** (see `## Run`). `score-sheet.md` stays
+`scoring_status: unscored` and `## Result` stays `partial`. The run promotes
+nothing and lifts no status.
 
 The byte-exact assembled condition packets, the filler, the runner, and the raw
 interactions are held in the case's git-ignored local-only run folder. The
