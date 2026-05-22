@@ -25,8 +25,13 @@ through cheap tests when the decision has a binding resource constraint.
 
 It is drafted from the v2 postmortem and `v3-design-prep.md`. The v2 case remains
 the design / dry-run record and stays `partial` / `do_not_promote`; this v3 scaffold
-does not edit or supersede v2 receipts. No model has been run for v3, no outputs
-exist, nothing is scored, and no `## Result` or canon status is promoted.
+does not edit or supersede v2 receipts. The frozen
+`diagnosis-vs-validated-learning-benefits-renewal-v3-v1` run exists (40 real
+`gemma4:31b` outputs) and a condition-blind judge packet has been built;
+blind-judge attempts to date are summarised in `## Judge notes`. No eligible,
+independent judge pass and no `OUT-NN` → condition reconciliation exist yet —
+`scoring_status` stays `unscored`, `## Result` stays `partial`, and no canon
+status is promoted.
 
 ## Lineage
 

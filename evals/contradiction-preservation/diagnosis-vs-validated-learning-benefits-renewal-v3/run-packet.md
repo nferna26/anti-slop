@@ -365,8 +365,12 @@ eligible independent pass. No eligible, independent judge pass exists yet.
 
 ## Discipline note
 
-This packet froze the v3 inputs and recorded the benchmark run; it scored
-nothing. Forty model outputs now exist as test artifacts under `model-outputs/`.
-No score exists, `## Result` stays `partial`, `scoring_status` stays `unscored`,
-and no canon or authority follows from this file. A model output is a test
-artifact — never an authority, never citable as a source.
+This packet froze the v3 inputs and recorded the benchmark run; the run itself
+produced no scores. Forty model outputs now exist as test artifacts under
+`model-outputs/`. Judge scoring is recorded separately under `judge-packet/`: a
+`gpt-oss:20b` calibration receipt (calibration failed, zero `OUT-NN` scored) and
+a non-independent Claude Opus judge-score receipt (40 `OUT-NN` scored, a
+judge-variance data point only) — no eligible, independent judge pass exists, so
+`## Result` stays `partial` and `scoring_status` stays `unscored`, and no canon
+or authority follows from this file. A model output is a test artifact — never
+an authority, never citable as a source.
