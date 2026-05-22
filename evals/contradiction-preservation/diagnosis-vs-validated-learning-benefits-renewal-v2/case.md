@@ -150,8 +150,8 @@ No model outputs exist yet — this is a `status: draft`, `scoring_status: unsco
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is an unscored scaffold: `## Result` is `partial` (no runs yet), and the per-criterion tables are filled by the judges under the `## Judge protocol` after a frozen run.
+See `score-sheet.md` in this case folder. It is an unscored scaffold (`## Result` is `partial`, no runs yet) with **two separate surfaces**: a **blind judge scoring surface** — judges score anonymised `OUT-NN` outputs with **no condition labels visible**, recording `pass`/`fail` per criterion C1–C6 and the criterion dependency rule — and a **post-reconciliation condition aggregate** — operator-only, filled **after** blind scoring by mapping each `OUT-NN` back to its condition with the local-only answer key. Judges fill only the blind, per-output surface; the condition mapping happens only once blind scoring is complete.
 
 ## Judge notes
 
-None yet — the case is unscored. Judge notes are recorded in `score-sheet.md` after a frozen, anonymised run is scored.
+None yet — the case is unscored. After a frozen run, every output is anonymised to a stable `OUT-NN` label before any judge sees it; judges record condition-blind, per-`OUT-NN` criterion verdicts (C1–C6) and short reasoning in `score-sheet.md`. The `OUT-NN` → condition mapping is applied only after blind scoring is complete, on the operator-only post-reconciliation surface — never on the judge-facing surface.
