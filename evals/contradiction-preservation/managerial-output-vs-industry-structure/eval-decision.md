@@ -6,7 +6,7 @@ eval_decision: do_not_promote
 decision_class: weakened_by_blind_judge
 result_status: partial
 decision_date: 2026-05-21
-decision_summary: Independent blind judging weakened the substrate-vs-equal-length-control comparison; the case stays partial — do not promote and do not cite as benchmark-supported.
+decision_summary: Two independent blind judge passes (gemma4:31b and a hosted gpt-5.4-mini) do not robustly support the substrate-vs-control result — it ranges from a clear win to a clear loss across three judges; the case stays partial — do not promote and do not cite as benchmark-supported.
 ---
 
 # Eval Decision — managerial-output-vs-industry-structure
@@ -55,17 +55,30 @@ a substrate win over the equal-length control *across runs*, to show the gain
 is lineage content and not prompt length. Under blind judging that win is not
 robust.
 
+A **second independent blind judge pass** — a hosted `gpt-5.4-mini` (OpenAI),
+recorded in `judge-packet/independent-judge-score-openai-gpt-5.4-mini.md` and
+reconciled in `judge-packet/judge-variance-summary.md` — made the picture
+worse, not better. Under that judge `substrate_workflow` is the **lowest**-mean
+condition (3.67) and loses to the equal-length control by 0.33. Across the
+three judges the substrate-over-control margin runs +3.0 (orchestrator) → +0.67
+(gemma4:31b) → −0.33 (gpt-5.4-mini): it shrinks as the judge becomes more
+independent, and under the hosted judge it goes negative.
+
 ## Current classification
 
-**Weakened / inconclusive — not falsified, not confirmed.**
+**Weakened / inconclusive — not falsified, not confirmed; and not robust
+across judges.**
 
-- Not *confirmed*: the blind pass does not show a robust substrate-over-control
+- Not *confirmed*: neither blind pass shows a robust substrate-over-control
   win, so the substrate hypothesis is not supported at benchmark strength.
-- Not *falsified*: `substrate_workflow` still holds the highest blind mean and
-  a positive (if small) margin over every baseline, so the case's `## Falsifier`
-  is not cleanly met.
-- The decisive substrate-vs-control comparison is **inconclusive** under blind
-  judging; the earlier clean result is **weakened**.
+- Not *falsified* as an overall verdict: the orchestrator and `gemma4:31b`
+  still rank the substrate first, so the case's `## Falsifier` is not cleanly
+  met across all judges — even though `gpt-5.4-mini`, taken alone, ranks the
+  substrate last.
+- **Not robust across judges**: three judges disagree on rank order, and the
+  decisive substrate-vs-control comparison ranges from a clear win to a clear
+  loss. The earlier clean result is best read as a judging artifact of the
+  non-independent orchestrator pass, not as substrate evidence.
 
 ## Next evidence needed
 
@@ -90,9 +103,15 @@ stands.
 - `score-sheet.md` — `## Result` (`partial`) and `## Independent blind judge
   reconciliation`.
 - `run-packet.md` — `## Judge packet` and `## Status`.
-- `judge-packet/independent-judge-score-gemma4-31b.md` — the blind judge scores.
+- `judge-packet/independent-judge-score-gemma4-31b.md` — the first blind judge
+  scores (gemma4:31b).
 - `judge-packet/independent-judge-reconciliation-gemma4-31b.md` — the
-  aggregate reconciliation.
+  gemma4:31b aggregate reconciliation.
+- `judge-packet/independent-judge-score-openai-gpt-5.4-mini.md` — the second
+  blind judge scores (hosted gpt-5.4-mini, user-run).
+- `judge-packet/judge-variance-summary.md` — the cross-judge variance summary
+  (orchestrator vs gemma4:31b vs gpt-5.4-mini) and the gpt-5.4-mini
+  reconciliation aggregates.
 
 ## Discipline note
 

@@ -20,6 +20,8 @@ After the scoring above (Claude Opus 4.7 — the agent that orchestrated the eva
 
 `substrate_workflow` still has the highest mean, but its margin over the equal-length control `vanilla_long_prompt` collapses from +3.0 in the orchestrator pass above to **+0.67**, and the per-run distributions overlap — the control produced a 5/5 run and the substrate a 3/5 run. The decisive substrate-vs-control comparison is **inconclusive** under blind judging; the blind pass does not confirm the substrate hypothesis at benchmark strength. Full detail and the per-output blind scores are in `judge-packet/independent-judge-reconciliation-gemma4-31b.md` and `judge-packet/independent-judge-score-gemma4-31b.md`. This reconciliation changes no score above and does not lift `## Result`; it is an explicit reason the case must not be promoted to `benchmark_supported`.
 
+A **second** independent blind judge pass — a hosted `gpt-5.4-mini` (OpenAI), `judge-packet/independent-judge-score-openai-gpt-5.4-mini.md` — made the picture worse: under that judge `substrate_workflow` is the lowest-mean condition (3.67) and loses to the equal-length control by 0.33. Across the three judges the substrate-over-control margin runs +3.0 → +0.67 → −0.33. The cross-judge analysis is `judge-packet/judge-variance-summary.md`. The substrate signal is not robust across judges; the case stays `partial` and `do_not_promote` (`eval-decision.md`).
+
 ## Scores
 
 Each cell is `pass` or `fail`; per-condition score is the count of criteria passed (0–5).
