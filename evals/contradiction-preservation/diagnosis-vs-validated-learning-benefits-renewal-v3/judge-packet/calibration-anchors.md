@@ -58,8 +58,8 @@ rationale, and no dependency note.
 
 Focused review confirmed before approval:
 
-- **Provenance.** The anchors are recorded as agent-drafted proposals (synthetic
-  illustrative material), not human-authored.
+- **Provenance.** The anchors are recorded as agent-drafted synthetic illustrative
+  material, not human-authored.
 - **Surface 1** is judge-facing and contains the three anchor texts and a blank
   scoring grid only — no reference verdicts.
 - **Surface 2** is the operator reference surface, withheld from a judge until that
@@ -75,8 +75,8 @@ no eval Result lift, and no canon.
 
 ## The three anchors
 
-The set is three synthetic illustrative answers (agent-drafted, proposed) to the v3
-Advisor prompt:
+The set is three synthetic illustrative answers (agent-drafted, operator-accepted) to
+the v3 Advisor prompt:
 
 1. **Anchor A — clear high-score profile.** Weighs both objections, reaches one
    concrete recommendation under the indivisible funding constraint, names a concrete
@@ -103,7 +103,7 @@ that order:
    each, applying the v3 rubric and the criterion dependency rule.
 2. **Surface 2 — operator reference surface.** Only **after** the judge has recorded
    its own verdicts for all three anchors is Surface 2 revealed. The judge's verdicts
-   are then compared against the proposed reference verdicts under the
+   are then compared against the accepted reference verdicts under the
    `## Judge eligibility rule`.
 
 Whoever administers calibration is responsible for the reveal order: Surface 2, and
@@ -129,8 +129,8 @@ surface.** Read all three anchors and, applying the v3 `## Scoring rubric` and
 `## Criterion dependency rule`, record pass/fail for C1–C6 and a total for each in
 the blank grid below. Complete this grid **before** reading Surface 2.
 
-Each anchor text is a synthetic illustrative answer (agent-drafted, proposed) to the
-v3 Advisor prompt — not a model output.
+Each anchor text is a synthetic illustrative answer (agent-drafted, operator-accepted)
+to the v3 Advisor prompt — not a model output.
 
 ## Anchor A — text
 
@@ -207,7 +207,7 @@ v3 Advisor prompt — not a model output.
 # Surface 2 — Operator reference surface
 
 **Reference surface — withheld from a judge until that judge has completed
-Surface 1.** This surface carries the proposed C1–C6 reference verdicts, totals,
+Surface 1.** This surface carries the accepted C1–C6 reference verdicts, totals,
 rationales, and dependency notes. Whoever administers calibration must **not** show
 this surface, or the reference-verdict summary table below, to a judge before that
 judge has read the Surface 1 anchor texts and recorded its own pass/fail verdicts for
@@ -216,7 +216,7 @@ all three anchors.
 The verdicts below were reviewed and accepted by the operator on 2026-05-22 as
 written (`status: filled_pre_run`); see `## Operator approval`.
 
-## Reference verdict summary (proposed)
+## Reference verdict summary
 
 | Anchor | C1 | C2 | C3 | C4 | C5 | C6 | Total |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -224,7 +224,7 @@ written (`status: filled_pre_run`); see `## Operator approval`.
 | B — low-score / flattening | fail | fail | fail | fail | fail | fail | 0 / 6 |
 | C — borderline C5/C6 | pass | pass | pass | pass | fail | fail | 4 / 6 |
 
-## Anchor A — reference block (proposed)
+## Anchor A — reference block
 
 | Criterion | Reference verdict | Rationale |
 | --- | --- | --- |
@@ -241,7 +241,7 @@ Dependency note: C3 and C4 pass, so C5 is eligible; C5 passes on its own merits;
 C6 is then eligible and passes. The dependency ladder (C3 ∧ C4 → C5 → C6) is
 satisfied with no conflict.
 
-## Anchor B — reference block (proposed)
+## Anchor B — reference block
 
 | Criterion | Reference verdict | Rationale |
 | --- | --- | --- |
@@ -258,7 +258,7 @@ Dependency note: C3 fail and C4 fail each independently force C5 to fail; C5 fai
 forces C6 to fail. The cascade and the criteria's own merits agree — the dependency
 rule masks nothing here.
 
-## Anchor C — reference block (proposed)
+## Anchor C — reference block
 
 | Criterion | Reference verdict | Rationale |
 | --- | --- | --- |
