@@ -11,7 +11,7 @@ model_conditions:
   - substrate_workflow
   - vanilla_long_prompt
   - criteria_prompted_no_sources
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
@@ -146,7 +146,7 @@ A judge-dependent outcome — where whether the margins are met depends on which
 
 ## Model outputs
 
-Forty model-output receipts exist under `model-outputs/` — the frozen `diagnosis-vs-validated-learning-benefits-renewal-v2-v1` benchmark pass: eight real `gemma4:31b` runs (via local Ollama) for each of the five conditions, with no in-session simulations and no deferrals. See `run-packet.md` for the freeze, packet hashes, decoding parameters, seeds, and run record. The case is `scoring_status: unscored` — these outputs are recorded but not scored; the `## Result` is `partial`. A model output is a test artifact — never an authority, never citable as a source.
+Forty model-output receipts exist under `model-outputs/` — the frozen `diagnosis-vs-validated-learning-benefits-renewal-v2-v1` benchmark pass: eight real `gemma4:31b` runs (via local Ollama) for each of the five conditions, with no in-session simulations and no deferrals. See `run-packet.md` for the freeze, packet hashes, decoding parameters, seeds, and run record. The case is now `scoring_status: scored`: two condition-blind judge receipts have been reconciled aggregate-only in `judge-packet/judge-variance-summary.md`. The `## Result` remains `partial`, and `eval-decision.md` records `do_not_promote`. A model output is a test artifact — never an authority, never citable as a source.
 
 - `vanilla` — `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md`, `model-outputs/vanilla-03.md`, `model-outputs/vanilla-04.md`, `model-outputs/vanilla-05.md`, `model-outputs/vanilla-06.md`, `model-outputs/vanilla-07.md`, `model-outputs/vanilla-08.md` (8 runs).
 - `famous_sources_supplied` — `model-outputs/famous_sources_supplied.md`, `model-outputs/famous_sources_supplied-02.md`, `model-outputs/famous_sources_supplied-03.md`, `model-outputs/famous_sources_supplied-04.md`, `model-outputs/famous_sources_supplied-05.md`, `model-outputs/famous_sources_supplied-06.md`, `model-outputs/famous_sources_supplied-07.md`, `model-outputs/famous_sources_supplied-08.md` (8 runs).
@@ -156,8 +156,8 @@ Forty model-output receipts exist under `model-outputs/` — the frozen `diagnos
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is an unscored scaffold (`## Result` is `partial`; the frozen run is complete but unjudged) with **two separate surfaces**: a **blind judge scoring surface** — judges score anonymised `OUT-NN` outputs with **no condition labels visible**, recording `pass`/`fail` per criterion C1–C6 and the criterion dependency rule — and a **post-reconciliation condition aggregate** — operator-only, filled **after** blind scoring by mapping each `OUT-NN` back to its condition with the local-only answer key. Judges fill only the blind, per-output surface; the condition mapping happens only once blind scoring is complete.
+See `score-sheet.md` in this case folder. The frozen run has been scored by two condition-blind judges and reconciled aggregate-only; `## Result` remains `partial`. The sheet keeps **two separate surfaces**: a **blind judge scoring surface** — judges score anonymised `OUT-NN` outputs with **no condition labels visible**, recording `pass`/`fail` per criterion C1–C6 and the criterion dependency rule — and a **post-reconciliation condition aggregate** — operator-only, filled **after** blind scoring by mapping each `OUT-NN` back to its condition with the local-only answer key. The public reconciliation reports condition-level aggregates only; the `OUT-NN` → condition mapping remains local-only and uncommitted.
 
 ## Judge notes
 
-Two condition-blind judge passes have been recorded — `gpt-oss:20b` (`judge-packet/independent-judge-score-gpt-oss-20b.md`) and Claude Opus 4.7 (`judge-packet/independent-judge-score-claude-opus.md`); see also `score-sheet.md` → `## Judge Notes`. The case is still `scoring_status: unscored`: the two passes diverge sharply (a judge-sensitive outcome, which keeps `## Result` at `partial`), the Claude Opus pass was run by the orchestrating agent and so is not independent of the orchestrator, and `OUT-NN` is not yet reconciled to conditions. Every output is anonymised to a stable `OUT-NN` label before any judge sees it; judges record condition-blind, per-`OUT-NN` criterion verdicts (C1–C6) and short reasoning in `score-sheet.md`. The `OUT-NN` → condition mapping is applied only after blind scoring is complete, on the operator-only post-reconciliation surface — never on the judge-facing surface.
+Two condition-blind judge passes have been recorded — `gpt-oss:20b` (`judge-packet/independent-judge-score-gpt-oss-20b.md`) and Claude Opus 4.7 (`judge-packet/independent-judge-score-claude-opus.md`) — and reconciled in `judge-packet/judge-variance-summary.md`. The case is `scoring_status: scored`, but the `## Result` stays `partial`: neither judge meets the pre-registered positive rule, the judges disagree on C5 for 20 of 40 outputs and C6 for 22 of 40 outputs, and the Claude Opus pass was run by the orchestrating agent and so is not independent of the orchestrator. `eval-decision.md` records `do_not_promote`. The `OUT-NN` → condition mapping was used only locally for aggregate reconciliation and remains uncommitted.

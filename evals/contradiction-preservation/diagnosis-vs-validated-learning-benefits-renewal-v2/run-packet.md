@@ -23,14 +23,16 @@ judge does see are described in `## Judge-packet protocol` below.
 
 ## Status
 
-**Frozen and run — complete.** The five condition packets were frozen
-(assembled and hashed; see `## Freeze checklist`) before any output was
+**Frozen, run, and reconciled — no promotion.** The five condition packets were
+frozen (assembled and hashed; see `## Freeze checklist`) before any output was
 generated, and the benchmark pass has been run: **forty real model outputs**
 (eight runs × five conditions) are recorded under `model-outputs/`, with zero
-simulated outputs and zero deferrals — see `## Run` below. Scoring has **not**
-been done: `score-sheet.md` → `## Result` is `partial` and `scoring_status` is
-`unscored`. The frozen run promotes nothing and lifts no Result or status; the
-case awaits an independent blind judge pass (see `## Judge-packet protocol`).
+simulated outputs and zero deferrals — see `## Run` below. Two condition-blind
+judge receipts have since been reconciled aggregate-only in
+`judge-packet/judge-variance-summary.md`; `score-sheet.md` now has
+`scoring_status: scored`, but `## Result` remains `partial`, and
+`eval-decision.md` records `do_not_promote`. The frozen run promotes nothing
+and lifts no Result or authority status.
 
 ## Frozen inputs
 
@@ -254,8 +256,31 @@ The forty outputs were then anonymised — each output body hashed with
 `judge-packet/` (frozen judge instructions, condition-neutral case-context and
 rubric, the anonymised outputs, an output-hash manifest, and a blank score
 sheet). The `OUT-NN` → condition answer key is in the local-only run folder,
-git-ignored, not committed. The case is judge-ready and **not yet judged**;
-`## Result` stays `partial`, `scoring_status` stays `unscored`.
+git-ignored, not committed.
+
+## Judge reconciliation
+
+Two condition-blind judge passes have been recorded and reconciled:
+
+- `judge-packet/independent-judge-score-gpt-oss-20b.md` — `gpt-oss:20b`, a
+  non-Gemma local judge model.
+- `judge-packet/independent-judge-score-claude-opus.md` — Claude Opus 4.7,
+  different from the generator and first judge, but not independent of the
+  orchestrator.
+
+The aggregate reconciliation is `judge-packet/judge-variance-summary.md`. It
+used the local-only answer key to compute condition-level means and critical
+criterion pass rates, without committing any `OUT-NN` → condition mapping. The
+case does **not** meet the pre-registered positive rule: `gpt-oss:20b` ranks
+`substrate_workflow` highest but misses the criteria-prompted and C4 margin
+bars; Claude Opus 4.7 scores the criteria-prompted, bare, and famous-source
+controls level with the substrate. The judges also disagree on C5 for 20/40
+outputs and C6 for 22/40 outputs, triggering the third-judge rule.
+
+`score-sheet.md` has `scoring_status: scored`, but `## Result` remains
+`partial`; `eval-decision.md` records `do_not_promote`. No model output,
+condition packet, rubric, Result status, source card, tension card, or canon
+artifact is changed by the reconciliation.
 
 ## Formatting rehearsal
 
