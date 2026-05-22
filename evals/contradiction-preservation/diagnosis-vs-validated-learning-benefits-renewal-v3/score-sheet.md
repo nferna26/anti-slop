@@ -11,15 +11,21 @@ binary criteria C1-C6, each `pass` or `fail` per anonymised output. Apply the
 pre-registered `## Criterion dependency rule` and `## Judge protocol` from
 `case.md`. Do not score against generic or remembered criteria.
 
-This score sheet is an **unscored scaffold**. No v3 model outputs exist, no judge
-packet has been frozen, no judge has scored anything, and no condition aggregate has
-been reconciled.
+This score sheet is **unscored**. The frozen
+`diagnosis-vs-validated-learning-benefits-renewal-v3-v1` benchmark pass has been
+**run** — forty real `gemma4:31b` outputs, eight per condition, recorded under
+`model-outputs/` and anonymised into the condition-blind `judge-packet/` (see
+`run-packet.md` → `## Run`) — but **no judge has scored anything** and no
+condition aggregate has been reconciled.
 
 ## Result
 
-partial - v3 is drafted as a case scaffold only. No model run, judge pass, scoring,
-or reconciliation exists. This result supports no public advice claim and is not
-eligible to support a canon candidate.
+partial - the frozen `diagnosis-vs-validated-learning-benefits-renewal-v3-v1`
+benchmark pass has been run (forty real `gemma4:31b` outputs, eight per
+condition, no simulations and no deferrals — see `run-packet.md`), but **no
+scoring has been done**: `scoring_status` is `unscored` and the surfaces below
+are empty. This result supports no public advice claim and is not eligible to
+support a canon candidate.
 
 This score sheet has two separate surfaces, and they must not be merged:
 
@@ -41,9 +47,9 @@ above `partial`.
 
 ## Blind judge scoring surface
 
-Judge-facing. This surface is filled only after a future frozen run creates
-anonymised `OUT-NN` outputs. The generating condition is withheld and must not
-appear here.
+Judge-facing. The frozen run is complete: its forty outputs are anonymised in
+`judge-packet/outputs/` as `OUT-01 … OUT-40`. This surface is not yet filled — no
+judge has scored. The generating condition is withheld and must not appear here.
 
 Template - one table per eligible judge:
 
@@ -93,8 +99,10 @@ No v3 judge notes yet. Future judge notes must record:
 ## Follow-up
 
 - `judge-packet/calibration-anchors.md` is operator-accepted (`filled_pre_run`).
-- `run-packet.md` freezes the v3 condition packet recipes, packet hashes, the
-  equal-length filler scan, the run parameters, and the judge-packet structure
-  for benchmark version `diagnosis-vs-validated-learning-benefits-renewal-v3-v1`.
-  Its inputs are frozen, but **no run has occurred and no model outputs exist**.
-- A later run goal performs the benchmark pass against the frozen packet.
+- The frozen `diagnosis-vs-validated-learning-benefits-renewal-v3-v1` benchmark
+  pass has been **run** — forty real `gemma4:31b` outputs under `model-outputs/`,
+  anonymised into the condition-blind `judge-packet/` (see `run-packet.md` →
+  `## Run`). No judge has scored anything.
+- A later judge goal runs the calibration step and the blind scoring; only then
+  is reconciliation done. `scoring_status` stays `unscored` and `## Result` stays
+  `partial` until the case is fully scored and reconciled.

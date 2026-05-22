@@ -3,7 +3,7 @@ case_id: diagnosis-vs-validated-learning-benefits-renewal-v3
 artifact: run-packet
 eval_type: contradiction-preservation
 benchmark_version: diagnosis-vs-validated-learning-benefits-renewal-v3-v1
-status: frozen_inputs_no_run
+status: frozen_run_complete
 created: 2026-05-22
 ---
 
@@ -25,19 +25,22 @@ packet, and a judge never sees it.
 
 ## Status
 
-**Frozen inputs, no run.** The five condition packets have been assembled and
-hashed, the `vanilla_long_prompt` filler has been built and scanned, and the
-Advisor prompt has been derived and hashed — see `## Freeze checklist`. The
-benchmark pass has **not** been run: there are **zero model outputs**, zero
-receipts, no anonymisation, no judge packet of outputs, no scoring, no
-reconciliation. `score-sheet.md` stays `scoring_status: unscored` and
-`## Result` stays `partial`. The freeze promotes nothing and lifts no status.
+**Frozen, run, and judge-packet built — not scored.** The five condition packets
+were assembled and hashed, the `vanilla_long_prompt` filler built and scanned,
+and the Advisor prompt derived and hashed (see `## Freeze checklist`); the
+benchmark pass has since been **run** — see `## Run`. Forty real `gemma4:31b`
+outputs (eight per condition) are recorded under `model-outputs/`, with zero
+simulated outputs and zero deferrals. The outputs were anonymised and a
+condition-blind judge packet was built under `judge-packet/`. **Nothing has been
+judged, scored, or reconciled.** `score-sheet.md` stays `scoring_status:
+unscored` and `## Result` stays `partial`. The run promotes nothing and lifts no
+status.
 
-The byte-exact assembled condition packets, the filler, and the build script are
-held in the case's git-ignored local-only run folder. The committed record of
-the freeze is the recipes and the `sha256` table in this file; at run time the
-runner sends the exact frozen packet files and verifies each file's `sha256`
-against the table in `## Freeze checklist` before the call.
+The byte-exact assembled condition packets, the filler, the runner, and the raw
+interactions are held in the case's git-ignored local-only run folder. The
+committed record of the freeze is the recipes and the `sha256` table in this
+file; before each call the runner verified the frozen packet file's `sha256`
+against the table in `## Freeze checklist`.
 
 ## Frozen inputs
 
@@ -216,16 +219,13 @@ Recorded now; **no run has been performed**.
   `num_ctx 32768`, held constant across all conditions and runs. Per-call
   timeout 600 s. These match the `…-v2-v1` decoding parameters for
   cross-version comparability.
-- **Generator model.** **TBD — operator-selected at run time.** One fixed real
-  model, held constant across every condition and run, so the model condition is
-  the only deliberate variable. No generator has been chosen or run for v3. The
-  `…-v2-v1` pass used `gemma4:31b` (Gemma family) via local Ollama after an
-  initial `qwen3.5:latest` attempt was aborted for being unusably slow on this
-  host; the operator may carry `gemma4:31b` forward or select another model. The
-  generator's exact ID and snapshot are recorded in the `## Freeze checklist`
-  generator row **at run time**, not now. Because any Gemma-family generator
-  forces non-Gemma judges, the judge-family constraint is settled only once the
-  generator is chosen.
+- **Generator model.** **`gemma4:31b`** (Gemma family) — one fixed real model,
+  held constant across every condition and run, so the model condition is the
+  only deliberate variable. Selected at run time from the installed local Ollama
+  models, carrying forward the `…-v2-v1` choice; Ollama model ID `6316f0629137`,
+  local Ollama server 0.24.0. See `## Run` for the run record and the
+  `## Freeze checklist` generator row. Because the generator is Gemma-family,
+  every blind judge must be a non-Gemma family.
 
 ## Output, anonymisation, and answer key
 
@@ -234,7 +234,8 @@ Recorded now; **no run has been performed**.
   Each file records full provenance per `runs/model-outputs/_metadata-template.yaml`
   — provider/runtime, model ID and snapshot, decoding params, per-run seed,
   prompt and condition-packet `sha256`, output path, and the real-run status.
-  Real runs only; no simulated outputs. **No such file exists yet.**
+  Real runs only; no simulated outputs. Forty such receipts are now committed —
+  see `## Run`.
 - **Anonymisation rule.** After all outputs exist and **before any judge sees
   them**, each output body is hashed with `sha256` and the outputs are sorted in
   ascending hash order; labels `OUT-01 … OUT-NN` are assigned in that order. The
@@ -279,8 +280,8 @@ pre-registered C5/C6 or margin disagreement; a judge-sensitive outcome stays
 
 Completed at freeze-prep time, **before any output was generated**.
 
-- [ ] Generator model ID and snapshot — **pending operator selection at run
-      time** (see `## Run parameters`).
+- [x] Generator model ID and snapshot recorded — `gemma4:31b`, Ollama model ID
+      `6316f0629137` (local Ollama server 0.24.0); see `## Run`.
 - [x] All five condition packets assembled per `## Condition packets`; each
       packet's word count and `sha256` recorded in the table below.
 - [x] `vanilla_long_prompt` filler assembled; forbidden-vocabulary scan returned
@@ -307,20 +308,53 @@ The `vanilla` packet is the Advisor prompt alone, so its `sha256` equals
 `advisor_prompt_sha256`. Runs 9–10 (seeds 901–905, 1001–1005) are used only if
 the operator opts for the ten-run pass.
 
-## Run status
+## Run
 
-**No run has occurred. No model outputs exist.** `model-outputs/` contains only
-`.gitkeep`. Nothing has been generated, anonymised, judged, scored, or
-reconciled. A later run goal performs the benchmark pass against this frozen
-packet: it selects and records the generator, sends the byte-exact frozen
-condition packets (verifying each `sha256` against `## Freeze checklist`),
-records one real-run receipt per output, anonymises the outputs, and builds the
-judge packet described in `## Judge-packet structure`. That run goal does not
-edit `case.md`, the rubric, the calibration anchors, or this packet's recipes.
+The benchmark pass was run on 2026-05-22 — UTC start `2026-05-22T14:55:16Z`,
+completion `2026-05-22T15:47:24Z`. Generator: **`gemma4:31b`** (Gemma family),
+Ollama model ID `6316f0629137`, via local Ollama (server 0.24.0); decoding
+`temperature 0.7`, `top_p 0.9`, `num_ctx 32768`, on the pre-registered seeds.
+
+**Forty real model outputs — eight runs for each of the five conditions.** Zero
+simulated outputs. **Zero deferrals**: every call completed within the 600 s
+timeout on its first attempt with `done_reason: stop`, so the `seed + 10`
+timeout-retry rule was not exercised. Before each call the frozen condition
+packet's `sha256` was verified against the `## Freeze checklist` table; all forty
+verifications matched. Per-call wall time ranged 46.5 s to 161.3 s (about 52 min
+total). One public-safe model-output receipt per run is committed under
+`model-outputs/` (`<condition>.md`, `<condition>-02.md` …) with full benchmark
+provenance: benchmark version, condition, run number, seed, model ID/snapshot,
+runtime, decoding parameters, condition-packet and advisor `sha256`, the real-run
+classification, and the verbatim answer. `gemma4:31b` emitted no separate
+reasoning/thinking block, so each receipt carries the final answer only; the raw
+interactions stay in the git-ignored local-only run folder.
+
+The forty output bodies were then anonymised — each hashed with `sha256`, sorted
+in ascending hash order, labelled `OUT-01 … OUT-40` (all forty bodies distinct).
+A condition-blind judge packet was built under `judge-packet/`: `README.md`,
+`judge-instructions.md`, `case-context.md`, `rubric.md`, `calibration-exercise.md`
+(calibration Surface 1 only — anchor texts and a blank grid, no reference
+verdicts), `output-manifest.yaml`, `blank-score-sheet.md`, and
+`outputs/OUT-01.md … OUT-40.md`. No judge-facing file carries a condition label,
+seed, run number, or the answer key. The Surface 2 reference verdicts stay
+operator-only in `judge-packet/calibration-anchors.md` and were not copied into
+any judge-facing file. The `OUT-NN` → condition answer key is in the local-only
+run folder, git-ignored, **not committed**.
+
+Some `substrate_workflow` outputs refer to the artifacts supplied to that
+condition, and a few answers name a well-known author from the model's own
+memory. These are verbatim model output and were not edited; the packet is
+label-blind — no `OUT-NN` → condition map is committed — consistent with the v2
+pass.
+
+**No judging, no scoring, no reconciliation.** `score-sheet.md` stays
+`scoring_status: unscored`; `## Result` stays `partial`; no `eval-decision.md`,
+no canon.
 
 ## Discipline note
 
-This packet froze the v3 inputs; it ran nothing and scored nothing. No model
-output exists. `## Result` stays `partial`, `scoring_status` stays `unscored`,
+This packet froze the v3 inputs and recorded the benchmark run; it scored
+nothing. Forty model outputs now exist as test artifacts under `model-outputs/`.
+No score exists, `## Result` stays `partial`, `scoring_status` stays `unscored`,
 and no canon or authority follows from this file. A model output is a test
 artifact — never an authority, never citable as a source.

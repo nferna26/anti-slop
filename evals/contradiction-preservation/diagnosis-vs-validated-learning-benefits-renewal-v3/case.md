@@ -334,14 +334,21 @@ anchor verdicts.
 
 ## Model outputs
 
-None yet for v3. `model-outputs/.gitkeep` is present only to hold the folder. Any
-future output must be a real model-output receipt with full provenance before it can
-contribute to a benchmark result.
+Forty model-output receipts exist under `model-outputs/` — the frozen
+`diagnosis-vs-validated-learning-benefits-renewal-v3-v1` benchmark pass: eight
+real `gemma4:31b` runs (via local Ollama) for each of the five conditions, with
+no in-session simulations and no deferrals. See `run-packet.md` → `## Run` for
+the freeze, packet hashes, decoding parameters, seeds, and run record. The forty
+outputs were anonymised into `judge-packet/outputs/OUT-01.md … OUT-40.md` and a
+condition-blind judge packet was built; **nothing has been judged or scored**.
+`scoring_status` stays `unscored` and `## Result` stays `partial`. A model output
+is a test artifact — never an authority, never citable as a source.
 
-`run-packet.md` freezes the v3 condition packet recipes, packet hashes, the
-equal-length filler and its scan, the run parameters, and the judge-packet
-structure for benchmark version `diagnosis-vs-validated-learning-benefits-renewal-v3-v1`.
-Its inputs are frozen, but **no run has occurred and no model outputs exist**.
+- `vanilla` — `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md`, `model-outputs/vanilla-03.md`, `model-outputs/vanilla-04.md`, `model-outputs/vanilla-05.md`, `model-outputs/vanilla-06.md`, `model-outputs/vanilla-07.md`, `model-outputs/vanilla-08.md` (8 runs).
+- `famous_sources_supplied` — `model-outputs/famous_sources_supplied.md`, `model-outputs/famous_sources_supplied-02.md`, `model-outputs/famous_sources_supplied-03.md`, `model-outputs/famous_sources_supplied-04.md`, `model-outputs/famous_sources_supplied-05.md`, `model-outputs/famous_sources_supplied-06.md`, `model-outputs/famous_sources_supplied-07.md`, `model-outputs/famous_sources_supplied-08.md` (8 runs).
+- `substrate_workflow` — `model-outputs/substrate_workflow.md`, `model-outputs/substrate_workflow-02.md`, `model-outputs/substrate_workflow-03.md`, `model-outputs/substrate_workflow-04.md`, `model-outputs/substrate_workflow-05.md`, `model-outputs/substrate_workflow-06.md`, `model-outputs/substrate_workflow-07.md`, `model-outputs/substrate_workflow-08.md` (8 runs).
+- `vanilla_long_prompt` — `model-outputs/vanilla_long_prompt.md`, `model-outputs/vanilla_long_prompt-02.md`, `model-outputs/vanilla_long_prompt-03.md`, `model-outputs/vanilla_long_prompt-04.md`, `model-outputs/vanilla_long_prompt-05.md`, `model-outputs/vanilla_long_prompt-06.md`, `model-outputs/vanilla_long_prompt-07.md`, `model-outputs/vanilla_long_prompt-08.md` (8 runs).
+- `generic_advice_prompted` — `model-outputs/generic_advice_prompted.md`, `model-outputs/generic_advice_prompted-02.md`, `model-outputs/generic_advice_prompted-03.md`, `model-outputs/generic_advice_prompted-04.md`, `model-outputs/generic_advice_prompted-05.md`, `model-outputs/generic_advice_prompted-06.md`, `model-outputs/generic_advice_prompted-07.md`, `model-outputs/generic_advice_prompted-08.md` (8 runs).
 
 ## Score sheet
 
@@ -351,7 +358,11 @@ post-reconciliation aggregate surface.
 
 ## Judge notes
 
-No judge pass exists for v3. The first future judge packet must include completed
-calibration anchors, condition-neutral case context, condition-neutral rubric,
-blind scoring instructions, anonymised outputs, and an output manifest. No
-`OUT-NN` -> condition answer key may be committed.
+No judge pass exists for v3. The condition-blind judge packet has been built
+under `judge-packet/` — `README.md`, `judge-instructions.md`, `case-context.md`,
+`rubric.md`, `calibration-exercise.md` (calibration Surface 1 only),
+`output-manifest.yaml`, `blank-score-sheet.md`, and `outputs/OUT-01.md …
+OUT-40.md` — ready for a future blind judge. No judge has scored anything. The
+`OUT-NN` -> condition answer key is local-only and is not committed; the
+Surface 2 reference verdicts stay operator-only in
+`judge-packet/calibration-anchors.md`.
