@@ -8,11 +8,11 @@ scoring_status: unscored
 
 Score against the rubric in this case's `case.md` → `## Scoring rubric`: six binary criteria C1–C6, each `pass` or `fail` per model condition per run. Per-run per-condition score is the count of criteria passed (0–6). Apply the pre-registered `## Criterion dependency rule` and the `## Judge protocol` from `case.md`. Do not score against generic or remembered criteria.
 
-This is an **unscored scaffold**. The case is `status: draft`, `scoring_status: unscored`; no model has been run. The tables below are the shape the judges fill after a frozen, anonymised run. The frozen-run definition — the five condition packet recipes, the equal-length filler recipe, run parameters, seeds, the anonymisation rule, the answer-key locality, the judge-packet protocol, and a freeze checklist — is in `run-packet.md` for benchmark version `diagnosis-vs-validated-learning-benefits-renewal-v2-v1`; that packet is **prepared but not yet frozen or run**.
+This score sheet is **unscored**. The case is `status: draft`, `scoring_status: unscored`; the frozen `diagnosis-vs-validated-learning-benefits-renewal-v2-v1` benchmark pass has been **run** — forty real `gemma4:31b` outputs, eight per condition, recorded under `model-outputs/` (see `run-packet.md`, status `frozen_run_complete`) — but **not scored**. The tables below are the shape the judges fill from the anonymised outputs; they are empty.
 
 ## Result
 
-partial — no runs yet. This is a fresh `draft` case: the Advisor prompt, rubric, dependency rule, pre-registered margins, falsifier, and `model_conditions` are defined but not yet frozen-and-run, so scoring is incomplete and the Result is `partial` per `docs/eval-result-status-policy.md`. The Result is not eligible to move above `partial` until a frozen run is scored under the `## Judge protocol` and the `## Positive result` clauses in `case.md` are all met and judge-confirmed; `benchmark_supported` additionally requires the full `docs/eval-benchmark-upgrade.md` checklist. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
+partial — the frozen `diagnosis-vs-validated-learning-benefits-renewal-v2-v1` benchmark pass has been run (forty real `gemma4:31b` outputs, eight per condition, with no in-session simulations and no deferrals — see `run-packet.md`), but **no scoring has been done**: `scoring_status` is `unscored` and the score tables below are empty. Scoring is incomplete, so the Result is `partial` per `docs/eval-result-status-policy.md`. The Result is not eligible to move above `partial` until the outputs are scored under the `## Judge protocol` and the `## Positive result` clauses in `case.md` are all met and judge-confirmed; `benchmark_supported` additionally requires the full `docs/eval-benchmark-upgrade.md` checklist. A `partial` result supports no public advice claim and is not eligible to support a canon candidate.
 
 This score sheet has **two separate surfaces**, and they must not be merged:
 
@@ -23,7 +23,7 @@ A judge sees only the first. Mixing the condition labels into the judge-facing s
 
 ## Blind judge scoring surface
 
-Judge-facing. No runs scored yet. When a frozen run exists, every model output is anonymised to a stable label `OUT-NN` **before any judge sees it** — the generating condition is **withheld** and does not appear on this surface. Each judge records `pass`/`fail` for every criterion C1–C6 on every `OUT-NN`, applies the pre-registered `## Criterion dependency rule` from `case.md`, and writes one short reasoning note per output. At freeze time the output count is fixed (≥8 runs × 5 conditions for the benchmark pass; see `run-packet.md`) and one `OUT-NN` row is added per output.
+Judge-facing. Not yet scored. The frozen run is complete: its forty outputs are anonymised in `judge-packet/` as `OUT-01 … OUT-40` (condition-blind — the generating condition is withheld and does not appear on this surface). Each judge records `pass`/`fail` for every criterion C1–C6 on every `OUT-NN`, applies the pre-registered `## Criterion dependency rule` from `case.md`, and writes one short reasoning note per output. The judge fills `judge-packet/blank-score-sheet.md` (forty `OUT-NN` rows); the template below shows the column shape.
 
 Template — one table per judge; `OUT-NN` rows added at freeze/scoring time:
 

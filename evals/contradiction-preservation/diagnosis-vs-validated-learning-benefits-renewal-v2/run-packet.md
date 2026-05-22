@@ -3,7 +3,7 @@ case_id: diagnosis-vs-validated-learning-benefits-renewal-v2
 artifact: run-packet
 eval_type: contradiction-preservation
 benchmark_version: diagnosis-vs-validated-learning-benefits-renewal-v2-v1
-status: prepared_not_frozen_not_run
+status: frozen_run_complete
 created: 2026-05-21
 ---
 
@@ -23,12 +23,14 @@ judge does see are described in `## Judge-packet protocol` below.
 
 ## Status
 
-**Prepared — not frozen, not run.** No model has been run for this case; no
-model outputs exist under `model-outputs/`; nothing is scored. `score-sheet.md`
-→ `## Result` is `partial`. This packet does not freeze the case by itself: the
-freeze happens when the `## Freeze checklist` below is completed at run time,
-immediately before the first output is generated. Preparing this packet
-promotes nothing and changes no Result or status.
+**Frozen and run — complete.** The five condition packets were frozen
+(assembled and hashed; see `## Freeze checklist`) before any output was
+generated, and the benchmark pass has been run: **forty real model outputs**
+(eight runs × five conditions) are recorded under `model-outputs/`, with zero
+simulated outputs and zero deferrals — see `## Run` below. Scoring has **not**
+been done: `score-sheet.md` → `## Result` is `partial` and `scoring_status` is
+`unscored`. The frozen run promotes nothing and lifts no Result or status; the
+case awaits an independent blind judge pass (see `## Judge-packet protocol`).
 
 ## Frozen inputs
 
@@ -157,13 +159,17 @@ cannot be a more-tokens effect.
   501–505, run 6 = 601–605, run 7 = 701–705, run 8 = 801–805 (runs 9–10 =
   901–905 and 1001–1005 if used). A call that times out is re-attempted on a
   fresh deterministic seed (`seed + 10`), recorded as such, never fabricated.
-- **Decoding.** Generation `temperature 0.7`, `top_p 0.9`, held constant across
-  all conditions and runs. Per-call timeout 600 s.
+- **Decoding.** Generation `temperature 0.7`, `top_p 0.9`, `num_ctx 32768`,
+  held constant across all conditions and runs. Per-call timeout 600 s.
 - **Generator model.** One fixed real model, held constant across every
-  condition and run, so the model condition is the only deliberate variable. A
-  local model via a local runtime is the default. The exact generator model ID
-  and snapshot/digest are recorded in the `## Freeze checklist` at freeze time.
-  The generator must be a different model family from every planned judge (see
+  condition and run, so the model condition is the only deliberate variable.
+  The generator for `…-v2-v1` is **`gemma4:31b`** (Gemma family) via local
+  Ollama (server 0.24.0); its ID and snapshot are in the `## Freeze checklist`.
+  An initial attempt to use `qwen3.5:latest` was aborted **before any output
+  was generated** — on this host qwen3.5 ran unusably slowly (a single
+  short-packet call exceeded the 600 s timeout), so the generator was fixed to
+  `gemma4:31b`, which completed every call. Because the generator is
+  Gemma-family, every blind judge must be a non-Gemma family (see
   `## Judge-packet protocol`).
 
 ## Output, anonymisation, and answer key
@@ -201,32 +207,55 @@ outcome held at `partial`.
 
 ## Freeze checklist
 
-To be completed at run time, **before any output is generated**. The freeze is
-not complete — and no model may be run — until every box is checked.
+Completed at freeze time, **before any output was generated**.
 
-- [ ] Generator model ID and snapshot/digest recorded below.
-- [ ] All five condition packets assembled per `## Condition packets`; each
+- [x] Generator model ID and snapshot recorded below.
+- [x] All five condition packets assembled per `## Condition packets`; each
       packet's word count and `sha256` recorded in the table below.
-- [ ] `vanilla_long_prompt` filler assembled; forbidden-vocabulary scan returns
-      zero hits; filler word count within ±8% of the `substrate_workflow`
-      added-material word count — both recorded.
-- [ ] `advisor_prompt_sha256` recomputed and matches
+- [x] `vanilla_long_prompt` filler assembled; forbidden-vocabulary scan returned
+      **zero** hits; filler is **4634** words against the `substrate_workflow`
+      added material of **4617** words — **100.4%**, within the ±8% band (44
+      distinct everyday-topic paragraphs).
+- [x] `advisor_prompt_sha256` recomputed and matches
       `a1e406feb5014a857769f9c72edb5a0ac54afabbca59e72121fca0337b6e1d17`.
-- [ ] `case.md` frozen inputs (see `## Frozen inputs`) confirmed unchanged
-      since this packet; if changed, a new benchmark version is opened.
-- [ ] Freeze timestamp recorded.
+- [x] `case.md` frozen inputs (see `## Frozen inputs`) confirmed unchanged
+      since this packet.
+- [x] Freeze timestamp recorded.
 
 | Condition | Packet word count | Packet `sha256` | Seeds (runs 1–8) |
 |---|---|---|---|
-| `vanilla` | _freeze_ | _freeze_ | 101 / 201 / 301 / 401 / 501 / 601 / 701 / 801 |
-| `famous_sources_supplied` | _freeze_ | _freeze_ | 102 / 202 / 302 / 402 / 502 / 602 / 702 / 802 |
-| `substrate_workflow` | _freeze_ | _freeze_ | 103 / 203 / 303 / 403 / 503 / 603 / 703 / 803 |
-| `vanilla_long_prompt` | _freeze_ | _freeze_ | 104 / 204 / 304 / 404 / 504 / 604 / 704 / 804 |
-| `criteria_prompted_no_sources` | _freeze_ | _freeze_ | 105 / 205 / 305 / 405 / 505 / 605 / 705 / 805 |
+| `vanilla` | 271 | `a1e406feb5014a857769f9c72edb5a0ac54afabbca59e72121fca0337b6e1d17` | 101 / 201 / 301 / 401 / 501 / 601 / 701 / 801 |
+| `famous_sources_supplied` | 356 | `6cf5882a6ccf922e86f3369f79a141f0f671ebe75f27585f178de831f4097afe` | 102 / 202 / 302 / 402 / 502 / 602 / 702 / 802 |
+| `substrate_workflow` | 4888 | `e48d4cbbbca76b8ce7eb0679d437c565857f229f1c6d81a4841e381769a2ccc5` | 103 / 203 / 303 / 403 / 503 / 603 / 703 / 803 |
+| `vanilla_long_prompt` | 4905 | `e0b810b9d4478fde073466cecb7ef251d245576b4f7eabe533ca44b1c4759c76` | 104 / 204 / 304 / 404 / 504 / 604 / 704 / 804 |
+| `criteria_prompted_no_sources` | 410 | `030f07c62a44b15e0ac63c376fa015f127795584fe52ecac8c19b2e0acfd307b` | 105 / 205 / 305 / 405 / 505 / 605 / 705 / 805 |
 
-Runs 9–10 (if used): seeds `901–905` and `1001–1005`, same condition-index order.
+Runs 9–10 were not used; the pass is 8 runs per condition.
 
-Generator model ID: _freeze_ — snapshot/digest: _freeze_ — freeze timestamp: _freeze_.
+Generator model ID: `gemma4:31b` — snapshot: Ollama model ID `6316f0629137` (server 0.24.0; `/api/show` exposes no separate digest) — freeze timestamp: `2026-05-22T02:43:23Z`.
+
+## Run
+
+Run on 2026-05-21 (UTC `2026-05-22T03:49:25Z` at completion), generator
+`gemma4:31b` via local Ollama (server 0.24.0), `temperature 0.7`, `top_p 0.9`,
+`num_ctx 32768`, on the pre-registered seeds. **Forty real model outputs** —
+eight runs for each of the five conditions — are recorded under
+`model-outputs/`, one public-safe receipt per run with full provenance. **Zero
+simulated outputs. Zero deferrals**: every call completed within the 600 s
+timeout on its first attempt, so the `seed + 10` timeout-retry rule was not
+exercised. Each receipt records its condition packet `sha256`, verified against
+the table above before the call. The raw interactions and the model's separate
+reasoning/thinking blocks are kept in the case's git-ignored local-only run
+folder; the committed receipts carry the verbatim final answers only.
+
+The forty outputs were then anonymised — each output body hashed with
+`sha256`, the outputs sorted in ascending hash order, labelled
+`OUT-01 … OUT-40` — and a condition-blind judge packet was built under
+`judge-packet/` (frozen judge instructions, condition-neutral case-context and
+rubric, the anonymised outputs, an output-hash manifest, and a blank score
+sheet). The `OUT-NN` → condition answer key is in the local-only run folder,
+git-ignored, not committed. The case is judge-ready and **not yet judged**;
+`## Result` stays `partial`, `scoring_status` stays `unscored`.
 
 ## Formatting rehearsal
 
@@ -237,11 +266,13 @@ anonymisation, and blind judge-packet shape were exercised end to end on a
 prompt) with placeholder, non-model outputs. It confirmed the mechanics; it
 generated no real model output, scored nothing, and its artifacts are
 git-ignored under the case's local-only run folder. The final benefits-renewal
-Advisor prompt was **not** run.
+Advisor prompt was **not** run in the rehearsal; the benchmark run that did use
+it is recorded in `## Run` above.
 
 ## Discipline note
 
-This packet prepares a run; it does not perform one. No model output exists, no
-score exists, `## Result` stays `partial`, and no canon or authority follows
-from this file. A model output, when it exists, will be a test artifact — never
-an authority, never citable as a source.
+This packet froze and ran the benchmark pass; it scored nothing. Forty model
+outputs now exist as test artifacts under `model-outputs/`. No score exists,
+`## Result` stays `partial`, `scoring_status` stays `unscored`, and no canon or
+authority follows from this file or from any model output. A model output is a
+test artifact — never an authority, never citable as a source.
