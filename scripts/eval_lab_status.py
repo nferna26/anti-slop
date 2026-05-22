@@ -119,6 +119,80 @@ def read_eval_decision(case_dir: Path) -> dict | None:
     return fm
 
 
+def _is_independent(fm: dict) -> bool:
+    """Conservative: requires an explicit `judge_independence` field that
+    affirms independence and carries no negation."""
+    ind = (fm.get("judge_independence") or "").strip().lower()
+    if not ind:
+        return False
+    if any(s in ind for s in ("not ", "non-", "non independent",
+                              "circular", "pending", "unknown")):
+        return False
+    return "independent" in ind
+
+
+def _calibration_passed(fm: dict) -> bool:
+    """Conservative: requires the receipt's `calibration_result` field to
+    affirm a real pass (not a circular or failed one)."""
+    c = (fm.get("calibration_result") or "").strip().lower()
+    if not c:
+        return False
+    if any(s in c for s in ("fail", "not_eligible", "not eligible",
+                            "circular", "mechanically")):
+        return False
+    return c.startswith("passed") or "— passed" in c
+
+
+def read_judge_receipts(case_dir: Path) -> list[dict]:
+    """Read public-safe judge receipts under judge-packet/.
+
+    A judge receipt is an .md file whose frontmatter `artifact` is one of
+    `judge-score`, `judge-calibration`, or `independent-judge-score`. Returns a
+    list of normalized dicts. Read-only. Reads no condition labels, no answer
+    key, no raw outputs.
+    """
+    receipts: list[dict] = []
+    jp = case_dir / "judge-packet"
+    if not jp.is_dir():
+        return receipts
+    receipt_artifacts = {"judge-score", "judge-calibration", "independent-judge-score"}
+    for p in sorted(jp.glob("*.md")):
+        fm = read_frontmatter(p)
+        artifact = (fm.get("artifact") or "").strip()
+        if artifact not in receipt_artifacts:
+            continue
+        try:
+            outputs_scored = int(fm.get("outputs_scored") or 0)
+        except (TypeError, ValueError):
+            outputs_scored = 0
+        if outputs_scored == 0:
+            # fallback: count unique OUT-NN labels in the receipt body (handles
+            # older receipts that predate the outputs_scored frontmatter field)
+            body = p.read_text(encoding="utf-8")
+            outputs_scored = len(set(re.findall(r"\bOUT-\d{2}\b", body)))
+        cal_passed = _calibration_passed(fm)
+        indep = _is_independent(fm)
+        if outputs_scored == 0:
+            kind = "calibration_only"
+        elif cal_passed and indep:
+            kind = "scored_eligible_independent"
+        else:
+            kind = "scored_not_eligible"
+        receipts.append({
+            "path": str(p.relative_to(ROOT)),
+            "model_id": (fm.get("judge_model_id") or "").strip() or "(unknown)",
+            "family": (fm.get("judge_model_family") or "").strip(),
+            "artifact": artifact,
+            "calibration_result": (fm.get("calibration_result") or "").strip(),
+            "outputs_scored": outputs_scored,
+            "independence": (fm.get("judge_independence") or "").strip(),
+            "calibration_passed": cal_passed,
+            "independent": indep,
+            "kind": kind,
+        })
+    return receipts
+
+
 # --- per-case scan ---------------------------------------------------------
 
 class CaseReport:
@@ -138,8 +212,18 @@ class CaseReport:
         self.unreviewed_cards: list[str] = []
         self.missing_cards: list[str] = []
         self.eval_decision: dict | None = None
+        self.judge_receipts: list[dict] = []
         self.blockers: list[str] = []
         self.warnings: list[str] = []
+
+    @property
+    def eligible_independent_count(self) -> int:
+        return sum(1 for r in self.judge_receipts
+                   if r["kind"] == "scored_eligible_independent")
+
+    @property
+    def scored_receipt_count(self) -> int:
+        return sum(1 for r in self.judge_receipts if r["outputs_scored"] > 0)
 
     @property
     def output_total(self) -> int:
@@ -164,6 +248,7 @@ def scan_case(case_path: Path) -> CaseReport:
     rep.has_score_sheet = score_sheet.is_file()
     rep.result = result_status(score_sheet)
     rep.eval_decision = read_eval_decision(case_dir)
+    rep.judge_receipts = read_judge_receipts(case_dir)
 
     # model outputs
     outputs_dir = case_dir / "model-outputs"
@@ -226,7 +311,26 @@ def scan_case(case_path: Path) -> CaseReport:
     if rep.output_total == 0:
         rep.warnings.append("no model outputs present")
     if rep.scoring_status == "unscored":
-        rep.warnings.append("scoring_status is unscored — no run has been judged")
+        if rep.judge_receipts:
+            elig = rep.eligible_independent_count
+            scored = rep.scored_receipt_count
+            if elig:
+                rep.warnings.append(
+                    f"scoring_status is unscored — {len(rep.judge_receipts)} judge "
+                    f"receipt(s) on record ({elig} eligible independent scored, "
+                    f"{scored - elig} other scored, "
+                    f"{len(rep.judge_receipts) - scored} calibration-only); "
+                    "OUT-NN → condition reconciliation, condition aggregate, "
+                    "and Positive-result decision have not occurred"
+                )
+            else:
+                rep.warnings.append(
+                    f"scoring_status is unscored — {len(rep.judge_receipts)} judge "
+                    "receipt(s) on record but none is an eligible independent "
+                    "scored pass"
+                )
+        else:
+            rep.warnings.append("scoring_status is unscored — no run has been judged")
     if rep.result == "dry_run_supported":
         rep.warnings.append(
             "Result is dry_run_supported — informs methodology, NOT canon-eligible; "
@@ -290,6 +394,18 @@ def main() -> int:
                 parts.append(f"missing: {', '.join(rep.missing_cards)}")
             cards_line = "; ".join(parts)
         out.append(f"  source cards:   {cards_line}")
+        if rep.judge_receipts:
+            tag = {
+                "calibration_only": "calibration only",
+                "scored_eligible_independent": "eligible independent",
+                "scored_not_eligible": "scored, not eligible independent",
+            }
+            parts = []
+            for r in rep.judge_receipts:
+                n = r["outputs_scored"]
+                parts.append(f"{r['model_id']} ({tag[r['kind']]}, scored {n})")
+            out.append(f"  judge receipts: {len(rep.judge_receipts)} — "
+                       + "; ".join(parts))
         if rep.eval_decision:
             dec = rep.eval_decision.get("eval_decision", "(unspecified)")
             dclass = rep.eval_decision.get("decision_class", "")

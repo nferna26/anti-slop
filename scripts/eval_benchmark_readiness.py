@@ -34,6 +34,7 @@ from eval_lab_status import (
     classify_output,
     condition_of,
     read_eval_decision,
+    read_judge_receipts,
     result_status,
 )
 
@@ -80,8 +81,18 @@ class CaseReadiness:
         self.judge_recorded = False
         self.judge_limitation_noted = False
         self.eval_decision: dict | None = None
+        self.judge_receipts: list[dict] = []
         self.classification = "not_started"
         self.gaps: list[str] = []
+
+    @property
+    def eligible_independent_count(self) -> int:
+        return sum(1 for r in self.judge_receipts
+                   if r["kind"] == "scored_eligible_independent")
+
+    @property
+    def has_eligible_independent(self) -> bool:
+        return self.eligible_independent_count > 0
 
     @property
     def non_promotion_decision(self) -> bool:
@@ -134,6 +145,7 @@ def scan_case(case_path: Path) -> CaseReadiness:
     run_packet = case_dir / "run-packet.md"
     rep.result = result_status(score_sheet)
     rep.eval_decision = read_eval_decision(case_dir)
+    rep.judge_receipts = read_judge_receipts(case_dir)
 
     rep.declared = case_model_conditions(case_text)
     rep.long_prompt_declared = any(is_long_prompt(c) for c in rep.declared)
@@ -205,9 +217,22 @@ def classify(rep: CaseReadiness) -> None:
             f"fewer than {MIN_BENCHMARK_RUNS} runs for: "
             + ", ".join(rep.thin_conditions)
         )
-    # gap: independent judge — always outstanding until a benchmark pass adds one
+    # gap: independent judge — explicit judge-receipt detection
     if rep.output_total > 0:
-        if rep.judge_limitation_noted:
+        if rep.has_eligible_independent:
+            elig = rep.eligible_independent_count
+            gaps.append(
+                f"{elig} eligible independent judge pass(es) on record under "
+                "judge-packet/ — OUT-NN → condition reconciliation, condition "
+                "aggregate, and Positive-result decision have not occurred"
+            )
+        elif rep.judge_receipts:
+            gaps.append(
+                f"{len(rep.judge_receipts)} judge receipt(s) on record but "
+                "none is an eligible independent scored pass — a benchmark "
+                "Result lift needs one"
+            )
+        elif rep.judge_limitation_noted:
             gaps.append(
                 "no independent judge — judging is model-family-separated only "
                 "(limitation recorded)"
@@ -298,6 +323,13 @@ def main() -> int:
             dclass = rep.eval_decision.get("decision_class") or "non_promotion"
             out.append(f"  classification:  {rep.classification} (structural) "
                        f"— SUPERSEDED by eval decision: {dclass} — NOT benchmark-ready")
+        elif (rep.classification == "benchmark_candidate"
+              and rep.has_eligible_independent):
+            elig = rep.eligible_independent_count
+            out.append(f"  classification:  {rep.classification} — all-real with "
+                       "repeat runs and the control; "
+                       f"{elig} eligible independent judge pass(es) on record; "
+                       "OUT-NN → condition reconciliation pending")
         else:
             out.append(f"  classification:  {rep.classification} "
                        f"— {CLASSIFICATION_NOTE[rep.classification]}")
@@ -326,10 +358,20 @@ def main() -> int:
                    f"(benchmark needs {MIN_BENCHMARK_RUNS})")
         out.append(f"  source cards:    "
                    + ("all reviewed" if rep.cards_all_reviewed else "ISSUES"))
-        judge = ("model-family-separated, limitation recorded"
-                 if rep.judge_limitation_noted
-                 else "recorded, independence not confirmed" if rep.judge_recorded
-                 else "not recorded")
+        if rep.judge_receipts:
+            tag = {
+                "calibration_only": "calibration only",
+                "scored_eligible_independent": "eligible independent",
+                "scored_not_eligible": "scored, not eligible independent",
+            }
+            parts = [f"{r['model_id']} ({tag[r['kind']]}, scored {r['outputs_scored']})"
+                     for r in rep.judge_receipts]
+            judge = f"{len(rep.judge_receipts)} receipt(s) — " + "; ".join(parts)
+        else:
+            judge = ("model-family-separated, limitation recorded"
+                     if rep.judge_limitation_noted
+                     else "recorded, independence not confirmed" if rep.judge_recorded
+                     else "not recorded")
         out.append(f"  judge:           {judge}")
         if rep.gaps:
             out.append(f"  gaps to benchmark_supported ({len(rep.gaps)}):")
@@ -349,11 +391,20 @@ def main() -> int:
         if by_class.get(key):
             out.append(f"  {key}: {by_class[key]}")
     non_promoted = [r.case_id for r in reports if r.non_promotion_decision]
-    candidates = [r.case_id for r in reports
-                  if r.classification == "benchmark_candidate"
-                  and not r.non_promotion_decision]
+    ready_no_judge = [r.case_id for r in reports
+                      if r.classification == "benchmark_candidate"
+                      and not r.non_promotion_decision
+                      and not r.has_eligible_independent]
+    awaiting_reconciliation = [r.case_id for r in reports
+                               if r.classification == "benchmark_candidate"
+                               and not r.non_promotion_decision
+                               and r.has_eligible_independent]
     out.append("Cases ready for an independent-judge benchmark pass: "
-               + (", ".join(candidates) or "none"))
+               + (", ".join(ready_no_judge) or "none"))
+    if awaiting_reconciliation:
+        out.append("Cases with an eligible independent judge pass, awaiting "
+                   "OUT-NN → condition reconciliation: "
+                   + ", ".join(awaiting_reconciliation))
     if non_promoted:
         out.append("Cases with a recorded non-promotion decision (NOT benchmark-ready): "
                    + ", ".join(non_promoted))
