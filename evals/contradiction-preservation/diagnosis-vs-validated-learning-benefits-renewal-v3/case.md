@@ -11,7 +11,7 @@ model_conditions:
   - substrate_workflow
   - vanilla_long_prompt
   - generic_advice_prompted
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
@@ -347,9 +347,12 @@ the freeze, packet hashes, decoding parameters, seeds, and run record. The forty
 outputs were anonymised into `judge-packet/outputs/OUT-01.md … OUT-40.md` and a
 condition-blind judge packet was built. Three blind-judge attempts are
 summarised in `## Judge notes` — including the first eligible, independent pass
-(hosted OpenAI `gpt-5.4-mini`). No `OUT-NN` → condition reconciliation has
-occurred; `scoring_status` stays `unscored` and `## Result` stays `partial`. A
-model output is a test artifact — never an authority, never citable as a source.
+(hosted OpenAI `gpt-5.4-mini`). Aggregate-only reconciliation has been done
+from committed hashes (no per-`OUT-NN` → condition mapping is committed); the
+pre-registered `## Positive result` rule is **not met**, and `eval-decision.md`
+records `do_not_promote`. `scoring_status` is `scored` (reconciliation done)
+and `## Result` stays `partial`. A model output is a test artifact — never an
+authority, never citable as a source.
 
 - `vanilla` — `model-outputs/vanilla.md`, `model-outputs/vanilla-02.md`, `model-outputs/vanilla-03.md`, `model-outputs/vanilla-04.md`, `model-outputs/vanilla-05.md`, `model-outputs/vanilla-06.md`, `model-outputs/vanilla-07.md`, `model-outputs/vanilla-08.md` (8 runs).
 - `famous_sources_supplied` — `model-outputs/famous_sources_supplied.md`, `model-outputs/famous_sources_supplied-02.md`, `model-outputs/famous_sources_supplied-03.md`, `model-outputs/famous_sources_supplied-04.md`, `model-outputs/famous_sources_supplied-05.md`, `model-outputs/famous_sources_supplied-06.md`, `model-outputs/famous_sources_supplied-07.md`, `model-outputs/famous_sources_supplied-08.md` (8 runs).
@@ -359,9 +362,10 @@ model output is a test artifact — never an authority, never citable as a sourc
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is an unscored scaffold with
-`## Result: partial`, a judge-facing blind scoring surface, and an operator-only
-post-reconciliation aggregate surface.
+See `score-sheet.md` in this case folder. It is `scoring_status: scored` with
+`## Result: partial`; a judge-facing blind scoring surface and an operator-only
+post-reconciliation aggregate surface. `eval-decision.md` records
+`do_not_promote` (`decision_class: c4_saturation_and_judge_count_insufficient`).
 
 ## Judge notes
 
@@ -383,9 +387,15 @@ attempts are on record:
   gate exactly** (0 criteria differences) and scored all 40 `OUT-NN` — the first
   v3 judge pass that is both eligible and **independent of the orchestrator**.
 
-No `## Result` lift follows from this step: a Result lift needs the full
-`## Positive result` rule met under eligible judges, and reconciliation of
-`OUT-NN` to conditions has **not** occurred. `scoring_status` stays
-`unscored` and `## Result` stays `partial`. The `OUT-NN` -> condition answer key
-is local-only and is not committed; the Surface 2 reference verdicts stay
-operator-only in `judge-packet/calibration-anchors.md`.
+Aggregate-only condition reconciliation has now been done from **committed
+hashes** (`output-manifest.yaml` joined to `model-outputs/*.md` by body
+`sha256`); the local-only answer key was not read and no per-`OUT-NN` ->
+condition mapping is committed. The reconciliation found that the pre-registered
+`## Positive result` rule is **not met**: only 1 of ≥2 eligible judges, and
+under the eligible judge (OpenAI `gpt-5.4-mini`) the C4 pass-rate margin against
+`vanilla_long_prompt` is **+0.00** (C4 saturation against the equal-length
+control). `eval-decision.md` records **`do_not_promote`**
+(`decision_class: c4_saturation_and_judge_count_insufficient`).
+`scoring_status` is now `scored` (reconciliation done); `## Result` stays
+`partial`. The Surface 2 reference verdicts stay operator-only in
+`judge-packet/calibration-anchors.md`.

@@ -20,10 +20,12 @@ condition-blind judge packet has been built under `judge-packet/`; see
 `## Status` and `## Run`. **Three blind-judge attempts are on record — `gpt-oss:20b`
 failed calibration, Claude Opus 4.7 scored all 40 `OUT-NN` (non-independent,
 circular calibration), and hosted OpenAI `gpt-5.4-mini` passed calibration and
-scored all 40 `OUT-NN` (the first eligible, independent pass); no `OUT-NN` →
-condition reconciliation has occurred:** `score-sheet.md` stays
-`scoring_status: unscored` and `## Result` stays `partial`. A model output is a
-test artifact — never an authority, never citable as a source.
+scored all 40 `OUT-NN` (the first eligible, independent pass). Aggregate-only
+reconciliation has been done from committed hashes; the pre-registered
+`## Positive result` rule is not met, `eval-decision.md` records
+`do_not_promote`:** `score-sheet.md` is `scoring_status: scored` and `## Result`
+stays `partial`. A model output is a test artifact — never an authority, never
+citable as a source.
 
 **This run packet is operator-facing.** It names the model conditions because it
 is the operator's run specification; it is **not** part of the blind judge
@@ -42,9 +44,11 @@ attempts are on record — `gpt-oss:20b` failed the calibration gate and scored
 no `OUT-NN`; Claude Opus 4.7 scored all 40 `OUT-NN` (non-independent, circular
 calibration — a judge-variance data point only); and hosted OpenAI `gpt-5.4-mini`
 passed the calibration gate and scored all 40 `OUT-NN` (the first eligible,
-independent pass). No `OUT-NN` → condition reconciliation has occurred** (see
-`## Run`). `score-sheet.md` stays `scoring_status: unscored` and `## Result`
-stays `partial`. The run promotes nothing and lifts no status.
+independent pass). Aggregate-only reconciliation has been done from committed
+hashes; the pre-registered `## Positive result` rule is not met,
+`eval-decision.md` records `do_not_promote`** (see `## Run`). `score-sheet.md`
+is `scoring_status: scored` and `## Result` stays `partial`. The run promotes
+nothing and lifts no status.
 
 The byte-exact assembled condition packets, the filler, the runner, and the raw
 interactions are held in the case's git-ignored local-only run folder. The
@@ -358,17 +362,22 @@ memory. These are verbatim model output and were not edited; the packet is
 label-blind — no `OUT-NN` → condition map is committed — consistent with the v2
 pass.
 
-**No reconciliation.** `score-sheet.md` stays `scoring_status: unscored`;
-`## Result` stays `partial`; no `eval-decision.md`, no canon. Three blind-judge
-attempts have since been recorded: `gpt-oss:20b` failed the pre-registered
-calibration gate and scored no `OUT-NN`
+Three blind-judge attempts have since been recorded: `gpt-oss:20b` failed the
+pre-registered calibration gate and scored no `OUT-NN`
 (`judge-packet/judge-calibration-gpt-oss-20b.md`); Claude Opus 4.7 scored all 40
 `OUT-NN` (`judge-packet/judge-score-claude-opus.md`) but is the orchestrating
 agent with a circular calibration — a judge-variance data point only; and hosted
 OpenAI `gpt-5.4-mini` (`judge-packet/judge-score-openai-gpt-5.4-mini.md`),
 operated by the human operator outside Claude Code, passed the calibration gate
 and scored all 40 `OUT-NN` — the first eligible, independent v3 judge pass.
-`OUT-NN` -> condition reconciliation has not occurred.
+Aggregate-only condition reconciliation has been done from **committed hashes**
+(`output-manifest.yaml` joined to `model-outputs/*.md` by body `sha256`); the
+pre-registered `## Positive result` rule is **not met** (only 1 of ≥2 eligible
+judges; under the eligible judge the C4 pass-rate margin against
+`vanilla_long_prompt` is +0.00 — C4 saturation). `eval-decision.md` records
+**`do_not_promote`** (`decision_class:
+c4_saturation_and_judge_count_insufficient`). `scoring_status` is now `scored`;
+`## Result` stays `partial`. No per-`OUT-NN` -> condition mapping is committed.
 
 ## Discipline note
 
@@ -379,8 +388,9 @@ produced no scores. Forty model outputs now exist as test artifacts under
 non-independent Claude Opus judge-score receipt (40 `OUT-NN` scored, a
 judge-variance data point only), and a hosted OpenAI `gpt-5.4-mini` judge-score
 receipt (calibration passed, 40 `OUT-NN` scored — the first eligible, independent
-pass). `OUT-NN` → condition reconciliation has not occurred and no
-`## Positive result` decision has been made, so
-`## Result` stays `partial` and `scoring_status` stays `unscored`, and no canon
-or authority follows from this file. A model output is a test artifact — never
-an authority, never citable as a source.
+pass). Aggregate-only condition reconciliation has been done from committed
+hashes; the pre-registered `## Positive result` rule is not met and
+`eval-decision.md` records `do_not_promote`, so `## Result` stays `partial` and
+`scoring_status` is `scored`, and no canon or authority follows from this file.
+A model output is a test artifact — never an authority, never citable as a
+source.
