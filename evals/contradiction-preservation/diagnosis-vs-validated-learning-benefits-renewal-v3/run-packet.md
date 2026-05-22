@@ -351,9 +351,11 @@ memory. These are verbatim model output and were not edited; the packet is
 label-blind — no `OUT-NN` → condition map is committed — consistent with the v2
 pass.
 
-**No judging, no scoring, no reconciliation.** `score-sheet.md` stays
+**No scoring, no reconciliation.** `score-sheet.md` stays
 `scoring_status: unscored`; `## Result` stays `partial`; no `eval-decision.md`,
-no canon.
+no canon. A first blind-judge calibration attempt (`gpt-oss:20b`) has since been
+recorded — it failed the pre-registered calibration gate and scored no `OUT-NN`;
+see `judge-packet/judge-calibration-gpt-oss-20b.md`.
 
 ## Discipline note
 

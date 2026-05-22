@@ -362,7 +362,9 @@ No judge pass exists for v3. The condition-blind judge packet has been built
 under `judge-packet/` — `README.md`, `judge-instructions.md`, `case-context.md`,
 `rubric.md`, `calibration-exercise.md` (calibration Surface 1 only),
 `output-manifest.yaml`, `blank-score-sheet.md`, and `outputs/OUT-01.md …
-OUT-40.md` — ready for a future blind judge. No judge has scored anything. The
-`OUT-NN` -> condition answer key is local-only and is not committed; the
+OUT-40.md`. A first blind-judge calibration attempt (`gpt-oss:20b`) **failed the
+calibration gate** — see `judge-packet/judge-calibration-gpt-oss-20b.md` — and
+scored no `OUT-NN`; no eligible judge exists yet. No judge has scored anything.
+The `OUT-NN` -> condition answer key is local-only and is not committed; the
 Surface 2 reference verdicts stay operator-only in
 `judge-packet/calibration-anchors.md`.

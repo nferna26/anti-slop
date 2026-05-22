@@ -86,7 +86,16 @@ on C3-C6, under eligible blind judges.
 
 ## Judge Notes
 
-No v3 judge notes yet. Future judge notes must record:
+**Update (2026-05-22) — first blind-judge calibration attempt.** `gpt-oss:20b`
+(non-Gemma) attempted the calibration gate; see
+`judge-packet/judge-calibration-gpt-oss-20b.md`. It **failed** the gate — it
+disagreed with the reference verdicts on C5 and C6 for the borderline anchor —
+so per the `## Judge protocol` it scored **no** `OUT-NN` outputs. No eligible
+judge exists yet; a second judge pass with an eligible (calibrated) judge, and
+only then reconciliation, are still pending. The scoring surfaces above stay
+empty, `scoring_status` stays `unscored`, and `## Result` stays `partial`.
+
+Future judge notes must record:
 
 - judge identity, model family or human role, and whether the judge is independent
   of the orchestrating agent;
