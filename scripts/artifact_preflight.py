@@ -267,6 +267,10 @@ JUDGE_INDEPENDENCE_AFFIRMATIVE = frozenset({
     "independent", "independent_judge", "third_party",
     "human_independent", "independent_human",
     "two_judge", "independent_third_party",
+    # Canonical phrase used by the v3 hosted-judge receipt; "orchestrating"
+    # does not match the "orchestrator" negation marker (different stems), so
+    # this exact allowlist entry affirms without conflict.
+    "independent_of_the_orchestrating_agent",
 })
 # Whole-token negations, checked against the '_'-split value.
 JUDGE_INDEPENDENCE_NEGATION_TOKENS = frozenset({"no", "not", "non"})
@@ -343,6 +347,9 @@ def run_self_test() -> int:
         "third_party", "third-party", "two_judge", "two-judge",
         "human_independent", "independent_human", "independent_third_party",
         "  Independent_Judge  ",  # case/whitespace-insensitive
+        # The canonical phrase used by the v3 hosted-judge receipts:
+        "independent of the orchestrating agent",
+        "Independent of the orchestrating agent",
     ]
     negative = [
         "", "   ", "false", "not independent", "non-independent",
@@ -351,6 +358,12 @@ def run_self_test() -> int:
         "same agent", "orchestrator", "same agent/orchestrator",
         "human", "judge", "the judge was independent of the generator",
         "no", "not", "non",
+        # Negated / limited values that must never affirm even though they
+        # contain the substring "independent":
+        "not_independent_orchestrator_judge",
+        "same_agent_independent",
+        "no_independent_judge", "without_independent_judge",
+        "non_independent",
     ]
     failures: list[str] = []
     for v in affirmative:

@@ -25,6 +25,7 @@ import re
 import sys
 
 from artifact_status import read_frontmatter
+from artifact_preflight import value_affirms_independence
 
 ROOT = Path(__file__).resolve().parents[1]
 EVALS_DIR = ROOT / "evals"
@@ -120,15 +121,18 @@ def read_eval_decision(case_dir: Path) -> dict | None:
 
 
 def _is_independent(fm: dict) -> bool:
-    """Conservative: requires an explicit `judge_independence` field that
-    affirms independence and carries no negation."""
-    ind = (fm.get("judge_independence") or "").strip().lower()
-    if not ind:
-        return False
-    if any(s in ind for s in ("not ", "non-", "non independent",
-                              "circular", "pending", "unknown")):
-        return False
-    return "independent" in ind
+    """Affirm independence only via the strict, controlled allowlist used by
+    `artifact_preflight.value_affirms_independence`. Loose substring matching
+    is deliberately avoided — values like `not_independent_orchestrator_judge`,
+    `same_agent_independent`, `no independent judge`, or
+    `without independent judge` never affirm, even though they contain the
+    substring 'independent'. Absence of a value never affirms. Checks both
+    `judge_independence` and `judge_independent` fields.
+    """
+    for key in ("judge_independence", "judge_independent"):
+        if value_affirms_independence(fm.get(key)):
+            return True
+    return False
 
 
 def _calibration_passed(fm: dict) -> bool:

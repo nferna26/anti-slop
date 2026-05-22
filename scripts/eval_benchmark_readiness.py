@@ -219,7 +219,21 @@ def classify(rep: CaseReadiness) -> None:
         )
     # gap: independent judge — explicit judge-receipt detection
     if rep.output_total > 0:
-        if rep.has_eligible_independent:
+        if rep.eval_decision:
+            # Reconciliation and a Positive-result check are recorded — the
+            # eval-decision (e.g., do_not_promote) sits on top of the score
+            # sheet. Don't print a stale "reconciliation pending" gap; the
+            # eval-decision is surfaced in its own line in the per-case output,
+            # and the case is NOT benchmark-ready under the pre-registered rule.
+            dec = rep.eval_decision.get("eval_decision", "(unspecified)")
+            dclass = rep.eval_decision.get("decision_class", "")
+            label = dec + (f" [{dclass}]" if dclass else "")
+            gaps.append(
+                f"reconciliation complete; eval-decision recorded ({label}) — "
+                "the pre-registered Positive-result rule is not met; case is "
+                "not benchmark-ready"
+            )
+        elif rep.has_eligible_independent:
             elig = rep.eligible_independent_count
             gaps.append(
                 f"{elig} eligible independent judge pass(es) on record under "

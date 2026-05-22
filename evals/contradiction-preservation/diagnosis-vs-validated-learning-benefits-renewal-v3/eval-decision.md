@@ -63,8 +63,9 @@ over `vanilla` (all above the pre-registered bars); judge-stability margins of
 is **+0.000** — substrate C4 = 1.00 and `vanilla_long_prompt` C4 = 1.00 —
 against the required **≥0.20** bar. This is **C4 saturation against the
 equal-length control**: under this judge, C4 ("Detects and uses the
-under-evidence problem") is too easy for `vanilla_long_prompt` answers to
-fail, so the criterion does not discriminate.
+under-evidence problem") is easy enough that `vanilla_long_prompt` answers pass
+it as readily as substrate answers (both at 1.00), so the criterion does not
+discriminate.
 
 This triggers the `## Falsifier` clause "`substrate_workflow` wins total score
 but does not win C3, C4, C5, and C6 against both controls."
