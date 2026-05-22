@@ -303,8 +303,8 @@ That file now holds three **agent-proposed** anchors at `status: proposed_unrevi
 they require operator review and acceptance (moving the file to `filled_pre_run`)
 before the case may be frozen or run, and before any judge calibrates against them.
 
-The anchor file must contain three synthetic, hand-authored illustrative answers to
-this v3 scenario:
+The anchor file must contain three synthetic illustrative answers (agent-drafted,
+proposed) to this v3 scenario:
 
 1. a clear high-score answer that weighs both objections and makes a concrete
    recommendation under the funding constraint;
@@ -314,6 +314,10 @@ this v3 scenario:
 
 Each anchor must include reference C1-C6 verdicts and one-line rationales. Anchors
 are not model outputs, carry no condition, and are never part of the scored result.
+The anchor file is organised into two surfaces — a judge-facing calibration-exercise
+surface (anchor texts only) and an operator reference surface (the C1-C6 reference
+verdicts) — and a judge is shown the reference surface only after recording its own
+anchor verdicts.
 
 ## Anti-overfitting safeguards
 

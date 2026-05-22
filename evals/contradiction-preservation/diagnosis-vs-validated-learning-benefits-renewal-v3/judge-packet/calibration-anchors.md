@@ -14,6 +14,10 @@ public-safe and condition-blind. It now contains **three proposed, agent-drafted
 anchors** — it is **not yet operator-reviewed** and is **not** cleared for a freeze
 or for judge calibration. Status is `proposed_unreviewed`.
 
+The file is organised into two surfaces: a **judge-facing calibration-exercise
+surface** (anchor texts only) and an **operator reference surface** (the C1–C6
+reference verdicts). See `## How this file is used` for the reveal order.
+
 ## Purpose
 
 The v2 benefits-renewal case failed partly because judges interpreted C5 and C6
@@ -27,7 +31,7 @@ These anchors were **drafted by the orchestrating agent**, not authored or revie
 by the operator. They are proposals only.
 
 - **Current status: `proposed_unreviewed`.** The anchor texts and reference verdicts
-  below are a proposal for operator review.
+  in this file are a proposal for operator review.
 - **Operator approval is required before any use.** This file may **not** be used to
   freeze a v3 benchmark packet, and judges may **not** calibrate against it, while it
   is `proposed_unreviewed`. The operator must review each anchor text, each C1–C6
@@ -39,10 +43,10 @@ by the operator. They are proposals only.
   and dependency rule **as currently drafted**. If any of those frozen-inputs-to-be
   changes, these anchors and their reference verdicts must be re-validated.
 
-## Anchor set requirement
+## The three anchors
 
-The set is three synthetic, hand-authored illustrative answers to the v3 Advisor
-prompt:
+The set is three synthetic illustrative answers (agent-drafted, proposed) to the v3
+Advisor prompt:
 
 1. **Anchor A — clear high-score profile.** Weighs both objections, reaches one
    concrete recommendation under the indivisible funding constraint, names a concrete
@@ -53,33 +57,52 @@ prompt:
    mishandles the weighing or recommendation requirement so judges can align on the
    C5/C6 boundary.
 
-Each anchor includes the anchor text, reference verdicts for C1–C6, a total score, a
-one-line rationale per criterion, and a dependency-rule note. The anchors are not
-model outputs, carry no condition, and are never part of the scored result.
+Each anchor has an **anchor text** (in Surface 1) and a **reference block** — C1–C6
+verdicts, total, a one-line rationale per criterion, and a dependency-rule note (in
+Surface 2). The anchors are not model outputs, carry no condition, and are never part
+of the scored result.
+
+## How this file is used
+
+Calibration runs in a fixed order, and the two surfaces below must be revealed in
+that order:
+
+1. **Surface 1 — judge-facing calibration exercise.** The judge is shown Surface 1
+   only: the three anchor texts and a blank scoring grid, with **no reference
+   verdicts**. The judge reads all three anchors and records pass/fail for C1–C6 on
+   each, applying the v3 rubric and the criterion dependency rule.
+2. **Surface 2 — operator reference surface.** Only **after** the judge has recorded
+   its own verdicts for all three anchors is Surface 2 revealed. The judge's verdicts
+   are then compared against the proposed reference verdicts under the
+   `## Judge eligibility rule`.
+
+Whoever administers calibration is responsible for the reveal order: Surface 2, and
+the reference-verdict summary table within it, must **not** be shown to a judge
+before that judge has completed Surface 1. Revealing the reference verdicts early
+defeats the calibration exercise.
 
 ## Judge eligibility rule
 
-Before scoring real outputs, each judge scores these anchors without seeing the
-reference verdicts, then compares against the reference.
+A judge is eligible if its Surface 1 pass/fail verdicts differ from the Surface 2
+reference by no more than two criteria total across all three anchors and it does not
+disagree with the reference on C5 or C6 for any anchor. A judge outside that
+threshold must recalibrate or be recorded as miscalibrated; it does not count toward
+the two-judge minimum for any Result lift above `partial` unless the operator
+explicitly accepts it with a recorded limitation.
 
-A judge is eligible if its pass/fail verdicts differ from the reference by no more
-than two criteria total across all anchors and it does not disagree with the
-reference on C5 or C6 for any anchor. A judge outside that threshold must recalibrate
-or be recorded as miscalibrated; it does not count toward the two-judge minimum for
-any Result lift above `partial` unless the operator explicitly accepts it with a
-recorded limitation.
+---
 
-## Reference verdict summary (proposed)
+# Surface 1 — Judge-facing calibration exercise
 
-| Anchor | C1 | C2 | C3 | C4 | C5 | C6 | Total |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| A — high-score | pass | pass | pass | pass | pass | pass | 6 / 6 |
-| B — low-score / flattening | fail | fail | fail | fail | fail | fail | 0 / 6 |
-| C — borderline C5/C6 | pass | pass | pass | pass | fail | fail | 4 / 6 |
+**Shown to the judge. Anchor texts only — no reference verdicts appear in this
+surface.** Read all three anchors and, applying the v3 `## Scoring rubric` and
+`## Criterion dependency rule`, record pass/fail for C1–C6 and a total for each in
+the blank grid below. Complete this grid **before** reading Surface 2.
 
-## Anchor A — clear high-score profile
+Each anchor text is a synthetic illustrative answer (agent-drafted, proposed) to the
+v3 Advisor prompt — not a model output.
 
-**Anchor text (synthetic, hand-authored — not a model output):**
+## Anchor A — text
 
 > Before recommending anything, separate two questions your team is running
 > together: what is actually driving the drop, and what to spend the appropriation
@@ -108,24 +131,7 @@ recorded limitation.
 > callback, and login touchpoints, the handoff cause would be established enough to
 > commit the appropriation now.
 
-| Criterion | Reference verdict | Rationale |
-| --- | --- | --- |
-| C1 | pass | Treats acting on the working group's diagnosis and testing before scaling as two legitimate, competing readings of the drop; recommends one without dismissing the other. |
-| C2 | pass | Reasons from the 64%→42% fall, the three confounding same-period changes, and the indivisible / non-reservable appropriation with its six-month lock — well over three load-bearing facts, including the binding constraint. |
-| C3 | pass | Keeps the diagnosis-first objection live and acts on it — warns that loose pilots become motion without a theory of the critical cause, and so designs the tests as a discriminating diagnosis with a pre-fixed decision rule. |
-| C4 | pass | Detects, without being told, that the handoff story is plausible but not established — naming the confounders — and connects that gap to the risk of a near-irreversible commitment of the whole appropriation. |
-| C5 | pass | Weighs the objections against each other: sets the cost of delay and the forfeited annual window against the risk of betting the scarce appropriation on an unisolated cause, and explains why the latter outweighs the former here. A definite single-sided recommendation, but the losing objection is weighed and answered. |
-| C6 | pass | One concrete recommendation; engages the constraint by its mechanism (accepts the appropriation lapses, does not pretend the money can be held); names a concrete failure path (the real driver is elsewhere, a year lost); gives a concrete observable disconfirmer (a one-week case-records pull showing abandonment concentrated at the handoff). |
-
-Total: 6 / 6.
-
-Dependency note: C3 and C4 pass, so C5 is eligible; C5 passes on its own merits;
-C6 is then eligible and passes. The dependency ladder (C3 ∧ C4 → C5 → C6) is
-satisfied with no conflict.
-
-## Anchor B — clear low-score / flattening profile
-
-**Anchor text (synthetic, hand-authored — not a model output):**
+## Anchor B — text
 
 > The picture is clear enough to act. Your completion rate has collapsed from 64% to
 > 42%, and your working group has already identified the cause: handoff confusion
@@ -138,24 +144,7 @@ satisfied with no conflict.
 > new staff hired and trained as fast as possible — the sooner the navigators are in
 > place, the sooner completion recovers.
 
-| Criterion | Reference verdict | Rationale |
-| --- | --- | --- |
-| C1 | fail | Presents only the act-now approach; the test-first reading is never treated as a legitimate option and the choice is framed as obvious. |
-| C2 | fail | Recites the 64%→42% fall and the appropriation as "money available" but ignores the binding funding structure (indivisible, non-reservable, six-month lock) and the three same-period confounders. |
-| C3 | fail | Omits the diagnosis-first objection entirely — treats the working group's pinpoint as a finished diagnosis and never asks whether the critical cause has been singled out. |
-| C4 | fail | Treats the working group's confidence as settling the cause ("a team that knows its own operation"); never detects that the handoff story is plausible-but-unestablished and never connects uncertainty to the irreversible commitment. |
-| C5 | fail | Flattens to one side with no weighing of the opposing objection. C3 and C4 both fail, so C5 also fails by the dependency rule; it would fail on its own merits regardless. |
-| C6 | fail | C5 fails, so C6 fails by the dependency rule. Independently it also fails C6 — it gives no strongest reason against approving the program and no observable disconfirming evidence. |
-
-Total: 0 / 6.
-
-Dependency note: C3 fail and C4 fail each independently force C5 to fail; C5 fail
-forces C6 to fail. The cascade and the criteria's own merits agree — the dependency
-rule masks nothing here.
-
-## Anchor C — deliberate borderline C5/C6 profile
-
-**Anchor text (synthetic, hand-authored — not a model output):**
+## Anchor C — text
 
 > This is a genuine three-way bind, and it is worth being honest about each option.
 > The working group's handoff theory is plausible — the call-center tags and the
@@ -174,6 +163,72 @@ rule masks nothing here.
 > and waiting. The strongest reason against it is that it is less ambitious than the
 > full program. If the intake desk does not lift completion, you can reassess and
 > adjust from there.
+
+## Judge scoring grid (fill before reading Surface 2)
+
+| Anchor | C1 | C2 | C3 | C4 | C5 | C6 | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A |  |  |  |  |  |  |  |
+| B |  |  |  |  |  |  |  |
+| C |  |  |  |  |  |  |  |
+
+---
+
+# Surface 2 — Operator reference surface
+
+**Reference surface — withheld from a judge until that judge has completed
+Surface 1.** This surface carries the proposed C1–C6 reference verdicts, totals,
+rationales, and dependency notes. Whoever administers calibration must **not** show
+this surface, or the reference-verdict summary table below, to a judge before that
+judge has read the Surface 1 anchor texts and recorded its own pass/fail verdicts for
+all three anchors.
+
+All verdicts below are **proposed** (`status: proposed_unreviewed`) and await
+operator review.
+
+## Reference verdict summary (proposed)
+
+| Anchor | C1 | C2 | C3 | C4 | C5 | C6 | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A — high-score | pass | pass | pass | pass | pass | pass | 6 / 6 |
+| B — low-score / flattening | fail | fail | fail | fail | fail | fail | 0 / 6 |
+| C — borderline C5/C6 | pass | pass | pass | pass | fail | fail | 4 / 6 |
+
+## Anchor A — reference block (proposed)
+
+| Criterion | Reference verdict | Rationale |
+| --- | --- | --- |
+| C1 | pass | Treats acting on the working group's diagnosis and testing before scaling as two legitimate, competing readings of the drop; recommends one without dismissing the other. |
+| C2 | pass | Reasons from the 64%→42% fall, the three confounding same-period changes, and the indivisible / non-reservable appropriation with its six-month lock — well over three load-bearing facts, including the binding constraint. |
+| C3 | pass | Keeps the diagnosis-first objection live and acts on it — warns that loose pilots become motion without a theory of the critical cause, and so designs the tests as a discriminating diagnosis with a pre-fixed decision rule. |
+| C4 | pass | Detects, without being told, that the handoff story is plausible but not established — naming the confounders — and connects that gap to the risk of a near-irreversible commitment of the whole appropriation. |
+| C5 | pass | Weighs the objections against each other: sets the cost of delay and the forfeited annual window against the risk of betting the scarce appropriation on an unisolated cause, and explains why the latter outweighs the former here. A definite single-sided recommendation, but the losing objection is weighed and answered. |
+| C6 | pass | One concrete recommendation; engages the constraint by its mechanism (accepts the appropriation lapses, does not pretend the money can be held); names a concrete failure path (the real driver is elsewhere, a year lost); gives a concrete observable disconfirmer (a one-week case-records pull showing abandonment concentrated at the handoff). |
+
+Total: 6 / 6.
+
+Dependency note: C3 and C4 pass, so C5 is eligible; C5 passes on its own merits;
+C6 is then eligible and passes. The dependency ladder (C3 ∧ C4 → C5 → C6) is
+satisfied with no conflict.
+
+## Anchor B — reference block (proposed)
+
+| Criterion | Reference verdict | Rationale |
+| --- | --- | --- |
+| C1 | fail | Presents only the act-now approach; the test-first reading is never treated as a legitimate option and the choice is framed as obvious. |
+| C2 | fail | Recites the 64%→42% fall and the appropriation as "money available" but ignores the binding funding structure (indivisible, non-reservable, six-month lock) and the three same-period confounders. |
+| C3 | fail | Omits the diagnosis-first objection entirely — treats the working group's pinpoint as a finished diagnosis and never asks whether the critical cause has been singled out. |
+| C4 | fail | Treats the working group's confidence as settling the cause ("a team that knows its own operation"); never detects that the handoff story is plausible-but-unestablished and never connects uncertainty to the irreversible commitment. |
+| C5 | fail | Flattens to one side with no weighing of the opposing objection. C3 and C4 both fail, so C5 also fails by the dependency rule; it would fail on its own merits regardless. |
+| C6 | fail | C5 fails, so C6 fails by the dependency rule. Independently it also fails C6 — it gives no strongest reason against approving the program and no observable disconfirming evidence. |
+
+Total: 0 / 6.
+
+Dependency note: C3 fail and C4 fail each independently force C5 to fail; C5 fail
+forces C6 to fail. The cascade and the criteria's own merits agree — the dependency
+rule masks nothing here.
+
+## Anchor C — reference block (proposed)
 
 | Criterion | Reference verdict | Rationale |
 | --- | --- | --- |
@@ -195,11 +250,14 @@ even when both objections were named. Contrast Anchor A, where a definite
 single-sided recommendation passes C5 because the losing objection is weighed and
 answered.
 
+---
+
 ## Provenance and limitations
 
-- The three anchor texts and all reference verdicts above were **drafted by the
-  orchestrating agent** (Claude Opus 4.7) on 2026-05-22. They are **proposals**, not
-  operator-authored or operator-reviewed material.
+- The three anchor texts and all reference verdicts in this file were **drafted by
+  the orchestrating agent** (Claude Opus 4.7) on 2026-05-22. They are synthetic
+  illustrative material and **proposals** — not operator-authored, not
+  operator-reviewed.
 - They were written against the v3 `case.md` scenario, Advisor prompt, scoring
   rubric, and criterion dependency rule **as currently drafted**. Those inputs are
   not yet frozen; if any changes, these anchors and their reference verdicts must be
