@@ -49,6 +49,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 ## Proof Surface
 
 - [Evals README](../evals/README.md)
+- [Eval lab learning memo](../docs/eval-lab-learning-memo.md) — cross-case learning notes from the contradiction-preservation surface; methodology synthesis, non-promotional.
 - [Gate specs](../gates/gate-specs.yaml)
 - [Registry](../registry/README.md)
 
