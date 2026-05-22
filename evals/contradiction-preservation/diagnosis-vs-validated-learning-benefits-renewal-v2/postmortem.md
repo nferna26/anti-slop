@@ -145,7 +145,9 @@ another criterion's.
 
 Direction only — no v3 case is drafted here. v3 would open a new benchmark version
 (`…-v2-v3` or a fresh `-v3` case id) and re-freeze; the v2 case and its receipts stay
-untouched as the design/dry-run record.
+untouched as the design/dry-run record. `v3-design-prep.md` in this folder
+operationalises the direction below into drafted rubric text, a dependency rule, a
+control recipe, a calibration-anchor requirement, and a scenario shape.
 
 1. **Sharper C5/C6 wording.**
    - Rewrite C5 so it is unambiguously about the *reasoning*, not the *decision*. C5
