@@ -354,11 +354,14 @@ memory. These are verbatim model output and were not edited; the packet is
 label-blind — no `OUT-NN` → condition map is committed — consistent with the v2
 pass.
 
-**No scoring, no reconciliation.** `score-sheet.md` stays
-`scoring_status: unscored`; `## Result` stays `partial`; no `eval-decision.md`,
-no canon. A first blind-judge calibration attempt (`gpt-oss:20b`) has since been
-recorded — it failed the pre-registered calibration gate and scored no `OUT-NN`;
-see `judge-packet/judge-calibration-gpt-oss-20b.md`.
+**No reconciliation.** `score-sheet.md` stays `scoring_status: unscored`;
+`## Result` stays `partial`; no `eval-decision.md`, no canon. Two blind-judge
+attempts have since been recorded: `gpt-oss:20b` failed the pre-registered
+calibration gate and scored no `OUT-NN`
+(`judge-packet/judge-calibration-gpt-oss-20b.md`); Claude Opus 4.7 scored all 40
+`OUT-NN` (`judge-packet/judge-score-claude-opus.md`) but is the orchestrating
+agent with a circular calibration — a judge-variance data point only, not an
+eligible independent pass. No eligible, independent judge pass exists yet.
 
 ## Discipline note
 

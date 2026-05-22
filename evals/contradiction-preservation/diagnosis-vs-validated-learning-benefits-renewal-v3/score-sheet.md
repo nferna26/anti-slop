@@ -15,10 +15,12 @@ This score sheet is **unscored**. The frozen
 `diagnosis-vs-validated-learning-benefits-renewal-v3-v1` benchmark pass has been
 **run** — forty real `gemma4:31b` outputs, eight per condition, recorded under
 `model-outputs/` and anonymised into the condition-blind `judge-packet/` (see
-`run-packet.md` → `## Run`). One blind-judge calibration attempt (`gpt-oss:20b`)
-has since **failed the calibration gate**, so **zero `OUT-NN` outputs have been
-scored**, no eligible judge exists yet, and no condition aggregate has been
-reconciled.
+`run-packet.md` → `## Run`). Two blind-judge attempts are on record: `gpt-oss:20b`
+**failed the calibration gate** and scored nothing; Claude Opus 4.7 scored all 40
+`OUT-NN` (`judge-packet/judge-score-claude-opus.md`) but is **not independent of
+the orchestrator** and its calibration is **circular**, so it cannot support a
+Result lift. **No eligible, independent judge pass exists yet**, and no condition
+aggregate has been reconciled — see `## Judge Notes`.
 
 ## Result
 
@@ -51,7 +53,9 @@ above `partial`.
 
 Judge-facing. The frozen run is complete: its forty outputs are anonymised in
 `judge-packet/outputs/` as `OUT-01 … OUT-40`. This surface is not yet filled — no
-judge has scored. The generating condition is withheld and must not appear here.
+*eligible, independent* judge has scored. (A non-independent Claude Opus pass is
+recorded at `judge-packet/judge-score-claude-opus.md`; see `## Judge Notes`.) The
+generating condition is withheld and must not appear here.
 
 Template - one table per eligible judge:
 
@@ -81,13 +85,14 @@ condition with the local-only answer key.
 
 ## Comparative signal
 
-None yet - the frozen v3-v1 run exists (40 real outputs), but **zero `OUT-NN`
-outputs have been scored** — the first blind-judge calibration attempt failed
-the calibration gate, so no comparative signal can be computed. The future
-comparative signal is defined by `case.md` -> `## Positive result` and
-`## Falsifier`: the substrate must separate from both the equal-length control
-and the generic-advice control on total score and on C3-C6, under eligible blind
-judges.
+None yet. The frozen v3-v1 run exists (40 real outputs). One blind-judge attempt
+(`gpt-oss:20b`) failed the calibration gate; a second (Claude Opus 4.7) scored
+all 40 `OUT-NN` but is non-independent with a circular calibration, so it cannot
+ground a comparative signal. No comparative signal can be computed from a
+non-independent pass alone. The future comparative signal is defined by
+`case.md` -> `## Positive result` and `## Falsifier`: the substrate must
+separate from both the equal-length control and the generic-advice control on
+total score and on C3-C6, under eligible blind judges.
 
 ## Judge Notes
 
@@ -99,6 +104,18 @@ so per the `## Judge protocol` it scored **no** `OUT-NN` outputs. No eligible
 judge exists yet; a second judge pass with an eligible (calibrated) judge, and
 only then reconciliation, are still pending. The scoring surfaces above stay
 empty, `scoring_status` stays `unscored`, and `## Result` stays `partial`.
+
+**Update (2026-05-22) — second blind-judge attempt (Claude Opus 4.7).** Claude
+Opus 4.7 scored all 40 `OUT-NN` against C1-C6; see
+`judge-packet/judge-score-claude-opus.md` (distribution 1/6 ×1, 2/6 ×12,
+3/6 ×14, 6/6 ×13). It was *mechanically* eligible at the calibration gate
+(0 differences from the reference), but that calibration is **circular** — Claude
+Opus authored the rubric and the calibration anchors/reference — and the pass is
+**not independent**: Claude Opus is the orchestrating agent. Per the
+`## Judge protocol`, this pass is a judge-variance data point only; it does
+**not** count toward the two-judge minimum and **cannot** support a `## Result`
+lift. No eligible, independent judge pass exists yet, and no reconciliation has
+occurred. `scoring_status` stays `unscored`; `## Result` stays `partial`.
 
 Future judge notes must record:
 
@@ -117,9 +134,13 @@ Future judge notes must record:
   pass has been **run** — forty real `gemma4:31b` outputs under `model-outputs/`,
   anonymised into the condition-blind `judge-packet/` (see `run-packet.md` →
   `## Run`).
-- One blind-judge calibration attempt is on record — `gpt-oss:20b` failed the
-  calibration gate (`judge-packet/judge-calibration-gpt-oss-20b.md`) and scored
-  no `OUT-NN`. **Zero `OUT-NN` outputs are scored; no eligible judge exists yet.**
-- A later judge goal must seat an eligible (calibrated) judge, run the blind
-  scoring, and only then reconcile. `scoring_status` stays `unscored` and
-  `## Result` stays `partial` until the case is fully scored and reconciled.
+- Two blind-judge attempts are on record: `gpt-oss:20b` failed the calibration
+  gate (`judge-packet/judge-calibration-gpt-oss-20b.md`) and scored no `OUT-NN`;
+  Claude Opus 4.7 scored all 40 `OUT-NN` (`judge-packet/judge-score-claude-opus.md`)
+  but is non-independent with a circular calibration. **No eligible, independent
+  judge pass exists yet.**
+- A later judge goal must seat an eligible judge that is independent of the
+  orchestrator and did not author the rubric/anchors, run the blind scoring, and
+  only then reconcile. `scoring_status` stays `unscored` and `## Result` stays
+  `partial` until the case is fully scored by eligible independent judges and
+  reconciled.
