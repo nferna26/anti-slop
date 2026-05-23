@@ -1,35 +1,62 @@
 ---
 case_id: normalization-vs-latent-errors-water-treatment-v4
 artifact: calibration-anchors
-status: proposed_unreviewed
+status: filled_pre_run
 created: 2026-05-22
 proposed_date: 2026-05-22
-proposed_by: Codex agent — not operator-reviewed
+proposed_by: Codex agent
+approved_date: 2026-05-22
+approved_by: operator
 ---
 
 # Calibration Anchors
 
 This file is required before any v4 freeze, model run, or judge-packet release.
-It is currently filled with agent-drafted proposed anchors. Do not run or judge
-`normalization-vs-latent-errors-water-treatment-v4` until this file is
-operator-reviewed and set to `status: filled_pre_run`.
+It is filled with agent-drafted synthetic anchors that were operator-reviewed
+and accepted as written before freeze.
 
 The anchors calibrate judges on the C3/C4 -> C5 -> C6 boundary in `case.md`.
 They are not model outputs, not evidence, not canon, and not scored results.
 
 ## Status and approval gate
 
-Current status: `proposed_unreviewed`.
+Current status: `filled_pre_run`.
 
-Required before freeze:
+Satisfied before freeze:
 
 - Operator review recorded in this file.
 - Frontmatter status changed to `filled_pre_run`.
-- Any operator changes to anchor texts or reference verdicts recorded before
-  condition packets are frozen.
+- Anchor texts and reference verdicts accepted as written; no operator edits
+  were made before freeze.
 
-No output generation, judge scoring, reconciliation, `## Result` lift, eval
-decision, or canon change is authorized by this proposed anchor file.
+This approval only clears the calibration-anchor prerequisite for freezing the
+v4 run packet. It does not itself generate outputs, judge, score, reconcile,
+lift `## Result`, record an eval decision, or create canon.
+
+## Operator approval
+
+On 2026-05-22, the operator explicitly approved the v4 calibration anchors as
+written and instructed the agent to set this file to `status: filled_pre_run`
+and continue toward freezing the v4 run packet.
+
+Focused approval checks:
+
+- Provenance remains accurate: these are synthetic illustrative answers drafted
+  by the Codex agent, not human-authored examples and not model outputs.
+- Surface 1 is judge-facing and contains only anchor texts, instructions, and a
+  blank scoring grid.
+- Surface 2 is operator-only and contains the withheld reference verdicts and
+  rationales.
+- Anchor A is accepted as the clear high-score reference answer.
+- Anchor B is accepted as the clear low-score defence-only / clean-record
+  flattening answer.
+- Anchor C is accepted as the borderline free-hybrid answer that should pass
+  C1-C4 but fail C5 and C6.
+- The C3/C4 -> C5 -> C6 dependency boundary is accepted as clear enough to
+  catch judge drift before real outputs are scored.
+- The anchor artifact was scanned clean for condition labels, model-output
+  receipts, answer-key material, private paths, raw source text, book-map
+  evidence, and canon language before acceptance.
 
 ## Operator review checklist
 
@@ -50,9 +77,9 @@ Before accepting these anchors, the operator should confirm:
 - No condition labels, model-output receipts, answer-key material, private
   paths, raw source text, book-map evidence, or canon language are present.
 
-If accepted as written, change frontmatter `status` to `filled_pre_run`, add
-`approved_date` and `approved_by`, and add an `## Operator approval` section
-recording the checklist result. If revised, record the revision before freeze.
+The checklist above is retained as the acceptance basis. If this file is revised
+after output generation begins, the v4-v1 benchmark version is invalidated and a
+new benchmark version must be opened.
 
 ## How this file is used
 

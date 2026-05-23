@@ -20,9 +20,9 @@ scoring_status: unscored
 
 This is a v4 contradiction-preservation scaffold for the reviewed tension
 `normalization-of-deviance-vs-latent-errors`. It is designed as the next
-candidate benchmark path after the cross-case learning memo: no output has been
-generated, no packet has been frozen, no judge has calibrated, and no result has
-been lifted.
+candidate benchmark path after the cross-case learning memo: the v4-v1 run
+packet is now frozen, but no output has been generated, no judge has calibrated,
+and no result has been lifted.
 
 The case tests whether an advisor can preserve a diagnostic-and-intervention
 tension in a high-hazard public-utility scenario: is a troubling pattern better
@@ -31,12 +31,12 @@ technical defects and weak defences that need repair? The scenario is synthetic
 and does not name the sources or frameworks. It is deliberately not another
 strategy / startup / managerial-output case.
 
-This v4 draft is not a benchmark result. It becomes runnable only after the
-calibration anchors are filled and operator-accepted, a run packet freezes the
-exact condition packets, and two external eligible judges are arranged before
-generation. A prepared, not-frozen run packet now exists at `run-packet.md`; it
-records the intended condition recipes and run mechanics but is blocked from
-freeze by the still-unreviewed calibration anchors.
+This v4 draft is not a benchmark result. The calibration anchors are
+operator-accepted, and `run-packet.md` now freezes the exact condition packets,
+generator/runtime snapshot, equal-length filler checks, and two external judge
+routes before generation. The next step is output generation against those frozen
+inputs; no judging, scoring, reconciliation, eval decision, `## Result` lift, or
+canon claim exists yet.
 
 ## Lineage
 
@@ -353,9 +353,9 @@ A model output is a test artifact — never an authority, never citable as a
 source. Future receipts must be real model runs with full benchmark provenance;
 in-session simulations cannot count toward this v4 benchmark pass.
 
-See `run-packet.md` for the prepared, not-frozen v4-v1 run plan. It authorizes
-no output generation until the calibration anchors are operator-accepted and the
-freeze checklist is filled.
+See `run-packet.md` for the frozen v4-v1 run plan. Output generation may proceed
+only against the frozen packet hashes and generator/runtime snapshot recorded
+there.
 
 ## Score sheet
 
@@ -366,5 +366,5 @@ decision is recorded.
 ## Judge notes
 
 No judge has calibrated or scored this v4 case. The calibration-anchor artifact
-is currently `proposed_unreviewed`; a v4 run must not freeze or generate outputs
-until the anchors are operator-accepted.
+is `filled_pre_run`; each external judge must still pass the calibration gate
+before scoring real `OUT-NN` outputs.

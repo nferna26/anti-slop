@@ -3,30 +3,31 @@ case_id: normalization-vs-latent-errors-water-treatment-v4
 artifact: run-packet
 eval_type: contradiction-preservation
 benchmark_version: normalization-vs-latent-errors-water-treatment-v4-v1
-status: prepared_not_frozen_not_run
+status: frozen_inputs_no_run
 created: 2026-05-22
 ---
 
 # Run Packet — normalization-vs-latent-errors-water-treatment-v4-v1
 
-This is the prepared run packet for the v4 water-treatment contradiction
-preservation case. It records the intended condition recipes, run parameters,
-filler constraints, anonymisation rules, and external-judge plan.
+This is the frozen run packet for the v4 water-treatment contradiction
+preservation case. It records the condition recipes, run parameters, filler
+constraints, anonymisation rules, and external-judge plan for benchmark version
+`normalization-vs-latent-errors-water-treatment-v4-v1`.
 
-**Status: prepared only — not frozen, not run.** The calibration anchors are
-still `status: proposed_unreviewed`, so this packet cannot freeze a benchmark
-version and no output generation may begin. A future freeze must update this
-file with final condition-packet hashes, the generator model snapshot, accepted
-calibration-anchor hash, and named eligible judge routes. Candidate condition
-packets and a clean equal-length filler have been assembled locally to reduce
-freeze-time ambiguity, but they are not yet frozen inputs.
+**Status: frozen inputs — not run.** The calibration anchors are
+operator-accepted (`status: filled_pre_run`), the condition packets and
+equal-length filler are frozen by hash, the generator/runtime snapshot is
+recorded, and two external judge routes are named before generation. Output
+generation may begin against this frozen packet, but no v4 model output, judge
+score, reconciliation, eval decision, `## Result` lift, or canon claim exists
+yet.
 
 This file is operator-facing. It names model conditions and run mechanics. It
 must not be shown to blind judges.
 
-## Freeze blockers
+## Freeze prerequisites
 
-The following must be true before `status` may change to a frozen state:
+The following were satisfied before `status` changed to `frozen_inputs_no_run`:
 
 - `judge-packet/calibration-anchors.md` is operator-reviewed and set to
   `status: filled_pre_run`.
@@ -34,19 +35,18 @@ The following must be true before `status` may change to a frozen state:
   judge route counts only if it is external to the orchestrating agent and did
   not author the v4 scenario, rubric, anchors, condition packets, or judge
   packet.
-- The candidate `vanilla_long_prompt` filler and condition packets below are
-  either accepted unchanged at freeze or regenerated and rehashed; in either
-  case the final frozen hashes are recorded in `## Freeze checklist`.
+- The `vanilla_long_prompt` filler and condition packets below were
+  accepted unchanged at freeze and reverified.
 - The generator model and runtime snapshot are recorded.
 
-## Prepared inputs
+## Frozen inputs
 
-The future frozen pass will cover the case sections in `case.md` from
+The frozen pass covers the case sections in `case.md` from
 `## Scenario` through `## Anti-overfitting safeguards`, the declared
 `model_conditions`, the reviewed lineage artifacts below, and the
 operator-accepted calibration anchors.
 
-Prepared lineage artifact `sha256`:
+Frozen lineage artifact `sha256`:
 
 | Artifact | `sha256` |
 | --- | --- |
@@ -166,7 +166,7 @@ folder and is not committed. It must meet these requirements:
   `advice`, `advise`, `recommend`.
 - If the scan is nonzero, discard the filler and regenerate before freeze.
 
-Prepared candidate filler (not frozen):
+Frozen filler:
 
 - Filler word count: 7570.
 - `substrate_workflow` added-material word count: 7570.
@@ -174,17 +174,18 @@ Prepared candidate filler (not frozen):
 - Forbidden-vocabulary scan: clean — zero hits across all listed stems.
 - Filler `sha256`: `5e5f576b7880948cf7b3deffe971e0267df2b78ac3298242ec129b0bbe7c1e2c`.
 
-The candidate filler and assembled condition packets are stored under the
-git-ignored local-only run folder. They may be accepted unchanged at freeze, but
-until the freeze checklist is filled they remain candidate inputs only.
+The frozen filler and assembled condition packets are stored under the
+git-ignored local-only run folder. The public freeze record is the recipe plus
+hashes in this run packet.
 
-## Prepared candidate packet hashes
+## Frozen packet hashes
 
-Candidate packets were assembled from this run packet's recipes, the current
-`case.md`, the current reviewed lineage artifacts, and the local-only candidate
-filler. These are reproducibility aids, not frozen benchmark hashes.
+The packets were assembled from this run packet's recipes, the current
+`case.md`, the current reviewed lineage artifacts, and the local-only
+equal-length filler. These are the frozen benchmark hashes for v4-v1. The
+generation harness must reverify each hash before every model call.
 
-| Condition | Words | Candidate `sha256` |
+| Condition | Words | Frozen `sha256` |
 | --- | ---: | --- |
 | `vanilla` | 311 | `6844cf29154c9f73180d42ea5b7b83f475a0bada9ac7661eec61fbacfce5658f` |
 | `famous_sources_supplied` | 412 | `606153e13082e1c83c12be2e8160f7709dbc3524688ae6ca06a679348ff639e1` |
@@ -203,21 +204,24 @@ filler. These are reproducibility aids, not frozen benchmark hashes.
   A timeout retry uses `seed + 10` and is recorded; no output is fabricated.
 - Decoding: generation `temperature 0.7`, `top_p 0.9`, `num_ctx 32768`,
   timeout 600 s, held constant across all conditions and runs.
-- Planned generator: `gemma4:31b`, pending freeze-time availability and runtime
-  snapshot. If a different generator is used, it must be selected before freeze
-  and held constant across all conditions.
+- Frozen generator: `gemma4:31b`, Ollama model ID `6316f0629137`, local Ollama
+  server version `0.24.0` (CLI client reported `0.19.0`). This generator is held
+  constant across all conditions for v4-v1.
 
 ## External judge routes
 
 The v4 pass requires at least two eligible external blind judges from different
-families/providers. Prepared routes:
+families/providers. Frozen routes named before generation:
 
 - Judge A: hosted OpenAI model, operated by the human operator outside the
-  orchestration session. Candidate: `gpt-5.4-mini` or successor explicitly
-  recorded at judge time.
-- Judge B: hosted Anthropic model or human third-party judge, operated outside
-  the orchestration session and not involved in authoring the rubric, anchors,
-  run packet, or judge packet.
+  orchestration session. Planned candidate: `gpt-5.4-mini`; the exact model ID,
+  API/workbench settings, calibration result, and judge independence must be
+  recorded in the judge receipt.
+- Judge B: hosted Anthropic model, operated by the human operator outside the
+  orchestration session and not as an in-session Claude Code self-judge. Planned
+  candidate: Claude Opus-family hosted model available at judge time; the exact
+  model ID, API/workbench settings, calibration result, and judge independence
+  must be recorded in the judge receipt.
 
 A judge route is not eligible if it is in-session self-judging, authored the
 anchors/reference verdicts, saw condition labels or the answer key before
@@ -261,21 +265,23 @@ Fill these fields before changing `status` to frozen:
 
 | Item | Value |
 | --- | --- |
-| Calibration-anchor status | pending — currently `proposed_unreviewed` |
-| Calibration-anchor `sha256` | pending operator acceptance |
-| Generator model and snapshot | pending |
-| Judge route A | pending final model/operator record |
-| Judge route B | pending final model/operator record |
-| `vanilla` packet words / `sha256` | candidate 311 / `6844cf29154c9f73180d42ea5b7b83f475a0bada9ac7661eec61fbacfce5658f`; not frozen |
-| `famous_sources_supplied` packet words / `sha256` | candidate 412 / `606153e13082e1c83c12be2e8160f7709dbc3524688ae6ca06a679348ff639e1`; not frozen |
-| `substrate_workflow` packet words / `sha256` | candidate 7881 / `ea7aaa8b6ca603d18e000a32d4f9bbda8422d472ea0b17fcb596763d4d014ead`; not frozen |
-| `vanilla_long_prompt` packet words / `sha256` | candidate 7924 / `ec7a3a322a052431322b28c217f06fe749c1e6a477fcf781564f058e32b8a441`; not frozen |
-| `generic_advice_prompted` packet words / `sha256` | candidate 335 / `09689f074da86aacaebe20292d529da17dd8ccda9f7a7d28caac79dbed0c1778`; not frozen |
-| Filler word count and ratio | candidate 7570 vs 7570, 100.0%; not frozen |
-| Filler forbidden-vocabulary scan | candidate clean, zero hits; not frozen |
+| Calibration-anchor status | `filled_pre_run`, operator-approved on 2026-05-22 |
+| Calibration-anchor `sha256` | `99a624bd7186b8a2f9918045becc245f9ff5c01db18662ce50bf158464a41923` |
+| Generator model and snapshot | `gemma4:31b`, Ollama model ID `6316f0629137`, local Ollama server `0.24.0` |
+| Judge route A | hosted OpenAI `gpt-5.4-mini` candidate, human-operator run outside orchestration; exact model/settings recorded in judge receipt |
+| Judge route B | hosted Anthropic Claude Opus-family candidate, human-operator run outside orchestration and not in-session self-judging; exact model/settings recorded in judge receipt |
+| `vanilla` packet words / `sha256` | frozen 311 / `6844cf29154c9f73180d42ea5b7b83f475a0bada9ac7661eec61fbacfce5658f` |
+| `famous_sources_supplied` packet words / `sha256` | frozen 412 / `606153e13082e1c83c12be2e8160f7709dbc3524688ae6ca06a679348ff639e1` |
+| `substrate_workflow` packet words / `sha256` | frozen 7881 / `ea7aaa8b6ca603d18e000a32d4f9bbda8422d472ea0b17fcb596763d4d014ead` |
+| `vanilla_long_prompt` packet words / `sha256` | frozen 7924 / `ec7a3a322a052431322b28c217f06fe749c1e6a477fcf781564f058e32b8a441` |
+| `generic_advice_prompted` packet words / `sha256` | frozen 335 / `09689f074da86aacaebe20292d529da17dd8ccda9f7a7d28caac79dbed0c1778` |
+| Filler word count and ratio | frozen 7570 vs 7570, 100.0% |
+| Filler forbidden-vocabulary scan | frozen clean, zero hits |
 
-## Current stop condition
+## Current state
 
-Stop here until the calibration anchors are operator-reviewed. This prepared
-packet exists to reduce freeze-time ambiguity; it is not a frozen benchmark
-version and authorizes no output generation.
+The v4-v1 inputs are frozen and local packet verification passes. The next step
+is to generate forty real model outputs using the frozen generator and packet
+hashes, then build the condition-blind judge packet. No output has been generated
+yet, and no judging, scoring, reconciliation, eval decision, `## Result` lift,
+canon candidate, or public claim exists.

@@ -12,17 +12,18 @@ model output is a test artifact, not an authority.
 
 ## Result
 
-partial - v4 scaffold only. No run packet has frozen a benchmark version, no
-model outputs exist, no judge has calibrated, no output has been scored, and no
-condition aggregate or decision exists. A prepared `run-packet.md` exists but is
-not frozen and authorizes no output generation. This case cannot support any
-public claim, canon candidate, or `benchmark_supported` status.
+partial - v4 frozen-input benchmark scaffold only. `run-packet.md` now freezes
+the v4-v1 condition packets, equal-length filler, generator/runtime snapshot,
+and external judge routes, but no model outputs exist, no judge has calibrated,
+no output has been scored, and no condition aggregate or decision exists. This
+case cannot support any public claim, canon candidate, or `benchmark_supported`
+status.
 
 ## Calibration gate
 
-`judge-packet/calibration-anchors.md` is currently `status: proposed_unreviewed`.
-The agent-drafted anchors must be operator-reviewed and accepted before any v4
-freeze, model run, or judge-packet release.
+`judge-packet/calibration-anchors.md` is `status: filled_pre_run`. The
+agent-drafted anchors were operator-reviewed and accepted as written before the
+v4-v1 run packet froze.
 
 Every eligible judge must complete the calibration exercise before scoring real
 `OUT-NN` answers. A judge that fails the pre-registered calibration gate scores
@@ -83,11 +84,8 @@ No judge has calibrated or scored this v4 case.
 
 ## Follow-up
 
-1. Operator-review and accept `judge-packet/calibration-anchors.md` before any
-   freeze or run.
-2. Freeze `run-packet.md` with exact condition packets, hashes,
-   equal-length filler checks, run count, generator model, and two external
-   eligible judge routes named before generation.
-3. Generate all real outputs, build the condition-blind judge packet, collect
+1. Generate all real outputs against the frozen packet hashes in `run-packet.md`.
+2. Build the condition-blind judge packet.
+3. Collect
    calibrated external judge scores, reconcile aggregate-only, and record a
    decision.
