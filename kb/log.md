@@ -4,6 +4,19 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-23
 
+- Recorded the post-v6 pivot decision in `docs/eval-lab-v7-pivot-plan.md`:
+  continue the eval program, but stop extending the v4-v6 safety/operations
+  family as-is because generic practical advice repeatedly matched the
+  substrate on load-bearing recognition and the judge setup remained fragile.
+  Drafted the unreviewed, non-canon claim/tension card
+  `corpus/claim-tension-cards/halo-contaminated-evidence-vs-diagnosis-and-validation.md`
+  as targeted v7 substrate pre-work. The card cites only reviewed source cards
+  (`BK-0048-card-001`, `BK-0001-card-001`, `BK-0007-card-001`) and deliberately
+  cites no unreviewed source card. The pivot plan names a business/product
+  evidence-quality v7 target, stricter calibration and judge pre-registration
+  requirements, and canon/book-growth limits. No v7 scenario, model outputs,
+  judge receipts, eval decision, `benchmark_supported` result, canon candidate,
+  or public advice claim created.
 - Designed, executed, judged, and reconciled the v6
   `normalization-vs-latent-errors-print-vault-v6-v1` benchmark pass from the
   v5 failure mode rather than by editing v5. The synthetic Marrow House

@@ -34,6 +34,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - [Manifest schema](../corpus/manifests/schema.yaml)
 - [Acquisition statuses](../corpus/manifests/acquisition-statuses.yaml)
 - [Publication statuses](../corpus/manifests/publication-statuses.yaml)
+- [Halo-contaminated evidence vs diagnosis and validation](../corpus/claim-tension-cards/halo-contaminated-evidence-vs-diagnosis-and-validation.md) - unreviewed, non-canon claim/tension card drafted as v7 substrate pre-work.
 - Status report: `make report` (output is read-only; no commits required).
 - Phase 2 queue: `make phase2-queue` (prints the first verification batch).
 
@@ -50,6 +51,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 
 - [Evals README](../evals/README.md)
 - [Eval lab learning memo](../docs/eval-lab-learning-memo.md) — cross-case learning notes from the contradiction-preservation surface; methodology synthesis, non-promotional.
+- [Eval lab v7 pivot plan](../docs/eval-lab-v7-pivot-plan.md) - public-safe design plan for pivoting away from the v4-v6 safety/operations family before the next benchmark attempt.
 - [Runway-lighting v5 postmortem](../evals/contradiction-preservation/normalization-vs-latent-errors-runway-lighting-v5/postmortem.md) - public-safe design lesson from the v5 machinery pass and generic-advice saturation.
 - [Print-vault v6 eval decision](../evals/contradiction-preservation/normalization-vs-latent-errors-print-vault-v6/eval-decision.md) - public-safe v6 execution decision; partial / do_not_promote after generic C3/C4 saturation and one eligible scored judge.
 - [Gate specs](../gates/gate-specs.yaml)
