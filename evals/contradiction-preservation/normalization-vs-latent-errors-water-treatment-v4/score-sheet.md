@@ -12,12 +12,12 @@ model output is a test artifact, not an authority.
 
 ## Result
 
-partial - v4 frozen-input benchmark scaffold only. `run-packet.md` now freezes
-the v4-v1 condition packets, equal-length filler, generator/runtime snapshot,
-and external judge routes, but no model outputs exist, no judge has calibrated,
-no output has been scored, and no condition aggregate or decision exists. This
-case cannot support any public claim, canon candidate, or `benchmark_supported`
-status.
+partial - v4 frozen run complete, unjudged. `run-packet.md` freezes the v4-v1
+condition packets, equal-length filler, generator/runtime snapshot, and external
+judge routes; forty real `gemma4:31b` model outputs now exist and a
+condition-blind judge packet is built. No judge has calibrated or scored v4, no
+condition aggregate or decision exists, and this case cannot support any public
+claim, canon candidate, or `benchmark_supported` status.
 
 ## Calibration gate
 
@@ -45,9 +45,38 @@ blind scoring is complete.
 | OUT-06 |  |  |  |  |  |  |  |  |
 | OUT-07 |  |  |  |  |  |  |  |  |
 | OUT-08 |  |  |  |  |  |  |  |  |
-
-Extend the table after a frozen run if the benchmark version uses more than
-eight runs per condition.
+| OUT-09 |  |  |  |  |  |  |  |  |
+| OUT-10 |  |  |  |  |  |  |  |  |
+| OUT-11 |  |  |  |  |  |  |  |  |
+| OUT-12 |  |  |  |  |  |  |  |  |
+| OUT-13 |  |  |  |  |  |  |  |  |
+| OUT-14 |  |  |  |  |  |  |  |  |
+| OUT-15 |  |  |  |  |  |  |  |  |
+| OUT-16 |  |  |  |  |  |  |  |  |
+| OUT-17 |  |  |  |  |  |  |  |  |
+| OUT-18 |  |  |  |  |  |  |  |  |
+| OUT-19 |  |  |  |  |  |  |  |  |
+| OUT-20 |  |  |  |  |  |  |  |  |
+| OUT-21 |  |  |  |  |  |  |  |  |
+| OUT-22 |  |  |  |  |  |  |  |  |
+| OUT-23 |  |  |  |  |  |  |  |  |
+| OUT-24 |  |  |  |  |  |  |  |  |
+| OUT-25 |  |  |  |  |  |  |  |  |
+| OUT-26 |  |  |  |  |  |  |  |  |
+| OUT-27 |  |  |  |  |  |  |  |  |
+| OUT-28 |  |  |  |  |  |  |  |  |
+| OUT-29 |  |  |  |  |  |  |  |  |
+| OUT-30 |  |  |  |  |  |  |  |  |
+| OUT-31 |  |  |  |  |  |  |  |  |
+| OUT-32 |  |  |  |  |  |  |  |  |
+| OUT-33 |  |  |  |  |  |  |  |  |
+| OUT-34 |  |  |  |  |  |  |  |  |
+| OUT-35 |  |  |  |  |  |  |  |  |
+| OUT-36 |  |  |  |  |  |  |  |  |
+| OUT-37 |  |  |  |  |  |  |  |  |
+| OUT-38 |  |  |  |  |  |  |  |  |
+| OUT-39 |  |  |  |  |  |  |  |  |
+| OUT-40 |  |  |  |  |  |  |  |  |
 
 ## Dependency checks
 
@@ -80,12 +109,11 @@ judges. The full pre-registered rule is in `case.md` -> `## Positive result`.
 
 ## Judge Notes
 
-No judge has calibrated or scored this v4 case.
+No judge has calibrated or scored this v4 case. The condition-blind judge packet
+is built under `judge-packet/`.
 
 ## Follow-up
 
-1. Generate all real outputs against the frozen packet hashes in `run-packet.md`.
-2. Build the condition-blind judge packet.
-3. Collect
-   calibrated external judge scores, reconcile aggregate-only, and record a
-   decision.
+1. Collect calibrated external judge scores.
+2. Reconcile aggregate-only after blind scoring completes.
+3. Record the positive-result decision or `do_not_promote` outcome.

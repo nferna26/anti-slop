@@ -21,8 +21,9 @@ scoring_status: unscored
 This is a v4 contradiction-preservation scaffold for the reviewed tension
 `normalization-of-deviance-vs-latent-errors`. It is designed as the next
 candidate benchmark path after the cross-case learning memo: the v4-v1 run
-packet is now frozen, but no output has been generated, no judge has calibrated,
-and no result has been lifted.
+packet is frozen, forty real model outputs have been generated, and the
+condition-blind judge packet has been built. No judge has calibrated or scored
+v4 yet, and no result has been lifted.
 
 The case tests whether an advisor can preserve a diagnostic-and-intervention
 tension in a high-hazard public-utility scenario: is a troubling pattern better
@@ -32,11 +33,11 @@ and does not name the sources or frameworks. It is deliberately not another
 strategy / startup / managerial-output case.
 
 This v4 draft is not a benchmark result. The calibration anchors are
-operator-accepted, and `run-packet.md` now freezes the exact condition packets,
+operator-accepted, `run-packet.md` freezes the exact condition packets,
 generator/runtime snapshot, equal-length filler checks, and two external judge
-routes before generation. The next step is output generation against those frozen
-inputs; no judging, scoring, reconciliation, eval decision, `## Result` lift, or
-canon claim exists yet.
+routes before generation, and the run has produced forty real `gemma4:31b`
+outputs. The next step is external judge calibration and scoring; no
+reconciliation, eval decision, `## Result` lift, or canon claim exists yet.
 
 ## Lineage
 
@@ -347,15 +348,60 @@ After generation:
 
 ## Model outputs
 
-No v4 model outputs exist yet. `model-outputs/` contains only `.gitkeep`.
+The frozen v4-v1 run produced forty real model-output receipts under
+`model-outputs/`: eight per declared condition, zero simulated, zero deferred.
+`receipt-index.yaml` indexes the 40 receipts.
+
+Receipts:
+
+- `model-outputs/famous_sources_supplied.md`
+- `model-outputs/famous_sources_supplied-02.md`
+- `model-outputs/famous_sources_supplied-03.md`
+- `model-outputs/famous_sources_supplied-04.md`
+- `model-outputs/famous_sources_supplied-05.md`
+- `model-outputs/famous_sources_supplied-06.md`
+- `model-outputs/famous_sources_supplied-07.md`
+- `model-outputs/famous_sources_supplied-08.md`
+- `model-outputs/generic_advice_prompted.md`
+- `model-outputs/generic_advice_prompted-02.md`
+- `model-outputs/generic_advice_prompted-03.md`
+- `model-outputs/generic_advice_prompted-04.md`
+- `model-outputs/generic_advice_prompted-05.md`
+- `model-outputs/generic_advice_prompted-06.md`
+- `model-outputs/generic_advice_prompted-07.md`
+- `model-outputs/generic_advice_prompted-08.md`
+- `model-outputs/substrate_workflow.md`
+- `model-outputs/substrate_workflow-02.md`
+- `model-outputs/substrate_workflow-03.md`
+- `model-outputs/substrate_workflow-04.md`
+- `model-outputs/substrate_workflow-05.md`
+- `model-outputs/substrate_workflow-06.md`
+- `model-outputs/substrate_workflow-07.md`
+- `model-outputs/substrate_workflow-08.md`
+- `model-outputs/vanilla.md`
+- `model-outputs/vanilla-02.md`
+- `model-outputs/vanilla-03.md`
+- `model-outputs/vanilla-04.md`
+- `model-outputs/vanilla-05.md`
+- `model-outputs/vanilla-06.md`
+- `model-outputs/vanilla-07.md`
+- `model-outputs/vanilla-08.md`
+- `model-outputs/vanilla_long_prompt.md`
+- `model-outputs/vanilla_long_prompt-02.md`
+- `model-outputs/vanilla_long_prompt-03.md`
+- `model-outputs/vanilla_long_prompt-04.md`
+- `model-outputs/vanilla_long_prompt-05.md`
+- `model-outputs/vanilla_long_prompt-06.md`
+- `model-outputs/vanilla_long_prompt-07.md`
+- `model-outputs/vanilla_long_prompt-08.md`
 
 A model output is a test artifact — never an authority, never citable as a
-source. Future receipts must be real model runs with full benchmark provenance;
-in-session simulations cannot count toward this v4 benchmark pass.
+source. The v4-v1 receipts are real model runs with full benchmark provenance;
+in-session simulations do not count toward this v4 benchmark pass.
 
-See `run-packet.md` for the frozen v4-v1 run plan. Output generation may proceed
-only against the frozen packet hashes and generator/runtime snapshot recorded
-there.
+See `run-packet.md` for the frozen v4-v1 run record. Outputs were anonymised by
+body sha256 into `judge-packet/outputs/OUT-01.md` through `OUT-40.md`; the
+`OUT-NN` to condition/run answer key remains local-only and uncommitted.
 
 ## Score sheet
 
@@ -365,6 +411,6 @@ decision is recorded.
 
 ## Judge notes
 
-No judge has calibrated or scored this v4 case. The calibration-anchor artifact
-is `filled_pre_run`; each external judge must still pass the calibration gate
-before scoring real `OUT-NN` outputs.
+No judge has calibrated or scored this v4 case. The condition-blind judge packet
+is built under `judge-packet/`; each external judge must still pass the
+calibration gate before scoring real `OUT-NN` outputs.

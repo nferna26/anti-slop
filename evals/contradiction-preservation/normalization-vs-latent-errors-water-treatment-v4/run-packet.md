@@ -3,7 +3,7 @@ case_id: normalization-vs-latent-errors-water-treatment-v4
 artifact: run-packet
 eval_type: contradiction-preservation
 benchmark_version: normalization-vs-latent-errors-water-treatment-v4-v1
-status: frozen_inputs_no_run
+status: frozen_run_complete
 created: 2026-05-22
 ---
 
@@ -14,20 +14,21 @@ preservation case. It records the condition recipes, run parameters, filler
 constraints, anonymisation rules, and external-judge plan for benchmark version
 `normalization-vs-latent-errors-water-treatment-v4-v1`.
 
-**Status: frozen inputs — not run.** The calibration anchors are
+**Status: frozen run complete — not judged.** The calibration anchors are
 operator-accepted (`status: filled_pre_run`), the condition packets and
-equal-length filler are frozen by hash, the generator/runtime snapshot is
-recorded, and two external judge routes are named before generation. Output
-generation may begin against this frozen packet, but no v4 model output, judge
-score, reconciliation, eval decision, `## Result` lift, or canon claim exists
-yet.
+equal-length filler were frozen by hash, the generator/runtime snapshot was
+recorded, and two external judge routes were named before generation. The
+benchmark pass has now generated forty real `gemma4:31b` outputs, eight per
+condition, and the condition-blind judge packet has been built. No judge has
+calibrated or scored v4 yet, and no reconciliation, eval decision, `## Result`
+lift, or canon claim exists.
 
 This file is operator-facing. It names model conditions and run mechanics. It
 must not be shown to blind judges.
 
 ## Freeze prerequisites
 
-The following were satisfied before `status` changed to `frozen_inputs_no_run`:
+The following were satisfied before `status` changed to a frozen state:
 
 - `judge-packet/calibration-anchors.md` is operator-reviewed and set to
   `status: filled_pre_run`.
@@ -278,10 +279,36 @@ Fill these fields before changing `status` to frozen:
 | Filler word count and ratio | frozen 7570 vs 7570, 100.0% |
 | Filler forbidden-vocabulary scan | frozen clean, zero hits |
 
+## Run
+
+The frozen v4-v1 benchmark pass has been run.
+
+- Run window: 2026-05-23T01:35:52Z to 2026-05-23T03:11:42Z.
+- Generator: `gemma4:31b`, Ollama model ID `6316f0629137`, local Ollama server
+  `0.24.0`.
+- Completed outputs: 40 of 40.
+- Deferred outputs: 0.
+- Simulated outputs: 0.
+- Conditions: five conditions x eight runs each.
+- Seeds: pre-registered seeds 101-105 through 801-805; no `seed + 10` retry was
+  needed.
+- Done reason: every completed raw call recorded a real model response; public
+  model-output receipts are under `model-outputs/`.
+- Receipt index: `receipt-index.yaml` records 40 real receipts and 0 simulated
+  receipts.
+- Anonymisation: output bodies were hashed, sorted by sha256, and written as
+  `judge-packet/outputs/OUT-01.md` through `OUT-40.md`.
+- Answer key: the `OUT-NN` to condition/run mapping remains local-only and
+  git-ignored; it is not committed.
+- Judge packet: condition-blind judge-facing files are under `judge-packet/`.
+  They include instructions, case context, rubric, Surface 1 calibration
+  exercise, anonymised outputs, output manifest, and blank score sheet. Surface 2
+  reference verdicts remain only in `calibration-anchors.md` and are
+  operator-only.
+
 ## Current state
 
-The v4-v1 inputs are frozen and local packet verification passes. The next step
-is to generate forty real model outputs using the frozen generator and packet
-hashes, then build the condition-blind judge packet. No output has been generated
-yet, and no judging, scoring, reconciliation, eval decision, `## Result` lift,
-canon candidate, or public claim exists.
+The v4-v1 inputs are frozen, forty real outputs have been generated, and the
+condition-blind judge packet is built. The next step is external judge
+calibration and scoring. No judging, scoring, reconciliation, eval decision,
+`## Result` lift, canon candidate, or public claim exists.
