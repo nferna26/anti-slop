@@ -11,7 +11,7 @@ model_conditions:
   - substrate_workflow
   - vanilla_long_prompt
   - generic_advice_prompted
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
@@ -21,15 +21,15 @@ scoring_status: unscored
 This is a v4 contradiction-preservation scaffold for the reviewed tension
 `normalization-of-deviance-vs-latent-errors`. It is designed as the next
 candidate benchmark path after the cross-case learning memo: the v4-v1 run
-packet is frozen, forty real model outputs have been generated, and the
-condition-blind judge packet has been built. One hosted OpenAI API judge pass
-(`gpt-5.4-mini`) has calibrated and scored all forty `OUT-NN` outputs; it is
-recorded as a real external API judge pass. On 2026-05-23, the operator accepted
-hosted API calls run by Codex with operator-provided keys as result-lifting judge
-routes for v4 when the judge remains condition-blind, passes calibration, and
-the receipt records the route honestly. The OpenAI receipt therefore counts as
-one of the two required eligible external judge passes. No condition
-reconciliation, eval decision, or result lift has occurred.
+packet is frozen, forty real model outputs have been generated, the
+condition-blind judge packet has been built, two eligible hosted API judges have
+scored the blinded outputs, and aggregate-only reconciliation is complete. On
+2026-05-23, the operator accepted hosted API calls run by Codex with
+operator-provided keys as result-lifting judge routes for v4 when the judge
+remains condition-blind, passes calibration, and the receipt records the route
+honestly. OpenAI `gpt-5.4-mini` and Anthropic `claude-opus-4-7` both count under
+that route decision. The pre-registered Positive-result rule is not met;
+`eval-decision.md` records `do_not_promote`.
 
 The case tests whether an advisor can preserve a diagnostic-and-intervention
 tension in a high-hazard public-utility scenario: is a troubling pattern better
@@ -38,13 +38,14 @@ technical defects and weak defences that need repair? The scenario is synthetic
 and does not name the sources or frameworks. It is deliberately not another
 strategy / startup / managerial-output case.
 
-This v4 draft is not a benchmark result. The calibration anchors are
+This v4 case is not a benchmark-supported result. The calibration anchors are
 operator-accepted, `run-packet.md` freezes the exact condition packets,
 generator/runtime snapshot, equal-length filler checks, and two external judge
 routes before generation, and the run has produced forty real `gemma4:31b`
-outputs. The next step is external judge calibration and scoring; no
-second eligible external judge pass, reconciliation, eval decision, `## Result`
-lift, or canon claim exists yet.
+outputs. The two eligible external judge passes and aggregate reconciliation are
+now recorded, but controls matched or nearly matched the substrate and C3/C4
+saturated across controls. `## Result` remains `partial`; no result lift or
+canon claim exists.
 
 ## Lineage
 
@@ -412,15 +413,15 @@ body sha256 into `judge-packet/outputs/OUT-01.md` through `OUT-40.md`; the
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is unscored; `## Result` remains
-`partial` until blind judge scores are reconciled by condition and a decision is
-recorded.
+See `score-sheet.md` in this case folder. It is scored aggregate-only;
+`## Result` remains `partial`, and `eval-decision.md` records `do_not_promote`.
 
 ## Judge notes
 
-The condition-blind judge packet is built under `judge-packet/`. One OpenAI API
-judge receipt is on record: `judge-packet/judge-score-openai-gpt-5.4-mini-api.md`.
-The judge passed calibration exactly and scored all forty `OUT-NN` outputs. The
-operator has accepted hosted API calls run by Codex with operator-provided keys
-as result-lifting judge routes for v4, so this receipt counts as one eligible
-external judge pass. No `OUT-NN` to condition reconciliation is committed.
+The condition-blind judge packet is built under `judge-packet/`. Two eligible
+external API judge receipts are on record:
+`judge-packet/judge-score-openai-gpt-5.4-mini-api.md` and
+`judge-packet/judge-score-anthropic-claude-opus-4-7-api.md`. Both passed
+calibration exactly and scored all forty `OUT-NN` outputs. Aggregate-only
+reconciliation was reconstructed from committed hashes; no per-`OUT-NN` to
+condition mapping is committed.

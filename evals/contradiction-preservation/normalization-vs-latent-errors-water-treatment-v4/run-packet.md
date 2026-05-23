@@ -14,19 +14,19 @@ preservation case. It records the condition recipes, run parameters, filler
 constraints, anonymisation rules, and external-judge plan for benchmark version
 `normalization-vs-latent-errors-water-treatment-v4-v1`.
 
-**Status: frozen run complete — one eligible OpenAI API judge receipt, unreconciled.** The calibration anchors are
-operator-accepted (`status: filled_pre_run`), the condition packets and
-equal-length filler were frozen by hash, the generator/runtime snapshot was
+**Status: frozen, run, judged, reconciled — do_not_promote.** The calibration
+anchors are operator-accepted (`status: filled_pre_run`), the condition packets
+and equal-length filler were frozen by hash, the generator/runtime snapshot was
 recorded, and two external judge routes were named before generation. The
-benchmark pass has now generated forty real `gemma4:31b` outputs, eight per
-condition, and the condition-blind judge packet has been built. Hosted OpenAI
-`gpt-5.4-mini` has passed calibration and scored all forty `OUT-NN` outputs. On
-2026-05-23, the operator accepted hosted API calls run by Codex with
-operator-provided keys as result-lifting judge routes for v4 when the judge
-remains condition-blind, passes calibration, and the receipt records the route
-honestly; the OpenAI receipt therefore counts as one eligible external judge
-pass. No condition reconciliation, eval decision, `## Result` lift, or canon
-claim exists.
+benchmark pass generated forty real `gemma4:31b` outputs, eight per condition,
+and the condition-blind judge packet was built. Hosted OpenAI `gpt-5.4-mini` and
+hosted Anthropic `claude-opus-4-7` both passed calibration and scored all forty
+`OUT-NN` outputs. On 2026-05-23, the operator accepted hosted API calls run by
+Codex with operator-provided keys as result-lifting judge routes for v4 when the
+judge remains condition-blind, passes calibration, and the receipt records the
+route honestly. Aggregate-only reconciliation is complete, and
+`eval-decision.md` records `do_not_promote`; no `## Result` lift or canon claim
+exists.
 
 This file is operator-facing. It names model conditions and run mechanics. It
 must not be shown to blind judges.
@@ -325,10 +325,17 @@ The frozen v4-v1 benchmark pass has been run.
 ## Current state
 
 The v4-v1 inputs are frozen, forty real outputs have been generated, and the
-condition-blind judge packet is built. One hosted OpenAI API judge receipt is on
-record (`judge-packet/judge-score-openai-gpt-5.4-mini-api.md`): calibration
-passed exactly and all forty `OUT-NN` outputs were scored. Under the 2026-05-23
-operator route-eligibility decision, it counts as one eligible external judge
-pass. The next step is a second eligible external judge from a different
-provider/family, then aggregate-only reconciliation. No reconciliation, eval
-decision, `## Result` lift, canon candidate, or public claim exists.
+condition-blind judge packet is built. Two hosted API judge receipts are on
+record:
+
+- `judge-packet/judge-score-openai-gpt-5.4-mini-api.md` - calibration passed
+  exactly; all forty `OUT-NN` outputs scored.
+- `judge-packet/judge-score-anthropic-claude-opus-4-7-api.md` - calibration
+  passed exactly; all forty `OUT-NN` outputs scored.
+
+Under the 2026-05-23 operator route-eligibility decision, both count as eligible
+external judge passes from different providers/families. Aggregate-only
+reconciliation is complete; `score-sheet.md` records the condition aggregates,
+and `eval-decision.md` records `do_not_promote` because controls matched or
+nearly matched the substrate and C3/C4 saturated across controls. `## Result`
+remains `partial`; no result lift, canon candidate, or public claim exists.
