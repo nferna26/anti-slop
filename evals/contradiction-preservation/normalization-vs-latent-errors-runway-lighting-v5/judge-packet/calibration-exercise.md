@@ -1,34 +1,14 @@
 ---
+artifact: judge-packet-calibration-exercise
 case_id: normalization-vs-latent-errors-runway-lighting-v5
 benchmark_version: normalization-vs-latent-errors-runway-lighting-v5-v1
-artifact: calibration-anchors
-status: filled_pre_run
-proposed_date: 2026-05-23
-proposed_by: Codex agent - synthetic illustrative answers, not human-authored
-approved_date: 2026-05-23
-approved_by: operator
 condition_blinded: true
 ---
 
-# Calibration Anchors - normalization-vs-latent-errors-runway-lighting-v5
+# Calibration Exercise
 
-These agent-drafted synthetic answers are the operator-accepted calibration
-material for v5. They are not model outputs, not human-authored, not source
-evidence, and not canon. The operator approved the anchor texts and reference
-verdicts as written before the v5 run packet froze.
-
-## How this file is used
-
-Surface 1 is judge-facing. It contains only the anchor texts and a blank scoring
-grid. A judge must score Surface 1 before seeing Surface 2. Surface 2 is the
-operator reference surface and must be withheld until after the judge records
-its own C1-C6 verdicts.
-
-## Operator approval
-
-2026-05-23: The operator explicitly approved the v5 runway-lighting calibration
-anchors as written and directed the run to continue. The anchor texts and
-Surface 2 reference verdicts below are unchanged from the approved draft.
+This is the judge-facing calibration exercise. Complete it before scoring any
+OUT-NN answer. The reference verdicts are withheld by the operator.
 
 ## Surface 1 - judge-facing calibration exercise
 
@@ -113,58 +93,3 @@ that evidence existed, I would accept the construction plan.
 | A |  |  |  |  |  |  |  |  |
 | B |  |  |  |  |  |  |  |  |
 | C |  |  |  |  |  |  |  |  |
-
-## Surface 2 - operator reference surface
-
-Withhold this section until after the judge completes Surface 1.
-
-| Anchor | C1 | C2 | C3 | C4 | C5 | C6 | Total |
-| --- | --- | --- | --- | --- | --- | --- | ---: |
-| A | PASS | PASS | PASS | PASS | PASS | PASS | 6 |
-| B | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | 1 |
-| C | PASS | PASS | PASS | PASS | FAIL | FAIL | 4 |
-
-### Anchor A reference block
-
-- C1 PASS - It treats closure-threshold drift and dormant equipment/defence
-  weakness as live.
-- C2 PASS - It uses more than five concrete facts and includes facts against the
-  recommendation.
-- C3 PASS - It infers acceptance-threshold drift from closure phrases, faster
-  closure, sparse voltage readings, and added controls.
-- C4 PASS - It names a concrete cabinet/battery/field-verification failure path.
-- C5 PASS - It weighs repair/audit against temporary monitor and decline.
-- C6 PASS - It gives one recommendation, a failure path, and concrete
-  disconfirming evidence.
-
-### Anchor B reference block
-
-- C1 FAIL - It treats the clean record plus added checks as settling the problem.
-- C2 PASS - It uses several concrete facts, though selectively.
-- C3 FAIL - It does not infer a shifted closure threshold and treats added checks
-  as proof of control.
-- C4 FAIL - It dismisses the technical clues without a failure-path analysis.
-- C5 FAIL - Dependency failure from C3/C4; also no intervention-boundary
-  analysis.
-- C6 FAIL - Dependency failure from C5; the change-my-mind evidence is an actual
-  incident rather than a useful observable disconfirmer.
-
-### Anchor C reference block
-
-- C1 PASS - It sees the live uncertainty between the closure pattern and
-  equipment weakness.
-- C2 PASS - It uses multiple concrete facts and the operational cost.
-- C3 PASS - It infers closure-threshold drift from faster and more formulaic
-  ticket closure and missing readings.
-- C4 PASS - It preserves the dormant-defect concern through cabinet and battery
-  clues.
-- C5 FAIL - It does not weigh what declining does and does not learn or prevent
-  against the repair/audit and monitor paths.
-- C6 FAIL - Dependency failure from C5; its disconfirming evidence relies on the
-  repair/audit path after recommending decline.
-
-## Status and approval gate
-
-This file is `filled_pre_run`. The operator explicitly accepted the anchor texts
-and reference verdicts on 2026-05-23 before the v5 run packet froze. The anchor
-file must not be revised after v5 output generation begins.

@@ -3,30 +3,32 @@ case_id: normalization-vs-latent-errors-runway-lighting-v5
 artifact: run-packet
 eval_type: contradiction-preservation
 benchmark_version: normalization-vs-latent-errors-runway-lighting-v5-v1
-status: prepared_not_frozen_not_run
+status: frozen_run_complete_scored
 created: 2026-05-23
 ---
 
 # Run Packet - normalization-vs-latent-errors-runway-lighting-v5-v1
 
-This is the prepared, not frozen, run packet for the v5 runway-lighting
-contradiction-preservation case. It records the intended condition recipes, run
+This is the frozen, completed run packet for the v5 runway-lighting
+contradiction-preservation case. It records the condition recipes, run
 parameters, filler constraints, anonymisation rules, and external-judge plan for
 benchmark version `normalization-vs-latent-errors-runway-lighting-v5-v1`.
 
-**Status: prepared, not frozen, not run.** The v5 case and calibration anchors
-are drafted, but `judge-packet/calibration-anchors.md` is still
-`status: proposed_unreviewed`. Operator approval is required before this packet
-may be frozen. No condition packets have been frozen by hash, no model outputs
-exist, no judge packet has been built, no judging has occurred, and no
-reconciliation or eval decision exists.
+**Status: frozen run complete and scored.** The operator approved
+`judge-packet/calibration-anchors.md` as written and it is now
+`status: filled_pre_run`. All five condition packets are assembled and frozen by
+hash. Forty real `gemma4:31b` outputs were generated, the condition-blind judge
+packet was built, OpenAI and Anthropic API routes calibrated, Anthropic scored
+all forty blinded outputs after passing calibration, aggregate-only
+reconciliation is complete, and `eval-decision.md` records `do_not_promote`.
+OpenAI failed calibration and scored zero real outputs.
 
 This file is operator-facing. It names model conditions and run mechanics. It
 must not be shown to blind judges.
 
 ## Freeze prerequisites
 
-The following must be satisfied before `status` can change to a frozen state:
+The following were satisfied before `status` changed to `frozen_inputs_no_run`:
 
 - `judge-packet/calibration-anchors.md` is operator-reviewed and set to
   `status: filled_pre_run`.
@@ -43,14 +45,14 @@ The frozen pass will cover the case sections in `case.md` from `## Scenario`
 through `## Anti-overfitting safeguards`, the declared `model_conditions`, the
 reviewed lineage artifacts below, and the operator-accepted calibration anchors.
 
-Lineage artifacts to hash at freeze:
+Lineage artifacts hashed at freeze:
 
-| Artifact |
-| --- |
-| `corpus/claim-tension-cards/normalization-of-deviance-vs-latent-errors.md` |
-| `corpus/source-cards/BK-0042-card-001.md` |
-| `corpus/source-cards/BK-0044-card-001.md` |
-| `corpus/source-cards/BK-0044-card-002.md` |
+| Artifact | sha256 |
+| --- | --- |
+| `corpus/claim-tension-cards/normalization-of-deviance-vs-latent-errors.md` | `f2741f834d5f7b3f21030339821040720b5d38a09a551603fcdc6004a1263dc1` |
+| `corpus/source-cards/BK-0042-card-001.md` | `4b747866b13911b347d1a3acde4f98f7ba3577be978345818b7279464aad57c2` |
+| `corpus/source-cards/BK-0044-card-001.md` | `e2a9014d3668ecf18ff3a82a685bf6d441a4ebb37f43e3500fe74900ba08c597` |
+| `corpus/source-cards/BK-0044-card-002.md` | `20d496fec3e4aecf9ed38504bfedd82818da5f3a5d4704992f8d4c43fde9284f` |
 
 ## Advisor prompt
 
@@ -59,9 +61,9 @@ prompt`: take the block-quote lines, remove a leading `> ` from each line, turn
 a line that is exactly `>` into an empty line, join with newlines, strip
 leading/trailing whitespace, and append one trailing newline.
 
-The exact word count, character count, and `advisor_prompt_sha256` must be filled
-at freeze. A change opens a new benchmark version; it must not silently rebase
-v5-v1.
+Frozen Advisor prompt: 388 words, 2431 characters, sha256
+`d2eca36cfadf8d529091720a6374363b1aae6333f637fcb04813fc86790d38c0`. A change
+opens a new benchmark version; it must not silently rebase v5-v1.
 
 ## Condition packets
 
@@ -173,8 +175,8 @@ local-only run folder and not committed. It must meet these requirements:
   A timeout retry uses `seed + 10` and is recorded; no output is fabricated.
 - Decoding: generation `temperature 0.7`, `top_p 0.9`, `num_ctx 32768`,
   timeout 600 s, held constant across all conditions and runs.
-- Planned generator: `gemma4:31b`, unless the freeze checklist records a
-  different fixed model before generation.
+- Frozen generator: `gemma4:31b`, Ollama model ID `6316f0629137`, local Ollama
+  server version `0.24.0`.
 
 ## External judge routes
 
@@ -227,26 +229,58 @@ judge-facing files.
 
 ## Freeze checklist
 
-Fill these fields before changing `status` to frozen:
+These fields were filled before changing `status` to frozen:
 
 | Item | Value |
 | --- | --- |
-| Calibration-anchor status | TODO - must be `filled_pre_run` before freeze |
-| Calibration-anchor `sha256` | TODO |
-| Advisor prompt words / characters / `sha256` | TODO |
-| Generator model and snapshot | TODO |
-| Judge route A | hosted OpenAI API judge, exact model/settings TODO |
-| Judge route B | hosted Anthropic API judge, exact model/settings TODO |
-| `vanilla` packet words / `sha256` | TODO |
-| `famous_sources_supplied` packet words / `sha256` | TODO |
-| `substrate_workflow` packet words / `sha256` | TODO |
-| `vanilla_long_prompt` packet words / `sha256` | TODO |
-| `generic_advice_prompted` packet words / `sha256` | TODO |
-| Filler word count and ratio | TODO |
-| Filler forbidden-vocabulary scan | TODO |
+| Calibration-anchor status | `filled_pre_run`, operator-approved as written on 2026-05-23 |
+| Calibration-anchor `sha256` | `d0c5f271b79fd052f75e977fc8814dbc9048fff11f246f9114cdfa4e687c16de` |
+| Advisor prompt words / characters / `sha256` | 388 / 2431 / `d2eca36cfadf8d529091720a6374363b1aae6333f637fcb04813fc86790d38c0` |
+| Generator model and snapshot | `gemma4:31b`; Ollama model ID `6316f0629137`; Ollama server `0.24.0` |
+| Judge route A | hosted OpenAI API judge, planned model `gpt-5.4-mini`, reasoning effort `medium`, text verbosity `medium`, calibration first |
+| Judge route B | hosted Anthropic API judge, planned Claude Opus-family model selected from API availability at judge time, calibration first |
+| `vanilla` packet words / `sha256` | 388 / `d2eca36cfadf8d529091720a6374363b1aae6333f637fcb04813fc86790d38c0` |
+| `famous_sources_supplied` packet words / `sha256` | 489 / `7d4f9ec002f539b85219f06e204c6cbd48eb7ee6a6eb3d529f8507892b316c81` |
+| `substrate_workflow` packet words / `sha256` | 7962 / `4183c7a2d770b7b6958884bae14efbc50d8718025d071c045a0a61df19013e78` |
+| `vanilla_long_prompt` packet words / `sha256` | 8005 / `b6518476357c9997e0d258f69d358af5013b800062ee397caf0af6b92a6aba14` |
+| `generic_advice_prompted` packet words / `sha256` | 412 / `8698229be7cd409154cf9d7e1a6a69017e7056b1ba09e5833d88ea8addb37bae` |
+| Filler word count and ratio | 7574 words; ratio 1.000 to `substrate_workflow` added material |
+| Filler forbidden-vocabulary scan | `{}`; zero forbidden-stem hits |
 
 ## Current state
 
-The v5 case is drafted and prepared, but not frozen and not run. The next step
-is operator review of `judge-packet/calibration-anchors.md`. If approved, the
-anchors can be set to `filled_pre_run` and the freeze/run pipeline can continue.
+The v5-v1 run is complete and scored. Forty real local generator outputs exist,
+eight per frozen condition, with zero deferred outputs and no seed+10 retries.
+`judge-packet/output-manifest.yaml` anonymises outputs by body hash and withholds
+condition labels. OpenAI `gpt-5.4-mini` failed calibration and has a
+calibration-only receipt. Anthropic `claude-opus-4-7` passed calibration, scored
+all forty blinded outputs, and has a judge-score receipt. Aggregate-only
+reconciliation from committed hashes is recorded in `score-sheet.md`; no
+per-`OUT-NN` to condition mapping is committed. `eval-decision.md` records
+`eval_decision: do_not_promote` because the Positive-result rule is not met.
+
+## Run completion
+
+| Item | Value |
+| --- | --- |
+| Output count | 40 real local-model outputs |
+| Runs per condition | 8 each for `vanilla`, `famous_sources_supplied`, `substrate_workflow`, `vanilla_long_prompt`, `generic_advice_prompted` |
+| Deferred outputs | 0 |
+| seed+10 retries | 0 |
+| Public receipts | `model-outputs/` and `receipt-index.yaml` |
+| Blind packet | `judge-packet/` with `OUT-01` through `OUT-40` and output-body hashes only |
+
+## Judge outcome
+
+| Route | Outcome |
+| --- | --- |
+| OpenAI API `gpt-5.4-mini` | Calibration failed: 7 criteria differences and Anchor C C5/C6 disagreement; scored zero real outputs. |
+| Anthropic API `claude-opus-4-7` | Calibration passed: 1 criteria difference and no Anchor C C5/C6 disagreement; scored all 40 real outputs. |
+
+## Reconciliation outcome
+
+`score-sheet.md` records `Result: partial`. `eval-decision.md` records
+`eval_decision: do_not_promote` / `decision_class: insufficient_external_judges`.
+The positive rule also fails total-score margin, critical-criterion margin,
+judge-level stability, and no-critical-saturation clauses under the eligible
+Anthropic scored pass.

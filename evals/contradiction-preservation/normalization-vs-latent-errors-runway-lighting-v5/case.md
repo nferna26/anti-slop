@@ -1,7 +1,7 @@
 ---
 case_id: normalization-vs-latent-errors-runway-lighting-v5
 eval_type: contradiction-preservation
-status: draft
+status: scored
 created: 2026-05-23
 source_packet: reviewed_public_artifact_packet
 expected_output: tension-aware operational recommendation
@@ -11,7 +11,7 @@ model_conditions:
   - substrate_workflow
   - vanilla_long_prompt
   - generic_advice_prompted
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
@@ -30,9 +30,11 @@ for merely saying "both process drift and technical defects matter." A passing
 answer must infer each mechanism from traces in the case and explain what the
 chosen intervention does and does not learn or prevent.
 
-No model has been run for v5. No judge has scored v5. The calibration anchors
-are agent-drafted and proposed, not operator-approved. The run packet is
-prepared but not frozen.
+The v5-v1 packet froze after operator approval of the calibration anchors. Forty
+real local generator outputs were produced, the condition-blind judge packet was
+built, hosted OpenAI and Anthropic API judges calibrated, Anthropic scored the
+OUT-NN packet after passing calibration, and aggregate-only reconciliation was
+recorded. OpenAI failed calibration and scored zero real outputs.
 
 ## Lineage
 
@@ -341,19 +343,65 @@ After generation:
   anchors after v5 outputs exist.
 - Do not add a new control after seeing outputs.
 - Report all runs, calibration failures, judge scores, and exclusions.
-- Calibration anchors are agent-drafted and must be operator-approved before
-  freeze; the orchestrating agent may not silently approve its own anchors.
+- Calibration anchors are agent-drafted and were operator-approved as written
+  before freeze; the orchestrating agent may not silently approve its own
+  anchors.
 
 ## Model outputs
 
-None yet. `model-outputs/` contains only `.gitkeep`.
+Forty real local-model receipts are recorded under `model-outputs/`: eight runs
+per declared condition. The receipts are test artifacts, not authorities.
+
+- `model-outputs/vanilla.md`
+- `model-outputs/vanilla-02.md`
+- `model-outputs/vanilla-03.md`
+- `model-outputs/vanilla-04.md`
+- `model-outputs/vanilla-05.md`
+- `model-outputs/vanilla-06.md`
+- `model-outputs/vanilla-07.md`
+- `model-outputs/vanilla-08.md`
+- `model-outputs/famous_sources_supplied.md`
+- `model-outputs/famous_sources_supplied-02.md`
+- `model-outputs/famous_sources_supplied-03.md`
+- `model-outputs/famous_sources_supplied-04.md`
+- `model-outputs/famous_sources_supplied-05.md`
+- `model-outputs/famous_sources_supplied-06.md`
+- `model-outputs/famous_sources_supplied-07.md`
+- `model-outputs/famous_sources_supplied-08.md`
+- `model-outputs/substrate_workflow.md`
+- `model-outputs/substrate_workflow-02.md`
+- `model-outputs/substrate_workflow-03.md`
+- `model-outputs/substrate_workflow-04.md`
+- `model-outputs/substrate_workflow-05.md`
+- `model-outputs/substrate_workflow-06.md`
+- `model-outputs/substrate_workflow-07.md`
+- `model-outputs/substrate_workflow-08.md`
+- `model-outputs/vanilla_long_prompt.md`
+- `model-outputs/vanilla_long_prompt-02.md`
+- `model-outputs/vanilla_long_prompt-03.md`
+- `model-outputs/vanilla_long_prompt-04.md`
+- `model-outputs/vanilla_long_prompt-05.md`
+- `model-outputs/vanilla_long_prompt-06.md`
+- `model-outputs/vanilla_long_prompt-07.md`
+- `model-outputs/vanilla_long_prompt-08.md`
+- `model-outputs/generic_advice_prompted.md`
+- `model-outputs/generic_advice_prompted-02.md`
+- `model-outputs/generic_advice_prompted-03.md`
+- `model-outputs/generic_advice_prompted-04.md`
+- `model-outputs/generic_advice_prompted-05.md`
+- `model-outputs/generic_advice_prompted-06.md`
+- `model-outputs/generic_advice_prompted-07.md`
+- `model-outputs/generic_advice_prompted-08.md`
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. It is unscored; `## Result` remains
-`partial`.
+See `score-sheet.md` in this case folder. It is scored; `## Result` is `partial` and `eval-decision.md` records the reconciliation decision.
 
 ## Judge notes
 
-No v5 judge packet has been frozen and no judge pass exists. The calibration
-anchors are proposed only and require operator approval before freeze or run.
+OpenAI `gpt-5.4-mini` failed calibration and is recorded as calibration-only.
+Anthropic `claude-opus-4-7` passed calibration, scored all forty blinded
+`OUT-NN` outputs, and is recorded as the one eligible scored API judge receipt.
+Aggregate-only reconciliation from committed hashes is complete. `score-sheet.md`
+keeps `## Result` at `partial`, and `eval-decision.md` records
+`eval_decision: do_not_promote`.

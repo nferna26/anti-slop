@@ -4,6 +4,35 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-23
 
+- Executed and reconciled the v5
+  `normalization-vs-latent-errors-runway-lighting-v5-v1` benchmark pass. Forty
+  real `gemma4:31b` outputs were generated from the frozen packets (8 per
+  condition, 0 deferred, 0 seed+10 retries), public-safe model-output receipts
+  and `receipt-index.yaml` were created, and a condition-blind judge packet was
+  built with `OUT-01` through `OUT-40` assigned by output-body hash; the
+  `OUT-NN` origin mapping remains local-only. Hosted OpenAI `gpt-5.4-mini`
+  failed calibration (7 criteria differences and Anchor C C5/C6 disagreement)
+  and scored zero outputs; hosted Anthropic `claude-opus-4-7` passed calibration
+  (1 criterion difference, no Anchor C C5/C6 disagreement), scored all forty
+  blinded outputs, and its receipt records one arithmetic total normalization
+  (`OUT-36`, reported total 2, PASS-count total 3). Reconciled aggregate-only
+  from committed hashes, set v5 `scoring_status: scored`, kept `## Result:
+  partial`, and added `eval-decision.md` with `eval_decision: do_not_promote` /
+  `decision_class: insufficient_external_judges`. The positive rule is not met:
+  fewer than two eligible scored judges, generic-advice matched substrate under
+  Anthropic, and generic C3/C4 saturated. No `benchmark_supported` promotion,
+  canon candidate, public claim, or per-`OUT-NN` mapping created.
+- Operator-approved the v5 `normalization-vs-latent-errors-runway-lighting-v5`
+  calibration anchors as written and froze the v5-v1 inputs before generation.
+  `judge-packet/calibration-anchors.md` moved to `status: filled_pre_run` with
+  an operator approval record; `run-packet.md` moved to
+  `status: frozen_inputs_no_run` with frozen condition-packet hashes,
+  equal-length filler checks (7574 words, 1.000 ratio, zero forbidden-stem
+  hits), generator/runtime snapshot (`gemma4:31b`, Ollama model ID
+  `6316f0629137`, server `0.24.0`), and hosted OpenAI/Anthropic API judge
+  routes named before generation. No model outputs, judging, scoring,
+  reconciliation, eval decision, `## Result` lift, canon candidate, public
+  claim, or per-`OUT-NN` mapping created.
 - Drafted the v5 `normalization-vs-latent-errors-runway-lighting-v5` contradiction-preservation scaffold after the v4 control-saturation `do_not_promote` result. The new synthetic airport runway-lighting scenario keeps the broad substrate claim open while making the local test harder: it does not spoon-feed the mechanism labels, requires inference from closure-practice traces and dormant equipment/defence clues, and includes stricter C3/C4 anti-saturation rules. Added `case.md`, unscored `score-sheet.md`, `model-outputs/.gitkeep`, proposed agent-drafted calibration anchors at `judge-packet/calibration-anchors.md` (`status: proposed_unreviewed`), and a prepared `run-packet.md` (`status: prepared_not_frozen_not_run`) with the intended five conditions, 8-run minimum, OpenAI/Anthropic hosted API judge routes, and aggregate-only reconciliation discipline. No model outputs, freeze, judging, scoring, eval decision, `## Result` lift, canon candidate, public claim, or per-`OUT-NN` mapping created; operator approval of the calibration anchors is required before v5 can freeze or run.
 - Completed the v4 `normalization-vs-latent-errors-water-treatment-v4-v1` external-judge and reconciliation path. Hosted Anthropic `claude-opus-4-7` passed calibration exactly (A 6/6, B 0/6, C 4/6; 0 criteria differences; no Anchor C C5/C6 disagreement) and scored all forty blinded `OUT-NN` outputs through the Anthropic API (distribution: 6/6 x30, 4/6 x10), recorded in `judge-packet/judge-score-anthropic-claude-opus-4-7-api.md` as the second eligible external API judge under the operator route-eligibility decision. Reconciled OpenAI and Anthropic scores aggregate-only from committed output hashes (40/40 matched, 8 per condition; local-only answer key not read; no per-`OUT-NN` mapping committed), set v4 `scoring_status: scored`, filled `score-sheet.md` condition aggregates, and added `eval-decision.md` with `eval_decision: do_not_promote` / `decision_class: controls_matched_and_critical_saturation`: OpenAI saturated the task across conditions, Anthropic tied `substrate_workflow` with `vanilla_long_prompt`, and C3/C4 saturated across the key controls under both eligible judges. `## Result` remains `partial`; no `benchmark_supported` promotion, canon candidate, or public claim created.
 - Operator-accepted hosted API judge paths run by Codex with operator-provided API keys as result-lifting judge routes for v4, provided the model is external to the orchestrating agent, remains condition-blind, passes calibration, receives no answer key or condition labels, and the receipt records the route honestly. Updated the v4 OpenAI `gpt-5.4-mini` judge receipt from route-limited evidence to one eligible external API judge pass (`judge_independence: independent of the orchestrating agent`) and updated `case.md`, `score-sheet.md`, and `run-packet.md` to reflect that the OpenAI receipt counts as one of the two required eligible external judges. No second judge, condition reconciliation, eval decision, `## Result` lift, canon candidate, public claim, or `OUT-NN` to condition mapping created.
