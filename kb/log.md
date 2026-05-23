@@ -4,6 +4,19 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-23
 
+- Added a public-safe postmortem for the v5
+  `normalization-vs-latent-errors-runway-lighting-v5-v1` benchmark pass at
+  `evals/contradiction-preservation/normalization-vs-latent-errors-runway-lighting-v5/postmortem.md`
+  and linked it from `case.md` and `kb/index.md`. The postmortem records that
+  the benchmark machinery worked end to end, OpenAI `gpt-5.4-mini` failed the
+  calibration gate and scored zero outputs, Anthropic `claude-opus-4-7` scored
+  all forty blinded outputs after passing calibration, and the eligible
+  aggregate showed the design failure: `generic_advice_prompted` matched
+  `substrate_workflow` at 6.000 with C3/C4 both saturated at 1.00. It promotes
+  nothing, keeps `## Result: partial`, leaves `eval_decision: do_not_promote`
+  unchanged, and records the v6 design implication without editing v5 outputs,
+  judge receipts, aggregate reconciliation, source/tension/canon artifacts, or
+  any per-`OUT-NN` mapping.
 - Executed and reconciled the v5
   `normalization-vs-latent-errors-runway-lighting-v5-v1` benchmark pass. Forty
   real `gemma4:31b` outputs were generated from the frozen packets (8 per

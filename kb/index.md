@@ -50,6 +50,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 
 - [Evals README](../evals/README.md)
 - [Eval lab learning memo](../docs/eval-lab-learning-memo.md) — cross-case learning notes from the contradiction-preservation surface; methodology synthesis, non-promotional.
+- [Runway-lighting v5 postmortem](../evals/contradiction-preservation/normalization-vs-latent-errors-runway-lighting-v5/postmortem.md) - public-safe design lesson from the v5 machinery pass and generic-advice saturation.
 - [Gate specs](../gates/gate-specs.yaml)
 - [Registry](../registry/README.md)
 

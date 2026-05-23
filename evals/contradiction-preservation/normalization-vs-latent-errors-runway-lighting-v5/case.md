@@ -35,6 +35,10 @@ real local generator outputs were produced, the condition-blind judge packet was
 built, hosted OpenAI and Anthropic API judges calibrated, Anthropic scored the
 OUT-NN packet after passing calibration, and aggregate-only reconciliation was
 recorded. OpenAI failed calibration and scored zero real outputs.
+`postmortem.md` records the design lesson: v5 proves the machinery works, but
+generic practical advice matched the substrate under the eligible scored judge
+and saturated C3/C4, so v6 must be designed from that failure mode rather than
+patched after the fact.
 
 ## Lineage
 
