@@ -8,14 +8,15 @@ judge_model_family: GPT-5 (OpenAI)
 judge_provider: OpenAI API
 judge_runtime: OpenAI API via Codex local-only script using operator-provided API key
 generator_model_id: gemma4:31b
-judge_status: external API blind judge pass - calibration passed; strict route-eligibility limitation recorded
-judge_independence: not_independent_orchestrated_api_call
+judge_status: eligible external API blind judge pass - calibration passed; operator route acceptance recorded
+judge_independence: independent of the orchestrating agent
+judge_route_operation: agent-operated hosted API call, operator-accepted for v4 result-lifting
 calibration_result: passed - 0 criteria differences, no Anchor C C5/C6 disagreement
 outputs_scored: 40
 judge_date: 2026-05-23
 condition_blinded: true
 result_status: partial
-note: Hosted OpenAI model scored the 40 anonymised OUT-NN answers through the OpenAI API. The API call was operated by the orchestrating Codex session rather than by the human operator outside orchestration, so this receipt is recorded as external API judge evidence but not counted as an eligible external judge under the literal frozen v4 route. No OUT-NN to condition mapping.
+note: Hosted OpenAI model scored the 40 anonymised OUT-NN answers through the OpenAI API. The model is independent of the orchestrating agent and remained condition-blind. On 2026-05-23 the operator accepted hosted API judge calls run by Codex with operator-provided keys as result-lifting judge routes for v4 when the receipt records the route honestly. No OUT-NN to condition mapping.
 ---
 
 # OpenAI API Blind Judge Score - gpt-5.4-mini
@@ -32,7 +33,7 @@ This receipt records C1-C6 scores only. It is **not** a `## Result` change, **no
 - **Input hashes:** calibration packet sha256 `775af8660474b7585111790e38cb1975e8a69f3f115fc9dd45d270bf865cba72`; scoring packet sha256 `c7b66309038b3750691e6562e0b632826ec5db774790ac174db3eb50252cdd5a`.
 - **Raw output hashes:** calibration response sha256 `ecb8815c2735f8e646e8f4f61308bb5ae3cbb06924c0df275986c27f3d41f77c`; scoring response sha256 `922660864db60e507f9cf5fbe5203a16ca8a70db5595b2d652ba291cbdd8452d`. Raw transcripts remain local-only and are not committed.
 - **Hosted model judge, not a human judge.** The scoring call is a real external OpenAI API run, not a simulated output and not an in-session model self-score.
-- **Eligibility limitation:** the frozen v4 route named a hosted OpenAI judge operated by the human operator outside the orchestration session. This run was operated by the Codex orchestration session using an operator-provided API key. The OpenAI model did not author the case, rubric, anchors, run packet, judge packet, or outputs, and it did not receive the answer key or condition labels; nevertheless, under the literal frozen route this receipt is recorded as **not eligible for the external-judge count** unless an operator later records a policy decision to accept API-operated-by-agent judging for this benchmark version.
+- **Route eligibility decision:** the frozen v4 route originally named a hosted OpenAI judge operated by the human operator outside the orchestration session. This run was operated by the Codex orchestration session using an operator-provided API key. On 2026-05-23, after the receipt was first recorded with a limitation, the operator explicitly accepted these hosted API paths as result-lifting judges for v4. Under that operator decision, this receipt counts as one eligible external API judge pass: the hosted OpenAI model did not author the case, rubric, anchors, run packet, judge packet, or outputs, and it did not receive the answer key or condition labels.
 - **Condition-blind.** The judge received only `independent-judge-packet-calibration.md` and, after calibration passed, `independent-judge-packet-scoring.md`. It did not receive `model-outputs/`, the local-only `OUT-NN` to condition answer key, `calibration-anchors.md` Surface 2 before calibration, or any condition label.
 
 ## Calibration
@@ -100,6 +101,6 @@ Score distribution across the forty blinded answers: 5/6 x2, 6/6 x38. This distr
 
 ## What this receipt is not
 
-This is one hosted OpenAI API judge score receipt. It is not an eval `## Result`, not a condition reconciliation, and not a promotion. Because of the route-operation limitation above, it also does not by itself satisfy the v4 requirement for two eligible external judges operated outside the orchestration session. Reconciliation, any eligibility policy decision, any second-judge pass, and any `do_not_promote` or positive-result decision remain separate later steps.
+This is one hosted OpenAI API judge score receipt. It is not an eval `## Result`, not a condition reconciliation, and not a promotion. Under the 2026-05-23 operator route-eligibility decision, it satisfies one of the two required eligible external judge passes for v4. Reconciliation, a second eligible judge pass, and any `do_not_promote` or positive-result decision remain separate later steps.
 
 A model output, and a judge score of one, is a test artifact - never an authority.

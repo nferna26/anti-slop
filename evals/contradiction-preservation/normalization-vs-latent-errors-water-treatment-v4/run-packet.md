@@ -14,17 +14,19 @@ preservation case. It records the condition recipes, run parameters, filler
 constraints, anonymisation rules, and external-judge plan for benchmark version
 `normalization-vs-latent-errors-water-treatment-v4-v1`.
 
-**Status: frozen run complete — one OpenAI API judge receipt, unreconciled.** The calibration anchors are
+**Status: frozen run complete — one eligible OpenAI API judge receipt, unreconciled.** The calibration anchors are
 operator-accepted (`status: filled_pre_run`), the condition packets and
 equal-length filler were frozen by hash, the generator/runtime snapshot was
 recorded, and two external judge routes were named before generation. The
 benchmark pass has now generated forty real `gemma4:31b` outputs, eight per
 condition, and the condition-blind judge packet has been built. Hosted OpenAI
-`gpt-5.4-mini` has passed calibration and scored all forty `OUT-NN` outputs, but
-the receipt records that the API call was operated by the orchestrating Codex
-session rather than by the human operator outside orchestration named in the
-frozen route. No condition reconciliation, eval decision, `## Result` lift, or
-canon claim exists.
+`gpt-5.4-mini` has passed calibration and scored all forty `OUT-NN` outputs. On
+2026-05-23, the operator accepted hosted API calls run by Codex with
+operator-provided keys as result-lifting judge routes for v4 when the judge
+remains condition-blind, passes calibration, and the receipt records the route
+honestly; the OpenAI receipt therefore counts as one eligible external judge
+pass. No condition reconciliation, eval decision, `## Result` lift, or canon
+claim exists.
 
 This file is operator-facing. It names model conditions and run mechanics. It
 must not be shown to blind judges.
@@ -232,6 +234,17 @@ anchors/reference verdicts, saw condition labels or the answer key before
 scoring, failed calibration, or belongs to the generator family in a way that
 violates the frozen judge protocol.
 
+### Operator route-eligibility decision — 2026-05-23
+
+After the OpenAI API receipt was first recorded with a route-operation
+limitation, the operator explicitly accepted hosted API judge paths run by Codex
+with operator-provided API keys as result-lifting judges for v4. This decision
+does not alter the frozen prompts, packets, outputs, rubric, calibration anchors,
+or answer-key discipline. It only clarifies route eligibility: a hosted API judge
+run this way can count if the model is external to the orchestrating agent,
+remains condition-blind, passes calibration, receives no answer key or condition
+labels, and the receipt records the route honestly.
+
 ## Output, anonymisation, and answer key
 
 - One public-safe model-output receipt per run under `model-outputs/`, with full
@@ -314,9 +327,8 @@ The frozen v4-v1 benchmark pass has been run.
 The v4-v1 inputs are frozen, forty real outputs have been generated, and the
 condition-blind judge packet is built. One hosted OpenAI API judge receipt is on
 record (`judge-packet/judge-score-openai-gpt-5.4-mini-api.md`): calibration
-passed exactly and all forty `OUT-NN` outputs were scored. Because that API call
-was operated by the orchestrating Codex session, the receipt is recorded with a
-route-eligibility limitation. The next step is a route-eligible second judge
-and/or an explicit operator eligibility decision, then aggregate-only
-reconciliation. No reconciliation, eval decision, `## Result` lift, canon
-candidate, or public claim exists.
+passed exactly and all forty `OUT-NN` outputs were scored. Under the 2026-05-23
+operator route-eligibility decision, it counts as one eligible external judge
+pass. The next step is a second eligible external judge from a different
+provider/family, then aggregate-only reconciliation. No reconciliation, eval
+decision, `## Result` lift, canon candidate, or public claim exists.

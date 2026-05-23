@@ -24,10 +24,12 @@ candidate benchmark path after the cross-case learning memo: the v4-v1 run
 packet is frozen, forty real model outputs have been generated, and the
 condition-blind judge packet has been built. One hosted OpenAI API judge pass
 (`gpt-5.4-mini`) has calibrated and scored all forty `OUT-NN` outputs; it is
-recorded as a real external API judge pass, with the limitation that the API call
-was operated by the orchestrating Codex session rather than by the human operator
-outside orchestration named in the frozen route. No condition reconciliation,
-eval decision, or result lift has occurred.
+recorded as a real external API judge pass. On 2026-05-23, the operator accepted
+hosted API calls run by Codex with operator-provided keys as result-lifting judge
+routes for v4 when the judge remains condition-blind, passes calibration, and
+the receipt records the route honestly. The OpenAI receipt therefore counts as
+one of the two required eligible external judge passes. No condition
+reconciliation, eval decision, or result lift has occurred.
 
 The case tests whether an advisor can preserve a diagnostic-and-intervention
 tension in a high-hazard public-utility scenario: is a troubling pattern better
@@ -41,7 +43,7 @@ operator-accepted, `run-packet.md` freezes the exact condition packets,
 generator/runtime snapshot, equal-length filler checks, and two external judge
 routes before generation, and the run has produced forty real `gemma4:31b`
 outputs. The next step is external judge calibration and scoring; no
-route-eligible external judge pass, reconciliation, eval decision, `## Result`
+second eligible external judge pass, reconciliation, eval decision, `## Result`
 lift, or canon claim exists yet.
 
 ## Lineage
@@ -418,7 +420,7 @@ recorded.
 
 The condition-blind judge packet is built under `judge-packet/`. One OpenAI API
 judge receipt is on record: `judge-packet/judge-score-openai-gpt-5.4-mini-api.md`.
-The judge passed calibration exactly and scored all forty `OUT-NN` outputs, but
-the receipt records the route-operation limitation above, so it does not
-currently count as one of the two required eligible external judges. No
-`OUT-NN` to condition reconciliation is committed.
+The judge passed calibration exactly and scored all forty `OUT-NN` outputs. The
+operator has accepted hosted API calls run by Codex with operator-provided keys
+as result-lifting judge routes for v4, so this receipt counts as one eligible
+external judge pass. No `OUT-NN` to condition reconciliation is committed.
