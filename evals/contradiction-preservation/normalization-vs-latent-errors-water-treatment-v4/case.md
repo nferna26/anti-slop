@@ -22,8 +22,12 @@ This is a v4 contradiction-preservation scaffold for the reviewed tension
 `normalization-of-deviance-vs-latent-errors`. It is designed as the next
 candidate benchmark path after the cross-case learning memo: the v4-v1 run
 packet is frozen, forty real model outputs have been generated, and the
-condition-blind judge packet has been built. No judge has calibrated or scored
-v4 yet, and no result has been lifted.
+condition-blind judge packet has been built. One hosted OpenAI API judge pass
+(`gpt-5.4-mini`) has calibrated and scored all forty `OUT-NN` outputs; it is
+recorded as a real external API judge pass, with the limitation that the API call
+was operated by the orchestrating Codex session rather than by the human operator
+outside orchestration named in the frozen route. No condition reconciliation,
+eval decision, or result lift has occurred.
 
 The case tests whether an advisor can preserve a diagnostic-and-intervention
 tension in a high-hazard public-utility scenario: is a troubling pattern better
@@ -37,7 +41,8 @@ operator-accepted, `run-packet.md` freezes the exact condition packets,
 generator/runtime snapshot, equal-length filler checks, and two external judge
 routes before generation, and the run has produced forty real `gemma4:31b`
 outputs. The next step is external judge calibration and scoring; no
-reconciliation, eval decision, `## Result` lift, or canon claim exists yet.
+route-eligible external judge pass, reconciliation, eval decision, `## Result`
+lift, or canon claim exists yet.
 
 ## Lineage
 
@@ -406,11 +411,14 @@ body sha256 into `judge-packet/outputs/OUT-01.md` through `OUT-40.md`; the
 ## Score sheet
 
 See `score-sheet.md` in this case folder. It is unscored; `## Result` remains
-`partial` until real outputs are generated, externally judged, reconciled, and a
-decision is recorded.
+`partial` until blind judge scores are reconciled by condition and a decision is
+recorded.
 
 ## Judge notes
 
-No judge has calibrated or scored this v4 case. The condition-blind judge packet
-is built under `judge-packet/`; each external judge must still pass the
-calibration gate before scoring real `OUT-NN` outputs.
+The condition-blind judge packet is built under `judge-packet/`. One OpenAI API
+judge receipt is on record: `judge-packet/judge-score-openai-gpt-5.4-mini-api.md`.
+The judge passed calibration exactly and scored all forty `OUT-NN` outputs, but
+the receipt records the route-operation limitation above, so it does not
+currently count as one of the two required eligible external judges. No
+`OUT-NN` to condition reconciliation is committed.

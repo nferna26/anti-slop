@@ -2,6 +2,10 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-23
+
+- Ran the v4 `normalization-vs-latent-errors-water-treatment-v4-v1` OpenAI API judge route through the consolidated copy-paste packet. Hosted `gpt-5.4-mini` resolved to `gpt-5.4-mini-2026-03-17`, passed calibration exactly (A 6/6, B 0/6, C 4/6; 0 criteria differences; no Anchor C C5/C6 disagreement), and scored all forty blinded `OUT-NN` outputs against C1-C6. Committed `judge-packet/judge-score-openai-gpt-5.4-mini-api.md` with the 40-row score table (distribution: 6/6 x38, 5/6 x2), packet/response hashes, response IDs, and a route-eligibility limitation: the model was external and condition-blind, but the API call was operated by the orchestrating Codex session using an operator-provided API key rather than by the human operator outside orchestration named in the frozen route, so it is not currently counted as one of the required eligible external judges. Updated `case.md`, `score-sheet.md`, and `run-packet.md` to reflect scored-but-unreconciled state. No condition reconciliation, eval decision, `## Result` lift, canon candidate, public claim, or `OUT-NN` to condition mapping created.
+
 ## 2026-05-22
 
 - Added copy-paste-ready independent-judge packets for the v4 `normalization-vs-latent-errors-water-treatment-v4-v1` judge pass: `judge-packet/independent-judge-packet-calibration.md` (Part 1, calibration only), `judge-packet/independent-judge-packet-scoring.md` (Part 2, all 40 anonymised `OUT-NN` outputs, released only after calibration passes), and operator-only `judge-packet/operator-calibration-check.md` (withheld reference verdict summary and eligibility procedure). Updated the judge-packet README to point to the consolidated files. No judging, scoring, reconciliation, eval decision, `## Result` lift, canon candidate, or public claim created; condition labels and the `OUT-NN` to condition/run answer key remain outside judge-facing material.
