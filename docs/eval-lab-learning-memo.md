@@ -32,7 +32,7 @@ judge receipts under each case's `judge-packet/`.
   hashed Advisor prompts, equal-length filler with forbidden-vocabulary scans,
   condition-blind anonymisation, pre-registered Positive-result and Falsifier
   rules, judge calibration gates, and aggregate-only reconciliation from
-  committed hashes all functioned as designed across three independent passes.
+  committed hashes all functioned as designed across the three scored cases.
 - **Negative outcomes are recordable without drift.** Each case ended in
   `do_not_promote` with a named `decision_class`, none of them lifted `## Result`,
   and none of them changed canon. The discipline that the result status policy
@@ -83,9 +83,14 @@ These are about the eval lab itself, not about the substrate's effect on advice.
 - **Judge sensitivity.** The same blinded outputs produce different aggregate
   shapes under different judges. The managerial case's three-judge margin
   collapse and the v2 case's C5/C6 split are the clearest examples.
-- **Insufficient eligible independent judges.** v2 had only one eligible judge
-  (the second pass was non-independent / circular). v3 has only one eligible
-  independent judge. Neither clears the ≥2 bar.
+- **Eligible-judge and independent-judge bar not cleared.** v2 had two
+  condition-blind judge receipts, but the case did not clear the required
+  independent-judge and Positive-result bar: the Claude pass was
+  non-independent / circular (orchestrating agent), the C5/C6 judge
+  disagreement (20/40 and 22/40) triggered the third-judge rule, and neither
+  judge cleared the pre-registered Positive-result rule. v3 has only one
+  eligible independent judge across three blind-judge attempts, and so the
+  ≥2-eligible-judges bar is not met.
 - **Rubric items that judges can resolve in opposite directions.** The v2
   postmortem identifies C5 ("no flattening") and C6 ("concrete recommendation")
   as a built-in tension: a single-sided definite recommendation can be read as
