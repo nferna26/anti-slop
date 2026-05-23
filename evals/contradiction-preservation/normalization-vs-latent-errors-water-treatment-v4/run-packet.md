@@ -16,9 +16,10 @@ filler constraints, anonymisation rules, and external-judge plan.
 **Status: prepared only — not frozen, not run.** The calibration anchors are
 still `status: proposed_unreviewed`, so this packet cannot freeze a benchmark
 version and no output generation may begin. A future freeze must update this
-file with exact condition-packet hashes, equal-length filler word counts and
-scan results, the generator model snapshot, accepted calibration-anchor hash,
-and named eligible judge routes.
+file with final condition-packet hashes, the generator model snapshot, accepted
+calibration-anchor hash, and named eligible judge routes. Candidate condition
+packets and a clean equal-length filler have been assembled locally to reduce
+freeze-time ambiguity, but they are not yet frozen inputs.
 
 This file is operator-facing. It names model conditions and run mechanics. It
 must not be shown to blind judges.
@@ -33,11 +34,9 @@ The following must be true before `status` may change to a frozen state:
   judge route counts only if it is external to the orchestrating agent and did
   not author the v4 scenario, rubric, anchors, condition packets, or judge
   packet.
-- The exact `vanilla_long_prompt` filler is generated, length-matched to the
-  `substrate_workflow` added material within ±8%, and scanned clean against the
-  forbidden vocabulary list below.
-- All five condition packets are assembled byte-exactly and their `sha256`
-  hashes are recorded in `## Freeze checklist`.
+- The candidate `vanilla_long_prompt` filler and condition packets below are
+  either accepted unchanged at freeze or regenerated and rehashed; in either
+  case the final frozen hashes are recorded in `## Freeze checklist`.
 - The generator model and runtime snapshot are recorded.
 
 ## Prepared inputs
@@ -154,8 +153,8 @@ prompt is byte-identical across conditions.
 
 ## Equal-length filler requirements
 
-The `vanilla_long_prompt` filler is not generated in this prepared packet. At
-freeze, generate a neutral filler body with these requirements:
+The `vanilla_long_prompt` filler is held in the git-ignored local-only run
+folder and is not committed. It must meet these requirements:
 
 - Distinct, non-repetitive everyday-topic paragraphs.
 - Word count matches the `substrate_workflow` added-material word count within
@@ -166,6 +165,32 @@ freeze, generate a neutral filler body with these requirements:
   `latent`, `defence`, `defense`, `error`, `diagnos`, `decid`, `decision`,
   `advice`, `advise`, `recommend`.
 - If the scan is nonzero, discard the filler and regenerate before freeze.
+
+Prepared candidate filler (not frozen):
+
+- Filler word count: 7570.
+- `substrate_workflow` added-material word count: 7570.
+- Ratio: 100.0% — within the 92.0% to 108.0% band.
+- Forbidden-vocabulary scan: clean — zero hits across all listed stems.
+- Filler `sha256`: `5e5f576b7880948cf7b3deffe971e0267df2b78ac3298242ec129b0bbe7c1e2c`.
+
+The candidate filler and assembled condition packets are stored under the
+git-ignored local-only run folder. They may be accepted unchanged at freeze, but
+until the freeze checklist is filled they remain candidate inputs only.
+
+## Prepared candidate packet hashes
+
+Candidate packets were assembled from this run packet's recipes, the current
+`case.md`, the current reviewed lineage artifacts, and the local-only candidate
+filler. These are reproducibility aids, not frozen benchmark hashes.
+
+| Condition | Words | Candidate `sha256` |
+| --- | ---: | --- |
+| `vanilla` | 311 | `6844cf29154c9f73180d42ea5b7b83f475a0bada9ac7661eec61fbacfce5658f` |
+| `famous_sources_supplied` | 412 | `606153e13082e1c83c12be2e8160f7709dbc3524688ae6ca06a679348ff639e1` |
+| `substrate_workflow` | 7881 | `ea7aaa8b6ca603d18e000a32d4f9bbda8422d472ea0b17fcb596763d4d014ead` |
+| `vanilla_long_prompt` | 7924 | `ec7a3a322a052431322b28c217f06fe749c1e6a477fcf781564f058e32b8a441` |
+| `generic_advice_prompted` | 335 | `09689f074da86aacaebe20292d529da17dd8ccda9f7a7d28caac79dbed0c1778` |
 
 ## Run parameters
 
@@ -241,13 +266,13 @@ Fill these fields before changing `status` to frozen:
 | Generator model and snapshot | pending |
 | Judge route A | pending final model/operator record |
 | Judge route B | pending final model/operator record |
-| `vanilla` packet words / `sha256` | pending |
-| `famous_sources_supplied` packet words / `sha256` | pending |
-| `substrate_workflow` packet words / `sha256` | pending |
-| `vanilla_long_prompt` packet words / `sha256` | pending |
-| `generic_advice_prompted` packet words / `sha256` | pending |
-| Filler word count and ratio | pending |
-| Filler forbidden-vocabulary scan | pending |
+| `vanilla` packet words / `sha256` | candidate 311 / `6844cf29154c9f73180d42ea5b7b83f475a0bada9ac7661eec61fbacfce5658f`; not frozen |
+| `famous_sources_supplied` packet words / `sha256` | candidate 412 / `606153e13082e1c83c12be2e8160f7709dbc3524688ae6ca06a679348ff639e1`; not frozen |
+| `substrate_workflow` packet words / `sha256` | candidate 7881 / `ea7aaa8b6ca603d18e000a32d4f9bbda8422d472ea0b17fcb596763d4d014ead`; not frozen |
+| `vanilla_long_prompt` packet words / `sha256` | candidate 7924 / `ec7a3a322a052431322b28c217f06fe749c1e6a477fcf781564f058e32b8a441`; not frozen |
+| `generic_advice_prompted` packet words / `sha256` | candidate 335 / `09689f074da86aacaebe20292d529da17dd8ccda9f7a7d28caac79dbed0c1778`; not frozen |
+| Filler word count and ratio | candidate 7570 vs 7570, 100.0%; not frozen |
+| Filler forbidden-vocabulary scan | candidate clean, zero hits; not frozen |
 
 ## Current stop condition
 
