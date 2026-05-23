@@ -4,6 +4,30 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-23
 
+- Designed, executed, judged, and reconciled the v6
+  `normalization-vs-latent-errors-print-vault-v6-v1` benchmark pass from the
+  v5 failure mode rather than by editing v5. The synthetic Marrow House
+  print-vault scenario narrows the target around two subtler mechanisms
+  (administrative acceptance-threshold drift and dormant moisture-defence
+  weakness) plus the intervention boundary between dashboard suppression,
+  physical/audit learning, and declining the surge. Froze five condition
+  packets, generated 40 real `gemma4:31b` outputs (8 per condition, 0
+  deferred, 0 seed+10 retries), built a condition-blind `OUT-NN` judge packet,
+  and generated `receipt-index.yaml`; the `OUT-NN` origin mapping remains
+  local-only. Hosted OpenAI `gpt-5.4-mini` failed calibration again (7 criteria
+  differences and Anchor C C5/C6 disagreement) and scored zero outputs. Hosted
+  Anthropic `claude-opus-4-7` passed calibration (1 criterion difference, no
+  Anchor C C5/C6 disagreement), scored all forty blinded outputs, and its
+  receipt records one arithmetic total normalization (`OUT-08`, reported total
+  2, PASS-count total 3). Reconciled aggregate-only from committed hashes and
+  set v6 `scoring_status: scored`, `## Result: partial`, and
+  `eval_decision: do_not_promote` / `decision_class:
+  insufficient_external_judges`. The positive rule is not met: only one
+  eligible scored judge, `critical_criterion_margin: False`, and
+  `generic_advice_prompted` still saturates C3/C4 at 1.00, though the total
+  margin against generic improved to +1.000. No `benchmark_supported`
+  promotion, canon candidate, public advice claim, or per-`OUT-NN` mapping
+  created.
 - Added a public-safe postmortem for the v5
   `normalization-vs-latent-errors-runway-lighting-v5-v1` benchmark pass at
   `evals/contradiction-preservation/normalization-vs-latent-errors-runway-lighting-v5/postmortem.md`
