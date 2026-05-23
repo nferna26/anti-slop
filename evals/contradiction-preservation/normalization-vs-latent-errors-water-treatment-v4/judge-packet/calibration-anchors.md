@@ -31,6 +31,29 @@ Required before freeze:
 No output generation, judge scoring, reconciliation, `## Result` lift, eval
 decision, or canon change is authorized by this proposed anchor file.
 
+## Operator review checklist
+
+Before accepting these anchors, the operator should confirm:
+
+- Provenance is accurate: these are synthetic illustrative answers drafted by
+  the Codex agent, not human-authored examples and not model outputs.
+- Surface 1 is judge-facing and contains only anchor texts, instructions, and a
+  blank scoring grid.
+- Surface 2 is operator-only and contains the withheld reference verdicts and
+  rationales.
+- Anchor A is a clear high-score reference answer.
+- Anchor B is a clear low-score defence-only / clean-record flattening answer.
+- Anchor C is a borderline free-hybrid answer that should pass C1-C4 but fail
+  C5 and C6.
+- The C3/C4 -> C5 -> C6 dependency boundary is represented clearly enough to
+  catch judge drift before real outputs are scored.
+- No condition labels, model-output receipts, answer-key material, private
+  paths, raw source text, book-map evidence, or canon language are present.
+
+If accepted as written, change frontmatter `status` to `filled_pre_run`, add
+`approved_date` and `approved_by`, and add an `## Operator approval` section
+recording the checklist result. If revised, record the revision before freeze.
+
 ## How this file is used
 
 Surface 1 is judge-facing. It contains the three anchor answers and a blank
