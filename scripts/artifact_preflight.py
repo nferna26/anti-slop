@@ -6,6 +6,7 @@ This script turns the highest-value artifact guardrails into a report:
 - claim/tension cards cite existing reviewed source cards;
 - eval lineage avoids book maps and cites reviewed artifacts;
 - eval case, score-sheet, and model-output receipts agree;
+- frozen eval run packets that use calibration anchors have accepted anchors;
 - WIP counts are visible against docs/wip-limits.md caps;
 - public artifact files avoid private path markers and raw-source extensions.
 
@@ -335,6 +336,21 @@ def judge_independence_affirmed(model_dir: Path, score_sheet: Path) -> bool:
     return False
 
 
+def run_packet_is_frozen(fm: dict[str, str]) -> bool:
+    status = (fm.get("status") or "").strip().lower()
+    if status.startswith("frozen") or "frozen_run" in status:
+        return True
+    return bool((fm.get("frozen") or "").strip())
+
+
+def run_packet_uses_calibration_anchors(run_packet: Path) -> bool:
+    text = read_text(run_packet)
+    return (
+        "calibration-anchors.md" in text
+        or (run_packet.parent / "judge-packet" / "calibration-anchors.md").exists()
+    )
+
+
 def run_self_test() -> int:
     """Deterministic self-test for value_affirms_independence(). Stdlib only.
 
@@ -611,6 +627,34 @@ def check_eval_cases(
                 ))
 
 
+def check_eval_run_packets(findings: list[Finding]) -> None:
+    """Guard the pre-run calibration gate for evals that use anchor files."""
+    for run_packet in sorted(EVALS_DIR.glob("*/*/run-packet.md")):
+        fm = read_frontmatter(run_packet)
+        if not run_packet_is_frozen(fm):
+            continue
+        if not run_packet_uses_calibration_anchors(run_packet):
+            continue
+
+        anchors = run_packet.parent / "judge-packet" / "calibration-anchors.md"
+        if not anchors.exists():
+            findings.append(Finding(
+                "BLOCKER",
+                run_packet,
+                "run packet is frozen but references calibration anchors and "
+                "judge-packet/calibration-anchors.md is missing",
+            ))
+            continue
+        anchor_status = read_frontmatter(anchors).get("status")
+        if anchor_status != "filled_pre_run":
+            findings.append(Finding(
+                "BLOCKER",
+                run_packet,
+                "run packet is frozen but calibration anchors are not "
+                f"operator-accepted (status={anchor_status})",
+            ))
+
+
 def check_public_sweep(findings: list[Finding]) -> None:
     for base in PUBLIC_SWEEP_DIRS:
         if not base.exists():
@@ -686,6 +730,7 @@ def main() -> int:
     check_source_cards(findings)
     check_claim_cards(findings, source_cards)
     check_eval_cases(findings, source_cards, claim_cards)
+    check_eval_run_packets(findings)
     check_public_sweep(findings)
 
     print("== Anti-Slop artifact preflight ==")
