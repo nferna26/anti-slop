@@ -28,6 +28,11 @@ nothing that would reveal how any answer was produced.
 - `output-manifest.yaml` — the map from each `OUT-NN` label to the sha256 of its
   answer body, for integrity checking. It carries no origin information.
 - `blank-score-sheet.md` — the template a judge fills, one row per `OUT-NN`.
+- `independent-judge-packet-calibration.md` — copy-paste-ready Part 1 for an
+  external judge: calibration only, with a hard stop before scoring.
+- `independent-judge-packet-scoring.md` — copy-paste-ready Part 2 for an
+  external judge that has cleared calibration: all 40 anonymised outputs plus
+  the return format.
 
 ## Operator-only files (not judge-facing)
 
@@ -36,6 +41,9 @@ nothing that would reveal how any answer was produced.
   operator-only.** A judge sees `calibration-exercise.md` (Surface 1) and must
   not be shown the reference verdicts until after submitting the calibration
   grid. Do not read `calibration-anchors.md` while judging.
+- `operator-calibration-check.md` — operator-only instructions for comparing an
+  external judge's Part 1 answer against the withheld reference verdicts before
+  releasing Part 2.
 
 ## Blind protocol
 
