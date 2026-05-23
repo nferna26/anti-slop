@@ -14,8 +14,9 @@ model output is a test artifact, not an authority.
 
 partial - v4 scaffold only. No run packet has frozen a benchmark version, no
 model outputs exist, no judge has calibrated, no output has been scored, and no
-condition aggregate or decision exists. This case cannot support any public
-claim, canon candidate, or `benchmark_supported` status.
+condition aggregate or decision exists. A prepared `run-packet.md` exists but is
+not frozen and authorizes no output generation. This case cannot support any
+public claim, canon candidate, or `benchmark_supported` status.
 
 ## Calibration gate
 
@@ -84,9 +85,9 @@ No judge has calibrated or scored this v4 case.
 
 1. Operator-review and accept `judge-packet/calibration-anchors.md` before any
    freeze or run.
-3. Prepare a frozen `run-packet.md` with exact condition packets, hashes,
+2. Freeze `run-packet.md` with exact condition packets, hashes,
    equal-length filler checks, run count, generator model, and two external
    eligible judge routes named before generation.
-4. Generate all real outputs, build the condition-blind judge packet, collect
+3. Generate all real outputs, build the condition-blind judge packet, collect
    calibrated external judge scores, reconcile aggregate-only, and record a
    decision.

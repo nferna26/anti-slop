@@ -34,7 +34,9 @@ strategy / startup / managerial-output case.
 This v4 draft is not a benchmark result. It becomes runnable only after the
 calibration anchors are filled and operator-accepted, a run packet freezes the
 exact condition packets, and two external eligible judges are arranged before
-generation.
+generation. A prepared, not-frozen run packet now exists at `run-packet.md`; it
+records the intended condition recipes and run mechanics but is blocked from
+freeze by the still-unreviewed calibration anchors.
 
 ## Lineage
 
@@ -350,6 +352,10 @@ No v4 model outputs exist yet. `model-outputs/` contains only `.gitkeep`.
 A model output is a test artifact — never an authority, never citable as a
 source. Future receipts must be real model runs with full benchmark provenance;
 in-session simulations cannot count toward this v4 benchmark pass.
+
+See `run-packet.md` for the prepared, not-frozen v4-v1 run plan. It authorizes
+no output generation until the calibration anchors are operator-accepted and the
+freeze checklist is filled.
 
 ## Score sheet
 
