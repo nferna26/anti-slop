@@ -1,0 +1,67 @@
+# Quality audit — <SOURCE_ID> first-map readiness
+
+> Local-only artifact. No book text is quoted in this audit; only structural measurements appear.
+
+## Source under audit
+
+- File: `local-only/extracted-md/<SOURCE_ID>/source.md` (~<BYTES> bytes, <LINES> lines, <PARAGRAPHS> paragraphs).
+- Conversion tool: **<CONVERSION_TOOL>** (e.g. pandoc 3.9.0.2 EPUB → GFM markdown with `--wrap=none`; or pdftotext -layout).
+- Conversion status (from `conversion-metadata.json`): **<STATUS>**.
+
+## Headings detected
+
+| Level | Count | Likely role |
+|---|---|---|
+| H1 (`#`) | <COUNT> | <e.g. book title; or mix of chapter starts and structural pages> |
+| H2 (`##`) | <COUNT> | <e.g. parts; or chapters and front-matter sub-sections> |
+| H3 (`###`) | <COUNT> | <e.g. chapters; or sub-sections within chapters> |
+| H4 (`####`) | <COUNT> | <e.g. sub-sub-sections> |
+| **Total headings** | **<TOTAL>** | <one-line summary: clean nested hierarchy vs. heterogeneous level usage> |
+
+<Brief paragraph explaining any heading-layer caveats: e.g. "the H1 layer mixes chapter starts with structural pages" or "part dividers do not survive as headings.">
+
+## Obvious extraction failures — none detected | <list any>
+
+| Signal | Count | Interpretation |
+|---|---|---|
+| Replacement characters (`�`) | <COUNT> | encoding is clean / encoding has issues |
+| Control characters in first 200 KB | <COUNT> | no binary leakage / binary leakage detected |
+| Form-feed (`\x0c`) chars | <COUNT> | expected for EPUB / preserved pdf page boundaries |
+| Standalone numeric lines (potential print page numbers) | <COUNT> | EPUB did not preserve print pagination / print pagination present |
+| CamelCase-style word joins (OCR signal) | <COUNT> | no OCR artifacts / OCR artifacts present |
+
+<One-line summary: extraction is clean, or naming any specific concern.>
+
+## Anti-Slop relevant terms in headings vs. body
+
+| Term | Heading hits | Body hits |
+|---|---|---|
+| <TERM_1> | <H_COUNT> | <B_COUNT> |
+| <TERM_2> | <H_COUNT> | <B_COUNT> |
+| ... | | |
+
+<One-line interpretation: which key concepts can be directly addressed by chapter_section locators, which appear only in body text.>
+
+## Chapter / section locator viability
+
+**<Viable | Viable with caveats | Not viable>.** <One-paragraph explanation referencing the heading hierarchy and what shape locators can take.>
+
+For source-card-grade locators, a paragraph axis can be added (`chapter_section_paragraph`); the <PARAGRAPHS>-paragraph base supports paragraph-level addressing without re-extraction.
+
+## Print page markers — <stable | not stable>
+
+<One-paragraph explanation. For EPUBs: typically not viable. For pdftotext extractions: viable if form-feed counts are high.>
+
+## Recommended locator scheme
+
+**`<LOCATOR_SCHEME>`** — <one-sentence rationale tied to the heading and page-marker evidence above>.
+
+## Fallback if locator turns out to be weak
+
+If, during the first map's drafting, the operator finds the locator boundaries inconsistent or too coarse:
+
+1. **First fallback — augment with paragraph index.** Switch the locator scheme to `chapter_section_paragraph`. The paragraph base is already stable.
+2. **Second fallback — operator-curated chapter index.** Build a small public-safe table mapping observed heading text to canonical chapter numbers, then cite the canonical chapter number.
+3. **Third fallback — acquire a same-edition PDF.** Run `pdftotext -layout` to recover form-feed page boundaries; switch to `pdf_page` locators.
+
+The audit's bottom line: <SOURCE_ID> is **<map-ready | map-ready with one operator pass | not yet map-ready>** under `<LOCATOR_SCHEME>` locators. Operator approval is the remaining gate.

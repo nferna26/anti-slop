@@ -1,0 +1,53 @@
+# Operator approval summary — <SOURCE_ID>
+
+> Local-only artifact. Do not commit. Do not paste any values into public files until the operator signs off below.
+
+## Identity
+
+- **source_id:** <SOURCE_ID>
+- **title:** <TITLE>
+- **author:** <AUTHOR>
+
+## Current public registry state (read-only snapshot — nothing has changed)
+
+- `corpus/manifests/books-200.yaml` <SOURCE_ID> row: `edition: "<…>"`, `year: "<…>"`, `publisher: "<…>"`, `isbn: "<…>"`, `owned_format: "<…>"`, `locator_system: "<…>"`. `acquisition_status: <…>`, `raw_source_status: <…>`, category `<…>`, notes flag `<…>`.
+- `corpus/manifests/acquisition-registry.yaml` <SOURCE_ID> row: `edition_verified: <…>`, `locator_scheme: "<…>"`, `locator_confidence: <…>`, `rights.raw_text_public_allowed: <…>`, `local_source_status.raw_source_exists_local: <…>`, `local_locator_key: <…>`, `local_checksum_public: <…>`, `raw_file_path_public: <…>`. `processing_status.deep_card_candidate: <…>`; other `processing_status` flags: `<…>`.
+
+## Candidate metadata (operator-verification-status: pending)
+
+All values below are derived from the local extracted markdown's copyright / front-matter region or from the structural audit. Evidence locations are paraphrased — no source text is quoted.
+
+- **Candidate publisher:** <PUBLISHER candidates with reasoning>
+- **Candidate year:** <YEAR with rationale>
+- **Candidate ISBN(s):** <list of ISBN-13 strings extracted from the front-matter region>
+- **Candidate edition:** <edition with rationale>
+- **Candidate owned_format:** `<OWNED_FORMAT_CANONICAL>` — canonical public value only (`epub` | `pdf` | `mobi` | `print` | `audiobook`). Conversion-tool detail belongs under "Extraction / conversion quality" below, not in this field.
+- **Candidate locator_system:** `chapter_section` | `pdf_page` | other
+- **Candidate locator_confidence:** `verified` | `medium` | `low` (proposed only — applies only after operator confirms the chosen scheme)
+
+## Extraction / conversion quality
+
+- Pandoc/pdftotext conversion produced ~<BYTES> bytes across <LINES> lines and <PARAGRAPHS> paragraphs.
+- Heading hierarchy: <H1> H1, <H2> H2, <H3> H3, <H4> H4 (≈<TOTAL> headings). <Brief paraphrase of structural shape: clean nested vs. heterogeneous, where chapter labels land.>
+- Zero replacement characters, zero control characters in the inspected prefix, zero OCR-style word-join artifacts. <Or list any anomalies.>
+- Form-feed page boundaries: <COUNT> (0 expected for EPUB; nonzero indicates pdftotext-style page breaks).
+- Standalone-numeric-line page markers: <COUNT>.
+- Anti-Slop relevant terms appearance: <LIST: term — N headings, M body hits>.
+
+Full quality audit: see `quality-audit.md` in this directory.
+
+## Unresolved questions for the operator
+
+1. <Question 1 — usually about which candidate publisher/ISBN is correct, or about copyright-year confirmation.>
+2. <Question 2 — usually about locator scheme granularity.>
+3. <Question 3 — usually about rights-note language.>
+4. <Additional questions as needed.>
+
+## Recommended operator decision
+
+**Approve** the proposed public update with the following operator-supplied selections:
+- <Confirm publisher / year / ISBN / edition / owned format.>
+- <Confirm locator scheme, or replace with operator-preferred.>
+- <Other case-specific selections.>
+
+Once approved, Codex can apply `proposed-public-update.yaml`. The proposal keeps `edition_verified` as `false` with an inline comment that says it lifts to `true` only after operator approval.
