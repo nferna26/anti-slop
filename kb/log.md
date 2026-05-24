@@ -2,6 +2,28 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-24
+
+- Designed and executed the v7 pivot benchmark
+  `halo-evidence-vs-diagnosis-validation-v7-v1` from
+  `docs/eval-lab-v7-pivot-plan.md`, moving outside the v4-v6
+  safety/operations family into a synthetic B2B product evidence-quality case.
+  The frozen substrate packet used only reviewed source cards
+  (`BK-0048-card-001`, `BK-0001-card-001`, `BK-0007-card-001`); the draft v7
+  claim/tension card remained unreviewed pre-work and was not used as lineage
+  evidence. Froze five condition packets, generated 40 real `gemma4:31b`
+  outputs (8 per condition, 0 deferred, 0 seed+10 retries), built a
+  condition-blind `OUT-NN` judge packet, and generated `receipt-index.yaml`;
+  the `OUT-NN` origin mapping remains local-only. All three pre-registered
+  judge routes failed the stricter v7 calibration gate and scored zero outputs:
+  hosted OpenAI `gpt-5.4-mini` (6 differences, 1 critical), hosted Anthropic
+  `claude-opus-4-7` (5 differences, 0 critical but too many C1/C2 differences),
+  and local `gpt-oss:20b` (6 differences, 1 critical). Added
+  `eval-decision.md` with `eval_decision: do_not_promote` /
+  `decision_class: judge_calibration_failed` and a public-safe postmortem. No
+  scored OUT-NN rows, aggregate reconciliation, `benchmark_supported` promotion,
+  canon candidate, public advice claim, or per-`OUT-NN` mapping created.
+
 ## 2026-05-23
 
 - Recorded the post-v6 pivot decision in `docs/eval-lab-v7-pivot-plan.md`:
