@@ -1,0 +1,101 @@
+# Book-map review report — <SOURCE_ID>
+
+> Local-only artifact. The public file at `corpus/book-maps/<SOURCE_ID>.md` is NOT modified by this report. Apply fixes only on explicit operator approval per finding.
+
+## Map under review
+
+- **Path:** `corpus/book-maps/<SOURCE_ID>.md`
+- **Source title:** <TITLE>
+- **Reviewer:** <agent / human reviewer>
+- **Review date:** <YYYY-MM-DD>
+
+## 1. Stale metadata
+
+**Check.** Source metadata section still says "pending operator update" / "candidate only" / contains empty fields after Workflow 2 has applied verified values. Frontmatter `title`, `author`, `locator_system`, `edition_verified` match the current row in `books-200.yaml` and `acquisition-registry.yaml`.
+
+**Findings.** <PASS — no fixes needed.> | <Specific findings with public-file line numbers.>
+
+**Suggested fix.** <Not applicable> | <Replace stale phrasing with verified values from the current manifest row. Cite the values.>
+
+## 2. Wrong YAML block edited
+
+**Check.** Edits in the public artifact landed at the correct YAML block and parent-key path. Applies to apply-verified-metadata output and to any subsequent corrections.
+
+**Findings.** <PASS — no fixes needed.> | <Specific findings.>
+
+**Suggested fix.** <Not applicable> | <Re-apply edits at the correct parent-key path; revert misplaced values.>
+
+## 3. Private paths / extensions
+
+**Check.** No `local-only/`, `extracted-md/`, `/Users/`, `Desktop`, or `Archive.zip` substring. No blocked raw-source format extensions for EPUB, PDF, MOBI, AZW, AZW3, DJVU, CBZ, or CBR — see `scripts/kb_lint.py` for the exact regex.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding: line N contains "<offender>".>
+
+**Suggested fix.** <Not applicable> | <Rewrite using author + title + edition + locator only.>
+
+## 4. Raw-text leakage
+
+**Check.** No verbatim sentences or near-verbatim paraphrase from the source's prose body.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding(s).>
+
+**Suggested fix.** <Not applicable> | <Rewrite as a high-level paraphrase with locator only.>
+
+## 5. Hidden canon drift
+
+**Check.** No assertion-style prose attributing claims to comparison sources. Pattern to avoid: `BK-NNNN says …`, `<Author> treats …`, `<Author> argues …`, `<Author> claims …`.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding(s).>
+
+**Suggested fix.** <Not applicable> | <Rephrase as a question or comparison invitation.>
+
+## 6. Unsupported comparison claims
+
+**Check.** Possible-contradictions rows are framed as questions to investigate, not assertions about another book.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding(s).>
+
+**Suggested fix.** <Not applicable> | <Re-frame the "Question to investigate" cell as `Compare … with … on …` or `Question whether/how …`.>
+
+## 7. Locator mismatch
+
+**Check.** Locators reference structural divisions that survived in the extraction. Locator format matches `locator_system` in frontmatter.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding(s), e.g. "lines 54–60 use `Part I / Chapter 5` but extraction has parts_present: false.">
+
+**Suggested fix.** <Not applicable> | <Drop the unsupported prefix; use chapter-only locators.>
+
+## 8. Over-summary
+
+**Check.** Section length caps: Argument structure 5–8 bullets; Key concepts ≤8 rows; Claims relevant ≤10 rows; Possible contradictions ≤8 rows; Possible canon touchpoints ≤6 bullets; Misuse risks 5–7 bullets; Central thesis ≤150 words.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding(s), e.g. "Key concepts has 9 rows; cap is 8.">
+
+**Suggested fix.** <Not applicable> | <Trim to cap; move detail into source cards later.>
+
+## 9. Universalization
+
+**Check.** Map text flags boundary conditions where the source's domain is not universally applicable.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding(s).>
+
+**Suggested fix.** <Not applicable> | <Add a misuse-risks bullet that names the universalization risk for this source's specific domain.>
+
+## 10. Map inference not labeled
+
+**Check.** Every claim that is the map's own synthesis carries `(map inference)` or equivalent in-line marker.
+
+**Findings.** <PASS — no fixes needed.> | <Specific finding(s).>
+
+**Suggested fix.** <Not applicable> | <Add the label, or replace the claim with a chapter-cited claim.>
+
+## Overall recommendation
+
+<One-paragraph summary of findings and recommended action: e.g. "No fixes needed; ready for source-card queue." Or "Three fixes required before promoting; recommend operator review of fixes 1, 5, 7 before re-running closing-gate suite.">
+
+## Next steps
+
+- [ ] Operator reviews each finding above.
+- [ ] Operator approves specific fixes for application.
+- [ ] Claude applies approved fixes only; each fix goes through the closing-gate suite afterward.
+- [ ] Re-run review pass after fixes to confirm zero findings.
