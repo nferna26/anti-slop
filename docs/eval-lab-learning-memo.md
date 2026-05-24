@@ -11,6 +11,32 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-24 — v10 showed substrate lift on C4-C6 but C3 was non-discriminating
+
+The `halo-evidence-vs-diagnosis-validation-v10` run added the missing
+two-sided readiness check from v9: before freeze, no-source probe outputs had
+to fail C4 while substrate probe outputs had to pass C4. That probe passed
+0/6 no-source C4 and 3/3 substrate C4. V10 also used the full public-safe text
+of the three reviewed source cards rather than compact card summaries, enabled
+by the LM Studio MLX model's 65,536-token loaded context.
+
+The full run produced 48 real outputs, two hosted judges passed calibration and
+scored all blinded outputs, and aggregate-only reconciliation completed from
+committed hashes. The substrate finally separated strongly on the intended
+boundary: pooled `substrate_workflow` mean total was 6.000 versus 3.000 for
+`generic_advice_prompted`, 2.938 for `vanilla_long_prompt`, and 3.500 for
+`criteria_prompted_no_sources`; both judges gave substrate 8/8 C4-C6 passes.
+The result still stayed `partial` / `do_not_promote` because the frozen
+positive rule required margin on every C3-C6 criterion. C3 saturated in key
+controls (`generic_advice_prompted` 1.00; `vanilla_long_prompt` and
+`criteria_prompted_no_sources` 0.94), and the judge-disagreement trigger fired
+for `criteria_prompted_no_sources`. The methodological lesson is that basic
+contaminated-evidence recognition is now too easy to be a load-bearing margin
+criterion. Future designs should keep C3 as descriptive or as a saturation
+monitor, but make the positive critical composite track the hard boundary that
+v10 actually isolated: selecting and defending the right disconfirming
+intervention, then making a constrained recommendation with a falsifier.
+
 ## 2026-05-24 — v9 showed that generic failure is not substrate success
 
 The `halo-evidence-vs-diagnosis-validation-v9` run added a local-only

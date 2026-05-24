@@ -4,6 +4,23 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-24
 
+- Froze and executed `halo-evidence-vs-diagnosis-validation-v10-v1` after the
+  local-only substrate-feasibility probe passed (0/6 no-source outputs passed
+  C4; 3/3 substrate outputs passed C4) and hosted OpenAI `gpt-5.4-mini` plus
+  hosted Anthropic `claude-opus-4-7` passed the C3-C6 calibration-smoke gate.
+  The run used full public-safe reviewed source cards in the substrate packet,
+  enabled by LM Studio MLX `gemma-4-31b-it-mlx:2` at 65,536 loaded context
+  tokens. Generated 48 real outputs (6 conditions x 8, 0 simulated, 0
+  deferred), built public-safe receipts and a hash-blinded `OUT-NN` judge
+  packet, scored all 48 outputs with both hosted judges, and reconciled
+  aggregate-only from committed hashes. Positive rule failed despite strong
+  C4-C6 substrate lift: substrate pooled mean was 6.000 versus 3.000 for
+  `generic_advice_prompted`, 2.938 for `vanilla_long_prompt`, and 3.500 for
+  `criteria_prompted_no_sources`, but key controls saturated C3 and the
+  pre-registered critical margin required every C3-C6 criterion. Added
+  `eval-decision.md` (`eval_decision: do_not_promote`, `decision_class:
+  critical_margin_failed`) and `postmortem.md`. No `benchmark_supported`
+  result, canon candidate, public advice claim, or book growth created.
 - Froze and executed `halo-evidence-vs-diagnosis-validation-v9-v1` after the
   local-only generic-solvability probe passed (0/6 no-source outputs passed C4)
   and hosted OpenAI `gpt-5.4-mini` plus hosted Anthropic `claude-opus-4-7`
