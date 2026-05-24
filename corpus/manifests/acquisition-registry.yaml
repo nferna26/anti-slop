@@ -1,0 +1,5215 @@
+# Acquisition registry — public-safe rights/access view of the 200-book corpus.
+# Joined 1:1 to corpus/manifests/books-200.yaml by source_id.
+# This file records edition verification status, locator scheme, rights/access policy,
+# excerpt caps, and a boolean local-source presence flag.
+# It NEVER contains raw file paths, raw filenames, or file extensions.
+# Validator: scripts/validate_acquisition_registry.py.
+
+source_count: 200
+schema_version: 1
+legal_rule: no_raw_copyrighted_text_in_public_repo
+default_excerpt_policy: conservative
+default_max_excerpt_words_per_card: 25
+default_max_excerpt_words_per_source_total: 100
+
+entries:
+  - source_id: BK-0001
+    title: "Good Strategy Bad Strategy"
+    author: "Rumelt, Richard"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: chapter_section
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; edition metadata operator-verified from front matter on 2026-05-19; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: BK-0001-local-source
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: true
+      canon_candidate_exists: false
+  - source_id: BK-0002
+    title: "High Output Management"
+    author: "Grove, Andrew S."
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0002-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0003
+    title: "Working Backwards"
+    author: "Bryar, Colin; Carr, Bill"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: chapter_section
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; edition metadata operator-verified from front matter on 2026-05-19; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: BK-0003-local-source
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: true
+      canon_candidate_exists: false
+  - source_id: BK-0004
+    title: "Playing to Win"
+    author: "Lafley, A.G.; Martin, Roger L."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0005
+    title: "Inspired"
+    author: "Cagan, Marty"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0006
+    title: "Continuous Discovery Habits"
+    author: "Torres, Teresa"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0006-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0007
+    title: "The Lean Startup"
+    author: "Ries, Eric"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: verified
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0007-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: true
+      canon_candidate_exists: false
+  - source_id: BK-0008
+    title: "Crossing the Chasm"
+    author: "Moore, Geoffrey A."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0009
+    title: "Obviously Awesome"
+    author: "Dunford, April"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0010
+    title: "The Cold Start Problem"
+    author: "Chen, Andrew"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0011
+    title: "The Hard Thing About Hard Things"
+    author: "Horowitz, Ben"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0012
+    title: "The Great CEO Within"
+    author: "Mochary, Matt"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0013
+    title: "Zero to One"
+    author: "Thiel, Peter"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0014
+    title: "Hooked"
+    author: "Eyal, Nir"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0015
+    title: "Blitzscaling"
+    author: "Hoffman, Reid; Yeh, Chris"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0016
+    title: "The Innovator's Dilemma"
+    author: "Christensen, Clayton M."
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0016-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0017
+    title: "The Four Steps to the Epiphany"
+    author: "Blank, Steve"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0018
+    title: "The Mom Test"
+    author: "Fitzpatrick, Rob"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0018-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0019
+    title: "Escaping the Build Trap"
+    author: "Perri, Melissa"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0020
+    title: "Shape Up"
+    author: "Singer, Ryan"
+    acquisition_status: not_started
+    availability_tier: PD
+    publication_status: metadata_public
+    raw_source_status: metadata_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "rights/access status requires operator verification before excerpts"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0021
+    title: "Accelerate"
+    author: "Forsgren, Nicole; Humble, Jez; Kim, Gene"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0021-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0022
+    title: "The Goal"
+    author: "Goldratt, Eliyahu M."
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0022-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0023
+    title: "Competitive Strategy"
+    author: "Porter, Michael E."
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0023-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0024
+    title: "The Rise and Fall of Strategic Planning"
+    author: "Mintzberg, Henry"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0024-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0025
+    title: "Administrative Behavior"
+    author: "Simon, Herbert A."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0026
+    title: "The Ambiguities of Experience"
+    author: "March, James G."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0027
+    title: "A Behavioral Theory of the Firm"
+    author: "Cyert, Richard M.; March, James G."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0028
+    title: "Sensemaking in Organizations"
+    author: "Weick, Karl E."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0029
+    title: "Thinking, Fast and Slow"
+    author: "Kahneman, Daniel"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0029-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0030
+    title: "Sources of Power"
+    author: "Klein, Gary A."
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0030-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0031
+    title: "Expert Political Judgment"
+    author: "Tetlock, Philip E."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0032
+    title: "Governing the Commons"
+    author: "Ostrom, Elinor"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0033
+    title: "The Structure of Scientific Revolutions"
+    author: "Kuhn, Thomas S."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0034
+    title: "Principles of Corporate Finance"
+    author: "Brealey, Richard A.; Myers, Stewart C.; Allen, Franklin; Edmans, Alex"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "pdf_page"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0034-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0035
+    title: "Investment Valuation"
+    author: "Damodaran, Aswath"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0036
+    title: "Financial Statement Analysis and Security Valuation"
+    author: "Penman, Stephen H."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0037
+    title: "Financial Intelligence"
+    author: "Berman, Karen; Knight, Joe"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0037-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0038
+    title: "Financial Shenanigans"
+    author: "Schilit, Howard M.; Perler, Jeremy"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0038-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0039
+    title: "The Smartest Guys in the Room"
+    author: "McLean, Bethany; Elkind, Peter"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0039-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0040
+    title: "Bad Blood"
+    author: "Carreyrou, John"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0040-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0041
+    title: "The Everything Store"
+    author: "Stone, Brad"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0041-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0042
+    title: "The Challenger Launch Decision"
+    author: "Vaughan, Diane"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "pdf_page"
+    locator_confidence: verified
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0042-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: true
+      canon_candidate_exists: false
+  - source_id: BK-0043
+    title: "Normal Accidents"
+    author: "Perrow, Charles"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0043-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0044
+    title: "Human Error"
+    author: "Reason, James"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified (1990 first edition; local file a later printing)"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0044-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0045
+    title: "Engineering a Safer World"
+    author: "Leveson, Nancy G."
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0045-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0046
+    title: "To Err Is Human"
+    author: "Institute of Medicine"
+    acquisition_status: not_started
+    availability_tier: PD
+    publication_status: metadata_public
+    raw_source_status: metadata_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "rights/access status requires operator verification before excerpts"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0047
+    title: "On War"
+    author: "Clausewitz, Carl von"
+    acquisition_status: sourced
+    availability_tier: PD
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "original 1832 work is public domain; local artifact is a copyrighted modern translation; for public excerpts use a public-domain translation"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0047-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0048
+    title: "The Halo Effect"
+    author: "Rosenzweig, Phil"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0048-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: true
+      source_cards_started: true
+      deep_card_candidate: true
+      canon_candidate_exists: false
+  - source_id: BK-0049
+    title: "The Tyranny of Metrics"
+    author: "Muller, Jerry Z."
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0049-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0050
+    title: "Everything Is Obvious"
+    author: "Watts, Duncan J."
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: true
+    locator_scheme: "chapter_section"
+    locator_confidence: medium
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: "BK-0050-local-source"
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0051
+    title: "Radical Candor"
+    author: "Scott, Kim"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0052
+    title: "The Manager's Path"
+    author: "Fournier, Camille"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0053
+    title: "Team Topologies"
+    author: "Skelton, Matthew; Pais, Manuel"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0054
+    title: "Measure What Matters"
+    author: "Doerr, John"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0055
+    title: "Lean UX"
+    author: "Gothelf, Jeff; Seiden, Josh"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0056
+    title: "Sprint"
+    author: "Knapp, Jake"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0057
+    title: "Scaling People"
+    author: "Hughes Johnson, Claire"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0058
+    title: "The First 90 Days"
+    author: "Watkins, Michael D."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0059
+    title: "The Reflective Practitioner"
+    author: "Schon, Donald A."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0060
+    title: "Strategy and Structure"
+    author: "Chandler, Alfred D."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0061
+    title: "The Theory of the Growth of the Firm"
+    author: "Penrose, Edith"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0062
+    title: "Gaining and Sustaining Competitive Advantage"
+    author: "Barney, Jay B."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0063
+    title: "Competitive Advantage"
+    author: "Porter, Michael E."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0064
+    title: "The Structuring of Organizations"
+    author: "Mintzberg, Henry"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0065
+    title: "Organizations"
+    author: "March, James G.; Simon, Herbert A."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0066
+    title: "Organizational Learning"
+    author: "Argyris, Chris; Schon, Donald A."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0067
+    title: "Organization and Environment"
+    author: "Lawrence, Paul R.; Lorsch, Jay W."
+    acquisition_status: not_started
+    availability_tier: UB
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0068
+    title: "The Economic Institutions of Capitalism"
+    author: "Williamson, Oliver E."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0069
+    title: "The Firm, the Market, and the Law"
+    author: "Coase, R.H."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0070
+    title: "Economics, Organization and Management"
+    author: "Milgrom, Paul; Roberts, John"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0071
+    title: "Bureaucracy"
+    author: "Wilson, James Q."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0072
+    title: "Judgment in Managerial Decision Making"
+    author: "Bazerman, Max H.; Moore, Don A."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0073
+    title: "Judgment under Uncertainty"
+    author: "Kahneman, Daniel; Slovic, Paul; Tversky, Amos"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0074
+    title: "Simple Heuristics That Make Us Smart"
+    author: "Gigerenzer, Gerd et al."
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0075
+    title: "Clinical versus Statistical Prediction"
+    author: "Meehl, Paul E."
+    acquisition_status: not_started
+    availability_tier: UB
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0076
+    title: "Science in Action"
+    author: "Latour, Bruno"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0077
+    title: "Social Theory and Social Structure"
+    author: "Merton, Robert K."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0078
+    title: "Institutions, Institutional Change and Economic Performance"
+    author: "North, Douglass C."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0079
+    title: "Institutions and Organizations"
+    author: "Scott, W. Richard"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0080
+    title: "Valuation"
+    author: "Koller, Tim; Goedhart, Marc; Wessels, David"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0081
+    title: "Analysis for Financial Management"
+    author: "Higgins, Robert C."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0082
+    title: "Cost Accounting"
+    author: "Horngren, Charles T."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0083
+    title: "The Customer-Funded Business"
+    author: "Mullins, John"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0084
+    title: "The Great Game of Business"
+    author: "Stack, Jack"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0085
+    title: "Security Analysis"
+    author: "Graham, Benjamin; Dodd, David"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0086
+    title: "When Genius Failed"
+    author: "Lowenstein, Roger"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0087
+    title: "How Finance Works"
+    author: "Desai, Mihir"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0088
+    title: "Narrative and Numbers"
+    author: "Damodaran, Aswath"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0089
+    title: "Expectations Investing"
+    author: "Mauboussin, Michael J.; Rappaport, Alfred"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0090
+    title: "Creating Shareholder Value"
+    author: "Rappaport, Alfred"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0091
+    title: "The Quest for Value"
+    author: "Stewart, G. Bennett"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0092
+    title: "Quality of Earnings"
+    author: "O'glove, Thornton L."
+    acquisition_status: not_started
+    availability_tier: UB
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0093
+    title: "The Essays of Warren Buffett"
+    author: "Cunningham, Lawrence A. (ed.)"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0094
+    title: "The Outsiders"
+    author: "Thorndike, William N."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0095
+    title: "Venture Deals"
+    author: "Feld, Brad; Mendelson, Jason"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0096
+    title: "Secrets of Sand Hill Road"
+    author: "Kupor, Scott"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0097
+    title: "Financial Statements"
+    author: "Ittelson, Thomas R."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0098
+    title: "Accounting: Text and Cases"
+    author: "Anthony, Robert N.; Hawkins, David F."
+    acquisition_status: not_started
+    availability_tier: UB
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0099
+    title: "Entrepreneurial Finance"
+    author: "Smith, Janet K.; Smith, Richard L.; Bliss, Richard T."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0100
+    title: "Business Ratios and Formulas"
+    author: "Bragg, Steven M."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0101
+    title: "Financial Modeling"
+    author: "Benninga, Simon"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0102
+    title: "The Interpretation of Financial Statements"
+    author: "Graham, Benjamin"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0103
+    title: "The Soul of a New Machine"
+    author: "Kidder, Tracy"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0104
+    title: "Dealers of Lightning"
+    author: "Hiltzik, Michael"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0105
+    title: "The Dream Machine"
+    author: "Waldrop, M. Mitchell"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0106
+    title: "In the Plex"
+    author: "Levy, Steven"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0107
+    title: "Skunk Works"
+    author: "Rich, Ben R.; Janos, Leo"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0108
+    title: "Showstopper!"
+    author: "Zachary, G. Pascal"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0109
+    title: "Recoding America"
+    author: "Pahlka, Jennifer"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0110
+    title: "Why Smart Executives Fail"
+    author: "Finkelstein, Sydney"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0111
+    title: "Steve Jobs"
+    author: "Isaacson, Walter"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0112
+    title: "Creativity, Inc."
+    author: "Catmull, Ed"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0113
+    title: "Only the Paranoid Survive"
+    author: "Grove, Andrew S."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0114
+    title: "The Idea Factory"
+    author: "Gertner, Jon"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0115
+    title: "The Box"
+    author: "Levinson, Marc"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0116
+    title: "Chip War"
+    author: "Miller, Chris"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0117
+    title: "The Power Law"
+    author: "Mallaby, Sebastian"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0118
+    title: "The Upstarts"
+    author: "Stone, Brad"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0119
+    title: "Super Pumped"
+    author: "Isaac, Mike"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0120
+    title: "Billion Dollar Loser"
+    author: "Wiedeman, Reeves"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0121
+    title: "The Cult of We"
+    author: "Brown, Eliot; Farrell, Maureen"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0122
+    title: "Hatching Twitter"
+    author: "Bilton, Nick"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0123
+    title: "The Facebook Effect"
+    author: "Kirkpatrick, David"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0124
+    title: "Creative Selection"
+    author: "Kocienda, Ken"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0125
+    title: "The Billion-Dollar Molecule"
+    author: "Werth, Barry"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0126
+    title: "The New New Thing"
+    author: "Lewis, Michael"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0127
+    title: "Business Adventures"
+    author: "Brooks, John"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0128
+    title: "The Reckoning"
+    author: "Halberstam, David"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0129
+    title: "Flying Blind"
+    author: "Robison, Peter"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0130
+    title: "The One Device"
+    author: "Merchant, Brian"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0131
+    title: "Inside Apple"
+    author: "Lashinsky, Adam"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0132
+    title: "Netflixed"
+    author: "Keating, Gina"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0133
+    title: "No Rules Rules"
+    author: "Hastings, Reed; Meyer, Erin"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0134
+    title: "The HP Way"
+    author: "Packard, David"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0135
+    title: "The Toyota Way"
+    author: "Liker, Jeffrey K."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0136
+    title: "The Machine That Changed the World"
+    author: "Womack, James P.; Jones, Daniel T.; Roos, Daniel"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0137
+    title: "Barbarians at the Gate"
+    author: "Burrough, Bryan; Helyar, John"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0138
+    title: "DisneyWar"
+    author: "Stewart, James B."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0139
+    title: "The Informant"
+    author: "Eichenwald, Kurt"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0140
+    title: "Lights Out"
+    author: "Gryta, Thomas; Mann, Ted"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0141
+    title: "House of Cards"
+    author: "Cohan, William D."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0142
+    title: "The End of Wall Street"
+    author: "Lowenstein, Roger"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0143
+    title: "Drift into Failure"
+    author: "Dekker, Sidney"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0144
+    title: "Safety-I and Safety-II"
+    author: "Hollnagel, Erik"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0145
+    title: "The Limits of Safety"
+    author: "Sagan, Scott D."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0146
+    title: "The Checklist Manifesto"
+    author: "Gawande, Atul"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0147
+    title: "The Phoenix Project"
+    author: "Kim, Gene; Behr, Kevin; Spafford, George"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0148
+    title: "Pre-Accident Investigations"
+    author: "Conklin, Todd"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0149
+    title: "Behind Human Error"
+    author: "Woods, David D.; Dekker, Sidney; Cook, Richard; Johannesen, Leila; Sarter, Nadine"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0150
+    title: "The Logic of Failure"
+    author: "Dorner, Dietrich"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0151
+    title: "Out of the Crisis"
+    author: "Deming, W. Edwards"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0152
+    title: "Site Reliability Engineering"
+    author: "Beyer, Betsy; Jones, Chris; Petoff, Jennifer; Murphy, Niall Richard"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0153
+    title: "Observability Engineering"
+    author: "Majors, Charity; Fong-Jones, Liz; Miranda, George"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0154
+    title: "Web Operations"
+    author: "Allspaw, John; Robbins, Jesse"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0155
+    title: "Peopleware"
+    author: "DeMarco, Tom; Lister, Timothy"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0156
+    title: "The Mythical Man-Month"
+    author: "Brooks, Frederick P."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0157
+    title: "The Design of Everyday Things"
+    author: "Norman, Don"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0158
+    title: "Plans and Situated Actions"
+    author: "Suchman, Lucy A."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0159
+    title: "Sketching User Experiences"
+    author: "Buxton, Bill"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0160
+    title: "Contextual Design"
+    author: "Beyer, Hugh; Holtzblatt, Karen"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0161
+    title: "Don't Make Me Think"
+    author: "Krug, Steve"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0162
+    title: "Designing for the Digital Age"
+    author: "Goodwin, Kim"
+    acquisition_status: not_started
+    availability_tier: UB
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0163
+    title: "Designerly Ways of Knowing"
+    author: "Cross, Nigel"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0164
+    title: "Information Architects"
+    author: "Wurman, Richard Saul"
+    acquisition_status: not_started
+    availability_tier: UB
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0165
+    title: "Thinking in Systems"
+    author: "Meadows, Donella H."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0166
+    title: "The Fifth Discipline"
+    author: "Senge, Peter M."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0167
+    title: "Complications"
+    author: "Gawande, Atul"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0168
+    title: "Forgive and Remember"
+    author: "Bosk, Charles L."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0169
+    title: "Safe Patients, Smart Hospitals"
+    author: "Pronovost, Peter; Vohr, Eric"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0170
+    title: "To Engineer Is Human"
+    author: "Petroski, Henry"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0171
+    title: "Structures"
+    author: "Gordon, J.E."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0172
+    title: "Why Buildings Fall Down"
+    author: "Levy, Matthys; Salvadori, Mario"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0173
+    title: "The Tower and the Bridge"
+    author: "Billington, David P."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0174
+    title: "Command in War"
+    author: "van Creveld, Martin"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0175
+    title: "Team of Teams"
+    author: "McChrystal, Stanley"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0176
+    title: "Military Power"
+    author: "Biddle, Stephen"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0177
+    title: "An Introduction to Legal Reasoning"
+    author: "Levi, Edward H."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0178
+    title: "Thinking Like a Lawyer"
+    author: "Schauer, Frederick"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0179
+    title: "How Judges Think"
+    author: "Posner, Richard A."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0180
+    title: "The Bramble Bush"
+    author: "Llewellyn, Karl N."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0181
+    title: "Notes on the Synthesis of Form"
+    author: "Alexander, Christopher"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0182
+    title: "A Pattern Language"
+    author: "Alexander, Christopher; Ishikawa, Sara; Silverstein, Murray"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0183
+    title: "How Buildings Learn"
+    author: "Brand, Stewart"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0184
+    title: "The Audit Society"
+    author: "Power, Michael"
+    acquisition_status: sourced
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0185
+    title: "Seeing Like a State"
+    author: "Scott, James C."
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0186
+    title: "On Bullshit"
+    author: "Frankfurt, Harry G."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0187
+    title: "Fooled by Randomness"
+    author: "Taleb, Nassim Nicholas"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0188
+    title: "How Big Things Get Done"
+    author: "Flyvbjerg, Bent; Gardner, Dan"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0189
+    title: "To Save Everything, Click Here"
+    author: "Morozov, Evgeny"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0190
+    title: "Obliquity"
+    author: "Kay, John"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0191
+    title: "Trust in Numbers"
+    author: "Porter, Theodore M."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0192
+    title: "The Taming of Chance"
+    author: "Hacking, Ian"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0193
+    title: "Computer Power and Human Reason"
+    author: "Weizenbaum, Joseph"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0194
+    title: "Technopoly"
+    author: "Postman, Neil"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0195
+    title: "The Rhetoric of Reaction"
+    author: "Hirschman, Albert O."
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0196
+    title: "Tools for Conviviality"
+    author: "Illich, Ivan"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0197
+    title: "Audit Cultures"
+    author: "Strathern, Marilyn (ed.)"
+    acquisition_status: not_started
+    availability_tier: AP
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0198
+    title: "The Utopia of Rules"
+    author: "Graeber, David"
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0199
+    title: "The Innovation Delusion"
+    author: "Vinsel, Lee; Russell, Andrew L."
+    acquisition_status: not_started
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "not yet acquired; rights/access decisions deferred until acquisition"
+    local_source_status:
+      raw_source_exists_local: false
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false
+  - source_id: BK-0200
+    title: "Weapons of Math Destruction"
+    author: "O'Neil, Cathy"
+    acquisition_status: sourced
+    availability_tier: MM
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition_verified: false
+    locator_scheme: ""
+    locator_confidence: none
+    rights:
+      raw_text_public_allowed: false
+      excerpt_policy: conservative
+      max_public_excerpt_words_per_card: 25
+      max_public_excerpt_words_per_source_total: 100
+      rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy"
+    local_source_status:
+      raw_source_exists_local: true
+      local_locator_key: null
+      local_checksum_public: null
+      raw_file_path_public: null
+    processing_status:
+      mapped: false
+      source_cards_started: false
+      deep_card_candidate: false
+      canon_candidate_exists: false

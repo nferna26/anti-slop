@@ -1,0 +1,159 @@
+gates:
+  - gate_id: citation_lineage
+    name: citation-lineage gate
+    purpose: Ensure claims can be traced to source cards, locators, and manifest records.
+    checks:
+      - claim has source-card support
+      - source card has source_id
+      - source_id exists in manifest
+      - locator is present when evidence is cited
+    does_not_check:
+      - legal sufficiency of publication
+      - truth of the underlying source
+    pass_criteria:
+      - each material claim has traceable lineage
+    fail_criteria:
+      - material claim lacks source lineage
+      - citation points to a missing source_id
+    likely_false_positives:
+      - draft cards intentionally missing locators
+    likely_false_negatives:
+      - locator exists but points to weak evidence
+    workflow_stage: source_card_review
+    implementation_status: scaffold_only
+
+  - gate_id: source_diversity
+    name: source-diversity gate
+    purpose: Prevent overreliance on a single source, author, school, or famous text when broader support is needed.
+    checks:
+      - number of distinct sources
+      - source type spread
+      - presence of long-tail sources when relevant
+    does_not_check:
+      - whether all sources deserve equal weight
+      - whether minority sources should dominate
+    pass_criteria:
+      - support is diverse enough for the claim scope
+    fail_criteria:
+      - broad claim rests on one narrow source
+      - famous source crowds out relevant substrate evidence
+    likely_false_positives:
+      - narrow claims that only need one source
+    likely_false_negatives:
+      - multiple sources with the same inherited assumption
+    workflow_stage: canon_candidate_review
+    implementation_status: scaffold_only
+
+  - gate_id: canon_duplication
+    name: canon-duplication gate
+    purpose: Avoid promoting duplicate canon when existing canon already covers the pattern.
+    checks:
+      - existing concepts checked
+      - existing patterns checked
+      - existing guardrails checked
+      - existing playbooks checked
+    does_not_check:
+      - quality of the proposed wording
+      - whether canon should be retired
+    pass_criteria:
+      - candidate is new or clearly improves existing canon
+    fail_criteria:
+      - candidate duplicates existing canon without a necessary diff
+    likely_false_positives:
+      - related but distinct patterns
+    likely_false_negatives:
+      - renamed duplicate concepts
+    workflow_stage: canon_candidate_review
+    implementation_status: scaffold_only
+
+  - gate_id: contradiction
+    name: contradiction gate
+    purpose: Ensure contradictions and scope limits are preserved before promotion.
+    checks:
+      - contradicting sources listed
+      - deciding conditions named
+      - scope conditions stated
+      - failure modes named
+    does_not_check:
+      - final operator judgment
+      - completeness of every possible objection
+    pass_criteria:
+      - material tensions are visible and scoped
+    fail_criteria:
+      - candidate hides or erases known contradiction
+      - claim overstates consensus
+    likely_false_positives:
+      - settled claims with minor wording differences
+    likely_false_negatives:
+      - missing source cards that would reveal contradiction
+    workflow_stage: claim_tension_review
+    implementation_status: scaffold_only
+
+  - gate_id: quote_limit
+    name: quote-limit gate
+    purpose: Reduce risk of publishing long copyrighted excerpts.
+    checks:
+      - excerpt length
+      - repeated excerpts from same source
+      - files that look like copied chapters or raw extraction
+    does_not_check:
+      - fair use determination
+      - legal advice
+    pass_criteria:
+      - excerpts are short and evidence-specific
+    fail_criteria:
+      - long excerpt appears in public material
+      - raw or extracted text appears in public material
+    likely_false_positives:
+      - long public-domain excerpts
+      - long original operator notes
+    likely_false_negatives:
+      - copyrighted text below threshold
+    workflow_stage: pre_commit_review
+    implementation_status: scaffold_only
+
+  - gate_id: authority_order
+    name: authority-order gate
+    purpose: Keep lower-authority artifacts from being treated as canon.
+    checks:
+      - artifact type is explicit
+      - book maps are marked not canon
+      - source cards are marked not canon
+      - claim/tension cards are marked not canon
+      - canon candidates show operator decision
+    does_not_check:
+      - whether canon wording is good
+      - whether source interpretation is correct
+    pass_criteria:
+      - authority level is clear and not overstated
+    fail_criteria:
+      - non-canon artifact is presented as canon
+      - operator approval is missing for canon
+    likely_false_positives:
+      - informal notes using canon-like language
+    likely_false_negatives:
+      - implied authority in prose
+    workflow_stage: publication_review
+    implementation_status: scaffold_only
+
+  - gate_id: no_universalization
+    name: no-universalization gate
+    purpose: Prevent scoped source claims from becoming universal advice without support.
+    checks:
+      - scope conditions
+      - domain limits
+      - population limits
+      - uncertainty markers
+    does_not_check:
+      - whether the advice is useful
+      - whether a universal claim could be true
+    pass_criteria:
+      - claim scope matches source support
+    fail_criteria:
+      - local or conditional finding is stated as universal rule
+    likely_false_positives:
+      - concise summaries that rely on nearby scope text
+    likely_false_negatives:
+      - broad language hidden in examples
+    workflow_stage: canon_candidate_review
+    implementation_status: scaffold_only

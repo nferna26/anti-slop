@@ -1,0 +1,28 @@
+run_id:
+created:
+artifact_type:
+artifact_path:
+gates:
+  citation_lineage:
+    status: not_run
+    notes:
+  source_diversity:
+    status: not_run
+    notes:
+  canon_duplication:
+    status: not_run
+    notes:
+  contradiction:
+    status: not_run
+    notes:
+  quote_limit:
+    status: not_run
+    notes:
+  authority_order:
+    status: not_run
+    notes:
+  no_universalization:
+    status: not_run
+    notes:
+operator_decision:
+operator_notes:

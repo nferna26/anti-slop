@@ -1,0 +1,4608 @@
+status: full-200-corpus-listed-wave-1-locked
+legal_rule: no_raw_copyrighted_text_in_public_repo
+
+# Books BK-0001 through BK-0050 are the first-50 priority wave (CORE-910).
+# Books BK-0051 through BK-0200 are the broader corpus.
+# Source IDs are stable and independent of acquisition order.
+# Raw copyrighted source material is never committed to this repo.
+books:
+  - source_id: BK-0001
+    category: strategy
+    author: "Rumelt, Richard"
+    title: "Good Strategy Bad Strategy"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "first published 2011 UK/US ebook"
+    year: "2011"
+    publisher: "Profile Books Ltd"
+    isbn: "978-1-84765-746-6"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "strategy diagnosis vs. fluff; anchor for hostile attribution on bad-strategy patterns"
+    notes: "Wave-1 map and deep-card candidate; operator-verified front matter on 2026-05-19; Profile Books UK and Crown Business US publication noted; print ISBN 978-1-84668-480-7; eISBN recorded in isbn field"
+  - source_id: BK-0002
+    category: management
+    author: "Grove, Andrew S."
+    title: "High Output Management"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Vintage Books edition (2015)"
+    year: "2015"
+    publisher: "Vintage Books"
+    isbn: "9781101972366"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "operating-cadence canon; output and managerial leverage"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; Vintage edition lineage preserves original 1983 publication and 1995 revision context"
+  - source_id: BK-0003
+    category: management
+    author: "Bryar, Colin; Carr, Bill"
+    title: "Working Backwards"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "First edition ebook"
+    year: "2021"
+    publisher: "St. Martin's Press"
+    isbn: "978-1-250-26760-3"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "PR-FAQ and six-pager discipline; load-bearing for pat-pr-faq-working-backwards"
+    notes: "Wave-1 map and deep-card candidate; operator-verified front matter on 2026-05-19; ebook ISBN recorded in isbn field; hardcover ISBN 978-1-250-26759-7 and international ISBN 978-1-250-27571-4 noted in source front matter"
+  - source_id: BK-0004
+    category: strategy
+    author: "Lafley, A.G.; Martin, Roger L."
+    title: "Playing to Win"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "strategy cascade choices; framework counter to Lean defaults"
+    notes: ""
+  - source_id: BK-0005
+    category: product
+    author: "Cagan, Marty"
+    title: "Inspired"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "product-management craft; counter to feature-factory defaults"
+    notes: ""
+  - source_id: BK-0006
+    category: product
+    author: "Torres, Teresa"
+    title: "Continuous Discovery Habits"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Product Talk LLC edition (2021; edition statement not explicit)"
+    year: "2021"
+    publisher: "Product Talk LLC"
+    isbn: "978-1-7366333-0-4"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "discovery interview discipline"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer"
+  - source_id: BK-0007
+    category: product
+    author: "Ries, Eric"
+    title: "The Lean Startup"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "first edition (2011)"
+    year: "2011"
+    publisher: "Crown Business"
+    isbn: "978-0-307-88791-7"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "needed in corpus because models default here; the famous-book anchor for bibliographic adversary"
+    notes: "Wave-1 map and deep-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section"
+  - source_id: BK-0008
+    category: strategy
+    author: "Moore, Geoffrey A."
+    title: "Crossing the Chasm"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "market-segmentation framework, often misapplied"
+    notes: ""
+  - source_id: BK-0009
+    category: strategy
+    author: "Dunford, April"
+    title: "Obviously Awesome"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "positioning craft"
+    notes: ""
+  - source_id: BK-0010
+    category: product
+    author: "Chen, Andrew"
+    title: "The Cold Start Problem"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "network-effects operating manual"
+    notes: ""
+  - source_id: BK-0011
+    category: management
+    author: "Horowitz, Ben"
+    title: "The Hard Thing About Hard Things"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "executive-craft anchor; famous-book bait for bibliographic adversary"
+    notes: ""
+  - source_id: BK-0012
+    category: management
+    author: "Mochary, Matt"
+    title: "The Great CEO Within"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "operating-rhythm playbook"
+    notes: ""
+  - source_id: BK-0013
+    category: strategy
+    author: "Thiel, Peter"
+    title: "Zero to One"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "famous monopoly/contrarian framing; anchor for 'model defaults to Thiel' bibliographic-adversary test"
+    notes: ""
+  - source_id: BK-0014
+    category: product
+    author: "Eyal, Nir"
+    title: "Hooked"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "famous habit-design framing; anchor for 'model defaults to Hooked' bibliographic-adversary test"
+    notes: ""
+  - source_id: BK-0015
+    category: strategy
+    author: "Hoffman, Reid; Yeh, Chris"
+    title: "Blitzscaling"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "famous hypergrowth framing; anchor for 'model defaults to Blitzscaling' bibliographic-adversary test"
+    notes: ""
+  - source_id: BK-0016
+    category: strategy
+    author: "Christensen, Clayton M."
+    title: "The Innovator's Dilemma"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Harvard Business School Press edition (1997; edition statement not explicit)"
+    year: "1997"
+    publisher: "Harvard Business School Press"
+    isbn: "0-87584-585-1"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "disruption theory canon, often invoked imprecisely; bibliographic adversary"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has sparse Markdown headings"
+  - source_id: BK-0017
+    category: product
+    author: "Blank, Steve"
+    title: "The Four Steps to the Epiphany"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: false
+      source_lineage_hostile: false
+    rationale: "customer development methodology; predates and undergirds Lean"
+    notes: ""
+  - source_id: BK-0018
+    category: product
+    author: "Fitzpatrick, Rob"
+    title: "The Mom Test"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "ebook metadata record (2013; edition statement not explicit)"
+    year: "2013"
+    publisher: "Robfitz Ltd"
+    isbn: "9781492180746"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "interview-question discipline; cheap-to-deploy heuristic"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata requires operator confirmation because extracted front matter is sparse and package metadata supplies publisher / date / ISBN; locator scheme chapter_section with manual boundary spot-check required"
+  - source_id: BK-0019
+    category: product
+    author: "Perri, Melissa"
+    title: "Escaping the Build Trap"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: false
+      source_lineage_hostile: false
+    rationale: "product vs. project distinction"
+    notes: ""
+  - source_id: BK-0020
+    category: product
+    author: "Singer, Ryan"
+    title: "Shape Up"
+    status_tag: COMMITTED
+    availability_tier: PD
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: metadata_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: false
+      source_lineage_hostile: false
+    rationale: "Basecamp's appetite/shaping methodology; alternative to sprint defaults"
+    notes: "rights/access status needs operator verification; Shape Up is publicly readable online but not operator-verified as public domain"
+  - source_id: BK-0051
+    category: management
+    author: "Scott, Kim"
+    title: "Radical Candor"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "feedback framework, often weaponized; contradiction-preservation candidate"
+    notes: ""
+  - source_id: BK-0052
+    category: management
+    author: "Fournier, Camille"
+    title: "The Manager's Path"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "engineering-manager craft"
+    notes: ""
+  - source_id: BK-0053
+    category: technology
+    author: "Skelton, Matthew; Pais, Manuel"
+    title: "Team Topologies"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "team-design patterns for software orgs"
+    notes: ""
+  - source_id: BK-0021
+    category: technology
+    author: "Forsgren, Nicole; Humble, Jez; Kim, Gene"
+    title: "Accelerate"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "First Edition (2018)"
+    year: "2018"
+    publisher: "IT Revolution Press, LLC"
+    isbn: "978-1942788331"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "DORA research on software-delivery performance; quantitative anchor"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer; ISBN selection may be revisited if operator confirms a clean ebook ISBN"
+  - source_id: BK-0054
+    category: management
+    author: "Doerr, John"
+    title: "Measure What Matters"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "OKR canon, often misapplied; bibliographic adversary"
+    notes: ""
+  - source_id: BK-0022
+    category: operations
+    author: "Goldratt, Eliyahu M."
+    title: "The Goal"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Third Revised Edition (2004)"
+    year: "2004"
+    publisher: "The North River Press Publishing Corporation"
+    isbn: "0-88427-178-1"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Theory of Constraints; throughput discipline"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has noisy heading artifacts; earlier edition years 1984 / 1986 / 1992 noted in local front matter"
+  - source_id: BK-0055
+    category: product
+    author: "Gothelf, Jeff; Seiden, Josh"
+    title: "Lean UX"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: false
+      source_lineage_hostile: false
+    rationale: "UX-methodology adaptation of Lean"
+    notes: ""
+  - source_id: BK-0056
+    category: product
+    author: "Knapp, Jake"
+    title: "Sprint"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "five-day design-sprint protocol"
+    notes: ""
+  - source_id: BK-0057
+    category: management
+    author: "Hughes Johnson, Claire"
+    title: "Scaling People"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Stripe operating playbook for people scale"
+    notes: ""
+  - source_id: BK-0058
+    category: management
+    author: "Watkins, Michael D."
+    title: "The First 90 Days"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "transition-leader framework"
+    notes: ""
+  - source_id: BK-0023
+    category: strategy
+    author: "Porter, Michael E."
+    title: "Competitive Strategy"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "First Free Press edition (1980), with new introduction (1998)"
+    year: "1980"
+    publisher: "The Free Press"
+    isbn: "978-1-4165-9035-4"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "five-forces foundation; bibliographic adversary anchor"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; local artifact includes a new introduction copyright 1998"
+  - source_id: BK-0024
+    category: strategy
+    author: "Mintzberg, Henry"
+    title: "The Rise and Fall of Strategic Planning"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Free Press edition (1994; edition statement not explicit)"
+    year: "1994"
+    publisher: "The Free Press"
+    isbn: "978-1-439-10735-5"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "counter to deliberate-strategy defaults"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section; print ISBN 978-0-029-21605-7 also appears in front matter"
+  - source_id: BK-0025
+    category: institutions
+    author: "Simon, Herbert A."
+    title: "Administrative Behavior"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "bounded rationality foundation"
+    notes: ""
+  - source_id: BK-0026
+    category: institutions
+    author: "March, James G."
+    title: "The Ambiguities of Experience"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "learning under noise and selection bias"
+    notes: ""
+  - source_id: BK-0027
+    category: institutions
+    author: "Cyert, Richard M.; March, James G."
+    title: "A Behavioral Theory of the Firm"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "organizational decision-making foundation"
+    notes: ""
+  - source_id: BK-0028
+    category: institutions
+    author: "Weick, Karl E."
+    title: "Sensemaking in Organizations"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "sensemaking under ambiguity"
+    notes: ""
+  - source_id: BK-0029
+    category: decision_quality
+    author: "Kahneman, Daniel"
+    title: "Thinking, Fast and Slow"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "first edition"
+    year: "2011"
+    publisher: "Farrar, Straus and Giroux"
+    isbn: "978-0-3742-7563-1"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "System 1/System 2 framing, widely misapplied; bibliographic adversary"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; fine-grained subsection locators require local spot-check because extraction is mostly H2 chapter headings"
+  - source_id: BK-0030
+    category: decision_quality
+    author: "Klein, Gary A."
+    title: "Sources of Power"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "second MIT Press paperback edition (1999)"
+    year: "1999"
+    publisher: "MIT Press"
+    isbn: "9780585078175"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "naturalistic decision making, counter to TFAS defaults"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; local extraction is table-heavy and has no Markdown heading layer, so chapter boundaries require manual spot-check before source-card drafting"
+  - source_id: BK-0031
+    category: decision_quality
+    author: "Tetlock, Philip E."
+    title: "Expert Political Judgment"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "forecast accuracy and overconfidence"
+    notes: ""
+  - source_id: BK-0032
+    category: governance
+    author: "Ostrom, Elinor"
+    title: "Governing the Commons"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "institutional analysis foundation"
+    notes: ""
+  - source_id: BK-0033
+    category: epistemology
+    author: "Kuhn, Thomas S."
+    title: "The Structure of Scientific Revolutions"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "paradigm-shift concept, widely overused; bibliographic adversary"
+    notes: ""
+  - source_id: BK-0059
+    category: epistemology
+    author: "Schon, Donald A."
+    title: "The Reflective Practitioner"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "knowing-in-action discipline"
+    notes: ""
+  - source_id: BK-0060
+    category: institutions
+    author: "Chandler, Alfred D."
+    title: "Strategy and Structure"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "strategy-follows-structure foundation"
+    notes: ""
+  - source_id: BK-0061
+    category: institutions
+    author: "Penrose, Edith"
+    title: "The Theory of the Growth of the Firm"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "resource-based view foundation"
+    notes: ""
+  - source_id: BK-0062
+    category: strategy
+    author: "Barney, Jay B."
+    title: "Gaining and Sustaining Competitive Advantage"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "RBV operationalization"
+    notes: ""
+  - source_id: BK-0063
+    category: strategy
+    author: "Porter, Michael E."
+    title: "Competitive Advantage"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "value chain framework"
+    notes: ""
+  - source_id: BK-0064
+    category: institutions
+    author: "Mintzberg, Henry"
+    title: "The Structuring of Organizations"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "organizational configurations"
+    notes: ""
+  - source_id: BK-0065
+    category: institutions
+    author: "March, James G.; Simon, Herbert A."
+    title: "Organizations"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "foundational org theory"
+    notes: ""
+  - source_id: BK-0066
+    category: institutions
+    author: "Argyris, Chris; Schon, Donald A."
+    title: "Organizational Learning"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "double-loop learning foundation"
+    notes: ""
+  - source_id: BK-0067
+    category: institutions
+    author: "Lawrence, Paul R.; Lorsch, Jay W."
+    title: "Organization and Environment"
+    status_tag: NEW
+    availability_tier: UB
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "contingency theory foundation"
+    notes: ""
+  - source_id: BK-0068
+    category: economics
+    author: "Williamson, Oliver E."
+    title: "The Economic Institutions of Capitalism"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "transaction-cost economics"
+    notes: ""
+  - source_id: BK-0069
+    category: economics
+    author: "Coase, R.H."
+    title: "The Firm, the Market, and the Law"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "theory-of-the-firm foundation"
+    notes: ""
+  - source_id: BK-0070
+    category: economics
+    author: "Milgrom, Paul; Roberts, John"
+    title: "Economics, Organization and Management"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "economic theory of organization"
+    notes: ""
+  - source_id: BK-0071
+    category: governance
+    author: "Wilson, James Q."
+    title: "Bureaucracy"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "what government agencies do and why"
+    notes: ""
+  - source_id: BK-0072
+    category: decision_quality
+    author: "Bazerman, Max H.; Moore, Don A."
+    title: "Judgment in Managerial Decision Making"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "decision-bias textbook"
+    notes: ""
+  - source_id: BK-0073
+    category: decision_quality
+    author: "Kahneman, Daniel; Slovic, Paul; Tversky, Amos"
+    title: "Judgment under Uncertainty"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "foundational heuristics-and-biases volume; counter to popular TFAS reading"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0074
+    category: decision_quality
+    author: "Gigerenzer, Gerd et al."
+    title: "Simple Heuristics That Make Us Smart"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "ecological-rationality counter to Kahneman defaults"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0075
+    category: decision_quality
+    author: "Meehl, Paul E."
+    title: "Clinical versus Statistical Prediction"
+    status_tag: NEW
+    availability_tier: UB
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "actuarial-vs-clinical-judgment foundation"
+    notes: ""
+  - source_id: BK-0076
+    category: epistemology
+    author: "Latour, Bruno"
+    title: "Science in Action"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "how knowledge is actually produced"
+    notes: ""
+  - source_id: BK-0077
+    category: sociology
+    author: "Merton, Robert K."
+    title: "Social Theory and Social Structure"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "middle-range theory; manifest vs latent functions"
+    notes: ""
+  - source_id: BK-0078
+    category: economics
+    author: "North, Douglass C."
+    title: "Institutions, Institutional Change and Economic Performance"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "institutional economics foundation"
+    notes: ""
+  - source_id: BK-0079
+    category: institutions
+    author: "Scott, W. Richard"
+    title: "Institutions and Organizations"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "three-pillar institutional framework"
+    notes: ""
+  - source_id: BK-0034
+    category: economics
+    author: "Brealey, Richard A.; Myers, Stewart C.; Allen, Franklin; Edmans, Alex"
+    title: "Principles of Corporate Finance"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "fourteenth edition (2023)"
+    year: "2023"
+    publisher: "McGraw Hill LLC"
+    isbn: "978-1-265-07415-9"
+    owned_format: "pdf"
+    locator_system: "pdf_page"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "corporate finance textbook foundation"
+    notes: "Wave-1 sourced first-50 candidate; bibliographic metadata operator-verified; locator scheme pdf_page with extraction-noise caveat; author field updated to match the inspected fourteenth-edition local source"
+  - source_id: BK-0080
+    category: economics
+    author: "Koller, Tim; Goedhart, Marc; Wessels, David"
+    title: "Valuation"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "McKinsey valuation methodology"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0035
+    category: economics
+    author: "Damodaran, Aswath"
+    title: "Investment Valuation"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "valuation reference"
+    notes: ""
+  - source_id: BK-0036
+    category: economics
+    author: "Penman, Stephen H."
+    title: "Financial Statement Analysis and Security Valuation"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "accounting-based valuation discipline"
+    notes: ""
+  - source_id: BK-0081
+    category: economics
+    author: "Higgins, Robert C."
+    title: "Analysis for Financial Management"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "financial-policy textbook"
+    notes: ""
+  - source_id: BK-0082
+    category: economics
+    author: "Horngren, Charles T."
+    title: "Cost Accounting"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "managerial accounting foundation"
+    notes: ""
+  - source_id: BK-0037
+    category: economics
+    author: "Berman, Karen; Knight, Joe"
+    title: "Financial Intelligence"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "revised and expanded second edition (2013)"
+    year: "2013"
+    publisher: "Harvard Business Review Press"
+    isbn: "978-1-4221-4411-4"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "non-finance-manager finance"
+    notes: "Wave-1 sourced first-50 candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer; John Case appears as contributor in the local source"
+  - source_id: BK-0083
+    category: economics
+    author: "Mullins, John"
+    title: "The Customer-Funded Business"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "bootstrapping financing models"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0084
+    category: management
+    author: "Stack, Jack"
+    title: "The Great Game of Business"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "open-book management discipline"
+    notes: ""
+  - source_id: BK-0085
+    category: economics
+    author: "Graham, Benjamin; Dodd, David"
+    title: "Security Analysis"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "value-investing foundation"
+    notes: ""
+  - source_id: BK-0086
+    category: biography
+    author: "Lowenstein, Roger"
+    title: "When Genius Failed"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "LTCM case; risk-management failure"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0038
+    category: risk
+    author: "Schilit, Howard M.; Perler, Jeremy"
+    title: "Financial Shenanigans"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "third edition"
+    year: "2010"
+    publisher: "McGraw-Hill"
+    isbn: "978-0-07-170308-6"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "accounting-distortion catalog; source-lineage hostile eval"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section; print ISBN 978-0-07-170307-9 also appears in front matter; heading layer is rich but deeply nested"
+  - source_id: BK-0087
+    category: economics
+    author: "Desai, Mihir"
+    title: "How Finance Works"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "HBS-style finance overview"
+    notes: ""
+  - source_id: BK-0088
+    category: economics
+    author: "Damodaran, Aswath"
+    title: "Narrative and Numbers"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "valuation as story-and-spreadsheet"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0089
+    category: economics
+    author: "Mauboussin, Michael J.; Rappaport, Alfred"
+    title: "Expectations Investing"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "implied-expectations investing framework"
+    notes: ""
+  - source_id: BK-0090
+    category: economics
+    author: "Rappaport, Alfred"
+    title: "Creating Shareholder Value"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "shareholder-value discipline"
+    notes: ""
+  - source_id: BK-0091
+    category: economics
+    author: "Stewart, G. Bennett"
+    title: "The Quest for Value"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "EVA framework"
+    notes: ""
+  - source_id: BK-0092
+    category: economics
+    author: "O'glove, Thornton L."
+    title: "Quality of Earnings"
+    status_tag: NEW
+    availability_tier: UB
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "classic earnings-quality forensics"
+    notes: ""
+  - source_id: BK-0093
+    category: economics
+    author: "Cunningham, Lawrence A. (ed.)"
+    title: "The Essays of Warren Buffett"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "capital allocation via Buffett's letters"
+    notes: ""
+  - source_id: BK-0094
+    category: biography
+    author: "Thorndike, William N."
+    title: "The Outsiders"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "eight unconventional CEOs; capital allocation patterns"
+    notes: ""
+  - source_id: BK-0095
+    category: economics
+    author: "Feld, Brad; Mendelson, Jason"
+    title: "Venture Deals"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "VC term-sheet mechanics"
+    notes: ""
+  - source_id: BK-0096
+    category: economics
+    author: "Kupor, Scott"
+    title: "Secrets of Sand Hill Road"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "VC operating model"
+    notes: ""
+  - source_id: BK-0097
+    category: economics
+    author: "Ittelson, Thomas R."
+    title: "Financial Statements"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "accessible financial-statement primer"
+    notes: ""
+  - source_id: BK-0098
+    category: economics
+    author: "Anthony, Robert N.; Hawkins, David F."
+    title: "Accounting: Text and Cases"
+    status_tag: NEW
+    availability_tier: UB
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "accounting-via-cases textbook"
+    notes: ""
+  - source_id: BK-0099
+    category: economics
+    author: "Smith, Janet K.; Smith, Richard L.; Bliss, Richard T."
+    title: "Entrepreneurial Finance"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "early-stage finance textbook"
+    notes: ""
+  - source_id: BK-0100
+    category: economics
+    author: "Bragg, Steven M."
+    title: "Business Ratios and Formulas"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "ratio-and-formula reference"
+    notes: ""
+  - source_id: BK-0101
+    category: economics
+    author: "Benninga, Simon"
+    title: "Financial Modeling"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "modeling techniques reference"
+    notes: ""
+  - source_id: BK-0102
+    category: economics
+    author: "Graham, Benjamin"
+    title: "The Interpretation of Financial Statements"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Graham's slim primer"
+    notes: ""
+  - source_id: BK-0039
+    category: biography
+    author: "McLean, Bethany; Elkind, Peter"
+    title: "The Smartest Guys in the Room"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "edition with new foreword and afterword (2013)"
+    year: "2013"
+    publisher: "Portfolio / Penguin"
+    isbn: "978-0-698-15882-5"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Enron"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section; first U.S. publication 2003 and updated paperback 2004 also noted in front matter; print ISBNs also appear"
+  - source_id: BK-0040
+    category: biography
+    author: "Carreyrou, John"
+    title: "Bad Blood"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "First Edition (2018)"
+    year: "2018"
+    publisher: "Alfred A. Knopf"
+    isbn: "9781524731663"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Theranos"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section; hardback ISBN 9781524731656 also appears in front matter; heading layer contains markup noise"
+  - source_id: BK-0103
+    category: biography
+    author: "Kidder, Tracy"
+    title: "The Soul of a New Machine"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Data General Eclipse MV/8000"
+    notes: ""
+  - source_id: BK-0104
+    category: biography
+    author: "Hiltzik, Michael"
+    title: "Dealers of Lightning"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Xerox PARC"
+    notes: ""
+  - source_id: BK-0105
+    category: biography
+    author: "Waldrop, M. Mitchell"
+    title: "The Dream Machine"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "JCR Licklider and the personal-computing arc"
+    notes: ""
+  - source_id: BK-0041
+    category: biography
+    author: "Stone, Brad"
+    title: "The Everything Store"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "second ebook edition (August 2014)"
+    year: "2014"
+    publisher: "Little, Brown and Company"
+    isbn: "978-0-316-21925-9"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Amazon; bibliographic adversary against shallow Amazon mimicry"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with caveats for markup-heavy headings and eight replacement characters; copyright 2013 and epilogue copyright 2014 noted in local front matter"
+  - source_id: BK-0106
+    category: biography
+    author: "Levy, Steven"
+    title: "In the Plex"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Google"
+    notes: ""
+  - source_id: BK-0107
+    category: biography
+    author: "Rich, Ben R.; Janos, Leo"
+    title: "Skunk Works"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Lockheed Skunk Works"
+    notes: ""
+  - source_id: BK-0108
+    category: biography
+    author: "Zachary, G. Pascal"
+    title: "Showstopper!"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Windows NT development"
+    notes: ""
+  - source_id: BK-0109
+    category: governance
+    author: "Pahlka, Jennifer"
+    title: "Recoding America"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "public-sector implementation craft"
+    notes: ""
+  - source_id: BK-0042
+    category: safety
+    author: "Vaughan, Diane"
+    title: "The Challenger Launch Decision"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "first edition (1996)"
+    year: "1996"
+    publisher: "University of Chicago Press"
+    isbn: "0-226-85176-1"
+    owned_format: "pdf"
+    locator_system: "pdf_page"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "normalization of deviance; load-bearing for the methodology"
+    notes: "Wave-1 map and deep-card candidate; bibliographic metadata operator-verified; locator scheme pdf_page"
+  - source_id: BK-0110
+    category: biography
+    author: "Finkelstein, Sydney"
+    title: "Why Smart Executives Fail"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "executive-failure patterns"
+    notes: ""
+  - source_id: BK-0111
+    category: biography
+    author: "Isaacson, Walter"
+    title: "Steve Jobs"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Jobs at Apple/Pixar/NeXT"
+    notes: ""
+  - source_id: BK-0112
+    category: biography
+    author: "Catmull, Ed"
+    title: "Creativity, Inc."
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Pixar operating philosophy"
+    notes: ""
+  - source_id: BK-0113
+    category: biography
+    author: "Grove, Andrew S."
+    title: "Only the Paranoid Survive"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "strategic-inflection-point case at Intel"
+    notes: ""
+  - source_id: BK-0114
+    category: biography
+    author: "Gertner, Jon"
+    title: "The Idea Factory"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Bell Labs"
+    notes: ""
+  - source_id: BK-0115
+    category: history
+    author: "Levinson, Marc"
+    title: "The Box"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "container shipping; system-level change"
+    notes: ""
+  - source_id: BK-0116
+    category: history
+    author: "Miller, Chris"
+    title: "Chip War"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "semiconductor geopolitical history"
+    notes: ""
+  - source_id: BK-0117
+    category: history
+    author: "Mallaby, Sebastian"
+    title: "The Power Law"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "VC industry history"
+    notes: ""
+  - source_id: BK-0118
+    category: biography
+    author: "Stone, Brad"
+    title: "The Upstarts"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Uber/Airbnb"
+    notes: ""
+  - source_id: BK-0119
+    category: biography
+    author: "Isaac, Mike"
+    title: "Super Pumped"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Uber crisis years"
+    notes: ""
+  - source_id: BK-0120
+    category: biography
+    author: "Wiedeman, Reeves"
+    title: "Billion Dollar Loser"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "WeWork"
+    notes: ""
+  - source_id: BK-0121
+    category: biography
+    author: "Brown, Eliot; Farrell, Maureen"
+    title: "The Cult of We"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "WeWork from a second angle; contradiction preservation"
+    notes: ""
+  - source_id: BK-0122
+    category: biography
+    author: "Bilton, Nick"
+    title: "Hatching Twitter"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Twitter founders"
+    notes: ""
+  - source_id: BK-0123
+    category: biography
+    author: "Kirkpatrick, David"
+    title: "The Facebook Effect"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "early Facebook"
+    notes: ""
+  - source_id: BK-0124
+    category: biography
+    author: "Kocienda, Ken"
+    title: "Creative Selection"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Apple software process from the inside"
+    notes: ""
+  - source_id: BK-0125
+    category: biography
+    author: "Werth, Barry"
+    title: "The Billion-Dollar Molecule"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Vertex Pharmaceuticals founding"
+    notes: ""
+  - source_id: BK-0126
+    category: biography
+    author: "Lewis, Michael"
+    title: "The New New Thing"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Jim Clark and Silicon Valley exuberance"
+    notes: ""
+  - source_id: BK-0127
+    category: biography
+    author: "Brooks, John"
+    title: "Business Adventures"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "twelve cases by John Brooks; classic"
+    notes: ""
+  - source_id: BK-0128
+    category: history
+    author: "Halberstam, David"
+    title: "The Reckoning"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Ford vs Nissan in the 70s/80s"
+    notes: ""
+  - source_id: BK-0129
+    category: safety
+    author: "Robison, Peter"
+    title: "Flying Blind"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Boeing 737 MAX; engineering-safety failure"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0130
+    category: biography
+    author: "Merchant, Brian"
+    title: "The One Device"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "iPhone development history"
+    notes: ""
+  - source_id: BK-0131
+    category: biography
+    author: "Lashinsky, Adam"
+    title: "Inside Apple"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Apple operating model"
+    notes: ""
+  - source_id: BK-0132
+    category: biography
+    author: "Keating, Gina"
+    title: "Netflixed"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "early Netflix vs Blockbuster"
+    notes: ""
+  - source_id: BK-0133
+    category: management
+    author: "Hastings, Reed; Meyer, Erin"
+    title: "No Rules Rules"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Netflix culture self-account"
+    notes: ""
+  - source_id: BK-0134
+    category: biography
+    author: "Packard, David"
+    title: "The HP Way"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "HP founder's account"
+    notes: ""
+  - source_id: BK-0135
+    category: management
+    author: "Liker, Jeffrey K."
+    title: "The Toyota Way"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "TPS principles"
+    notes: ""
+  - source_id: BK-0136
+    category: operations
+    author: "Womack, James P.; Jones, Daniel T.; Roos, Daniel"
+    title: "The Machine That Changed the World"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "lean production foundation"
+    notes: ""
+  - source_id: BK-0137
+    category: biography
+    author: "Burrough, Bryan; Helyar, John"
+    title: "Barbarians at the Gate"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "RJR Nabisco LBO"
+    notes: ""
+  - source_id: BK-0138
+    category: biography
+    author: "Stewart, James B."
+    title: "DisneyWar"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Disney/Eisner"
+    notes: ""
+  - source_id: BK-0139
+    category: biography
+    author: "Eichenwald, Kurt"
+    title: "The Informant"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "ADM price-fixing"
+    notes: ""
+  - source_id: BK-0140
+    category: biography
+    author: "Gryta, Thomas; Mann, Ted"
+    title: "Lights Out"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "GE's long decline"
+    notes: ""
+  - source_id: BK-0141
+    category: biography
+    author: "Cohan, William D."
+    title: "House of Cards"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Bear Stearns 2008"
+    notes: ""
+  - source_id: BK-0142
+    category: biography
+    author: "Lowenstein, Roger"
+    title: "The End of Wall Street"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: false
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "2008 financial crisis"
+    notes: ""
+  - source_id: BK-0043
+    category: safety
+    author: "Perrow, Charles"
+    title: "Normal Accidents"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Princeton paperback reprint (1999), with new afterword and Y2K postscript"
+    year: "1999"
+    publisher: "Princeton University Press"
+    isbn: "978-0-691-00412-9"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "tight-coupling/complex-interaction theory"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer; first published by Basic Books in 1984"
+  - source_id: BK-0044
+    category: safety
+    author: "Reason, James"
+    title: "Human Error"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "first edition (1990)"
+    year: "1990"
+    publisher: "Cambridge University Press"
+    isbn: "978-0-521-30669-0"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "Swiss-cheese model foundation"
+    notes: "bibliographic metadata operator-verified; locator scheme chapter_section; local file is a later printing (2009) of the 1990 first edition, not a new edition; Human Error (1990) predates Reason's named Swiss-cheese model — do not attribute that named metaphor to this source"
+  - source_id: BK-0143
+    category: safety
+    author: "Dekker, Sidney"
+    title: "Drift into Failure"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "systems-drift framework"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0045
+    category: safety
+    author: "Leveson, Nancy G."
+    title: "Engineering a Safer World"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "MIT Press new paperback edition (2017)"
+    year: "2017"
+    publisher: "The MIT Press"
+    isbn: "978-0-262-01662-9"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "STAMP framework"
+    notes: "Wave-1 sourced first-50 safety candidate; bibliographic metadata operator-verified; locator scheme chapter_section with dense-heading caveat; original copyright 2011 preserved; ISBN labels should be operator-confirmed before applying"
+  - source_id: BK-0144
+    category: safety
+    author: "Hollnagel, Erik"
+    title: "Safety-I and Safety-II"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "alternative safety framing"
+    notes: ""
+  - source_id: BK-0145
+    category: safety
+    author: "Sagan, Scott D."
+    title: "The Limits of Safety"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "nuclear-weapons safety case histories"
+    notes: ""
+  - source_id: BK-0146
+    category: safety
+    author: "Gawande, Atul"
+    title: "The Checklist Manifesto"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "checklist-discipline argument"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0147
+    category: technology
+    author: "Kim, Gene; Behr, Kevin; Spafford, George"
+    title: "The Phoenix Project"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "devops novel; SRE/operating analog"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0148
+    category: safety
+    author: "Conklin, Todd"
+    title: "Pre-Accident Investigations"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Safety-II practitioner manual"
+    notes: ""
+  - source_id: BK-0149
+    category: safety
+    author: "Woods, David D.; Dekker, Sidney; Cook, Richard; Johannesen, Leila; Sarter, Nadine"
+    title: "Behind Human Error"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "cognitive-systems-engineering textbook"
+    notes: ""
+  - source_id: BK-0150
+    category: safety
+    author: "Dorner, Dietrich"
+    title: "The Logic of Failure"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "decision-making under complexity (simulated scenarios)"
+    notes: ""
+  - source_id: BK-0151
+    category: operations
+    author: "Deming, W. Edwards"
+    title: "Out of the Crisis"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "quality-systems foundation"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0152
+    category: technology
+    author: "Beyer, Betsy; Jones, Chris; Petoff, Jennifer; Murphy, Niall Richard"
+    title: "Site Reliability Engineering"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: false
+      source_lineage_hostile: false
+    rationale: "Google SRE foundational text"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0153
+    category: technology
+    author: "Majors, Charity; Fong-Jones, Liz; Miranda, George"
+    title: "Observability Engineering"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: false
+      source_lineage_hostile: false
+    rationale: "observability practice"
+    notes: ""
+  - source_id: BK-0154
+    category: technology
+    author: "Allspaw, John; Robbins, Jesse"
+    title: "Web Operations"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: false
+      source_lineage_hostile: false
+    rationale: "operations practice anthology"
+    notes: ""
+  - source_id: BK-0155
+    category: technology
+    author: "DeMarco, Tom; Lister, Timothy"
+    title: "Peopleware"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "software people-practice classic"
+    notes: ""
+  - source_id: BK-0156
+    category: technology
+    author: "Brooks, Frederick P."
+    title: "The Mythical Man-Month"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "software-project foundation"
+    notes: ""
+  - source_id: BK-0157
+    category: design
+    author: "Norman, Don"
+    title: "The Design of Everyday Things"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "affordances and signifiers"
+    notes: ""
+  - source_id: BK-0158
+    category: design
+    author: "Suchman, Lucy A."
+    title: "Plans and Situated Actions"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "situated-action critique of planning"
+    notes: ""
+  - source_id: BK-0159
+    category: design
+    author: "Buxton, Bill"
+    title: "Sketching User Experiences"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "design-thinking sketching practice"
+    notes: ""
+  - source_id: BK-0160
+    category: design
+    author: "Beyer, Hugh; Holtzblatt, Karen"
+    title: "Contextual Design"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "contextual-inquiry method"
+    notes: ""
+  - source_id: BK-0161
+    category: design
+    author: "Krug, Steve"
+    title: "Don't Make Me Think"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "web usability heuristics"
+    notes: ""
+  - source_id: BK-0162
+    category: design
+    author: "Goodwin, Kim"
+    title: "Designing for the Digital Age"
+    status_tag: NEW
+    availability_tier: UB
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "Cooper-tradition design process"
+    notes: ""
+  - source_id: BK-0163
+    category: design
+    author: "Cross, Nigel"
+    title: "Designerly Ways of Knowing"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "design epistemology"
+    notes: ""
+  - source_id: BK-0164
+    category: design
+    author: "Wurman, Richard Saul"
+    title: "Information Architects"
+    status_tag: NEW
+    availability_tier: UB
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "information-architecture anthology"
+    notes: ""
+  - source_id: BK-0165
+    category: systems
+    author: "Meadows, Donella H."
+    title: "Thinking in Systems"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "systems-thinking primer (needs scope gates per memory)"
+    notes: ""
+  - source_id: BK-0166
+    category: systems
+    author: "Senge, Peter M."
+    title: "The Fifth Discipline"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "learning-organization framework (needs anti-vibe controls)"
+    notes: ""
+  - source_id: BK-0046
+    category: safety
+    author: "Institute of Medicine"
+    title: "To Err Is Human"
+    status_tag: COMMITTED
+    availability_tier: PD
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: metadata_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "1999 Institute of Medicine report; medical-error foundation"
+    notes: "rights/access status needs operator verification; the NAS/IOM report is openly readable online but not operator-verified as public domain"
+  - source_id: BK-0167
+    category: safety
+    author: "Gawande, Atul"
+    title: "Complications"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "surgical training and error narrative"
+    notes: ""
+  - source_id: BK-0168
+    category: safety
+    author: "Bosk, Charles L."
+    title: "Forgive and Remember"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "surgical-training-and-mistake ethnography"
+    notes: ""
+  - source_id: BK-0169
+    category: safety
+    author: "Pronovost, Peter; Vohr, Eric"
+    title: "Safe Patients, Smart Hospitals"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "central-line-infection checklist results"
+    notes: ""
+  - source_id: BK-0170
+    category: safety
+    author: "Petroski, Henry"
+    title: "To Engineer Is Human"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "engineering failure as design discipline"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0171
+    category: science
+    author: "Gordon, J.E."
+    title: "Structures"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "why things stand up or fall down"
+    notes: ""
+  - source_id: BK-0172
+    category: safety
+    author: "Levy, Matthys; Salvadori, Mario"
+    title: "Why Buildings Fall Down"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "structural-failure case histories"
+    notes: ""
+  - source_id: BK-0173
+    category: design
+    author: "Billington, David P."
+    title: "The Tower and the Bridge"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "structural-art tradition"
+    notes: ""
+  - source_id: BK-0174
+    category: strategy
+    author: "van Creveld, Martin"
+    title: "Command in War"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "command history"
+    notes: ""
+  - source_id: BK-0047
+    category: strategy
+    author: "Clausewitz, Carl von"
+    title: "On War"
+    status_tag: COMMITTED
+    availability_tier: PD
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Princeton paperback edition (1989), Howard and Paret translation"
+    year: "1989"
+    publisher: "Princeton University Press"
+    isbn: "0-691-01854-5"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "friction, fog, the trinity"
+    notes: "Wave-1 map candidate; bibliographic metadata operator-verified; locator scheme chapter_section; original 1832 work is public domain, but the local artifact is a copyrighted modern translation"
+  - source_id: BK-0175
+    category: management
+    author: "McChrystal, Stanley"
+    title: "Team of Teams"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "JSOC adaptation case"
+    notes: ""
+  - source_id: BK-0176
+    category: strategy
+    author: "Biddle, Stephen"
+    title: "Military Power"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "modern-system synthesis"
+    notes: ""
+  - source_id: BK-0177
+    category: law_policy
+    author: "Levi, Edward H."
+    title: "An Introduction to Legal Reasoning"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "analogical reasoning in law"
+    notes: ""
+  - source_id: BK-0178
+    category: law_policy
+    author: "Schauer, Frederick"
+    title: "Thinking Like a Lawyer"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "rule-based reasoning foundation"
+    notes: ""
+  - source_id: BK-0179
+    category: law_policy
+    author: "Posner, Richard A."
+    title: "How Judges Think"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "judicial decision-making"
+    notes: ""
+  - source_id: BK-0180
+    category: law_policy
+    author: "Llewellyn, Karl N."
+    title: "The Bramble Bush"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "legal-realist primer"
+    notes: ""
+  - source_id: BK-0181
+    category: design
+    author: "Alexander, Christopher"
+    title: "Notes on the Synthesis of Form"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "design-decomposition foundation"
+    notes: ""
+  - source_id: BK-0182
+    category: design
+    author: "Alexander, Christopher; Ishikawa, Sara; Silverstein, Murray"
+    title: "A Pattern Language"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "pattern-language source"
+    notes: ""
+  - source_id: BK-0183
+    category: design
+    author: "Brand, Stewart"
+    title: "How Buildings Learn"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: false
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "buildings as shearing-layered systems"
+    notes: ""
+  - source_id: BK-0048
+    category: evidence
+    author: "Rosenzweig, Phil"
+    title: "The Halo Effect"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "first edition (2007)"
+    year: "2007"
+    publisher: "Free Press"
+    isbn: "978-1-4165-3858-5"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "anti-case-study slop; load-bearing"
+    notes: "Wave-1 map and deep-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section"
+  - source_id: BK-0049
+    category: epistemology
+    author: "Muller, Jerry Z."
+    title: "The Tyranny of Metrics"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "Princeton University Press edition (2018; edition statement not explicit)"
+    year: "2018"
+    publisher: "Princeton University Press"
+    isbn: "978-0-691-17495-2"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "metrics misuse"
+    notes: "Wave-1 first-30 source-card candidate; bibliographic metadata operator-verified; locator scheme chapter_section with manual boundary spot-check required because extraction has no Markdown heading layer"
+  - source_id: BK-0184
+    category: epistemology
+    author: "Power, Michael"
+    title: "The Audit Society"
+    status_tag: COMMITTED
+    availability_tier: AP
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "audit-as-control-by-proxy"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0185
+    category: governance
+    author: "Scott, James C."
+    title: "Seeing Like a State"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "legibility critique"
+    notes: "local filename evidence present; edition unverified"
+  - source_id: BK-0050
+    category: epistemology
+    author: "Watts, Duncan J."
+    title: "Everything Is Obvious"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: "first edition (2011)"
+    year: "2011"
+    publisher: "Crown Business"
+    isbn: "978-0-385-53169-6"
+    owned_format: "epub"
+    locator_system: "chapter_section"
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "anti-hindsight discipline"
+    notes: "Wave-1 sourced first-50 candidate; bibliographic metadata operator-verified; locator scheme chapter_section with split chapter-number/title heading caveat"
+  - source_id: BK-0186
+    category: philosophy
+    author: "Frankfurt, Harry G."
+    title: "On Bullshit"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "definitional anti-slop text"
+    notes: ""
+  - source_id: BK-0187
+    category: risk
+    author: "Taleb, Nassim Nicholas"
+    title: "Fooled by Randomness"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: true
+    rationale: "survivorship and noise"
+    notes: ""
+  - source_id: BK-0188
+    category: decision_quality
+    author: "Flyvbjerg, Bent; Gardner, Dan"
+    title: "How Big Things Get Done"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "megaproject base rates"
+    notes: ""
+  - source_id: BK-0189
+    category: media
+    author: "Morozov, Evgeny"
+    title: "To Save Everything, Click Here"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "solutionism critique"
+    notes: ""
+  - source_id: BK-0190
+    category: decision_quality
+    author: "Kay, John"
+    title: "Obliquity"
+    status_tag: COMMITTED
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "indirect goal-pursuit argument"
+    notes: ""
+  - source_id: BK-0191
+    category: epistemology
+    author: "Porter, Theodore M."
+    title: "Trust in Numbers"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "quantification-as-objectivity critique"
+    notes: ""
+  - source_id: BK-0192
+    category: epistemology
+    author: "Hacking, Ian"
+    title: "The Taming of Chance"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "statistical-thinking historical critique"
+    notes: ""
+  - source_id: BK-0193
+    category: ethics
+    author: "Weizenbaum, Joseph"
+    title: "Computer Power and Human Reason"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "pioneering anti-techno-solutionism (1976)"
+    notes: ""
+  - source_id: BK-0194
+    category: media
+    author: "Postman, Neil"
+    title: "Technopoly"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "culture-of-technology critique"
+    notes: ""
+  - source_id: BK-0195
+    category: rhetoric
+    author: "Hirschman, Albert O."
+    title: "The Rhetoric of Reaction"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "perversity / futility / jeopardy patterns in opposition"
+    notes: ""
+  - source_id: BK-0196
+    category: philosophy
+    author: "Illich, Ivan"
+    title: "Tools for Conviviality"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "tools-vs-institutions critique"
+    notes: ""
+  - source_id: BK-0197
+    category: sociology
+    author: "Strathern, Marilyn (ed.)"
+    title: "Audit Cultures"
+    status_tag: NEW
+    availability_tier: AP
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "audit ethnography"
+    notes: ""
+  - source_id: BK-0198
+    category: sociology
+    author: "Graeber, David"
+    title: "The Utopia of Rules"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "bureaucracy critique"
+    notes: ""
+  - source_id: BK-0199
+    category: sociology
+    author: "Vinsel, Lee; Russell, Andrew L."
+    title: "The Innovation Delusion"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: not_started
+    publication_status: metadata_public
+    raw_source_status: not_acquired
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "maintenance vs innovation framing"
+    notes: ""
+  - source_id: BK-0200
+    category: ethics
+    author: "O'Neil, Cathy"
+    title: "Weapons of Math Destruction"
+    status_tag: NEW
+    availability_tier: MM
+    acquisition_status: sourced
+    publication_status: metadata_public
+    raw_source_status: local_only
+    edition: ""
+    year: ""
+    publisher: ""
+    isbn: ""
+    owned_format: ""
+    locator_system: ""
+    eval_relevance:
+      bibliographic_adversary: true
+      contradiction_preservation: true
+      canon_promotion_tournament: true
+      long_tail_transfer: true
+      source_lineage_hostile: false
+    rationale: "algorithmic-harm critique"
+    notes: "local filename evidence present; edition unverified"

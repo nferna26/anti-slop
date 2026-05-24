@@ -1,0 +1,45 @@
+# Proposed public-registry update for <SOURCE_ID>.
+# Local-only artifact. Codex must NOT apply this to public files until the
+# operator has signed off on operator-checklist.md and confirmed the candidate
+# values against the actual local file.
+#
+# raw_file_path_public stays null. local_locator_key uses a public-safe alias.
+# No private paths or filenames appear in this YAML.
+
+source_id: <SOURCE_ID>
+operator_approval_required: true
+do_not_apply_without_operator_approval: true
+
+books_200_yaml:
+  edition: "<EDITION>"                   # candidate; operator to confirm against the file's copyright page
+  year: "<YEAR>"                         # candidate; copyright-region year
+  publisher: "<PUBLISHER>"               # candidate; operator picks one if multiple candidates
+  isbn: "<ISBN-13>"                      # candidate; operator picks ONE if multiple candidates
+  owned_format: "<OWNED_FORMAT_CANONICAL>"  # canonical public value only — bare lowercase token: epub | pdf | mobi | print | audiobook. Conversion-tool detail lives in approval-summary.md / quality-audit.md.
+  locator_system: "<LOCATOR_SYSTEM>"
+  notes: "Wave-1 map and deep-card candidate; bibliographic metadata operator-verified; locator scheme <LOCATOR_SYSTEM>"
+
+acquisition_registry_yaml:
+  edition_verified: false                # set true only after operator approval
+  locator_scheme: "<LOCATOR_SCHEME>"     # apply only after operator approval
+  locator_confidence: "<LOCATOR_CONFIDENCE>"  # apply only after operator approval
+  rights_notes_public: "raw source held local-only; rights normal commercial; excerpts conservative per legal-publication-policy; edition operator-verified"
+  local_source_status:
+    raw_source_exists_local: true
+    local_locator_key: "<SOURCE_ID>-local-source"  # public-safe alias; NEVER a private path
+    local_checksum_public: null
+    raw_file_path_public: null
+  processing_status:
+    mapped: false
+    source_cards_started: false
+    deep_card_candidate: <true|false>    # match source-id-registry's wave-1 flag for this source
+    canon_candidate_exists: false
+
+kb_log_note: "Phase 2 verification: operator approved <SOURCE_ID> bibliographic metadata (<TITLE>, <AUTHOR>). Set edition / year / publisher / isbn / owned_format / locator_system in books-200.yaml. Lifted edition_verified to true and locator_confidence to <LOCATOR_CONFIDENCE> in acquisition-registry; locator_scheme set to <LOCATOR_SCHEME>. No raw text, raw paths, or raw filenames added to the public repo."
+
+# Notes for Codex when applying (only after operator approval):
+# - If the operator finds a different ISBN or edition on the actual file's copyright page,
+#   replace the corresponding value above before applying.
+# - After application, run: make validate && make check-raw && make kb-lint && make report.
+# - Do not apply this proposal piecewise; apply both YAML blocks together so books-200.yaml
+#   and the acquisition registry move in sync.

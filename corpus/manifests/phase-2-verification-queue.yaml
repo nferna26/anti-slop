@@ -1,0 +1,84 @@
+status: active
+phase: phase-2
+purpose: "Track the first-five verified, map-ready sources through map review and into source-card selection."
+selection_rule: "Prioritize wave-1 sources that are already sourced locally, marked as map candidates, and marked as first-five deep-card candidates."
+publication_rule: no_raw_copyrighted_text_in_public_repo
+
+operator_constraints:
+  - "Verify lawful access before mapping."
+  - "Verify edition metadata from the actual lawful source, not from filenames."
+  - "Choose a locator system before creating a book map."
+  - "Do not copy raw book text into the public repo."
+  - "Do not draft source cards until the corresponding book map has been operator-reviewed."
+
+verification_batch:
+  - queue_rank: 1
+    source_id: BK-0001
+    title: "Good Strategy Bad Strategy"
+    author: "Rumelt, Richard"
+    reason: "Strategy diagnosis anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: true
+    locator_status: chosen
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0001.md; draft source cards one at a time with operator review per card."
+  - queue_rank: 2
+    source_id: BK-0003
+    title: "Working Backwards"
+    author: "Bryar, Colin; Carr, Bill"
+    reason: "Operator artifact discipline; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: true
+    locator_status: chosen
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0003.md; draft source cards one at a time with operator review per card."
+  - queue_rank: 3
+    source_id: BK-0007
+    title: "The Lean Startup"
+    author: "Ries, Eric"
+    reason: "Famous-source adversary anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: true
+    locator_status: chosen
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0007.md; draft source cards one at a time with operator review per card."
+  - queue_rank: 4
+    source_id: BK-0042
+    title: "The Challenger Launch Decision"
+    author: "Vaughan, Diane"
+    reason: "Normalization-of-deviance anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: true
+    locator_status: chosen
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0042.md; draft source cards one at a time with operator review per card."
+  - queue_rank: 5
+    source_id: BK-0048
+    title: "The Halo Effect"
+    author: "Rosenzweig, Phil"
+    reason: "Anti-case-study hygiene anchor; map candidate and deep-card candidate."
+    acquisition_status: sourced
+    raw_source_status: local_only
+    edition_verified: true
+    locator_status: chosen
+    map_status: reviewed
+    next_operator_action: "Map operator-reviewed. Begin source-card selection from the mapped chapters of corpus/book-maps/BK-0048.md; draft source cards one at a time with operator review per card."
+
+rights_watchlist:
+  - source_id: BK-0020
+    title: "Shape Up"
+    reason: "Currently metadata_only; rights/access status needs operator verification before any excerpting or mapping."
+  - source_id: BK-0046
+    title: "To Err Is Human"
+    reason: "Currently metadata_only; rights/access status needs operator verification before any excerpting or mapping."
+
+done_when:
+  - "All five verification_batch sources have edition_verified: true in acquisition-registry.yaml and corresponding public-safe book maps at corpus/book-maps/BK-XXXX.md. (Met as of the first-five batch.)"
+  - "All five public-safe book maps have completed operator review and have operator_review_status: reviewed in their frontmatter."
+  - "At least one source has begun source-card selection from its reviewed map."
+  - "No public raw paths, filenames, raw text, or long excerpts have been added."
+  - "make validate, make check-raw, make kb-lint, and make report pass."
