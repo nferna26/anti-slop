@@ -1,0 +1,148 @@
+---
+source_id: <SOURCE_ID>
+title: "<TITLE>"
+author: "<AUTHOR>"
+status: machine_generated_not_canon
+operator_review_status: unreviewed
+public_safe: true
+raw_text_used_local_only: false
+edition_verified: true
+locator_system: <LOCATOR_SYSTEM>
+canonical_status: noncanonical
+quote_word_count: 0
+---
+
+# Book Map
+
+A book map is not canon. It is an index and triage artifact.
+
+## What this is
+
+A public-safe discovery map for locating possible source cards, candidate canon touchpoints, and likely contradictions across the corpus. It uses paraphrase and chapter/section locators only. Reading it is not a substitute for reading the book.
+
+## What this is not
+
+Not canon. Not evidence. Not a substitute for the book. Not an advisory authority. It carries no claims that have been operator-approved beyond their status as map notes.
+
+## Source metadata
+
+- **source_id:** <SOURCE_ID>
+- **title:** <TITLE>
+- **author:** <AUTHOR>
+- **publisher:** <PUBLISHER>
+- **year:** <YEAR>
+- **ISBN:** <ISBN-13>
+- **owned format:** <OWNED_FORMAT_CANONICAL>   <!-- bare canonical token from books-200.yaml: epub | pdf | mobi | print | audiobook -->
+- **locator system:** `<LOCATOR_SYSTEM>`
+- **edition verified:** true
+- **locator confidence:** <verified | medium | low>
+
+## Source structure
+
+<One-paragraph framing: what the high-level shape of the source is, with any caveats about heading-level heterogeneity.>
+
+| Locator | Map note |
+|---|---|
+| <Introduction or front matter> | <High-level function, paraphrased, no content detail> |
+| <Chapter range 1> | <High-level function> |
+| <Chapter range 2> | <High-level function> |
+| <Chapter range 3> | <High-level function> |
+| <Conclusion / Appendix if applicable> | <High-level function> |
+
+## Central thesis
+
+<Paraphrase at high level with locator references in parentheses. Keep under 150 words. End with `(Locators: <Chapter N>; <Chapter M>; …)`>.
+
+## Argument structure
+
+- **<Claim 1 in 1–2 sentences.>** <Brief paraphrase.> (<Chapter N>.)
+- **<Claim 2.>** (<Chapter N>.)
+- **<Claim 3.>** (<Chapter N>.)
+- **<Claim 4.>** (<Chapter N>.)
+- **<Claim 5.>** (<Chapter N>.)
+- **<Claim 6.>** (<Chapter N>.) (Optional; max 8 bullets.)
+- **<Claim 7.>** (<Chapter N>.) (Optional.)
+- **<Map-inference claim, if present.>** Map inference, not asserted in any single chapter: <paraphrase>. (Optional.)
+
+## Key concepts
+
+| Concept | Locator refs | Why it may matter for Anti-Slop | Misuse risk |
+|---|---|---|---|
+| <Concept 1> | <Chapter N> | <One sentence on why> | <One sentence on how it gets misused> |
+| <Concept 2> | <Chapter N> | <…> | <…> |
+| <Concept 3> | <Chapter N> | <…> | <…> |
+| <Concept 4> | <Chapter N> | <…> | <…> |
+| <Concept 5> | <Chapter N> | <…> | <…> |
+| <Concept 6> | <Chapter N> | <…> | <…> |
+| <Concept 7> | <Chapter N> | <…> | <…> (Optional.) |
+| <Concept 8> | <Chapter N> | <…> | <…> (Optional; max 8 rows.) |
+
+## Claims relevant to Anti-Slop
+
+| Candidate card | Locator refs | Why it may matter | Priority |
+|---|---|---|---|
+| <Candidate card 1> | <Chapter N> | <One sentence on its eval/canon role> | A |
+| <Candidate card 2> | <Chapter N> | <…> | A |
+| <Candidate card 3> | <Chapter N> | <…> | A |
+| <Candidate card 4> | <Chapter N> | <…> | B |
+| <Candidate card 5> | <Chapter N> | <…> | B |
+| <Candidate card 6> | <Chapter N> | <…> | B |
+| <Candidate card 7> | <Chapter N> | <…> | C |
+| <Candidate card 8> | <Chapter N> | <…> | C |
+| <Candidate card 9> | <Chapter N> | <…> | C (Optional.) |
+| <Candidate card 10> | <Chapter N> | <…> | C (Optional; max 10 rows.) |
+
+## Possible contradictions
+
+Tensions to investigate later via source cards. Each row names a comparison to look into. None of the rows asserts what the comparison source claims — that is the comparison source's own card to write.
+
+| Tension axis | Comparison source | Locator refs in <SOURCE_ID> | Question to investigate |
+|---|---|---|---|
+| <Tension 1 in 3–6 words> | <BK-NNNN (Author, *Title*)> | <Chapter N> | Compare <SOURCE_ID>'s <X> with <BK-NNNN> on <Y>. |
+| <Tension 2> | <BK-NNNN (Author, *Title*)> | <Chapter N> | Question whether/how <…>. |
+| <Tension 3> | <BK-NNNN (Author, *Title*)> | <Chapter N> | Compare <…> with <…> on <…>. |
+| <Tension 4> | <BK-NNNN (Author, *Title*)> | <Chapter N> | Question whether <…>. |
+| <Tension 5> | <BK-NNNN (Author, *Title*)> | <Chapter N> | Compare <…> with <…> on <…>. |
+| <Tension 6> | <BK-NNNN (Author, *Title*)> | <Chapter N> | Question how <…>. (Optional.) |
+| <Tension 7> | <BK-NNNN (Author, *Title*)> | <Chapter N> | <…> (Optional.) |
+| <Tension 8> | <BK-NNNN (Author, *Title*)> | <Chapter N> | <…> (Optional; max 8 rows.) |
+
+## Possible canon touchpoints
+
+- A canon-candidate <concept|pattern|guardrail|playbook> for "<topic>" — promotion would require <preconditions>.
+- A canon-candidate <…> for "<topic>" — promotion would require <…>.
+- A canon-candidate <…> for "<topic>" — promotion would require <…>.
+- A canon-candidate <…> for "<topic>" — promotion would require <…>.
+- A canon-candidate <…> for "<topic>" — promotion would require <…>. (Optional.)
+- A canon-candidate <…> for "<topic>" — promotion would require <…>. (Optional; max 6 bullets.)
+
+## Eval relevance
+
+- **bibliographic adversary: <true|false>.** <One sentence: why this source is or is not a default-citation magnet.>
+- **contradiction preservation: <true|false>.** <One sentence: which corpus sources it sits in tension with.>
+- **canon promotion tournament: <true|false>.** <One sentence: which substrate is most promotable.>
+- **long-tail transfer: <true|false>.** <One sentence: whether the claims transfer beyond the source's domain.>
+- **source-lineage hostile: <true|false>.** <One sentence: whether the source's ideas are commonly misattributed.>
+
+## Misuse risks
+
+- **<Risk 1>.** <One-sentence elaboration.>
+- **<Risk 2>.** <…>
+- **<Risk 3>.** <…>
+- **<Risk 4>.** <…>
+- **<Risk 5>.** <…>
+- **<Risk 6>.** <…> (Optional.)
+- **<Risk 7>.** <…> (Optional; max 7 bullets.)
+
+## Operator review notes
+
+- [ ] No raw text included.
+- [ ] No quotes included.
+- [ ] Locator references checked.
+- [ ] Candidate source cards are specific enough.
+- [ ] Contradictions preserved as questions.
+- [ ] Ready for source-card queue.
+
+**quote_word_count:** 0
+**operator_review_status:** unreviewed
+**locator_quality_note:** <Optional; include only if locator_confidence is medium or lower. Example: "chapter/section locators are usable but should be checked before source-card creation because heading levels are heterogeneous.">

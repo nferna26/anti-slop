@@ -1,0 +1,150 @@
+# Judge-packet output manifest - halo-evidence-vs-diagnosis-validation-v11
+# Anonymous label -> output body sha256. Conditions are withheld by design.
+case_id: halo-evidence-vs-diagnosis-validation-v11
+benchmark_version: halo-evidence-vs-diagnosis-validation-v11-v1
+output_count: 48
+outputs:
+  - label: OUT-01
+    file: outputs/OUT-01.md
+    output_sha256: 0093739339acabeb1b0997b6b0ef3b971ef35ad0f410026a20a760042bc95fad
+  - label: OUT-02
+    file: outputs/OUT-02.md
+    output_sha256: 09e82473399993f8091b12c93a833b6252fdb2cbe5ebdadeabd4624f05da59dd
+  - label: OUT-03
+    file: outputs/OUT-03.md
+    output_sha256: 0b84c66276a35e194d1e88bc517b0773f8568ed5d4bf1620aa092ad3b179b95e
+  - label: OUT-04
+    file: outputs/OUT-04.md
+    output_sha256: 0eee0f69c0ad38453f2c70b696edf2df3ed82c1bb582e653167bf75bd81b5e13
+  - label: OUT-05
+    file: outputs/OUT-05.md
+    output_sha256: 10b81e7fb6b25a55c0b48c84226ce14884fd604278344003a1a04f21c0221438
+  - label: OUT-06
+    file: outputs/OUT-06.md
+    output_sha256: 180afb4c06766e182bdc900cb10b11542719e45967ca1ed008153080be656e62
+  - label: OUT-07
+    file: outputs/OUT-07.md
+    output_sha256: 18d140c7bdaf539f6b27cddb9066386bda6072591153ef726ee587e071611e68
+  - label: OUT-08
+    file: outputs/OUT-08.md
+    output_sha256: 1c137cbcc1ded06272516d1c8629bdb8cb095156897a7e23d188ebf68909df6f
+  - label: OUT-09
+    file: outputs/OUT-09.md
+    output_sha256: 1f482c8d1e0a300ba06082475da219ff1349e1f6257f62c3e0ea367a2b9006a7
+  - label: OUT-10
+    file: outputs/OUT-10.md
+    output_sha256: 2abf9296111007f0510185db8afe8733f61879321d53dad6a7c74d6bc9ee4b2a
+  - label: OUT-11
+    file: outputs/OUT-11.md
+    output_sha256: 37699356c5c7d102dc3b80b27e299b5202def00c6e82c02bef7543f52960ce90
+  - label: OUT-12
+    file: outputs/OUT-12.md
+    output_sha256: 47a8dc283b82bbf4a9165114957b6e98302d7bce3cca4a26a797c2f508381125
+  - label: OUT-13
+    file: outputs/OUT-13.md
+    output_sha256: 4958df2b153d75fa3cf4f3c536d1a7a41af840223c53dbe2afc4902af76c0d25
+  - label: OUT-14
+    file: outputs/OUT-14.md
+    output_sha256: 4d99c8290b000681ebe6ea3c76e9d79da05e12869b4b13a29685da051dcd9416
+  - label: OUT-15
+    file: outputs/OUT-15.md
+    output_sha256: 544d01cb3a14a7eb041fc1619a55206924d52eda5e87a2f6ef334b6b15af7cf0
+  - label: OUT-16
+    file: outputs/OUT-16.md
+    output_sha256: 55d63de2aab5c19edc3cab9922b22e8c19cbec6a5f725d321e0ccc1d288b8620
+  - label: OUT-17
+    file: outputs/OUT-17.md
+    output_sha256: 56a3f8625cfc50a973d4981bc34fac7447ff84ef4b9c04191af5b53960ed1b8b
+  - label: OUT-18
+    file: outputs/OUT-18.md
+    output_sha256: 5981d94ab662a8b8f7d8e33cad42e46a0a9ab1f11139862517deb739dbaa38a2
+  - label: OUT-19
+    file: outputs/OUT-19.md
+    output_sha256: 5fbfc3a8c64cd4d452f624ea27eb041f8659104e906282b854d4a6a61b5069fd
+  - label: OUT-20
+    file: outputs/OUT-20.md
+    output_sha256: 600f0314e8f4b48dd5fd35f50ce92cd018cdbfd6408a6b3190c9a13d21ef0386
+  - label: OUT-21
+    file: outputs/OUT-21.md
+    output_sha256: 6a6e66a2ad964d6eceed257fd769e663f2b3a0262b5213caeb7883bd3f58335d
+  - label: OUT-22
+    file: outputs/OUT-22.md
+    output_sha256: 6fa34c4b67f1a750f9e029d60cf67ada7e962227946534a55d33c93964cd3b14
+  - label: OUT-23
+    file: outputs/OUT-23.md
+    output_sha256: 70533327d4e8a7fb32afa33ed7b1e2b2334cb2a3f708f446f99e68449d344c67
+  - label: OUT-24
+    file: outputs/OUT-24.md
+    output_sha256: 815769779a12420c1ff80f8d0ba6bfee6c9a6d26e45f6e0d10874d979cae4d9c
+  - label: OUT-25
+    file: outputs/OUT-25.md
+    output_sha256: 905d8d82c450af871f20023155a7dadf3600326acbc1ea4a0c020f80581134cc
+  - label: OUT-26
+    file: outputs/OUT-26.md
+    output_sha256: 91e273c1a4c9154516a6bf9525799057997e47ef46a75753d43fe2a31113b702
+  - label: OUT-27
+    file: outputs/OUT-27.md
+    output_sha256: 9707a46c87e197fb50a01c665e115b763bee6570cc84b8e4b0d6f56a8659e1d6
+  - label: OUT-28
+    file: outputs/OUT-28.md
+    output_sha256: 9a7f940bcbc7da9fbc18abf4108a1fe94fef78b724d05ad59d7255681aafec58
+  - label: OUT-29
+    file: outputs/OUT-29.md
+    output_sha256: 9c5454476fea96345111cdd143869c8ab1ab4bcad8b42e8827ee71bcff91b14f
+  - label: OUT-30
+    file: outputs/OUT-30.md
+    output_sha256: a1357fd92108c9a788bc2519f2155c44134ecadcb58bff618267c5033bbf51a4
+  - label: OUT-31
+    file: outputs/OUT-31.md
+    output_sha256: a173d906430f0ad23aab641dd558854bb15c49669efea9be36729c866ce20944
+  - label: OUT-32
+    file: outputs/OUT-32.md
+    output_sha256: bce41d99ab7a7b9fa1462df34ed38e755e02de8790677fc3378aa87cb44c0543
+  - label: OUT-33
+    file: outputs/OUT-33.md
+    output_sha256: c10b17b5a862ebfce1683ee1e671d694c02b3c12987fef9f35e3759876fa725d
+  - label: OUT-34
+    file: outputs/OUT-34.md
+    output_sha256: c2abd009da4ec1485e28a14a6bfb438bef2d28d5fb562777575695a2f6af15d5
+  - label: OUT-35
+    file: outputs/OUT-35.md
+    output_sha256: c3e5b77a971db534c316394ff9e2a12b7f05b049b560e204738e845c80e4ef77
+  - label: OUT-36
+    file: outputs/OUT-36.md
+    output_sha256: cf997f6c34469e2951c743ae75ae84adc0dc26f954c2fe3db907050868dd32f5
+  - label: OUT-37
+    file: outputs/OUT-37.md
+    output_sha256: d1d512865469eb9486abaaf0d9bf35c189a2450c3593a066446ccd2074554588
+  - label: OUT-38
+    file: outputs/OUT-38.md
+    output_sha256: d65ba72385e5aeac4e04c931dc12c3a4bcd743c29d229da0c330bef2172d5cb6
+  - label: OUT-39
+    file: outputs/OUT-39.md
+    output_sha256: dc37befd09495f69916bc8c66e4c535071a9bdc5997a8e53a9466718431da95e
+  - label: OUT-40
+    file: outputs/OUT-40.md
+    output_sha256: de58fa47e8ba2bdd01ec8cc6847b9bf6883636b75d4dbae78ef19af11754c16b
+  - label: OUT-41
+    file: outputs/OUT-41.md
+    output_sha256: e091f6a04b62ad47e2c37d4f8b917a8031a48808f053bbf32734df40784ddb6a
+  - label: OUT-42
+    file: outputs/OUT-42.md
+    output_sha256: e4aca9a08d57588d41630c8257e2a4df0b916dd3af98942a543a4faa38a2a896
+  - label: OUT-43
+    file: outputs/OUT-43.md
+    output_sha256: e9f1ae0f0fff348f73fd8ab4ab83b1b3233ee6bb440619cf58096b6f77c09023
+  - label: OUT-44
+    file: outputs/OUT-44.md
+    output_sha256: ef33b714e534ac90c0e8e29d2e35b9658c454fcc2ff37bf5c0fd4d70b1a220eb
+  - label: OUT-45
+    file: outputs/OUT-45.md
+    output_sha256: f736cee779da2c710175a6ebcc77bd42f41e7b3ed9715e99d45f59cc0dfdf63d
+  - label: OUT-46
+    file: outputs/OUT-46.md
+    output_sha256: f80ffbfd0ace24b62d4cb88fa746560e3fec34513f515b2cc260462e591c4f53
+  - label: OUT-47
+    file: outputs/OUT-47.md
+    output_sha256: fbf3cf6b5e804dfef7af3597c5f1a0dffa243ca3a11c0e14f02bf351e2eaf1f2
+  - label: OUT-48
+    file: outputs/OUT-48.md
+    output_sha256: fd9e80c82d53d8b896dbd958dc24fe315d3aab00bd58c5e3f39244c884d37c3a
