@@ -4,15 +4,31 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-24
 
+- Froze and executed `halo-evidence-vs-diagnosis-validation-v9-v1` after the
+  local-only generic-solvability probe passed (0/6 no-source outputs passed C4)
+  and hosted OpenAI `gpt-5.4-mini` plus hosted Anthropic `claude-opus-4-7`
+  passed the C3-C6 calibration-smoke gate. The LM Studio MLX generator rejected
+  the full-card long packets, so v9 froze a compact reviewed-source substrate
+  packet and equal-length compact filler before the successful generation pass.
+  Generated 48 real `gemma-4-31b-it-mlx` outputs (6 conditions × 8, 0 simulated,
+  0 deferred), built public-safe receipts and a hash-blinded `OUT-NN` judge
+  packet, scored all 48 outputs with both hosted judges, and reconciled
+  aggregate-only from committed hashes. Positive rule failed: every condition
+  tied at mean 3.000 under both judges, both judges assigned the same total to
+  48/48 outputs, and all key controls saturated C3 at 1.00 while all conditions
+  failed C4-C6. Added `eval-decision.md` (`eval_decision: do_not_promote`,
+  `decision_class: controls_matched_total_margin`) and `postmortem.md`. No
+  `benchmark_supported` result, canon candidate, public advice claim, or book
+  growth created.
 - Added the design-only v9 case
   `halo-evidence-vs-diagnosis-validation-v9` after the v8 negative result. The
   draft keeps the business/product evidence-quality domain but changes the
   load-bearing target from noticing contaminated signals to selecting the test
-  that can actually disconfirm the favored story. The v9 design adds
-  `criteria_prompted_no_sources`, revises C4 around the
-  Clean Cohort Challenge versus the monitoring-only Usage Quality Sprint,
-  revises C5 around intervention boundaries and board-window forfeiture, and
-  adds a non-discriminating-judge guard to the future Positive-result rule. A
+  that can actually disconfirm the favored story. The current v9 design adds
+  `criteria_prompted_no_sources`, revises C4 around commercial
+  disconfirmation versus product-diagnostic usage or workflow tests, revises C5
+  around intervention boundaries and board-window forfeiture, and adds a
+  non-discriminating-judge guard to the future Positive-result rule. A
   local-only generic-solvability probe is required before any freeze,
   calibration smoke, generation, judging, reconciliation, result lift, canon
   candidate, public advice claim, or book growth.

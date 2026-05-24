@@ -2,49 +2,59 @@
 case_id: halo-evidence-vs-diagnosis-validation-v9
 artifact: run-packet
 eval_type: contradiction-preservation
-benchmark_version: halo-evidence-vs-diagnosis-validation-v9-design
-status: design_only_not_frozen
+benchmark_version: halo-evidence-vs-diagnosis-validation-v9-v1
+status: frozen_run_complete_scored
 created: 2026-05-24
 ---
 
-# Run Packet - halo-evidence-vs-diagnosis-validation-v9-design
+# Run Packet - halo-evidence-vs-diagnosis-validation-v9-v1
 
-This is a design-only packet for the v9 HelioLedger/Northstar evidence-quality
-successor. It is not frozen and authorizes no full generation run. Its purpose
-is to make the v8 lesson operational: do not spend a 40+ output benchmark pass
+This is the frozen v9 packet for the Northstar evidence-quality successor. It
+incorporates the v8 lesson operationally: do not spend a full benchmark pass
 until a cheap local-only probe shows the scenario is not solvable by competent
-generic advice.
+generic advice. That probe passed on the commercial-disconfirmation draft, and
+the hosted OpenAI and Anthropic judge routes passed pre-generation calibration.
 
 This file is operator-facing. It names model conditions, readiness gates, and
 future run mechanics. It must not be shown to blind judges.
 
 ## Status
 
-- Design case exists at `case.md`.
-- No v9 calibration anchors are filled.
-- No v9 condition packets are frozen.
-- No v9 model outputs exist.
-- No v9 answer key, blinded `OUT-NN` packet, judge scores, reconciliation, or
-  benchmark result exists.
+- Frozen case exists at `case.md`.
+- Calibration anchors are filled and status `smoke_passed_pre_generation`.
+- Six condition packets were frozen locally under the v9 freeze candidate.
+- 48 real model outputs exist, eight per condition, with 0 simulated and 0
+  deferred outputs.
+- Hash-blinded `OUT-NN` packet, hosted OpenAI and hosted Anthropic judge
+  receipts, aggregate-only reconciliation, `score-sheet.md`, `eval-decision.md`,
+  and `postmortem.md` exist.
+- Result: `partial`; eval decision: `do_not_promote`.
 - V8 remains the current completed benchmark attempt for this family and stays
   `partial` / `do_not_promote`.
 
 ## Design Change From v8
 
 V8 failed because the case prompt handed generic models enough facts to solve
-the C3-C6 ladder. V9 changes the target from recognizing contaminated signals
-to choosing between two superficially empirical tests:
+the C3-C6 ladder. The first v9 drafts also failed the local probe because
+generic answers selected the named clean cohort, named live trace test, and
+then the unlisted support-file audit too easily. This revised v9 target changes
+the boundary: the obvious workflow-inspection move is a decoy for this board
+decision, because it may diagnose product defects without disconfirming the
+commercial success story.
 
 - **Usage Quality Sprint** - easier, dashboard-friendly monitoring that may
   polish the same manager-mediated usage and enablement conditions that created
   the success story.
-- **Clean Cohort Challenge** - harder, disruptive disconfirmation that removes
-  bundle pricing, roadmap-pitch contamination, and manager-run sample
-  rehearsals before comparing segment behavior.
+- **Claim File Review** - tempting front-line product diagnosis inside accounts
+  that already renewed under the current commercial motion.
+- **Commercial Cleanroom** - cleaner commercial evidence that removes bundle
+  pricing and roadmap pitch to test whether expansion demand survives without
+  the two most obvious commercial confounds.
 
 The load-bearing question is whether the answer selects the test that can make
-the favored story wrong, and explains why the more obvious monitoring test is
-not enough.
+the favored revenue / product-market-fit story wrong, and explains why the
+usage and workflow packages are the wrong evidence for that board decision even
+though they may be useful product diagnostics.
 
 ## Declared Conditions
 
@@ -54,7 +64,7 @@ Six conditions are declared in `case.md`:
 | --- | --- |
 | `vanilla` | None. Advisor prompt only. |
 | `famous_sources_supplied` | Name-level list of relevant famous sources and decoys only; no claims or summaries. |
-| `substrate_workflow` | Reviewed source-card packet: `BK-0048-card-001`, `BK-0001-card-001`, `BK-0007-card-001`. A reviewed synthesis card may be added only if reviewed before freeze and recorded here. |
+| `substrate_workflow` | Compact reviewed-source packet derived from `BK-0048-card-001`, `BK-0001-card-001`, `BK-0007-card-001`; no raw text, no book maps, no unreviewed synthesis card, no canon language. |
 | `vanilla_long_prompt` | Neutral unrelated filler length-matched to the substrate added material. |
 | `generic_advice_prompted` | Short generic advice-quality request; no rubric or source content. |
 | `criteria_prompted_no_sources` | Abstract criteria reminder about contaminated evidence, disconfirming tests, intervention boundaries, and falsifiers; no source names, source cards, or case-specific answer hint. |
@@ -70,8 +80,10 @@ Before any calibration smoke or freeze:
 - Do not include substrate, source names, criteria prompt, or answer key.
 - Score C3-C6 locally for design readiness only.
 - If more than one of the six probe outputs clearly passes C4 by selecting the
-  Clean Cohort Challenge and explaining why the Usage Quality Sprint is
-  non-disconfirming, the case is too generic-solvable and must be revised.
+  Commercial Cleanroom as the commercial disconfirmation test and explaining
+  why the Usage Quality Sprint and Claim File Review do not answer the board's
+  revenue / product-market-fit attribution question by themselves, the case is
+  too generic-solvable and must be revised.
 
 Probe logs, raw outputs, and provisional scores stay local-only and are not
 benchmark evidence.
@@ -88,19 +100,23 @@ Only after the generic-solvability probe passes:
 - Failed or unavailable routes are recorded honestly and score zero future
   outputs.
 
-## Future Frozen Inputs
+## Frozen Inputs
 
-A future v9 freeze must record:
+The v9-v1 freeze records:
 
 - `case.md` sections from `## Scenario` through `## Falsifier`.
 - The final declared `model_conditions`.
 - The exact reviewed lineage packet and hashes.
 - The exact Advisor prompt hash.
 - The exact condition packet hashes.
-- The exact generic-solvability probe summary, without raw local-only outputs.
+- The exact generic-solvability probe summary, without raw local-only outputs:
+  6/6 completed no-source probe outputs, 0/6 passed C4, probe status
+  `probe_passed`.
 - The filled calibration anchors and smoke receipts.
 - The generator model, runtime, decoding parameters, timeout, seeds, and retry
-  rule.
+  rule. The frozen generator response budget is `max_tokens: 1024` for every
+  condition because LM Studio rejected the full-card long packets; v9 therefore
+  uses a compact reviewed-source packet and length-matched compact filler.
 
 Any edit to scenario, prompt, rubric, positive rule, falsifier, conditions, or
 lineage after freeze starts a new benchmark version.

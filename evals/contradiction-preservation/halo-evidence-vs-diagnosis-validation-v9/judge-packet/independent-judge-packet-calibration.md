@@ -1,66 +1,53 @@
 ---
+artifact: independent-judge-packet
+part: calibration
 case_id: halo-evidence-vs-diagnosis-validation-v9
-eval_type: contradiction-preservation
-status: scored
-created: 2026-05-24
-source_packet: reviewed_public_source_card_packet
-expected_output: evidence-quality business/product recommendation
-model_conditions:
-  - vanilla
-  - famous_sources_supplied
-  - substrate_workflow
-  - vanilla_long_prompt
-  - generic_advice_prompted
-  - criteria_prompted_no_sources
-scoring_status: scored
+benchmark_version: halo-evidence-vs-diagnosis-validation-v9-v1
+condition_blinded: true
 ---
 
-# Eval Case
+# Independent Judge Packet - Part 1 of 2: Calibration
 
-## What this eval tests
+You are an independent blind judge for a contradiction-preservation evaluation
+of AI advisory answers. This packet is self-contained. This is Part 1, the
+calibration step. Do not ask for or begin Part 2 until the operator confirms
+your calibration result.
 
-This is the v9 frozen-run successor to
-`halo-evidence-vs-diagnosis-validation-v8`. It keeps the business/product
-evidence-quality domain, but changes the target from "notice that evidence is
-contaminated" to "choose the test that can actually disconfirm the favored
-story when a more obvious validation move is available but non-probative."
+## Your task
 
-V8 stays frozen and unrescored. Its result was `partial` /
-`do_not_promote`: the benchmark machinery worked, but competent generic advice
-matched the substrate because the HelioLedger prompt listed the contaminated
-signals and the targeted evidence pass directly. The first v9 drafts repeated
-that problem: generic probe outputs selected the named clean cohort, then the
-named live trace test, then the unlisted support-file audit too easily. This
-revised v9 draft changes the target boundary. The tempting workflow-inspection
-move is now a product-diagnostic decoy; it may explain user friction, but it
-does not test whether the revenue / product-market-fit story is independent of
-discounts, buyer coaching, and success-linked narratives. The load-bearing move
-is to select the commercial disconfirmation test and state why product-usage
-diagnostics are the wrong evidence for the board decision. V9 is not allowed to
-freeze until a local-only generic-solvability probe shows that vanilla/generic
-answers do not reliably identify that discriminating move.
+Score eight calibration answers against the fixed six-criterion rubric. Every
+answer responds to the Northstar Claims product-strategy question in the case context
+below. How real answers were produced is withheld by design. Do not speculate
+about answer origin.
 
-This file is the frozen v9 scenario and rubric, not a benchmark result and not a
-canon candidate. It creates no public advice claim.
+For calibration, return exactly eight lines:
 
-## Lineage
+```text
+[ANCHOR-A] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+[ANCHOR-B] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+[ANCHOR-C] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+[ANCHOR-D] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+[ANCHOR-E] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+[ANCHOR-F] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+[ANCHOR-G] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+[ANCHOR-H] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
+```
 
-- `BK-0048-card-001` - reviewed source card (evidence-level). Carries the
-  business halo mechanism: performance-aware trait descriptions are not
-  independent evidence of the traits.
-- `BK-0001-card-001` - reviewed source card (evidence-level). Carries the
-  strategy-kernel method: a real strategy begins with a load-bearing account of
-  the challenge, then a guiding policy and coherent action.
-- `BK-0007-card-001` - reviewed source card (evidence-level). Carries the
-  validated-learning method: progress under startup uncertainty must be shown
-  by real customer behavior and key metrics, not feature shipment or
-  after-the-fact stories.
+## Case context
 
-No book map is evidence for this case. The source cards are evidence-level
-artifacts, none of them is canon, and no unreviewed claim/tension card is part
-of the v9 substrate packet while this case remains design-only. Any draft
-synthesis about this evidence-quality tension may inform operator pre-work, but
-it must be operator-reviewed before any future run may include it as substrate.
+---
+artifact: judge-packet-case-context
+case_id: halo-evidence-vs-diagnosis-validation-v9
+benchmark_version: halo-evidence-vs-diagnosis-validation-v9-v1
+condition_blinded: true
+---
+
+# Case Context
+
+This is the condition-neutral context for judging anonymised OUT-NN answers. It
+carries the scenario, the question the answers respond to, what a good answer
+must do, and the failure modes to watch for. It names no answer origin; every
+OUT-NN answers the same question, and how each was produced is withheld.
 
 ## Scenario
 
@@ -145,7 +132,9 @@ removed. Narrowing around health-liability workflows may focus the company on
 the hardest unresolved segment, but it could overweight one segment's adoption
 problem before the commercial diagnosis is settled.
 
-## Advisor prompt
+## The question the answers respond to
+
+Every OUT-NN answer responds to this question:
 
 > I run product strategy at Northstar Claims, a B2B workflow-software company
 > for commercial-insurance claims teams. Three months ago we launched
@@ -198,7 +187,7 @@ problem before the commercial diagnosis is settled.
 > that would change your mind. Avoid generic "do both" advice unless you
 > explain what is actually sacrificed.
 
-## Expected reasoning
+## What a good answer must do
 
 A strong answer must:
 
@@ -222,38 +211,7 @@ A strong answer must:
    recommendation, and state observable behavioral evidence that would change
    the answer.
 
-## Expected source behavior
-
-- `vanilla` - Advisor prompt only. Baseline; expect plausible business advice
-  that balances growth, caution, and measurement without reliably distinguishing
-  product diagnostics from evidence that can disconfirm the commercial success
-  story.
-- `famous_sources_supplied` - Advisor prompt plus name-level awareness only of
-  relevant famous sources and decoys. It supplies no claim about what any
-  source argues, no source-card text, no book-map material, and no hidden answer
-  key. It tests whether famous-name priming or model memory reproduces the
-  substrate effect.
-- `substrate_workflow` - Advisor prompt plus a compact reviewed-source packet
-  derived from the public source cards named in `## Lineage`. The packet must
-  contain no raw source text, no book-map evidence, no unreviewed claim/tension
-  card, and no canon language.
-- `vanilla_long_prompt` - Advisor prompt plus neutral filler length-matched to
-  the `substrate_workflow` added material, with no substrate artifacts and no
-  business/product/evidence/strategy/customer terms.
-- `generic_advice_prompted` - Advisor prompt plus only a short generic request
-  for careful, practical, tradeoff-aware advice. It must not enumerate this
-  rubric, name the target distinction, mention contradiction preservation,
-  request source lineage, or leak the answer key.
-- `criteria_prompted_no_sources` - Advisor prompt plus an abstract criteria
-  reminder to watch for contaminated evidence, prefer disconfirming evidence,
-  weigh intervention boundaries, and give a falsifier. It supplies no source
-  cards, source names, source summaries, book-map material, canon language, or
-  case-specific hint about which package is correct.
-
-A correct answer never treats a source card, book, author, model output, judge
-score, or draft tension card as canon.
-
-## Failure modes
+## Failure modes to watch for
 
 - **Workflow-truth shortcut.** Chooses the Claim File Review because it sounds
   closest to real work, while failing to explain that it samples already-renewed
@@ -289,7 +247,19 @@ score, or draft tension card as canon.
 - **Free hybrid.** Recommends scaling, both tests, and narrowing at once
   without naming what the twelve-day planning window cannot do.
 
+Score against rubric.md, criterion by criterion. The dependency rule in
+rubric.md is mandatory.
+
 ## Scoring rubric
+
+---
+artifact: judge-packet-rubric
+case_id: halo-evidence-vs-diagnosis-validation-v9
+benchmark_version: halo-evidence-vs-diagnosis-validation-v9-v1
+condition_blinded: true
+---
+
+# Scoring Rubric
 
 Six criteria, each scored **pass** or **fail** per output. Per-output score is
 the count passed (0-6). Score against this rubric only; do not add, remove, or
@@ -327,174 +297,165 @@ These dependencies are pre-registered for v9 design:
 
 The ladder is: **C3 and C4 enable C5; C5 enables C6.**
 
-## Generic-solvability probe gate
+The eval signal is comparative across many outputs. A single high-scoring answer
+is not a result.
 
-This design must pass a local-only generic-solvability probe before any
-calibration smoke, freeze, generation, or judging.
+## Calibration answers to score
 
-Probe requirements:
+---
+artifact: judge-packet-calibration-exercise
+case_id: halo-evidence-vs-diagnosis-validation-v9
+benchmark_version: halo-evidence-vs-diagnosis-validation-v9-v1
+condition_blinded: true
+---
 
-- Run at least three `vanilla` and three `generic_advice_prompted` probe outputs
-  against the draft Advisor prompt with no substrate, no criteria prompt, and no
-  source names.
-- Score only the draft C3-C6 ladder for the probe.
-- If more than one of the six probe outputs clearly passes C4 by selecting the
-  Commercial Cleanroom as the commercial disconfirmation test and explaining why
-  the Usage Quality Sprint and Claim File Review do not answer the board's
-  revenue / product-market-fit attribution question by themselves, the scenario
-  is still too generic-solvable. Revise the scenario and re-probe before any
-  freeze.
-- Probe logs, raw outputs, and provisional scoring stay local-only.
+# Calibration Exercise
 
-This probe does not create benchmark evidence and must not be cited publicly as
-a result. It is a design readiness guard.
+This is the judge-facing calibration exercise. Complete it before scoring any
+OUT-NN answer. The reference verdicts are withheld by the operator.
 
-## Positive result
+## Surface 1 - judge-facing calibration exercise
 
-This positive result applies only after a future frozen v9 generation pass. It
-does not apply while this case is design-only.
+Score each anchor against the v9 C1-C6 rubric in `case.md`. Apply the dependency
+rule: C5 requires C3 and C4; C6 requires C5. Return one line per anchor in the
+required format.
 
-The result may be considered for `benchmark_supported` only if every clause
-below is met and the broader `docs/eval-benchmark-upgrade.md` checklist also
-passes.
+### Anchor A
 
-- **Run completeness.** At least 8 real runs per declared condition, no
-  simulated outputs in the comparison set, a current receipt index, and complete
-  benchmark provenance for every scored receipt.
-- **Control completeness.** All six declared conditions must be run:
-  `vanilla`, `famous_sources_supplied`, `substrate_workflow`,
-  `vanilla_long_prompt`, `generic_advice_prompted`, and
-  `criteria_prompted_no_sources`.
-- **Probe readiness.** The local-only generic-solvability probe must have
-  passed before freeze. A passing probe is not evidence for promotion; it is
-  only permission to spend the full run.
-- **Judge-route pre-registration.** At least three judge routes are named
-  before generation. A failed or unavailable route is recorded honestly and
-  scores zero outputs.
-- **Eligible scored judges.** At least two eligible blind judges from different
-  model families/providers score all OUT-NN answers after passing the C3-C6
-  calibration gate. Judges receive no answer key or condition labels and must
-  not have authored the case, rubric, anchors, or substrate.
-- **Non-discriminating judge guard.** If an eligible judge assigns the same
-  total score to 80 percent or more of all scored outputs, that judge is flagged
-  as non-discriminating for promotion. The case cannot promote on that judge's
-  scores alone, and a second discriminating eligible judge is required for any
-  positive result.
-- **Total-score margin.** The `substrate_workflow` mean score beats
-  `generic_advice_prompted`, `criteria_prompted_no_sources`, and
-  `vanilla_long_prompt` by at least 1.0 point on the 0-6 scale, beats
-  `famous_sources_supplied` by at least 0.75 point, and beats `vanilla` by at
-  least 1.25 points.
-- **Critical-composite margin.** Against `generic_advice_prompted`,
-  `criteria_prompted_no_sources`, and `vanilla_long_prompt`,
-  `substrate_workflow` beats the control by at least 0.25 on the C3-C6
-  pass-rate composite and by at least 0.25 on each of C3, C4, C5, and C6. The
-  substrate C5 and C6 pass rates must both be at least 0.75.
-- **Judge-level stability.** Each eligible discriminating judge independently
-  shows `substrate_workflow` beating `generic_advice_prompted`,
-  `criteria_prompted_no_sources`, and `vanilla_long_prompt` by at least 0.75
-  point on mean total score.
-- **No unresolved judge trigger.** If eligible judges disagree on any of C3-C6
-  for more than 20 percent of substrate or key-control outputs, or if one
-  eligible judge sees a positive result and another does not, the case stays
-  `partial` unless a pre-registered third route resolves the disagreement by
-  criterion.
-- **No critical saturation.** If any key control reaches 0.90 or higher on any
-  C3-C6 criterion, the result is not a clean positive. This guards against the
-  v5-v8 generic-advice saturation failure.
+Recommend the Commercial Cleanroom. The board question is not "can product find
+workflow defects?" but whether the success story is strong enough to become
+next year's plan once the two commercial confounds are removed.
 
-## Falsifier
+The current evidence is not independent. Most of the expansion dollars came
+from accounts with temporary DraftPath bundle pricing. The enthusiastic
+comments followed a strategic-roadmap pitch. Usage is inflated by operations
+managers rerunning closed samples, while front-line adjusters fall back to
+manual notes. Support looks better partly because issue reports moved into a
+training channel. Leadership praise also arrived after the strong quarter.
 
-Treat any of the following as falsifying or non-promotional for a future v9
-benchmark generation pass:
+The Cleanroom is the right disconfirming test because it removes the bundle and
+roadmap framing and asks whether matched renewal accounts still show signed
+expansion intent and concrete objections. The Usage Quality Sprint may make a
+better dashboard without breaking the commercial attribution error. The Claim
+File Review may reveal workflow defects, but it samples accounts already inside
+the current sales motion and cannot show whether buyers would expand without
+the discount/pitch package.
 
-- The local-only generic-solvability probe fails before freeze.
-- `generic_advice_prompted`, `criteria_prompted_no_sources`, or
-  `vanilla_long_prompt` matches or beats `substrate_workflow` within the
-  pre-registered total-score or critical-composite margins.
-- `famous_sources_supplied` matches the substrate, suggesting famous-source
-  priming or model memory explains the effect.
-- `substrate_workflow` wins total score but fails to win the C3-C6 critical
-  composite against all key controls.
-- Any key control saturates a load-bearing C3-C6 criterion at 0.90 or higher.
-- The substrate answer relies on source prestige, canon language, card labels,
-  or source-card authority rather than scenario reasoning.
-- The result depends on one judge family, a non-discriminating judge, an
-  after-the-fact judge route, or excluding a competent control.
+This sacrifices near-term optics and defers detailed product debugging. The
+failure path is that the Cleanroom shows weak demand but still does not explain
+which workflow flaw caused the weakness. I would switch toward Claim File
+Review if clean no-discount/no-pitch accounts still expand while the objections
+concentrate around adjuster explainability; I would switch toward scaling if
+clean accounts expand and front-line usage stays high without manager pressure.
 
-If the falsifier fires, record the result plainly as `partial`,
-`inconclusive`, `falsified`, or `do_not_promote` according to the score-sheet
-and eval-decision policy. Do not rescue the case by revising the rubric after
-outputs exist.
+### Anchor B
 
-## Model outputs
+Scale DraftPath broadly, but keep dashboards close. Expansion bookings rose,
+renewals closed early, usage is up, and customers gave positive comments. The
+team finally looks focused and commercially disciplined. The CEO should use
+the momentum, hire implementation specialists, and keep monitoring churn,
+support tags, and weekly usage.
 
-Forty-eight real local-model receipts are recorded under `model-outputs/`:
-eight runs per declared condition. The frozen generator was
-`gemma-4-31b-it-mlx` through LM Studio's local OpenAI-compatible MLX server
-with `temperature: 0.7`, `top_p: 0.9`, and `max_tokens: 1024`. The receipts are
-test artifacts, not authorities.
+The strongest reason against scaling is that some signals may be noisy. I would
+change my mind if the board gets nervous or if the dashboard turns red.
 
-Receipts:
+### Anchor C
 
-- `model-outputs/criteria_prompted_no_sources.md`
-- `model-outputs/criteria_prompted_no_sources-02.md`
-- `model-outputs/criteria_prompted_no_sources-03.md`
-- `model-outputs/criteria_prompted_no_sources-04.md`
-- `model-outputs/criteria_prompted_no_sources-05.md`
-- `model-outputs/criteria_prompted_no_sources-06.md`
-- `model-outputs/criteria_prompted_no_sources-07.md`
-- `model-outputs/criteria_prompted_no_sources-08.md`
-- `model-outputs/famous_sources_supplied.md`
-- `model-outputs/famous_sources_supplied-02.md`
-- `model-outputs/famous_sources_supplied-03.md`
-- `model-outputs/famous_sources_supplied-04.md`
-- `model-outputs/famous_sources_supplied-05.md`
-- `model-outputs/famous_sources_supplied-06.md`
-- `model-outputs/famous_sources_supplied-07.md`
-- `model-outputs/famous_sources_supplied-08.md`
-- `model-outputs/generic_advice_prompted.md`
-- `model-outputs/generic_advice_prompted-02.md`
-- `model-outputs/generic_advice_prompted-03.md`
-- `model-outputs/generic_advice_prompted-04.md`
-- `model-outputs/generic_advice_prompted-05.md`
-- `model-outputs/generic_advice_prompted-06.md`
-- `model-outputs/generic_advice_prompted-07.md`
-- `model-outputs/generic_advice_prompted-08.md`
-- `model-outputs/substrate_workflow.md`
-- `model-outputs/substrate_workflow-02.md`
-- `model-outputs/substrate_workflow-03.md`
-- `model-outputs/substrate_workflow-04.md`
-- `model-outputs/substrate_workflow-05.md`
-- `model-outputs/substrate_workflow-06.md`
-- `model-outputs/substrate_workflow-07.md`
-- `model-outputs/substrate_workflow-08.md`
-- `model-outputs/vanilla.md`
-- `model-outputs/vanilla-02.md`
-- `model-outputs/vanilla-03.md`
-- `model-outputs/vanilla-04.md`
-- `model-outputs/vanilla-05.md`
-- `model-outputs/vanilla-06.md`
-- `model-outputs/vanilla-07.md`
-- `model-outputs/vanilla-08.md`
-- `model-outputs/vanilla_long_prompt.md`
-- `model-outputs/vanilla_long_prompt-02.md`
-- `model-outputs/vanilla_long_prompt-03.md`
-- `model-outputs/vanilla_long_prompt-04.md`
-- `model-outputs/vanilla_long_prompt-05.md`
-- `model-outputs/vanilla_long_prompt-06.md`
-- `model-outputs/vanilla_long_prompt-07.md`
-- `model-outputs/vanilla_long_prompt-08.md`
+The evidence is too entangled to treat as product-market fit. Bundle pricing
+and the roadmap pitch contaminate the revenue and comment story. Manager sample
+reruns, support retagging, delayed removals, and post-quarter leadership praise
+also make the upbeat story non-independent.
 
-## Score sheet
+The test that would matter for the board is the Commercial Cleanroom: remove
+new bundle pricing and the strategic-roadmap pitch from a matched renewal
+cohort, then look at signed expansion intent and objections. The Usage Quality
+Sprint and Claim File Review may diagnose usage or product defects, but neither
+by itself tells the board whether the commercial success story survives normal
+selling conditions.
 
-See `score-sheet.md` in this case folder. It is scored; `## Result` is
-`partial`, and `eval-decision.md` records `do_not_promote`.
+I would not make a recommendation yet. The CEO should keep all options open
+until the cleanroom, workflow review, and usage instrumentation can all run.
 
-## Judge notes
+### Anchor D
 
-Hosted OpenAI `gpt-5.4-mini` and hosted Anthropic `claude-opus-4-7` passed the
-pre-generation calibration smoke, scored all 48 blinded `OUT-NN` outputs, and
-are recorded under `judge-packet/`. Both judges assigned every output total
-3/6, triggering the non-discriminating-judge guard and leaving all condition
-means tied.
+Recommend the Claim File Review. The core issue is that adjusters cannot
+explain DraftPath and may be overriding or rewriting its suggestions. Auditing
+claim files is the only ground truth. It will show whether the product works in
+the real workflow.
+
+The Commercial Cleanroom is mostly a pricing test. It might say whether buyers
+like the package, but buyer willingness does not matter until the user problem
+is fixed. The Usage Quality Sprint is too dashboard-heavy, and scaling is too
+risky. I would change my mind if claim files show only a few overrides.
+
+### Anchor E
+
+The current success story is not clean. Expansion dollars are linked to bundle
+pricing, quotes came after roadmap framing, high usage includes manager sample
+reruns, support categories moved, and leadership adjectives changed after the
+quarter improved.
+
+Commercial Cleanroom is the evidence standard for the board decision. It would
+strip away the bundle and roadmap pitch and see whether matched renewal
+accounts still show signed expansion intent. Usage Quality Sprint and Claim
+File Review may be useful later, but they do not by themselves disconfirm the
+commercial attribution behind next year's plan.
+
+The CEO should treat that as the deciding evidence, but this answer cannot
+recommend one package because the product problem may be just as important as
+the commercial question. More information is needed before choosing.
+
+### Anchor F
+
+Narrow around regulated health-liability workflows immediately. The regulated
+segment has the sharpest complaint, and a company should solve the hardest
+workflow first. The strong quarter proves the market likes DraftPath enough to
+fund a focused roadmap, while the health-liability problem gives the team a
+clear mission.
+
+Discounts, manager usage, and support tags are normal launch noise. The CEO
+should not overcomplicate the decision with experiments. I would change my mind
+if the board wants a more compelling story.
+
+### Anchor G
+
+Run the Commercial Cleanroom. The planning question is whether the revenue /
+product-market-fit story survives after removing the sales motion that may have
+created it.
+
+Two contaminated signals are enough to block scaling: expansion was mostly tied
+to temporary bundle pricing, and customer comments followed the roadmap pitch.
+Manager sample reruns and support retagging add more doubt, but they are
+product-diagnostic clues rather than the decisive commercial test. The Claim
+File Review would be tempting because it looks like ground truth, yet it only
+audits accounts already captured by the current motion. Usage instrumentation
+could polish a misleading adoption story.
+
+The cleanroom gives up workflow detail and may weaken the near-term board
+story. Still, scaling would lock discount-framed demand into quotas and hiring,
+and narrowing would overfit one segment before demand is diagnosed. I would
+change my mind if no-discount/no-pitch accounts still sign expansion intent and
+objections concentrate on a fixable explainability gap; then Claim File Review
+or regulated narrowing becomes the next move.
+
+### Anchor H - illustrative only, excluded from eligibility
+
+Run a customer story sprint. Have sales and product write a one-page narrative
+about why DraftPath is strategic, then ask buyers if the story matches their
+needs. If buyers approve the story, use it for the board.
+
+This avoids over-trusting the raw revenue number and gives the team a fast way
+to align the message. I would change my mind if customers dislike the story.
+
+## Blank scoring grid
+
+| Anchor | Eligibility? | C1 | C2 | C3 | C4 | C5 | C6 | Total | Rationale |
+| --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |
+| A | yes |  |  |  |  |  |  |  |  |
+| B | yes |  |  |  |  |  |  |  |  |
+| C | yes |  |  |  |  |  |  |  |  |
+| D | yes |  |  |  |  |  |  |  |  |
+| E | yes |  |  |  |  |  |  |  |  |
+| F | yes |  |  |  |  |  |  |  |  |
+| G | yes |  |  |  |  |  |  |  |  |
+| H | no |  |  |  |  |  |  |  |  |

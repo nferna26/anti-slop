@@ -11,6 +11,25 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-24 — v9 showed that generic failure is not substrate success
+
+The `halo-evidence-vs-diagnosis-validation-v9` run added a local-only
+generic-solvability probe before freeze. That probe passed: no-source outputs
+reliably chose the Claim File Review decoy and failed the Commercial Cleanroom
+C4 boundary. The full benchmark then ran six conditions with eight real LM
+Studio MLX outputs per condition, a compact reviewed-source substrate packet,
+hash-blinded `OUT-NN` outputs, hosted OpenAI and Anthropic API judges that both
+passed pre-generation calibration, and aggregate-only reconciliation.
+
+The positive rule still failed. Both judges scored every output in every
+condition as 3/6: C1-C3 pass, C4-C6 fail. Every condition recognized the
+contaminated evidence problem, but no condition, including `substrate_workflow`,
+selected the Commercial Cleanroom as the load-bearing evidence standard. The
+new non-discriminating-judge guard also fired because both judges assigned the
+same total to 48/48 outputs. The methodological lesson is that making generic
+advice fail is not enough; the substrate must be shown, before the full run, to
+move the generator across the same counterintuitive boundary.
+
 ## 2026-05-24 — v8 showed that rubric hardening cannot rescue a telegraphing scenario
 
 The `halo-evidence-vs-diagnosis-validation-v8` run repaired the v7 judge
@@ -23,8 +42,8 @@ matched `substrate_workflow` at 6.000 and saturated C3-C6 at 1.00, while
 hardening criteria is insufficient when the scenario itself lists the
 contaminated signals and the obvious evidence pass. V9 therefore adds a
 pre-freeze generic-solvability probe and changes the load-bearing question to
-whether the answer can distinguish an actually disconfirming test from a
-plausible monitoring dashboard.
+whether the answer can distinguish the commercial disconfirmation test from
+plausible product-diagnostic usage or workflow tests.
 
 ## 2026-05-22 — three scored cases, three `do_not_promote` decisions
 
