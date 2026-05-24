@@ -4,6 +4,22 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-24
 
+- Created the v8 pre-generation calibration-smoke packet
+  `halo-evidence-vs-diagnosis-validation-v8-smoke-2`, keeping the v7
+  business/product evidence-quality domain while leaving v7 frozen and
+  unrescored. The v8 smoke packet keeps the five standard future conditions,
+  uses only reviewed source cards as planned substrate (`BK-0048-card-001`,
+  `BK-0001-card-001`, `BK-0007-card-001`), demotes C1/C2 from judge
+  eligibility, hardens C3-C6 around contaminated evidence, disconfirming tests,
+  intervention boundary, and behavioral falsifier, and records no
+  `substrate_workflow_plus_synthesis` arm. Local smoke iteration 1 found
+  remaining ambiguous partial anchors before any generation; the anchors were
+  revised into smoke 2. Hosted OpenAI `gpt-5.4-mini` and hosted Anthropic
+  `claude-opus-4-7` passed the C3-C6-only smoke gate; local `gpt-oss:20b`
+  failed on one eligibility criterion and is recorded as a failed backstop. No
+  v8 condition packet, model output, `OUT-NN` answer key, aggregate
+  reconciliation, `benchmark_supported` result, canon candidate, public advice
+  claim, or per-output mapping created.
 - Designed and executed the v7 pivot benchmark
   `halo-evidence-vs-diagnosis-validation-v7-v1` from
   `docs/eval-lab-v7-pivot-plan.md`, moving outside the v4-v6
