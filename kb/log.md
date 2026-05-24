@@ -4,6 +4,27 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-24
 
+- Froze and executed `halo-evidence-vs-diagnosis-validation-v11-v1` after the
+  local-only substrate-feasibility probe passed (0/6 no-source outputs passed
+  C4; 3/3 substrate outputs passed C4) and hosted OpenAI `gpt-5.4` plus hosted
+  Anthropic `claude-opus-4-7` passed the C4-C6 calibration-smoke gate. The run
+  kept the full public-safe reviewed source-card substrate packet and demoted
+  C1-C3 from promotion so the frozen positive rule tested only C4-C6 as the
+  load-bearing intervention ladder. Generated 48 real LM Studio MLX outputs (6
+  conditions x 8, 0 simulated, 0 deferred), built public-safe receipts and a
+  hash-blinded `OUT-NN` judge packet, scored all 48 outputs with both hosted
+  judges, and reconciled aggregate-only from committed hashes. The substrate
+  separated strongly: pooled `substrate_workflow` mean was 5.875 versus 2.938
+  for `generic_advice_prompted`, 3.000 for `vanilla_long_prompt`, and 4.062 for
+  `criteria_prompted_no_sources`; no key control saturated C4-C6. Positive rule
+  still failed because OpenAI and Anthropic disagreed on C4-C6 for 3/8
+  `criteria_prompted_no_sources` outputs, above the pre-registered
+  per-condition judge-disagreement trigger. Local `gpt-oss:20b` was named
+  before generation but did not clear calibration, so it scored zero outputs.
+  Added `run-packet.md`, `eval-decision.md` (`eval_decision: do_not_promote`,
+  `decision_class: unresolved_judge_disagreement`), and `postmortem.md`. No
+  `benchmark_supported` result, canon candidate, public advice claim, or book
+  growth created.
 - Froze and executed `halo-evidence-vs-diagnosis-validation-v10-v1` after the
   local-only substrate-feasibility probe passed (0/6 no-source outputs passed
   C4; 3/3 substrate outputs passed C4) and hosted OpenAI `gpt-5.4-mini` plus

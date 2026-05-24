@@ -11,6 +11,34 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-24 — v11 separated on C4-C6 but exposed the third-judge gap
+
+The `halo-evidence-vs-diagnosis-validation-v11` run tested the v10 lesson
+directly. C1-C3 remained scored and reported, but v11 made them
+non-promotional; the positive rule depended on C4-C6 only. The case kept the
+two-sided substrate-feasibility probe and full public-safe source-card packet.
+The probe passed before freeze: no-source outputs passed C4 in 0/6 runs, while
+substrate outputs passed C4 in 3/3 runs.
+
+The full run produced 48 real LM Studio MLX outputs, two hosted judges passed
+the C4-C6 calibration gate before generation, and aggregate-only reconciliation
+completed from committed hashes. The substrate separated strongly: pooled
+`substrate_workflow` mean total was 5.875 versus 2.938 for
+`generic_advice_prompted`, 3.000 for `vanilla_long_prompt`, and 4.062 for
+`criteria_prompted_no_sources`. The C4-C6 composite margins cleared every
+pre-registered control margin, and no key control saturated C4-C6.
+
+The result still stayed `partial` / `do_not_promote` because the
+pre-registered judge-disagreement trigger fired. OpenAI and Anthropic disagreed
+on C4-C6 for 3/8 `criteria_prompted_no_sources` outputs, above the 20 percent
+per-condition trigger. The local `gpt-oss:20b` route had been named before
+generation, but did not clear calibration because it omitted Anchor H and
+reported an arithmetic total mismatch on Anchor G; it therefore scored zero
+outputs and could not resolve the disagreement. The methodological lesson is
+now narrower: the substrate/control separation can be made visible on C4-C6,
+but a promotion-grade run needs an actually eligible third route or a
+pre-frozen disagreement policy that skeptical readers will accept.
+
 ## 2026-05-24 — v10 showed substrate lift on C4-C6 but C3 was non-discriminating
 
 The `halo-evidence-vs-diagnosis-validation-v10` run added the missing
