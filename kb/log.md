@@ -4,6 +4,24 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-24
 
+- Froze and executed `halo-evidence-vs-diagnosis-validation-v12-v1` after the
+  local-only substrate-feasibility probe passed (0/6 no-source outputs passed
+  C4; 3/3 substrate outputs passed C4), all three pre-registered judge routes
+  passed C4-C6 calibration (OpenAI `gpt-5.4`, Anthropic `claude-opus-4-7`,
+  local `gpt-oss:20b`), and the new judge-disagreement smoke gate passed
+  before generation. Generated 48 real LM Studio MLX outputs (6 conditions x 8,
+  0 simulated, 0 deferred), built public-safe receipts and a hash-blinded
+  `OUT-NN` judge packet, scored all 48 outputs with all three routes, and
+  reconciled aggregate-only from committed hashes. The substrate separated from
+  `vanilla`, `famous_sources_supplied`, `vanilla_long_prompt`, and
+  `generic_advice_prompted` by +2.000 total points, but
+  `criteria_prompted_no_sources` beat substrate on pooled mean total (5.250 vs
+  5.000) and the judge-disagreement trigger fired on substrate and
+  criteria-control outputs. Added `run-packet.md`, `eval-decision.md`
+  (`eval_decision: do_not_promote`, `decision_class:
+  controls_matched_total_margin`), and `postmortem.md`. Updated the eval lab
+  learning memo and proof-surface index. No `benchmark_supported` result,
+  canon candidate, public advice claim, or book growth created.
 - Froze and executed `halo-evidence-vs-diagnosis-validation-v11-v1` after the
   local-only substrate-feasibility probe passed (0/6 no-source outputs passed
   C4; 3/3 substrate outputs passed C4) and hosted OpenAI `gpt-5.4` plus hosted

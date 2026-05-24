@@ -11,6 +11,34 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-24 — v12 fixed judge readiness but the criteria prompt matched substrate
+
+The `halo-evidence-vs-diagnosis-validation-v12` run tested the v11 lesson
+directly. V11 was blocked by unresolved judge disagreement with no eligible
+third route, so v12 pre-registered three routes before generation: hosted
+OpenAI `gpt-5.4`, hosted Anthropic `claude-opus-4-7`, and local
+`gpt-oss:20b`. All three passed the C4-C6 calibration gate and a new
+judge-disagreement smoke test before any full generation. The local route then
+scored all 48 blinded outputs rather than serving as an after-the-fact repair.
+
+The machinery worked, but the result stayed `partial` / `do_not_promote`.
+Pooled `substrate_workflow` beat `vanilla`, `famous_sources_supplied`,
+`vanilla_long_prompt`, and `generic_advice_prompted` by +2.000 total points,
+and none of those controls passed C4-C6. The hard
+`criteria_prompted_no_sources` control matched or beat the substrate: pooled
+mean total 5.250 versus substrate 5.000, with C4 0.83 versus substrate 0.67,
+C5 0.75 versus substrate 0.67, and C6 tied at 0.67. The positive rule's
+total-score margin, critical-criterion margin, judge-level stability, and
+no-unresolved-judge-trigger clauses failed.
+
+The methodological lesson is sharper than v11: the third-route readiness
+problem can be fixed, but the current halo/evidence-quality substrate has not
+shown lift over a well-written criteria prompt. The next attempt should not
+keep polishing this surface toward promotion. Either test a source-specific
+boundary that an abstract criteria prompt cannot name, or narrow the public
+claim to what the evidence actually supports: separation from generic and
+equal-length prompting, not from explicit criteria prompting.
+
 ## 2026-05-24 — v11 separated on C4-C6 but exposed the third-judge gap
 
 The `halo-evidence-vs-diagnosis-validation-v11` run tested the v10 lesson
