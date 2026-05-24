@@ -11,6 +11,21 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-24 — v8 showed that rubric hardening cannot rescue a telegraphing scenario
+
+The `halo-evidence-vs-diagnosis-validation-v8` run repaired the v7 judge
+calibration failure and then failed substantively. Hosted OpenAI and hosted
+Anthropic both passed the pre-generation C3-C6 smoke gate, 40 real generator
+outputs were produced, blinded, scored, and reconciled aggregate-only, and all
+receipt gates passed. The positive rule still failed: `generic_advice_prompted`
+matched `substrate_workflow` at 6.000 and saturated C3-C6 at 1.00, while
+`vanilla_long_prompt` saturated C3/C4. The methodological lesson is that
+hardening criteria is insufficient when the scenario itself lists the
+contaminated signals and the obvious evidence pass. V9 therefore adds a
+pre-freeze generic-solvability probe and changes the load-bearing question to
+whether the answer can distinguish an actually disconfirming test from a
+plausible monitoring dashboard.
+
 ## 2026-05-22 — three scored cases, three `do_not_promote` decisions
 
 Three contradiction-preservation cases are in `scoring_status: scored` /

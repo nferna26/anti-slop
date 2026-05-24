@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-24
 
+- Added the design-only v9 case
+  `halo-evidence-vs-diagnosis-validation-v9` after the v8 negative result. The
+  draft keeps the business/product evidence-quality domain but changes the
+  load-bearing target from noticing contaminated signals to selecting the test
+  that can actually disconfirm the favored story. The v9 design adds
+  `criteria_prompted_no_sources`, revises C4 around the
+  Clean Cohort Challenge versus the monitoring-only Usage Quality Sprint,
+  revises C5 around intervention boundaries and board-window forfeiture, and
+  adds a non-discriminating-judge guard to the future Positive-result rule. A
+  local-only generic-solvability probe is required before any freeze,
+  calibration smoke, generation, judging, reconciliation, result lift, canon
+  candidate, public advice claim, or book growth.
 - Froze and executed `halo-evidence-vs-diagnosis-validation-v8-v1` from the
   v8 smoke-2 packet. The run kept the five standard conditions, used only the
   three reviewed source cards as substrate, generated 40 real `gemma4:31b`
