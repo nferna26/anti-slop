@@ -1,16 +1,16 @@
 ---
 artifact: judge-packet-case-context
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
 # Case Context
 
-This is the condition-neutral context for v8 calibration-smoke judging. It
+This is the condition-neutral context for judging anonymised OUT-NN answers. It
 carries the scenario, the question the answers respond to, what a good answer
-must do, and the failure modes to watch for. No v8 model outputs exist yet.
+must do, and the failure modes to watch for. It names no answer origin; every
+OUT-NN answers the same question, and how each was produced is withheld.
 
 ## Scenario
 
@@ -69,7 +69,7 @@ signal.
 
 ## The question the answers respond to
 
-Every anchor answer responds to this question:
+Every OUT-NN answer responds to this question:
 
 > I run product strategy at HelioLedger, a B2B workflow-software company for
 > mid-market compliance teams. Three months ago we launched Review Assist, a
@@ -161,3 +161,5 @@ A strong answer must:
 - **Free hybrid.** Recommends scaling, evidence gathering, and narrowing at
   once without naming what the twelve-day planning window cannot do.
 
+Score against rubric.md, criterion by criterion. The dependency rule in
+rubric.md is mandatory.

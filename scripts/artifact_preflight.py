@@ -646,12 +646,13 @@ def check_eval_run_packets(findings: list[Finding]) -> None:
             ))
             continue
         anchor_status = read_frontmatter(anchors).get("status")
-        if anchor_status != "filled_pre_run":
+        accepted_anchor_statuses = {"filled_pre_run", "smoke_passed_pre_generation"}
+        if anchor_status not in accepted_anchor_statuses:
             findings.append(Finding(
                 "BLOCKER",
                 run_packet,
                 "run packet is frozen but calibration anchors are not "
-                f"operator-accepted (status={anchor_status})",
+                f"operator-accepted or smoke-passed (status={anchor_status})",
             ))
 
 

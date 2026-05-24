@@ -1,15 +1,15 @@
 ---
 artifact: judge-packet-readme
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
 # Judge Packet - halo-evidence-vs-diagnosis-validation-v8
 
-This folder holds the v8 pre-generation calibration-smoke judging surface. No
-v8 model outputs exist yet. Judges receive the independent calibration packet
-only.
+This folder holds the condition-blind judging surface for v8. Judges receive the
+calibration packet first, then the scoring packet only after calibration passes.
+Condition labels, run numbers, seeds, model-output receipt paths, and the
+OUT-NN origin mapping are withheld by design.
 
 A model output is a test artifact, never an authority.

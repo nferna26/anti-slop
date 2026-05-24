@@ -1,9 +1,8 @@
 ---
 artifact: judge-packet-rubric
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
 # Scoring Rubric
@@ -39,5 +38,5 @@ These dependencies are pre-registered for v8:
 
 The ladder is: **C3 and C4 enable C5; C5 enables C6.**
 
-The smoke eligibility gate uses C3-C6 exact agreement on eligibility anchors
-only. C1/C2 are scored but non-gating.
+The eval signal is comparative across many outputs. A single high-scoring answer
+is not a result.

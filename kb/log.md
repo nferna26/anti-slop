@@ -4,6 +4,24 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-05-24
 
+- Froze and executed `halo-evidence-vs-diagnosis-validation-v8-v1` from the
+  v8 smoke-2 packet. The run kept the five standard conditions, used only the
+  three reviewed source cards as substrate, generated 40 real `gemma4:31b`
+  outputs (8 per condition, 0 simulated, 0 deferred, 0 retry seeds), built
+  public-safe receipts and a hash-blinded `OUT-NN` judge packet, and scored
+  all forty outputs with the two smoke-eligible hosted API judges only:
+  OpenAI `gpt-5.4-mini` and Anthropic `claude-opus-4-7`. Local `gpt-oss:20b`
+  remained ineligible and scored zero outputs. Aggregate-only reconciliation
+  joined committed output hashes to committed model-output receipts; the
+  local-only answer key was not read and no per-`OUT-NN` condition mapping is
+  committed. The positive rule failed: substrate tied
+  `generic_advice_prompted` at +0.000 total margin, missed the equal-length
+  total margin (+0.875), and generic advice saturated C3-C6 at 1.00 while
+  `vanilla_long_prompt` saturated C3/C4. Added `eval-decision.md`
+  (`eval_decision: do_not_promote`, `decision_class:
+  controls_matched_total_margin`) and `postmortem.md`. No
+  `benchmark_supported` result, canon candidate, public advice claim, or book
+  growth created.
 - Created the v8 pre-generation calibration-smoke packet
   `halo-evidence-vs-diagnosis-validation-v8-smoke-2`, keeping the v7
   business/product evidence-quality domain while leaving v7 frozen and

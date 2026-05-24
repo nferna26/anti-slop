@@ -1,25 +1,26 @@
 ---
 artifact: independent-judge-packet
-part: calibration-smoke
+part: calibration
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
-# Independent Judge Packet - v8 Calibration Smoke
+# Independent Judge Packet - Part 1 of 2: Calibration
 
 You are an independent blind judge for a contradiction-preservation evaluation
-of AI advisory answers. This packet is self-contained. It is calibration-only:
-no real v8 model outputs are included.
+of AI advisory answers. This packet is self-contained. This is Part 1, the
+calibration step. Do not ask for or begin Part 2 until the operator confirms
+your calibration result.
 
 ## Your task
 
 Score eight calibration answers against the fixed six-criterion rubric. Every
-answer responds to the HelioLedger product-strategy question in the case
-context below.
+answer responds to the HelioLedger product-strategy question in the case context
+below. How real answers were produced is withheld by design. Do not speculate
+about answer origin.
 
-Return exactly eight lines, one per anchor, in this format:
+For calibration, return exactly eight lines:
 
 ```text
 [ANCHOR-A] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
@@ -32,24 +33,21 @@ Return exactly eight lines, one per anchor, in this format:
 [ANCHOR-H] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS TOTAL=6
 ```
 
-Use PASS or FAIL for each criterion. Apply the dependency rule: C5 requires C3
-and C4; C6 requires C5. If unsure, default to FAIL for that criterion.
-
 ## Case context
 
 ---
 artifact: judge-packet-case-context
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
 # Case Context
 
-This is the condition-neutral context for v8 calibration-smoke judging. It
+This is the condition-neutral context for judging anonymised OUT-NN answers. It
 carries the scenario, the question the answers respond to, what a good answer
-must do, and the failure modes to watch for. No v8 model outputs exist yet.
+must do, and the failure modes to watch for. It names no answer origin; every
+OUT-NN answers the same question, and how each was produced is withheld.
 
 ## Scenario
 
@@ -108,7 +106,7 @@ signal.
 
 ## The question the answers respond to
 
-Every anchor answer responds to this question:
+Every OUT-NN answer responds to this question:
 
 > I run product strategy at HelioLedger, a B2B workflow-software company for
 > mid-market compliance teams. Three months ago we launched Review Assist, a
@@ -200,15 +198,16 @@ A strong answer must:
 - **Free hybrid.** Recommends scaling, evidence gathering, and narrowing at
   once without naming what the twelve-day planning window cannot do.
 
+Score against rubric.md, criterion by criterion. The dependency rule in
+rubric.md is mandatory.
 
 ## Scoring rubric
 
 ---
 artifact: judge-packet-rubric
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
 # Scoring Rubric
@@ -244,23 +243,22 @@ These dependencies are pre-registered for v8:
 
 The ladder is: **C3 and C4 enable C5; C5 enables C6.**
 
-The smoke eligibility gate uses C3-C6 exact agreement on eligibility anchors
-only. C1/C2 are scored but non-gating.
+The eval signal is comparative across many outputs. A single high-scoring answer
+is not a result.
 
 ## Calibration answers to score
 
 ---
 artifact: judge-packet-calibration-exercise
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
 # Calibration Exercise
 
-This is the judge-facing v8 calibration-smoke exercise. Complete it before any
-future output scoring. The reference verdicts are withheld by the operator.
+This is the judge-facing calibration exercise. Complete it before scoring any
+OUT-NN answer. The reference verdicts are withheld by the operator.
 
 ## Surface 1 - judge-facing calibration exercise
 

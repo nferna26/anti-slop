@@ -1,7 +1,7 @@
 ---
 case_id: halo-evidence-vs-diagnosis-validation-v8
 eval_type: contradiction-preservation
-status: calibration_smoke_passed_pre_generation
+status: scored
 created: 2026-05-24
 source_packet: reviewed_public_source_card_packet
 expected_output: evidence-quality business/product recommendation
@@ -11,7 +11,7 @@ model_conditions:
   - substrate_workflow
   - vanilla_long_prompt
   - generic_advice_prompted
-scoring_status: calibration_smoke_passed
+scoring_status: scored
 ---
 
 # Eval Case
@@ -29,9 +29,12 @@ preserves the critical uncertainty rather than laundering success narratives
 into strategy. The v8 change is in judge readiness: C1/C2 remain scored, but
 judge eligibility is gated only on the load-bearing C3-C6 ladder.
 
-The calibration-smoke surface has now been run against the pre-registered judge
-routes. Hosted OpenAI and hosted Anthropic passed the C3-C6-only eligibility
-gate; local `gpt-oss:20b` did not. No v8 model outputs have been generated yet.
+The calibration-smoke surface was run against the pre-registered judge routes
+before generation. Hosted OpenAI and hosted Anthropic passed the C3-C6-only
+eligibility gate; local `gpt-oss:20b` did not. The v8-v1 condition packets then
+froze from that smoke-2 surface, forty real local generator outputs were
+produced, the eligible OpenAI and Anthropic judges scored the blinded OUT-NN
+packet, and aggregate-only reconciliation was recorded.
 
 ## Lineage
 
@@ -258,8 +261,8 @@ The ladder is: **C3 and C4 enable C5; C5 enables C6.**
 
 ## Calibration-smoke gate
 
-This v8 version begins with calibration-only smoke testing. It is not frozen for
-generation yet.
+This v8 version began with calibration-only smoke testing before any condition
+packet was frozen or any model output was generated.
 
 A judge route is smoke-eligible only if:
 
@@ -273,16 +276,16 @@ C1/C2 differences are recorded but do not affect smoke eligibility. The
 illustrative-only anchor in `judge-packet/calibration-anchors.md` is scored for
 operator visibility but excluded from exact-match eligibility.
 
-At least two pre-registered judge routes from different model families must
-pass this smoke gate before any v8 condition packet is frozen or any v8 model
-output is generated. If fewer than two routes pass, the anchors or rubric may
-be revised because no outputs exist yet; a revised file starts a new smoke
-iteration and must be recorded honestly.
+At least two pre-registered judge routes from different model families had to
+pass this smoke gate before any v8 condition packet could be frozen or any v8
+model output generated. OpenAI and Anthropic passed; local `gpt-oss:20b`
+failed and scored zero v8-v1 outputs.
 
 ## Positive result
 
-This positive result applies only after a future v8 frozen generation pass. It
-does not apply to the calibration-smoke phase.
+This positive result applies only after a frozen v8 generation pass. It did not
+apply to the calibration-smoke phase; it was applied after the v8-v1 outputs
+were generated, judged, and reconciled.
 
 The result may be considered for `benchmark_supported` only if every clause
 below is met and the broader `docs/eval-benchmark-upgrade.md` checklist also
@@ -323,8 +326,8 @@ passes.
 
 ## Falsifier
 
-Treat any of the following as falsifying or non-promotional for a future v8
-benchmark generation pass:
+Treat any of the following as falsifying or non-promotional for a v8 benchmark
+generation pass:
 
 - `generic_advice_prompted` or `vanilla_long_prompt` matches or beats
   `substrate_workflow` within the pre-registered total-score or critical
@@ -346,24 +349,59 @@ outputs exist.
 
 ## Model outputs
 
-No v8 model outputs exist yet. This case is in calibration-smoke status. A model
-output is never an authority.
+Forty real local-model receipts are recorded under `model-outputs/`: eight runs per declared condition. The receipts are test artifacts, not authorities.
+
+- `model-outputs/famous_sources_supplied-02.md`
+- `model-outputs/famous_sources_supplied-03.md`
+- `model-outputs/famous_sources_supplied-04.md`
+- `model-outputs/famous_sources_supplied-05.md`
+- `model-outputs/famous_sources_supplied-06.md`
+- `model-outputs/famous_sources_supplied-07.md`
+- `model-outputs/famous_sources_supplied-08.md`
+- `model-outputs/famous_sources_supplied.md`
+- `model-outputs/generic_advice_prompted-02.md`
+- `model-outputs/generic_advice_prompted-03.md`
+- `model-outputs/generic_advice_prompted-04.md`
+- `model-outputs/generic_advice_prompted-05.md`
+- `model-outputs/generic_advice_prompted-06.md`
+- `model-outputs/generic_advice_prompted-07.md`
+- `model-outputs/generic_advice_prompted-08.md`
+- `model-outputs/generic_advice_prompted.md`
+- `model-outputs/substrate_workflow-02.md`
+- `model-outputs/substrate_workflow-03.md`
+- `model-outputs/substrate_workflow-04.md`
+- `model-outputs/substrate_workflow-05.md`
+- `model-outputs/substrate_workflow-06.md`
+- `model-outputs/substrate_workflow-07.md`
+- `model-outputs/substrate_workflow-08.md`
+- `model-outputs/substrate_workflow.md`
+- `model-outputs/vanilla-02.md`
+- `model-outputs/vanilla-03.md`
+- `model-outputs/vanilla-04.md`
+- `model-outputs/vanilla-05.md`
+- `model-outputs/vanilla-06.md`
+- `model-outputs/vanilla-07.md`
+- `model-outputs/vanilla-08.md`
+- `model-outputs/vanilla.md`
+- `model-outputs/vanilla_long_prompt-02.md`
+- `model-outputs/vanilla_long_prompt-03.md`
+- `model-outputs/vanilla_long_prompt-04.md`
+- `model-outputs/vanilla_long_prompt-05.md`
+- `model-outputs/vanilla_long_prompt-06.md`
+- `model-outputs/vanilla_long_prompt-07.md`
+- `model-outputs/vanilla_long_prompt-08.md`
+- `model-outputs/vanilla_long_prompt.md`
 
 ## Score sheet
 
-See `score-sheet.md` in this case folder. During calibration smoke it records
-`## Result: partial`, route-level calibration status, and whether the
-pre-generation smoke gate has passed.
+See `score-sheet.md` in this case folder. It is scored; `## Result` is `partial` and `eval-decision.md` records the reconciliation decision.
 
 ## Judge notes
 
-Before any future v8 generation:
+The condition-blind judge packet was built after generation and before scoring.
+OpenAI and Anthropic received the blinded scoring packet only after passing the
+smoke-2 calibration gate. Local `gpt-oss:20b` failed smoke and did not score
+the v8-v1 outputs.
 
-1. Build `judge-packet/calibration-anchors.md` and the independent
-   calibration packet.
-2. Run calibration-only smoke tests against the pre-registered judge routes.
-3. Require at least two different-family routes to pass the C3-C6-only gate.
-4. Only then freeze condition packets and generate outputs.
-
-The `OUT-NN` to condition answer key does not exist yet. If a future generation
-pass is run, the answer key stays local-only and uncommitted.
+The `OUT-NN` to condition answer key exists only under `local-only/`, remains
+git-ignored, and is not committed. Reconciliation used committed hashes only.

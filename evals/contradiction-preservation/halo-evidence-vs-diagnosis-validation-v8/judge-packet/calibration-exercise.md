@@ -1,15 +1,14 @@
 ---
 artifact: judge-packet-calibration-exercise
 case_id: halo-evidence-vs-diagnosis-validation-v8
-benchmark_version: halo-evidence-vs-diagnosis-validation-v8-smoke-2
+benchmark_version: halo-evidence-vs-diagnosis-validation-v8-v1
 condition_blinded: true
-calibration_smoke_only: true
 ---
 
 # Calibration Exercise
 
-This is the judge-facing v8 calibration-smoke exercise. Complete it before any
-future output scoring. The reference verdicts are withheld by the operator.
+This is the judge-facing calibration exercise. Complete it before scoring any
+OUT-NN answer. The reference verdicts are withheld by the operator.
 
 ## Surface 1 - judge-facing calibration exercise
 
