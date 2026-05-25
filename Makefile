@@ -62,3 +62,21 @@ new-eval-case:
 
 new-gate-log:
 	python3 scripts/new_gate_log.py $(RUN_ID)
+
+gate-citation-lineage:
+	python3 scripts/gate_citation_lineage.py $(FILE)
+
+gate-citation-lineage-self-test:
+	python3 scripts/gate_citation_lineage.py --self-test
+
+gate-no-universalization:
+	python3 scripts/gate_no_universalization.py $(FILE)
+
+gate-no-universalization-self-test:
+	python3 scripts/gate_no_universalization.py --self-test
+
+compile-brief:
+	python3 scripts/compile_brief.py $(BRIEF_ID) $(CARDS)
+
+compile-brief-self-test:
+	python3 scripts/compile_brief.py --self-test

@@ -10,6 +10,22 @@ A governed, contradiction-aware, citation-traceable Markdown knowledgebase can r
 2. vanilla model use with famous manually supplied sources
 3. query-time retrieval without durable synthesis or operator-approved canon
 
+## Claim Scope (Post-v12)
+
+The core near-term claim is narrower than "the substrate beats any careful
+prompt." The v12 contradiction-preservation run showed that the current
+halo/evidence-quality substrate can separate from vanilla, famous-source,
+equal-length, and generic-advice prompting, but it did not beat
+`criteria_prompted_no_sources`. That criteria-prompt control is now treated as
+a documented ceiling for general reasoning-disposition tasks, not as a result
+to rescue after the fact.
+
+Near-term proof should therefore test source-specific content that a generic
+criteria prompt cannot supply: reviewed scope boundaries, negative evidence,
+lineage constraints, and preserved contradictions between named artifacts.
+The stronger claim "substrate beats a well-written criteria prompt on open
+reasoning quality" is deferred and currently unsupported.
+
 ## What Counts As Better
 
 Better means fewer critical failures and better decision usefulness across:
@@ -42,6 +58,13 @@ Each eval should compare:
 - vanilla model with famous sources supplied
 - substrate workflow using allowed KB artifacts
 - optional local model baseline
+
+For benchmark candidates that target a source-specific boundary, include a
+`criteria_prompted_no_sources` or equivalent hard control when possible. A
+criteria prompt matching the substrate on a general-reasoning surface is not a
+promotion failure if the pre-registered claim has been narrowed away from that
+surface; it is a sign that the eval is measuring promptable reasoning
+disposition rather than non-substitutable substrate content.
 
 ## First Eval Families
 
