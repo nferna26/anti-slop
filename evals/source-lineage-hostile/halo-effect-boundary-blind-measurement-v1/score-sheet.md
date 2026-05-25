@@ -33,6 +33,5 @@ None. No judges have scored this design.
 
 ## Follow-up
 
-- Operator-review the new BK-0048 blind-measurement boundary card before using it as scored substrate.
 - Build calibration anchors for F1-F5 before any model generation.
 - Keep all six declared conditions, especially `criteria_prompted_no_sources`.

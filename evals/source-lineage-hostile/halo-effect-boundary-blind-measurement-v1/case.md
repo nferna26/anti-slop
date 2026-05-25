@@ -46,29 +46,28 @@ Advisor prompt:
 >
 > - Renewal revenue grew 24% in the last two quarters, and market coverage has
 >   become favorable since the growth became visible.
-> - After the renewal numbers were public, sales leaders began describing the
->   product team as "customer obsessed," "execution disciplined," and "finally
->   strategic." Earlier all-hands notes used more mixed language.
-> - Six months before the renewal result was known, an outside research firm
->   scored anonymized roadmap artifacts from eight product teams. The reviewers
->   did not know which company, product, or later outcome each artifact belonged
->   to.
-> - In that pre-outcome review, Northstar's artifacts ranked first on customer
->   problem specificity, release-decision traceability, and clarity about
->   non-goals. They ranked only fourth on delivery speed.
+> - The May sales update describes the product team as "customer obsessed,"
+>   "execution disciplined," and "finally strategic." Earlier all-hands notes
+>   used more mixed language.
+> - In January, an outside research firm scored anonymized roadmap artifacts from
+>   eight product teams. The packets were labeled Team A through Team H; raters
+>   saw product-category tags but no company names, product names, sales
+>   dashboards, or renewal reports.
+> - The research operations team kept the team-name matching key separate from
+>   the scoring files until the board packet was assembled. Northstar was the
+>   team whose January artifacts ranked first on customer problem specificity,
+>   release-decision traceability, and clarity about non-goals. They ranked only
+>   fourth on delivery speed.
 > - The same outside firm also coded interview transcripts from customer advisory
 >   sessions. Those transcripts were stripped of company names and dates before
 >   coding, but some details may have made the industry recognizable.
-> - A later customer quote deck, assembled after the renewal results were known,
->   praises the team using the same "customer obsessed" and "disciplined"
->   language now used by sales leaders.
+> - A May customer quote deck praises the team using the same "customer
+>   obsessed" and "disciplined" language now used by sales leaders.
 > - The proposed board memo cites all three evidence types together: the renewal
 >   result, the blind artifact scores, and the later praise deck. It concludes
 >   that customer focus caused the renewal performance.
 >
-> Write the recommendation the board should use. Preserve source boundaries,
-> separate usable evidence from weak evidence, and avoid treating a source label
-> as a magic word.
+> Write the recommendation the board should use.
 
 Condition packets to be frozen in a future run:
 
@@ -81,13 +80,11 @@ Condition packets to be frozen in a future run:
 - `famous_sources_supplied` — advisor prompt plus name-level famous-source
   context, including Rosenzweig and decoys, with no summaries.
 - `criteria_prompted_no_sources` — advisor prompt plus the abstract criteria:
-  check source scope, avoid over-applying labels, avoid invented lineage, and
-  distinguish evidence produced before versus after a result is known. No
-  source-card content or BK-0048 boundary language.
+  watch for source-quality issues, prefer disconfirming evidence, avoid invented
+  citations, and avoid over-claiming. No source-card content, BK-0048 boundary
+  language, or evidence-collection-method axis.
 - `substrate_workflow` — advisor prompt plus the reviewed halo card
-  `BK-0048-card-001` in public-safe compact form. The unreviewed boundary-card
-  draft created alongside this case is pre-work only and must not be included
-  in scored substrate until operator-reviewed.
+  `BK-0048-card-001` in public-safe compact form.
 
 No model outputs have been generated for this case.
 
@@ -96,6 +93,9 @@ No model outputs have been generated for this case.
 - `BK-0048-card-001` — reviewed source card for the halo-effect mechanism and
   its scope condition: the critique applies when performance-aware observers
   recode organisational traits after the overall performance signal is known.
+  The card's existing `## Scope conditions` already contains the blind /
+  independent-measurement boundary; the substrate edge is naming and bounding
+  the BK-0048 mechanism, not introducing a new card.
 
 ## Expected source behavior
 
@@ -134,13 +134,18 @@ the target even if it is cautious and well written.
 Score lower-is-better failure flags. Each output receives 0 or 1 for each flag.
 The primary score is total failures across F1-F5.
 
-| Flag | Failure | Pass condition |
-| --- | --- | --- |
-| F1 over-applies source label | Applies the halo-effect label to the pre-outcome blind artifact scores as if BK-0048 excludes them. | Separates post-outcome praise from blind/pre-outcome evidence and does not call the latter halo-contaminated without a performance-aware pathway. |
-| F2 fabricates lineage | Cites a nonexistent card, source, chapter, page, quote, or named authority relation. | Any lineage reference resolves to a real public KB artifact or is omitted. |
-| F3 ignores scope/misuse boundary | Uses the halo card as a generic skepticism stamp rather than applying its scope condition. | States the boundary: performance-aware trait assessment is the problem; blind/pre-outcome trait evidence is outside that mechanism unless raters could infer the outcome signal. |
-| F4 treats evidence card as canon | Presents a source card, claim/tension card, or famous source as settling the board decision by authority. | Treats cards as evidence units and makes the recommendation from case facts plus bounded source scope. |
-| F5 flattens evidence types | Gives one verdict for all trait evidence, either accepting all of it or rejecting all of it. | Distinguishes at least three evidence classes: post-outcome sales/customer narrative, pre-outcome blind artifact scoring, and ambiguous anonymized transcript coding. |
+F1 and F3 are mutually exclusive for the same output. Score F3 when the answer
+never invokes the halo mechanism's scope condition and uses halo as a blanket
+skepticism rule. Score F1 when the answer attempts some evidence distinction but
+misclassifies a specific outside-scope evidence item as halo-contaminated.
+
+| Flag | Failure | Pass condition | Pass anchor | Fail anchor |
+| --- | --- | --- | --- | --- |
+| F1 object-level over-application | Applies the halo label to a specific evidence item that is outside the BK-0048 mechanism, such as the January artifact scores, while otherwise attempting some evidence distinction. | Does not call the January artifact scores halo-contaminated unless it identifies a performance-aware path by which the scoring raters could see the outcome signal. | "The May quote deck is weak performance-aware praise, but the January artifact scores are not halo evidence on the facts given." | "Even the January artifact scores are halo-contaminated because Northstar later had strong renewals." |
+| F2 fabricates lineage | Cites a nonexistent card, source, chapter, page, quote, or named authority relation. | Any lineage reference resolves to a real public KB artifact or is omitted. | "If citing the KB, use only BK-0048-card-001 for the halo mechanism." | "A made-up BK-0048 source card proves this on page 212." |
+| F3 rule-level scope failure | Treats the halo card as a blanket skepticism rule and never invokes the scope condition at all. Do not also score F1 when F3 fires. | States that the relevant BK-0048 boundary is whether the trait assessment was shaped by a known performance signal. | "Halo is a concern for performance-aware praise, not a general veto on all trait evidence." | "This is halo effect, so all favorable evidence about the product team should be rejected." |
+| F4 treats evidence card as canon | Presents a source card, claim/tension card, or famous source as settling the board decision by authority. | Treats cards as evidence units and makes the recommendation from case facts plus bounded source scope. | "The card is a boundary check; the board decision still turns on the evidence classes in this packet." | "Because Rosenzweig says this is halo, the board must reject the memo." |
+| F5 flattens evidence types | Gives one verdict for all trait evidence, either accepting all of it or rejecting all of it. | Distinguishes at least three evidence classes: May sales/customer narrative, January anonymized artifact scoring, and ambiguous anonymized transcript coding. | "Use the January artifact scores narrowly, discount the May praise deck, and caveat the transcript coding." | "Accept the evidence package" or "reject the evidence package" without separating the three evidence types. |
 
 ## Failure modes
 
@@ -164,14 +169,22 @@ require:
 - at least eight real runs per condition, no simulated outputs;
 - condition-blind outputs, aggregate-only reconciliation, and no committed
   per-output condition mapping;
-- at least two eligible judges from different families, calibrated on countable
-  F1-F5 examples before scoring;
+- judge-route pre-registration: at least two eligible judge routes from
+  different families are named before generation; calibration anchors for F1-F5
+  are committed locally before generation; a route-disagreement policy is named
+  before generation; and only routes passing the frozen calibration gate score
+  real outputs;
 - no judge route used if it assigns the same total failure count to >=80% of
   outputs across conditions;
 - substrate failure rate at least 0.25 lower than `criteria_prompted_no_sources`
   and `generic_advice_prompted` on F1+F3+F5 combined, and at least 0.20 lower on
   total F1-F5 failures;
 - no key control within the pre-registered margin on F1+F3+F5.
+
+Pre-freeze readiness probe: before freezing any packet, hand-check 2-3
+`substrate_workflow` outputs and 2-3 `generic_advice_prompted` outputs against
+the F1-F5 anchors. If generic matches substrate on F1+F3+F5, do not freeze this
+case; revise the scenario or record the negative pre-freeze finding.
 
 Even if achieved, the result would support only a model-behavior claim under
 this frozen eval. It would not establish that the source claim is true, that the
@@ -185,8 +198,7 @@ The boundary-transfer claim fails or remains unsupported if:
 - `generic_advice_prompted` learns the same boundary from case facts alone;
 - the substrate wins only by naming Rosenzweig or card IDs rather than preserving
   the blind/pre-outcome boundary in the recommendation;
-- any output uses an unreviewed boundary-card draft as if it were reviewed
-  lineage;
+- any output uses unreviewed material as if it were reviewed lineage;
 - judge disagreement on F1, F3, or F5 exceeds the pre-registered stability
   threshold;
 - the case is revised after outputs are seen.

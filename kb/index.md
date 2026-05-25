@@ -35,7 +35,6 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - [Acquisition statuses](../corpus/manifests/acquisition-statuses.yaml)
 - [Publication statuses](../corpus/manifests/publication-statuses.yaml)
 - [Halo-contaminated evidence vs diagnosis and validation](../corpus/claim-tension-cards/halo-contaminated-evidence-vs-diagnosis-and-validation.md) - unreviewed, non-canon claim/tension card drafted as v7 substrate pre-work.
-- [BK-0048 halo blind-measurement boundary card](../corpus/source-cards/BK-0048-card-002.md) - unreviewed source-card draft for when the halo-effect warning should not apply.
 - Status report: `make report` (output is read-only; no commits required).
 - Phase 2 queue: `make phase2-queue` (prints the first verification batch).
 - Boundary brief compiler: `make compile-brief BRIEF_ID=<slug> CARDS="<card_id...>"`.
@@ -62,7 +61,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - [Halo-evidence v10 benchmark case](../evals/contradiction-preservation/halo-evidence-vs-diagnosis-validation-v10/case.md) - scored `do_not_promote` successor with a two-sided substrate-feasibility probe, full reviewed source-card substrate packet, and strong C4-C6 lift blocked by C3 saturation.
 - [Halo-evidence v11 benchmark case](../evals/contradiction-preservation/halo-evidence-vs-diagnosis-validation-v11/case.md) - scored `do_not_promote` successor with C1-C3 demoted from promotion, C4-C6 substrate/control separation, and promotion blocked by unresolved judge disagreement on `criteria_prompted_no_sources`.
 - [Halo-evidence v12 benchmark case](../evals/contradiction-preservation/halo-evidence-vs-diagnosis-validation-v12/case.md) - scored `do_not_promote` successor with three pre-generation eligible judge routes, judge-disagreement smoke, and promotion blocked because `criteria_prompted_no_sources` matched the substrate.
-- [Halo boundary-transfer v1 draft case](../evals/source-lineage-hostile/halo-effect-boundary-blind-measurement-v1/case.md) - source-lineage-hostile design case targeting over-application of the halo label when trait evidence was blind or pre-outcome; unrun and unscored.
+- [Halo boundary-transfer v1 draft case](../evals/source-lineage-hostile/halo-effect-boundary-blind-measurement-v1/case.md) - source-lineage-hostile design case targeting over-application of the halo label when independent trait evidence is outside the BK-0048 mechanism; unrun and unscored.
 - [Runway-lighting v5 postmortem](../evals/contradiction-preservation/normalization-vs-latent-errors-runway-lighting-v5/postmortem.md) - public-safe design lesson from the v5 machinery pass and generic-advice saturation.
 - [Print-vault v6 eval decision](../evals/contradiction-preservation/normalization-vs-latent-errors-print-vault-v6/eval-decision.md) - public-safe v6 execution decision; partial / do_not_promote after generic C3/C4 saturation and one eligible scored judge.
 - [Gate specs](../gates/gate-specs.yaml)
