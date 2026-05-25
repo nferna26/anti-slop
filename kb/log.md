@@ -87,6 +87,23 @@ This is the chronological memory layer for public-safe KB changes.
   `pre-freeze-probe.md`; no frozen packet, benchmark outputs, judge scoring,
   result lift, canon candidate, source card, raw source text, or book growth
   created.
+- Eval run: Replaced the tiny `locator-accuracy-v1` probe summary with a full
+  five-case local-only readiness probe across `criteria_prompted_no_sources`,
+  `generic_advice_prompted`, `famous_sources_supplied`, and
+  `substrate_workflow`. Pre-registered the zero-failure coverage rule before
+  recording the full probe: if key controls tie substrate at 0 F1-F5 failures,
+  substrate may clear the pre-freeze gate only by beating every key control by
+  at least 3 non-gratuitous valid-support-coverage points across the five
+  cases. The full probe produced 0 F1-F5 failures for criteria, famous, and
+  substrate; generic had 5 failures; substrate added 6 valid support-coverage
+  points while criteria/famous/generic added 0. Audited and hashed the compiled
+  substrate brief (`sha256:
+  0b2195e7fe7e674ce724396700a7188a0d90ff5048e9dbb40491f1461ceafd62`), tuned
+  no-universalization for source-editor support/refusal phrasing, scoped that
+  gate to diagnostic-only for this provenance family unless a hit is also F4/F5,
+  and made the F4 hidden-canon anchor more naturalistic. No frozen packet,
+  benchmark outputs, judge scoring, result lift, canon candidate, source card,
+  raw source text, or book growth created.
 
 ## 2026-05-24
 

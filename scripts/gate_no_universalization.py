@@ -30,7 +30,9 @@ SCOPE_RE = re.compile(
     r"for this|for these|in cases|in contexts|only if|as long as|depends|"
     r"may|might|can|could|often|usually|tends? to|is bounded by|"
     r"scope|scoped|boundary|condition|because|while|although|rather than|"
-    r"instead of|compared with|against|option|package|choice|recommendation)\b",
+    r"instead of|compared with|against|option|package|choice|recommendation|"
+    r"available|provided|verified|supported|unsupported|packet|source card|"
+    r"public kb|locator|lineage|citation|cite|refuse|cannot supply)\b",
     re.IGNORECASE,
 )
 
@@ -147,11 +149,23 @@ def self_test() -> int:
             "Always treat customer praise as contaminated. The key is diagnosis.\n",
             encoding="utf-8",
         )
+        source_editor = tmp_path / "source_editor.md"
+        source_editor.write_text(
+            "Only BK-0048-card-001 is available in this packet. "
+            "Only Chapter 5 is verified by the reviewed source card.\n",
+            encoding="utf-8",
+        )
         good_findings = check_file(good)
         bad_findings = check_file(bad)
+        source_editor_findings = check_file(source_editor)
         if good_findings:
             print("Self-test failed: scoped sentence was flagged.")
             for finding in good_findings:
+                print(f"  - {finding.sentence}")
+            return 1
+        if source_editor_findings:
+            print("Self-test failed: source-editor refusal sentence was flagged.")
+            for finding in source_editor_findings:
                 print(f"  - {finding.sentence}")
             return 1
         if len(bad_findings) < 2:
