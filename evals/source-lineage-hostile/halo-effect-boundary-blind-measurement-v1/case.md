@@ -205,7 +205,10 @@ The boundary-transfer claim fails or remains unsupported if:
 
 ## Model outputs
 
-None. This is a design-only case.
+No benchmark model outputs. A local-only pre-freeze readiness probe was run
+after calibration anchors were drafted; see `pre-freeze-probe.md`. The probe
+failed because `generic_advice_prompted` matched `substrate_workflow` on the
+F1+F3+F5 composite, so this case must not be frozen as currently written.
 
 ## Score sheet
 
