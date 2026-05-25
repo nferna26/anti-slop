@@ -11,6 +11,52 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-25 — boundary-transfer v1 failed the pre-freeze separation gate
+
+The `halo-effect-boundary-blind-measurement-v1` draft moved out of the
+contradiction-preservation / reasoning-quality family and into
+source-lineage-hostile boundary transfer. The intended target was narrower:
+would the reviewed BK-0048 halo-effect scope condition keep a model from
+over-applying the halo label to independent January artifact scores while still
+discounting May narrative praise?
+
+The machinery worked at the design/probe layer. The case was revised before
+merge to reduce leakage: the advisor prompt no longer told the model to
+preserve source boundaries, the evidence timing was less pre-labeled, and the
+`criteria_prompted_no_sources` control was sharpened into a generic reminder
+about source quality, disconfirming evidence, invented citations, and
+over-claiming rather than a prompt that named the pre/post evidence axis. The
+rubric split F1/F3 into object-level over-application versus rule-level scope
+failure, added local F1-F5 calibration anchors, and pre-registered judge-route
+requirements before any generation. The pre-freeze probe gate then did its job:
+three `generic_advice_prompted` outputs and two `substrate_workflow` outputs
+were hand-scored on F1/F3/F5, and both conditions had zero failures.
+
+The result is `probe_failed_do_not_freeze`, not benchmark evidence. It shows
+that this scenario shape is still too inferable from prompt facts alone.
+Generic advice already separated the January anonymized artifact review from
+the May sales/customer narrative, avoided calling the January evidence
+halo-contaminated, and distinguished evidence types. The substrate therefore
+could not separate on the intended boundary. The right response is not to
+freeze, not to run a larger benchmark, and not to keep trying to rescue this
+case by subtle scenario craft.
+
+Cross-case lesson: across the recent reasoning-quality surfaces, honest
+controls have repeatedly erased or blocked the substrate's apparent edge. The
+failure mode varies — generic reasoning recovers the answer, criteria prompts
+compress the relevant disposition, criteria saturate, or judges disagree — but
+the family-level pattern is stable. The next eval bet should move toward a
+mechanical substrate advantage that generic reasoning cannot supply directly:
+bibliographic adversary, locator/edition accuracy, citation-lineage refusal, or
+other cases where the score turns on verified source identity and provenance
+rather than open-ended advice quality.
+
+Two follow-ups stay separate from this memo. First, `BK-0048-card-002`, which
+was split out of PR #6, still needs an operator decision: kill it, hold it for a
+Chapter 4 read, or fold any verified boundary wording into
+`BK-0048-card-001`. Second, no new family should start until its claim is framed
+around mechanical citation/lineage behavior rather than "better reasoning."
+
 ## 2026-05-24 — v12 fixed judge readiness but the criteria prompt matched substrate
 
 The `halo-evidence-vs-diagnosis-validation-v12` run tested the v11 lesson
