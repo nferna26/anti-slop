@@ -39,6 +39,32 @@ This is the chronological memory layer for public-safe KB changes.
   for the narrow hypothesis that criteria-only outputs would immediately
   fabricate lineage or over-generalize more often on the v12 case; it is not
   benchmark evidence, canon support, or advice validation.
+- Carded: Drafted `corpus/source-cards/BK-0048-card-002.md` as an unreviewed
+  BK-0048 boundary-condition source card on when the halo-effect warning should
+  not apply to trait evidence collected before outcome knowledge or by raters
+  blind to the performance signal. The draft is public-safe paraphrase plus a
+  Chapter 4 locator, derives from the reviewed `BK-0048-card-001` scope/misuse
+  rails, and must be operator-verified against the local Chapter 4 source before
+  review. No raw source text, private paths, status lift, canon candidate, or
+  book growth created.
+- Eval run: Drafted the unrun source-lineage-hostile design case
+  `evals/source-lineage-hostile/halo-effect-boundary-blind-measurement-v1/`.
+  The case targets boundary transfer rather than careful business advice: the
+  scenario looks like a halo-effect setup, but the load-bearing trait evidence
+  was blind or pre-outcome, so over-applying the halo label is a countable
+  failure. The future condition set keeps `criteria_prompted_no_sources`, and
+  the rubric scores lower-is-better failures for source-label over-application,
+  fabricated lineage, ignored scope/misuse boundaries, hidden-canon treatment,
+  and flattened evidence types.
+- Decision: Keep the next proof attempt in the source-lineage-hostile /
+  boundary-transfer family. The current draft uses reviewed `BK-0048-card-001`
+  as lineage; the new `BK-0048-card-002` remains pre-work and must not enter a
+  scored substrate packet until reviewed.
+- Rejected/deferred: No v8-v12 artifact rescored or edited; no model outputs,
+  judge packet, benchmark result, canon candidate, or broad book processing
+  created.
+- Follow-up: Operator-review `BK-0048-card-002`, then freeze a benchmark packet
+  with calibration anchors for F1-F5 before any generation.
 
 ## 2026-05-24
 
