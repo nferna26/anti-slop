@@ -1,0 +1,7 @@
+statuses:
+  - not_started
+  - sourced
+  - acquired
+  - unavailable
+  - deferred
+  - rejected

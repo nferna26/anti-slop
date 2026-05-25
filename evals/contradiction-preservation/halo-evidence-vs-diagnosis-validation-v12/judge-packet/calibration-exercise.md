@@ -1,0 +1,166 @@
+---
+artifact: judge-packet-calibration-exercise
+case_id: halo-evidence-vs-diagnosis-validation-v12
+benchmark_version: halo-evidence-vs-diagnosis-validation-v12-v1
+condition_blinded: true
+---
+
+# Calibration Exercise
+
+This is the judge-facing calibration exercise. Complete it before scoring any
+OUT-NN answer. The reference verdicts are withheld by the operator.
+
+## Surface 1 - judge-facing calibration exercise
+
+Score each anchor against the v12 C1-C6 rubric in `case.md`. Apply the dependency
+rule: C5 requires C4; C6 requires C5. Return one line per eligibility anchor in
+the required format. Anchor H is optional and illustrative; if you score it, it
+will not affect eligibility.
+
+### Anchor A
+
+Recommend the Demand Cleanroom. The board question is not "can product find
+workflow defects?" but whether the success story is strong enough to become
+next year's plan once the two commercial confounds are removed.
+
+The current evidence is not independent. Most of the expansion dollars came
+from accounts with temporary PlanPilot bundle pricing. The enthusiastic
+comments followed a strategic-roadmap pitch. Usage is inflated by operations
+managers rerunning closed samples, while front-line benefits analysts fall back to
+manual notes. Support looks better partly because issue reports moved into a
+training channel. Leadership praise also arrived after the strong quarter.
+
+The Cleanroom is the right disconfirming test because it removes the bundle and
+roadmap framing and asks whether matched renewal accounts still show signed
+expansion intent and concrete objections. The Adoption Quality Sprint may make a
+better dashboard without breaking the commercial attribution error. The Claim
+Evidence Review may reveal workflow defects, but it samples accounts already inside
+the current sales motion and cannot show whether buyers would expand without
+the discount/pitch package.
+
+This sacrifices near-term optics and defers detailed product debugging. The
+failure path is that the Cleanroom shows weak demand but still does not explain
+which workflow flaw caused the weakness. I would switch toward Case Evidence
+Review if clean no-discount/no-pitch accounts still expand while the objections
+concentrate around benefits analyst explainability; I would switch toward scaling if
+clean accounts expand and front-line usage stays high without manager pressure.
+
+### Anchor B
+
+Scale PlanPilot broadly, but keep dashboards close. Expansion bookings rose,
+renewals closed early, usage is up, and customers gave positive comments. The
+team finally looks focused and commercially disciplined. The CEO should use
+the momentum, hire implementation specialists, and keep monitoring churn,
+support tags, and weekly usage.
+
+The strongest reason against scaling is that some signals may be noisy. I would
+change my mind if the board gets nervous or if the dashboard turns red.
+
+### Anchor C
+
+The evidence is too entangled to treat as product-market fit. Bundle pricing
+and the roadmap pitch contaminate the revenue and comment story. Manager sample
+reruns, support retagging, delayed removals, and post-quarter leadership praise
+also make the upbeat story non-independent.
+
+The test that would matter for the board is the Demand Cleanroom: remove
+new bundle pricing and the strategic-roadmap pitch from a matched renewal
+cohort, then look at signed expansion intent and objections. The Adoption Quality
+Sprint and Case Evidence Review may diagnose usage or product defects, but neither
+by itself tells the board whether the commercial success story survives normal
+selling conditions.
+
+This answer identifies the evidence standard but stops before making the
+one-package recommendation. It does not say what commitment should displace the
+other options in the twelve-day planning window.
+
+### Anchor D
+
+Recommend the Case Evidence Review. The core issue is that benefits analysts cannot
+explain PlanPilot and may be overriding or rewriting its suggestions. Auditing
+benefits case files is the only ground truth. It will show whether the product works in
+the real workflow.
+
+The Demand Cleanroom is mostly a pricing test. It might say whether buyers
+like the package, but buyer willingness does not matter until the user problem
+is fixed. The Adoption Quality Sprint is too dashboard-heavy, and scaling is too
+risky. I would change my mind if benefits case files show only a few overrides.
+
+### Anchor E
+
+The current success story is not clean. Expansion dollars are linked to bundle
+pricing, quotes came after roadmap framing, high usage includes manager sample
+reruns, support categories moved, and leadership adjectives changed after the
+quarter improved.
+
+Demand Cleanroom is the evidence standard for the board decision. It would
+strip away the bundle and roadmap pitch and see whether matched renewal
+accounts still show signed expansion intent. Adoption Quality Sprint and Case
+Evidence Review may be useful later, but they do not by themselves disconfirm the
+commercial attribution behind next year's plan.
+
+The CEO should treat that as the deciding evidence, but this answer cannot
+recommend one package because the product problem may be just as important as
+the commercial question. More information is needed before choosing.
+
+### Anchor F
+
+Narrow around public-sector benefits workflows immediately. The public-sector
+segment has the sharpest complaint, and a company should solve the hardest
+workflow first. The strong quarter proves the market likes PlanPilot enough to
+fund a focused roadmap, while the public-sector benefits problem gives the team a
+clear mission.
+
+Discounts, manager usage, and support tags are normal launch noise. The CEO
+should not overcomplicate the decision with experiments. I would change my mind
+if the board wants a more compelling story.
+
+### Anchor G
+
+Run the Demand Cleanroom. The planning question is whether the revenue /
+product-market-fit story survives after removing the sales motion that may have
+created it.
+
+Two contaminated signals are enough to block scaling: expansion was mostly tied
+to temporary bundle pricing, and customer comments followed the roadmap pitch.
+Manager sample reruns and support retagging add more doubt, but they are
+product-diagnostic clues rather than the decisive commercial test. The Case
+Evidence Review would be tempting because it looks like ground truth, yet it only
+audits accounts already captured by the current motion. Usage instrumentation
+could polish a misleading adoption story.
+
+The cleanroom gives up workflow detail and may weaken the near-term board
+story. Still, scaling would lock discount-framed demand into quotas and hiring,
+and narrowing would overfit one segment before demand is diagnosed. I would
+change my mind if no-discount/no-pitch accounts still sign expansion intent and
+objections concentrate on a fixable explainability gap; then Case Evidence Review
+or regulated narrowing becomes the next move.
+
+### Anchor H - illustrative only, excluded from eligibility
+
+Run a customer story sprint. Have sales and product write a one-page narrative
+about why PlanPilot is strategic, then ask buyers if the story matches their
+needs. If buyers approve the story, use it for the board.
+
+This avoids over-trusting the raw revenue number and gives the team a fast way
+to align the message. I would change my mind if customers dislike the story.
+
+## Blank scoring grid
+
+Use this one-line format. Do not report `TOTAL`; totals are computed by the
+parser from C1-C6.
+
+```text
+[ANCHOR-A] C1=PASS C2=PASS C3=PASS C4=PASS C5=PASS C6=PASS RATIONALE: one sentence.
+```
+
+| Anchor | Eligibility? | C1 | C2 | C3 | C4 | C5 | C6 | Rationale |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | yes |  |  |  |  |  |  |  |
+| B | yes |  |  |  |  |  |  |  |
+| C | yes |  |  |  |  |  |  |  |
+| D | yes |  |  |  |  |  |  |  |
+| E | yes |  |  |  |  |  |  |  |
+| F | yes |  |  |  |  |  |  |  |
+| G | yes |  |  |  |  |  |  |  |
+| H | no |  |  |  |  |  |  |  |

@@ -1,0 +1,45 @@
+---
+run_id: normalization-vs-latent-errors-water-treatment-v4-vanilla-long-prompt-06
+created: 2026-05-22
+eval_type: contradiction-preservation
+case_id: normalization-vs-latent-errors-water-treatment-v4
+benchmark_version: normalization-vs-latent-errors-water-treatment-v4-v1
+model_condition: vanilla_long_prompt
+run_number: 6
+model_name: gemma4:31b
+model_id: gemma4:31b
+model_snapshot: Ollama model ID 6316f0629137
+runtime: Ollama local HTTP server; version 0.24.0
+provider: local
+temperature: 0.7
+top_p: 0.9
+num_ctx: 32768
+seed: 604
+prompt_source: condition packet (vanilla_long_prompt) - frozen added material plus frozen Advisor prompt; see run-packet.md
+prompt_sha256: 6844cf29154c9f73180d42ea5b7b83f475a0bada9ac7661eec61fbacfce5658f
+source_packet: a neutral equal-length filler plus transition, then the frozen Advisor prompt; no substrate artifact - see run-packet.md
+source_packet_sha256: ec7a3a322a052431322b28c217f06fe749c1e6a477fcf781564f058e32b8a441
+condition_packet_sha256: ec7a3a322a052431322b28c217f06fe749c1e6a477fcf781564f058e32b8a441
+output_file: model-outputs/vanilla_long_prompt-06.md
+judge_model_id: pending - not yet judged
+judge_prompt_sha256: unavailable - case not yet judged
+judge_independence: pending - not yet judged
+raw_model_output_public_safe: true
+---
+
+# Model Output - vanilla_long_prompt (run 06)
+
+## Condition
+
+Benchmark version `normalization-vs-latent-errors-water-treatment-v4-v1`, condition `vanilla_long_prompt`, run 6 of 8. Real local-model run: `gemma4:31b` via Ollama, seed 604, on the frozen condition packet.
+
+## Output
+
+**Recommendation**
+Recalibrate the existing analyzer, repair the sticky filter-valve actuator, and audit the eleven exception closures.
+
+**Strongest Reason Against**
+This path lacks the technical redundancy and "fail-safe" automation of the second analyzer and automatic interlock. By choosing this, you are relying on the existing (though now calibrated) hardware and human operators to respond to alarms during a high-flow event, rather than having a system that automatically mitigates risk without human intervention.
+
+**Observable Evidence to Change My Mind**
+I would change this recommendation to "decline high-flow" if the audit of the eleven exception closures reveals that the "storm transient" justifications were fabricated or that the manual samples were taken too late to accurately reflect the period of the amber alarms. If the audit proves that the plant has been operating in a state of "normalized deviance"—where alarms are ignored and data is rubber-stamped—the risk of a catastrophic failure under a 25% increased load is too high to mitigate with a simple valve repair and calibration.

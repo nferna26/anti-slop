@@ -1,0 +1,53 @@
+# Judge-packet output manifest — managerial-output-vs-industry-structure
+# Anonymous label -> output body sha256. Condition identity is withheld by
+# design; the label->condition answer key is kept local-only. The sha256
+# is the bridge for reconciling an independent judge's scores afterwards.
+case_id: managerial-output-vs-industry-structure
+benchmark_version: managerial-output-vs-industry-structure-v1
+output_count: 15
+outputs:
+  - label: OUT-01
+    file: outputs/OUT-01.md
+    output_sha256: 0d154ccc6741b5ab84b309d5b933d86757f1d7ca74fa833be2a25ef7210ca756
+  - label: OUT-02
+    file: outputs/OUT-02.md
+    output_sha256: 0fa2600af16dc964c7c4a0d8e5fe3c0e7e765c331f6420eb08a6e88579ef5e15
+  - label: OUT-03
+    file: outputs/OUT-03.md
+    output_sha256: 169e39f8e30d2c5a429aff840122be3348d17c6489f3a0fae3500edebd0ce7fd
+  - label: OUT-04
+    file: outputs/OUT-04.md
+    output_sha256: 5000f553e41dd92c61ae4dd74e016b2ddac4febb4241625f3979a67d2b142cf0
+  - label: OUT-05
+    file: outputs/OUT-05.md
+    output_sha256: 587e507a92fe89d17a3ca495410dc578931a3972a6e2fe7e78df5ebd6d8309f6
+  - label: OUT-06
+    file: outputs/OUT-06.md
+    output_sha256: 61180f8c868a9416410b43e3c135e4c2ff8f61397e44512857f89035888cce18
+  - label: OUT-07
+    file: outputs/OUT-07.md
+    output_sha256: 6259a9d08a1f0e528eeffaf7809129e115b866c592a82c5f30200fb6964d6768
+  - label: OUT-08
+    file: outputs/OUT-08.md
+    output_sha256: 79be74ffcd9c100b7b0f1b0a6c8bb2bea292e7d352d01ea5e6f63ed3feba2077
+  - label: OUT-09
+    file: outputs/OUT-09.md
+    output_sha256: 8ef47068518d4ff3355990d5cc69dbca447dacb046d23bdeb58057f3461663c6
+  - label: OUT-10
+    file: outputs/OUT-10.md
+    output_sha256: a9accbfb3ad05eaf66c808dabb1abf6c18329a475577c330964f91d3810d51d1
+  - label: OUT-11
+    file: outputs/OUT-11.md
+    output_sha256: ae732666404d98932ac2ac8c26afa5b36ce4e55fe0b51f7d59481b5c37c9be9a
+  - label: OUT-12
+    file: outputs/OUT-12.md
+    output_sha256: cd9b6abf48bbf99b58579bc62d56ab50e6594c4eebb9da4cbbb0769763f39c4a
+  - label: OUT-13
+    file: outputs/OUT-13.md
+    output_sha256: d3ae0e8e0f7f8504744ca82b25c5eda4af2eb3dd4fae6ad3b4a83842b7be9bd1
+  - label: OUT-14
+    file: outputs/OUT-14.md
+    output_sha256: d4491009ec55b4c422cd519e565f220c15ef5ec43b6349c0ff726a80751f1e0b
+  - label: OUT-15
+    file: outputs/OUT-15.md
+    output_sha256: dd16734e841d3e33627df3d781a5cdf060d9492b12ca0a2b9b29c0229f271ac3

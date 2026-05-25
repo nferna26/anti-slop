@@ -1,0 +1,64 @@
+# Operator checklist — <SOURCE_ID> (3-minute path)
+
+> Local-only artifact. Do not commit. Do not paste book text into anything.
+
+## Step 1 — Open the local extracted source
+
+Open `local-only/extracted-md/<SOURCE_ID>/source.md`. Look only at the first ~50 lines (front matter / copyright page region).
+
+## Step 2 — Confirm title and author
+
+Visible on cover / title page region: **<TITLE> — <AUTHOR>.** Confirm yes/no.
+
+- [ ] Title matches: <TITLE>
+- [ ] Author matches: <AUTHOR>
+
+## Step 3 — Confirm publisher and year
+
+- [ ] Publisher is **<PUBLISHER>**
+- [ ] Year is **<YEAR>** (if a later printing is on hand, record that instead)
+
+## Step 4 — Confirm ISBN
+
+<If multiple ISBN candidates>: pick the one printed on the actual file.
+<If single candidate>: confirm or replace.
+
+- [ ] **<ISBN-13>** matches the ISBN printed on the actual file
+- [ ] If a different ISBN is printed, record it here: `____________________`
+
+## Step 5 — Confirm edition and format
+
+- [ ] Edition: **<EDITION>** unless the copyright page names a later edition explicitly
+- [ ] Owned format for public manifest: **`<OWNED_FORMAT_CANONICAL>`** (canonical value — bare lowercase token: `epub` | `pdf` | `mobi` | `print` | `audiobook`)
+- Extraction evidence (informational; not part of the public manifest): **<CONVERSION_TOOL>**; conversion status `<CONVERSION_STATUS>`.
+
+## Step 6 — Confirm locator system
+
+Default proposal is `<LOCATOR_SYSTEM>`. <Brief one-line rationale: heading hierarchy supports it, OR PDF page boundaries are preserved, OR — etc.>
+
+- [ ] Approve `<LOCATOR_SYSTEM>`, OR
+- [ ] Specify an alternative scheme (e.g. `chapter_section_paragraph` for paragraph-level granularity)
+
+## Step 7 — Confirm conversion quality is map-ready
+
+Verified by the quality audit:
+- <BYTES> bytes extracted, <PARAGRAPHS> paragraphs.
+- Heading hierarchy with key Anti-Slop concept terms appearing as section headings.
+- Zero replacement characters, zero OCR-style word-join artifacts, zero garble.
+- <Caveats, if any, e.g. heterogeneous heading levels.>
+
+- [ ] Approve the extraction as ready to support a public-safe book map.
+
+## Step 8 — Approve / reject the proposed public update
+
+Open `proposed-public-update.yaml`. Verify the values match your selections above.
+
+- [ ] **APPROVED.** Codex may apply `proposed-public-update.yaml`. After applying, Codex must run `make validate && make check-raw && make kb-lint && make report` and report results.
+- [ ] **REJECTED.** Note the reason here and ask Codex to revise the proposal:
+  `Reason: _______________________________________________`
+
+## Reminders
+
+- Do not copy book text into public files.
+- Do not paste the local file path or the original input filename into any public file.
+- If the local file turns out to be a different edition, record the actual values above and ask Codex to regenerate the proposal.

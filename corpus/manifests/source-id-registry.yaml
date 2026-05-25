@@ -1,0 +1,456 @@
+# Source ID registry — wave-1 (first-50 priority wave).
+# Stable IDs BK-0001 to BK-0050. Independent of acquisition order.
+# Map candidate flag: scheduled for early book-map work.
+# Deep-card candidate flag: scheduled for the first five deep source cards.
+
+wave_1:
+  - source_id: BK-0001
+    priority_rank: 1
+    title: "Good Strategy Bad Strategy"
+    author: "Rumelt, Richard"
+    slug: good-strategy-bad-strategy
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: true
+    first_30_deep_card_candidate: true
+  - source_id: BK-0002
+    priority_rank: 2
+    title: "High Output Management"
+    author: "Grove, Andrew S."
+    slug: high-output-management
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0003
+    priority_rank: 3
+    title: "Working Backwards"
+    author: "Bryar, Colin; Carr, Bill"
+    slug: working-backwards
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: true
+    first_30_deep_card_candidate: true
+  - source_id: BK-0004
+    priority_rank: 4
+    title: "Playing to Win"
+    author: "Lafley, A.G.; Martin, Roger L."
+    slug: playing-to-win
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0005
+    priority_rank: 5
+    title: "Inspired"
+    author: "Cagan, Marty"
+    slug: inspired
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0006
+    priority_rank: 6
+    title: "Continuous Discovery Habits"
+    author: "Torres, Teresa"
+    slug: continuous-discovery-habits
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0007
+    priority_rank: 7
+    title: "The Lean Startup"
+    author: "Ries, Eric"
+    slug: the-lean-startup
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: true
+    first_30_deep_card_candidate: true
+  - source_id: BK-0008
+    priority_rank: 8
+    title: "Crossing the Chasm"
+    author: "Moore, Geoffrey A."
+    slug: crossing-the-chasm
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0009
+    priority_rank: 9
+    title: "Obviously Awesome"
+    author: "Dunford, April"
+    slug: obviously-awesome
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0010
+    priority_rank: 10
+    title: "The Cold Start Problem"
+    author: "Chen, Andrew"
+    slug: the-cold-start-problem
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0011
+    priority_rank: 11
+    title: "The Hard Thing About Hard Things"
+    author: "Horowitz, Ben"
+    slug: the-hard-thing-about-hard-things
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0012
+    priority_rank: 12
+    title: "The Great CEO Within"
+    author: "Mochary, Matt"
+    slug: the-great-ceo-within
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0013
+    priority_rank: 13
+    title: "Zero to One"
+    author: "Thiel, Peter"
+    slug: zero-to-one
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0014
+    priority_rank: 14
+    title: "Hooked"
+    author: "Eyal, Nir"
+    slug: hooked
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0015
+    priority_rank: 15
+    title: "Blitzscaling"
+    author: "Hoffman, Reid; Yeh, Chris"
+    slug: blitzscaling
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0016
+    priority_rank: 16
+    title: "The Innovator's Dilemma"
+    author: "Christensen, Clayton M."
+    slug: the-innovators-dilemma
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0017
+    priority_rank: 17
+    title: "The Four Steps to the Epiphany"
+    author: "Blank, Steve"
+    slug: the-four-steps-to-the-epiphany
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0018
+    priority_rank: 18
+    title: "The Mom Test"
+    author: "Fitzpatrick, Rob"
+    slug: the-mom-test
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0019
+    priority_rank: 19
+    title: "Escaping the Build Trap"
+    author: "Perri, Melissa"
+    slug: escaping-the-build-trap
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0020
+    priority_rank: 20
+    title: "Shape Up"
+    author: "Singer, Ryan"
+    slug: shape-up
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0021
+    priority_rank: 21
+    title: "Accelerate"
+    author: "Forsgren, Nicole; Humble, Jez; Kim, Gene"
+    slug: accelerate
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0022
+    priority_rank: 22
+    title: "The Goal"
+    author: "Goldratt, Eliyahu M."
+    slug: the-goal
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0023
+    priority_rank: 23
+    title: "Competitive Strategy"
+    author: "Porter, Michael E."
+    slug: competitive-strategy
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0024
+    priority_rank: 24
+    title: "The Rise and Fall of Strategic Planning"
+    author: "Mintzberg, Henry"
+    slug: the-rise-and-fall-of-strategic-planning
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0025
+    priority_rank: 25
+    title: "Administrative Behavior"
+    author: "Simon, Herbert A."
+    slug: administrative-behavior
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0026
+    priority_rank: 26
+    title: "The Ambiguities of Experience"
+    author: "March, James G."
+    slug: the-ambiguities-of-experience
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0027
+    priority_rank: 27
+    title: "A Behavioral Theory of the Firm"
+    author: "Cyert, Richard M.; March, James G."
+    slug: a-behavioral-theory-of-the-firm
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0028
+    priority_rank: 28
+    title: "Sensemaking in Organizations"
+    author: "Weick, Karl E."
+    slug: sensemaking-in-organizations
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0029
+    priority_rank: 29
+    title: "Thinking, Fast and Slow"
+    author: "Kahneman, Daniel"
+    slug: thinking-fast-and-slow
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0030
+    priority_rank: 30
+    title: "Sources of Power"
+    author: "Klein, Gary A."
+    slug: sources-of-power
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0031
+    priority_rank: 31
+    title: "Expert Political Judgment"
+    author: "Tetlock, Philip E."
+    slug: expert-political-judgment
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0032
+    priority_rank: 32
+    title: "Governing the Commons"
+    author: "Ostrom, Elinor"
+    slug: governing-the-commons
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0033
+    priority_rank: 33
+    title: "The Structure of Scientific Revolutions"
+    author: "Kuhn, Thomas S."
+    slug: the-structure-of-scientific-revolutions
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0034
+    priority_rank: 34
+    title: "Principles of Corporate Finance"
+    author: "Brealey, Richard A.; Myers, Stewart C.; Allen, Franklin"
+    slug: principles-of-corporate-finance
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0035
+    priority_rank: 35
+    title: "Investment Valuation"
+    author: "Damodaran, Aswath"
+    slug: investment-valuation
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0036
+    priority_rank: 36
+    title: "Financial Statement Analysis and Security Valuation"
+    author: "Penman, Stephen H."
+    slug: financial-statement-analysis-and-security-valuation
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0037
+    priority_rank: 37
+    title: "Financial Intelligence"
+    author: "Berman, Karen; Knight, Joe"
+    slug: financial-intelligence
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0038
+    priority_rank: 38
+    title: "Financial Shenanigans"
+    author: "Schilit, Howard M.; Perler, Jeremy"
+    slug: financial-shenanigans
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0039
+    priority_rank: 39
+    title: "The Smartest Guys in the Room"
+    author: "McLean, Bethany; Elkind, Peter"
+    slug: the-smartest-guys-in-the-room
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0040
+    priority_rank: 40
+    title: "Bad Blood"
+    author: "Carreyrou, John"
+    slug: bad-blood
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0041
+    priority_rank: 41
+    title: "The Everything Store"
+    author: "Stone, Brad"
+    slug: the-everything-store
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0042
+    priority_rank: 42
+    title: "The Challenger Launch Decision"
+    author: "Vaughan, Diane"
+    slug: the-challenger-launch-decision
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: true
+    first_30_deep_card_candidate: true
+  - source_id: BK-0043
+    priority_rank: 43
+    title: "Normal Accidents"
+    author: "Perrow, Charles"
+    slug: normal-accidents
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0044
+    priority_rank: 44
+    title: "Human Error"
+    author: "Reason, James"
+    slug: human-error
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0045
+    priority_rank: 45
+    title: "Engineering a Safer World"
+    author: "Leveson, Nancy G."
+    slug: engineering-a-safer-world
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0046
+    priority_rank: 46
+    title: "To Err Is Human"
+    author: "Institute of Medicine"
+    slug: to-err-is-human
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0047
+    priority_rank: 47
+    title: "On War"
+    author: "Clausewitz, Carl von"
+    slug: on-war
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
+  - source_id: BK-0048
+    priority_rank: 48
+    title: "The Halo Effect"
+    author: "Rosenzweig, Phil"
+    slug: the-halo-effect
+    wave: wave-1
+    map_candidate: true
+    deep_card_candidate: true
+    first_30_deep_card_candidate: true
+  - source_id: BK-0049
+    priority_rank: 49
+    title: "The Tyranny of Metrics"
+    author: "Muller, Jerry Z."
+    slug: the-tyranny-of-metrics
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: true
+  - source_id: BK-0050
+    priority_rank: 50
+    title: "Everything Is Obvious"
+    author: "Watts, Duncan J."
+    slug: everything-is-obvious
+    wave: wave-1
+    map_candidate: false
+    deep_card_candidate: false
+    first_30_deep_card_candidate: false
