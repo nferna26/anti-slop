@@ -57,6 +57,14 @@ This is the chronological memory layer for public-safe KB changes.
   probe_failed_do_not_freeze`. No frozen packet, benchmark outputs, judge packet,
   aggregate reconciliation, result lift, canon candidate, raw source text, or
   book growth created.
+- Decision: Updated `docs/eval-lab-learning-memo.md` with the 2026-05-25
+  boundary-transfer-v1 learning: revised facts, sharpened controls, judge-route
+  pre-registration, calibration anchors, and the probe gate all worked as
+  designed, but the substrate still could not separate from generic reasoning on
+  this scenario shape. Recorded the methodology pivot away from reasoning-quality
+  scenario craft and toward a future mechanical citation/lineage family. No eval
+  artifact, result status, canon candidate, source card, raw source text, or
+  book growth changed.
 
 ## 2026-05-24
 
