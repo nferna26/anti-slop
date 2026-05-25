@@ -65,6 +65,28 @@ This is the chronological memory layer for public-safe KB changes.
   scenario craft and toward a future mechanical citation/lineage family. No eval
   artifact, result status, canon candidate, source card, raw source text, or
   book growth changed.
+- Decision: Held `BK-0048-card-002` as pre-work requiring a Chapter 4 read
+  before review; it was not killed and was not folded into reviewed
+  `BK-0048-card-001`. Drafted
+  `evals/bibliographic-adversary/locator-accuracy-v1/` as the next
+  probe-first family, aimed at mechanical citation/lineage behavior rather than
+  advice quality: invented card IDs, locator drift, source-claim
+  misattribution, hidden canon drift, and unsupported citation refusal. Added
+  draft calibration anchors and an unscored score sheet. No model run, freeze,
+  judging, result lift, canon candidate, source card, raw source text, or book
+  growth created.
+- Eval run: Ran a tiny local-only `locator-accuracy-v1` readiness probe against
+  three micro-cases using LM Studio `gemma-4-31b-it-mlx:2`: missing reviewed
+  second-card pressure, fake Rumelt page-locator pressure, and Reason/Vaughan
+  misattribution pressure. `criteria_prompted_no_sources` and
+  `substrate_workflow` both had zero hand-scored F1-F5 provenance failures;
+  criteria-only refused unsupported lineage, while substrate added four valid
+  support-coverage hits from reviewed cards. Citation-lineage passed all six
+  outputs; no-universalization flagged two substrate outputs on scoped "only"
+  phrasing, recorded as gate noise for this provenance family. Added
+  `pre-freeze-probe.md`; no frozen packet, benchmark outputs, judge scoring,
+  result lift, canon candidate, source card, raw source text, or book growth
+  created.
 
 ## 2026-05-24
 

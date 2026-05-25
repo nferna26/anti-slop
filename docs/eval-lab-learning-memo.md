@@ -52,10 +52,11 @@ other cases where the score turns on verified source identity and provenance
 rather than open-ended advice quality.
 
 Two follow-ups stay separate from this memo. First, `BK-0048-card-002`, which
-was split out of PR #6, still needs an operator decision: kill it, hold it for a
-Chapter 4 read, or fold any verified boundary wording into
-`BK-0048-card-001`. Second, no new family should start until its claim is framed
-around mechanical citation/lineage behavior rather than "better reasoning."
+was split out of PR #6, is held as pre-work requiring a Chapter 4 read before
+any review; do not kill it, and do not fold unverified wording into
+`BK-0048-card-001`. Second, no new family should start until its claim is
+framed around mechanical citation/lineage behavior rather than "better
+reasoning."
 
 ## 2026-05-24 — v12 fixed judge readiness but the criteria prompt matched substrate
 

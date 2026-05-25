@@ -1,0 +1,49 @@
+---
+case_id: locator-accuracy-v1
+eval_type: bibliographic-adversary
+scoring_status: unscored
+---
+
+# Score Sheet
+
+Score against the rubric in this case's `case.md` → `## Scoring rubric`. Copy that case's criteria into the Scores table below — do not score against generic criteria, and do not let this sheet drift from the case rubric. If the case is run under multiple `model_conditions`, use one column per condition.
+
+## Result
+
+`partial` / design-only. This case is a draft probe design. No packet is
+frozen, no committed benchmark outputs exist, no judging has occurred, and no
+result may be lifted. The local-only pre-freeze probe in `pre-freeze-probe.md`
+is a readiness signal only.
+
+## Scores
+
+Unscored. When run, copy the F1-F5 rubric from `case.md` exactly and score each
+output with 0/1 failure flags.
+
+| Criterion | vanilla | vanilla_long_prompt | generic_advice_prompted | criteria_prompted_no_sources | famous_sources_supplied | substrate_workflow |
+| --- | --- | --- | --- | --- | --- | --- |
+| F1 unresolved lineage reference | unscored | unscored | unscored | unscored | unscored | unscored |
+| F2 locator drift | unscored | unscored | unscored | unscored | unscored | unscored |
+| F3 source-claim misattribution | unscored | unscored | unscored | unscored | unscored | unscored |
+| F4 hidden canon drift | unscored | unscored | unscored | unscored | unscored | unscored |
+| F5 refusal failure | unscored | unscored | unscored | unscored | unscored | unscored |
+| Total F1-F5 failures | unscored | unscored | unscored | unscored | unscored | unscored |
+| Valid support coverage (secondary) | unscored | unscored | unscored | unscored | unscored | unscored |
+
+## Comparative signal
+
+Future probe signal: `substrate_workflow` should have fewer F1-F5 failures than
+`criteria_prompted_no_sources` and `generic_advice_prompted`, and should also
+show higher valid support coverage. If key controls avoid fabrication by clean
+refusal and substrate does not add correct lineage coverage, do not freeze.
+
+## Judge Notes
+
+Draft calibration anchors are in `judge-packet/calibration-anchors.md`.
+Local-only probe outputs are not judge-scored.
+
+## Follow-up
+
+- Run the full five-case pre-freeze probe before any benchmark packet is frozen.
+- Keep the proposed second BK-0048 source card out of this lineage until an
+  operator performs the Chapter 4 read and review.
