@@ -20,7 +20,8 @@ gates:
     likely_false_negatives:
       - locator exists but points to weak evidence
     workflow_stage: source_card_review
-    implementation_status: scaffold_only
+    implementation_status: implemented
+    implementation_script: scripts/gate_citation_lineage.py
 
   - gate_id: source_diversity
     name: source-diversity gate
@@ -156,4 +157,5 @@ gates:
     likely_false_negatives:
       - broad language hidden in examples
     workflow_stage: canon_candidate_review
-    implementation_status: scaffold_only
+    implementation_status: implemented
+    implementation_script: scripts/gate_no_universalization.py

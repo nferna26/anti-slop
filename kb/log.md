@@ -2,6 +2,44 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-25
+
+- Ingested: Claude direction review after v12 as a project-direction input, not
+  as benchmark evidence or canon.
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: Implemented the first two executable gates from the scaffold:
+  `scripts/gate_citation_lineage.py` resolves source IDs, source-card IDs,
+  claim/tension-card IDs, and local card paths against public KB artifacts;
+  `scripts/gate_no_universalization.py` flags broad advice claims that are not
+  tied to visible scope conditions. Added Makefile targets and self-tests for
+  both gates, and updated `gates/gate-specs.yaml` from `scaffold_only` to
+  `implemented` for `citation_lineage` and `no_universalization`.
+- Eval run: —
+- Decision: Narrowed `proof/README.md` after the v12 result. The near-term
+  proof claim no longer asks the substrate to beat a well-written criteria
+  prompt on open reasoning quality; that stronger claim is deferred and
+  unsupported. Near-term proof should test source-specific scope boundaries,
+  negative evidence, lineage constraints, and preserved contradictions that a
+  generic criteria prompt cannot supply.
+- Rejected/deferred: No v8-v12 eval artifact rescored or edited; no canon
+  candidate created; no broad book growth.
+- Follow-up: Added `scripts/compile_brief.py` and `make compile-brief` to create
+  `machine_compiled_not_canon` boundary briefs from reviewed card IDs. Use it
+  to compile source-specific scope/misuse/tension packets, then run the two
+  implemented gates against generated recommendations.
+- Gate run: Ran the first boundary-tools v12 self-test at
+  `runs/boundary-self-tests/v12-boundary-brief-vs-criteria-2026-05-25/`.
+  Generated three LM Studio MLX recommendations from the compiled boundary
+  brief and three from the criteria prompt only, then ran citation-lineage and
+  no-universalization gates on all six outputs. Both conditions passed all 12
+  gate checks after tightening no-universalization to avoid false positives on
+  local option comparisons and explicit anti-overclaims. This is a fast negative
+  for the narrow hypothesis that criteria-only outputs would immediately
+  fabricate lineage or over-generalize more often on the v12 case; it is not
+  benchmark evidence, canon support, or advice validation.
+
 ## 2026-05-24
 
 - Froze and executed `halo-evidence-vs-diagnosis-validation-v12-v1` after the

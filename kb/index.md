@@ -37,6 +37,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - [Halo-contaminated evidence vs diagnosis and validation](../corpus/claim-tension-cards/halo-contaminated-evidence-vs-diagnosis-and-validation.md) - unreviewed, non-canon claim/tension card drafted as v7 substrate pre-work.
 - Status report: `make report` (output is read-only; no commits required).
 - Phase 2 queue: `make phase2-queue` (prints the first verification batch).
+- Boundary brief compiler: `make compile-brief BRIEF_ID=<slug> CARDS="<card_id...>"`.
 
 ## Artifact Templates
 
@@ -63,6 +64,9 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - [Runway-lighting v5 postmortem](../evals/contradiction-preservation/normalization-vs-latent-errors-runway-lighting-v5/postmortem.md) - public-safe design lesson from the v5 machinery pass and generic-advice saturation.
 - [Print-vault v6 eval decision](../evals/contradiction-preservation/normalization-vs-latent-errors-print-vault-v6/eval-decision.md) - public-safe v6 execution decision; partial / do_not_promote after generic C3/C4 saturation and one eligible scored judge.
 - [Gate specs](../gates/gate-specs.yaml)
+- Implemented gate scripts: `make gate-citation-lineage FILE=<path>` and
+  `make gate-no-universalization FILE=<path>`.
+- [Boundary tools v12 self-test](../runs/boundary-self-tests/v12-boundary-brief-vs-criteria-2026-05-25/summary.md) - tooling smoke test comparing compiled boundary brief outputs against criteria-prompt-only outputs; not benchmark evidence or canon support.
 - [Registry](../registry/README.md)
 
 ## Current Open Questions

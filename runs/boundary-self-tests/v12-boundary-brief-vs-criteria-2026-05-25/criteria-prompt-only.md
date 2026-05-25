@@ -1,0 +1,1 @@
+Use careful, practical, tradeoff-aware reasoning. Watch for contaminated evidence, prefer evidence that can disconfirm the favored story, weigh intervention boundaries under the twelve-day planning window, and give one recommendation plus a behavioral falsifier. If no source cards or lineage are supplied, do not invent them; say that no source cards were supplied.
