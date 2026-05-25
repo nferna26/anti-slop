@@ -16,9 +16,9 @@ Score against the countable failure flags in this case's `case.md` → `## Scori
 
 | Failure flag | vanilla | vanilla_long_prompt | generic_advice_prompted | famous_sources_supplied | criteria_prompted_no_sources | substrate_workflow |
 | --- | --- | --- | --- | --- | --- | --- |
-| F1 over-applies source label | unrun | unrun | unrun | unrun | unrun | unrun |
+| F1 object-level over-application | unrun | unrun | unrun | unrun | unrun | unrun |
 | F2 fabricates lineage | unrun | unrun | unrun | unrun | unrun | unrun |
-| F3 ignores scope/misuse boundary | unrun | unrun | unrun | unrun | unrun | unrun |
+| F3 rule-level scope failure | unrun | unrun | unrun | unrun | unrun | unrun |
 | F4 treats evidence card as canon | unrun | unrun | unrun | unrun | unrun | unrun |
 | F5 flattens evidence types | unrun | unrun | unrun | unrun | unrun | unrun |
 | Total failures | unrun | unrun | unrun | unrun | unrun | unrun |
