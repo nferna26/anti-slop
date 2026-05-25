@@ -39,6 +39,15 @@ This is the chronological memory layer for public-safe KB changes.
   for the narrow hypothesis that criteria-only outputs would immediately
   fabricate lineage or over-generalize more often on the v12 case; it is not
   benchmark evidence, canon support, or advice validation.
+- Eval run: Revised PR #6's unrun
+  `evals/source-lineage-hostile/halo-effect-boundary-blind-measurement-v1/`
+  design before merge: split the proposed BK-0048 boundary-card draft out of
+  this PR, kept formal lineage on reviewed `BK-0048-card-001` only, removed
+  source-boundary hints from the advisor prompt and criteria control, made the
+  evidence timing less pre-labeled, sharpened F1/F3 into object-level versus
+  rule-level failures, and added judge-route pre-registration plus a pre-freeze
+  readiness probe. No model run, judging, scoring, freeze, result lift, canon
+  candidate, raw source text, private path, or book growth created.
 
 ## 2026-05-24
 
