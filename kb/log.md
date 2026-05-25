@@ -48,6 +48,15 @@ This is the chronological memory layer for public-safe KB changes.
   rule-level failures, and added judge-route pre-registration plus a pre-freeze
   readiness probe. No model run, judging, scoring, freeze, result lift, canon
   candidate, raw source text, private path, or book growth created.
+- Eval run: Added local F1-F5 calibration anchors and judge-route
+  pre-registration for the halo boundary-transfer draft, then ran the required
+  local-only pre-freeze readiness probe (3 `generic_advice_prompted` outputs and
+  2 `substrate_workflow` outputs). Hand-scoring F1/F3/F5 showed zero failures in
+  both conditions, so generic advice matched the substrate and the freeze gate
+  failed. Recorded `pre-freeze-probe.md` with `status:
+  probe_failed_do_not_freeze`. No frozen packet, benchmark outputs, judge packet,
+  aggregate reconciliation, result lift, canon candidate, raw source text, or
+  book growth created.
 
 ## 2026-05-24
 
