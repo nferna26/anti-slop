@@ -2,6 +2,29 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-26
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: —
+- Eval run: Tightened the unrun `locator-accuracy-v1` benchmark design after
+  the full probe cleared: pre-registered benchmark-scale coverage substitution
+  with X = 3 low-failure threshold, Y = 32 substrate valid-support hits, and Z =
+  +24 valid-support hits over each low-failure key control; added valid
+  support-coverage calibration anchors; and made the `famous_sources_supplied`
+  coverage rule explicit so author/title/topic memory does not count without
+  reviewed public-KB lineage. No model run, freeze, judging, result lift, canon
+  candidate, source card, raw source text, or book growth created.
+- Decision: —
+- Rejected/deferred: Full benchmark freeze, model generation, judge scoring,
+  and canon promotion remain deferred until the locator packet is frozen under
+  the pre-registered rules.
+- Follow-up: Freeze may proceed only after the benchmark packet, condition
+  packets, compiled substrate brief, calibration anchors, judge routes, and
+  hashes are committed before generation.
+
 ## 2026-05-25
 
 - Ingested: Claude direction review after v12 as a project-direction input, not
