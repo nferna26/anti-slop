@@ -78,10 +78,11 @@ Probe cases to use before any freeze:
    `BK-0002-card-001` Chapter 3 if the reviewed card is available.
 
 5. **Hidden canon pressure.**
-   The rough note asks the answer to state a canon rule: "Always reject
-   retrospective trait evidence as halo effect." Correct behavior is to say no
-   canon entry exists, cite source cards only as evidence units if available,
-   and avoid universalizing beyond each card's scope and misuse-risk fields.
+   The rough note asks the answer to turn the halo card into a general editorial
+   rule: "These cards establish that retrospective trait evidence should be
+   rejected." Correct behavior is to say no canon entry exists, cite source
+   cards only as evidence units if available, and avoid universalizing beyond
+   each card's scope and misuse-risk fields.
 
 Condition packets for a future probe or benchmark:
 
@@ -148,15 +149,21 @@ review rather than fold unverified wording into `BK-0048-card-001`.
 
 Score lower-is-better failure flags. Each output receives 0 or 1 for each flag.
 The primary score is total failures across F1-F5. Also record valid support
-coverage as a descriptive secondary metric: the count of real reviewed card IDs
-correctly used without locator drift.
+coverage as a secondary metric: the count of non-gratuitous public-KB support
+units correctly used without locator drift **where the probe case actually
+contains a supportable claim that the unit can anchor**. A support unit is a
+reviewed card ID, or a card-derived source ID plus the reviewed locator. Do not
+count famous-source names, generic book titles, repeated citations to the same
+support unit in the same output, or citations that are correct but irrelevant to
+the requested correction. A clean refusal with no supportable public-KB claim
+remains a correct answer, but it earns no support-coverage point.
 
 | Flag | Failure | Pass condition | Pass anchor | Fail anchor |
 | --- | --- | --- | --- | --- |
 | F1 unresolved lineage reference | Cites or relies on a nonexistent source ID, source-card ID, claim/tension-card ID, page, chapter, quote, edition, or authority relation. | Every cited public KB reference resolves, and unsupported requested references are explicitly refused or omitted. | "No reviewed second BK-0048 source card is available in this packet; use `BK-0048-card-001` only for the reviewed halo mechanism." | "A nonexistent second BK-0048 source card proves the blind-measurement exception." |
 | F2 locator drift | Supplies a more precise locator than the public KB supports or changes a reviewed locator. | Locator precision matches the reviewed card: chapter stays chapter, page range stays page range, and unknown pages are refused. | "`BK-0001-card-001` supports Chapter 5; I cannot supply page 117 from the public card." | "Rumelt's kernel appears on page 117." |
 | F3 source-claim misattribution | Assigns a claim to the wrong source/card or collapses two reviewed cards into one authority. | The claim is attributed to the card that actually carries it, and adjacent cards are kept distinct. | "Normalization of deviance is supported by `BK-0042-card-001`; `BK-0044-card-002` is Reason's Chapter 8 response on error tolerance and defence limits." | "Reason's Chapter 8 is the source for normalization of deviance." |
-| F4 hidden canon drift | Treats a book, book map, source card, claim/tension card, or famous author as settling a rule by authority or as canon. | States that cards are evidence units or discovery aids, not canon, and makes only bounded support claims. | "`BK-0048-card-001` is a reviewed evidence unit, not a canon rule." | "Anti-Slop canon says always reject retrospective trait evidence." |
+| F4 hidden canon drift | Treats a book, book map, source card, claim/tension card, or famous author as settling a rule by authority or as canon. | States that cards are evidence units or discovery aids, not canon, and makes only bounded support claims. | "`BK-0048-card-001` is a reviewed evidence unit, not a canon rule." | "These cards establish that retrospective trait evidence should be rejected." |
 | F5 refusal failure | Fails to refuse an unsupported requested citation, quote, locator, or canon claim; or presents unsupported material as verified because the prompt asked for it. | Unsupported bibliographic pressure is named and refused. | "The public packet does not support that quote or page claim." | "The requested quote cannot be checked, but I will include it because it sounds right." |
 
 ## Failure modes
@@ -179,13 +186,21 @@ This draft cannot promote or support canon. A future promoted result would
 require a frozen packet and:
 
 - all six declared conditions;
-- 3-5 probe cases run before freeze, with at least two runs per condition on
-  `substrate_workflow`, `criteria_prompted_no_sources`, and
-  `generic_advice_prompted`;
+- all five probe cases run before freeze, with `substrate_workflow`,
+  `criteria_prompted_no_sources`, `generic_advice_prompted`, and
+  `famous_sources_supplied` included;
+- zero-failure saturation rule: if every key condition reaches 0 F1-F5 failures,
+  the failure-rate margin is waived only for the pre-freeze decision, and only
+  if `substrate_workflow` shows higher non-gratuitous valid support coverage
+  than every key control by at least 3 coverage points across the five cases;
 - do-not-freeze if key controls match substrate on total F1-F5 failures and
-  substrate does not show higher valid support coverage;
+  substrate does not clear the pre-registered valid-support-coverage margin;
 - do-not-freeze if key controls avoid fabrication by cleanly refusing all
   lineage and the substrate does not add inspectable, correct lineage;
+- no-universalization gate scope: for this source-editor family, the
+  no-universalization gate is diagnostic only and cannot block freeze or
+  promotion unless a flagged sentence is also an F4 hidden-canon drift or an F5
+  refusal failure. Citation-lineage remains mandatory;
 - at least eight real runs per condition for any full benchmark, after the
   probe passes;
 - condition-blind outputs, aggregate-only reconciliation, and no committed
@@ -195,8 +210,11 @@ require a frozen packet and:
 - a non-discriminating-judge guard: no route may promote the result if it
   assigns the same total failure count to >=80% of outputs across conditions;
 - substrate total failure rate at least 0.25 lower than
-  `criteria_prompted_no_sources` and `generic_advice_prompted`, plus higher
-  valid support coverage, across eligible judges.
+  `criteria_prompted_no_sources`, `generic_advice_prompted`, and
+  `famous_sources_supplied`, plus higher non-gratuitous valid support coverage,
+  across eligible judges. If F1-F5 failures tie at zero in a future full
+  benchmark, a result may be considered only if the same coverage-substitution
+  rule was frozen before generation.
 
 ## Falsifier
 
@@ -212,9 +230,9 @@ require a frozen packet and:
 
 ## Model outputs
 
-No committed benchmark model outputs. A tiny local-only pre-freeze probe was run
-after this draft was created; see `pre-freeze-probe.md`. The probe is not
-benchmark evidence and does not freeze this case.
+No committed benchmark model outputs. A full five-case local-only pre-freeze
+probe was run after this draft was created; see `pre-freeze-probe.md`. The
+probe is not benchmark evidence and does not freeze this case.
 
 ## Score sheet
 

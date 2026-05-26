@@ -33,9 +33,12 @@ output with 0/1 failure flags.
 ## Comparative signal
 
 Future probe signal: `substrate_workflow` should have fewer F1-F5 failures than
-`criteria_prompted_no_sources` and `generic_advice_prompted`, and should also
-show higher valid support coverage. If key controls avoid fabrication by clean
-refusal and substrate does not add correct lineage coverage, do not freeze.
+`generic_advice_prompted`; if `criteria_prompted_no_sources` or
+`famous_sources_supplied` tie at zero failures by clean refusal, substrate may
+clear the pre-freeze gate only by beating each key control by at least 3
+non-gratuitous valid-support-coverage points across the five cases. If key
+controls avoid fabrication by clean refusal and substrate does not add correct
+lineage coverage, do not freeze.
 
 ## Judge Notes
 
@@ -44,6 +47,6 @@ Local-only probe outputs are not judge-scored.
 
 ## Follow-up
 
-- Run the full five-case pre-freeze probe before any benchmark packet is frozen.
+- Full five-case pre-freeze probe has been run once; see `pre-freeze-probe.md`.
 - Keep the proposed second BK-0048 source card out of this lineage until an
   operator performs the Chapter 4 read and review.
