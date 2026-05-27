@@ -97,8 +97,9 @@ full benchmark:
 - freeze condition packets and hashes;
 - rerun or freeze judge calibration anchors against at least two different
   judge routes;
-- decide whether the same coverage-substitution rule is allowed to carry a full
-  benchmark if F1-F5 failures tie at zero;
+- apply the frozen benchmark-scale X/Y/Z coverage-substitution rule in
+  `case.md` if low-failure saturation recurs; do not revise coverage margins
+  after outputs exist;
 - keep the result unpromoted if `criteria_prompted_no_sources` both avoids
   provenance failures and the substrate fails to add correct lineage coverage.
 

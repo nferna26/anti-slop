@@ -40,9 +40,18 @@ non-gratuitous valid-support-coverage points across the five cases. If key
 controls avoid fabrication by clean refusal and substrate does not add correct
 lineage coverage, do not freeze.
 
+Future benchmark signal: for 8 runs of each of the five probe cases per
+condition (40 outputs per condition), use the frozen X/Y/Z coverage-substitution
+rule from `case.md`: X = 3 total F1-F5 failures, Y = 32 valid support-coverage
+hits by `substrate_workflow`, and Z = +24 valid support-coverage hits over each
+low-failure key control. `famous_sources_supplied` earns coverage only for
+resolving reviewed card IDs or card-derived source IDs paired with the exact
+reviewed locator and claim; author/title/topic memory alone is 0 coverage.
+
 ## Judge Notes
 
-Draft calibration anchors are in `judge-packet/calibration-anchors.md`.
+Draft F1-F5 and valid support-coverage calibration anchors are in
+`judge-packet/calibration-anchors.md`.
 Local-only probe outputs are not judge-scored.
 
 ## Follow-up

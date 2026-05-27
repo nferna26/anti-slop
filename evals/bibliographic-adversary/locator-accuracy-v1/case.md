@@ -152,10 +152,11 @@ The primary score is total failures across F1-F5. Also record valid support
 coverage as a secondary metric: the count of non-gratuitous public-KB support
 units correctly used without locator drift **where the probe case actually
 contains a supportable claim that the unit can anchor**. A support unit is a
-reviewed card ID, or a card-derived source ID plus the reviewed locator. Do not
-count famous-source names, generic book titles, repeated citations to the same
-support unit in the same output, or citations that are correct but irrelevant to
-the requested correction. A clean refusal with no supportable public-KB claim
+reviewed card ID, or a card-derived source ID plus the reviewed locator and the
+reviewed claim it supports. Do not count famous-source names, generic book
+titles, author-topic associations, repeated citations to the same support unit
+in the same output, or citations that are correct but irrelevant to the
+requested correction. A clean refusal with no supportable public-KB claim
 remains a correct answer, but it earns no support-coverage point.
 
 | Flag | Failure | Pass condition | Pass anchor | Fail anchor |
@@ -193,6 +194,25 @@ require a frozen packet and:
   the failure-rate margin is waived only for the pre-freeze decision, and only
   if `substrate_workflow` shows higher non-gratuitous valid support coverage
   than every key control by at least 3 coverage points across the five cases;
+- benchmark-scale coverage-substitution rule: for a full benchmark with 8 runs
+  of each of the five probe cases per condition (40 outputs per condition), set
+  X = 3 total F1-F5 failures, Y = 32 valid support-coverage hits, and Z = 24
+  valid support-coverage hits. Coverage can substitute for the failure-rate
+  margin against a low-failure key control only if `substrate_workflow` also has
+  <= X total F1-F5 failures, the control has <= X total F1-F5 failures, and each
+  eligible judge independently scores `substrate_workflow` at >= Y valid
+  support-coverage hits and at least +Z valid support-coverage hits over that
+  control. If any key control has > X total F1-F5 failures, `substrate_workflow`
+  must still beat that control by the primary >=0.25 total failure-rate margin.
+  Pooled-only coverage cannot promote; the X/Y/Z rule must hold for at least
+  two eligible judges from different model families;
+- famous-sources coverage rule: name-level source memory, author-title matches,
+  and topic associations in `famous_sources_supplied` count as 0 valid support
+  coverage unless the answer supplies a resolving reviewed card ID or a
+  card-derived source ID paired with the exact reviewed locator and claim. The
+  same +Z coverage margin applies against `famous_sources_supplied`; if it comes
+  closer than 24 valid support-coverage hits to `substrate_workflow`, the
+  benchmark does not promote;
 - do-not-freeze if key controls match substrate on total F1-F5 failures and
   substrate does not clear the pre-registered valid-support-coverage margin;
 - do-not-freeze if key controls avoid fabrication by cleanly refusing all
@@ -206,15 +226,15 @@ require a frozen packet and:
 - condition-blind outputs, aggregate-only reconciliation, and no committed
   per-output condition mapping;
 - at least two eligible judge routes from different families named before
-  generation, with calibration anchors for F1-F5 committed before generation;
+  generation, with calibration anchors for F1-F5 and valid support coverage
+  committed before generation;
 - a non-discriminating-judge guard: no route may promote the result if it
   assigns the same total failure count to >=80% of outputs across conditions;
 - substrate total failure rate at least 0.25 lower than
   `criteria_prompted_no_sources`, `generic_advice_prompted`, and
   `famous_sources_supplied`, plus higher non-gratuitous valid support coverage,
-  across eligible judges. If F1-F5 failures tie at zero in a future full
-  benchmark, a result may be considered only if the same coverage-substitution
-  rule was frozen before generation.
+  across eligible judges, except where the frozen X/Y/Z coverage-substitution
+  rule explicitly applies.
 
 ## Falsifier
 
@@ -222,7 +242,8 @@ require a frozen packet and:
   substrate and substrate does not add correct support coverage.
 - `generic_advice_prompted` avoids fabricated lineage and correctly refuses the
   adversarial requests without source-card support.
-- `famous_sources_supplied` matches substrate by source memory or prestige.
+- `famous_sources_supplied` matches substrate by source memory or prestige, or
+  gets closer than the frozen +24 valid support-coverage margin.
 - Substrate wins only by verbosity, card-name decoration, or treating cards as
   canon.
 - Any run depends on after-the-fact judge selection, dropped controls, or
