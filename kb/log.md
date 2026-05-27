@@ -2,6 +2,18 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-27
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: —
+- Eval run: Froze `evals/bibliographic-adversary/locator-accuracy-v1/` as benchmark version `locator-accuracy-v1-v1`. Committed `run-packet.md` (advisor prompt, five rough notes, six condition preambles, equal-length filler recipe, 30 condition-packet sha256s, generator settings, seeds, output/anonymisation rules, judge-packet structure, freeze checklist) and `judge-packet/judge-route-preregistration.md` (hosted Anthropic + hosted OpenAI as primary blind judges, local non-Gemma backstop as optional third, eligibility = exact agreement on calibration anchors A-L + zero unresolved-lineage misses on F1 + no F1/F3 mutual-exclusion violation, non-discriminating-judge guard at >=80%, route-disagreement policy at >20%). Updated `judge-packet/calibration-anchors.md` `status:` from `draft_pre_freeze` to `filled_pre_run` (operator-accepted via PR #11 merge). Recompiled the substrate brief via committed recipe; sha256 `e1391a54f8...`; 2859 words; load-bearing facts audited as present (`substrate-brief-audit.md`). Equal-length filler 2968 words, forbidden-vocabulary scan CLEAN across 20 stems, length parity 102.2% per case (within +/-8%). No model run, no judging, no scoring, no Result lift, no canon. The benchmark is frozen but not run.
+- Decision: —
+- Rejected/deferred: Benchmark generation, judge calibration, anonymisation, judging, and reconciliation remain deferred until the next run step. The X/Y/Z coverage-substitution rule (X=3, Y=32, Z=24) and famous-sources coverage rule are frozen as committed in case.md and unchanged.
+- Follow-up: Calibrate the two primary judge routes (hosted Anthropic, hosted OpenAI) against the committed calibration anchors. If fewer than two different-family routes pass calibration, stop before generation and record the blocker.
+
 ## 2026-05-26
 
 - Ingested: —

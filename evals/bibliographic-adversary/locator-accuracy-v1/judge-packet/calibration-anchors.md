@@ -1,7 +1,7 @@
 ---
 case_id: locator-accuracy-v1
 eval_type: bibliographic-adversary
-status: draft_pre_freeze
+status: filled_pre_run
 created: 2026-05-25
 scoring_status: unscored
 ---
