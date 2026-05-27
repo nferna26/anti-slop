@@ -10,10 +10,12 @@ Score against the rubric in this case's `case.md` → `## Scoring rubric`. Copy 
 
 ## Result
 
-`partial` / frozen-not-run. Benchmark version `locator-accuracy-v1-v1` is
-frozen in `run-packet.md`, but no committed benchmark outputs exist, no judging
-has occurred, and no result may be lifted. The local-only pre-freeze probe in
-`pre-freeze-probe.md` is a readiness signal only.
+`partial` / calibration-blocked-before-generation. Benchmark version
+`locator-accuracy-v1-v1` is frozen in `run-packet.md`, but both hosted primary
+judge routes failed the exact calibration gate before generation. No committed
+benchmark outputs exist, no OUT-NN judging has occurred, and no result may be
+lifted. The local-only pre-freeze probe in `pre-freeze-probe.md` is a readiness
+signal only.
 
 ## Scores
 
@@ -52,10 +54,15 @@ reviewed locator and claim; author/title/topic memory alone is 0 coverage.
 
 Frozen F1-F5 and valid support-coverage calibration anchors are in
 `judge-packet/calibration-anchors.md`.
-Local-only probe outputs are not judge-scored.
+Calibration receipts are in
+`judge-packet/judge-calibration-hosted_anthropic.md` and
+`judge-packet/judge-calibration-hosted_openai.md`. Both hosted routes failed
+exact F1-F5 agreement. Local-only probe outputs are not judge-scored.
 
 ## Follow-up
 
 - Full five-case pre-freeze probe has been run once; see `pre-freeze-probe.md`.
 - Keep the proposed second BK-0048 source card out of this lineage until an
   operator performs the Chapter 4 read and review.
+- Do not generate benchmark outputs for `locator-accuracy-v1-v1`; the frozen
+  judge-calibration gate failed before generation.

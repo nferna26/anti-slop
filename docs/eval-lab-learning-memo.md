@@ -11,6 +11,32 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-27 — locator-accuracy v1 reached freeze but failed judge calibration
+
+`locator-accuracy-v1-v1` was the first full benchmark attempt in the
+bibliographic-adversary / mechanical-lineage family. It froze the advisor
+prompt, five provenance-pressure cases, six conditions, the F1-F5 rubric,
+valid-support coverage metric, X/Y/Z coverage-substitution rule, famous-sources
+coverage rule, condition-packet hashes, substrate-brief hash, and judge-route
+pre-registration before generation.
+
+The packet did not proceed to the 240-output benchmark. Both hosted primary
+judge routes failed exact calibration before generation: Anthropic
+`claude-opus-4-7` missed F5 on anchors D and E, while OpenAI `gpt-5.4` missed F5
+on D and over-fired F1 on E. Both routes matched the coverage anchors G-L, but
+the pre-registered eligibility rule required exact F1-F5 agreement as well. The
+local LM Studio backstop was unavailable because LM Studio exposed only the
+Gemma generator family plus an embedding model. Under the frozen rule, the run
+stopped before benchmark output generation.
+
+This is not a substrate-performance negative. It is a calibration-stage
+negative: the mechanical-lineage family produced a plausible probe signal, but
+the F5 refusal-failure boundary was not judge-stable when paired with F3
+misattribution and F4/F1 evidence-laundering anchors. The right repair is a new
+version with clearer calibration instructions or anchors around "failure to
+refuse" versus adjacent provenance failures, not a rescue of v1-v1 after the
+fact.
+
 ## 2026-05-25 — boundary-transfer v1 failed the pre-freeze separation gate
 
 The `halo-effect-boundary-blind-measurement-v1` draft moved out of the
