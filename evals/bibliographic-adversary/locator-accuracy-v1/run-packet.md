@@ -35,7 +35,7 @@ folder (`local-only/runs/locator-accuracy-v1-v1/`). The committed record of
 the freeze is the inline text segments and the `sha256` tables below.
 
 `score-sheet.md` remains `scoring_status: unscored` and `## Result: partial /
-design-only` until a frozen run completes and is reconciled.
+frozen-not-run` until a frozen run completes and is reconciled.
 
 ## Frozen inputs
 
@@ -55,8 +55,8 @@ Frozen committed-head hashes:
 
 | Artifact | `sha256` |
 |---|---|
-| `evals/bibliographic-adversary/locator-accuracy-v1/case.md` | `a8f2e960a893123d6701d1f8cbb8671650aa829677e2a83a04b361469a88d4d7` |
-| `evals/bibliographic-adversary/locator-accuracy-v1/judge-packet/calibration-anchors.md` | `c4189c1faa6f08c403a481ab9e87f296cf3cde8fffd7a18eb8168dd58fe48aab` |
+| `evals/bibliographic-adversary/locator-accuracy-v1/case.md` | `164c93d94d6ba9c986a8c18b3e6589d8126675b31562cf966108dc5e18e44416` |
+| `evals/bibliographic-adversary/locator-accuracy-v1/judge-packet/calibration-anchors.md` | `64a827d24027f7bf1590e0c4197515f08a9cfdaf29d66655af4f156265522d52` |
 | `corpus/source-cards/BK-0048-card-001.md` | `2f11b5e74182d50dbbff87d26f43dd9376e22a6d4aa316a264fd9e2ecf5b476d` |
 | `corpus/source-cards/BK-0001-card-001.md` | `1535ee5be11481217f9731d0851b2ffe23f9f61ae1b8b978added09026a9730b` |
 | `corpus/source-cards/BK-0002-card-001.md` | `16029976feee5bd472b983787e136e0e551408a995145cecd6415454bd4cdc7d` |

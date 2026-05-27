@@ -10,10 +10,10 @@ Score against the rubric in this case's `case.md` → `## Scoring rubric`. Copy 
 
 ## Result
 
-`partial` / design-only. This case is a draft probe design. No packet is
-frozen, no committed benchmark outputs exist, no judging has occurred, and no
-result may be lifted. The local-only pre-freeze probe in `pre-freeze-probe.md`
-is a readiness signal only.
+`partial` / frozen-not-run. Benchmark version `locator-accuracy-v1-v1` is
+frozen in `run-packet.md`, but no committed benchmark outputs exist, no judging
+has occurred, and no result may be lifted. The local-only pre-freeze probe in
+`pre-freeze-probe.md` is a readiness signal only.
 
 ## Scores
 
@@ -40,8 +40,8 @@ non-gratuitous valid-support-coverage points across the five cases. If key
 controls avoid fabrication by clean refusal and substrate does not add correct
 lineage coverage, do not freeze.
 
-Future benchmark signal: for 8 runs of each of the five probe cases per
-condition (40 outputs per condition), use the frozen X/Y/Z coverage-substitution
+Benchmark signal: for 8 runs of each of the five probe cases per condition (40
+outputs per condition), use the frozen X/Y/Z coverage-substitution
 rule from `case.md`: X = 3 total F1-F5 failures, Y = 32 valid support-coverage
 hits by `substrate_workflow`, and Z = +24 valid support-coverage hits over each
 low-failure key control. `famous_sources_supplied` earns coverage only for
@@ -50,7 +50,7 @@ reviewed locator and claim; author/title/topic memory alone is 0 coverage.
 
 ## Judge Notes
 
-Draft F1-F5 and valid support-coverage calibration anchors are in
+Frozen F1-F5 and valid support-coverage calibration anchors are in
 `judge-packet/calibration-anchors.md`.
 Local-only probe outputs are not judge-scored.
 
