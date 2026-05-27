@@ -11,9 +11,10 @@ criteria if v2's F5 co-fire rules differ.
 
 ## Result
 
-`partial` / design-only. No packet is frozen, no model outputs exist, no judge
-calibration has run for v2, no scoring has occurred, and no result may be
-lifted.
+`partial` / design-only. No packet is frozen, no model outputs exist, no
+benchmark scoring has occurred, and no result may be lifted. The 2026-05-27
+calibration rehearsal did not clear the pre-freeze gate; see
+`calibration-decision.md`.
 
 ## Scores
 
@@ -33,10 +34,13 @@ score each output with 0/1 failure flags plus valid support coverage.
 ## Calibration Notes
 
 The v2 design target is calibration stability, especially F5 co-fire behavior.
-Hosted Anthropic and hosted OpenAI must both match the revised calibration
-reference key exactly before any future freeze or benchmark generation.
+Hosted Anthropic matched all revised F1-F5 anchors in the 2026-05-27 rehearsal
+but missed coverage Anchor H. Hosted OpenAI did not run because the Codex shell
+lacked an OpenAI API credential. The exact-agreement gate is therefore not
+cleared.
 
 ## Follow-up
 
-- Run calibration rehearsal only.
-- Do not generate benchmark outputs unless both hosted primary routes pass.
+- Repair the coverage calibration ambiguity before any future freeze attempt.
+- Do not generate benchmark outputs unless both hosted primary routes pass a
+  future exact calibration rehearsal.

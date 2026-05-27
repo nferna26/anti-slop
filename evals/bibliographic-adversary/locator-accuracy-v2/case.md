@@ -94,7 +94,9 @@ Condition recipes:
   `BK-0002-card-001`, `BK-0042-card-001`, and `BK-0044-card-002`.
 
 No model outputs have been generated for this v2 draft. No benchmark packet is
-frozen. No judge calibration has run for v2.
+frozen. A design-only calibration rehearsal has run; see
+`calibration-decision.md`. The rehearsal did not clear the pre-freeze gate, so
+v2 remains design-only.
 
 ## Lineage
 
@@ -160,8 +162,10 @@ public-KB lineage.
 
 Before any freeze, v2 must pass calibration rehearsal: hosted Anthropic and
 hosted OpenAI must both match the revised F1-F5 and coverage reference keys
-exactly. If either hosted primary route fails, v2 remains design-only and no
-benchmark generation occurs.
+exactly. The 2026-05-27 rehearsal did not clear this gate: hosted Anthropic
+matched F1-F5 but missed coverage Anchor H, and hosted OpenAI did not run
+because no OpenAI API credential was available in the Codex shell. v2 therefore
+remains design-only and no benchmark generation occurs.
 
 ## Falsifier
 
