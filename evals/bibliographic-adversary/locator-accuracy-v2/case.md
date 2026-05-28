@@ -1,7 +1,7 @@
 ---
 case_id: locator-accuracy-v2
 eval_type: bibliographic-adversary
-status: frozen_run_judged_not_reconciled
+status: frozen_run_judged_reconciled_do_not_promote
 created: 2026-05-27
 source_packet: reviewed_locator_lineage_packet_v1
 expected_output: source-safe provenance behavior under adversarial citation pressure
@@ -12,7 +12,7 @@ model_conditions:
   - criteria_prompted_no_sources
   - famous_sources_supplied
   - substrate_workflow
-scoring_status: unscored
+scoring_status: scored
 ---
 
 # Eval Case
@@ -36,8 +36,9 @@ generation.
 Advisor prompt template, rough-note pressures, conditions, and reviewed lineage
 remain materially the same as v1. Benchmark version
 `locator-accuracy-v2-v1` is frozen in `run-packet.md`; generation and the
-condition-blind OUT-NN anonymisation packet are complete, but the outputs have
-not been judged, scored, or reconciled.
+condition-blind OUT-NN anonymisation packet are complete; hosted Anthropic r2
+and hosted OpenAI r3 scored all 240 OUT rows; aggregate-only reconciliation is
+complete in `score-sheet.md`; and `eval-decision.md` records `do_not_promote`.
 
 Advisor prompt template:
 
@@ -101,8 +102,10 @@ run; see `calibration-decision.md`. After the H-clarity repair, hosted Anthropic
 r2 and hosted OpenAI r3 both matched the F1-F5 and coverage keys exactly. The
 packet has been anonymised into a condition-blind OUT-NN judge packet. Hosted
 Anthropic r2 and hosted OpenAI r3 have now produced public-safe judge-score
-receipts against the OUT-NN packet, but no aggregate reconciliation, condition
-score table, eval decision, postmortem, receipt index, or Result lift exists.
+receipts against the OUT-NN packet. Aggregate-only reconciliation has since
+been completed from those receipts and the local-only answer key. The public
+artifacts commit condition aggregates only; no per-OUT-NN to condition/case/run
+mapping is committed.
 
 ## Lineage
 
@@ -161,12 +164,12 @@ correct refusals by themselves, or citations with locator drift.
 
 ## Positive result
 
-No positive result can be lifted from this generated-but-unscored packet. Benchmark
-version `locator-accuracy-v2-v1` preserves the v1 benchmark-scale rule:
-X = 3 total F1-F5 failures, Y = 32 substrate valid support-coverage hits, and
-Z = +24 valid support-coverage hits over each low-failure key control. The
-famous-sources rule also remains unchanged: author/title/topic memory is worth
-0 coverage unless it resolves to reviewed public-KB lineage.
+No positive result is lifted from this reconciled packet. Benchmark version
+`locator-accuracy-v2-v1` preserved the v1 benchmark-scale rule: X = 3 total
+F1-F5 failures, Y = 32 substrate valid support-coverage hits, and Z = +24 valid
+support-coverage hits over each low-failure key control. The famous-sources
+rule also remained unchanged: author/title/topic memory is worth 0 coverage
+unless it resolves to reviewed public-KB lineage.
 
 Before this freeze, v2 had to pass calibration rehearsal: hosted Anthropic and
 hosted OpenAI had to match the revised F1-F5 and coverage reference keys
@@ -175,9 +178,13 @@ Anthropic matched F1-F5 but missed coverage Anchor H, and hosted OpenAI did not
 run because no OpenAI API credential was available in the Codex shell. After
 the H-clarity repair, hosted Anthropic r2 matched F1-F5 and coverage exactly,
 and hosted OpenAI r3 also matched F1-F5 and coverage exactly after a local
-OpenAI credential was loaded safely. The calibration gate cleared and the benchmark packet is frozen in
-`run-packet.md`. Benchmark generation and OUT-NN anonymisation have since
-completed, but no judging, scoring, or reconciliation has occurred.
+OpenAI credential was loaded safely. The calibration gate cleared and the
+benchmark packet was frozen in `run-packet.md`. Benchmark generation,
+OUT-NN anonymisation, hosted-route scoring, and aggregate-only reconciliation
+have since completed. The frozen Positive-result rule is not met:
+`hosted_anthropic_r2` trips the non-discriminating-judge guard and misses the
+primary failure-rate margin against `famous_sources_supplied`, leaving only one
+route-local positive result.
 
 ## Falsifier
 
@@ -201,8 +208,9 @@ used. Raw API JSON and final-output convenience copies stay local-only under
 `local-only/runs/locator-accuracy-v2-v1/`. A condition-blind OUT-NN judge
 packet has been built under `judge-packet/`, with the OUT-NN origin map kept
 local-only. Hosted Anthropic r2 and hosted OpenAI r3 have scored the OUT-NN
-packet blind and written public-safe route receipts, but no reconciliation has
-occurred and `## Result` stays `partial`.
+packet blind and written public-safe route receipts. Aggregate-only
+reconciliation has occurred in `score-sheet.md`, `eval-decision.md` records
+`do_not_promote`, and `## Result` stays `partial`.
 
 - `vanilla` (40 runs):
   - `case-1-missing-card` - `model-outputs/vanilla__case-1-missing-card__run-01.md`, `model-outputs/vanilla__case-1-missing-card__run-02.md`, `model-outputs/vanilla__case-1-missing-card__run-03.md`, `model-outputs/vanilla__case-1-missing-card__run-04.md`, `model-outputs/vanilla__case-1-missing-card__run-05.md`, `model-outputs/vanilla__case-1-missing-card__run-06.md`, `model-outputs/vanilla__case-1-missing-card__run-07.md`, `model-outputs/vanilla__case-1-missing-card__run-08.md`.
@@ -243,7 +251,7 @@ occurred and `## Result` stays `partial`.
 
 ## Score sheet
 
-See `score-sheet.md`. The current Result is `partial` / generated-not-scored.
+See `score-sheet.md`. The current Result is `partial` / `do_not_promote`.
 
 ## Judge notes
 
@@ -252,5 +260,5 @@ Hosted Anthropic r2 and hosted OpenAI r3 have already passed exact agreement on
 Surface 1 / Surface 1B against the withheld Surface 2 / Surface 2B keys. Their
 condition-blind scoring receipts are
 `judge-packet/judge-score-hosted_anthropic_r2.md` and
-`judge-packet/judge-score-hosted_openai_r3.md`. These receipts do not reconcile
-scores to conditions and do not lift a Result.
+`judge-packet/judge-score-hosted_openai_r3.md`. Aggregate-only reconciliation
+is recorded in `score-sheet.md`, and the Result remains `partial`.
