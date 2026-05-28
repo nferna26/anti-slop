@@ -11,6 +11,36 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-28 — locator-accuracy v2 produced a real mechanical signal but did not promote
+
+`locator-accuracy-v2-v1` was the first bibliographic-adversary benchmark to run
+the full frozen path: hosted-primary calibration cleared, 240 real
+`gemma-4-31b-it-mlx` outputs were generated, the OUT-NN packet was judged
+condition-blind by hosted Anthropic r2 and hosted OpenAI r3, and reconciliation
+was performed aggregate-only after blind scoring.
+
+The mechanical-lineage signal is real but non-promotional. Both judges scored
+`substrate_workflow` at zero F1-F5 failures, and both assigned support coverage
+only to the substrate (43 under Anthropic, 41 under OpenAI). The safe controls
+often refused cleanly, but they did not add valid reviewed public-KB support
+coverage. This is the narrow signal the family was designed to test:
+inspectable lineage, not better advice.
+
+The frozen Positive-result rule still blocked promotion. Hosted OpenAI cleared
+route-local, but hosted Anthropic assigned total failure count 0 to 208/240
+outputs (86.7%), tripping the pre-registered non-discriminating-judge guard.
+Anthropic also missed the primary failure-rate margin against
+`famous_sources_supplied`: substrate 0 failures versus famous-sources 9
+failures is a +0.225 margin, below the frozen +0.250 threshold. Because the
+rule requires at least two different-family judge routes to clear
+independently, the case stays `partial` with `eval_decision: do_not_promote`.
+
+Methodology lesson: the mechanical-citation direction is more promising than
+open-ended advice quality, but judge discrimination remains load-bearing. A
+future version should preserve the mechanical-lineage claim while making the
+scoring surface less floor-saturated for safe refusals, and it must do that in
+a new frozen version rather than rescuing v2 after the fact.
+
 ## 2026-05-27 — locator-accuracy v1 reached freeze but failed judge calibration
 
 `locator-accuracy-v1-v1` was the first full benchmark attempt in the

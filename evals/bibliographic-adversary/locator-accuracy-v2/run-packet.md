@@ -3,7 +3,7 @@ case_id: locator-accuracy-v2
 artifact: run-packet
 eval_type: bibliographic-adversary
 benchmark_version: locator-accuracy-v2-v1
-status: frozen_run_judged_not_reconciled
+status: frozen_run_judged_reconciled_do_not_promote
 created: 2026-05-28
 ---
 
@@ -16,8 +16,9 @@ checklist, and generation/anonymisation record. The packet was frozen before
 generation. The benchmark generation pass has now produced 240 real
 model-output receipts, and a condition-blind OUT-NN judge packet has been
 built. The two pre-registered hosted judge routes have produced public-safe
-condition-blind judge-score receipts. No aggregate reconciliation has occurred,
-and no Result is lifted.
+condition-blind judge-score receipts. Aggregate-only reconciliation has since
+completed in `score-sheet.md`, and `eval-decision.md` records `do_not_promote`.
+No benchmark-supported Result is lifted.
 
 The v2 change from `locator-accuracy-v1-v1` is calibration semantics: F5
 co-fire behavior and coverage Anchor H were clarified before freeze. The
@@ -30,17 +31,21 @@ coverage metric, and no-canon boundary are not modified here.
 
 ## Status
 
-**Frozen, run, anonymised, judged by route, not reconciled.** The
+**Frozen, run, anonymised, judged by route, reconciled, do_not_promote.** The
 hosted-primary calibration gate cleared before freeze: `hosted_anthropic_r2`
 and `hosted_openai_r3` both matched F1-F5 anchors A-F and coverage anchors G-L
 exactly after the H-clarity repair. The same two routes have now scored the
 condition-blind OUT-NN packet and written
 `judge-packet/judge-score-hosted_anthropic_r2.md` and
-`judge-packet/judge-score-hosted_openai_r3.md`.
+`judge-packet/judge-score-hosted_openai_r3.md`. Aggregate-only reconciliation
+has been completed from those receipts and the local-only answer key; only
+condition aggregates are committed.
 
-`score-sheet.md` remains `scoring_status: unscored` and `## Result: partial /
-generated-not-scored` until aggregate-only reconciliation completes and the
-frozen positive rule is applied in a later tranche.
+`score-sheet.md` is now `scoring_status: scored` and `## Result: partial /
+do_not_promote`. The frozen Positive-result rule was applied without revision:
+one judge route clears locally, but `hosted_anthropic_r2` trips the
+non-discriminating-judge guard and misses the primary failure-rate margin
+against `famous_sources_supplied`.
 
 ## Frozen Inputs
 
@@ -54,7 +59,10 @@ calibration anchors in `judge-packet/calibration-anchors.md` (Surfaces
 Any edit to a frozen input opens a new benchmark version; it does not silently
 re-base `locator-accuracy-v2-v1`.
 
-Frozen committed-head hashes:
+Frozen input hashes captured at freeze-prep time. Later status-only receipt
+wording can change `case.md` and `run-packet.md`; the frozen Advisor prompt,
+condition packets, thresholds, calibration anchors, lineage cards, and
+substrate brief recipe remain the run inputs.
 
 | Artifact | `sha256` |
 | --- | --- |
@@ -213,8 +221,10 @@ Completed at freeze-prep time, before any output was generated.
 - [x] X/Y/Z benchmark-scale rule preserved exactly from v1.
 - [x] Freeze-prep timestamp recorded (2026-05-28).
 - [x] Generation later produced 240 real model-output receipts.
-- [x] OUT-NN anonymisation packet later built. No receipt index; no judging; no
-      reconciliation; no Result lift.
+- [x] OUT-NN anonymisation packet later built.
+- [x] Hosted Anthropic r2 and hosted OpenAI r3 later scored all 240 OUT rows.
+- [x] Aggregate-only reconciliation later completed; `eval-decision.md`
+      records `do_not_promote`; no benchmark-supported Result lift.
 
 ## Run
 
@@ -266,8 +276,9 @@ stored only in the git-ignored local-only run folder at
 committed.
 
 Hosted judge-score receipts now exist for the two eligible pre-registered
-routes. No receipt index, aggregate reconciliation, eval decision, postmortem,
-or Result lift was created in this tranche.
+routes. Aggregate-only reconciliation, `eval-decision.md`, and `postmortem.md`
+now exist. No per-OUT-NN mapping, receipt index, or benchmark-supported Result
+lift is committed.
 
 ## Discipline Note
 
