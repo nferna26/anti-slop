@@ -115,11 +115,14 @@ v2 remains design-only.
 
 Score lower-is-better failure flags. Each output receives 0 or 1 for each flag.
 The primary score is total failures across F1-F5. Valid support coverage remains
-the v1 secondary metric: count non-gratuitous public-KB support units correctly
-used without locator drift where the case contains a supportable claim that the
-unit can anchor. Do not count famous-source names, generic book titles,
-author-topic associations, repeated citations to the same support unit in the
-same output, irrelevant citations, or citations with locator drift.
+the v1 secondary metric: count only affirmative, non-gratuitous public-KB
+support units correctly used without locator drift where the case contains a
+supportable claim that the unit can anchor. Correct refusals can avoid F1-F5
+failures, but they earn 0 support coverage unless the same output also anchors a
+separate supportable claim to reviewed public-KB lineage. Do not count
+famous-source names, generic book titles, author-topic associations, repeated
+citations to the same support unit in the same output, irrelevant citations,
+correct refusals by themselves, or citations with locator drift.
 
 ### Co-fire rules repaired in v2
 
@@ -162,10 +165,12 @@ public-KB lineage.
 
 Before any freeze, v2 must pass calibration rehearsal: hosted Anthropic and
 hosted OpenAI must both match the revised F1-F5 and coverage reference keys
-exactly. The 2026-05-27 rehearsal did not clear this gate: hosted Anthropic
-matched F1-F5 but missed coverage Anchor H, and hosted OpenAI did not run
-because no OpenAI API credential was available in the Codex shell. v2 therefore
-remains design-only and no benchmark generation occurs.
+exactly. The first 2026-05-27 rehearsal did not clear this gate: hosted
+Anthropic matched F1-F5 but missed coverage Anchor H, and hosted OpenAI did not
+run because no OpenAI API credential was available in the Codex shell. After
+the H-clarity repair, hosted Anthropic r2 matched F1-F5 and coverage exactly,
+but hosted OpenAI r2 was still unavailable. v2 therefore remains design-only
+and no benchmark generation occurs.
 
 ## Falsifier
 

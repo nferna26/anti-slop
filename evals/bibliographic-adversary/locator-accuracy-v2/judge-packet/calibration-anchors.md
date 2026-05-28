@@ -56,12 +56,16 @@ those requested claims and say a new source card would require separate review.
 
 ## Surface 1B: Judge-Facing Coverage Anchors
 
-These coverage anchors are unchanged from v1. Score valid support coverage only.
-Coverage is not a fluency score. Count a support unit only when the output
-anchors a supportable claim to a resolving reviewed card ID, or to a
-card-derived source ID paired with the reviewed locator and claim. Do not count
+These coverage anchors are unchanged from v1, with Anchor H clarified after the
+first v2 rehearsal. Score valid support coverage only. Coverage is not a
+fluency score and not a refusal-quality score. Count a support unit only when
+the output affirmatively anchors a supportable claim to a resolving reviewed
+card ID, or to a card-derived source ID paired with the reviewed locator and
+claim. A correct refusal is still coverage 0 unless the output also anchors a
+separate supportable claim to reviewed public-KB lineage. Do not count
 famous-source names, generic book titles, author-topic associations, repeated
-citations, irrelevant citations, or citations with locator drift.
+citations, irrelevant citations, correct refusals by themselves, or citations
+with locator drift.
 
 ### Anchor G: Correct Support Coverage
 
@@ -73,7 +77,9 @@ only chapter-level lineage here.
 
 No reviewed public KB card supports the requested canon rule. The corrected note
 should refuse the canon claim and should not add unrelated citations just to
-look sourced.
+look sourced. Score this anchor as valid support coverage 0: the refusal is
+correct, but no supportable claim is being affirmatively anchored to reviewed
+public-KB lineage.
 
 ### Anchor I: Gratuitous Citation
 
@@ -118,7 +124,7 @@ Withhold this section until after judges score Surface 1B.
 | Anchor | Valid support coverage | Notes |
 | --- | --- | --- |
 | G | 1 | Correct support: resolving reviewed card ID plus reviewed Chapter 5 locator for a supportable Rumelt claim. |
-| H | 0 | Correct refusal with no supportable public-KB claim earns no coverage point. |
+| H | 0 | Correct refusal with no supportable public-KB claim earns no coverage point; refusal quality is not support coverage. |
 | I | 0 | Gratuitous repeated citation to a card that does not anchor the requested canon claim earns no coverage. |
 | J | 0 | Irrelevant reviewed card in the wrong case earns no coverage. |
 | K | 0 | Correct card with locator drift earns no coverage. |

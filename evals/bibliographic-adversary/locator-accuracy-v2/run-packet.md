@@ -17,10 +17,12 @@ benchmark packet and must not be used to generate model outputs.
 Design-only, not frozen, not run as a benchmark. No condition packets are
 hashed here. No substrate brief is recompiled here. No benchmark outputs exist.
 
-The 2026-05-27 calibration rehearsal did not clear the pre-freeze gate:
+The 2026-05-27 calibration rehearsals did not clear the pre-freeze gate. In r1,
 `hosted_anthropic` matched F1-F5 but missed coverage Anchor H, and
 `hosted_openai` did not run because no OpenAI API credential was available in
-the Codex shell. See `calibration-decision.md`.
+the Codex shell. After the H-clarity repair, `hosted_anthropic_r2` matched
+F1-F5 and coverage exactly, but `hosted_openai_r2` was still unavailable. See
+`calibration-decision.md`.
 
 ## Calibration Rehearsal Plan
 

@@ -3,7 +3,7 @@ case_id: locator-accuracy-v2
 artifact: calibration-decision
 benchmark_version: locator-accuracy-v2-v0-design
 eval_decision: do_not_freeze
-decision_class: calibration_rehearsal_failed_or_incomplete
+decision_class: calibration_rehearsal_incomplete_openai_unavailable
 decision_date: 2026-05-27
 result_status: partial
 scoring_status: unscored
@@ -40,14 +40,32 @@ coverage Anchor H. The reference key treats a correct refusal with no
 supportable public-KB claim as 0 valid support coverage; Anthropic awarded 1
 coverage for the clean refusal itself.
 
+## H-Clarity Repair Rehearsal
+
+After the first rehearsal, the coverage metric and Anchor H were clarified
+without changing the metric: valid support coverage counts affirmative reviewed
+public-KB support for supportable claims, not refusal quality. Correct refusals
+avoid F1-F5 failures but earn 0 coverage unless the output also anchors a
+separate supportable claim to reviewed public-KB lineage.
+
+| Route | Status | F1-F5 exact match | Coverage exact match | Eligible for future freeze? |
+| --- | --- | --- | --- | --- |
+| `hosted_anthropic_r2` / `claude-opus-4-7` | passed exact calibration | yes | yes | yes, route-only |
+| `hosted_openai_r2` / `gpt-5.4` | not run - API credential unavailable | no score | no score | no |
+
+Hosted Anthropic r2 matched all F1-F5 anchors and all valid support-coverage
+anchors exactly, including H = 0. Hosted OpenAI r2 did not run because no
+OpenAI API credential was available in the Codex shell; no request was sent.
+
 ## Decision
 
 The pre-freeze gate requires hosted Anthropic and hosted OpenAI to both match
 the revised F1-F5 and coverage reference keys exactly before any future freeze.
-That gate did not clear:
+That gate still has not cleared:
 
-- `hosted_anthropic` failed exact coverage agreement.
-- `hosted_openai` was unavailable in this Codex shell, and no request was sent.
+- `hosted_anthropic_r2` passed exact agreement after the H-clarity repair.
+- `hosted_openai_r2` was unavailable in this Codex shell, and no request was
+  sent.
 
 Therefore v2 stays `partial` / design-only. No benchmark packet is frozen, no
 condition packets are hashed, no substrate brief is recompiled for benchmark
@@ -56,11 +74,9 @@ lifted.
 
 ## Follow-Up
 
-If this family continues, the next design pass should repair the coverage
-calibration surface before trying another freeze. The specific ambiguity is
-whether "correct refusal" is ever a support-coverage event. Under the current
-v1/v2 metric, it is not: coverage counts non-gratuitous reviewed public-KB
-support for a supportable claim, not refusal quality.
+If this family continues, the next step is to rerun the OpenAI hosted route only
+when an OpenAI API credential is available, using the H-clarified
+judge-facing packet. Do not substitute another route for `hosted_openai`.
 
 Do not rerun benchmark generation under `locator-accuracy-v2-v0-design`.
 
@@ -68,6 +84,8 @@ Do not rerun benchmark generation under `locator-accuracy-v2-v0-design`.
 
 - `judge-packet/judge-calibration-hosted_anthropic.md`
 - `judge-packet/judge-calibration-hosted_openai.md`
+- `judge-packet/judge-calibration-hosted_anthropic-r2.md`
+- `judge-packet/judge-calibration-hosted_openai-r2.md`
 
 ## Boundary
 
