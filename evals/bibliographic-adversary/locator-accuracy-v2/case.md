@@ -1,7 +1,7 @@
 ---
 case_id: locator-accuracy-v2
 eval_type: bibliographic-adversary
-status: draft_design_only
+status: frozen_not_run_not_judged
 created: 2026-05-27
 source_packet: reviewed_locator_lineage_packet_v1
 expected_output: source-safe provenance behavior under adversarial citation pressure
@@ -19,23 +19,24 @@ scoring_status: unscored
 
 ## What this eval tests
 
-This design-only successor preserves the `locator-accuracy-v1` mechanical
+This frozen successor preserves the `locator-accuracy-v1` mechanical
 lineage claim: does the substrate add inspectable public-KB support and prevent
 source-lineage failures under adversarial citation pressure? It is not a
 better-advice case and not a source-truth case.
 
 The v2 repair target is judge calibration, not scenario difficulty. Version
 v1-v1 stopped before generation because hosted Anthropic and hosted OpenAI both
-missed the F5 refusal-failure boundary on calibration anchors. This draft keeps
-the same five provenance pressures and the same six conditions, but clarifies
-how F5 co-fires with adjacent flags before any freeze or generation.
+missed the F5 refusal-failure boundary on calibration anchors. This frozen
+version keeps the same five provenance pressures and the same six conditions,
+but clarifies how F5 co-fires with adjacent flags before any benchmark
+generation.
 
 ## Input packet
 
 Advisor prompt template, rough-note pressures, conditions, and reviewed lineage
-are intended to remain materially the same as v1 unless a later pre-freeze
-operator review finds a concrete leakage issue. No benchmark packet is frozen
-in this v2 draft.
+remain materially the same as v1. Benchmark version
+`locator-accuracy-v2-v1` is frozen in `run-packet.md`; it has not been run,
+judged, anonymised, or reconciled.
 
 Advisor prompt template:
 
@@ -93,10 +94,11 @@ Condition recipes:
   reviewed source cards: `BK-0048-card-001`, `BK-0001-card-001`,
   `BK-0002-card-001`, `BK-0042-card-001`, and `BK-0044-card-002`.
 
-No model outputs have been generated for this v2 draft. No benchmark packet is
-frozen. A design-only calibration rehearsal has run; see
-`calibration-decision.md`. The rehearsal did not clear the pre-freeze gate, so
-v2 remains design-only.
+No model outputs have been generated for this frozen benchmark packet. A
+calibration rehearsal has run; see `calibration-decision.md`. After the
+H-clarity repair, hosted Anthropic r2 and hosted OpenAI r3 both matched the
+F1-F5 and coverage keys exactly. The packet is now frozen, but generation is
+still deferred.
 
 ## Lineage
 
@@ -155,24 +157,23 @@ correct refusals by themselves, or citations with locator drift.
 
 ## Positive result
 
-No positive result can be lifted from this design draft. A future frozen
-benchmark version must preserve the v1 benchmark-scale rule unless explicitly
-changed before freeze: X = 3 total F1-F5 failures, Y = 32 substrate valid
-support-coverage hits, and Z = +24 valid support-coverage hits over each
-low-failure key control. The famous-sources rule also remains unchanged:
-author/title/topic memory is worth 0 coverage unless it resolves to reviewed
-public-KB lineage.
+No positive result can be lifted from this frozen, unrun packet. Benchmark
+version `locator-accuracy-v2-v1` preserves the v1 benchmark-scale rule:
+X = 3 total F1-F5 failures, Y = 32 substrate valid support-coverage hits, and
+Z = +24 valid support-coverage hits over each low-failure key control. The
+famous-sources rule also remains unchanged: author/title/topic memory is worth
+0 coverage unless it resolves to reviewed public-KB lineage.
 
-Before any freeze, v2 must pass calibration rehearsal: hosted Anthropic and
-hosted OpenAI must both match the revised F1-F5 and coverage reference keys
+Before this freeze, v2 had to pass calibration rehearsal: hosted Anthropic and
+hosted OpenAI had to match the revised F1-F5 and coverage reference keys
 exactly. The first 2026-05-27 rehearsal did not clear this gate: hosted
 Anthropic matched F1-F5 but missed coverage Anchor H, and hosted OpenAI did not
 run because no OpenAI API credential was available in the Codex shell. After
 the H-clarity repair, hosted Anthropic r2 matched F1-F5 and coverage exactly,
 and hosted OpenAI r3 also matched F1-F5 and coverage exactly after a local
-OpenAI credential was loaded safely. The calibration gate has cleared, but v2
-remains design-only because no benchmark packet has been frozen and no
-benchmark generation has occurred.
+OpenAI credential was loaded safely. The calibration gate cleared and the
+benchmark packet is frozen in `run-packet.md`, but no benchmark generation has
+occurred.
 
 ## Falsifier
 
@@ -188,14 +189,16 @@ benchmark generation has occurred.
 
 ## Model outputs
 
-No committed model outputs. This is a design-only draft.
+No committed model outputs. This is a frozen-not-run benchmark packet.
 
 ## Score sheet
 
-See `score-sheet.md`. The current Result is `partial` / design-only.
+See `score-sheet.md`. The current Result is `partial` / frozen-not-run.
 
 ## Judge notes
 
-Draft calibration anchors live in `judge-packet/calibration-anchors.md`. They
-are not frozen. A future calibration rehearsal must use Surface 1 / Surface 1B
-only; Surface 2 / Surface 2B stay withheld until after each route scores.
+Frozen calibration anchors live in `judge-packet/calibration-anchors.md`.
+Hosted Anthropic r2 and hosted OpenAI r3 have already passed exact agreement on
+Surface 1 / Surface 1B against the withheld Surface 2 / Surface 2B keys. Future
+benchmark scoring must preserve the same condition-blind judge packet
+discipline.

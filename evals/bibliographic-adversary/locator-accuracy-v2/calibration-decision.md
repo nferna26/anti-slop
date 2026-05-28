@@ -16,9 +16,10 @@ canon_supported: false
 
 ## Verdict
 
-`locator-accuracy-v2` has passed the hosted-primary calibration gate after the
-H-clarity repair, but remains design-only. Do not generate benchmark outputs
-until a separate freeze packet is prepared and committed.
+`locator-accuracy-v2` passed the hosted-primary calibration gate after the
+H-clarity repair. This file remains a calibration-stage decision receipt; the
+separate frozen benchmark packet is recorded in `run-packet.md`. Do not
+generate benchmark outputs except from that frozen packet in a later tranche.
 
 This is a calibration-stage decision only. It is not a substrate-performance
 result, not benchmark promotion, and not canon support.
@@ -81,17 +82,17 @@ future freeze. That calibration gate has now cleared:
 - `hosted_openai_r3` passed exact agreement after a local OpenAI credential was
   loaded safely.
 
-Therefore v2 stays `partial` / design-only with calibration passed and freeze
-not performed. No benchmark packet is frozen, no condition packets are hashed,
-no substrate brief is recompiled for benchmark use, no model outputs are
-generated, no OUT-NN packet exists, and no Result is lifted.
+Therefore the calibration gate cleared before freeze. The later freeze packet
+keeps the case `partial` / unscored: condition packets are hashed in
+`run-packet.md`, the substrate brief is recompiled and hashed for benchmark
+use, but no model outputs are generated, no OUT-NN packet exists, and no Result
+is lifted.
 
 ## Follow-Up
 
-If this family continues, the next step is a separate freeze tranche for
-`locator-accuracy-v2-v1`: prepare hashes, condition packets, substrate-brief
-benchmark hash, judge-route receipts, and freeze checklist before any
-generation.
+If this family continues, the next step after the separate `locator-accuracy-v2-v1`
+freeze is generation only from that frozen packet, followed by anonymisation,
+eligible blind judging, and aggregate-only reconciliation.
 
 Do not rerun benchmark generation under `locator-accuracy-v2-v0-design`.
 

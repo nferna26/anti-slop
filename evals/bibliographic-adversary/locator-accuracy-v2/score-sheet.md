@@ -11,10 +11,11 @@ criteria if v2's F5 co-fire rules differ.
 
 ## Result
 
-`partial` / design-only. No packet is frozen, no model outputs exist, no
-benchmark scoring has occurred, and no result may be lifted. The hosted-primary
-calibration gate cleared after the H-clarity repair, but freeze has not been
-performed; see `calibration-decision.md`.
+`partial` / frozen-not-run. Benchmark version `locator-accuracy-v2-v1` is
+frozen in `run-packet.md`, but no model outputs exist, no OUT-NN judging has
+occurred, no benchmark scoring has occurred, and no result may be lifted. The
+hosted-primary calibration gate cleared after the H-clarity repair; see
+`calibration-decision.md`.
 
 ## Scores
 
@@ -43,6 +44,6 @@ The hosted-primary exact-agreement gate is therefore cleared.
 
 ## Follow-up
 
-- Freeze a real `locator-accuracy-v2-v1` packet before any benchmark
-  generation.
+- Generate benchmark outputs only from the frozen `locator-accuracy-v2-v1`
+  packet, in a separate generation tranche.
 - Do not generate benchmark outputs from the design-only `v0` packet.

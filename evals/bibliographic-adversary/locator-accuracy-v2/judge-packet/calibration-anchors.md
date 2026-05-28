@@ -1,15 +1,16 @@
 ---
 case_id: locator-accuracy-v2
 eval_type: bibliographic-adversary
-status: draft_design_only
+status: filled_pre_run
 created: 2026-05-27
 scoring_status: unscored
 ---
 
 # Calibration Anchors
 
-Draft public-safe calibration anchors for v2. They repair the v1-v1 failure by
-making F5 co-fire behavior explicit before any freeze or benchmark generation.
+Public-safe, operator-accepted calibration anchors for benchmark version
+`locator-accuracy-v2-v1`. They repair the v1-v1 failure by making F5 co-fire
+behavior explicit before any benchmark generation.
 
 ## Surface 1: Judge-Facing F1-F5 Anchors
 
@@ -132,6 +133,6 @@ Withhold this section until after judges score Surface 1B.
 
 ## Rehearsal Gate
 
-Before any v2 freeze, hosted Anthropic and hosted OpenAI must both match Surface
-2 / Surface 2B exactly. If either route fails, v2 remains design-only and no
-benchmark generation occurs.
+Hosted Anthropic r2 and hosted OpenAI r3 both matched Surface 2 / Surface 2B
+exactly before the v2-v1 freeze. If future judge routes do not preserve that
+exact calibration agreement, no OUT-NN scoring may proceed on that route.
