@@ -169,8 +169,10 @@ exactly. The first 2026-05-27 rehearsal did not clear this gate: hosted
 Anthropic matched F1-F5 but missed coverage Anchor H, and hosted OpenAI did not
 run because no OpenAI API credential was available in the Codex shell. After
 the H-clarity repair, hosted Anthropic r2 matched F1-F5 and coverage exactly,
-but hosted OpenAI r2 was still unavailable. v2 therefore remains design-only
-and no benchmark generation occurs.
+and hosted OpenAI r3 also matched F1-F5 and coverage exactly after a local
+OpenAI credential was loaded safely. The calibration gate has cleared, but v2
+remains design-only because no benchmark packet has been frozen and no
+benchmark generation has occurred.
 
 ## Falsifier
 

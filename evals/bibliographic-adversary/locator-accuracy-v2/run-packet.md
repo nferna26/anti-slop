@@ -17,12 +17,11 @@ benchmark packet and must not be used to generate model outputs.
 Design-only, not frozen, not run as a benchmark. No condition packets are
 hashed here. No substrate brief is recompiled here. No benchmark outputs exist.
 
-The 2026-05-27 calibration rehearsals did not clear the pre-freeze gate. In r1,
-`hosted_anthropic` matched F1-F5 but missed coverage Anchor H, and
-`hosted_openai` did not run because no OpenAI API credential was available in
-the Codex shell. After the H-clarity repair, `hosted_anthropic_r2` matched
-F1-F5 and coverage exactly, but `hosted_openai_r2` was still unavailable. See
-`calibration-decision.md`.
+The hosted-primary calibration gate cleared after the H-clarity repair:
+`hosted_anthropic_r2` and `hosted_openai_r3` both matched F1-F5 and coverage
+anchors exactly. This run packet is still design-only; no benchmark packet is
+frozen, no condition packets are hashed here, and no generation is authorized.
+See `calibration-decision.md`.
 
 ## Calibration Rehearsal Plan
 
@@ -40,9 +39,10 @@ Before any v2 freeze:
      requested.
 5. If either hosted primary route fails or is unavailable, leave v2 design-only
    and do not freeze.
-6. If both hosted routes pass, a later tranche may freeze a real
-   `locator-accuracy-v2-v1` benchmark packet with hashes, condition packets,
-   generator settings, substrate-brief hash, and the unchanged X/Y/Z rule.
+6. Both hosted routes have passed after the H-clarity repair. A later tranche
+   may freeze a real `locator-accuracy-v2-v1` benchmark packet with hashes,
+   condition packets, generator settings, substrate-brief hash, and the
+   unchanged X/Y/Z rule.
 
 ## Boundary
 

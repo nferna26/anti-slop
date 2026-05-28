@@ -2,6 +2,18 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-28
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: —
+- Eval run: Completed hosted OpenAI calibration for `locator-accuracy-v2` after safely loading a local OpenAI credential without committing key values, `.env` contents, private credential paths, or raw transcripts. The H-clarified judge-facing packet contained only the v2 scoring rubric plus Surface 1 / Surface 1B anchors; Surface 2 / Surface 2B keys were withheld until after scoring. Hosted OpenAI `gpt-5.4` (`gpt-5.4-2026-03-05`) matched F1-F5 A-F and coverage G-L exactly, including H = 0. With hosted Anthropic r2 already passing, the hosted-primary calibration gate is now cleared, but no freeze has been performed. No frozen packet, condition hashes, substrate-brief benchmark hash, benchmark outputs, OUT-NN packet, scoring of model outputs, Result lift, canon candidate, raw source text, or book growth created.
+- Decision: Updated `AGENTS.md` with non-secret local credential handling and the rule that reusable `/goal` prompts must stay under 4,000 characters. `locator-accuracy-v2` remains `partial` / design-only (`calibration_passed_design_only`); the next step is a separate freeze tranche before any benchmark generation.
+- Rejected/deferred: Benchmark freeze, generation, anonymisation, OUT-NN judging, receipt-index generation, aggregate reconciliation, Result lift, and canon promotion remain deferred.
+- Follow-up: Freeze a real `locator-accuracy-v2-v1` packet only in a separate tranche with hashes, condition packets, substrate-brief benchmark hash, judge receipts, and freeze checklist committed before generation.
+
 ## 2026-05-27
 
 - Ingested: —
