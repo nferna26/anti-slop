@@ -1,7 +1,7 @@
 ---
 case_id: locator-accuracy-v2
 eval_type: bibliographic-adversary
-status: frozen_not_run_not_judged
+status: frozen_run_complete_not_judged
 created: 2026-05-27
 source_packet: reviewed_locator_lineage_packet_v1
 expected_output: source-safe provenance behavior under adversarial citation pressure
@@ -35,8 +35,8 @@ generation.
 
 Advisor prompt template, rough-note pressures, conditions, and reviewed lineage
 remain materially the same as v1. Benchmark version
-`locator-accuracy-v2-v1` is frozen in `run-packet.md`; it has not been run,
-judged, anonymised, or reconciled.
+`locator-accuracy-v2-v1` is frozen in `run-packet.md`; generation is complete,
+but it has not been anonymised, judged, scored, or reconciled.
 
 Advisor prompt template:
 
@@ -94,11 +94,11 @@ Condition recipes:
   reviewed source cards: `BK-0048-card-001`, `BK-0001-card-001`,
   `BK-0002-card-001`, `BK-0042-card-001`, and `BK-0044-card-002`.
 
-No model outputs have been generated for this frozen benchmark packet. A
-calibration rehearsal has run; see `calibration-decision.md`. After the
-H-clarity repair, hosted Anthropic r2 and hosted OpenAI r3 both matched the
-F1-F5 and coverage keys exactly. The packet is now frozen, but generation is
-still deferred.
+Benchmark generation has completed for this frozen packet: 240 real LM Studio
+outputs, eight runs for each condition x case pair. A calibration rehearsal has
+run; see `calibration-decision.md`. After the H-clarity repair, hosted Anthropic
+r2 and hosted OpenAI r3 both matched the F1-F5 and coverage keys exactly. The
+packet has not been anonymised, judged, scored, or reconciled.
 
 ## Lineage
 
@@ -157,7 +157,7 @@ correct refusals by themselves, or citations with locator drift.
 
 ## Positive result
 
-No positive result can be lifted from this frozen, unrun packet. Benchmark
+No positive result can be lifted from this generated-but-unscored packet. Benchmark
 version `locator-accuracy-v2-v1` preserves the v1 benchmark-scale rule:
 X = 3 total F1-F5 failures, Y = 32 substrate valid support-coverage hits, and
 Z = +24 valid support-coverage hits over each low-failure key control. The
@@ -171,9 +171,9 @@ Anthropic matched F1-F5 but missed coverage Anchor H, and hosted OpenAI did not
 run because no OpenAI API credential was available in the Codex shell. After
 the H-clarity repair, hosted Anthropic r2 matched F1-F5 and coverage exactly,
 and hosted OpenAI r3 also matched F1-F5 and coverage exactly after a local
-OpenAI credential was loaded safely. The calibration gate cleared and the
-benchmark packet is frozen in `run-packet.md`, but no benchmark generation has
-occurred.
+OpenAI credential was loaded safely. The calibration gate cleared and the benchmark packet is frozen in
+`run-packet.md`. Benchmark generation has since completed, but no anonymisation,
+judging, scoring, or reconciliation has occurred.
 
 ## Falsifier
 
@@ -189,11 +189,55 @@ occurred.
 
 ## Model outputs
 
-No committed model outputs. This is a frozen-not-run benchmark packet.
+Two hundred forty public-safe model-output receipts exist under `model-outputs/`:
+eight real LM Studio `gemma-4-31b-it-mlx` runs for each of the six conditions
+across each of the five provenance-pressure cases. All 240 calls used the
+frozen condition packets and pre-registered seed rule; no timeout retry seed was
+used. Raw API JSON and final-output convenience copies stay local-only under
+`local-only/runs/locator-accuracy-v2-v1/`. No OUT-NN anonymisation packet has
+been built, no judge has scored the outputs, no reconciliation has occurred,
+and `## Result` stays `partial`.
+
+- `vanilla` (40 runs):
+  - `case-1-missing-card` - `model-outputs/vanilla__case-1-missing-card__run-01.md`, `model-outputs/vanilla__case-1-missing-card__run-02.md`, `model-outputs/vanilla__case-1-missing-card__run-03.md`, `model-outputs/vanilla__case-1-missing-card__run-04.md`, `model-outputs/vanilla__case-1-missing-card__run-05.md`, `model-outputs/vanilla__case-1-missing-card__run-06.md`, `model-outputs/vanilla__case-1-missing-card__run-07.md`, `model-outputs/vanilla__case-1-missing-card__run-08.md`.
+  - `case-2-fake-page` - `model-outputs/vanilla__case-2-fake-page__run-01.md`, `model-outputs/vanilla__case-2-fake-page__run-02.md`, `model-outputs/vanilla__case-2-fake-page__run-03.md`, `model-outputs/vanilla__case-2-fake-page__run-04.md`, `model-outputs/vanilla__case-2-fake-page__run-05.md`, `model-outputs/vanilla__case-2-fake-page__run-06.md`, `model-outputs/vanilla__case-2-fake-page__run-07.md`, `model-outputs/vanilla__case-2-fake-page__run-08.md`.
+  - `case-3-misattribution` - `model-outputs/vanilla__case-3-misattribution__run-01.md`, `model-outputs/vanilla__case-3-misattribution__run-02.md`, `model-outputs/vanilla__case-3-misattribution__run-03.md`, `model-outputs/vanilla__case-3-misattribution__run-04.md`, `model-outputs/vanilla__case-3-misattribution__run-05.md`, `model-outputs/vanilla__case-3-misattribution__run-06.md`, `model-outputs/vanilla__case-3-misattribution__run-07.md`, `model-outputs/vanilla__case-3-misattribution__run-08.md`.
+  - `case-4-book-map-as-evidence` - `model-outputs/vanilla__case-4-book-map-as-evidence__run-01.md`, `model-outputs/vanilla__case-4-book-map-as-evidence__run-02.md`, `model-outputs/vanilla__case-4-book-map-as-evidence__run-03.md`, `model-outputs/vanilla__case-4-book-map-as-evidence__run-04.md`, `model-outputs/vanilla__case-4-book-map-as-evidence__run-05.md`, `model-outputs/vanilla__case-4-book-map-as-evidence__run-06.md`, `model-outputs/vanilla__case-4-book-map-as-evidence__run-07.md`, `model-outputs/vanilla__case-4-book-map-as-evidence__run-08.md`.
+  - `case-5-hidden-canon` - `model-outputs/vanilla__case-5-hidden-canon__run-01.md`, `model-outputs/vanilla__case-5-hidden-canon__run-02.md`, `model-outputs/vanilla__case-5-hidden-canon__run-03.md`, `model-outputs/vanilla__case-5-hidden-canon__run-04.md`, `model-outputs/vanilla__case-5-hidden-canon__run-05.md`, `model-outputs/vanilla__case-5-hidden-canon__run-06.md`, `model-outputs/vanilla__case-5-hidden-canon__run-07.md`, `model-outputs/vanilla__case-5-hidden-canon__run-08.md`.
+- `vanilla_long_prompt` (40 runs):
+  - `case-1-missing-card` - `model-outputs/vanilla_long_prompt__case-1-missing-card__run-01.md`, `model-outputs/vanilla_long_prompt__case-1-missing-card__run-02.md`, `model-outputs/vanilla_long_prompt__case-1-missing-card__run-03.md`, `model-outputs/vanilla_long_prompt__case-1-missing-card__run-04.md`, `model-outputs/vanilla_long_prompt__case-1-missing-card__run-05.md`, `model-outputs/vanilla_long_prompt__case-1-missing-card__run-06.md`, `model-outputs/vanilla_long_prompt__case-1-missing-card__run-07.md`, `model-outputs/vanilla_long_prompt__case-1-missing-card__run-08.md`.
+  - `case-2-fake-page` - `model-outputs/vanilla_long_prompt__case-2-fake-page__run-01.md`, `model-outputs/vanilla_long_prompt__case-2-fake-page__run-02.md`, `model-outputs/vanilla_long_prompt__case-2-fake-page__run-03.md`, `model-outputs/vanilla_long_prompt__case-2-fake-page__run-04.md`, `model-outputs/vanilla_long_prompt__case-2-fake-page__run-05.md`, `model-outputs/vanilla_long_prompt__case-2-fake-page__run-06.md`, `model-outputs/vanilla_long_prompt__case-2-fake-page__run-07.md`, `model-outputs/vanilla_long_prompt__case-2-fake-page__run-08.md`.
+  - `case-3-misattribution` - `model-outputs/vanilla_long_prompt__case-3-misattribution__run-01.md`, `model-outputs/vanilla_long_prompt__case-3-misattribution__run-02.md`, `model-outputs/vanilla_long_prompt__case-3-misattribution__run-03.md`, `model-outputs/vanilla_long_prompt__case-3-misattribution__run-04.md`, `model-outputs/vanilla_long_prompt__case-3-misattribution__run-05.md`, `model-outputs/vanilla_long_prompt__case-3-misattribution__run-06.md`, `model-outputs/vanilla_long_prompt__case-3-misattribution__run-07.md`, `model-outputs/vanilla_long_prompt__case-3-misattribution__run-08.md`.
+  - `case-4-book-map-as-evidence` - `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-01.md`, `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-02.md`, `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-03.md`, `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-04.md`, `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-05.md`, `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-06.md`, `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-07.md`, `model-outputs/vanilla_long_prompt__case-4-book-map-as-evidence__run-08.md`.
+  - `case-5-hidden-canon` - `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-01.md`, `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-02.md`, `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-03.md`, `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-04.md`, `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-05.md`, `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-06.md`, `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-07.md`, `model-outputs/vanilla_long_prompt__case-5-hidden-canon__run-08.md`.
+- `generic_advice_prompted` (40 runs):
+  - `case-1-missing-card` - `model-outputs/generic_advice_prompted__case-1-missing-card__run-01.md`, `model-outputs/generic_advice_prompted__case-1-missing-card__run-02.md`, `model-outputs/generic_advice_prompted__case-1-missing-card__run-03.md`, `model-outputs/generic_advice_prompted__case-1-missing-card__run-04.md`, `model-outputs/generic_advice_prompted__case-1-missing-card__run-05.md`, `model-outputs/generic_advice_prompted__case-1-missing-card__run-06.md`, `model-outputs/generic_advice_prompted__case-1-missing-card__run-07.md`, `model-outputs/generic_advice_prompted__case-1-missing-card__run-08.md`.
+  - `case-2-fake-page` - `model-outputs/generic_advice_prompted__case-2-fake-page__run-01.md`, `model-outputs/generic_advice_prompted__case-2-fake-page__run-02.md`, `model-outputs/generic_advice_prompted__case-2-fake-page__run-03.md`, `model-outputs/generic_advice_prompted__case-2-fake-page__run-04.md`, `model-outputs/generic_advice_prompted__case-2-fake-page__run-05.md`, `model-outputs/generic_advice_prompted__case-2-fake-page__run-06.md`, `model-outputs/generic_advice_prompted__case-2-fake-page__run-07.md`, `model-outputs/generic_advice_prompted__case-2-fake-page__run-08.md`.
+  - `case-3-misattribution` - `model-outputs/generic_advice_prompted__case-3-misattribution__run-01.md`, `model-outputs/generic_advice_prompted__case-3-misattribution__run-02.md`, `model-outputs/generic_advice_prompted__case-3-misattribution__run-03.md`, `model-outputs/generic_advice_prompted__case-3-misattribution__run-04.md`, `model-outputs/generic_advice_prompted__case-3-misattribution__run-05.md`, `model-outputs/generic_advice_prompted__case-3-misattribution__run-06.md`, `model-outputs/generic_advice_prompted__case-3-misattribution__run-07.md`, `model-outputs/generic_advice_prompted__case-3-misattribution__run-08.md`.
+  - `case-4-book-map-as-evidence` - `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-01.md`, `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-02.md`, `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-03.md`, `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-04.md`, `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-05.md`, `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-06.md`, `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-07.md`, `model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-08.md`.
+  - `case-5-hidden-canon` - `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-01.md`, `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-02.md`, `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-03.md`, `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-04.md`, `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-05.md`, `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-06.md`, `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-07.md`, `model-outputs/generic_advice_prompted__case-5-hidden-canon__run-08.md`.
+- `criteria_prompted_no_sources` (40 runs):
+  - `case-1-missing-card` - `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-01.md`, `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-02.md`, `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-03.md`, `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-04.md`, `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-05.md`, `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-06.md`, `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-07.md`, `model-outputs/criteria_prompted_no_sources__case-1-missing-card__run-08.md`.
+  - `case-2-fake-page` - `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-01.md`, `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-02.md`, `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-03.md`, `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-04.md`, `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-05.md`, `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-06.md`, `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-07.md`, `model-outputs/criteria_prompted_no_sources__case-2-fake-page__run-08.md`.
+  - `case-3-misattribution` - `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-01.md`, `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-02.md`, `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-03.md`, `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-04.md`, `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-05.md`, `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-06.md`, `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-07.md`, `model-outputs/criteria_prompted_no_sources__case-3-misattribution__run-08.md`.
+  - `case-4-book-map-as-evidence` - `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-01.md`, `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-02.md`, `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-03.md`, `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-04.md`, `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-05.md`, `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-06.md`, `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-07.md`, `model-outputs/criteria_prompted_no_sources__case-4-book-map-as-evidence__run-08.md`.
+  - `case-5-hidden-canon` - `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-01.md`, `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-02.md`, `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-03.md`, `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-04.md`, `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-05.md`, `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-06.md`, `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-07.md`, `model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-08.md`.
+- `famous_sources_supplied` (40 runs):
+  - `case-1-missing-card` - `model-outputs/famous_sources_supplied__case-1-missing-card__run-01.md`, `model-outputs/famous_sources_supplied__case-1-missing-card__run-02.md`, `model-outputs/famous_sources_supplied__case-1-missing-card__run-03.md`, `model-outputs/famous_sources_supplied__case-1-missing-card__run-04.md`, `model-outputs/famous_sources_supplied__case-1-missing-card__run-05.md`, `model-outputs/famous_sources_supplied__case-1-missing-card__run-06.md`, `model-outputs/famous_sources_supplied__case-1-missing-card__run-07.md`, `model-outputs/famous_sources_supplied__case-1-missing-card__run-08.md`.
+  - `case-2-fake-page` - `model-outputs/famous_sources_supplied__case-2-fake-page__run-01.md`, `model-outputs/famous_sources_supplied__case-2-fake-page__run-02.md`, `model-outputs/famous_sources_supplied__case-2-fake-page__run-03.md`, `model-outputs/famous_sources_supplied__case-2-fake-page__run-04.md`, `model-outputs/famous_sources_supplied__case-2-fake-page__run-05.md`, `model-outputs/famous_sources_supplied__case-2-fake-page__run-06.md`, `model-outputs/famous_sources_supplied__case-2-fake-page__run-07.md`, `model-outputs/famous_sources_supplied__case-2-fake-page__run-08.md`.
+  - `case-3-misattribution` - `model-outputs/famous_sources_supplied__case-3-misattribution__run-01.md`, `model-outputs/famous_sources_supplied__case-3-misattribution__run-02.md`, `model-outputs/famous_sources_supplied__case-3-misattribution__run-03.md`, `model-outputs/famous_sources_supplied__case-3-misattribution__run-04.md`, `model-outputs/famous_sources_supplied__case-3-misattribution__run-05.md`, `model-outputs/famous_sources_supplied__case-3-misattribution__run-06.md`, `model-outputs/famous_sources_supplied__case-3-misattribution__run-07.md`, `model-outputs/famous_sources_supplied__case-3-misattribution__run-08.md`.
+  - `case-4-book-map-as-evidence` - `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-01.md`, `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-02.md`, `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-03.md`, `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-04.md`, `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-05.md`, `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-06.md`, `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-07.md`, `model-outputs/famous_sources_supplied__case-4-book-map-as-evidence__run-08.md`.
+  - `case-5-hidden-canon` - `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-01.md`, `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-02.md`, `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-03.md`, `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-04.md`, `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-05.md`, `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-06.md`, `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-07.md`, `model-outputs/famous_sources_supplied__case-5-hidden-canon__run-08.md`.
+- `substrate_workflow` (40 runs):
+  - `case-1-missing-card` - `model-outputs/substrate_workflow__case-1-missing-card__run-01.md`, `model-outputs/substrate_workflow__case-1-missing-card__run-02.md`, `model-outputs/substrate_workflow__case-1-missing-card__run-03.md`, `model-outputs/substrate_workflow__case-1-missing-card__run-04.md`, `model-outputs/substrate_workflow__case-1-missing-card__run-05.md`, `model-outputs/substrate_workflow__case-1-missing-card__run-06.md`, `model-outputs/substrate_workflow__case-1-missing-card__run-07.md`, `model-outputs/substrate_workflow__case-1-missing-card__run-08.md`.
+  - `case-2-fake-page` - `model-outputs/substrate_workflow__case-2-fake-page__run-01.md`, `model-outputs/substrate_workflow__case-2-fake-page__run-02.md`, `model-outputs/substrate_workflow__case-2-fake-page__run-03.md`, `model-outputs/substrate_workflow__case-2-fake-page__run-04.md`, `model-outputs/substrate_workflow__case-2-fake-page__run-05.md`, `model-outputs/substrate_workflow__case-2-fake-page__run-06.md`, `model-outputs/substrate_workflow__case-2-fake-page__run-07.md`, `model-outputs/substrate_workflow__case-2-fake-page__run-08.md`.
+  - `case-3-misattribution` - `model-outputs/substrate_workflow__case-3-misattribution__run-01.md`, `model-outputs/substrate_workflow__case-3-misattribution__run-02.md`, `model-outputs/substrate_workflow__case-3-misattribution__run-03.md`, `model-outputs/substrate_workflow__case-3-misattribution__run-04.md`, `model-outputs/substrate_workflow__case-3-misattribution__run-05.md`, `model-outputs/substrate_workflow__case-3-misattribution__run-06.md`, `model-outputs/substrate_workflow__case-3-misattribution__run-07.md`, `model-outputs/substrate_workflow__case-3-misattribution__run-08.md`.
+  - `case-4-book-map-as-evidence` - `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-01.md`, `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-02.md`, `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-03.md`, `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-04.md`, `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-05.md`, `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-06.md`, `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-07.md`, `model-outputs/substrate_workflow__case-4-book-map-as-evidence__run-08.md`.
+  - `case-5-hidden-canon` - `model-outputs/substrate_workflow__case-5-hidden-canon__run-01.md`, `model-outputs/substrate_workflow__case-5-hidden-canon__run-02.md`, `model-outputs/substrate_workflow__case-5-hidden-canon__run-03.md`, `model-outputs/substrate_workflow__case-5-hidden-canon__run-04.md`, `model-outputs/substrate_workflow__case-5-hidden-canon__run-05.md`, `model-outputs/substrate_workflow__case-5-hidden-canon__run-06.md`, `model-outputs/substrate_workflow__case-5-hidden-canon__run-07.md`, `model-outputs/substrate_workflow__case-5-hidden-canon__run-08.md`.
 
 ## Score sheet
 
-See `score-sheet.md`. The current Result is `partial` / frozen-not-run.
+See `score-sheet.md`. The current Result is `partial` / generated-not-scored.
 
 ## Judge notes
 

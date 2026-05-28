@@ -3,18 +3,19 @@ case_id: locator-accuracy-v2
 artifact: run-packet
 eval_type: bibliographic-adversary
 benchmark_version: locator-accuracy-v2-v1
-status: frozen_not_run_not_judged
+status: frozen_run_complete_not_judged
 created: 2026-05-28
 ---
 
 # Run Packet - locator-accuracy-v2-v1
 
-Frozen run packet for the `locator-accuracy-v2` bibliographic-adversary case.
-This file records the condition-packet recipes, hashes, generator settings,
-run counts, output and anonymisation rules, judge-route references, and freeze
-checklist. The packet is frozen before generation. No benchmark outputs have
-been generated, no OUT-NN files exist, no judging has occurred, and no Result
-is lifted.
+Run packet for the `locator-accuracy-v2` bibliographic-adversary case. This
+file records the condition-packet recipes, hashes, generator settings, run
+counts, output and anonymisation rules, judge-route references, freeze
+checklist, and generation record. The packet was frozen before generation. The
+benchmark generation pass has now produced 240 real model-output receipts, but
+no OUT-NN files exist, no judging has occurred, no reconciliation has occurred,
+and no Result is lifted.
 
 The v2 change from `locator-accuracy-v1-v1` is calibration semantics: F5
 co-fire behavior and coverage Anchor H were clarified before freeze. The
@@ -27,14 +28,14 @@ coverage metric, and no-canon boundary are not modified here.
 
 ## Status
 
-**Frozen, not run, not judged.** The hosted-primary calibration gate cleared
-before freeze: `hosted_anthropic_r2` and `hosted_openai_r3` both matched F1-F5
-anchors A-F and coverage anchors G-L exactly after the H-clarity repair. See
-`calibration-decision.md` and
-`judge-packet/judge-route-preregistration.md`.
+**Frozen, run, not judged.** The hosted-primary calibration gate cleared before
+freeze: `hosted_anthropic_r2` and `hosted_openai_r3` both matched F1-F5 anchors
+A-F and coverage anchors G-L exactly after the H-clarity repair. See
+`calibration-decision.md` and `judge-packet/judge-route-preregistration.md`.
 
 `score-sheet.md` remains `scoring_status: unscored` and `## Result: partial /
-frozen-not-run` until a frozen run completes and is reconciled.
+generated-not-scored` until a blind scoring and reconciliation tranche
+completes.
 
 ## Frozen Inputs
 
@@ -52,7 +53,7 @@ Frozen committed-head hashes:
 
 | Artifact | `sha256` |
 | --- | --- |
-| `evals/bibliographic-adversary/locator-accuracy-v2/case.md` | `8a423cbc39123d1d40b048e5fb7b4aaffbe2308fd4f824c54ddbbc44e52d5131` |
+| `evals/bibliographic-adversary/locator-accuracy-v2/case.md` | `47004d6254afe68b2a2974ac17dbb2ec41ad21a37383e409aa83ff3132d9831b` |
 | `evals/bibliographic-adversary/locator-accuracy-v2/judge-packet/calibration-anchors.md` | `36e563e3176d6b437973cd179e18bfed21521cebdd08f1878f23c759b2902aac` |
 | `evals/bibliographic-adversary/locator-accuracy-v2/judge-packet/judge-route-preregistration.md` | `567fefcd80dcca1789b3164c2a4eadcef1fa4cafdd82ac63aa13ffcbb3ac4903` |
 | `evals/bibliographic-adversary/locator-accuracy-v2/substrate-brief-audit.md` | `754413c86ee7143b088b9d8a2e3e6a1ca1765995d17304920f7eb26368daf9e6` |
@@ -161,10 +162,12 @@ at `local-only/runs/locator-accuracy-v2-v1/assemble.py`.
 
 ## Output, Anonymisation, And Answer Key
 
-- **Output naming.** Future generation writes one local-only file per run under
+- **Output naming.** Generation wrote one local-only final-output copy per run
+  under
   `local-only/runs/locator-accuracy-v2-v1/outputs/<condition>__<case>__<run>.md`
-  with full provenance, decoding params, seed, prompt hash, packet hash, and
-  real-run status. Forty outputs per condition are expected.
+  and one public-safe receipt per run under `model-outputs/`. Each receipt
+  records full provenance, decoding params, seed, prompt hash, packet hash, and
+  real-run status. Forty outputs per condition exist.
 - **Anonymisation rule.** After all outputs exist and before any judge sees
   them, each output body is hashed with `sha256`; outputs are sorted by
   ascending hash and labeled `OUT-001` through `OUT-240`.
@@ -204,16 +207,34 @@ Completed at freeze-prep time, before any output was generated.
       valid support coverage.
 - [x] X/Y/Z benchmark-scale rule preserved exactly from v1.
 - [x] Freeze-prep timestamp recorded (2026-05-28).
-- [x] No model outputs generated; no OUT-NN files; no receipt index; no
-      reconciliation; no Result lift.
+- [x] Generation later produced 240 real model-output receipts. No OUT-NN files;
+      no receipt index; no judging; no reconciliation; no Result lift.
 
 ## Run
 
-Run section - empty until the run is executed and reconciled. When the run
-completes, this section will record UTC start/completion, real-output count,
-output-receipt commit, anonymisation manifest, judge calibration results, and
-aggregate reconciliation. Local-only folders hold raw API transcripts and the
-OUT-NN answer key; only public-safe receipts ship to git.
+The generation pass was run on 2026-05-28 UTC through LM Studio's local
+OpenAI-compatible server with model `gemma-4-31b-it-mlx`. It used the frozen
+condition packets and the seed rule above. Before generation, the local runner
+verified the substrate brief hash and all thirty condition-packet hashes
+against this run packet.
+
+**Two hundred forty real model outputs:** eight runs for each condition x case
+pair (6 x 5 x 8). Zero simulated outputs. Zero timeout retries: all 240 calls
+completed on their original pre-registered seed, so the `seed + 100000` retry
+path was not exercised. Per-call wall time ranged from 4.0 s to 29.2 s, about
+49.2 minutes of summed generation wall time.
+
+One public-safe model-output receipt per run is committed under
+`model-outputs/` with benchmark version, condition, case key, run number, seed,
+model ID/snapshot, runtime, decoding parameters, condition-packet sha256,
+advisor prompt sha256, real-run classification, output-body sha256, and the
+verbatim answer. Raw API JSON and final-output convenience copies stay in the
+git-ignored local-only run folder.
+
+No anonymisation has occurred in this tranche. No `OUT-NN` labels, output-hash
+manifest, condition-blind judge packet, receipt index, judge scoring,
+aggregate reconciliation, or eval decision was created. The `OUT-NN` answer key
+does not exist and is not committed.
 
 ## Discipline Note
 

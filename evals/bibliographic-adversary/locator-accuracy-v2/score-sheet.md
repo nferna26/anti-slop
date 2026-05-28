@@ -11,15 +11,15 @@ criteria if v2's F5 co-fire rules differ.
 
 ## Result
 
-`partial` / frozen-not-run. Benchmark version `locator-accuracy-v2-v1` is
-frozen in `run-packet.md`, but no model outputs exist, no OUT-NN judging has
-occurred, no benchmark scoring has occurred, and no result may be lifted. The
-hosted-primary calibration gate cleared after the H-clarity repair; see
-`calibration-decision.md`.
+`partial` / generated-not-scored. Benchmark version `locator-accuracy-v2-v1`
+is frozen in `run-packet.md` and 240 real model-output receipts now exist, but
+no OUT-NN anonymisation, judge scoring, benchmark scoring, aggregate
+reconciliation, or Result lift has occurred. The hosted-primary calibration
+gate cleared after the H-clarity repair; see `calibration-decision.md`.
 
 ## Scores
 
-Unscored. If a future frozen run occurs, copy the v2 F1-F5 rubric exactly and
+Unscored. In a future judging tranche, copy the v2 F1-F5 rubric exactly and
 score each output with 0/1 failure flags plus valid support coverage.
 
 | Criterion | vanilla | vanilla_long_prompt | generic_advice_prompted | criteria_prompted_no_sources | famous_sources_supplied | substrate_workflow |
@@ -44,6 +44,7 @@ The hosted-primary exact-agreement gate is therefore cleared.
 
 ## Follow-up
 
-- Generate benchmark outputs only from the frozen `locator-accuracy-v2-v1`
-  packet, in a separate generation tranche.
-- Do not generate benchmark outputs from the design-only `v0` packet.
+- Build the condition-blind OUT-NN packet only in a separate anonymisation
+  tranche.
+- Do not judge, score, reconcile, or lift a Result from the generated receipts
+  until the OUT-NN packet is built and eligible judge routes score it blind.
