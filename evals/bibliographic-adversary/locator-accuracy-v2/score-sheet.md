@@ -12,16 +12,18 @@ criteria if v2's F5 co-fire rules differ.
 ## Result
 
 `partial` / generated-not-scored. Benchmark version `locator-accuracy-v2-v1`
-is frozen in `run-packet.md` and 240 real model-output receipts now exist, but
-no judge scoring, benchmark scoring, aggregate reconciliation, or Result lift
-has occurred. A condition-blind OUT-NN packet exists under `judge-packet/`, and
-the OUT-NN origin map remains local-only. The hosted-primary calibration gate
-cleared after the H-clarity repair; see `calibration-decision.md`.
+is frozen in `run-packet.md`, 240 real model-output receipts exist, and the
+condition-blind OUT-NN packet has been scored by the two eligible hosted judge
+routes. Public-safe route receipts are
+`judge-packet/judge-score-hosted_anthropic_r2.md` and
+`judge-packet/judge-score-hosted_openai_r3.md`. No benchmark score table,
+aggregate reconciliation, eval decision, postmortem, receipt index, or Result
+lift has occurred. The OUT-NN origin map remains local-only.
 
 ## Scores
 
-Unscored. In a future judging tranche, copy the v2 F1-F5 rubric exactly and
-score each output with 0/1 failure flags plus valid support coverage.
+Unscored by condition. Route-level judge-score receipts exist, but no OUT-NN
+score has been reconciled to condition aggregates.
 
 | Criterion | vanilla | vanilla_long_prompt | generic_advice_prompted | criteria_prompted_no_sources | famous_sources_supplied | substrate_workflow |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,7 +47,7 @@ The hosted-primary exact-agreement gate is therefore cleared.
 
 ## Follow-up
 
-- Use only eligible pre-registered judge routes that pass calibration before
-  scoring the OUT-NN packet.
-- Do not reconcile or lift a Result until eligible judge routes score the
-  packet blind.
+- Reconcile aggregate-only in a separate tranche from committed route receipts
+  and the local-only answer key.
+- Do not lift a Result until aggregate-only reconciliation is complete and the
+  frozen positive rule has been applied without revision.

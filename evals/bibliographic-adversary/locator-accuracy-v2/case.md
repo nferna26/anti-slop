@@ -1,7 +1,7 @@
 ---
 case_id: locator-accuracy-v2
 eval_type: bibliographic-adversary
-status: frozen_run_complete_not_judged
+status: frozen_run_judged_not_reconciled
 created: 2026-05-27
 source_packet: reviewed_locator_lineage_packet_v1
 expected_output: source-safe provenance behavior under adversarial citation pressure
@@ -99,8 +99,10 @@ Benchmark generation has completed for this frozen packet: 240 real LM Studio
 outputs, eight runs for each condition x case pair. A calibration rehearsal has
 run; see `calibration-decision.md`. After the H-clarity repair, hosted Anthropic
 r2 and hosted OpenAI r3 both matched the F1-F5 and coverage keys exactly. The
-packet has been anonymised into a condition-blind OUT-NN judge packet, but it
-has not been judged, scored, or reconciled.
+packet has been anonymised into a condition-blind OUT-NN judge packet. Hosted
+Anthropic r2 and hosted OpenAI r3 have now produced public-safe judge-score
+receipts against the OUT-NN packet, but no aggregate reconciliation, condition
+score table, eval decision, postmortem, receipt index, or Result lift exists.
 
 ## Lineage
 
@@ -198,8 +200,9 @@ frozen condition packets and pre-registered seed rule; no timeout retry seed was
 used. Raw API JSON and final-output convenience copies stay local-only under
 `local-only/runs/locator-accuracy-v2-v1/`. A condition-blind OUT-NN judge
 packet has been built under `judge-packet/`, with the OUT-NN origin map kept
-local-only. No judge has scored the outputs, no reconciliation has occurred,
-and `## Result` stays `partial`.
+local-only. Hosted Anthropic r2 and hosted OpenAI r3 have scored the OUT-NN
+packet blind and written public-safe route receipts, but no reconciliation has
+occurred and `## Result` stays `partial`.
 
 - `vanilla` (40 runs):
   - `case-1-missing-card` - `model-outputs/vanilla__case-1-missing-card__run-01.md`, `model-outputs/vanilla__case-1-missing-card__run-02.md`, `model-outputs/vanilla__case-1-missing-card__run-03.md`, `model-outputs/vanilla__case-1-missing-card__run-04.md`, `model-outputs/vanilla__case-1-missing-card__run-05.md`, `model-outputs/vanilla__case-1-missing-card__run-06.md`, `model-outputs/vanilla__case-1-missing-card__run-07.md`, `model-outputs/vanilla__case-1-missing-card__run-08.md`.
@@ -246,6 +249,8 @@ See `score-sheet.md`. The current Result is `partial` / generated-not-scored.
 
 Frozen calibration anchors live in `judge-packet/calibration-anchors.md`.
 Hosted Anthropic r2 and hosted OpenAI r3 have already passed exact agreement on
-Surface 1 / Surface 1B against the withheld Surface 2 / Surface 2B keys. Future
-benchmark scoring must preserve the same condition-blind judge packet
-discipline.
+Surface 1 / Surface 1B against the withheld Surface 2 / Surface 2B keys. Their
+condition-blind scoring receipts are
+`judge-packet/judge-score-hosted_anthropic_r2.md` and
+`judge-packet/judge-score-hosted_openai_r3.md`. These receipts do not reconcile
+scores to conditions and do not lift a Result.

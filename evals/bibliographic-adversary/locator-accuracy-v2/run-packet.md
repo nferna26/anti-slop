@@ -3,7 +3,7 @@ case_id: locator-accuracy-v2
 artifact: run-packet
 eval_type: bibliographic-adversary
 benchmark_version: locator-accuracy-v2-v1
-status: frozen_run_complete_not_judged
+status: frozen_run_judged_not_reconciled
 created: 2026-05-28
 ---
 
@@ -15,8 +15,9 @@ counts, output and anonymisation rules, judge-route references, freeze
 checklist, and generation/anonymisation record. The packet was frozen before
 generation. The benchmark generation pass has now produced 240 real
 model-output receipts, and a condition-blind OUT-NN judge packet has been
-built. No judging has occurred, no reconciliation has occurred, and no Result
-is lifted.
+built. The two pre-registered hosted judge routes have produced public-safe
+condition-blind judge-score receipts. No aggregate reconciliation has occurred,
+and no Result is lifted.
 
 The v2 change from `locator-accuracy-v1-v1` is calibration semantics: F5
 co-fire behavior and coverage Anchor H were clarified before freeze. The
@@ -29,14 +30,17 @@ coverage metric, and no-canon boundary are not modified here.
 
 ## Status
 
-**Frozen, run, anonymised, not judged.** The hosted-primary calibration gate cleared before
-freeze: `hosted_anthropic_r2` and `hosted_openai_r3` both matched F1-F5 anchors
-A-F and coverage anchors G-L exactly after the H-clarity repair. See
-`calibration-decision.md` and `judge-packet/judge-route-preregistration.md`.
+**Frozen, run, anonymised, judged by route, not reconciled.** The
+hosted-primary calibration gate cleared before freeze: `hosted_anthropic_r2`
+and `hosted_openai_r3` both matched F1-F5 anchors A-F and coverage anchors G-L
+exactly after the H-clarity repair. The same two routes have now scored the
+condition-blind OUT-NN packet and written
+`judge-packet/judge-score-hosted_anthropic_r2.md` and
+`judge-packet/judge-score-hosted_openai_r3.md`.
 
 `score-sheet.md` remains `scoring_status: unscored` and `## Result: partial /
-generated-not-scored` until a blind scoring and reconciliation tranche
-completes.
+generated-not-scored` until aggregate-only reconciliation completes and the
+frozen positive rule is applied in a later tranche.
 
 ## Frozen Inputs
 
@@ -261,8 +265,9 @@ stored only in the git-ignored local-only run folder at
 `local-only/runs/locator-accuracy-v2-v1/out-nn-answer-key.yaml` and is not
 committed.
 
-No judge scoring, receipt index, aggregate reconciliation, eval decision, or
-Result lift was created in this tranche.
+Hosted judge-score receipts now exist for the two eligible pre-registered
+routes. No receipt index, aggregate reconciliation, eval decision, postmortem,
+or Result lift was created in this tranche.
 
 ## Discipline Note
 
