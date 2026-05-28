@@ -35,8 +35,9 @@ generation.
 
 Advisor prompt template, rough-note pressures, conditions, and reviewed lineage
 remain materially the same as v1. Benchmark version
-`locator-accuracy-v2-v1` is frozen in `run-packet.md`; generation is complete,
-but it has not been anonymised, judged, scored, or reconciled.
+`locator-accuracy-v2-v1` is frozen in `run-packet.md`; generation and the
+condition-blind OUT-NN anonymisation packet are complete, but the outputs have
+not been judged, scored, or reconciled.
 
 Advisor prompt template:
 
@@ -98,7 +99,8 @@ Benchmark generation has completed for this frozen packet: 240 real LM Studio
 outputs, eight runs for each condition x case pair. A calibration rehearsal has
 run; see `calibration-decision.md`. After the H-clarity repair, hosted Anthropic
 r2 and hosted OpenAI r3 both matched the F1-F5 and coverage keys exactly. The
-packet has not been anonymised, judged, scored, or reconciled.
+packet has been anonymised into a condition-blind OUT-NN judge packet, but it
+has not been judged, scored, or reconciled.
 
 ## Lineage
 
@@ -172,8 +174,8 @@ run because no OpenAI API credential was available in the Codex shell. After
 the H-clarity repair, hosted Anthropic r2 matched F1-F5 and coverage exactly,
 and hosted OpenAI r3 also matched F1-F5 and coverage exactly after a local
 OpenAI credential was loaded safely. The calibration gate cleared and the benchmark packet is frozen in
-`run-packet.md`. Benchmark generation has since completed, but no anonymisation,
-judging, scoring, or reconciliation has occurred.
+`run-packet.md`. Benchmark generation and OUT-NN anonymisation have since
+completed, but no judging, scoring, or reconciliation has occurred.
 
 ## Falsifier
 
@@ -194,8 +196,9 @@ eight real LM Studio `gemma-4-31b-it-mlx` runs for each of the six conditions
 across each of the five provenance-pressure cases. All 240 calls used the
 frozen condition packets and pre-registered seed rule; no timeout retry seed was
 used. Raw API JSON and final-output convenience copies stay local-only under
-`local-only/runs/locator-accuracy-v2-v1/`. No OUT-NN anonymisation packet has
-been built, no judge has scored the outputs, no reconciliation has occurred,
+`local-only/runs/locator-accuracy-v2-v1/`. A condition-blind OUT-NN judge
+packet has been built under `judge-packet/`, with the OUT-NN origin map kept
+local-only. No judge has scored the outputs, no reconciliation has occurred,
 and `## Result` stays `partial`.
 
 - `vanilla` (40 runs):

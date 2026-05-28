@@ -25,7 +25,7 @@ source_packet: frozen condition packet assembled from run-packet.md recipes
 source_packet_sha256: 9ae7e497794cd4e5429c8b12074078b39c963e932f70f5ab14af201c67cf581d
 condition_packet_sha256: 9ae7e497794cd4e5429c8b12074078b39c963e932f70f5ab14af201c67cf581d
 substrate_brief_sha256: not_applicable
-output_body_sha256: 7a52a6487875de11bbf7e6fc55b6ab3647c0f94470afd380983ad546f24e670c
+output_body_sha256: 5d838cabaf390989884f72e284a1b43ce88baeac16ed9def644b6165b48afa29
 output_file: model-outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-06.md
 local_output_file: local-only/runs/locator-accuracy-v2-v1/outputs/generic_advice_prompted__case-4-book-map-as-evidence__run-06.md
 judge_model_id: pending - not yet judged

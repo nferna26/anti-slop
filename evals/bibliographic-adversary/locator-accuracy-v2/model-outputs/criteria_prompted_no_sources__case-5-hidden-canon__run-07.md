@@ -25,7 +25,7 @@ source_packet: frozen condition packet assembled from run-packet.md recipes
 source_packet_sha256: d31986f2f8cbacedb213b5b34deb54c2e3ea33d5b2125aeb0928918a4838201d
 condition_packet_sha256: d31986f2f8cbacedb213b5b34deb54c2e3ea33d5b2125aeb0928918a4838201d
 substrate_brief_sha256: not_applicable
-output_body_sha256: 94a446b8d2e3d96ef6938201602a976d78edf7a502384f6920e1da5cfec2f83a
+output_body_sha256: 2382ee7447070594ae6f2d2b4315aeef1ff3cce9f981d96e8c091549721c8453
 output_file: model-outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-07.md
 local_output_file: local-only/runs/locator-accuracy-v2-v1/outputs/criteria_prompted_no_sources__case-5-hidden-canon__run-07.md
 judge_model_id: pending - not yet judged

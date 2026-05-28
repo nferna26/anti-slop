@@ -12,10 +12,11 @@ created: 2026-05-28
 Run packet for the `locator-accuracy-v2` bibliographic-adversary case. This
 file records the condition-packet recipes, hashes, generator settings, run
 counts, output and anonymisation rules, judge-route references, freeze
-checklist, and generation record. The packet was frozen before generation. The
-benchmark generation pass has now produced 240 real model-output receipts, but
-no OUT-NN files exist, no judging has occurred, no reconciliation has occurred,
-and no Result is lifted.
+checklist, and generation/anonymisation record. The packet was frozen before
+generation. The benchmark generation pass has now produced 240 real
+model-output receipts, and a condition-blind OUT-NN judge packet has been
+built. No judging has occurred, no reconciliation has occurred, and no Result
+is lifted.
 
 The v2 change from `locator-accuracy-v1-v1` is calibration semantics: F5
 co-fire behavior and coverage Anchor H were clarified before freeze. The
@@ -28,7 +29,7 @@ coverage metric, and no-canon boundary are not modified here.
 
 ## Status
 
-**Frozen, run, not judged.** The hosted-primary calibration gate cleared before
+**Frozen, run, anonymised, not judged.** The hosted-primary calibration gate cleared before
 freeze: `hosted_anthropic_r2` and `hosted_openai_r3` both matched F1-F5 anchors
 A-F and coverage anchors G-L exactly after the H-clarity repair. See
 `calibration-decision.md` and `judge-packet/judge-route-preregistration.md`.
@@ -53,7 +54,7 @@ Frozen committed-head hashes:
 
 | Artifact | `sha256` |
 | --- | --- |
-| `evals/bibliographic-adversary/locator-accuracy-v2/case.md` | `47004d6254afe68b2a2974ac17dbb2ec41ad21a37383e409aa83ff3132d9831b` |
+| `evals/bibliographic-adversary/locator-accuracy-v2/case.md` | `cb4f698149b5e79282577943bcb371192c069995f2ecaf1f1cbe06cc00a2516f` |
 | `evals/bibliographic-adversary/locator-accuracy-v2/judge-packet/calibration-anchors.md` | `36e563e3176d6b437973cd179e18bfed21521cebdd08f1878f23c759b2902aac` |
 | `evals/bibliographic-adversary/locator-accuracy-v2/judge-packet/judge-route-preregistration.md` | `567fefcd80dcca1789b3164c2a4eadcef1fa4cafdd82ac63aa13ffcbb3ac4903` |
 | `evals/bibliographic-adversary/locator-accuracy-v2/substrate-brief-audit.md` | `754413c86ee7143b088b9d8a2e3e6a1ca1765995d17304920f7eb26368daf9e6` |
@@ -177,10 +178,10 @@ at `local-only/runs/locator-accuracy-v2-v1/assemble.py`.
 
 ## Judge-Packet Structure
 
-At run time a condition-blind judge packet is built only after generation and
-anonymisation. It will contain condition-neutral judge instructions, the F1-F5
-rubric and coverage metric, calibration Surface 1 and Surface 1B, anonymised
-OUT-NN outputs, an output-hash manifest, and a blank score sheet.
+The condition-blind judge packet was built only after generation and
+anonymisation. It contains condition-neutral judge instructions, the F1-F5
+rubric and coverage metric, calibration Surface 1 and Surface 1B only,
+anonymised OUT-NN outputs, an output-hash manifest, and a blank score sheet.
 
 Surface 2 and Surface 2B stay operator-only and are withheld from each judge
 until that judge has completed Surface 1 and Surface 1B. The `OUT-NN` ->
@@ -207,8 +208,9 @@ Completed at freeze-prep time, before any output was generated.
       valid support coverage.
 - [x] X/Y/Z benchmark-scale rule preserved exactly from v1.
 - [x] Freeze-prep timestamp recorded (2026-05-28).
-- [x] Generation later produced 240 real model-output receipts. No OUT-NN files;
-      no receipt index; no judging; no reconciliation; no Result lift.
+- [x] Generation later produced 240 real model-output receipts.
+- [x] OUT-NN anonymisation packet later built. No receipt index; no judging; no
+      reconciliation; no Result lift.
 
 ## Run
 
@@ -231,10 +233,36 @@ advisor prompt sha256, real-run classification, output-body sha256, and the
 verbatim answer. Raw API JSON and final-output convenience copies stay in the
 git-ignored local-only run folder.
 
-No anonymisation has occurred in this tranche. No `OUT-NN` labels, output-hash
-manifest, condition-blind judge packet, receipt index, judge scoring,
-aggregate reconciliation, or eval decision was created. The `OUT-NN` answer key
-does not exist and is not committed.
+## Anonymisation
+
+The anonymisation pass was run after generation and before any judge scoring.
+It extracted the text after the first `## Output` heading from each committed
+model-output receipt, stripped leading/trailing whitespace for hashing and
+display, computed `sha256` over that extracted body, sorted outputs by
+`output_body_sha256` ascending, and assigned labels `OUT-001` through
+`OUT-240`. Because many outputs are exact duplicates, the local-only receipt
+path was used only as a deterministic tie-breaker for duplicate hashes; that
+tie-breaker is not exposed in judge-facing files.
+
+The committed judge packet now includes:
+
+- `judge-packet/README.md`
+- `judge-packet/judge-instructions.md`
+- `judge-packet/case-context.md`
+- `judge-packet/rubric.md`
+- `judge-packet/calibration-exercise.md`
+- `judge-packet/outputs/OUT-001.md` through `OUT-240.md`
+- `judge-packet/output-manifest.yaml`
+- `judge-packet/blank-score-sheet.md`
+
+The public `output-manifest.yaml` maps each OUT label only to its
+`output_body_sha256`. The full `OUT-NN` -> condition/case/run answer key is
+stored only in the git-ignored local-only run folder at
+`local-only/runs/locator-accuracy-v2-v1/out-nn-answer-key.yaml` and is not
+committed.
+
+No judge scoring, receipt index, aggregate reconciliation, eval decision, or
+Result lift was created in this tranche.
 
 ## Discipline Note
 
