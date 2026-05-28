@@ -60,6 +60,27 @@ Canon changes only through the candidate → approval → registry path. Do not:
 
 If a machine-generated map or card states an advisory claim, mark its authority level explicitly per `docs/source-authority-levels.md`.
 
+## Local API credentials
+
+Hosted judge routes may require `OPENAI_API_KEY` and `ANTHROPIC_API_KEY` to be loaded from a local-only, untracked `.env*` file before running calibration scripts. Never copy API key values, raw `.env` contents, or private credential paths into repo artifacts. When checking availability, report only variable names and redact values.
+
+Safe pattern:
+
+```sh
+set -a
+source <local-untracked-env-file>
+set +a
+python3 - <<'PY'
+import os
+for name in ("OPENAI_API_KEY", "ANTHROPIC_API_KEY"):
+    print(f"{name}_PRESENT={bool(os.environ.get(name))}")
+PY
+```
+
+## Goal prompt length
+
+When drafting reusable `/goal` prompts for Codex or Claude Code, keep the prompt under 4,000 characters. Compress context aggressively: include only current state, hard constraints, tasks, acceptance gates, and final-report requirements.
+
 ## How future agents should update KB pages safely
 
 1. **Read first.** `README.md`, this file, `kb/index.md`, `kb/log.md`, and the workflow doc relevant to the artifact type.
