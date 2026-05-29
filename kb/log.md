@@ -14,6 +14,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not add MCP/runtime/RAG/product integration (substrate-not-runtime). Did not substitute Gemma or edit the frozen v4 harness to force a generator-swap. Did not promote canon, lift any review status, or create a registry decision. The holdout cards' `reviewed` flags are fixture-only smoke flags, not real operator reviews.
 - Follow-up: Run the pre-registered generator-swap v4 slice once a second different-family hosted judge route is available (`OPENAI_API_KEY` present), with the frozen v4 condition packets and rule unchanged and aggregate-only public-safe receipts — to test whether the substrate separation is generator-portable or a Gemma artifact.
 
+(CLI-packaging tranche — same day, separate entry)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `gate_citation_lineage --self-test`, `gate_no_universalization --self-test`, `make citation-dogfood` (PASS), `make demo` (PASS), `make holdout-smoke` (PASS), `make package-smoke` (PASS — isolated venv install + installed-CLI `--self-test` + holdout `--root --require-reviewed` audit), `python3 scripts/artifact_preflight.py --strict` (0 blockers, 2 pre-existing warnings), and `git diff --check` all exited 0 for the CLI-packaging tranche. Private-path sweep clean.
+- Eval run: —
+- Decision: Merged PR #23 (holdout-transfer smoke) into the integration branch `codex/locator-accuracy-v1-benchmark-run` (merge commit `3971f60`). Packaged the deterministic citation-lineage gate as an installable CLI: added `pyproject.toml` exposing console command `anti-slop-lineage` whose entry point **is** the existing gate's `main()` (zero behaviour fork; stdlib-only, no model/API/network), packaging the **unmodified** `scripts/gate_citation_lineage.py` as an importable module via `py-modules` + `package-dir`. Added `scripts/package_smoke.sh` + `make package-smoke` (offline isolated-venv install, installed `--self-test`, and a `--root --require-reviewed` audit of the holdout fixture: brief-assisted PASS, source-free FAIL). Documented checkout-mode vs package-mode usage in `docs/citation-lineage-gate.md` and a one-line README note; reaffirmed the narrow tier (deterministic/benchmark-backed only for lineage resolution + reviewed-lineage; not advice/slop/source-truth/canon/model). Packaging adds distribution, not capability.
+- Rejected/deferred: Deferred the MCP wrapper (`docs/citation-lineage-mcp-deferred.md`): a real MCP server needs the non-stdlib `mcp` SDK and a server runtime, crossing the substrate-not-runtime line (`AGENTS.md`) and the no-hosted-service constraint, and would add transport not capability. Documented a thin, dependency-free local sketch (wrapping the existing `build_index` + `check_paths`) and a deferred FastMCP sketch labelled experimental/local-only — NOT committed as a runtime. No model/RAG/vector-store/advisor introduced; no canon promotion, `Result` lift, or registry decision; no frozen v2/v3/v4 eval artifact touched.
+- Follow-up: If a concrete local agent later needs the gate over MCP, implement the documented thin local wrapper (no model; caller supplies `root`); otherwise the CLI covers current needs. Wiring `make package-smoke` into `.github/workflows/ci.yml` is an optional next step (CI currently runs the in-tree gate, dogfood, and demo).
+
 ## 2026-05-28
 
 - Ingested: —

@@ -67,6 +67,44 @@ make demo
 
 The same commands run in CI (`.github/workflows/ci.yml`).
 
+## Install as a CLI (package mode)
+
+`pyproject.toml` packages the **existing, unmodified** gate module as an
+importable module (`gate_citation_lineage`) and a console command
+(`anti-slop-lineage`). The entry point **is** the gate's own `main()`, so the
+packaged CLI and `python3 scripts/gate_citation_lineage.py` are byte-identical in
+behaviour — same args (file paths, `--root`, `--require-reviewed`,
+`--self-test`), same exit codes (`0` pass / `1` findings / `2` usage). It is
+stdlib-only: **no** model, API, network, or runtime dependency.
+
+```sh
+# Checkout mode (no install): run the script in-tree.
+python3 scripts/gate_citation_lineage.py --root /path/to/kb --require-reviewed file.md
+
+# Package mode: install the console command, then run it from anywhere.
+pip install .            # or: pip install -e .   (editable, for development)
+anti-slop-lineage --self-test
+anti-slop-lineage --root /path/to/kb --require-reviewed file.md
+```
+
+The installed CLI ships **no corpus**: always pass `--root <kb-root>` to point it
+at a checkout or fixture tree (or use `--self-test`, which builds its own
+temporary fixture roots). Run `from gate_citation_lineage import build_index,
+check_paths` to use the same resolver as a library.
+
+```sh
+# Package smoke: install into a throwaway isolated venv, then prove the INSTALLED
+# command self-tests and audits the holdout fixture identically to the in-tree
+# gate (offline; no network/model/API):
+make package-smoke
+```
+
+The CLI is deterministic and benchmark-backed **only** for what the gate already
+does — lineage resolution and (with `--require-reviewed`) reviewed-lineage
+checks. Packaging adds distribution, not capability: it is a checker, not an
+advisor, and proves nothing about advice quality, source truth, reasoning, slop,
+or canon.
+
 ## Gate tiers (be precise about maturity and backing)
 
 - **Deterministic, implemented:**
