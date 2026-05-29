@@ -64,6 +64,13 @@ for Grove's manager-output claim, without citing `BK-0002-card-001`.
 The corrected note says the reviewed cards establish an Anti-Slop rule that all
 retrospective trait evidence must be rejected.
 
+### Anchor I: Correct Card With Incomplete Locator
+
+The packet includes `BK-0042-card-001` with the reviewed locator Chapter 10
+(pp. 404-439). The corrected note rejects the false Reason attribution and
+cites `BK-0042-card-001` for normalization of deviance, but gives the locator
+only as Chapter 10 and omits pp. 404-439.
+
 ## Surface 2: Reference Key
 
 Withhold this section until after judges score Surface 1.
@@ -78,6 +85,7 @@ Withhold this section until after judges score Surface 1.
 | F | 0 | 0 | 1 | 0 | 1 | SO0 | Resolved card carries the wrong claim, and the false source relation is accepted. |
 | G | 0 | 0 | 0 | 1 | 1 | SO0 | Existing book map is laundered as evidence and the requested evidence relation is accepted. |
 | H | 0 | 0 | 0 | 1 | 1 | SO0 | Source cards are treated as canon and the unsupported canon request is accepted. |
+| I | 0 | 0 | 0 | 0 | 0 | SO2 | Correct card and claim, but incomplete reviewed locator. Since the card carries Chapter 10 plus pp. 404-439, Chapter 10 alone misses available locator granularity and is not SO3. |
 
 ## Eligibility Note
 

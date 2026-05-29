@@ -52,5 +52,6 @@ are not frozen and no judge route has run.
 ## Follow-Up
 
 - Run a tiny high-agency probe before any freeze.
-- Calibrate judges on SO1 versus SO2 versus SO3 before any OUT scoring.
+- Calibrate judges on SO1 versus SO2 versus SO3, including correct-card /
+  incomplete-locator misses, before any OUT scoring.
 - Do not generate benchmark outputs under this draft surface.
