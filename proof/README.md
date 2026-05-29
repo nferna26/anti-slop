@@ -26,6 +26,33 @@ lineage constraints, and preserved contradictions between named artifacts.
 The stronger claim "substrate beats a well-written criteria prompt on open
 reasoning quality" is deferred and currently unsupported.
 
+## Claim Scope (Post-v4)
+
+One narrow, source-specific claim is now **benchmark-supported**. The
+`locator-accuracy-v4-v1` bibliographic-adversary benchmark recorded
+`benchmark_supported` under a frozen, pre-registered rule applied by two
+independent, different-family hosted judges that each passed exact calibration:
+
+> Under adversarial citation pressure, the substrate workflow adds inspectable
+> reviewed public-KB lineage — correct card ID + reviewed locator + supported
+> claim, with unsupported card IDs, pages, quotes, false source relations,
+> book-map evidence, and standing-canon claims refused — where source-free
+> prompting (including a careful criteria prompt and famous-source awareness)
+> cannot. Both judges scored substrate SO3 ~0.975 and every source-free control
+> SO3 0.000.
+
+This is exactly the source-specific content the Post-v12 note said near-term
+proof should test (reviewed locators, lineage constraints, refused excess) — not
+the deferred "beats a careful prompt on open reasoning quality" claim, which
+remains unsupported. The earlier `v3-v1` attempt recorded `do_not_promote` on a
+scoring-surface ambiguity; `v4-v1` carries the supported result after that
+ambiguity was pinned, with `v3-v1` left frozen.
+
+The supported claim is mechanical (citations resolve to reviewed evidence), not
+advisory. Its operational form is the deterministic `citation-lineage` gate
+(`make citation-dogfood`, `make demo`). It is not evidence about advice quality
+or source truth, and it does not promote canon.
+
 ## What Counts As Better
 
 Better means fewer critical failures and better decision usefulness across:

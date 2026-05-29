@@ -38,6 +38,8 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - Status report: `make report` (output is read-only; no commits required).
 - Phase 2 queue: `make phase2-queue` (prints the first verification batch).
 - Boundary brief compiler: `make compile-brief BRIEF_ID=<slug> CARDS="<card_id...>"`.
+- Citation-lineage gate (deterministic; operational form of the benchmark-supported mechanical-lineage primitive): `make gate-citation-lineage FILE=<f>` (add `--require-reviewed` for reviewed-only), `make gate-citation-lineage-self-test`, and `make citation-dogfood` (runs it over the KB's own corpus + eval design/decision lineage, failing on unresolved/unreviewed references).
+- [Citation-lineage demo](../proof/citation-lineage-demo/README.md): `make demo` — stranger-reproducible compile-brief -> sample output -> gate -> receipt, no API key or raw book.
 
 ## Artifact Templates
 

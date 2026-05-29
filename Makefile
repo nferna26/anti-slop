@@ -69,6 +69,24 @@ gate-citation-lineage:
 gate-citation-lineage-self-test:
 	python3 scripts/gate_citation_lineage.py --self-test
 
+# Dogfood the deterministic citation-lineage gate over the KB's own lineage
+# artifacts: every source/card reference must resolve, and (--require-reviewed)
+# every source-card reference must resolve to a REVIEWED card. Scope is the
+# lineage-bearing artifacts (corpus cards/maps + eval design/decision docs); it
+# excludes model-outputs/ and judge-packet/outputs/, which are test artifacts
+# that may cite fabricated lineage by design (that is the model behaviour an
+# eval scores, not a KB defect). Fails the build on any unresolved lineage.
+citation-dogfood:
+	@python3 scripts/gate_citation_lineage.py --require-reviewed \
+		$$(find corpus/source-cards corpus/claim-tension-cards corpus/book-maps -name '*.md') \
+		$$(find evals -name '*.md' -not -path '*/model-outputs/*' -not -path '*/judge-packet/outputs/*')
+
+# Stranger-reproducible demo of the mechanical-lineage primitive:
+# compile_brief -> static sample corrected note -> gate_citation_lineage ->
+# receipt. No API key, network, model runtime, or raw book required.
+demo:
+	python3 scripts/demo_citation_lineage.py
+
 gate-no-universalization:
 	python3 scripts/gate_no_universalization.py $(FILE)
 
