@@ -221,18 +221,21 @@ def classify(rep: CaseReadiness) -> None:
     if rep.output_total > 0:
         if rep.eval_decision:
             # Reconciliation and a Positive-result check are recorded — the
-            # eval-decision (e.g., do_not_promote) sits on top of the score
-            # sheet. Don't print a stale "reconciliation pending" gap; the
-            # eval-decision is surfaced in its own line in the per-case output,
-            # and the case is NOT benchmark-ready under the pre-registered rule.
+            # eval-decision sits on top of the score sheet and is surfaced in its
+            # own per-case line. A non-promotion decision (e.g., do_not_promote)
+            # leaves the case NOT benchmark-ready and records a gap; a
+            # benchmark_supported decision means the frozen rule was MET, so no
+            # readiness gap is recorded (any canon promotion / Result-status lift
+            # beyond the decision remains a separate operator decision).
             dec = rep.eval_decision.get("eval_decision", "(unspecified)")
             dclass = rep.eval_decision.get("decision_class", "")
             label = dec + (f" [{dclass}]" if dclass else "")
-            gaps.append(
-                f"reconciliation complete; eval-decision recorded ({label}) — "
-                "the pre-registered Positive-result rule is not met; case is "
-                "not benchmark-ready"
-            )
+            if dec != "benchmark_supported":
+                gaps.append(
+                    f"reconciliation complete; eval-decision recorded ({label}) — "
+                    "the pre-registered Positive-result rule is not met; case is "
+                    "not benchmark-ready"
+                )
         elif rep.has_eligible_independent:
             elig = rep.eligible_independent_count
             gaps.append(
