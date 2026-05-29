@@ -1,0 +1,11 @@
+# Holdout fixture manifest — holdout_smoke_not_benchmark. NOT the real corpus.
+#
+# This file exists only so gate_citation_lineage.py, when pointed at this packet
+# with --root, resolves the holdout source_ids against a self-contained tree.
+# The BK-79## band is reserved for fixtures and does not exist in the real
+# corpus/manifests/books-200.yaml (BK-0001..BK-0200). Not canon, not source truth.
+books:
+  - source_id: BK-7901
+    note: synthetic naturalist fixture source
+  - source_id: BK-7902
+    note: synthetic botany/observation fixture source

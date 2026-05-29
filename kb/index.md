@@ -16,6 +16,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - [KB maintenance contract](../docs/kb-maintenance-contract.md): operational detail behind `AGENTS.md`.
 - [Front-door quality gate](../docs/front-door-quality-gate.md): what `make kb-lint` enforces, plus `make validate` and `make report`.
 - [Citation-lineage gate](../docs/citation-lineage-gate.md): the deterministic, benchmark-backed citation gate — `--root`, `--require-reviewed`, `make citation-dogfood`, `make demo`, gate tiers, and the narrow supported claim.
+- [Citation-lineage transfer memo](../docs/citation-lineage-transfer-memo.md): post-v4 decision memo — holdout-transfer smoke result, the `blocked_generator_unavailable` generator-swap, what transferred (mechanical lineage only), and the next-step recommendation. Not canon, not a benchmark.
 - [End-to-end walkthrough template](../docs/end-to-end-walkthrough-template.md): fill-in walkthrough from source to public receipt.
 - [Operator roles](../docs/operator-roles.md): GM, source owner, judge, editor, canon owner, eval owner.
 - [Local source shelf](../docs/local-source-shelf.md): where raw sources live and how the public KB references them.
@@ -41,6 +42,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 - Boundary brief compiler: `make compile-brief BRIEF_ID=<slug> CARDS="<card_id...>"`.
 - Citation-lineage gate (deterministic; operational form of the benchmark-supported mechanical-lineage primitive): `make gate-citation-lineage FILE=<f>` (add `--require-reviewed` for reviewed-only), `make gate-citation-lineage-self-test`, and `make citation-dogfood` (runs it over the KB's own corpus + eval design/decision lineage, failing on unresolved/unreviewed references).
 - [Citation-lineage demo](../proof/citation-lineage-demo/README.md): `make demo` — stranger-reproducible compile-brief -> sample output -> gate -> receipt, no API key or raw book.
+- [Holdout-transfer smoke](../runs/holdout-transfer-smoke/v1-citation-lineage-naturalist-holdout-2026-05-29/README.md): `make holdout-smoke` — transfer probe (`holdout_smoke_not_benchmark`) showing the deterministic citation-lineage primitive resolves a self-contained, non-business synthetic corpus via `--root`. Not a benchmark, not canon, not source truth.
 
 ## Artifact Templates
 
