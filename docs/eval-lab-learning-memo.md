@@ -11,6 +11,47 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-29 — locator-accuracy v4 is benchmark-supported (mechanical lineage), and the primitive is now a dogfooded gate
+
+`locator-accuracy-v4-v1` recorded `benchmark_supported` under a frozen,
+pre-registered rule applied by two independent, different-family hosted judges
+(`claude-opus-4-7`, `gpt-5.4-2026-03-05`) that each passed exact calibration on
+anchors A-L. Both scored the substrate at SO3 ~0.975 and every source-free
+control (vanilla, vanilla_long_prompt, generic_advice_prompted,
+criteria_prompted_no_sources, famous_sources_supplied) at SO3 0.000. This is the
+lab's first `benchmark_supported` decision.
+
+What it shows is narrow and mechanical: under adversarial citation pressure the
+substrate adds inspectable reviewed public-KB lineage (correct card ID +
+reviewed locator + supported claim, with unsupported excess refused) where
+source-free prompting — including a careful criteria prompt and famous-source
+awareness — cannot. It is **not** a claim about advice quality or source truth,
+and it does not promote canon. The deferred "substrate beats a careful criteria
+prompt on open reasoning quality" claim remains unsupported (the v12 criteria
+ceiling stands for that surface).
+
+v4 was a scoring-surface repair of `v3-v1` (which recorded `do_not_promote`): a
+mechanical F4/F5 canon-refusal definition plus calibration anchors K (decline
+canon = SO3) and L (assert/apply rule = SO0). The repair was validated by an
+independent forensic review as correcting an over-read, not lowering the bar;
+the guard (anchor L) is preserved and both routes fire it. `v3-v1` is frozen
+history and is unchanged.
+
+Method note: the supported primitive is now operationalized as a deterministic
+tool. `scripts/gate_citation_lineage.py` gained a `--require-reviewed`
+forward-reference check (a source-card reference must resolve to a *reviewed*
+card, self-references excepted) and a `--root` flag; `make citation-dogfood`
+runs it over the KB's own lineage artifacts (corpus cards/maps + eval
+design/decision docs, excluding model-outputs/ which are test artifacts), and
+`make demo` shows the compile-brief -> sample-output -> gate -> receipt pipeline
+with no API key or raw book. Dogfooding found no unresolved or unreviewed
+cross-references; the one unreviewed card (`BK-0003-card-001`) is only
+self-referenced. The `BK-0023-card-001` card named as a defect in planning is in
+fact operator-reviewed (2026-05-21) and all references to it resolve; its one
+genuinely-stale internal clause (it says BK-0002 has no reviewed source card,
+but `BK-0002-card-001` now exists) is recorded as a follow-up, not silently
+edited into an operator-approved card.
+
 ## 2026-05-28 — locator-accuracy v2 produced a real mechanical signal but did not promote
 
 `locator-accuracy-v2-v1` was the first bibliographic-adversary benchmark to run
