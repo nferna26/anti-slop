@@ -110,8 +110,9 @@ is mechanical and reproducible:
   reference must resolve to a *reviewed* card. This is the operational form of
   the **benchmark-supported** mechanical-lineage primitive (locator-accuracy-v4).
   It is self-tested (`make gate-citation-lineage-self-test`), dogfooded over the
-  KB's own lineage artifacts (`make citation-dogfood`), and demonstrated
-  end-to-end (`make demo`).
+  KB's own lineage artifacts (`make citation-dogfood`), demonstrated end-to-end
+  (`make demo`), and run in CI (`.github/workflows/ci.yml`). Usage:
+  [`docs/citation-lineage-gate.md`](docs/citation-lineage-gate.md).
 - raw-text / quote check (`scripts/check_no_raw_text.py`, `make check-raw`) —
   *implemented*: a mechanical scan for committed raw copyrighted text.
 - quote-limit, authority-order — *scaffold-only* (`gates/gate-specs.yaml`):
