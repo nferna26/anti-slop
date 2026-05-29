@@ -15,8 +15,9 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 
 - [KB maintenance contract](../docs/kb-maintenance-contract.md): operational detail behind `AGENTS.md`.
 - [Front-door quality gate](../docs/front-door-quality-gate.md): what `make kb-lint` enforces, plus `make validate` and `make report`.
-- [Citation-lineage gate](../docs/citation-lineage-gate.md): the deterministic, benchmark-backed citation gate — `--root`, `--require-reviewed`, `make citation-dogfood`, `make demo`, gate tiers, and the narrow supported claim.
+- [Citation-lineage gate](../docs/citation-lineage-gate.md): the deterministic, benchmark-backed citation gate — `--root`, `--require-reviewed`, `make citation-dogfood`, `make demo`, the `anti-slop-lineage` CLI install (`pip install .`, `make package-smoke`), gate tiers, and the narrow supported claim.
 - [Citation-lineage transfer memo](../docs/citation-lineage-transfer-memo.md): post-v4 decision memo — holdout-transfer smoke result, the `blocked_generator_unavailable` generator-swap, what transferred (mechanical lineage only), and the next-step recommendation. Not canon, not a benchmark.
+- [Citation-lineage MCP (deferred)](../docs/citation-lineage-mcp-deferred.md): why an MCP wrapper is deferred (substrate, not a runtime; `mcp` SDK is a non-stdlib runtime dependency) plus a thin, dependency-free local sketch around the existing resolver. Experimental/local-only if ever added.
 - [End-to-end walkthrough template](../docs/end-to-end-walkthrough-template.md): fill-in walkthrough from source to public receipt.
 - [Operator roles](../docs/operator-roles.md): GM, source owner, judge, editor, canon owner, eval owner.
 - [Local source shelf](../docs/local-source-shelf.md): where raw sources live and how the public KB references them.

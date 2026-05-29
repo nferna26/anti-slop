@@ -94,6 +94,13 @@ demo:
 holdout-smoke:
 	python3 scripts/holdout_smoke.py
 
+# Package smoke: install the anti-slop-lineage CLI (pyproject.toml) into a
+# throwaway isolated venv, then prove the INSTALLED console command self-tests
+# and audits the holdout fixture identically to the in-tree gate. Offline; no
+# network/model/API. The packaged CLI is the gate's own main() (no behaviour fork).
+package-smoke:
+	bash scripts/package_smoke.sh
+
 gate-no-universalization:
 	python3 scripts/gate_no_universalization.py $(FILE)
 

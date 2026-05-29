@@ -1,0 +1,43 @@
+# Packaging for the deterministic citation-lineage gate.
+#
+# This installs the EXISTING, unmodified gate module (scripts/gate_citation_lineage.py)
+# as an importable module and a console command. It does NOT fork or reimplement
+# the gate: the `anti-slop-lineage` entry point is the gate's own main(), so the
+# packaged CLI and `python3 scripts/gate_citation_lineage.py` are byte-identical
+# in behaviour.
+#
+# Scope of the tool (narrow, deterministic): it audits whether the card/source
+# IDs an artifact cites RESOLVE to known public-KB lineage, and (with
+# --require-reviewed) resolve to *reviewed* source cards. That is all. It is NOT
+# an advisor, does NOT call any model/API/network, does NOT prove source truth,
+# advice quality, reasoning, or slop reduction, and does NOT promote canon.
+#
+# stdlib-only: no runtime dependencies.
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anti-slop-lineage"
+version = "0.1.0"
+description = "Deterministic citation-lineage gate: audit that cited card/source IDs resolve to reviewed public-KB lineage. Not an advisor, not a model, not canon."
+requires-python = ">=3.9"
+dependencies = []
+keywords = ["citation", "lineage", "provenance", "deterministic", "audit"]
+
+[project.scripts]
+# The CLI IS the gate's own main() — same args (file paths, --root,
+# --require-reviewed, --self-test), same exit codes (0 pass / 1 findings /
+# 2 usage). The installed CLI ships NO corpus: pass --root <kb-root> to point it
+# at a checkout or fixture tree (or use --self-test, which builds its own
+# temporary fixture roots).
+anti-slop-lineage = "gate_citation_lineage:main"
+
+[tool.setuptools]
+# Package the single existing gate module only — explicit py-modules disables
+# package auto-discovery, so nothing else under scripts/ is swept in.
+py-modules = ["gate_citation_lineage"]
+
+[tool.setuptools.package-dir]
+"" = "scripts"
