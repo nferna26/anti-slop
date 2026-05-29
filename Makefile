@@ -87,6 +87,13 @@ citation-dogfood:
 demo:
 	python3 scripts/demo_citation_lineage.py
 
+# Holdout-transfer smoke (holdout_smoke_not_benchmark): does the deterministic
+# citation-lineage primitive transfer to a NON-benchmark-shaped corpus? Runs the
+# unmodified gate over a self-contained synthetic naturalist fixture corpus via
+# --root. No API key, network, model runtime, or raw book. Not a benchmark.
+holdout-smoke:
+	python3 scripts/holdout_smoke.py
+
 gate-no-universalization:
 	python3 scripts/gate_no_universalization.py $(FILE)
 

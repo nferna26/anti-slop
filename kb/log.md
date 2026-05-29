@@ -2,6 +2,18 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-29
+
+- Ingested: —
+- Mapped: —
+- Carded: — (no corpus cards; the holdout fixtures live under `runs/` and are synthetic smoke fixtures, not corpus source cards)
+- Tension preserved: —
+- Gate run: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `gate_citation_lineage --self-test`, `gate_no_universalization --self-test`, `make citation-dogfood` (PASS, 321 files / 3023 references), `make demo` (PASS), `make holdout-smoke` (PASS), `python3 scripts/artifact_preflight.py --strict` (0 blockers, 2 pre-existing warnings), and `git diff --check` all exited 0 after the post-v4 transfer tranche. Private-path sweep over `corpus/ kb/ docs/ evals/ runs/ registry/ proof/ gates/` clean.
+- Eval run: Generator-swap replication attempt recorded `blocked_generator_unavailable` with evidence. Non-Gemma local generators exist (Ollama `gpt-oss:20b`, `qwen3.5`), but the frozen `locator-accuracy-v4` harness pins the Gemma generator with no swap flag, and the frozen two-different-family hosted-judge rule cannot be met with only `ANTHROPIC_API_KEY` present (`OPENAI_API_KEY` absent; variable-name booleans only, values not inspected or hunted). Gemma was not substituted, the v4 recipe was not revised, and no result was rescued or fabricated. Generator portability of the substrate separation remains untested. No frozen v2/v3/v4 eval artifact touched; no `Result` lift, canon promotion, or registry decision.
+- Decision: Merged PR #22 (OSS-readiness: CI dogfood, citation-lineage docs, BK-0023 stale-clause reconcile) into the integration branch `codex/locator-accuracy-v1-benchmark-run` (merge commit `b275dcf`; six files; no frozen eval artifact touched). Added a holdout-transfer smoke (`holdout_smoke_not_benchmark`): a self-contained synthetic **field-naturalism** fixture corpus (reserved BK-79xx band; 3 reviewed + 1 deliberately unreviewed card) under `runs/holdout-transfer-smoke/v1-citation-lineage-naturalist-holdout-2026-05-29/`, plus `scripts/holdout_smoke.py` and a `make holdout-smoke` target. The **unmodified** `gate_citation_lineage.py`, via `--root`, resolved the new-domain corpus and discriminated lineage: a brief-assisted note PASSED in both default and `--require-reviewed` modes (0 unresolved); a source-free note FAILED in both (8 fabricated-ID findings in default; +3 unreviewed-as-reviewed `BK-7902-card-002` findings under `--require-reviewed`). Conclusion: the deterministic mechanical-lineage primitive is corpus-agnostic — it transferred. This is not a model measurement, not a benchmark, and says nothing about advice quality, slop, reasoning, or source truth. Go/no-go recorded in `docs/citation-lineage-transfer-memo.md`: packaging the deterministic gate as a corpus-agnostic checker is defensible next; MCP/runtime/RAG is not justified until generator portability is tested.
+- Rejected/deferred: Did not add MCP/runtime/RAG/product integration (substrate-not-runtime). Did not substitute Gemma or edit the frozen v4 harness to force a generator-swap. Did not promote canon, lift any review status, or create a registry decision. The holdout cards' `reviewed` flags are fixture-only smoke flags, not real operator reviews.
+- Follow-up: Run the pre-registered generator-swap v4 slice once a second different-family hosted judge route is available (`OPENAI_API_KEY` present), with the frozen v4 condition packets and rule unchanged and aggregate-only public-safe receipts — to test whether the substrate separation is generator-portable or a Gemma artifact.
+
 ## 2026-05-28
 
 - Ingested: —
