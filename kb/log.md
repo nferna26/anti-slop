@@ -38,6 +38,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not substitute Gemma, edit frozen v4 packets/rules, or fake judging. Did not use a local model as a second judge (the frozen rule permits a local backup only via exact A-L calibration — heavier, separate, not attempted). Did not commit raw outputs, model thinking, per-output condition maps, answer keys, or local-only paths. No MCP runtime, model call, RAG, vector store, or hosted service added.
 - Follow-up: Score the already-generated 30 outputs against the frozen v4 rubric/rule (aggregate-only) once a second different-family hosted route (`OPENAI_API_KEY`) is available → `portable_signal` or `failed_signal`.
 
+(Judge-route re-check tranche — same day, separate entry)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `gate_citation_lineage --self-test`, `gate_no_universalization --self-test`, `make citation-dogfood` (PASS), `make demo` (PASS), `make holdout-smoke` (PASS), `make package-smoke` (PASS), `python3 scripts/artifact_preflight.py --strict` (0 blockers), `git diff --check` all exited 0. Frozen v4 condition packets re-verified 30/30 (0 mismatch). Private-path sweep clean.
+- Eval run: Re-checked judge-route availability to finish the generator-swap portability decision → status `blocked_judge_route_unavailable`. Credentials as booleans only (values not inspected or hunted): `ANTHROPIC_API_KEY` present; `OPENAI_API_KEY` / `GEMINI_API_KEY` / `GOOGLE_API_KEY` absent — one different-family hosted route, but the frozen v4 rule requires two. No judging performed, faked, or run with an ineligible judge; no local model substituted as a second route. The 30 staged `gpt-oss:20b` outputs remain intact local-only (consistent with the PR #25 receipt: `generated_not_judged`). Generator portability remains UNANSWERED; the slice stays staged. No frozen v2/v3/v4 artifact, rule, rubric, judge packet, or decision changed; no `Result` lift, canon, or registry decision.
+- Decision: Merged PR #25 (generator-swap slice + Days 1-7 CI closeout; merge commit `caa450a`). Confirmed package closeout: installable `anti-slop-lineage` CLI, `make package-smoke` green in the CI `package` job, MCP deferred, docs claim mechanical lineage only. Recorded the judge-route re-check as an addendum in `docs/generator-swap-portability-memo.md`.
+- Rejected/deferred: Did not fake judging, use an ineligible local judge, substitute Gemma, change frozen v4 packets/rules, or hunt for the missing credential. Did not commit raw outputs, model thinking, per-output condition maps, answer keys, credentials, or local-only paths.
+- Follow-up: Unchanged — score the already-generated 30 outputs under the frozen v4 rule (aggregate-only) once a second different-family hosted route (`OPENAI_API_KEY`) is available → `portable_signal` or `failed_signal`.
+
 ## 2026-05-28
 
 - Ingested: —
