@@ -13,7 +13,7 @@ make pr-provenance-demo
 
 ## Pipeline
 
-The demo resolves two committed sample PR bodies against a self-contained
+The demo resolves four committed sample PR bodies against a self-contained
 `fixture-root/` (so a stranger needs no GitHub access):
 
 - `fixture-root/` — a tiny fake repo: `docs/example.md`, `tests/test_example.py`
@@ -27,10 +27,17 @@ The demo resolves two committed sample PR bodies against a self-contained
   (`docs/missing.md`), a bad test node (`::test_nope`), a fabricated card
   (`BK-7099-card-001`), and an out-of-range line ref (`docs/example.md:L99`).
   Expected: **FAIL** (exit 1).
+- `meta-pr.md` — a PR that *documents* the checker and cites fabricated example
+  refs. Without an ignore directive it (correctly) **FAILS**.
+- `meta-pr-ignored.md` — the same body with the example refs wrapped in
+  `<!-- anti-slop-pr: ignore-start -->` … `ignore-end`. The examples are
+  suppressed and the real `docs/example.md` is still checked: **PASS**. This is
+  the explicit escape hatch for meta / docs PRs.
 
-`make pr-provenance-demo` exits 0 only when the checker PASSES the good body and
-FAILS the slop body — proving it both accepts resolvable references and rejects
-fabricated ones.
+`make pr-provenance-demo` exits 0 only when the checker PASSES the good body,
+FAILS the slop and meta bodies, and PASSES the ignore-wrapped meta body — proving
+it accepts resolvable references, rejects fabricated ones, and that the explicit
+ignore directive cleanly suppresses documented examples.
 
 ## Expected result (observed)
 

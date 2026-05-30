@@ -74,6 +74,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not add any model/API/RAG/vector-store/runtime dependency; `gh` was used only once to read public PR metadata (numbers + bodies), not required by the tool. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, or source-card review statuses. Did not promote canon or lift any status. No credentials, private paths, or raw API JSON committed.
 - Follow-up: Wire `make pr-provenance-demo` (and optionally `pr-provenance-dogfood`) into CI; consider an inline `<!-- anti-slop-pr: ignore -->` escape so documentation PRs that cite example refs can opt out of hard-fail.
 
+(anti-slop-pr adoption-readiness tranche — same day, separate entry)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `gate_citation_lineage --self-test`, `gate_no_universalization --self-test`, `gate_pr_provenance --self-test` (22 checks), `make citation-dogfood` (PASS), `make demo` (PASS), `make holdout-smoke` (PASS), `make package-smoke` (PASS), `make pr-provenance-demo` (PASS — incl. escape-hatch fixtures), `make pr-provenance-dogfood` (report, exit 0), `python3 scripts/artifact_preflight.py --strict` (0 blockers), `git diff --check` all exited 0. Private-path sweep clean.
+- Eval run: —
+- Decision: Merged PR #28 (anti-slop-pr dogfood + sharpening; merge commit `1fee666`). Made `anti-slop-pr` adoption-ready. Added **explicit, auditable ignore directives** to close the meta/docs-PR false-positive boundary: `<!-- anti-slop-pr: ignore-next-line -->` and `<!-- anti-slop-pr: ignore-start --> … <!-- anti-slop-pr: ignore-end -->`, applied (line-preserving) before ref detection. Fail-safe + auditable: only these exact comments suppress checks (an unknown comment never does); an **unclosed** `ignore-start` is a **no-op** (hides nothing, checks stay ON) and warns; a stray `ignore-end` / nested `ignore-start` warn; refs outside a block are still checked; each directive must be on its own line (a marker sharing a line with content suppresses nothing); the report + JSON receipt record ignored-line counts and warnings. Self-test grew to 22 checks (next-line, block, multiple blocks, no-ignore-still-fails, refs-outside-still-checked, own-line enforcement, unclosed/stray/unknown). Added escape-hatch demo fixtures (`proof/pr-provenance-demo/meta-pr.md` FAILs; `meta-pr-ignored.md` PASSes) and extended `make pr-provenance-demo` to assert them (already in the offline CI gates job; `make pr-provenance-dogfood` stays report-only, not in CI, since it is a live-tree snapshot). Added a "First 60 seconds" quickstart and an "Ignore directives" section to `docs/pr-provenance.md`, recorded the boundary closure in the dogfood memo, and updated README/kb. It resolves references; it does not judge relevance, correctness, support, advice quality, source truth, or canon.
+- Rejected/deferred: Did not weaken the checker (the ignore is explicit/auditable, not broad magic); did not add any model/API/RAG/vector-store/runtime dependency or GitHub API requirement. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, or source-card review statuses. No fork (`gate_citation_lineage` unchanged). No credentials, private paths, or raw API JSON committed.
+- Follow-up: Optionally support an inline trailing `<!-- anti-slop-pr: ignore-line -->` (same-line form) and a CI smoke that runs `make pr-provenance-dogfood` asserting only exit 0 (not counts) to catch import/crash regressions without coupling to live-tree drift.
+
 ## 2026-05-28
 
 - Ingested: —
