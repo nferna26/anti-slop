@@ -116,6 +116,11 @@ pr-provenance-self-test:
 pr-provenance-demo:
 	python3 scripts/demo_pr_provenance.py
 
+# Dogfood: run anti-slop-pr over this repo's own (committed, public-safe) PR-body
+# copies and report. Offline; always exits 0 (evidence, not a gate).
+pr-provenance-dogfood:
+	python3 scripts/dogfood_pr_provenance.py
+
 gate-no-universalization:
 	python3 scripts/gate_no_universalization.py $(FILE)
 

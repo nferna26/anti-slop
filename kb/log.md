@@ -62,6 +62,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not add any model/API/RAG/vector-store/runtime integration or GitHub API call. Did not touch frozen evals, canon, registry decisions, source-card review statuses, or generator-swap outputs. Did not promote canon or lift any status. The fixture card's `reviewed` flag is a fixture-only smoke flag.
 - Follow-up: Optionally extend `anti-slop-pr` to commit-ref resolution (via local git) and wire `make pr-provenance-demo` into CI; dogfood it on this repo's own PR bodies.
 
+(anti-slop-pr dogfood + sharpening tranche — same day, separate entry)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `gate_citation_lineage --self-test`, `gate_no_universalization --self-test`, `gate_pr_provenance --self-test` (13 checks), `make citation-dogfood` (PASS), `make demo` (PASS), `make holdout-smoke` (PASS), `make package-smoke` (PASS), `make pr-provenance-demo` (PASS), `make pr-provenance-dogfood` (report, exit 0), `python3 scripts/artifact_preflight.py --strict` (0 blockers), `git diff --check` all exited 0. Private-path sweep clean.
+- Eval run: —
+- Decision: Merged PR #27 (`anti-slop-pr` MVP; merge commit `edde342`). Dogfooded `anti-slop-pr` on 8 public-safe copies of this repo's own PR bodies (`proof/pr-provenance-dogfood/`; numbers-only public issue registry). The first run failed 6 of the 8 bodies; the dominant cause was **bare basenames cited in backticks** (e.g. `` `gate_citation_lineage.py` ``) resolving at repo root. Fixed the rule to require a **path-like** ref (must contain `/`); a bare basename — even backticked — is a name, not a path, and is ignored. Effect (reproducible over the 8 committed bodies): file false positives 22→3, bodies passing 2/8→6/8. The only remaining failures are META PRs (#21, #27) that document the tool's own fabricated example IDs — an inherent limitation, not a defect; ordinary feature/benchmark PRs (6/6) resolve cleanly. **Added commit-ref resolution** (evidence: ~7 commit SHAs across the bodies, all resolve) via **local `git cat-file`**, **advisory by default** (a 7-40 hex token is ambiguous vs a non-commit hash; degrades gracefully off-git). Added a `--report` advisory mode (print, exit 0) for adoption. Test-node refs are sparse in this repo (no pytest suite) — honest in the memo. Added `scripts/dogfood_pr_provenance.py` + `make pr-provenance-dogfood`, the dogfood memo `docs/pr-provenance-dogfood-memo.md`, a "why this matters" example and updated tiers in `docs/pr-provenance.md`, and README/kb updates. It resolves references; it does not judge relevance, correctness, support, advice quality, source truth, or canon.
+- Rejected/deferred: Did not add any model/API/RAG/vector-store/runtime dependency; `gh` was used only once to read public PR metadata (numbers + bodies), not required by the tool. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, or source-card review statuses. Did not promote canon or lift any status. No credentials, private paths, or raw API JSON committed.
+- Follow-up: Wire `make pr-provenance-demo` (and optionally `pr-provenance-dogfood`) into CI; consider an inline `<!-- anti-slop-pr: ignore -->` escape so documentation PRs that cite example refs can opt out of hard-fail.
+
 ## 2026-05-28
 
 - Ingested: —

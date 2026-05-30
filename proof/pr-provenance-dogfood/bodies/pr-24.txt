@@ -1,0 +1,43 @@
+## What
+
+Packages Anti-Slop's **deterministic citation-lineage gate** as an installable CLI (`anti-slop-lineage`) and defers an MCP wrapper with a documented rationale. **Distribution, not capability** — packaging adds no new behavior, no model/API/network, and makes no advice/slop/source-truth/canon claim.
+
+Draft for operator review. PR #23 already merged at `3971f60`.
+
+## Done in this tranche
+
+- **Merged PR #23** (holdout-transfer smoke) into `codex/locator-accuracy-v1-benchmark-run` (merge commit `3971f60`).
+- **Installable CLI** — `pyproject.toml` packages the **unmodified** `scripts/gate_citation_lineage.py` as an importable module + console command whose entry point **is** the gate's own `main()` (zero behavior fork; same args `--root`/`--require-reviewed`/`--self-test` + file paths; same exit codes). Stdlib-only (`dependencies = []`).
+- **Package smoke** — `scripts/package_smoke.sh` + `make package-smoke`: installs into a throwaway isolated venv (offline; `--system-site-packages` + `--no-build-isolation`), runs the installed `--self-test` (exit 0), and audits the holdout fixture with `--root --require-reviewed` (brief-assisted PASS, source-free FAIL). Self-cleans build artifacts; `build/`/`dist/`/`*.egg-info/` gitignored.
+- **Docs** — `docs/citation-lineage-gate.md` gains an "Install as a CLI" section (checkout-mode vs package-mode; the installed CLI ships no corpus → always `--root`); one-line README note; tiers reaffirmed.
+- **MCP deferred** — `docs/citation-lineage-mcp-deferred.md`: a real MCP server needs the non-stdlib `mcp` SDK + a server runtime (crosses substrate-not-runtime; adds transport not capability), so it is deferred. Documents a thin, dependency-free local sketch (wrapping the existing `build_index`+`check_paths`) and a commented FastMCP sketch labelled experimental/local-only — no runtime committed.
+- `kb/log.md` + `kb/index.md` updated.
+
+## Install / run
+
+```sh
+pip install .                 # or: pip install -e .
+anti-slop-lineage --self-test
+anti-slop-lineage --root /path/to/kb --require-reviewed file.md
+make package-smoke            # isolated-install smoke (offline)
+```
+
+## What did NOT happen
+
+- No behavior fork — the gate module is byte-identical to the merged base; the CLI is its `main()`.
+- No model call, RAG, vector store, hosted service, or advisory agent. No MCP runtime committed.
+- No frozen v2/v3/v4 artifact modified; no canon promotion, review-status lift, or registry decision.
+- No raw text, credentials, private paths, raw API JSON, answer keys, or per-OUT mappings.
+
+## Acceptance (all green)
+
+`make validate && check-raw && kb-lint` · `py_compile scripts/*.py` · both gate `--self-test`s · `make citation-dogfood && demo && holdout-smoke` · `make package-smoke` (installed CLI self-test + holdout audit) · `artifact_preflight --strict` (0 blockers) · `git diff --check`. Private-path sweep clean.
+
+CI note: `.github/workflows/ci.yml` (from PR #22) runs the in-tree gate, dogfood, and demo; wiring `make package-smoke` into CI is an optional follow-up.
+
+## Next PR
+
+Wire `make package-smoke` into CI; or, the higher-value open question remains the **generator-swap v4 slice** (blocked on a 2nd hosted judge route) from the prior tranche's memo.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
