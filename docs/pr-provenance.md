@@ -153,8 +153,11 @@ A passing check means the cited references **resolve**, nothing more. It does
   path-like rule trades that miss for not failing on the bare basenames real PR
   bodies use constantly.
 - **Meta / documentation PRs** that *cite fabricated example references on
-  purpose* (e.g. a PR documenting this very tool) will flag those examples. Use
-  `--report` (advisory) for such PRs. This is inherent to checking citations.
+  purpose* (e.g. a PR documenting this very tool) will flag those examples
+  **unless** they are wrapped in explicit ignore directives (see above). Wrap the
+  specific example references with line-scoped `ignore` (auditable, and the real
+  references stay checked); reserve `--report` for whole-PR advisory adoption.
+  This is inherent to checking citations.
 - Anything about advice quality, source truth, reasoning, slop, or canon. It
   promotes no canon and lifts no status.
 
