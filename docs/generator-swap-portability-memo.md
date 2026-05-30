@@ -77,3 +77,26 @@ frozen rubric/rule unchanged, aggregate-only — yielding `portable_signal` or
 `failed_signal`. (A calibrated local non-Gemma backup judge is permitted by the
 frozen rule only if it passes the identical exact A–L calibration; that is a
 heavier, separate step and was not attempted here.)
+
+## Addendum — judge-route re-check after PR #25 merge (`blocked_judge_route_unavailable`)
+
+PR #25 merged (merge commit `caa450a`); package closeout confirmed — installable
+`anti-slop-lineage` CLI, `make package-smoke` green in the CI `package` job, MCP
+still deferred, docs claim mechanical lineage only.
+
+Re-checked judge-route availability at this checkpoint (credentials as booleans
+only; values not inspected or hunted): `ANTHROPIC_API_KEY` present;
+`OPENAI_API_KEY`, `GEMINI_API_KEY`, `GOOGLE_API_KEY` absent. That is **one**
+different-family hosted route; the frozen v4 rule requires **two**, so the judge
+pass cannot run under the frozen rule.
+
+**Status: `blocked_judge_route_unavailable`.** No judging was performed, faked, or
+run with an ineligible judge; no local model was substituted as a second route;
+the frozen v4 packets, rule, rubric, judge packet, and decision were not changed.
+Re-verified that the 30 staged `gpt-oss:20b` outputs are intact (local-only;
+consistent with the PR #25 receipt — `generated_not_judged`, 30 generated / 30
+non-empty) and that all 30 frozen condition packets still hash-match the published
+Condition-Packet Hashes table (30/30, 0 mismatch). Generator portability remains
+**UNANSWERED**; the slice stays staged. Next step unchanged (see "Next"): score
+the already-generated 30 outputs under the frozen rule once a second
+different-family hosted route is available.
