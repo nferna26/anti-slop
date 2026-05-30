@@ -49,6 +49,16 @@ ignore directive cleanly suppresses documented examples.
 
 See `example-receipt.md` for the receipt shape.
 
+## GitHub event wrapper
+
+`events/` holds fixture `pull_request` event payloads (and one push event) so the
+GitHub Actions wrapper can be demoed offline: `make pr-provenance-event-demo` runs
+`anti-slop-pr-event` over them against `fixture-root/` and asserts clean→PASS,
+fabricated→FAIL, `--report`→exit 0, non-PR→SKIP, and ignore-directive→PASS with an
+ignored-lines audit. `events/real-pr-26-event.json` wraps a saved real PR body for
+a report-only run against the repo root. The wrapper reads the PR body from the
+event JSON only — no GitHub API.
+
 ## What this is and is not
 
 The checker resolves references; it does not judge relevance, correctness, or

@@ -58,6 +58,8 @@ CLI="$BIN/anti-slop-lineage"
 [ -x "$CLI" ] || { echo "FAIL: console script not installed at $CLI"; exit 1; }
 PRCLI="$BIN/anti-slop-pr"
 [ -x "$PRCLI" ] || { echo "FAIL: console script not installed at $PRCLI"; exit 1; }
+EVCLI="$BIN/anti-slop-pr-event"
+[ -x "$EVCLI" ] || { echo "FAIL: console script not installed at $EVCLI"; exit 1; }
 
 # 1. installed anti-slop-lineage self-test
 "$CLI" --self-test >/dev/null 2>&1; st=$?
@@ -67,15 +69,18 @@ PRCLI="$BIN/anti-slop-pr"
 "$CLI" --root "$PACKET" --require-reviewed "$SLOP" >/dev/null 2>&1; slop=$?
 # 4. installed anti-slop-pr self-test
 "$PRCLI" --self-test >/dev/null 2>&1; prst=$?
+# 5. installed anti-slop-pr-event (GitHub Actions wrapper) self-test
+"$EVCLI" --self-test >/dev/null 2>&1; evst=$?
 
-echo "[1/4] installed anti-slop-lineage --self-test -> exit $st   (expect 0)"
-echo "[2/4] CLI audit brief-assisted (--root)       -> exit $good (expect 0 / PASS)"
-echo "[3/4] CLI audit source-free   (--root)        -> exit $slop (expect 1 / FAIL)"
-echo "[4/4] installed anti-slop-pr --self-test       -> exit $prst (expect 0)"
+echo "[1/5] installed anti-slop-lineage --self-test -> exit $st   (expect 0)"
+echo "[2/5] CLI audit brief-assisted (--root)       -> exit $good (expect 0 / PASS)"
+echo "[3/5] CLI audit source-free   (--root)        -> exit $slop (expect 1 / FAIL)"
+echo "[4/5] installed anti-slop-pr --self-test       -> exit $prst (expect 0)"
+echo "[5/5] installed anti-slop-pr-event --self-test -> exit $evst (expect 0)"
 
-if [ "$st" -eq 0 ] && [ "$good" -eq 0 ] && [ "$slop" -eq 1 ] && [ "$prst" -eq 0 ]; then
-  echo "PACKAGE SMOKE PASSED: installed anti-slop-lineage + anti-slop-pr self-test and audit the fixtures identically to the in-tree gates."
+if [ "$st" -eq 0 ] && [ "$good" -eq 0 ] && [ "$slop" -eq 1 ] && [ "$prst" -eq 0 ] && [ "$evst" -eq 0 ]; then
+  echo "PACKAGE SMOKE PASSED: installed anti-slop-lineage + anti-slop-pr + anti-slop-pr-event self-test and audit the fixtures identically to the in-tree gates."
   exit 0
 fi
-echo "PACKAGE SMOKE FAILED (lineage-self-test=$st good=$good slop=$slop pr-self-test=$prst)."
+echo "PACKAGE SMOKE FAILED (lineage=$st good=$good slop=$slop pr=$prst event=$evst)."
 exit 1
