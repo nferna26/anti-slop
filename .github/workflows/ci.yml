@@ -1,8 +1,10 @@
 name: ci
 
-# Deterministic, offline dogfood of the Anti-Slop KB gates and the
-# citation-lineage tool. No model, API, network, credential, or raw book is
-# used; every step is stdlib-only Python plus make.
+# Two jobs. The `gates` job is a deterministic, offline dogfood of the Anti-Slop
+# KB gates and the citation-lineage tool: no model, API, network, credential, or
+# raw book — stdlib-only Python plus make. The `package` job may use the package
+# index over the network to install the CLI for its smoke, but uses no model,
+# API, or credentials.
 
 on:
   push:
@@ -39,3 +41,18 @@ jobs:
         run: make demo
       - name: Artifact preflight (strict)
         run: python3 scripts/artifact_preflight.py --strict
+
+  package:
+    runs-on: ubuntu-latest
+    # Installs the anti-slop-lineage CLI into a throwaway venv and proves the
+    # INSTALLED console command self-tests and audits the holdout fixture
+    # identically to the in-tree gate. Uses pip's build backend (package-index
+    # network), so it is a SEPARATE job from the offline `gates` job above;
+    # still no model, API, or credential.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Package smoke (install CLI + self-test + holdout audit)
+        run: make package-smoke
