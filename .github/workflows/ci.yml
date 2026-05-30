@@ -35,10 +35,14 @@ jobs:
         run: python3 scripts/gate_citation_lineage.py --self-test
       - name: No-universalization gate self-test
         run: python3 scripts/gate_no_universalization.py --self-test
+      - name: PR-provenance gate self-test
+        run: python3 scripts/gate_pr_provenance.py --self-test
       - name: Citation-lineage dogfood (corpus + eval design/decision docs)
         run: make citation-dogfood
       - name: Citation-lineage demo (compile-brief -> gate -> receipt)
         run: make demo
+      - name: PR-provenance demo (fixture PR bodies -> resolver -> receipt)
+        run: make pr-provenance-demo
       - name: Artifact preflight (strict)
         run: python3 scripts/artifact_preflight.py --strict
 

@@ -115,6 +115,15 @@ is mechanical and reproducible:
   stdlib-only `anti-slop-lineage` CLI (`pip install .`; isolated-install smoke
   `make package-smoke`) — packaging adds distribution, not capability. Usage:
   [`docs/citation-lineage-gate.md`](docs/citation-lineage-gate.md).
+- `pr-provenance` (`scripts/gate_pr_provenance.py`, `anti-slop-pr`) —
+  *implemented*: resolves the issue / file / test / source-card references a PR
+  description cites against a repo or fixture root, failing on unresolved
+  references. The card check reuses the citation-lineage resolver unchanged;
+  stdlib-only, no GitHub API / model / network. It resolves references, it does
+  not judge relevance, correctness, or support. Self-tested
+  (`make pr-provenance-self-test`) and demonstrated (`make pr-provenance-demo`).
+  Issue refs are deterministic only against a supplied registry, advisory
+  otherwise. Usage: [`docs/pr-provenance.md`](docs/pr-provenance.md).
 - raw-text / quote check (`scripts/check_no_raw_text.py`, `make check-raw`) —
   *implemented*: a mechanical scan for committed raw copyrighted text.
 - quote-limit, authority-order — *scaffold-only* (`gates/gate-specs.yaml`):

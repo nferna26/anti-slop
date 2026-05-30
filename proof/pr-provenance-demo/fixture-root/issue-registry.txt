@@ -1,0 +1,6 @@
+# Valid issue numbers for the anti-slop-pr demo fixture.
+# One number per line; a leading '#' is optional. Lines like this are comments.
+# In a real repo this list would be produced offline from the issue tracker;
+# the checker never calls the GitHub API.
+42
+7

@@ -1,0 +1,6 @@
+# Holdout/fixture manifest for the anti-slop-pr demo — NOT the real corpus.
+# Reserved BK-70xx fixture band; lets the citation-lineage resolver resolve the
+# demo's source_id refs against this fixture root via --root. Not canon.
+books:
+  - source_id: BK-7001
+    note: pr-provenance demo fixture source

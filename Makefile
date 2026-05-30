@@ -101,6 +101,21 @@ holdout-smoke:
 package-smoke:
 	bash scripts/package_smoke.sh
 
+# anti-slop-pr: deterministic PR-description provenance checker. Resolves the
+# issue / file / test / source-card references a PR body cites against a repo or
+# fixture root; stdlib-only, no GitHub API / model / network. Usage:
+#   make pr-provenance ROOT=. PR=path/to/pr-body.md   (add ISSUES=file to resolve #refs)
+pr-provenance:
+	python3 scripts/gate_pr_provenance.py --root $(ROOT) $(if $(ISSUES),--issue-registry $(ISSUES)) $(PR)
+
+pr-provenance-self-test:
+	python3 scripts/gate_pr_provenance.py --self-test
+
+# Stranger-reproducible demo: a passing and an intentionally-failing PR body
+# checked against a self-contained fixture root (no GitHub API, model, or network).
+pr-provenance-demo:
+	python3 scripts/demo_pr_provenance.py
+
 gate-no-universalization:
 	python3 scripts/gate_no_universalization.py $(FILE)
 
