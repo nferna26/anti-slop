@@ -101,6 +101,12 @@ holdout-smoke:
 package-smoke:
 	bash scripts/package_smoke.sh
 
+# Agent-install smoke: exercise the INSTALL_FOR_AGENTS.md commands end-to-end in a
+# throwaway venv + temp adopter repo (install, self-tests, clean PASS / fabricated
+# FAIL, event SKIP/report, shipped example body). Offline; no GitHub API.
+agent-install-smoke:
+	bash scripts/agent_install_smoke.sh
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:

@@ -1,0 +1,30 @@
+# Copy this file to .github/workflows/anti-slop-pr.yml in your repo.
+#
+# anti-slop-pr checks whether the file / test / source-card / issue / commit
+# references your PR description cites actually RESOLVE against the repo. It does
+# NOT judge correctness, relevance, or support. No GitHub API, no token.
+#
+# This template runs in REPORT mode (advisory — never fails the check). To
+# enforce, drop `--report` (and add `--issue-registry <file>` to resolve #refs).
+name: anti-slop-pr
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+permissions:
+  contents: read            # no write / token scope needed
+jobs:
+  pr-provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Preview install — pin to a tag/commit for reproducibility, e.g.
+      #   anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag>
+      - run: pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
+      # Report mode: prints findings, always exits 0. The wrapper reads the PR
+      # body from the event payload and SKIPs non-PR events.
+      - run: anti-slop-pr-event --root . --report
+      # Enforcement (when ready): replace the line above with
+      #   - run: anti-slop-pr-event --root . --issue-registry .known-issues.txt

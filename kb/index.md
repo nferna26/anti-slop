@@ -5,6 +5,7 @@ This is the public-safe navigation layer for the maintained Markdown knowledgeba
 ## Start Here
 
 - [Project README](../README.md): objective, proof surface, and repo map.
+- [Install anti-slop-pr (agent protocol)](../INSTALL_FOR_AGENTS.md): point a coding agent at this to install the deterministic PR-description reference checker, wire report-mode CI, and open a PR (short entrypoint: [`llms.txt`](../llms.txt)).
 - [AGENTS.md](../AGENTS.md): maintenance contract for agents touching this repo.
 - [Methodology](../docs/methodology.md): seven-layer substrate.
 - [Legal publication policy](../docs/legal-publication-policy.md): no raw copyrighted text in public repo.

@@ -1,0 +1,30 @@
+# anti-slop-pr
+
+> A deterministic reference resolver for AI-written PR descriptions. It checks
+> whether the file / test / source-card / issue / commit references a PR body
+> cites actually RESOLVE against the repo. It does NOT verify correctness,
+> relevance, support, source truth, advice quality, reasoning, or canon — it is a
+> checker, not a judge. Stdlib only; no model, network, GitHub API, or token.
+
+## Install it (for agents)
+
+- [INSTALL_FOR_AGENTS.md](INSTALL_FOR_AGENTS.md): the full install-and-wire-CI protocol.
+- One-line user prompt: "Install anti-slop-pr in this repo, run the smoke, add report-mode CI, and open a PR."
+
+Exact commands:
+- Install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"`
+- Self-test: `anti-slop-pr --self-test` and `anti-slop-pr-event --self-test`
+- Check a PR body: `anti-slop-pr --root . <pr-body.md>`  (add `--report` for advisory)
+- GitHub Actions: copy `templates/anti-slop-pr.yml` → `.github/workflows/` (report mode; drop `--report` to enforce)
+
+## Reference
+
+- [docs/pr-provenance.md](docs/pr-provenance.md): usage, tiers, ignore directives, "First 60 seconds", GitHub Actions recipe.
+- [docs/citation-lineage-gate.md](docs/citation-lineage-gate.md): the reused source-card/source resolver (the one benchmark-backed primitive).
+- [README.md](README.md): the Anti-Slop books-kb this tool came out of.
+
+## Tiers (deterministic vs advisory)
+
+- Deterministic (hard fail): file refs (path-like), test nodes, source-card/source refs.
+- Advisory (never fails): issue refs without a registry; commit-SHA refs.
+- Default adoption is report mode; blocking enforcement is explicit opt-in.
