@@ -1,0 +1,35 @@
+## What
+
+Makes the benchmark-supported **citation-lineage** gate OSS-ready (CI + user docs) and reconciles one operator-authorized stale clause. Six files; no frozen eval artifacts touched.
+
+## Changes
+
+- **`.github/workflows/ci.yml`** (new) — deterministic, **offline** CI. Stdlib-only Python + `make`; no model/API/network/credential. `permissions: contents: read`. Steps: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, citation-lineage self-test, no-universalization self-test, `make citation-dogfood`, `make demo`, `artifact_preflight --strict`.
+- **`docs/citation-lineage-gate.md`** (new) — usage (`--root`, `--require-reviewed`, `make citation-dogfood`, `make demo`), an accurate gate-tier table, and the **narrow** supported claim: reviewed card ID + reviewed locator + supported claim — *not* source truth, advice quality, reasoning, or canon. Linked from `README.md` and `kb/index.md`.
+- **`corpus/source-cards/BK-0023-card-001.md`** — reconcile **only** the stale present-tense `Tensions with` BK-0002 clause. `BK-0002-card-001` is now a reviewed source card (Grove, *High Output Management*, Chapter 3), so "BK-0002 … has no reviewed source card" was false. The entry now names the reviewed card as the comparison target and keeps the pairing an explicit **question-to-investigate** (not carded, not resolved).
+- **`kb/log.md`** — tranche entry; explicitly bounds the reconciliation scope.
+
+### Exact BK-0023 wording changed (one line, 1 add / 1 remove)
+
+**Before:** `BK-0002` (Grove, *High Output Management*) — … BK-0002 currently has a reviewed book map but no reviewed source card, so this comparison cannot be supported until such a source card exists; this entry names BK-0002 only as a future comparison target and asserts nothing about what BK-0002 claims.
+
+**After:** `BK-0002` (Grove, *High Output Management*) — question to investigate: this card locates the determinant of durable industry profitability in external industry structure; a reviewed BK-0002 source card now exists (`BK-0002-card-001`, Grove's manager's-output definition, Chapter 3) and is the comparison target. The open question for that pairing: would an industry-structure mechanism and a firm-internal account name complementary levels (industry and firm), or compete for the load-bearing variable? This pairing has not been carded as a claim/tension card and the question is not resolved here; this entry asserts nothing about what `BK-0002-card-001` claims beyond its reviewed lineage.
+
+The dated **2026-05-21 Operator-notes approval record** (which parallels the old clause) is preserved verbatim as an as-of-approval fact, not edited — rewriting a dated approval record would exceed the narrow authorization. `kb/log.md` records this boundary.
+
+## What did NOT happen
+
+- No change to the card's `operator_review_status: reviewed`, claim, locator (Chapter 1), `claim_type`, scope conditions, misuse risk, or authority level.
+- No new card, review-status lift, canon candidate, or registry decision.
+- No frozen v2/v3/v4 eval artifact modified.
+- No raw copyrighted text, credentials, private paths, API transcripts, answer keys, or per-OUT mappings.
+
+## Validation
+
+All gates pass locally and are the same set CI runs:
+
+`make validate` · `make check-raw` · `make kb-lint` · `py_compile scripts/*.py` · `gate_citation_lineage.py --self-test` (7 checks) · `gate_no_universalization.py --self-test` · `make citation-dogfood` (321 files / 3023 refs) · `make demo` (good→exit 0, slop→exit 1) · `artifact_preflight.py --strict` (0 blockers) · `git diff --check`. Private-path sweep clean. Card passes `--require-reviewed`.
+
+Adversarial review (4 independent reviewers: BK-0023 scope/truthfulness, CI fragility, docs/overclaim, integrity): **no blockers**; the convergent finding (the dated Operator-notes parallel mention) is addressed by bounding the log entry rather than rewriting the approval record.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
