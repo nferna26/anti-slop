@@ -43,6 +43,46 @@ pip install . && anti-slop-pr --root . my-pr-body.md
 A FAIL lists each unresolved reference with its line. The check is about whether
 what the PR *cites* is real — not whether the change is good.
 
+## Use in GitHub Actions in 60 seconds
+
+`anti-slop-pr-event` reads the PR body straight from the event payload
+(`$GITHUB_EVENT_PATH`) — **no GitHub API, no token**. Non-PR triggers SKIP
+(exit 0), so the step is harmless anywhere. Start in **report mode** (advisory),
+then drop `--report` to **enforce**:
+
+```yaml
+# .github/workflows/pr-provenance.yml
+name: pr-provenance
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+permissions:
+  contents: read            # no write/token scope needed
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      # preview: install the checker from this repo (or vendor scripts/)
+      - run: pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
+      # report mode (advisory — never fails the check):
+      - run: anti-slop-pr-event --root . --report
+      # enforcement (fails the check on an unresolved reference): drop --report,
+      # and add --issue-registry <file> to also resolve #123 issue refs.
+      # - run: anti-slop-pr-event --root . --issue-registry .known-issues.txt
+```
+
+For reproducibility, pin the install to a tag/commit (e.g.
+`anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag>`) and the
+`actions/*` steps to their SHAs.
+
+`anti-slop-pr-event --root . --report` is also runnable locally with a saved
+event JSON via `--event path/to/event.json`. Self-test:
+`anti-slop-pr-event --self-test`; offline demo over fixture events:
+`make pr-provenance-event-demo`.
+
 ## Install / run
 
 ```sh

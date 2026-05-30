@@ -121,6 +121,17 @@ pr-provenance-demo:
 pr-provenance-dogfood:
 	python3 scripts/dogfood_pr_provenance.py
 
+# GitHub Actions event wrapper: read the PR body from a pull_request event JSON
+# and run anti-slop-pr (no GitHub API; event payload + local checkout only).
+pr-provenance-event-self-test:
+	python3 scripts/pr_provenance_from_github_event.py --self-test
+
+# Deterministic demo over committed fixture event payloads (clean PASS, fabricated
+# FAIL, --report non-fail, non-PR SKIP, ignore-directive PASS) + a report-only run
+# on a saved real PR body. Offline; no GitHub API.
+pr-provenance-event-demo:
+	python3 scripts/demo_pr_provenance_event.py
+
 gate-no-universalization:
 	python3 scripts/gate_no_universalization.py $(FILE)
 

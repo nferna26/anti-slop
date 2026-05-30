@@ -130,7 +130,11 @@ is mechanical and reproducible:
   (`make pr-provenance-self-test`, 22 checks), demonstrated incl. the escape hatch
   (`make pr-provenance-demo`), and
   [dogfooded on this repo's own PRs](docs/pr-provenance-dogfood-memo.md)
-  (`make pr-provenance-dogfood`). Usage: [`docs/pr-provenance.md`](docs/pr-provenance.md).
+  (`make pr-provenance-dogfood`). Adopt it as a GitHub PR check with the event
+  wrapper `anti-slop-pr-event` (`scripts/pr_provenance_from_github_event.py`),
+  which reads the PR body from the pull_request event payload — no GitHub API;
+  non-PR events SKIP — report mode by default, enforcement opt-in
+  (`make pr-provenance-event-demo`). Usage: [`docs/pr-provenance.md`](docs/pr-provenance.md).
 - raw-text / quote check (`scripts/check_no_raw_text.py`, `make check-raw`) —
   *implemented*: a mechanical scan for committed raw copyrighted text.
 - quote-limit, authority-order — *scaffold-only* (`gates/gate-specs.yaml`):
