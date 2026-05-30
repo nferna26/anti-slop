@@ -64,3 +64,5 @@ jobs:
           python-version: "3.12"
       - name: Package smoke (install CLI + self-test + holdout audit)
         run: make package-smoke
+      - name: Agent-install smoke (INSTALL_FOR_AGENTS.md commands end-to-end)
+        run: make agent-install-smoke

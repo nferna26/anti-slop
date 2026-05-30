@@ -38,6 +38,23 @@ scoring-surface repair, with `v3-v1` left frozen as history.
 This repo tests the method and ships its receipts; it is not a possession of
 books.
 
+## Have your agent install `anti-slop-pr`
+
+`anti-slop-pr` is the shippable tool from this lab: a deterministic **reference
+resolver** for AI-written PR descriptions. It checks whether the file / test /
+source-card / issue / commit references a PR body cites actually **resolve**
+against the repo — it does **not** verify correctness, relevance, support, source
+truth, advice quality, reasoning, or canon. No model, network, GitHub API, or
+token.
+
+Point a coding agent at [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md) (short
+entrypoint: [`llms.txt`](llms.txt)) with this prompt:
+
+> **"Install anti-slop-pr in this repo, run the smoke, add report-mode CI, and open a PR."**
+
+It installs in report mode (advisory); enforcement is explicit opt-in. See
+[`docs/pr-provenance.md`](docs/pr-provenance.md).
+
 ## Why
 
 AI can sound strategic while quietly failing at the parts that matter: fabricated lineage, famous-source defaults, flattened contradictions, universal advice from narrow cases, and no audit trail for what changed the recommendation.

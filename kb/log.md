@@ -2,6 +2,18 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-05-30
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `gate_citation_lineage --self-test`, `gate_no_universalization --self-test`, `gate_pr_provenance --self-test` (22), `pr_provenance_from_github_event --self-test` (8), `make citation-dogfood` (PASS), `make demo` (PASS), `make holdout-smoke` (PASS), `make package-smoke` (PASS), `make pr-provenance-demo` (PASS), `make pr-provenance-event-demo` (PASS), `make pr-provenance-dogfood` (report), `make agent-install-smoke` (PASS), `python3 scripts/artifact_preflight.py --strict` (0 blockers), `git diff --check` all exited 0. Private-path sweep clean.
+- Eval run: —
+- Decision: Merged PR #30 (GitHub Actions event wrapper; merge commit `fb77e48`). Shipped a gbrain-style **agent-install protocol** for `anti-slop-pr`. Added root `INSTALL_FOR_AGENTS.md` (prerequisites, install options, self-test, local PR-body check, report-mode GitHub Actions setup, optional issue registry, enforcement opt-in, troubleshooting, stop conditions, and the copy/paste prompt "Install anti-slop-pr in this repo, run the smoke, add report-mode CI, and open a PR") and a short `llms.txt` entrypoint. Added copy-paste templates under `templates/` (a report-mode `anti-slop-pr.yml` workflow, a numbers-only `known-issues.example.txt` registry, and `example-pr-body.md` that resolves against this repo — illustrative example refs wrapped in ignore directives). Added `scripts/agent_install_smoke.sh` + `make agent-install-smoke` (and wired it into the CI `package` job): installs the package into a throwaway venv, runs the installed `anti-slop-pr` / `anti-slop-pr-event` self-tests, and in a temp adopter repo proves a clean PR body PASSes and a fabricated one FAILs, the event wrapper SKIPs a non-PR event and reports in report mode, and the shipped example body resolves — offline; the raw-URL git+https install is documented as the one untested boundary (the in-tree `pip install .` is byte-identical). Added a README "Have your agent install it" section with the prompt and narrow claim. Public claim unchanged: it resolves references; it does not verify correctness, relevance, support, source truth, advice quality, reasoning, or canon.
+- Rejected/deferred: No model/API/RAG/vector-store/runtime dependency; no GitHub API or token (the checker reads event JSON + local files only; package install uses pip as documented). Default is report/advisory; blocking enforcement is explicit opt-in. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, or source-card review statuses. No fork (resolver logic reused unchanged). No secrets, private paths, raw API JSON, or answer keys committed.
+- Follow-up: Publish a reusable composite GitHub Action (one `uses:` line, no pip step) so adopters skip the install, and add path/glob scoping so enforcement can target non-docs paths.
+
 ## 2026-05-29
 
 - Ingested: —
