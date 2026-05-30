@@ -23,6 +23,26 @@ whether the change is *good*; only whether what the PR *cites* is real.
 
 This was [dogfooded on this repo's own PR bodies](pr-provenance-dogfood-memo.md).
 
+## First 60 seconds
+
+```sh
+# 1. Confirm it works (no install, no network):
+python3 scripts/gate_pr_provenance.py --self-test      # 22 checks
+make pr-provenance-demo                                 # passing + failing + escape-hatch bodies
+
+# 2. Check a PR body against your repo:
+python3 scripts/gate_pr_provenance.py --root . my-pr-body.md
+#   exit 0 = every hard reference resolves (PASS)
+#   exit 1 = a cited file/test/card (or a registry issue) does not resolve (FAIL)
+#   add --report to print findings but always exit 0 (advisory adoption)
+
+# 3. Optional: install the CLI and run it from anywhere:
+pip install . && anti-slop-pr --root . my-pr-body.md
+```
+
+A FAIL lists each unresolved reference with its line. The check is about whether
+what the PR *cites* is real — not whether the change is good.
+
 ## Install / run
 
 ```sh
@@ -84,6 +104,38 @@ ADVISORY):**
 HTML comments (`<!-- ... -->`) are ignored — GitHub hides them, so they are not
 part of the PR's visible claim.
 
+## Ignore directives (the escape hatch)
+
+Some PRs cite fabricated references **on purpose** — most often a PR that
+*documents* a tool and shows example IDs. For those, suppress specific lines with
+an **explicit** directive rather than weakening the checker:
+
+```md
+<!-- anti-slop-pr: ignore-next-line -->
+This example cites a fabricated `BK-9999-card-001` and #9999.
+
+<!-- anti-slop-pr: ignore-start -->
+A whole block of example references the checker should not treat as real claims.
+<!-- anti-slop-pr: ignore-end -->
+```
+
+The directives are **auditable and fail-safe**:
+
+- Each directive must be on its **own line** (only surrounding whitespace) — a
+  marker sharing a line with content is not a directive and suppresses nothing.
+- Only these exact comments suppress checks; any **unknown** comment never does.
+- An **unclosed** `ignore-start` is a **no-op** — it hides nothing (checks stay
+  ON to end of file) and is reported as a warning. A stray `ignore-end` and a
+  nested `ignore-start` are likewise reported, never silent.
+- References **outside** an ignore block are still checked.
+- The report and the JSON receipt record how many lines were ignored and any
+  warnings, so a reviewer can see exactly what was suppressed.
+
+This is the **meta / docs-PR** use case: prefer `ignore` (auditable, line-scoped)
+over `--report` (whole-PR advisory) when only a few example references need
+suppressing. See `make pr-provenance-demo` (the `meta-pr.md` / `meta-pr-ignored.md`
+fixtures).
+
 ## What it cannot catch
 
 A passing check means the cited references **resolve**, nothing more. It does
@@ -101,8 +153,11 @@ A passing check means the cited references **resolve**, nothing more. It does
   path-like rule trades that miss for not failing on the bare basenames real PR
   bodies use constantly.
 - **Meta / documentation PRs** that *cite fabricated example references on
-  purpose* (e.g. a PR documenting this very tool) will flag those examples. Use
-  `--report` (advisory) for such PRs. This is inherent to checking citations.
+  purpose* (e.g. a PR documenting this very tool) will flag those examples
+  **unless** they are wrapped in explicit ignore directives (see above). Wrap the
+  specific example references with line-scoped `ignore` (auditable, and the real
+  references stay checked); reserve `--report` for whole-PR advisory adoption.
+  This is inherent to checking citations.
 - Anything about advice quality, source truth, reasoning, slop, or canon. It
   promotes no canon and lifts no status.
 

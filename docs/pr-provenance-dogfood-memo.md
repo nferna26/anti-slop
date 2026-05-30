@@ -98,7 +98,25 @@ advisory tier guards against them regardless.)
 is clean and would catch a fabricated path, card, or issue before merge (and
 flag a fabricated commit as advisory).
 Its false positives are concentrated in PRs that *document* fabricated examples
-(meta/tooling PRs). Launch recommendation: adopt **advisory-first** with the new
+(meta/tooling PRs). Launch recommendation: adopt **advisory-first** with the
 `--report` flag (prints findings, never fails), then enforce on
 non-documentation PRs once teams are comfortable. The tool resolves references;
 it does not judge relevance, correctness, or support.
+
+## Update: ignore directives close the meta-PR boundary
+
+The two failing bodies in the snapshot (pr-21, pr-27) are exactly the meta-PR
+class — PRs that cite fabricated example IDs on purpose. The follow-up tranche
+added **explicit, auditable ignore directives** so such a PR can suppress its
+documented examples line-by-line without weakening the checker:
+`<!-- anti-slop-pr: ignore-next-line -->` and an
+`<!-- anti-slop-pr: ignore-start --> … <!-- anti-slop-pr: ignore-end -->` block.
+
+What changes on the boundary: a meta PR wraps only its example references and
+**passes**, while every real reference outside the block is still checked
+(demonstrated by `proof/pr-provenance-demo/meta-pr.md` — FAILs — vs.
+`meta-pr-ignored.md` — PASSes; `make pr-provenance-demo` asserts both). The
+directives are fail-safe (an unclosed `ignore-start` hides nothing and warns) and
+the receipt records how many lines were ignored, so suppression stays auditable.
+Prefer `ignore` (line-scoped, in the PR body) over `--report` (whole-PR advisory)
+when only a few example refs need suppressing.

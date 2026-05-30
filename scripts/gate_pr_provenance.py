@@ -38,6 +38,16 @@ Advisory (always reported, never fails):
                 non-commit hash), so commit refs are advisory by default and
                 degrade gracefully when ``--root`` is not a git repo.
 
+Scoped ignore directives (for PRs that cite fabricated example refs on purpose,
+e.g. a PR documenting this tool):
+  - ``<!-- anti-slop-pr: ignore-next-line -->`` blanks the following line.
+  - ``<!-- anti-slop-pr: ignore-start -->`` … ``<!-- anti-slop-pr: ignore-end -->``
+    blank the lines between the markers.
+  Auditable + fail-safe: only these exact comments suppress checks; any unknown
+  comment never does; an UNCLOSED ``ignore-start`` is a no-op (it hides nothing —
+  checks stay ON) and is reported as a warning. The number of ignored lines and
+  any warnings are recorded in the report and the JSON receipt.
+
 Output: a human report and (``--json``) a JSON receipt. Exit 0 (all hard refs
 resolve), 1 (>=1 hard ref unresolved), 2 (usage/missing input). ``--report``
 forces exit 0 (advisory adoption mode).
@@ -71,6 +81,17 @@ COMMIT_RE = re.compile(r"(?<![\w])(?=[0-9a-f]*[a-f])([0-9a-f]{7,40})(?![\w])")
 # An async test (`async def test_x`) is still a defined node.
 DEF_RE_TMPL = r"(?:^|\n)\s*(?:async\s+)?(?:def|class)\s+{}\b"
 
+# Scoped, EXPLICIT ignore directives (auditable — only these exact comments
+# disable checks; any other/unknown comment never does). They are HTML comments,
+# so they are also hidden by GitHub and stripped after they are applied.
+# Anchored to their OWN line (modulo surrounding whitespace): a directive that
+# shares a line with content/refs is NOT recognized — it stays a normal HTML
+# comment and suppresses nothing. This keeps suppression predictable and stops a
+# directive mentioned in prose from accidentally opening a block.
+IGNORE_NEXT_RE = re.compile(r"^\s*<!--\s*anti-slop-pr:\s*ignore-next-line\s*-->\s*$")
+IGNORE_START_RE = re.compile(r"^\s*<!--\s*anti-slop-pr:\s*ignore-start\s*-->\s*$")
+IGNORE_END_RE = re.compile(r"^\s*<!--\s*anti-slop-pr:\s*ignore-end\s*-->\s*$")
+
 
 @dataclass(frozen=True)
 class Ref:
@@ -96,6 +117,51 @@ def strip_html_comments(text: str) -> str:
     of the PR's visible claim) while preserving line numbers for accurate
     reporting."""
     return HTML_COMMENT_RE.sub(lambda m: "\n" * m.group(0).count("\n"), text)
+
+
+def apply_ignores(text: str) -> tuple[str, dict]:
+    """Blank lines suppressed by EXPLICIT ignore directives BEFORE ref detection,
+    preserving line numbers. Each directive must be on its **own line** (only
+    surrounding whitespace allowed); a marker that shares a line with content is
+    NOT a directive and suppresses nothing. Two forms:
+
+      ``<!-- anti-slop-pr: ignore-next-line -->`` — blanks the immediately
+        following physical line.
+      ``<!-- anti-slop-pr: ignore-start -->`` … ``<!-- anti-slop-pr: ignore-end -->``
+        — blanks the content lines BETWEEN the markers (the marker lines
+        themselves are not refs). Multiple separate blocks are supported.
+
+    Auditable + fail-safe: only these exact own-line directives suppress checks;
+    an unknown comment never does. An **unclosed** ``ignore-start`` is a **no-op**
+    (it blanks nothing — checks stay ON to end of file) and is reported as a
+    warning, so a typo can never silently hide the rest of a PR body. A stray
+    ``ignore-end`` and a nested ``ignore-start`` are likewise reported. Returns the
+    de-ignored text and an audit dict ``{ignored_lines, warnings}``."""
+    lines = text.split("\n")
+    blank: set[int] = set()
+    warnings: list[str] = []
+    open_idx: int | None = None
+    for i, line in enumerate(lines):
+        if open_idx is None:
+            if IGNORE_END_RE.search(line):
+                warnings.append(f"line {i + 1}: stray ignore-end (no open ignore-start) — no effect")
+            elif IGNORE_START_RE.search(line):
+                open_idx = i
+        else:
+            if IGNORE_END_RE.search(line):
+                blank.update(range(open_idx + 1, i))  # content between the markers
+                open_idx = None
+            elif IGNORE_START_RE.search(line):
+                warnings.append(f"line {i + 1}: nested ignore-start (already in an ignore block)")
+    if open_idx is not None:
+        # Fail-safe: unclosed start ignores NOTHING (do not hide the rest of file).
+        warnings.append(
+            f"line {open_idx + 1}: unclosed ignore-start — directive ignored, checks left ON to end of file")
+    for i, line in enumerate(lines):
+        if IGNORE_NEXT_RE.search(line) and i + 1 < len(lines):
+            blank.add(i + 1)
+    out = ["" if i in blank else line for i, line in enumerate(lines)]
+    return "\n".join(out), {"ignored_lines": len(blank), "warnings": warnings}
 
 
 def load_issue_registry(path: Path | None) -> set[str] | None:
@@ -232,7 +298,10 @@ def check_cards(pr_text: str, root: Path, require_reviewed: bool) -> Result:
 
 def run(pr_path: Path, root: Path, registry: set[str] | None,
         require_reviewed_cards: bool) -> dict:
-    text = strip_html_comments(read_text(pr_path))
+    # Apply explicit ignore directives FIRST, then strip HTML comments (incl. the
+    # directive markers), then detect refs — all preserving line numbers.
+    deignored, ignore_info = apply_ignores(read_text(pr_path))
+    text = strip_html_comments(deignored)
     files, tests, issues, commits = detect_refs(text)
     results = {
         "file": check_files(files, root),
@@ -249,6 +318,7 @@ def run(pr_path: Path, root: Path, registry: set[str] | None,
         "root": str(root.resolve()),
         "issue_registry": registry is not None,
         "require_reviewed_cards": require_reviewed_cards,
+        "ignores": ignore_info,  # audit trail: {ignored_lines, warnings}
         "checks": {k: {"refs_checked": v.refs_checked,
                        "unresolved": v.unresolved,
                        "advisory": v.advisory} for k, v in results.items()},
@@ -263,6 +333,11 @@ def render(receipt: dict) -> str:
              f"Root: {receipt['root']}",
              f"Issue registry: {'provided' if receipt['issue_registry'] else 'none (issue refs advisory)'}",
              f"Reviewed-cards mode: {receipt['require_reviewed_cards']}"]
+    ign = receipt.get("ignores", {"ignored_lines": 0, "warnings": []})
+    if ign["ignored_lines"] or ign["warnings"]:
+        lines.append(f"Ignored lines (explicit directives): {ign['ignored_lines']}")
+        for w in ign["warnings"]:
+            lines.append(f"    ignore-warning {w}")
     for kind in ("file", "test", "issue", "card", "commit"):
         c = receipt["checks"][kind]
         lines.append(f"- {kind}: {c['refs_checked']} checked, "
@@ -310,11 +385,51 @@ def self_test() -> int:
         # never a hard failure.
         commitb = root / "commitb.md"
         _write(commitb, "Reverts 1a2b3c4 from the earlier fix.\n")
+        # ignore-directive bodies. `docs/fake.md` is a path-like fabricated file
+        # that fails unless suppressed by an EXPLICIT ignore directive.
+        ign_next = root / "ign_next.md"
+        _write(ign_next, "Intro.\n<!-- anti-slop-pr: ignore-next-line -->\n"
+                         "Example: `docs/fake.md` (fabricated, intentionally cited).\n")
+        nofake = root / "nofake.md"
+        _write(nofake, "Example: `docs/fake.md` (fabricated).\n")
+        ign_block = root / "ign_block.md"
+        _write(ign_block, "<!-- anti-slop-pr: ignore-start -->\n"
+                          "Examples: `docs/fake.md` and #9999.\n"
+                          "<!-- anti-slop-pr: ignore-end -->\nReal: `docs/example.md`.\n")
+        ign_block_out = root / "ign_block_out.md"
+        _write(ign_block_out, "<!-- anti-slop-pr: ignore-start -->\n"
+                              "`docs/fake.md`.\n<!-- anti-slop-pr: ignore-end -->\n"
+                              "Outside: `docs/fake2.md`.\n")
+        ign_unclosed = root / "ign_unclosed.md"
+        _write(ign_unclosed, "<!-- anti-slop-pr: ignore-start -->\n`docs/fake.md`.\n")
+        ign_stray = root / "ign_stray.md"
+        _write(ign_stray, "<!-- anti-slop-pr: ignore-end -->\n`docs/fake.md`.\n")
+        ign_unknown = root / "ign_unknown.md"
+        _write(ign_unknown, "<!-- anti-slop-pr: bogus -->\n`docs/fake.md`.\n")
+        # multiple separate blocks, with a real ref in the gap (still checked).
+        ign_multi = root / "ign_multi.md"
+        _write(ign_multi, "<!-- anti-slop-pr: ignore-start -->\n`docs/fake1.md`\n"
+                          "<!-- anti-slop-pr: ignore-end -->\nGap: `docs/example.md`\n"
+                          "<!-- anti-slop-pr: ignore-start -->\n`docs/fake2.md`\n"
+                          "<!-- anti-slop-pr: ignore-end -->\n")
+        # a directive sharing a line with content is NOT a directive (own-line rule):
+        # the fabricated ref on that line is still checked.
+        ign_inline = root / "ign_inline.md"
+        _write(ign_inline, "Content `docs/fake.md` <!-- anti-slop-pr: ignore-start -->\n")
 
         g = run(good, root, registry, require_reviewed_cards=True)
         b = run(bad, root, registry, require_reviewed_cards=False)
         p = run(prose, root, registry, require_reviewed_cards=False)
         cm = run(commitb, root, None, require_reviewed_cards=False)
+        inext = run(ign_next, root, registry, False)
+        inofake = run(nofake, root, registry, False)
+        iblock = run(ign_block, root, registry, False)
+        iblock_out = run(ign_block_out, root, registry, False)
+        iunclosed = run(ign_unclosed, root, registry, False)
+        istray = run(ign_stray, root, registry, False)
+        iunknown = run(ign_unknown, root, registry, False)
+        imulti = run(ign_multi, root, registry, False)
+        iinline = run(ign_inline, root, registry, False)
         # good with NO registry -> issues advisory, still passes
         g_noreg = run(good, root, None, require_reviewed_cards=True)
         # bad with NO registry -> still fails on file/test/card
@@ -344,6 +459,29 @@ def self_test() -> int:
              cm["passed"] is True and cm["checks"]["commit"]["refs_checked"] >= 1
              and len(cm["checks"]["commit"]["advisory"]) >= 1
              and not cm["checks"]["commit"]["unresolved"]),
+            ("ignore-next-line suppresses the next line's fabricated ref",
+             inext["passed"] is True and inext["ignores"]["ignored_lines"] >= 1),
+            ("the same fabricated ref WITHOUT ignore still fails",
+             inofake["passed"] is False),
+            ("ignore-start/end block suppresses fabricated refs inside",
+             iblock["passed"] is True and iblock["ignores"]["ignored_lines"] >= 1),
+            ("refs OUTSIDE an ignore block are still checked",
+             iblock_out["passed"] is False
+             and any("fake2.md" in u for u in iblock_out["checks"]["file"]["unresolved"])),
+            ("unclosed ignore-start is a no-op (ref after it still fails) + warning",
+             iunclosed["passed"] is False
+             and iunclosed["ignores"]["ignored_lines"] == 0
+             and any("unclosed" in w for w in iunclosed["ignores"]["warnings"])),
+            ("stray ignore-end warns and suppresses nothing",
+             istray["passed"] is False
+             and any("stray" in w for w in istray["ignores"]["warnings"])),
+            ("unknown anti-slop-pr comment does NOT disable checks",
+             iunknown["passed"] is False and iunknown["ignores"]["ignored_lines"] == 0),
+            ("multiple separate ignore blocks each suppress; the gap ref is still checked",
+             imulti["passed"] is True and imulti["ignores"]["ignored_lines"] == 2),
+            ("a directive sharing a line with content is NOT a directive (own-line rule)",
+             iinline["passed"] is False and iinline["ignores"]["ignored_lines"] == 0
+             and not iinline["ignores"]["warnings"]),
         ]
         failed = [name for name, ok in checks if not ok]
         if failed:
@@ -351,9 +489,11 @@ def self_test() -> int:
             for name in failed:
                 print(f"  - {name}")
             return 1
-    print("pr-provenance self-test passed (13 checks: file/test/issue/card resolution, "
-          "fake-ref detection, advisory issue/commit behaviour, async test nodes, and "
-          "the path-like file-ref rule that ignores bare basenames).")
+    print("pr-provenance self-test passed (22 checks: file/test/issue/card resolution, "
+          "fake-ref detection, advisory issue/commit behaviour, async test nodes, the "
+          "path-like file-ref rule, and explicit own-line ignore directives — next-line, "
+          "block, multiple blocks, no-ignore-still-fails, refs-outside-still-checked, "
+          "own-line enforcement, and fail-safe unclosed/stray/unknown behaviour).")
     return 0
 
 

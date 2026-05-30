@@ -123,8 +123,12 @@ is mechanical and reproducible:
   local git). It resolves references, it does not judge relevance, correctness,
   or support. File refs must be path-like; issue refs are deterministic only
   against a supplied registry (advisory otherwise); commit refs are advisory.
-  `--report` gives an advisory (exit-0) mode. Self-tested
-  (`make pr-provenance-self-test`), demonstrated (`make pr-provenance-demo`), and
+  `--report` gives an advisory (exit-0) mode, and explicit, auditable
+  `<!-- anti-slop-pr: ignore-next-line -->` / `ignore-start`…`ignore-end`
+  directives let docs PRs suppress intentionally-fabricated example refs
+  line-scoped (an unclosed directive is a fail-safe no-op). Self-tested
+  (`make pr-provenance-self-test`, 22 checks), demonstrated incl. the escape hatch
+  (`make pr-provenance-demo`), and
   [dogfooded on this repo's own PRs](docs/pr-provenance-dogfood-memo.md)
   (`make pr-provenance-dogfood`). Usage: [`docs/pr-provenance.md`](docs/pr-provenance.md).
 - raw-text / quote check (`scripts/check_no_raw_text.py`, `make check-raw`) —
