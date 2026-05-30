@@ -9,10 +9,13 @@
 #   3. CLI audit of the holdout source-free note            -> exit 1 (FAIL)
 #      (--root <packet> --require-reviewed)
 #
-# Deterministic, offline: no network, no model, no API. The venv is created with
-# --system-site-packages so the build backend (setuptools) is found locally, and
-# pip runs with --no-build-isolation so nothing is fetched. The venv is removed
-# on exit. Rerun: `make package-smoke` or `bash scripts/package_smoke.sh`.
+# Deterministic in behaviour (the asserted CLI outcomes are fixed); no model, no
+# API, no credentials. Install prefers a normal isolated `pip install` (which may
+# fetch the build backend from the package index over the network); it falls back
+# to --no-build-isolation against the system setuptools for offline/local runs.
+# The venv is created with --system-site-packages so that offline fallback can
+# see the system setuptools. The venv is removed on exit. Rerun:
+# `make package-smoke` or `bash scripts/package_smoke.sh`.
 
 set -u
 

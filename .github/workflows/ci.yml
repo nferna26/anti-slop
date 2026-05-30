@@ -1,8 +1,10 @@
 name: ci
 
-# Deterministic, offline dogfood of the Anti-Slop KB gates and the
-# citation-lineage tool. No model, API, network, credential, or raw book is
-# used; every step is stdlib-only Python plus make.
+# Two jobs. The `gates` job is a deterministic, offline dogfood of the Anti-Slop
+# KB gates and the citation-lineage tool: no model, API, network, credential, or
+# raw book — stdlib-only Python plus make. The `package` job may use the package
+# index over the network to install the CLI for its smoke, but uses no model,
+# API, or credentials.
 
 on:
   push:
