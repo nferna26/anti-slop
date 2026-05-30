@@ -33,11 +33,16 @@ keywords = ["citation", "lineage", "provenance", "deterministic", "audit"]
 # at a checkout or fixture tree (or use --self-test, which builds its own
 # temporary fixture roots).
 anti-slop-lineage = "gate_citation_lineage:main"
+# anti-slop-pr: deterministic PR-description provenance checker (resolves issue /
+# file / test / card references; reuses the gate_citation_lineage resolver for
+# card refs). Same stdlib-only, no model/API/network posture.
+anti-slop-pr = "gate_pr_provenance:main"
 
 [tool.setuptools]
-# Package the single existing gate module only — explicit py-modules disables
-# package auto-discovery, so nothing else under scripts/ is swept in.
-py-modules = ["gate_citation_lineage"]
+# Package only the existing gate modules — explicit py-modules disables package
+# auto-discovery, so nothing else under scripts/ is swept in. gate_pr_provenance
+# imports gate_citation_lineage, so both ship together.
+py-modules = ["gate_citation_lineage", "gate_pr_provenance"]
 
 [tool.setuptools.package-dir]
 "" = "scripts"

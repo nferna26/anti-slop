@@ -56,21 +56,26 @@ fi
 
 CLI="$BIN/anti-slop-lineage"
 [ -x "$CLI" ] || { echo "FAIL: console script not installed at $CLI"; exit 1; }
+PRCLI="$BIN/anti-slop-pr"
+[ -x "$PRCLI" ] || { echo "FAIL: console script not installed at $PRCLI"; exit 1; }
 
-# 1. installed self-test
+# 1. installed anti-slop-lineage self-test
 "$CLI" --self-test >/dev/null 2>&1; st=$?
 # 2. brief-assisted note -> PASS (exit 0)
 "$CLI" --root "$PACKET" --require-reviewed "$GOOD" >/dev/null 2>&1; good=$?
 # 3. source-free note -> FAIL (exit 1)
 "$CLI" --root "$PACKET" --require-reviewed "$SLOP" >/dev/null 2>&1; slop=$?
+# 4. installed anti-slop-pr self-test
+"$PRCLI" --self-test >/dev/null 2>&1; prst=$?
 
-echo "[1/3] installed --self-test                 -> exit $st   (expect 0)"
-echo "[2/3] CLI audit brief-assisted (--root)      -> exit $good (expect 0 / PASS)"
-echo "[3/3] CLI audit source-free   (--root)       -> exit $slop (expect 1 / FAIL)"
+echo "[1/4] installed anti-slop-lineage --self-test -> exit $st   (expect 0)"
+echo "[2/4] CLI audit brief-assisted (--root)       -> exit $good (expect 0 / PASS)"
+echo "[3/4] CLI audit source-free   (--root)        -> exit $slop (expect 1 / FAIL)"
+echo "[4/4] installed anti-slop-pr --self-test       -> exit $prst (expect 0)"
 
-if [ "$st" -eq 0 ] && [ "$good" -eq 0 ] && [ "$slop" -eq 1 ]; then
-  echo "PACKAGE SMOKE PASSED: installed CLI self-tests and audits the holdout fixture identically to the in-tree gate."
+if [ "$st" -eq 0 ] && [ "$good" -eq 0 ] && [ "$slop" -eq 1 ] && [ "$prst" -eq 0 ]; then
+  echo "PACKAGE SMOKE PASSED: installed anti-slop-lineage + anti-slop-pr self-test and audit the fixtures identically to the in-tree gates."
   exit 0
 fi
-echo "PACKAGE SMOKE FAILED (self-test=$st good=$good slop=$slop)."
+echo "PACKAGE SMOKE FAILED (lineage-self-test=$st good=$good slop=$slop pr-self-test=$prst)."
 exit 1

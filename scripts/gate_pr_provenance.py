@@ -1,0 +1,339 @@
+#!/usr/bin/env python3
+"""anti-slop-pr: deterministic PR-description provenance checker.
+
+AI-written PR descriptions often cite things that do not exist: a fabricated
+issue number, a doc/file path that was never added, a test node that is not
+defined, or a source-card ID that does not resolve. This tool checks, before
+merge, that the references a PR description names actually RESOLVE against the
+repo (or a fixture root). It is deterministic and stdlib-only: no GitHub API, no
+model, no network, no runtime.
+
+It is a *resolver*, not a judge. A passing check means the cited references
+resolve; it does NOT prove the PR is correct, that the change is supported, that
+the cited file/test is *relevant*, or anything about advice quality, source
+truth, or canon. It promotes no canon and lifts no status.
+
+Reference types and tiers
+--------------------------
+Deterministic (hard; unresolved -> exit 1), resolved against ``--root``:
+  - file refs:  ``docs/foo.md``, ``path/to/x.py``, optionally ``path.py:L10``
+                (the file must exist; with a line, it must have >= that many lines)
+  - test refs:  ``tests/test_x.py::test_name`` (file must exist AND define
+                ``def test_name`` or ``class test_name``)
+  - card/source refs: ``BK-1234`` / ``BK-1234-card-001`` — delegated to the
+                anti-slop-lineage resolver (``gate_citation_lineage``); with
+                ``--require-reviewed-cards`` a card must resolve to a *reviewed*
+                source card.
+Deterministic-against-a-registry (hard only when ``--issue-registry`` is given;
+otherwise ADVISORY — reported, never fails the build):
+  - issue refs: ``#123`` — offline there is no way to know GitHub issue state
+                without a credential, so without a registry these are advisory.
+
+Output: a human report and (``--json``) a JSON receipt. Exit 0 (all hard refs
+resolve), 1 (>=1 hard ref unresolved), 2 (usage/missing input).
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from pathlib import Path
+import argparse
+import json
+import re
+import sys
+import tempfile
+
+# Reuse the anti-slop-lineage resolver for card/source refs (sibling module in
+# scripts/; no fork — the same build_index/check_paths the CLI and gate use).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import gate_citation_lineage as lineage  # noqa: E402
+
+FILE_EXT = (r"(?:md|markdown|py|sh|txt|ya?ml|json|toml|cfg|ini|rst|js|ts|tsx|jsx"
+            r"|go|rs|c|h|cpp|hpp|cc|java|rb|mk|cff|lock)")
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+TEST_RE = re.compile(r"\b([\w./-]+\.py)::([A-Za-z_]\w*)\b")
+FILE_RE = re.compile(r"(?<![\w/.])([\w./-]+\." + FILE_EXT + r")(?::L?(\d+))?\b")
+BACKTICK_SPAN_RE = re.compile(r"`([^`]+)`")
+ISSUE_RE = re.compile(r"(?<![\w&#])#(\d+)\b")
+# An async test (`async def test_x`) is still a defined node.
+DEF_RE_TMPL = r"(?:^|\n)\s*(?:async\s+)?(?:def|class)\s+{}\b"
+
+
+@dataclass(frozen=True)
+class Ref:
+    kind: str
+    value: str
+    line: int
+    detail: str = ""
+
+
+@dataclass
+class Result:
+    refs_checked: int = 0
+    unresolved: list[str] = field(default_factory=list)
+    advisory: list[str] = field(default_factory=list)
+
+
+def read_text(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def strip_html_comments(text: str) -> str:
+    """Blank out ``<!-- ... -->`` blocks (GitHub hides them, so they are not part
+    of the PR's visible claim) while preserving line numbers for accurate
+    reporting."""
+    return HTML_COMMENT_RE.sub(lambda m: "\n" * m.group(0).count("\n"), text)
+
+
+def load_issue_registry(path: Path | None) -> set[str] | None:
+    """Parse a registry of valid issue numbers: one per line, optional leading
+    ``#`` (so ``#123`` and ``123`` both work); blank lines and ``# word`` comment
+    lines are ignored. Only digit tokens are kept."""
+    if path is None:
+        return None
+    nums: set[str] = set()
+    for line in read_text(path).splitlines():
+        token = line.strip().lstrip("#").strip()
+        if token.isdigit():
+            nums.add(token)
+    return nums
+
+
+def detect_refs(text: str) -> tuple[list[Ref], list[Ref], list[Ref]]:
+    files: list[Ref] = []
+    tests: list[Ref] = []
+    issues: list[Ref] = []
+    for number, line in enumerate(text.splitlines(), start=1):
+        for m in TEST_RE.finditer(line):
+            tests.append(Ref("test", f"{m.group(1)}::{m.group(2)}", number,
+                             detail=m.group(2)))
+        masked = TEST_RE.sub(lambda m: " " * len(m.group(0)), line)
+        bt_spans = [m.span(1) for m in BACKTICK_SPAN_RE.finditer(masked)]
+        for m in FILE_RE.finditer(masked):
+            path = m.group(1)
+            in_backticks = any(s <= m.start(1) and m.end(1) <= e for s, e in bt_spans)
+            # A bare token like 'Express.js' or 'main.go' in prose is NOT a file
+            # ref. Treat a file token as a ref only when it is path-like (has a
+            # '/') or explicitly backtick-delimited — keeps honest PR prose from
+            # failing the gate.
+            if "/" not in path and not in_backticks:
+                continue
+            files.append(Ref("file", path, number, detail=m.group(2) or ""))
+        for m in ISSUE_RE.finditer(line):
+            issues.append(Ref("issue", m.group(1), number))
+    return files, tests, issues
+
+
+def check_files(refs: list[Ref], root: Path) -> Result:
+    res = Result()
+    for ref in refs:
+        res.refs_checked += 1
+        target = root / ref.value
+        if not target.is_file():
+            res.unresolved.append(f"line {ref.line}: file does not resolve: {ref.value}")
+            continue
+        if ref.detail:
+            need = int(ref.detail)
+            have = len(read_text(target).splitlines())
+            if have < need:
+                res.unresolved.append(
+                    f"line {ref.line}: {ref.value} has {have} lines, ref needs >= {need}")
+    return res
+
+
+def check_tests(refs: list[Ref], root: Path) -> Result:
+    res = Result()
+    for ref in refs:
+        res.refs_checked += 1
+        file_part, _, node = ref.value.partition("::")
+        target = root / file_part
+        if not target.is_file():
+            res.unresolved.append(f"line {ref.line}: test file does not resolve: {file_part}")
+            continue
+        if not re.search(DEF_RE_TMPL.format(re.escape(node)), read_text(target)):
+            res.unresolved.append(
+                f"line {ref.line}: test node not defined in {file_part}: {node}")
+    return res
+
+
+def check_issues(refs: list[Ref], registry: set[str] | None) -> Result:
+    res = Result()
+    for ref in refs:
+        res.refs_checked += 1
+        if registry is None:
+            res.advisory.append(
+                f"line {ref.line}: #{ref.value} (advisory — no --issue-registry to resolve against)")
+        elif ref.value not in registry:
+            res.unresolved.append(f"line {ref.line}: issue does not resolve: #{ref.value}")
+    return res
+
+
+def check_cards(pr_text: str, root: Path, require_reviewed: bool) -> Result:
+    res = Result()
+    index = lineage.build_index(root)
+    with tempfile.TemporaryDirectory() as tmp:
+        tf = Path(tmp) / "pr.md"  # comment-stripped text, line numbers preserved
+        tf.write_text(pr_text, encoding="utf-8")
+        findings, ref_count = lineage.check_paths([tf], index, require_reviewed=require_reviewed)
+    res.refs_checked = ref_count
+    for f in findings:
+        # findings look like "<abs path>:<line>: <detail>"; keep the line+detail tail
+        tail = f.split(":", 1)[1] if ":" in f else f
+        res.unresolved.append(tail.strip())
+    return res
+
+
+def run(pr_path: Path, root: Path, registry: set[str] | None,
+        require_reviewed_cards: bool) -> dict:
+    text = strip_html_comments(read_text(pr_path))
+    files, tests, issues = detect_refs(text)
+    results = {
+        "file": check_files(files, root),
+        "test": check_tests(tests, root),
+        "issue": check_issues(issues, registry),
+        "card": check_cards(text, root, require_reviewed_cards),
+    }
+    hard_unresolved = (results["file"].unresolved + results["test"].unresolved
+                       + results["card"].unresolved + results["issue"].unresolved)
+    receipt = {
+        "pr_file": pr_path.name,
+        "root": str(root.resolve()),
+        "issue_registry": registry is not None,
+        "require_reviewed_cards": require_reviewed_cards,
+        "checks": {k: {"refs_checked": v.refs_checked,
+                       "unresolved": v.unresolved,
+                       "advisory": v.advisory} for k, v in results.items()},
+        "passed": not hard_unresolved,
+    }
+    return receipt
+
+
+def render(receipt: dict) -> str:
+    lines = ["== anti-slop-pr provenance check ==",
+             f"PR file: {receipt['pr_file']}",
+             f"Root: {receipt['root']}",
+             f"Issue registry: {'provided' if receipt['issue_registry'] else 'none (issue refs advisory)'}",
+             f"Reviewed-cards mode: {receipt['require_reviewed_cards']}"]
+    for kind in ("file", "test", "issue", "card"):
+        c = receipt["checks"][kind]
+        lines.append(f"- {kind}: {c['refs_checked']} checked, "
+                     f"{len(c['unresolved'])} unresolved, {len(c['advisory'])} advisory")
+        for u in c["unresolved"]:
+            lines.append(f"    UNRESOLVED {u}")
+        for a in c["advisory"]:
+            lines.append(f"    advisory   {a}")
+    lines.append("Result: PASS" if receipt["passed"] else "Result: FAIL")
+    return "\n".join(lines)
+
+
+def _write(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content, encoding="utf-8")
+
+
+def self_test() -> int:
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        _write(root / "docs" / "example.md", "# Example\n\nHello.\n")
+        _write(root / "README.md", "# Fixture readme\n")
+        _write(root / "tests" / "test_example.py",
+               "def test_widget():\n    assert True\n\n\nasync def test_async():\n    assert True\n")
+        _write(root / "corpus" / "source-cards" / "BK-7001-card-001.md",
+               "---\ncard_id: BK-7001-card-001\nsource_id: BK-7001\n"
+               "operator_review_status: reviewed\n---\n\n# Card\n\nClaim.\n")
+        _write(root / "corpus" / "manifests" / "books-200.yaml", "  - source_id: BK-7001\n")
+        _write(root / "issues.txt", "# valid issue numbers\n42\n7\n")
+        registry = load_issue_registry(root / "issues.txt")
+
+        good = root / "good.md"
+        _write(good, "Closes #42. Adds `docs/example.md`, covered by "
+                     "`tests/test_example.py::test_widget`; supported by `BK-7001-card-001`.\n")
+        bad = root / "bad.md"
+        _write(bad, "Closes #9999. See `docs/missing.md` and "
+                    "`tests/test_example.py::test_nope`; per `BK-7099-card-001`.\n")
+        # prose body: a bare 'Express.js' (no slash, not backticked) must be
+        # IGNORED (not a file ref); a backtick non-slash `README.md` IS checked;
+        # an async test node must resolve.
+        prose = root / "prose.md"
+        _write(prose, "Migrated from Express.js to keep parity. See `README.md`; "
+                      "covered by `tests/test_example.py::test_async`.\n")
+
+        g = run(good, root, registry, require_reviewed_cards=True)
+        b = run(bad, root, registry, require_reviewed_cards=False)
+        p = run(prose, root, registry, require_reviewed_cards=False)
+        # good with NO registry -> issues advisory, still passes
+        g_noreg = run(good, root, None, require_reviewed_cards=True)
+        # bad with NO registry -> still fails on file/test/card
+        b_noreg = run(bad, root, None, require_reviewed_cards=False)
+
+        checks = [
+            ("good resolves all hard refs", g["passed"] is True),
+            ("good detected >=1 issue/file/test/card each",
+             g["checks"]["issue"]["refs_checked"] >= 1
+             and g["checks"]["file"]["refs_checked"] >= 1
+             and g["checks"]["test"]["refs_checked"] >= 1
+             and g["checks"]["card"]["refs_checked"] >= 1),
+            ("bad fails", b["passed"] is False),
+            ("bad catches fake issue", any("#9999" in u for u in b["checks"]["issue"]["unresolved"])),
+            ("bad catches missing file", any("missing.md" in u for u in b["checks"]["file"]["unresolved"])),
+            ("bad catches missing test node", any("test_nope" in u for u in b["checks"]["test"]["unresolved"])),
+            ("bad catches fake card", any("BK-7099" in u for u in b["checks"]["card"]["unresolved"])),
+            ("no registry -> good still passes (issues advisory)",
+             g_noreg["passed"] is True and len(g_noreg["checks"]["issue"]["advisory"]) >= 1),
+            ("no registry -> bad still fails on file/test/card", b_noreg["passed"] is False),
+            ("prose body passes (no false positives)", p["passed"] is True),
+            ("bare prose token 'Express.js' is NOT a file ref",
+             p["checks"]["file"]["refs_checked"] == 1),  # only `README.md`, not Express.js
+            ("backtick non-slash file `README.md` is checked and resolves",
+             p["checks"]["file"]["refs_checked"] == 1 and not p["checks"]["file"]["unresolved"]),
+            ("async test node resolves",
+             p["checks"]["test"]["refs_checked"] == 1 and not p["checks"]["test"]["unresolved"]),
+        ]
+        failed = [name for name, ok in checks if not ok]
+        if failed:
+            print("pr-provenance self-test FAILED:")
+            for name in failed:
+                print(f"  - {name}")
+            return 1
+    print("pr-provenance self-test passed (13 checks: file/test/issue/card resolution, "
+          "fake-ref detection, advisory-issue behaviour with/without a registry, "
+          "async test nodes, and prose-token false-positive guard).")
+    return 0
+
+
+def parse_args(argv: list[str]) -> argparse.Namespace:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("pr_file", nargs="?", type=Path, help="PR description Markdown file")
+    p.add_argument("--root", type=Path, default=Path.cwd(),
+                   help="repo or fixture root to resolve references against (default: cwd)")
+    p.add_argument("--issue-registry", type=Path,
+                   help="file of valid issue numbers (one per line); without it, issue refs are advisory")
+    p.add_argument("--require-reviewed-cards", action="store_true",
+                   help="require every cited source-card to resolve to a reviewed card")
+    p.add_argument("--json", type=Path, help="write the JSON receipt to this path")
+    p.add_argument("--self-test", action="store_true", help="run the deterministic self-test")
+    return p.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(sys.argv[1:] if argv is None else argv)
+    if args.self_test:
+        return self_test()
+    if not args.pr_file:
+        print("Usage: python3 scripts/gate_pr_provenance.py [--root DIR] "
+              "[--issue-registry F] [--require-reviewed-cards] [--json OUT] <pr.md>")
+        return 2
+    if not args.pr_file.exists():
+        print(f"Missing input: {args.pr_file}")
+        return 2
+    registry = load_issue_registry(args.issue_registry)
+    receipt = run(args.pr_file.resolve(), args.root, registry, args.require_reviewed_cards)
+    print(render(receipt))
+    if args.json:
+        args.json.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
+        print(f"Receipt: {args.json}")
+    return 0 if receipt["passed"] else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

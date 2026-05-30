@@ -50,6 +50,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not fake judging, use an ineligible local judge, substitute Gemma, change frozen v4 packets/rules, or hunt for the missing credential. Did not commit raw outputs, model thinking, per-output condition maps, answer keys, credentials, or local-only paths.
 - Follow-up: Unchanged — score the already-generated 30 outputs under the frozen v4 rule (aggregate-only) once a second different-family hosted route (`OPENAI_API_KEY`) is available → `portable_signal` or `failed_signal`.
 
+(anti-slop-pr (PR-provenance checker) MVP tranche — same day, separate entry)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `gate_citation_lineage --self-test`, `gate_no_universalization --self-test`, `gate_pr_provenance --self-test` (13 checks), `make citation-dogfood` (PASS), `make demo` (PASS), `make holdout-smoke` (PASS), `make package-smoke` (PASS — now also installs + self-tests `anti-slop-pr`), `make pr-provenance-self-test` (PASS), `make pr-provenance-demo` (PASS), `python3 scripts/artifact_preflight.py --strict` (0 blockers), `git diff --check` all exited 0. Private-path sweep clean.
+- Eval run: —
+- Decision: Merged PR #26 (`blocked_judge_route_unavailable` record; merge commit `9861d34`). Built the first public-workflow MVP, **`anti-slop-pr`** — a deterministic, stdlib-only PR-description provenance checker (`scripts/gate_pr_provenance.py`): it resolves the issue / file / test / source-card references a PR body cites against a repo or fixture `--root`, exits nonzero on unresolved references, and emits a human report + JSON receipt. The card/source check **reuses** the `anti-slop-lineage` resolver (`gate_citation_lineage.build_index` + `check_paths`) unchanged — no fork; the new code adds file/test/issue resolution and ignores HTML comments (GitHub hides them). Tiers are explicit: file/test/card refs are deterministic-hard; issue refs are deterministic only against a supplied `--issue-registry` and ADVISORY (never fail) otherwise. No GitHub API, model, network, RAG, vector store, or runtime. Added a self-contained public-safe demo (`proof/pr-provenance-demo/`: a fixture repo root + a passing PR body + an intentionally-failing PR body), `scripts/demo_pr_provenance.py`, `make pr-provenance` / `pr-provenance-self-test` / `pr-provenance-demo`, docs (`docs/pr-provenance.md`), a README Proof-Surface tier bullet, and an `anti-slop-pr` console entry point in `pyproject.toml` (installable alongside `anti-slop-lineage`; package smoke now self-tests both). It resolves references; it does not judge relevance, correctness, support, advice quality, source truth, or canon.
+- Rejected/deferred: Did not add any model/API/RAG/vector-store/runtime integration or GitHub API call. Did not touch frozen evals, canon, registry decisions, source-card review statuses, or generator-swap outputs. Did not promote canon or lift any status. The fixture card's `reviewed` flag is a fixture-only smoke flag.
+- Follow-up: Optionally extend `anti-slop-pr` to commit-ref resolution (via local git) and wire `make pr-provenance-demo` into CI; dogfood it on this repo's own PR bodies.
+
 ## 2026-05-28
 
 - Ingested: —
