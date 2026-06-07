@@ -1,8 +1,10 @@
 # Copy this file to .github/workflows/anti-slop-pr.yml in your repo.
 #
+# Anti-Slop agent claim verification, surface #1: PR bodies.
 # anti-slop-pr checks whether the file / test / source-card / issue / commit
 # references your PR description cites actually RESOLVE against the repo. It does
-# NOT judge correctness, relevance, or support. No GitHub API, no token.
+# NOT judge correctness, relevance, support, safety, source truth, advice
+# quality, reasoning, or canon. No GitHub API, no token.
 #
 # This template runs in REPORT mode (advisory — never fails the check). To
 # enforce, drop `--report` (and add `--issue-registry <file>` to resolve #refs).

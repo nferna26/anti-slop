@@ -1,100 +1,99 @@
-# Anti-Slop books-kb
+# Anti-Slop
 
-Anti-Slop books-kb is a governed Markdown knowledgebase for making AI-assisted advice inspectable before it becomes operational.
+**Make AI coding agents cite receipts, not vibes.**
+
+Anti-Slop is deterministic **agent claim verification** for AI coding agents. It
+checks whether the references and receipts an agent cites resolve against repo
+state, so a reviewer can separate "this exists" from "the agent said it exists."
+
+The contract is intentionally narrow: Anti-Slop verifies **resolution of
+references and receipts**. It does **not** verify correctness, relevance, source
+truth, support, advice quality, reasoning, safety, or canon.
 
 ## Objective
 
-Build a citation-traceable, contradiction-aware advisory substrate from a sourced 200-book corpus.
+Make AI coding agents cite concrete receipts, then deterministically resolve
+those references against repo state. Start with PR bodies, keep report-mode
+adoption easy, and keep enforcement limited to claims a resolver can actually
+check.
 
-### Program hypothesis (under test, not yet proven)
+## Surface #1: PR Bodies
 
-> A maintained knowledgebase with source lineage, contradiction handling, deterministic gates, and operator approval can reduce slop compared with vanilla model use and vanilla model use with famous manually supplied sources.
+PR descriptions are the first shipped surface, not the whole category.
 
-This is the hypothesis the eval lab tests. It is **not** established. Most of the
-broad "reduce slop" / "improve advice" surface is still unproven, and at least
-one careful baseline (a well-written `criteria_prompted_no_sources` prompt) is a
-documented ceiling on general reasoning-disposition tasks.
+`anti-slop-pr` checks the file / test / source-card / issue / commit references
+an AI-written PR body cites. `anti-slop-pr-event` runs the same check from a
+GitHub Actions `pull_request` event payload without a GitHub API call or token.
+Both are stdlib-only and run offline against the checked-out repo.
 
-### What is benchmark-supported so far (the narrow result)
+Start in report mode: findings are printed, but the check exits 0. Enforcement
+is explicit opt-in once a repo is ready.
 
-One narrow, mechanical claim is benchmark-supported, under a frozen,
-pre-registered rule, by two independent different-family hosted judges
-(`evals/bibliographic-adversary/locator-accuracy-v4/`, `benchmark_supported`):
-
-> Under adversarial citation pressure, the substrate workflow adds **inspectable
-> reviewed public-KB lineage** — the correct card ID, the reviewed locator at the
-> granularity the card carries, and the supported claim, while refusing
-> unsupported card IDs, pages, quotes, false source relations, book-map evidence
-> moves, and standing-canon claims — where source-free prompting (including a
-> careful criteria prompt and famous-source awareness) cannot.
-
-This is a claim about *mechanical lineage*, not about advice quality or source
-truth. It does not say the substrate gives better recommendations; it says the
-substrate supplies citations that resolve to reviewed evidence and that
-controls, lacking the reviewed cards, cannot reproduce. The earlier `v3-v1`
-attempt recorded `do_not_promote`; `v4-v1` carries the supported result after a
-scoring-surface repair, with `v3-v1` left frozen as history.
-
-This repo tests the method and ships its receipts; it is not a possession of
-books.
-
-## Have your agent install `anti-slop-pr`
-
-`anti-slop-pr` is the shippable tool from this lab: a deterministic **reference
-resolver** for AI-written PR descriptions. It checks whether the file / test /
-source-card / issue / commit references a PR body cites actually **resolve**
-against the repo — it does **not** verify correctness, relevance, support, source
-truth, advice quality, reasoning, or canon. No model, network, GitHub API, or
-token.
+## Install It
 
 Point a coding agent at [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md) (short
 entrypoint: [`llms.txt`](llms.txt)) with this prompt:
 
 > **"Install anti-slop-pr in this repo, run the smoke, add report-mode CI, and open a PR."**
 
-It installs in report mode (advisory); enforcement is explicit opt-in. See
-[`docs/pr-provenance.md`](docs/pr-provenance.md).
+The core commands are:
+
+```sh
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
+anti-slop-pr --self-test
+anti-slop-pr-event --self-test
+anti-slop-pr --root . <pr-body.md> --report
+```
+
+See [`docs/pr-provenance.md`](docs/pr-provenance.md) for usage and
+[`docs/agent-claim-verification.md`](docs/agent-claim-verification.md) for the
+supported-claims matrix.
+
+## What It Checks
+
+The supported-claims matrix is load-bearing:
+
+- Hard resolution: path-like file refs, test nodes, source/card refs.
+- Registry-backed resolution: issue refs when a numbers-only registry is
+  supplied.
+- Advisory receipts: commit refs, command receipts, benchmark receipts,
+  changed-file claims, and docs-updated claims.
+- Out of scope: "fixed", "safe", "supported", "correct", and similar claims
+  whose truth cannot be mechanically proven by reference resolution.
+
+A PASS means cited artifacts resolved. It is not a quality verdict.
 
 ## Why
 
-AI can sound strategic while quietly failing at the parts that matter: fabricated lineage, famous-source defaults, flattened contradictions, universal advice from narrow cases, and no audit trail for what changed the recommendation.
+AI coding agents can write confident change summaries while quietly inventing
+files, tests, issues, commits, commands, benchmark receipts, or source-card
+references. Anti-Slop turns those claims into checkable references before merge.
 
-Anti-Slop turns that into a workflow:
-
-```text
-source -> map -> card -> preserve tension -> propose canon -> test -> publish receipts
-```
-
-The point is not to make AI sound more informed. The point is to make advice accountable: what sources were allowed, what claims were rejected, what contradictions remained unresolved, what gates failed, and what changed in the KB.
-
-## What This Is
-
-This is a Karpathy-style persistent Markdown knowledgebase, not a prompt pack and not query-time RAG.
-
-- Raw sources stay local-only.
-- Public-safe Markdown pages compound over time.
-- Maps and cards organize source lineage.
-- Tension cards preserve disagreement instead of smoothing it away.
-- Canon requires explicit operator approval.
-- Evals and gates test whether the method beats simpler baselines.
+The point is not to make AI sound more informed. The point is to make its claims
+inspectable: what was cited, what resolved, what was advisory, and what remains
+outside the resolver's authority.
 
 ## What This Is Not
 
-- Not a public archive of copyrighted book text.
-- Not a raw document dump.
-- Not a vector store of book contents.
-- Not a replacement for the books.
-- Not a claim that 200 books automatically make AI advice better.
-
-Canon Patch Trial is prior context only. It is not the active workstream and not a gate.
+- Not a model, hosted service, API integration, RAG layer, vector store, or agent
+  runtime.
+- Not a correctness checker.
+- Not a relevance, support, safety, advice-quality, reasoning, or source-truth
+  judge.
+- Not a canon or authority-promotion mechanism.
+- Not a public archive of copyrighted source text.
 
 ## Publication Rule
 
-Raw copyrighted book text must never be committed.
+Raw copyrighted source text must never be committed.
 
-No PDFs, EPUBs, MOBIs, AZW files, OCR dumps, extracted text, copied chapters, long excerpts, public raw-text prompts, or public embeddings of copyrighted source text.
+No PDFs, EPUBs, MOBIs, AZW files, OCR dumps, extracted text, copied chapters,
+long excerpts, public raw-text prompts, or public embeddings of copyrighted
+source text.
 
-Public artifacts are receipts: metadata, locators, short conservative excerpts when necessary, paraphrases, cards, evals, gate logs, model-output metadata, decisions, and methodology notes.
+Public artifacts are receipts: metadata, locators, short conservative excerpts
+when necessary, paraphrases, cards, evals, gate logs, model-output metadata,
+decisions, and methodology notes.
 
 ## Authority Order
 
@@ -106,15 +105,45 @@ Public artifacts are receipts: metadata, locators, short conservative excerpts w
 
 Machine-generated maps or summaries must never become hidden canon.
 
+## Evidence History
+
+Anti-Slop came out of `Anti-Slop books-kb`: a governed Markdown knowledgebase
+and eval lab for making AI-assisted advice inspectable before it becomes
+operational. The older 200-book corpus work remains in this repo as history,
+evidence, and receipts, not as the public product category.
+
+### Program hypothesis (under test, not yet proven)
+
+> A maintained knowledgebase with source lineage, contradiction handling,
+> deterministic gates, and operator approval can reduce slop compared with
+> vanilla model use and vanilla model use with famous manually supplied sources.
+
+This hypothesis is **not** established. Most of the broad "reduce slop" /
+"improve advice" surface is still unproven, and at least one careful baseline
+(a well-written `criteria_prompted_no_sources` prompt) is a documented ceiling
+on general reasoning-disposition tasks.
+
+### What is benchmark-supported so far (the narrow result)
+
+One narrow, mechanical claim is benchmark-supported, under a frozen,
+pre-registered rule, by two independent different-family hosted judges
+(`evals/bibliographic-adversary/locator-accuracy-v4/`, `benchmark_supported`):
+
+> Under adversarial citation pressure, the substrate workflow adds **inspectable
+> reviewed public-KB lineage** - the correct card ID, the reviewed locator at the
+> granularity the card carries, and the supported claim, while refusing
+> unsupported card IDs, pages, quotes, false source relations, book-map evidence
+> moves, and standing-canon claims - where source-free prompting (including a
+> careful criteria prompt and famous-source awareness) cannot.
+
+This is a claim about *mechanical lineage*, not about advice quality or source
+truth. It does not say the substrate gives better recommendations; it says the
+substrate supplies citations that resolve to reviewed evidence and that
+controls, lacking the reviewed cards, cannot reproduce. The earlier `v3-v1`
+attempt recorded `do_not_promote`; `v4-v1` carries the supported result after a
+scoring-surface repair, with `v3-v1` left frozen as history.
+
 ## Proof Surface
-
-The first eval families:
-
-- bibliographic adversary
-- contradiction preservation
-- canon promotion tournament
-- long-tail transfer
-- source-lineage hostile
 
 The gates fall into two tiers, and the distinction is load-bearing:
 
@@ -132,14 +161,16 @@ is mechanical and reproducible:
   stdlib-only `anti-slop-lineage` CLI (`pip install .`; isolated-install smoke
   `make package-smoke`) — packaging adds distribution, not capability. Usage:
   [`docs/citation-lineage-gate.md`](docs/citation-lineage-gate.md).
-- `pr-provenance` (`scripts/gate_pr_provenance.py`, `anti-slop-pr`) —
-  *implemented*: resolves the issue / file / test / source-card / commit
-  references a PR description cites against a repo or fixture root, failing on
+- `pr-provenance` (`scripts/gate_pr_provenance.py`, `anti-slop-pr`) -
+  *implemented*: surface #1 for deterministic agent claim verification. It
+  resolves the issue / file / test / source-card / commit references a PR body
+  cites against a repo or fixture root, failing on
   unresolved references. The card check reuses the citation-lineage resolver
   unchanged; stdlib-only, no GitHub API / model / network (commit refs use only
   local git). It resolves references, it does not judge relevance, correctness,
-  or support. File refs must be path-like; issue refs are deterministic only
-  against a supplied registry (advisory otherwise); commit refs are advisory.
+  support, safety, advice quality, reasoning, source truth, or canon. File refs
+  must be path-like; issue refs are deterministic only against a supplied
+  registry (advisory otherwise); commit refs are advisory.
   `--report` gives an advisory (exit-0) mode, and explicit, auditable
   `<!-- anti-slop-pr: ignore-next-line -->` / `ignore-start`…`ignore-end`
   directives let docs PRs suppress intentionally-fabricated example refs
