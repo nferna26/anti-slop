@@ -14,6 +14,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not touch frozen evals, generator-swap outputs, canon, registry decisions, source-card review statuses, or local-only artifacts. Did not add model/API/RAG/vector-store/runtime dependencies. Did not commit raw copyrighted text, secrets, `.env`, private paths, raw API JSON, answer keys, or per-output maps. Did not claim correctness, relevance, source truth, support, advice quality, reasoning, safety, or canon; only reference/receipt resolution is claimed.
 - Follow-up: Next useful tranche is packaging adoption polish: a reusable composite GitHub Action and optional changed-file / command-receipt receipt checks that preserve the same narrow resolver boundary.
 
+(Week 2A claims-entrypoint tranche — same day, separate entry)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: RED evidence captured before implementation: `pyproject.toml` had no `anti-slop-claims` console command declaration, and the extended `make package-smoke` failed before GREEN with `FAIL: console script not installed .../bin/anti-slop-claims`. Added generic `AGENT_FINAL_REPORT.md` fixtures under `proof/claims-demo/`: a valid artifact citing `docs/agent-final-report.md` and a fabricated artifact citing `docs/missing-final-report.md`. GREEN targeted checks: `python3 scripts/gate_claims.py --self-test` passed; `python3 scripts/gate_claims.py --root proof/claims-demo/fixture-root proof/claims-demo/valid/AGENT_FINAL_REPORT.md` exited 0; `python3 scripts/gate_claims.py --root proof/claims-demo/fixture-root proof/claims-demo/fabricated/AGENT_FINAL_REPORT.md` exited 1 with line-level reason `line 3: file does not resolve: docs/missing-final-report.md`; `make package-smoke` passed and verified installed `anti-slop-lineage`, `anti-slop-pr`, `anti-slop-pr-event`, and `anti-slop-claims`.
+- Eval run: —
+- Decision: Added CORE-955 / CORE-958 packaging/API shape: new stdlib-only `anti-slop-claims` generic artifact-checking CLI (`scripts/gate_claims.py`) and package entry point. It reuses the existing `anti-slop-pr` resolver engine (`gate_pr_provenance.run` / render shape) for generic Markdown/text artifacts such as `AGENT_FINAL_REPORT.md`; it does not fork `gate_citation_lineage` or duplicate resolver semantics. Preserved `anti-slop-pr`, `anti-slop-pr-event`, and `anti-slop-lineage` behavior and exposed all four installed commands in package smoke. Updated `Makefile`, package smoke, agent-install smoke, README, install docs, `llms.txt`, `docs/agent-claim-verification.md`, `docs/pr-provenance.md`, and `kb/index.md` to identify `anti-slop-claims` as the generic entrypoint and `anti-slop-pr` as surface #1 / compatibility preset.
+- Rejected/deferred: Did not implement a generic JSON receipt schema, diff-aware changed-file checks, command-receipt validation, or benchmark-receipt validation. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, source-card statuses, or local-only artifacts. Did not add model/API/RAG/vector-store/runtime dependencies, GitHub API calls, or tokens. Did not commit secrets, `.env`, private paths, raw API JSON, answer keys, or raw copyrighted text. No claim is made beyond reference/receipt resolution; correctness, relevance, source truth, support, advice quality, reasoning, safety, and canon remain out of scope.
+- Follow-up: CORE-956 + CORE-957: define the generic JSON receipt shape and add diff-aware changed-file checks without widening the resolver's claim boundary.
+
 ## 2026-05-30
 
 - Ingested: —

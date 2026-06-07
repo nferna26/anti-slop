@@ -14,6 +14,11 @@ repo. It does **not** prove the change is correct, relevant, supported, safe, or
 true, and says nothing about source truth, advice quality, reasoning, or canon.
 It is a checker, not a judge. No model, no network, no GitHub API, no token.
 
+The package also exposes **`anti-slop-claims`**, the generic Markdown/text
+artifact entrypoint. `anti-slop-pr` remains the PR-body surface and compatibility
+wrapper; `anti-slop-claims` is for non-PR artifacts such as
+`AGENT_FINAL_REPORT.md`.
+
 > **Copy/paste user prompt:** "Install anti-slop-pr in this repo, run the smoke,
 > add report-mode CI, and open a PR."
 
@@ -27,16 +32,19 @@ It is a checker, not a judge. No model, no network, no GitHub API, no token.
 ## 1. Install
 
 Pick one. Both give you the `anti-slop-pr` and `anti-slop-pr-event` commands.
+They also install `anti-slop-claims`.
 
 ```sh
 # Option A — pip install from the repo (preview; pin to a tag/commit for repro):
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 
-# Option B — vendor the three stdlib files (no install), then run with python3:
+# Option B — vendor the four stdlib files (no install), then run with python3:
 #   scripts/gate_citation_lineage.py   (the resolver, reused unchanged)
 #   scripts/gate_pr_provenance.py      (anti-slop-pr)
+#   scripts/gate_claims.py             (anti-slop-claims)
 #   scripts/pr_provenance_from_github_event.py  (anti-slop-pr-event)
 # Run as: python3 path/to/gate_pr_provenance.py --root . <pr-body.md>
+# Or:     python3 path/to/gate_claims.py --root . <artifact.md>
 ```
 
 ## 2. Self-test (proves the install, offline)
@@ -44,6 +52,7 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 ```sh
 anti-slop-pr --self-test          # 22 checks
 anti-slop-pr-event --self-test    # 8 checks
+anti-slop-claims --self-test      # generic AGENT_FINAL_REPORT.md fixture
 ```
 
 From a checkout of this repo, the full end-to-end smoke (throwaway venv + temp
@@ -61,6 +70,18 @@ anti-slop-pr --root . my-pr-body.md
 ```
 
 A minimal example body to adapt: `templates/example-pr-body.md`.
+
+## 3b. Check a generic artifact locally
+
+```sh
+# Resolve references cited by a non-PR Markdown/text artifact:
+anti-slop-claims --root . AGENT_FINAL_REPORT.md
+#   add --report for advisory adoption, same as anti-slop-pr
+```
+
+This is the same resolver engine used by `anti-slop-pr`. It does not add
+diff-aware changed-file checks, command-receipt validation, benchmark-receipt
+validation, or a new JSON receipt schema.
 
 ## 4. Add the GitHub PR check (report mode by default)
 

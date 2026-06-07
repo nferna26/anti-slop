@@ -1,11 +1,13 @@
 # anti-slop-pr - PR-body claim verification
 
-`scripts/gate_pr_provenance.py` (`anti-slop-pr`) is surface #1 for Anti-Slop's
-deterministic **agent claim verification** work: a stdlib-only checker for the
-references an AI-written PR description cites. It catches the cheap, common
-failure - a fabricated issue number, a doc/file path that was never added, a
-test node that is not defined, a source-card ID that does not resolve - **before
-merge**. No GitHub API, no model, no network, no runtime.
+`scripts/gate_pr_provenance.py` (`anti-slop-pr`) is surface #1 and the
+compatibility preset for Anti-Slop's deterministic **agent claim verification**
+work: a stdlib-only checker for the references an AI-written PR description
+cites. The generic artifact entrypoint, `anti-slop-claims`, reuses this resolver
+engine for non-PR Markdown/text artifacts. It catches the cheap, common failure -
+a fabricated issue number, a doc/file path that was never added, a test node
+that is not defined, a source-card ID that does not resolve - **before merge**.
+No GitHub API, no model, no network, no runtime.
 
 It is a *resolver*, not a judge. See "What it cannot catch" and the broader
 supported-claims matrix in
