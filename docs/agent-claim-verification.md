@@ -10,9 +10,11 @@ repo state where a mechanical check is possible. It does **not** verify
 correctness, relevance, source truth, support, advice quality, reasoning,
 safety, or canon.
 
-PR descriptions are surface #1 through `anti-slop-pr` and
-`anti-slop-pr-event`. The category is broader: any agent-authored claim surface
-can be made more inspectable by requiring concrete references and receipts.
+`anti-slop-claims` is the generic artifact-checking entrypoint. PR descriptions
+are surface #1 through the compatibility preset `anti-slop-pr` and its GitHub
+Actions event wrapper `anti-slop-pr-event`. The category is broader: any
+agent-authored claim surface can be made more inspectable by requiring concrete
+references and receipts.
 
 ## Supported-Claims Matrix
 
@@ -41,7 +43,9 @@ can be made more inspectable by requiring concrete references and receipts.
 
 ## Current Surfaces
 
-- `anti-slop-pr`: checks an agent-written PR body against a repo root.
+- `anti-slop-claims`: generic Markdown/text artifact checker for files such as
+  `AGENT_FINAL_REPORT.md`; reuses the `anti-slop-pr` resolver engine.
+- `anti-slop-pr`: PR-body surface #1 and compatibility wrapper/preset.
 - `anti-slop-pr-event`: reads the PR body from GitHub Actions event JSON without
   a GitHub API token and runs `anti-slop-pr`.
 - `anti-slop-lineage`: resolves public-KB source/card lineage and is reused by
@@ -49,3 +53,6 @@ can be made more inspectable by requiring concrete references and receipts.
 
 All current surfaces are stdlib-only and do not call a model, hosted API,
 network service, vector store, RAG layer, or runtime server.
+
+Not yet implemented here: a generic JSON receipt schema, diff-aware changed-file
+checks, command-receipt validation, or benchmark-receipt validation.

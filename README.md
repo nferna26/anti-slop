@@ -29,6 +29,17 @@ Both are stdlib-only and run offline against the checked-out repo.
 Start in report mode: findings are printed, but the check exits 0. Enforcement
 is explicit opt-in once a repo is ready.
 
+## Generic Artifacts
+
+`anti-slop-claims` is the generic artifact-checking entrypoint. It accepts a
+Markdown/text artifact such as `AGENT_FINAL_REPORT.md` and uses the same
+reference resolver engine as `anti-slop-pr`.
+
+This is a packaging/API shape change, not a semantic expansion. The generic
+entrypoint still resolves references only; it does not add diff-aware changed-file
+checks, command-receipt validation, benchmark-receipt validation, or a new JSON
+receipt schema.
+
 ## Install It
 
 Point a coding agent at [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md) (short
@@ -42,6 +53,8 @@ The core commands are:
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 anti-slop-pr --self-test
 anti-slop-pr-event --self-test
+anti-slop-claims --self-test
+anti-slop-claims --root . AGENT_FINAL_REPORT.md --report
 anti-slop-pr --root . <pr-body.md> --report
 ```
 
@@ -56,8 +69,10 @@ The supported-claims matrix is load-bearing:
 - Hard resolution: path-like file refs, test nodes, source/card refs.
 - Registry-backed resolution: issue refs when a numbers-only registry is
   supplied.
-- Advisory receipts: commit refs, command receipts, benchmark receipts,
-  changed-file claims, and docs-updated claims.
+- Advisory refs: commit refs; issue refs without a registry.
+- Path-only resolution can be used for cited docs or receipt artifact paths, but
+  this tranche does not implement diff-aware changed-file checks,
+  command-receipt validation, or benchmark-receipt validation.
 - Out of scope: "fixed", "safe", "supported", "correct", and similar claims
   whose truth cannot be mechanically proven by reference resolution.
 
@@ -161,8 +176,17 @@ is mechanical and reproducible:
   stdlib-only `anti-slop-lineage` CLI (`pip install .`; isolated-install smoke
   `make package-smoke`) — packaging adds distribution, not capability. Usage:
   [`docs/citation-lineage-gate.md`](docs/citation-lineage-gate.md).
+- `claims` (`scripts/gate_claims.py`, `anti-slop-claims`) - *implemented*:
+  generic artifact-checking entrypoint for deterministic agent claim
+  verification. It accepts Markdown/text artifacts such as
+  `AGENT_FINAL_REPORT.md` and reuses the `anti-slop-pr` resolver engine for
+  file / test / source-card / issue / commit references. This is packaging/API
+  shape only; it does not add diff-aware changed-file checks, command receipts,
+  benchmark receipts, or a new JSON receipt schema. Self-tested
+  (`make claims-self-test`) and package-smoked (`make package-smoke`).
 - `pr-provenance` (`scripts/gate_pr_provenance.py`, `anti-slop-pr`) -
-  *implemented*: surface #1 for deterministic agent claim verification. It
+  *implemented*: surface #1 PR-body preset for deterministic agent claim
+  verification. It
   resolves the issue / file / test / source-card / commit references a PR body
   cites against a repo or fixture root, failing on
   unresolved references. The card check reuses the citation-lineage resolver

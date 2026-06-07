@@ -117,6 +117,14 @@ pr-provenance:
 pr-provenance-self-test:
 	python3 scripts/gate_pr_provenance.py --self-test
 
+# anti-slop-claims: generic artifact reference/receipt resolver. Uses the same
+# resolver engine as anti-slop-pr for non-PR Markdown/text artifacts.
+claims:
+	python3 scripts/gate_claims.py --root $(ROOT) $(if $(ISSUES),--issue-registry $(ISSUES)) $(ARTIFACT)
+
+claims-self-test:
+	python3 scripts/gate_claims.py --self-test
+
 # Stranger-reproducible demo: a passing and an intentionally-failing PR body
 # checked against a self-contained fixture root (no GitHub API, model, or network).
 pr-provenance-demo:
