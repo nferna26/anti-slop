@@ -2,6 +2,18 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-06-07
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: RED evidence captured before edits: root `LICENSE` absent (`test -f LICENSE` exit 1), `pyproject.toml` had no license/classifier hits, README opened as `Anti-Slop books-kb` with 200-book corpus framing, `docs/agent-claim-verification.md` was absent, and `INSTALL_FOR_AGENTS.md` / `llms.txt` / `templates/anti-slop-pr.yml` centered `anti-slop-pr` as a PR-description resolver. GREEN gates run during this PR: `test -f LICENSE`, targeted README first-screen grep (no books-kb / 200-book lead), targeted top-level grep for `agent claim verification` and `Make AI coding agents cite receipts, not vibes`, `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `make gate-citation-lineage-self-test`, `make gate-no-universalization-self-test`, `make pr-provenance-self-test`, `make pr-provenance-event-self-test`, `make pr-provenance-demo`, `make pr-provenance-event-demo`, `make package-smoke`, `make agent-install-smoke`, and `python3 scripts/artifact_preflight.py --strict` all exited 0. `make check-raw` retained pre-existing large-file warnings only; `artifact_preflight --strict` retained 0 blockers and the existing 2 warnings (acquired_unmapped WIP cap and v7 unscored outputs).
+- Eval run: —
+- Decision: Repositioned the public front door for CORE-951, CORE-952, CORE-953, and CORE-954 from `Anti-Slop books-kb` / 200-book corpus framing toward deterministic **agent claim verification** for AI coding agents. Added root Apache-2.0 `LICENSE` and package license metadata/classifier in `pyproject.toml`. Rewrote the README first screen around the tagline "Make AI coding agents cite receipts, not vibes.", with PR descriptions named as surface #1 rather than the category. Added `docs/agent-claim-verification.md` with a supported-claims matrix for file refs, changed-file claims, test refs, issue refs, commit refs, command receipts, benchmark receipts, docs-updated claims, and fixed/safe/supported claims. Refreshed `INSTALL_FOR_AGENTS.md`, `llms.txt`, `templates/anti-slop-pr.yml`, `docs/pr-provenance.md`, and `kb/index.md` to use the agent-claim-verification frame while preserving report-mode adoption and existing commands. The books-kb / eval-lab history remains below the fold as evidence and receipts.
+- Rejected/deferred: Did not touch frozen evals, generator-swap outputs, canon, registry decisions, source-card review statuses, or local-only artifacts. Did not add model/API/RAG/vector-store/runtime dependencies. Did not commit raw copyrighted text, secrets, `.env`, private paths, raw API JSON, answer keys, or per-output maps. Did not claim correctness, relevance, source truth, support, advice quality, reasoning, safety, or canon; only reference/receipt resolution is claimed.
+- Follow-up: Next useful tranche is packaging adoption polish: a reusable composite GitHub Action and optional changed-file / command-receipt receipt checks that preserve the same narrow resolver boundary.
+
 ## 2026-05-30
 
 - Ingested: —

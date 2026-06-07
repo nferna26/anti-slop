@@ -1,15 +1,18 @@
-# Install `anti-slop-pr` (agent protocol)
+# Install Anti-Slop agent claim verification (`anti-slop-pr` surface)
 
-A protocol a coding agent (or a person) can follow to add **`anti-slop-pr`** to
-any repository: install it, wire a report-mode GitHub PR check, run a smoke, and
-open a PR.
+Make AI coding agents cite receipts, not vibes.
+
+A protocol a coding agent (or a person) can follow to add Anti-Slop's first
+agent-claim-verification surface, **`anti-slop-pr`**, to any repository: install
+it, wire a report-mode GitHub PR check, run a smoke, and open a PR.
 
 **What `anti-slop-pr` does (narrow):** it is a deterministic **reference
-resolver** for PR descriptions. It checks whether the **file, test, source-card,
+and receipt resolver** for claims in AI-written PR descriptions. PR bodies are
+surface #1, not the category. It checks whether the **file, test, source-card,
 issue, and commit** references a PR body cites actually **resolve** against the
-repo. It does **not** prove the change is correct, relevant, supported, or true,
-and says nothing about advice quality, reasoning, or canon. It is a checker, not
-a judge. No model, no network, no GitHub API, no token.
+repo. It does **not** prove the change is correct, relevant, supported, safe, or
+true, and says nothing about source truth, advice quality, reasoning, or canon.
+It is a checker, not a judge. No model, no network, no GitHub API, no token.
 
 > **Copy/paste user prompt:** "Install anti-slop-pr in this repo, run the smoke,
 > add report-mode CI, and open a PR."
@@ -50,7 +53,7 @@ GitHub API) is: `make agent-install-smoke`.
 ## 3. Check a PR body locally
 
 ```sh
-# Write the PR description to a file, then resolve its references against the repo:
+# Write the PR description to a file, then resolve its cited claims against the repo:
 anti-slop-pr --root . my-pr-body.md
 #   exit 0 = every hard reference resolves (PASS)
 #   exit 1 = a cited file / test / source-card (or registry issue) does not resolve
@@ -63,7 +66,8 @@ A minimal example body to adapt: `templates/example-pr-body.md`.
 
 Copy `templates/anti-slop-pr.yml` to `.github/workflows/anti-slop-pr.yml`. It
 runs on `pull_request`, reads the PR body from the event payload (no token), and
-runs in **report mode** (advisory — never fails the check):
+runs the agent claim verification surface in **report mode** (advisory — never
+fails the check):
 
 ```yaml
 permissions: { contents: read }     # no write/token scope
@@ -126,6 +130,7 @@ A block of example references.
 
 ## What this is not
 
-It resolves references; it does not verify correctness, relevance, support,
-source truth, advice quality, reasoning, or canon. See
+It resolves references and receipts; it does not verify correctness, relevance,
+support, safety, source truth, advice quality, reasoning, or canon. See
+[`docs/agent-claim-verification.md`](docs/agent-claim-verification.md) and
 [`docs/pr-provenance.md`](docs/pr-provenance.md).

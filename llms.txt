@@ -1,10 +1,13 @@
-# anti-slop-pr
+# Anti-Slop agent claim verification
 
-> A deterministic reference resolver for AI-written PR descriptions. It checks
-> whether the file / test / source-card / issue / commit references a PR body
-> cites actually RESOLVE against the repo. It does NOT verify correctness,
-> relevance, support, source truth, advice quality, reasoning, or canon — it is a
-> checker, not a judge. Stdlib only; no model, network, GitHub API, or token.
+> Make AI coding agents cite receipts, not vibes.
+>
+> Deterministic agent claim verification for AI coding agents. Surface #1 is
+> `anti-slop-pr`, a reference and receipt resolver for AI-written PR
+> descriptions. It checks whether the file / test / source-card / issue / commit
+> references a PR body cites actually RESOLVE against the repo. It does NOT
+> verify correctness, relevance, support, safety, source truth, advice quality,
+> reasoning, or canon. Stdlib only; no model, network, GitHub API, or token.
 
 ## Install it (for agents)
 
@@ -19,9 +22,10 @@ Exact commands:
 
 ## Reference
 
+- [docs/agent-claim-verification.md](docs/agent-claim-verification.md): supported-claims matrix and out-of-scope boundary.
 - [docs/pr-provenance.md](docs/pr-provenance.md): usage, tiers, ignore directives, "First 60 seconds", GitHub Actions recipe.
 - [docs/citation-lineage-gate.md](docs/citation-lineage-gate.md): the reused source-card/source resolver (the one benchmark-backed primitive).
-- [README.md](README.md): the Anti-Slop books-kb this tool came out of.
+- [README.md](README.md): the Anti-Slop front door and evidence history.
 
 ## Tiers (deterministic vs advisory)
 

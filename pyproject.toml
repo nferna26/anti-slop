@@ -1,16 +1,14 @@
-# Packaging for the deterministic citation-lineage gate.
+# Packaging for deterministic Anti-Slop claim-verification CLIs.
 #
-# This installs the EXISTING, unmodified gate module (scripts/gate_citation_lineage.py)
-# as an importable module and a console command. It does NOT fork or reimplement
-# the gate: the `anti-slop-lineage` entry point is the gate's own main(), so the
-# packaged CLI and `python3 scripts/gate_citation_lineage.py` are byte-identical
-# in behaviour.
+# This installs the existing gate modules as importable modules and console
+# commands. It does NOT fork or reimplement the gates: the package entry points
+# call the scripts' own main() functions, so installed CLIs and checkout-mode
+# commands are byte-identical in behaviour.
 #
-# Scope of the tool (narrow, deterministic): it audits whether the card/source
-# IDs an artifact cites RESOLVE to known public-KB lineage, and (with
-# --require-reviewed) resolve to *reviewed* source cards. That is all. It is NOT
-# an advisor, does NOT call any model/API/network, does NOT prove source truth,
-# advice quality, reasoning, or slop reduction, and does NOT promote canon.
+# Scope of the tools (narrow, deterministic/advisory): they audit whether cited
+# references and receipts RESOLVE to repo artifacts. That is all. They are NOT
+# advisors, do NOT call any model/API/network, do NOT prove source truth,
+# correctness, relevance, support, advice quality, reasoning, safety, or canon.
 #
 # stdlib-only: no runtime dependencies.
 
@@ -21,10 +19,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "anti-slop-lineage"
 version = "0.1.0"
-description = "Deterministic citation-lineage gate: audit that cited card/source IDs resolve to reviewed public-KB lineage. Not an advisor, not a model, not canon."
+description = "Deterministic agent claim verification CLIs: resolve cited lineage and PR-body references against repo artifacts. Not an advisor, not a model, not canon."
 requires-python = ">=3.9"
 dependencies = []
-keywords = ["citation", "lineage", "provenance", "deterministic", "audit"]
+license = { text = "Apache-2.0" }
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+keywords = ["claim-verification", "citation", "lineage", "provenance", "deterministic", "audit"]
 
 [project.scripts]
 # The CLI IS the gate's own main() — same args (file paths, --root,
