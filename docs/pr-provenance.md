@@ -4,10 +4,11 @@
 compatibility preset for Anti-Slop's deterministic **agent claim verification**
 work: a stdlib-only checker for the references an AI-written PR description
 cites. The generic artifact entrypoint, `anti-slop-claims`, reuses this resolver
-engine for non-PR Markdown/text artifacts. It catches the cheap, common failure -
-a fabricated issue number, a doc/file path that was never added, a test node
-that is not defined, a source-card ID that does not resolve - **before merge**.
-No GitHub API, no model, no network, no runtime.
+engine for non-PR Markdown/text artifacts and adds generic JSON receipts plus
+optional local-git changed-file checks. It catches the cheap, common failure - a
+fabricated issue number, a doc/file path that was never added, a test node that
+is not defined, a source-card ID that does not resolve - **before merge**. No
+GitHub API, no model, no network, no runtime.
 
 It is a *resolver*, not a judge. See "What it cannot catch" and the broader
 supported-claims matrix in

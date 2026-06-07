@@ -21,7 +21,7 @@ references and receipts.
 | Claim type | Tier | Required artifact | What is verified | What is not verified | Example failure |
 | --- | --- | --- | --- | --- | --- |
 | File refs | Hard | A visible path-like file reference such as `docs/foo.md` or `scripts/tool.py:L42` | The referenced file exists under `--root`; line refs are within file length | Whether the file is relevant, correct, newly added, or semantically supports the claim | PR says "Adds `docs/rate-limits.md`" but that file is absent |
-| Changed-file claims | Advisory | A cited file path plus review/diff context outside the resolver | The cited path can resolve as a file ref when path-like | Whether the file was changed in this PR, whether the diff is meaningful, or whether the edit implements the described behavior | PR says "Updated `docs/api.md`" but the path exists only from an earlier commit |
+| Changed-file claims | Hard with `--diff`; advisory/skipped without it | Changed-file language near a path-like file ref plus a local git diff/range | The cited path resolves, and with `--diff`, the path appears in `git diff --name-only <range>` | Whether the diff is meaningful, complete, correct, or implements the described behavior | Agent says "Updated `docs/api.md`"; the file exists, but it is absent from the supplied diff |
 | Test refs | Hard | A test node such as `tests/test_api.py::test_limits` | The test file exists and defines the named test/class node | Whether the test was run, passed, covers the claimed behavior, or proves correctness | PR says it is covered by `tests/test_api.py::test_limits` but that node is missing |
 | Issue refs | Advisory by default; hard with registry | `#123` plus an optional numbers-only issue registry passed with `--issue-registry` | With a registry, the issue number appears in that registry; without a registry, the ref is reported advisory only | Issue state, labels, priority, user intent, or whether the PR fixes it | PR says "Fixes #4123" but `4123` is absent from the supplied registry |
 | Commit refs | Advisory | A 7-40 character hex token checked against local git at `--root` | Local git can resolve the token as a commit object when possible | Whether the commit belongs to this branch/PR, why it matters, or whether a hex token was intended as a commit | PR cites `9f3a2b1`, but local git cannot resolve it |
@@ -44,7 +44,10 @@ references and receipts.
 ## Current Surfaces
 
 - `anti-slop-claims`: generic Markdown/text artifact checker for files such as
-  `AGENT_FINAL_REPORT.md`; reuses the `anti-slop-pr` resolver engine.
+  `AGENT_FINAL_REPORT.md`; reuses the `anti-slop-pr` resolver engine. Supports
+  structured `anti-slop-claims.v1` JSON receipts with per-ref line/type/tier/
+  status/reason/evidence entries, plus optional local-git `--diff` changed-file
+  checks.
 - `anti-slop-pr`: PR-body surface #1 and compatibility wrapper/preset.
 - `anti-slop-pr-event`: reads the PR body from GitHub Actions event JSON without
   a GitHub API token and runs `anti-slop-pr`.
@@ -54,5 +57,5 @@ references and receipts.
 All current surfaces are stdlib-only and do not call a model, hosted API,
 network service, vector store, RAG layer, or runtime server.
 
-Not yet implemented here: a generic JSON receipt schema, diff-aware changed-file
-checks, command-receipt validation, or benchmark-receipt validation.
+Not implemented here: command-receipt validation, benchmark-receipt validation,
+semantic diff review, or any correctness/support/safety judgment.

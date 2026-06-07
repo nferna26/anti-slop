@@ -5,9 +5,11 @@
 > Deterministic agent claim verification for AI coding agents. Generic entrypoint:
 > `anti-slop-claims`. Surface #1 / compatibility preset: `anti-slop-pr` for
 > AI-written PR descriptions. Both check whether file / test / source-card /
-> issue / commit references actually RESOLVE against the repo. They do NOT verify
-> correctness, relevance, support, safety, source truth, advice quality,
-> reasoning, or canon. Stdlib only; no model, network, GitHub API, or token.
+> issue / commit references actually RESOLVE against the repo. `anti-slop-claims`
+> can write structured JSON receipts and can hard-check changed-file wording
+> against a supplied local git diff/range. They do NOT verify correctness,
+> relevance, support, safety, source truth, advice quality, reasoning, or canon.
+> Stdlib only; no model, network, GitHub API, or token.
 
 ## Install it (for agents)
 
@@ -18,6 +20,8 @@ Exact commands:
 - Install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"`
 - Self-test: `anti-slop-claims --self-test`, `anti-slop-pr --self-test`, and `anti-slop-pr-event --self-test`
 - Check a generic artifact: `anti-slop-claims --root . AGENT_FINAL_REPORT.md`  (add `--report` for advisory)
+- Write JSON: `anti-slop-claims --root . --json claims.json AGENT_FINAL_REPORT.md`
+- Diff-aware changed-file check: `anti-slop-claims --root . --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md`
 - Check a PR body: `anti-slop-pr --root . <pr-body.md>`  (add `--report` for advisory)
 - GitHub Actions: copy `templates/anti-slop-pr.yml` → `.github/workflows/` (report mode; drop `--report` to enforce)
 

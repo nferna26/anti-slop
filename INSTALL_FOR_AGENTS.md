@@ -52,7 +52,7 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 ```sh
 anti-slop-pr --self-test          # 22 checks
 anti-slop-pr-event --self-test    # 8 checks
-anti-slop-claims --self-test      # generic AGENT_FINAL_REPORT.md fixture
+anti-slop-claims --self-test      # JSON + diff-aware generic artifact fixtures
 ```
 
 From a checkout of this repo, the full end-to-end smoke (throwaway venv + temp
@@ -77,11 +77,17 @@ A minimal example body to adapt: `templates/example-pr-body.md`.
 # Resolve references cited by a non-PR Markdown/text artifact:
 anti-slop-claims --root . AGENT_FINAL_REPORT.md
 #   add --report for advisory adoption, same as anti-slop-pr
+
+# Write a machine-readable receipt:
+anti-slop-claims --root . --json claims.json AGENT_FINAL_REPORT.md
+
+# Hard-check changed-file wording against a local git diff/range:
+anti-slop-claims --root . --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md
 ```
 
-This is the same resolver engine used by `anti-slop-pr`. It does not add
-diff-aware changed-file checks, command-receipt validation, benchmark-receipt
-validation, or a new JSON receipt schema.
+This is the same resolver engine used by `anti-slop-pr`. JSON receipts and
+diff-aware changed-file checks do not prove semantic correctness, relevance, or
+support. Command-receipt and benchmark-receipt validation are not implemented.
 
 ## 4. Add the GitHub PR check (report mode by default)
 
