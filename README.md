@@ -47,6 +47,12 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-
 The unpinned preview install is easier for first adoption but tracks repo head.
 Pinning is the safer supply-chain posture once a repo depends on the check.
 
+Product/package naming is intentionally conservative: Anti-Slop Receipts is the
+product, the current Python distribution remains `anti-slop-lineage`, and the
+primary commands remain `anti-slop-claims`, `anti-slop-run`,
+`anti-slop-pr-event`, and `anti-slop-pr`. See
+[`docs/package-install-naming.md`](docs/package-install-naming.md).
+
 ## 60-Second Demo
 
 ```sh
@@ -126,6 +132,8 @@ transcripts, or raw copyrighted text.
 
 The GitHub workflow uses `permissions: contents: read`. Anti-Slop commands read
 event JSON and local checkout files; they do not require a GitHub API token.
+See [`docs/privacy-security.md`](docs/privacy-security.md) for the full
+privacy/security launch boundary and forbidden report/receipt content.
 
 ## Agent Report Contract
 
@@ -161,6 +169,12 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
 - [`llms.txt`](llms.txt): compact agent entrypoint.
 - [`templates/anti-slop-report.yml`](templates/anti-slop-report.yml): report-mode
   GitHub Actions workflow with optional receipt artifacts.
+- [`docs/package-install-naming.md`](docs/package-install-naming.md):
+  product/package naming posture and pinned install guidance.
+- [`docs/privacy-security.md`](docs/privacy-security.md): local execution,
+  receipt contents, artifact upload risk, and forbidden content.
+- [`docs/launch-checklist.md`](docs/launch-checklist.md): machine and manual
+  launch checks.
 - [`docs/command-receipts.md`](docs/command-receipts.md): command/metric receipt
   schema.
 - [`docs/pr-provenance.md`](docs/pr-provenance.md): PR-body preset details.

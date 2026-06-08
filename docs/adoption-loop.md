@@ -8,6 +8,10 @@ Anti-Slop verifies deterministic reference/receipt resolution only. It does not
 verify correctness, relevance, source truth, support, safety, advice quality,
 reasoning, benchmark validity, statistical meaning, or canon.
 
+Before any adoption trial, use the launch posture in
+[`docs/package-install-naming.md`](package-install-naming.md) and the data
+handling rules in [`docs/privacy-security.md`](privacy-security.md).
+
 ## Target Criteria
 
 Good first targets:
@@ -45,6 +49,9 @@ Copy/paste prompt for an adopting coding agent:
 > `make adoption-smoke`. Open a PR that explains this verifies reference/receipt
 > resolution only, not correctness, relevance, source truth, support, safety,
 > advice quality, reasoning, benchmark validity, statistical meaning, or canon.
+> Keep product/package names aligned with `docs/package-install-naming.md`, and
+> link `docs/privacy-security.md` when the workflow uploads `.anti-slop`
+> artifacts.
 
 Optional generic-artifact trial after PR-body report mode is accepted:
 

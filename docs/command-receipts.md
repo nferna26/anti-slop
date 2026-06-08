@@ -12,6 +12,10 @@ reasoning, or canon.
 
 For a copyable final-report structure and common stack examples, see
 [`agent-report-contract.md`](agent-report-contract.md).
+For package/install naming, see
+[`docs/package-install-naming.md`](package-install-naming.md). For privacy,
+artifact upload risk, and forbidden receipt content, see
+[`docs/privacy-security.md`](privacy-security.md).
 
 ## Write A Command Receipt
 

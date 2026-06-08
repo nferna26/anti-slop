@@ -15,6 +15,11 @@ check, run a smoke, and open a PR.
 **GitHub preset:** `anti-slop-pr-event` checks PR bodies from the Actions event
 payload. `anti-slop-pr` remains the PR-body compatibility wrapper.
 
+**Naming posture:** Anti-Slop Receipts is the product name. The current Python
+distribution remains `anti-slop-lineage`; do not rename adopter workflows into a
+broad slop detector. See
+[`docs/package-install-naming.md`](docs/package-install-naming.md).
+
 Anti-Slop checks whether cited **file, test, source-card, issue, commit,
 command, and metric** references resolve against repo state and local receipts.
 It does **not** prove the change is correct, relevant, supported, safe, or true,
@@ -79,6 +84,7 @@ make agent-claim-demo       # fake report FAILS; receipt-backed report PASSES
 make agent-claim-benchmark  # 50 synthetic checker cases
 make agent-claim-audit      # report-mode audit over committed real PR bodies
 make adoption-smoke         # workflow-template + artifact-retention smoke
+make launch-check           # launch-facing docs/proof/naming/privacy check
 ```
 
 ## 3. Check a PR body locally
@@ -156,6 +162,9 @@ canon.
 
 For generic final reports, use the copyable contract in
 [`docs/agent-report-contract.md`](docs/agent-report-contract.md).
+For data handling, artifact upload risk, and forbidden report/receipt content,
+see [`docs/privacy-security.md`](docs/privacy-security.md). For the machine and
+manual launch gate, see [`docs/launch-checklist.md`](docs/launch-checklist.md).
 
 For a minimal PR-body-only workflow without artifact upload, the older
 `templates/anti-slop-pr.yml` remains available.
@@ -216,4 +225,6 @@ A block of example references.
 It resolves references and receipts; it does not verify correctness, relevance,
 support, safety, source truth, advice quality, reasoning, or canon. See
 [`docs/agent-claim-verification.md`](docs/agent-claim-verification.md) and
-[`docs/pr-provenance.md`](docs/pr-provenance.md).
+[`docs/pr-provenance.md`](docs/pr-provenance.md). Privacy/security rules are in
+[`docs/privacy-security.md`](docs/privacy-security.md); naming/install posture
+is in [`docs/package-install-naming.md`](docs/package-install-naming.md).

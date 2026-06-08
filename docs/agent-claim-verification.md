@@ -16,6 +16,11 @@ Actions event wrapper `anti-slop-pr-event`. The category is broader: any
 agent-authored claim surface can be made more inspectable by requiring concrete
 references and receipts.
 
+Launch-facing package/install naming is tracked in
+[`docs/package-install-naming.md`](package-install-naming.md). Privacy,
+security, artifact upload risk, and forbidden report/receipt content are tracked
+in [`docs/privacy-security.md`](privacy-security.md).
+
 ## Supported-Claims Matrix
 
 | Claim type | Tier | Required artifact | What is verified | What is not verified | Example failure |

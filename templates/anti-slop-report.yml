@@ -1,6 +1,11 @@
 # Copy this file to .github/workflows/anti-slop-report.yml in your repo.
 #
-# Anti-Slop agent claim verification in report mode.
+# Anti-Slop Receipts agent claim verification in report mode.
+#
+# Product/package naming: Anti-Slop Receipts is the product. The install spec
+# still uses the current Python distribution name `anti-slop-lineage`; command
+# names stay `anti-slop-claims`, `anti-slop-run`, `anti-slop-pr`, and
+# `anti-slop-pr-event`. See docs/package-install-naming.md in the upstream repo.
 #
 # Report mode is advisory: findings are printed, but the check exits 0. To
 # enforce later, explicitly remove `--report` from the relevant command after a
@@ -12,7 +17,8 @@
 #
 # The anti-slop commands below do not call a model, GitHub API, or external
 # runtime. The upload-artifact step only retains local JSON evidence produced by
-# the job.
+# the job. Treat uploaded receipts as local facts with artifact upload risk, not
+# proof of correctness. See docs/privacy-security.md in the upstream repo.
 #
 # GitHub Actions exposes $GITHUB_STEP_SUMMARY automatically. anti-slop-pr-event
 # and anti-slop-claims append compact Markdown tables there when it is present.
