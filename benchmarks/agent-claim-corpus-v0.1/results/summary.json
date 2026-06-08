@@ -1,6 +1,13 @@
 {
-  "advisory_false_cases": 6,
+  "advisory_false_cases": 7,
   "by_claim_type": {
+    "card": {
+      "advisory_false_cases": 0,
+      "cases": 1,
+      "catch_rate": 1.0,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": null
+    },
     "changed_file": {
       "advisory_false_cases": 1,
       "cases": 8,
@@ -24,14 +31,14 @@
     },
     "file": {
       "advisory_false_cases": 0,
-      "cases": 8,
+      "cases": 10,
       "catch_rate": 1.0,
       "expectation_match_rate": 1.0,
       "false_fail_rate": 0.0
     },
     "issue": {
-      "advisory_false_cases": 2,
-      "cases": 6,
+      "advisory_false_cases": 3,
+      "cases": 7,
       "catch_rate": 1.0,
       "expectation_match_rate": 1.0,
       "false_fail_rate": 0.0
@@ -45,16 +52,54 @@
     },
     "test": {
       "advisory_false_cases": 0,
-      "cases": 8,
+      "cases": 9,
       "catch_rate": 1.0,
       "expectation_match_rate": 1.0,
       "false_fail_rate": 0.0
     }
   },
-  "case_count": 50,
+  "case_count": 55,
   "catch_rate": 1.0,
-  "caught_enforceable_false_cases": 18,
-  "enforceable_false_cases": 18,
+  "caught_enforceable_false_cases": 22,
+  "cluster_mutation_case_count": 5,
+  "cluster_mutation_cases": [
+    {
+      "claim_type": "issue",
+      "expected_result": "advisory pass",
+      "id": "cluster-001-issue-no-registry-advisory",
+      "matched_expectation": true,
+      "source_cluster": "issue refs advisory without registry"
+    },
+    {
+      "claim_type": "file",
+      "expected_result": "hard fail",
+      "id": "cluster-002-docs-example-missing",
+      "matched_expectation": true,
+      "source_cluster": "file refs that do not resolve / docs example path"
+    },
+    {
+      "claim_type": "file",
+      "expected_result": "hard fail",
+      "id": "cluster-003-agent-final-report-doc-missing",
+      "matched_expectation": true,
+      "source_cluster": "file refs that do not resolve / saved report contract path"
+    },
+    {
+      "claim_type": "card",
+      "expected_result": "hard fail",
+      "id": "cluster-004-fabricated-source-card",
+      "matched_expectation": true,
+      "source_cluster": "source/card refs that do not resolve"
+    },
+    {
+      "claim_type": "test",
+      "expected_result": "hard fail",
+      "id": "cluster-005-short-test-path-missing",
+      "matched_expectation": true,
+      "source_cluster": "test file refs that do not resolve"
+    }
+  ],
+  "enforceable_false_cases": 22,
   "expectation_match_rate": 1.0,
   "false_fail_rate": 0.0,
   "results": [
@@ -657,6 +702,88 @@
       "id": "metric-006-accuracy-pass",
       "matched_expectation": true,
       "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "line 3: #404 (advisory \u2014 no --issue-registry to resolve against)",
+        "line 3: #9999 (advisory \u2014 no --issue-registry to resolve against)"
+      ],
+      "claim_type": "issue",
+      "enforceable": false,
+      "expected_pass": true,
+      "expected_result": "advisory pass",
+      "hard_fail_reasons": [],
+      "id": "cluster-001-issue-no-registry-advisory",
+      "matched_expectation": true,
+      "source_cluster": "issue refs advisory without registry",
+      "truth": false,
+      "why": "Without an issue registry, issue refs are intentionally advisory because the resolver has no GitHub API/token dependency."
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": false,
+      "expected_result": "hard fail",
+      "hard_fail_reasons": [
+        "line 3: file does not resolve: docs/foo.md"
+      ],
+      "id": "cluster-002-docs-example-missing",
+      "matched_expectation": true,
+      "source_cluster": "file refs that do not resolve / docs example path",
+      "truth": false,
+      "why": "Path-like docs refs are enforceable file refs even when they appear in example-shaped text."
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": false,
+      "expected_result": "hard fail",
+      "hard_fail_reasons": [
+        "line 3: file does not resolve: docs/agent-final-report.md"
+      ],
+      "id": "cluster-003-agent-final-report-doc-missing",
+      "matched_expectation": true,
+      "source_cluster": "file refs that do not resolve / saved report contract path",
+      "truth": false,
+      "why": "A path-like docs ref must resolve under the supplied root; historical saved PR bodies do not weaken the file rule."
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "card",
+      "enforceable": true,
+      "expected_pass": false,
+      "expected_result": "hard fail",
+      "hard_fail_reasons": [
+        "unresolved card_id reference: BK-7099-card-001",
+        "unresolved source_card reference: BK-7099-card-001"
+      ],
+      "id": "cluster-004-fabricated-source-card",
+      "matched_expectation": true,
+      "source_cluster": "source/card refs that do not resolve",
+      "truth": false,
+      "why": "Source-card IDs are deterministic resolver refs; fabricated IDs should remain hard failures."
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": false,
+      "expected_result": "hard fail",
+      "hard_fail_reasons": [
+        "line 3: test file does not resolve: tests/x.py"
+      ],
+      "id": "cluster-005-short-test-path-missing",
+      "matched_expectation": true,
+      "source_cluster": "test file refs that do not resolve",
+      "truth": false,
+      "why": "Test refs with a path and node are enforceable; a missing test file must fail."
     }
   ],
   "schema_version": "anti-slop-agent-claim-benchmark.v0.1"

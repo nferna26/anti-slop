@@ -165,7 +165,7 @@ def run_case(case: dict, state: dict, artifacts_dir: Path) -> dict:
     ]
     actual_pass = bool(receipt.get("passed"))
     expected_pass = bool(case["expect_pass"])
-    return {
+    result = {
         "id": case["id"],
         "claim_type": case["claim_type"],
         "truth": bool(case["truth"]),
@@ -176,6 +176,10 @@ def run_case(case: dict, state: dict, artifacts_dir: Path) -> dict:
         "hard_fail_reasons": hard_fail_reasons,
         "advisory_reasons": advisory,
     }
+    for key in ("source_cluster", "expected_result", "why"):
+        if key in case:
+            result[key] = case[key]
+    return result
 
 
 def summarize(results: list[dict]) -> dict:
@@ -186,6 +190,7 @@ def summarize(results: list[dict]) -> dict:
     true_cases = [r for r in results if r["truth"] and r["expected_pass"]]
     false_fails = [r for r in true_cases if not r["actual_pass"]]
     advisory_false = [r for r in results if not r["truth"] and not r["enforceable"]]
+    cluster_mutations = [r for r in results if "source_cluster" in r]
 
     by_type: dict[str, dict] = {}
     for claim_type in sorted({r["claim_type"] for r in results}):
@@ -211,6 +216,17 @@ def summarize(results: list[dict]) -> dict:
         "enforceable_false_cases": len(enforceable_false),
         "caught_enforceable_false_cases": len(caught),
         "advisory_false_cases": len(advisory_false),
+        "cluster_mutation_case_count": len(cluster_mutations),
+        "cluster_mutation_cases": [
+            {
+                "id": r["id"],
+                "claim_type": r["claim_type"],
+                "source_cluster": r["source_cluster"],
+                "expected_result": r.get("expected_result", ""),
+                "matched_expectation": r["matched_expectation"],
+            }
+            for r in cluster_mutations
+        ],
         "by_claim_type": by_type,
         "results": results,
     }
@@ -228,6 +244,7 @@ def markdown(summary: dict) -> str:
         f"- Catch rate over enforceable false cases: {summary['catch_rate']:.1%}",
         f"- False-fail rate over expected-valid cases: {summary['false_fail_rate']:.1%}",
         f"- Advisory false cases not counted as enforceable misses: {summary['advisory_false_cases']}",
+        f"- Cluster-derived regression cases: {summary['cluster_mutation_case_count']}",
         "",
         "## Per-Claim Breakdown",
         "",
@@ -246,6 +263,16 @@ def markdown(summary: dict) -> str:
         for failure in failures:
             lines.append(
                 f"- {failure['id']}: expected pass={failure['expected_pass']}, got pass={failure['actual_pass']}"
+            )
+    else:
+        lines.append("None.")
+    lines.extend(["", "## Cluster-Derived Regression Cases", ""])
+    if summary["cluster_mutation_cases"]:
+        for case in summary["cluster_mutation_cases"]:
+            status = "matched" if case["matched_expectation"] else "mismatch"
+            lines.append(
+                f"- {case['id']} ({case['claim_type']}): {case['source_cluster']} -> "
+                f"{case['expected_result']} ({status})"
             )
     else:
         lines.append("None.")

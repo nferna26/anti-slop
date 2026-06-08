@@ -20,6 +20,7 @@
 - [docs/privacy-security.md](docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry, no GitHub API token, no model, and forbidden content.
 - [docs/launch-checklist.md](docs/launch-checklist.md): machine and manual launch checks.
 - [docs/external-dry-run-policy.md](docs/external-dry-run-policy.md): report-mode-only external dry-run policy; no outreach, token, model, GitHub API, or adoption runtime.
+- [docs/kill-criteria.md](docs/kill-criteria.md): kill dashboard; unknown adoption data is marked UNKNOWN, not PASS.
 - One-line user prompt: "Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."
 
 Exact commands:
@@ -36,6 +37,7 @@ Exact commands:
 - Adoption smoke: `make adoption-smoke`
 - Launch check: `make launch-check`
 - External dry-run smoke: `make external-dry-run-smoke` and `make external-dry-run-compat`
+- External cluster smoke: `make external-dry-run-cluster-smoke` and `make external-dry-run-cluster-compat`
 - Demo/proof from this repo: `make agent-claim-demo`, `make agent-claim-benchmark`, `make agent-claim-audit`
 
 ## Reference

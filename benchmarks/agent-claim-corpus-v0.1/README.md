@@ -19,3 +19,7 @@ The runner creates a temporary local git fixture, evaluates the committed
 
 - `results/summary.json`
 - `results/summary.md`
+
+Current corpus: 55 deterministic cases, including 5 cluster-derived regression
+cases from the external dry-run learning loop. These cases are regression
+coverage for resolver behavior, not market/usefulness evidence.
