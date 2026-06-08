@@ -126,6 +126,12 @@ external-dry-run-smoke:
 external-dry-run-compat:
 	python3 scripts/external_dry_run.py --check
 
+external-dry-run-cluster-smoke:
+	python3 scripts/external_dry_run_clusters.py --self-test
+
+external-dry-run-cluster-compat:
+	python3 scripts/external_dry_run_clusters.py --check
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:

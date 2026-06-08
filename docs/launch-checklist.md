@@ -17,6 +17,10 @@ docs without widening the product claim.
   schema/policy compatibility checks.
 - `make external-dry-run-compat`: compatibility check for committed external
   dry-run policy, target manifest, and aggregate summaries.
+- `make external-dry-run-cluster-smoke`: cluster dry-run findings, publish the
+  no-change resolver memo, and regenerate kill-criteria status.
+- `make external-dry-run-cluster-compat`: compatibility check for committed
+  cluster and kill-criteria artifacts.
 - `make agent-claim-demo`: fake report fails with exact line reasons and
   receipt-backed report passes.
 - `make agent-claim-benchmark`: regenerates the synthetic corpus summary at

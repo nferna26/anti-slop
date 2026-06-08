@@ -153,8 +153,9 @@ anti-slop-claims --root . --receipts .anti-slop/receipts --json .anti-slop/claim
 README proof numbers are smoke-checked against committed summaries:
 
 - [`benchmarks/agent-claim-corpus-v0.1/results/summary.json`](benchmarks/agent-claim-corpus-v0.1/results/summary.json):
-  50-case synthetic checker corpus; 100.0% catch rate over enforceable false
-  cases; 0.0% false-fail rate over expected-valid cases.
+  55-case synthetic checker corpus including 5 cluster-derived regression cases;
+  100.0% catch rate over enforceable false cases; 0.0% false-fail rate over
+  expected-valid cases.
 - [`proof/agent-claim-audit/summary.json`](proof/agent-claim-audit/summary.json):
   25 real PR bodies; 25.55 checkable claims per 100 lines; 9.5% hard unresolved rate;
   30-day falsifier trend: PASS.
@@ -183,6 +184,10 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
   report-mode-only external dry-run policy and aggregate schema.
 - [`proof/external-dry-run/summary.md`](proof/external-dry-run/summary.md):
   first saved-public-PR-body dry-run aggregate (`dry_run_not_adoption`).
+- [`proof/external-dry-run/clusters.md`](proof/external-dry-run/clusters.md):
+  public-safe cluster memo and no-change resolver decision.
+- [`docs/kill-criteria.md`](docs/kill-criteria.md): kill-criteria dashboard
+  for usefulness signals and unknowns.
 - [`docs/history/books-kb-eval-lab.md`](docs/history/books-kb-eval-lab.md):
   preserved books-KB, eval-lab, canon, and historical evidence context.
 

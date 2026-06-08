@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(Evidence-led learning-loop tranche)
+
+- Ingested: PR #40 merged cleanly after focused rerun (`make external-dry-run-smoke`, `make external-dry-run-compat`, `make launch-check`, `make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `8f36c0fede3afa58d5e3b59240f71c969bdbecaa`.
+- Mapped: —
+- Carded: —
+- Tension preserved: External dry-run learning must convert real resolver friction into regression coverage and kill criteria without turning Anti-Slop Receipts into outreach automation, correctness review, source-truth review, benchmark-validity claim, advice-quality claim, safety claim, reasoning claim, or canon claim.
+- Gate run: RED evidence captured before GREEN by adding `make external-dry-run-cluster-smoke` and `scripts/external_dry_run_clusters.py`; the initial run failed because `proof/external-dry-run/fixtures/cluster-fixture.json` was absent. GREEN `make external-dry-run-cluster-smoke` now validates a known-cluster fixture, clusters the committed external dry-run findings, writes `proof/external-dry-run/clusters.json` / `.md`, writes `proof/external-dry-run/no-change-memo.md`, and writes `proof/external-dry-run/kill-criteria.json`. `make external-dry-run-cluster-compat` validates committed cluster and kill-criteria artifacts.
+- Eval run: —
+- Decision: Added CORE-975 through CORE-978. CORE-975: clustered 27 dry-run observations into 15 public-safe clusters by claim type, normalized reason, text pattern, path shape, repo/language metadata (`nferna26/anti-slop`, `python/markdown`), and diff availability. Top clusters were advisory issue refs without registry (6 in the largest text-pattern cluster), source/card refs that do not resolve, and missing docs/test/file refs. CORE-976: added 5 cluster-derived regression cases to the deterministic agent-claim corpus (`cluster-001` through `cluster-005`), raising the corpus to 55 cases while preserving 100.0% expectation match, 100.0% catch rate over enforceable false cases, and 0.0% false-fail rate. CORE-977: made no resolver code change; the top issue-advisory cluster is intentional offline behavior, and hard-failure clusters are regression inputs rather than evidence for broad pattern relaxation. Before/after impact is unchanged: 92 checkable claims, 17.6% hard unresolved rate, 16.3% advisory rate, and 27 cluster observations. CORE-978: added `docs/kill-criteria.md` plus `anti-slop-kill-criteria.v1` JSON. Current status is `watch`: density criterion PASS (19.33 claims/100 lines), stale-proof criterion PASS via `make launch-check`, and adoption-quality criteria UNKNOWN rather than PASS.
+- Rejected/deferred: Did not open external PRs, post comments, contact maintainers, add GitHub API/token/model/network dependency, automate adoption, switch to enforcement, relax resolver patterns, touch frozen evals/canon/registry decisions/source-card statuses, or commit secrets/private paths/raw API JSON/answer keys/raw transcripts/raw copyrighted text/local-only paths/hidden maps.
+- Follow-up: CORE-979 through CORE-982 should expand the saved-public sample beyond this repo with separately reviewed public AI/devtool artifacts, add human actionability labels in aggregate form, and only then decide whether an opt-in outreach packet is warranted.
+
 (External dry-run tranche)
 
 - Ingested: PR #39 merged cleanly after focused rerun (`make launch-check`, `make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `70718c88a9d1b0232423248cad59b4fe6ba81f72`.

@@ -1,0 +1,205 @@
+{
+  "cluster_count": 15,
+  "notes": [
+    "Public-safe cluster output omits raw line text and full resolver receipts.",
+    "Recommendations are triage labels, not correctness or relevance judgments."
+  ],
+  "observation_count": 27,
+  "recommended_action_counts": {
+    "benchmark_case": 12,
+    "docs_update": 15
+  },
+  "schema_version": "anti-slop-external-dry-run-clusters.v1",
+  "source_schema_version": "anti-slop-external-dry-run.v1",
+  "source_summary": "proof/external-dry-run/summary.json",
+  "status_counts": {
+    "advisory": 15,
+    "fail": 12
+  },
+  "top_clusters": [
+    {
+      "claim_type": "issue",
+      "count": 6,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "issue refs advisory without registry",
+      "path_shape": "issue-number",
+      "recommended_action": "docs_update",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-26",
+        "anti-slop-pr-27",
+        "anti-slop-pr-28"
+      ],
+      "status": "advisory",
+      "text_pattern": "prose+backticked-ref"
+    },
+    {
+      "claim_type": "card",
+      "count": 2,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "source/card refs that do not resolve",
+      "path_shape": "source-card-id",
+      "recommended_action": "benchmark_case",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-27"
+      ],
+      "status": "fail",
+      "text_pattern": "bullet+backticked-ref+validation-claim"
+    },
+    {
+      "claim_type": "card",
+      "count": 2,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "source/card refs that do not resolve",
+      "path_shape": "source-card-id",
+      "recommended_action": "benchmark_case",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-27"
+      ],
+      "status": "fail",
+      "text_pattern": "bullet+backticked-ref+example-or-fixture+validation-claim"
+    },
+    {
+      "claim_type": "file",
+      "count": 2,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "file refs that do not resolve",
+      "path_shape": "docs/ depth=1 ext=.md",
+      "recommended_action": "benchmark_case",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-27"
+      ],
+      "status": "fail",
+      "text_pattern": "bullet+backticked-ref+example-or-fixture+validation-claim"
+    },
+    {
+      "claim_type": "file",
+      "count": 2,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "file refs that do not resolve",
+      "path_shape": "docs/ depth=1 ext=.md",
+      "recommended_action": "benchmark_case",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-33"
+      ],
+      "status": "fail",
+      "text_pattern": "bullet+backticked-ref+example-or-fixture"
+    },
+    {
+      "claim_type": "issue",
+      "count": 2,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "issue refs advisory without registry",
+      "path_shape": "issue-number",
+      "recommended_action": "docs_update",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-26",
+        "anti-slop-pr-27"
+      ],
+      "status": "advisory",
+      "text_pattern": "bullet+backticked-ref+validation-claim"
+    },
+    {
+      "claim_type": "issue",
+      "count": 2,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "issue refs advisory without registry",
+      "path_shape": "issue-number",
+      "recommended_action": "docs_update",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-26",
+        "anti-slop-pr-32"
+      ],
+      "status": "advisory",
+      "text_pattern": "bullet+backticked-ref"
+    },
+    {
+      "claim_type": "issue",
+      "count": 2,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "issue refs advisory without registry",
+      "path_shape": "issue-number",
+      "recommended_action": "docs_update",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-28"
+      ],
+      "status": "advisory",
+      "text_pattern": "bullet+example-or-fixture+validation-claim"
+    },
+    {
+      "claim_type": "file",
+      "count": 1,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "file refs that do not resolve",
+      "path_shape": "docs/ depth=1 ext=.md",
+      "recommended_action": "benchmark_case",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-27"
+      ],
+      "status": "fail",
+      "text_pattern": "bullet+backticked-ref+validation-claim"
+    },
+    {
+      "claim_type": "file",
+      "count": 1,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "file refs that do not resolve",
+      "path_shape": "docs/ depth=1 ext=.md",
+      "recommended_action": "benchmark_case",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-33"
+      ],
+      "status": "fail",
+      "text_pattern": "bullet+backticked-ref"
+    },
+    {
+      "claim_type": "file",
+      "count": 1,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "file refs that do not resolve",
+      "path_shape": "absolute-path",
+      "recommended_action": "benchmark_case",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-34"
+      ],
+      "status": "fail",
+      "text_pattern": "bullet+backticked-ref+example-or-fixture+red-green"
+    },
+    {
+      "claim_type": "issue",
+      "count": 1,
+      "diff_availability": "not_supplied",
+      "language": "python/markdown",
+      "normalized_reason": "issue refs advisory without registry",
+      "path_shape": "issue-number",
+      "recommended_action": "docs_update",
+      "repo": "nferna26/anti-slop",
+      "sample_targets": [
+        "anti-slop-pr-27"
+      ],
+      "status": "advisory",
+      "text_pattern": "bullet+backticked-ref+example-or-fixture+validation-claim"
+    }
+  ]
+}

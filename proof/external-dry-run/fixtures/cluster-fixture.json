@@ -1,0 +1,61 @@
+{
+  "schema_version": "anti-slop-external-dry-run-cluster-fixture.v1",
+  "observations": [
+    {
+      "target_id": "fixture-pr-1",
+      "repo": "example/devtool",
+      "language": "python",
+      "claim_type": "file",
+      "status": "fail",
+      "normalized_reason": "file refs that do not resolve",
+      "text_pattern": "bullet+backticked-ref+example-or-fixture",
+      "path_shape": "docs/ depth=1 ext=.md",
+      "diff_availability": "not_supplied",
+      "recommended_action": "benchmark_case"
+    },
+    {
+      "target_id": "fixture-pr-2",
+      "repo": "example/devtool",
+      "language": "python",
+      "claim_type": "file",
+      "status": "fail",
+      "normalized_reason": "file refs that do not resolve",
+      "text_pattern": "bullet+backticked-ref+example-or-fixture",
+      "path_shape": "docs/ depth=1 ext=.md",
+      "diff_availability": "not_supplied",
+      "recommended_action": "benchmark_case"
+    },
+    {
+      "target_id": "fixture-pr-3",
+      "repo": "example/devtool",
+      "language": "python",
+      "claim_type": "issue",
+      "status": "advisory",
+      "normalized_reason": "issue refs advisory without registry",
+      "text_pattern": "prose+issue-linkage",
+      "path_shape": "issue-number",
+      "diff_availability": "not_supplied",
+      "recommended_action": "docs_update"
+    }
+  ],
+  "expected_clusters": [
+    {
+      "match": {
+        "claim_type": "file",
+        "status": "fail",
+        "normalized_reason": "file refs that do not resolve",
+        "path_shape": "docs/ depth=1 ext=.md"
+      },
+      "count": 2
+    },
+    {
+      "match": {
+        "claim_type": "issue",
+        "status": "advisory",
+        "normalized_reason": "issue refs advisory without registry",
+        "path_shape": "issue-number"
+      },
+      "count": 1
+    }
+  ]
+}

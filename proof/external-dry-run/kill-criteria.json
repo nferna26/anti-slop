@@ -1,0 +1,55 @@
+{
+  "criteria": [
+    {
+      "evidence": "19.33 claims/100 lines in first saved-public sample",
+      "id": "claim_density_below_5_per_100_lines",
+      "status": "PASS",
+      "threshold": "<5 claims/100 lines"
+    },
+    {
+      "evidence": "No human actionability labeling or repair loop yet.",
+      "id": "non_actionable_after_repairs_above_50_percent",
+      "status": "UNKNOWN",
+      "threshold": ">50% non-actionable after repairs"
+    },
+    {
+      "evidence": "No maintainer/reviewer usefulness labels yet.",
+      "id": "useful_findings_below_20_percent",
+      "status": "UNKNOWN",
+      "threshold": "<20% useful findings"
+    },
+    {
+      "evidence": "No external install attempts; local smoke is not adopter data.",
+      "id": "install_success_below_70_percent",
+      "status": "UNKNOWN",
+      "threshold": "<70% install success"
+    },
+    {
+      "evidence": "External dry-run sample is PR-body only.",
+      "id": "command_receipt_dogfood_below_25_percent",
+      "status": "UNKNOWN",
+      "threshold": "<25% command receipt dogfood"
+    },
+    {
+      "evidence": "No outreach or adoption PRs were opened.",
+      "id": "maintainer_keep_rate_zero_of_10",
+      "status": "UNKNOWN",
+      "threshold": "0/10 maintainer keep-rate"
+    },
+    {
+      "evidence": "`make launch-check` validates committed proof metric links.",
+      "id": "stale_proof_metrics",
+      "status": "PASS",
+      "threshold": "README/proof metrics stale"
+    },
+    {
+      "evidence": "No platform-comparison data yet.",
+      "id": "platform_clone_risk",
+      "status": "UNKNOWN",
+      "threshold": "platform clone makes repo workflow unnecessary"
+    }
+  ],
+  "overall_status": "watch",
+  "schema_version": "anti-slop-kill-criteria.v1",
+  "source_summary": "proof/external-dry-run/summary.json"
+}

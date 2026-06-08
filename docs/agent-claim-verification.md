@@ -69,9 +69,10 @@ in [`docs/privacy-security.md`](privacy-security.md).
 - `make agent-claim-demo`: 60-second offline demo. A fake agent report fails
   with line-level reasons; a receipt-backed report passes. Sample output:
   [`../proof/agent-claim-demo/sample-output.md`](../proof/agent-claim-demo/sample-output.md).
-- `make agent-claim-benchmark`: deterministic 50-case synthetic checker corpus
+- `make agent-claim-benchmark`: deterministic 55-case synthetic checker corpus
   across file, changed-file, test, issue, commit, command-receipt, and
-  metric-receipt claims. It measures resolver behavior, not agent/model quality.
+  metric-receipt claims, including 5 cluster-derived regression cases. It
+  measures resolver behavior, not agent/model quality.
 - `make agent-claim-audit`: public-safe report-mode density audit over committed
   real PR bodies. It reports checkable-claim density, hard unresolved rate,
   candidate false-positive clusters, top claim types, and the 30-day falsifier
