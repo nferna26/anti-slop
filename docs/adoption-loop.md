@@ -34,21 +34,30 @@ Avoid for the first loop:
 Copy/paste prompt for an adopting coding agent:
 
 > Install Anti-Slop in report mode. Add a PR-body check that runs
-> `anti-slop-pr-event --root . --report` on pull requests, with no GitHub API
-> token or model/API dependency. Preserve report mode by default. Run
-> `anti-slop-pr --self-test`, `anti-slop-pr-event --self-test`,
-> `anti-slop-claims --self-test`, and `anti-slop-run --self-test`. Open a PR
-> that explains this verifies reference/receipt resolution only, not correctness,
-> relevance, source truth, support, safety, advice quality, reasoning, benchmark
-> validity, statistical meaning, or canon.
+> `anti-slop-pr-event --root . --report` on pull requests by copying
+> `templates/anti-slop-report.yml` to `.github/workflows/anti-slop-report.yml`.
+> Preserve report mode by default. Run `anti-slop-pr --self-test`,
+> `anti-slop-pr-event --self-test`, `anti-slop-claims --self-test`, and
+> `anti-slop-run --self-test`. If working in the Anti-Slop repo, also run
+> `make adoption-smoke`. Open a PR that explains this verifies reference/receipt
+> resolution only, not correctness, relevance, source truth, support, safety,
+> advice quality, reasoning, benchmark validity, statistical meaning, or canon.
 
 Optional generic-artifact trial after PR-body report mode is accepted:
 
 ```sh
 anti-slop-run -- make validate
-anti-slop-claims --root . --receipts .anti-slop/receipts --report AGENT_FINAL_REPORT.md
-anti-slop-claims --root . --json claims.json --diff HEAD~1..HEAD --report AGENT_FINAL_REPORT.md
+anti-slop-claims --root . --receipts .anti-slop/receipts --json .anti-slop/claims.json --report AGENT_FINAL_REPORT.md
+anti-slop-claims --root . --json .anti-slop/claims.json --diff HEAD~1..HEAD --report AGENT_FINAL_REPORT.md
 ```
+
+The turnkey workflow keeps those optional steps disabled until
+`ANTI_SLOP_RUN_VALIDATE` and `ANTI_SLOP_CHECK_AGENT_REPORT` are set to `"true"`.
+It uploads `.anti-slop/receipts/*.json` and `.anti-slop/claims.json` with
+`actions/upload-artifact` when present. Those JSON files are retained local
+facts about command exits, metric values, and reference resolution; they are not
+correctness, relevance, support, benchmark-validity, safety, source-truth,
+advice-quality, reasoning, or canon evidence.
 
 ## PR Template
 
@@ -65,7 +74,9 @@ metrics that do not resolve. This check reports those references before merge.
 ## Scope
 
 - Report mode only: the workflow prints findings and exits 0.
-- No model/API/network/GitHub API/token runtime.
+- Anti-Slop commands use no model/API/GitHub API/token runtime.
+- JSON artifacts are uploaded only for reviewer retention; they are local
+  receipt facts, not correctness evidence.
 - No semantic correctness, relevance, source-truth, support, safety,
   advice-quality, reasoning, benchmark-validity, statistical-meaning, or canon
   claim.
@@ -76,6 +87,7 @@ metrics that do not resolve. This check reports those references before merge.
 - `anti-slop-pr-event --self-test`
 - `anti-slop-claims --self-test`
 - `anti-slop-run --self-test`
+- `make adoption-smoke` when changing Anti-Slop's shipped workflow template
 ```
 
 ## Metrics Table

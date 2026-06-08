@@ -1,5 +1,9 @@
 # Copy this file to .github/workflows/anti-slop-pr.yml in your repo.
 #
+# Minimal PR-body-only template. For the turnkey report-mode workflow with
+# optional command/final-report receipts and JSON artifact retention, prefer
+# templates/anti-slop-report.yml.
+#
 # Anti-Slop agent claim verification, surface #1: PR bodies.
 # anti-slop-pr checks whether the file / test / source-card / issue / commit
 # references your PR description cites actually RESOLVE against the repo. It does

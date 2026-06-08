@@ -1,0 +1,72 @@
+# Copy this file to .github/workflows/anti-slop-report.yml in your repo.
+#
+# Anti-Slop agent claim verification in report mode.
+#
+# Report mode is advisory: findings are printed, but the check exits 0. To
+# enforce later, explicitly remove `--report` from the relevant command after a
+# repo has enough boring report-mode data.
+#
+# Anti-Slop verifies reference/receipt resolution only. It does not verify
+# correctness, relevance, source truth, support, safety, advice quality,
+# reasoning, benchmark validity, statistical meaning, or canon.
+#
+# The anti-slop commands below do not call a model, GitHub API, or external
+# runtime. The upload-artifact step only retains local JSON evidence produced by
+# the job.
+name: anti-slop-report
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+
+env:
+  # Default adoption checks PR bodies only. Flip these to "true" once your repo
+  # has a stable AGENT_FINAL_REPORT.md convention and wants retained command
+  # receipts / generic artifact JSON.
+  ANTI_SLOP_RUN_VALIDATE: "false"
+  ANTI_SLOP_CHECK_AGENT_REPORT: "false"
+
+jobs:
+  anti-slop-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Anti-Slop
+        run: pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
+
+      - name: PR body claim verification (report mode)
+        run: anti-slop-pr-event --root . --report
+
+      - name: Optional command receipt for make validate
+        if: env.ANTI_SLOP_RUN_VALIDATE == 'true'
+        run: |
+          mkdir -p .anti-slop/receipts
+          anti-slop-run -- make validate
+
+      - name: Optional final-report claim verification (report mode)
+        if: env.ANTI_SLOP_CHECK_AGENT_REPORT == 'true'
+        run: |
+          mkdir -p .anti-slop
+          if [ -f AGENT_FINAL_REPORT.md ]; then
+            anti-slop-claims --root . --receipts .anti-slop/receipts --json .anti-slop/claims.json --report AGENT_FINAL_REPORT.md
+          else
+            echo "AGENT_FINAL_REPORT.md not found; skipping anti-slop-claims."
+          fi
+
+      - name: Upload Anti-Slop JSON artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: anti-slop-report-artifacts
+          if-no-files-found: ignore
+          path: |
+            .anti-slop/receipts/*.json
+            .anti-slop/claims.json
