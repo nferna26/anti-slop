@@ -1,0 +1,1 @@
+The custom VCR serializer pipes the cassette dict through `yaml.safe_dump`, which raises on stream objects — so any request with an `io.BytesIO` body (multipart/file-upload endpoints) couldn't be recorded. A new `_coerce_bytesio` helper walks the cassette and replaces each `BytesIO` with its raw bytes before dumping.

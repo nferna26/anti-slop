@@ -17,6 +17,19 @@ Allowed inputs are:
 - public metadata such as source path, target repo/PR URL, artifact kind, and
   checker command.
 
+For the expanded external sample, target-selection rules are:
+
+- use at least 10 distinct public AI/devtool repositories outside
+  `nferna26/anti-slop`;
+- use saved public PR bodies or agent reports that were manually reviewed for
+  public-safe storage before commit;
+- prefer artifacts with checkable file/test/command/issue/change claims over
+  empty release notes;
+- record public origin URLs and mark each target `reviewed_public_safe`;
+- keep the no-contact/no-outreach boundary: saving public artifacts for local
+  aggregate analysis does not authorize maintainer contact, comments, PRs, or
+  adoption.
+
 The harness must not fetch live PR bodies at runtime. It must not require a
 GitHub API token, a hosted model, a network call, a private repo, or a workflow
 secret. Public PR-body handling is limited to artifacts already committed under
@@ -46,6 +59,11 @@ that public-safe artifact.
 Reasons are normalized into clusters such as unresolved file refs or advisory
 issue refs. This avoids storing long excerpts while still preserving the
 actionable signal for false-positive clustering.
+
+The expanded external sample may use an empty public fixture root when external
+checkouts are not committed. In that mode, root-dependent hard failures are
+useful for claim-density and cluster-shape learning, but they are not
+maintainer-actionable until rechecked against a real local checkout.
 
 ## Runtime Constraints
 
@@ -89,6 +107,32 @@ authorize outreach.
 
 Optional fields may include `sample_status`, `top_claim_types`,
 `kill_criterion`, `usefulness`, `targets`, and compact per-artifact metrics.
+
+## Expanded External Sample Schema
+
+`anti-slop-external-sample-expansion.v1` records the same aggregate fields for
+saved public external PR bodies plus `repo_count` and `root_mode`.
+`anti-slop-external-sample-comparison.v1` compares the original this-repo sample
+against the expanded external sample.
+
+## Actionability Labels
+
+This section defines actionability labels for aggregate clusters.
+
+`anti-slop-actionability-labels.v1` labels aggregate clusters, not raw external
+lines. Allowed labels are:
+
+- `actionable`: a maintainer could plausibly act after rechecking in a local
+  checkout;
+- `non_actionable`: the finding is expected noise or a resolver limitation for
+  this sample;
+- `unclear`: aggregate evidence is insufficient to classify;
+- `excluded`: excluded from usefulness rates, for example root-unavailable
+  findings from an empty fixture root.
+
+Actionability labels are triage labels for future learning. They are not
+correctness, relevance, source-truth, support, safety, advice-quality,
+reasoning, benchmark-validity, statistical-meaning, or canon judgments.
 
 ## Interpretation Boundary
 

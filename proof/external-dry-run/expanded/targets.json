@@ -1,0 +1,134 @@
+[
+  {
+    "id": "openai-openai-python-pr-3366",
+    "target": "openai/openai-python#3366",
+    "repo": "openai/openai-python",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/openai-openai-python-pr-3366.md",
+    "origin_url": "https://github.com/openai/openai-python/pull/3366",
+    "number": 3366,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "openai-openai-agents-python-pr-3544",
+    "target": "openai/openai-agents-python#3544",
+    "repo": "openai/openai-agents-python",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/openai-openai-agents-python-pr-3544.md",
+    "origin_url": "https://github.com/openai/openai-agents-python/pull/3544",
+    "number": 3544,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "anthropics-anthropic-sdk-python-pr-1642",
+    "target": "anthropics/anthropic-sdk-python#1642",
+    "repo": "anthropics/anthropic-sdk-python",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/anthropics-anthropic-sdk-python-pr-1642.md",
+    "origin_url": "https://github.com/anthropics/anthropic-sdk-python/pull/1642",
+    "number": 1642,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "langchain-ai-langchain-pr-37963",
+    "target": "langchain-ai/langchain#37963",
+    "repo": "langchain-ai/langchain",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/langchain-ai-langchain-pr-37963.md",
+    "origin_url": "https://github.com/langchain-ai/langchain/pull/37963",
+    "number": 37963,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "run-llama-llama-index-pr-21789",
+    "target": "run-llama/llama_index#21789",
+    "repo": "run-llama/llama_index",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/run-llama-llama-index-pr-21789.md",
+    "origin_url": "https://github.com/run-llama/llama_index/pull/21789",
+    "number": 21789,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "microsoft-autogen-pr-7463",
+    "target": "microsoft/autogen#7463",
+    "repo": "microsoft/autogen",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/microsoft-autogen-pr-7463.md",
+    "origin_url": "https://github.com/microsoft/autogen/pull/7463",
+    "number": 7463,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "pydantic-pydantic-ai-pr-5805",
+    "target": "pydantic/pydantic-ai#5805",
+    "repo": "pydantic/pydantic-ai",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/pydantic-pydantic-ai-pr-5805.md",
+    "origin_url": "https://github.com/pydantic/pydantic-ai/pull/5805",
+    "number": 5805,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "browser-use-browser-use-pr-4920",
+    "target": "browser-use/browser-use#4920",
+    "repo": "browser-use/browser-use",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/browser-use-browser-use-pr-4920.md",
+    "origin_url": "https://github.com/browser-use/browser-use/pull/4920",
+    "number": 4920,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "continuedev-continue-pr-12156",
+    "target": "continuedev/continue#12156",
+    "repo": "continuedev/continue",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/continuedev-continue-pr-12156.md",
+    "origin_url": "https://github.com/continuedev/continue/pull/12156",
+    "number": 12156,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "modelcontextprotocol-python-sdk-pr-2773",
+    "target": "modelcontextprotocol/python-sdk#2773",
+    "repo": "modelcontextprotocol/python-sdk",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/modelcontextprotocol-python-sdk-pr-2773.md",
+    "origin_url": "https://github.com/modelcontextprotocol/python-sdk/pull/2773",
+    "number": 2773,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "crewaiinc-crewai-pr-6042",
+    "target": "CrewAIInc/crewAI#6042",
+    "repo": "CrewAIInc/crewAI",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/crewaiinc-crewai-pr-6042.md",
+    "origin_url": "https://github.com/CrewAIInc/crewAI/pull/6042",
+    "number": 6042,
+    "reviewed_public_safe": true
+  },
+  {
+    "id": "all-hands-ai-openhands-pr-14706",
+    "target": "All-Hands-AI/OpenHands#14706",
+    "repo": "All-Hands-AI/OpenHands",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/external-dry-run/expanded/bodies/all-hands-ai-openhands-pr-14706.md",
+    "origin_url": "https://github.com/All-Hands-AI/OpenHands/pull/14706",
+    "number": 14706,
+    "reviewed_public_safe": true
+  }
+]

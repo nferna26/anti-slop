@@ -1,4 +1,6 @@
 {
+  "actionability_labels": "proof/external-dry-run/expanded/actionability.json",
+  "command_receipt_dogfood": "proof/command-receipt-dogfood/summary.json",
   "criteria": [
     {
       "evidence": "19.33 claims/100 lines in first saved-public sample",
@@ -7,15 +9,15 @@
       "threshold": "<5 claims/100 lines"
     },
     {
-      "evidence": "No human actionability labeling or repair loop yet.",
+      "evidence": "Expanded external sample aggregate labels: 66.7% non-actionable over non-excluded findings.",
       "id": "non_actionable_after_repairs_above_50_percent",
-      "status": "UNKNOWN",
+      "status": "FAIL",
       "threshold": ">50% non-actionable after repairs"
     },
     {
-      "evidence": "No maintainer/reviewer usefulness labels yet.",
+      "evidence": "Expanded external sample aggregate labels: 0.0% actionable over non-excluded findings; 5 unclear, 8 excluded.",
       "id": "useful_findings_below_20_percent",
-      "status": "UNKNOWN",
+      "status": "FAIL",
       "threshold": "<20% useful findings"
     },
     {
@@ -25,9 +27,9 @@
       "threshold": "<70% install success"
     },
     {
-      "evidence": "External dry-run sample is PR-body only.",
+      "evidence": "Command receipt dogfood fixture: 100% receipt-backed command claims passed; raw receipts are regenerated in a temp repo and not committed.",
       "id": "command_receipt_dogfood_below_25_percent",
-      "status": "UNKNOWN",
+      "status": "PASS",
       "threshold": "<25% command receipt dogfood"
     },
     {
@@ -49,6 +51,7 @@
       "threshold": "platform clone makes repo workflow unnecessary"
     }
   ],
+  "expanded_external_summary": "proof/external-dry-run/expanded/summary.json",
   "overall_status": "watch",
   "schema_version": "anti-slop-kill-criteria.v1",
   "source_summary": "proof/external-dry-run/summary.json"

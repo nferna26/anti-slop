@@ -137,6 +137,20 @@ external-dry-run-cluster-smoke:
 external-dry-run-cluster-compat:
 	python3 scripts/external_dry_run_clusters.py --check
 
+# Private learning expansion: separately reviewed external public PR bodies,
+# aggregate actionability labels, and command-receipt dogfood.
+external-sample-smoke:
+	python3 scripts/external_sample_expansion.py --self-test
+
+external-sample-compat:
+	python3 scripts/external_sample_expansion.py --check
+
+actionability-label-check:
+	python3 scripts/external_sample_expansion.py --check-actionability
+
+command-receipt-dogfood:
+	python3 scripts/command_receipt_dogfood.py --self-test
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:
