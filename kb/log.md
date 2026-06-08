@@ -38,6 +38,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not implement command-receipt validation, benchmark-receipt validation, semantic diff review, model/API/RAG/vector-store/runtime dependency, GitHub API call, token use, or any correctness/relevance/source-truth/support/safety/advice-quality/reasoning/canon claim. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, source-card statuses, or local-only artifacts. Did not commit secrets, `.env`, private paths, raw API JSON, answer keys, or raw copyrighted text.
 - Follow-up: Next tranche should add adoption ergonomics around the JSON receipt: stable receipt examples, CI artifact upload guidance, and optionally a composite GitHub Action wrapper while preserving report-mode default.
 
+(Week 2B PR #34 repair — invalid diff enforcement)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: Invalid or unavailable supplied `--diff` ranges must not silently weaken changed-file enforcement to advisory mode.
+- Gate run: Added a RED self-test fixture with an existing `docs/existing.md` file and an agent report saying `Updated docs/existing.md`; before repair, `anti-slop-claims --root <repo> --diff definitely-not-a-ref <report>` marked the changed-file claim advisory and returned PASS. GREEN checks now require exit 1, `diff.mode: unavailable`, the git error reason, and a hard failed `changed_file` JSON entry. Direct invalid-diff probe exits 1.
+- Eval run: —
+- Decision: When `--diff` is omitted, changed-file claims remain advisory/skipped. When `--diff` is supplied and `git diff --name-only <range>` succeeds, existing pass/fail behavior remains. When `--diff` is supplied but git diff fails or is unavailable, changed-file claims are hard failures and the command exits 1.
+- Rejected/deferred: Did not change PR-body behavior, command receipts, benchmark receipts, semantic diff review, model/API/RAG/vector-store/runtime dependency, or any correctness/relevance/source-truth/support/safety/advice-quality/reasoning/canon claim. Did not touch frozen evals, canon, registry decisions, source-card statuses, or unrelated docs.
+- Follow-up: Keep PR #34 review focused on the generic receipt/diff tranche plus this enforcement repair.
+
 ## 2026-05-30
 
 - Ingested: —

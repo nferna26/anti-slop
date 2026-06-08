@@ -224,6 +224,10 @@ def _changed_file_entries(text: str, root: Path, diff_range: str | None) -> tupl
                       if status == "pass"
                       else f"changed-file claim not found in supplied diff: {path}")
             tier = "hard"
+        elif diff_range:
+            status = "fail"
+            tier = "hard"
+            reason = f"supplied --diff could not be checked: {diff_info['reason']}"
         else:
             status = "advisory"
             tier = "advisory"
@@ -326,6 +330,7 @@ def self_test() -> int:
         diff_root = root / "diff-root"
         _write(diff_root / "docs" / "changed.md", "# Changed\n\nbefore\n")
         _write(diff_root / "docs" / "unchanged.md", "# Unchanged\n\nstable\n")
+        _write(diff_root / "docs" / "existing.md", "# Existing\n\nstable\n")
         subprocess.run(["git", "-C", str(diff_root), "init"], capture_output=True, check=True)
         subprocess.run(["git", "-C", str(diff_root), "config", "user.email", "test@example.invalid"],
                        capture_output=True, check=True)
@@ -339,24 +344,31 @@ def self_test() -> int:
         not_changed_report = root / "diff" / "not_changed.md"
         no_diff_report = root / "diff" / "no_diff.md"
         ordinary_report = root / "diff" / "ordinary.md"
+        invalid_diff_report = root / "diff" / "invalid_diff.md"
         diff_json = root / "diff.json"
         not_changed_json = root / "not-changed.json"
         no_diff_json = root / "no-diff.json"
+        invalid_diff_json = root / "invalid-diff.json"
         _write(changed_report, "# Agent Final Report\n\nUpdated `docs/changed.md`.\n")
         _write(not_changed_report, "# Agent Final Report\n\nUpdated `docs/unchanged.md`.\n")
         _write(no_diff_report, "# Agent Final Report\n\nUpdated `docs/changed.md`.\n")
         _write(ordinary_report, "# Agent Final Report\n\nReferences `docs/unchanged.md`.\n")
+        _write(invalid_diff_report, "# Agent Final Report\n\nUpdated `docs/existing.md`.\n")
         changed_exit = main(["--root", str(diff_root), "--diff", "HEAD", "--json",
                              str(diff_json), str(changed_report)])
         not_changed_exit = main(["--root", str(diff_root), "--diff", "HEAD", "--json",
                                  str(not_changed_json), str(not_changed_report)])
         no_diff_exit = main(["--root", str(diff_root), "--json", str(no_diff_json),
                              str(no_diff_report)])
+        invalid_diff_exit = main(["--root", str(diff_root), "--diff", "definitely-not-a-ref",
+                                  "--json", str(invalid_diff_json), str(invalid_diff_report)])
         ordinary_exit = main(["--root", str(diff_root), "--diff", "HEAD", str(ordinary_report)])
         diff_data = json.loads(diff_json.read_text(encoding="utf-8")) if diff_json.exists() else {}
         not_changed_data = (json.loads(not_changed_json.read_text(encoding="utf-8"))
                             if not_changed_json.exists() else {})
         no_diff_data = json.loads(no_diff_json.read_text(encoding="utf-8")) if no_diff_json.exists() else {}
+        invalid_diff_data = (json.loads(invalid_diff_json.read_text(encoding="utf-8"))
+                             if invalid_diff_json.exists() else {})
 
         checks = [
             ("generic final report valid file ref passes", ok["passed"] is True),
@@ -399,6 +411,14 @@ def self_test() -> int:
                                        and c.get("tier") == "advisory"
                                        and c.get("status") == "advisory"
                                        for c in no_diff_data.get("claims", []))),
+            ("invalid diff range fails changed-file claims hard",
+             invalid_diff_exit == 1
+             and invalid_diff_data.get("diff", {}).get("mode") == "unavailable"
+             and any(c.get("type") == "changed_file"
+                     and c.get("ref") == "docs/existing.md"
+                     and c.get("tier") == "hard"
+                     and c.get("status") == "fail"
+                     for c in invalid_diff_data.get("claims", []))),
             ("ordinary file resolution still works in diff mode",
              ordinary_exit == 0),
         ]
