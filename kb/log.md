@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(Launch decision tranche)
+
+- Ingested: PR #41 merged cleanly after focused rerun (`make external-dry-run-cluster-smoke`, `make external-dry-run-cluster-compat`, `make external-dry-run-smoke`, `make external-dry-run-compat`, `make agent-claim-benchmark`, `make launch-check`, `make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `41ec6daafa77e67204fe622f32d24c6c1bde1101`.
+- Mapped: —
+- Carded: —
+- Tension preserved: Launch decisions must be evidence-led without turning Anti-Slop Receipts into outreach automation, a release/tag action, correctness review, source-truth review, benchmark-validity claim, advice-quality claim, safety claim, reasoning claim, statistical-meaning claim, or canon claim.
+- Gate run: RED evidence captured before GREEN by adding `make launch-decision-check` and `scripts/launch_decision_check.py`; the initial run failed because `docs/release-install-plan.md`, `docs/release-notes-draft.md`, `docs/demo-repo.md`, `docs/maintainer-outreach-packet.md`, and `docs/launch-decision.md` were absent, README / install / `llms.txt` / launch checklist / KB surfaces lacked required links, and the KB log did not record CORE-979 through CORE-982.
+- Eval run: —
+- Decision: Added CORE-979 through CORE-982. CORE-979 documents release/tag readiness, reproducible tag/SHA install pinning, the adopter update path, and the rule that no release tag is created without operator approval. CORE-980 adds demo repo assets: fake report FAILS, receipt-backed report PASSES, Step Summary/report-mode flow, screenshot/GIF checklist, and short launch copy. CORE-981 adds an opt-in maintainer outreach packet tied to dry-run aggregate evidence, cluster evidence, opt-out language, evidence summary format, and no-contact rules. CORE-982 records the go/no-go decision as `continue private learning loop` because dry-run density and stale-proof checks PASS while maintainer usefulness, external install success, command receipt dogfood, maintainer keep-rate, and platform clone risk remain UNKNOWN.
+- Rejected/deferred: Did not create a release tag, open external PRs, post comments, contact maintainers, add GitHub API/token/model/network/runtime dependency, automate adoption, switch to enforcement, relax resolver patterns, touch frozen evals/canon/registry decisions/source-card statuses, or commit secrets/private paths/raw API JSON/answer keys/raw transcripts/raw copyrighted text/local-only paths/hidden maps.
+- Follow-up: Expand the saved-public dry-run sample beyond this repo, add aggregate human actionability labels where policy allows, and dogfood command receipts in public-safe final-report artifacts before requesting operator approval to tag or contact maintainers.
+
 (Evidence-led learning-loop tranche)
 
 - Ingested: PR #40 merged cleanly after focused rerun (`make external-dry-run-smoke`, `make external-dry-run-compat`, `make launch-check`, `make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `8f36c0fede3afa58d5e3b59240f71c969bdbecaa`.

@@ -14,6 +14,9 @@ handling rules in [`docs/privacy-security.md`](privacy-security.md).
 For report-mode target learning before outreach, use
 [`docs/external-dry-run-policy.md`](external-dry-run-policy.md); a dry run is
 not adoption and does not authorize PRs, comments, or maintainer contact.
+For future opt-in outreach copy, use
+[`docs/maintainer-outreach-packet.md`](maintainer-outreach-packet.md); it still
+requires maintainer opt-in and does not authorize automated outreach.
 
 ## Target Criteria
 

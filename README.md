@@ -172,10 +172,18 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
   GitHub Actions workflow with optional receipt artifacts.
 - [`docs/package-install-naming.md`](docs/package-install-naming.md):
   product/package naming posture and pinned install guidance.
+- [`docs/release-install-plan.md`](docs/release-install-plan.md):
+  release/tag readiness, reproducible tag/SHA pin flow, and adopter update path.
 - [`docs/privacy-security.md`](docs/privacy-security.md): local execution,
   receipt contents, artifact upload risk, and forbidden content.
 - [`docs/launch-checklist.md`](docs/launch-checklist.md): machine and manual
   launch checks.
+- [`docs/demo-repo.md`](docs/demo-repo.md): demo repo script, screenshot/GIF
+  checklist, and short launch copy.
+- [`docs/maintainer-outreach-packet.md`](docs/maintainer-outreach-packet.md):
+  opt-in maintainer message, evidence summary format, and no-contact rules.
+- [`docs/launch-decision.md`](docs/launch-decision.md): current evidence-based
+  go/no-go decision.
 - [`docs/command-receipts.md`](docs/command-receipts.md): command/metric receipt
   schema.
 - [`docs/pr-provenance.md`](docs/pr-provenance.md): PR-body preset details.
