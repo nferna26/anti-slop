@@ -2,6 +2,32 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-06-08
+
+(Week 3 command/metric receipt tranche)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: Command and metric receipts must make agent claims more inspectable without widening Anti-Slop into a correctness, support, benchmark-validity, safety, advice-quality, reasoning, source-truth, or canon judge.
+- Gate run: RED evidence captured before GREEN: `rg -n "anti-slop-run" pyproject.toml scripts Makefile` exited 1, and after adding RED assertions `python3 scripts/gate_claims.py --self-test` plus a direct `anti-slop-claims --receipts <dir>` probe both exited 2 because `--receipts` was unrecognized. GREEN targeted self-tests now cover `anti-slop-run` exit-0 and nonzero command receipts, hashed stdout/stderr by default, metric recording, command-claim matching, missing receipt failure, nonzero receipt failure, stale git-head failure, metric scalar/improvement pass, metric mismatch failure, and missing metric failure.
+- Eval run: —
+- Decision: Added CORE-959 through CORE-962. CORE-959: documented `anti-slop-command-receipt.v1` in `docs/command-receipts.md` with required fields (`command`, `cwd`, `exit_code`, `duration_ms`, `git_head`, `started_at`, stdout/stderr hashes, `tool_version`), optional bounded excerpts, metrics, stale semantics, and no-secret-dumping rules. CORE-960: added stdlib-only `anti-slop-run`, which runs local commands and writes `.anti-slop/receipts/*.json`; nonzero commands still write receipts and return the command exit code. CORE-961: extended `anti-slop-claims --receipts <dir>` so command-pass/exit claims require fresh matching receipts and distinguish missing, nonzero, and stale receipts. CORE-962: extended command receipts with `metrics` and matched simple scalar/improvement metric claims against fresh receipts. Updated package metadata, Makefile, package smoke, agent-install smoke, README, install docs, `llms.txt`, supported-claims docs, PR-provenance docs, and KB index.
+- Rejected/deferred: Did not implement semantic command-output interpretation, benchmark validity review, statistical review, command environment attestation beyond receipt fields, model/API/RAG/vector-store/runtime dependency, GitHub API call, token use, or any correctness/relevance/source-truth/support/safety/advice-quality/reasoning/canon claim. Did not touch frozen evals, canon, registry decisions, source-card statuses, local-only artifacts, raw copyrighted text, credentials, private paths, raw API JSON, answer keys, or hidden maps.
+- Follow-up: Next tranche should improve adopter ergonomics: CI artifact upload for `.anti-slop/receipts`, receipt retention guidance, and optional workflow examples that run `anti-slop-run` before `anti-slop-claims --receipts`.
+
+(Week 3 PR #35 repair — backticked make command claims)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: Docs promise command receipts for claims like `` `make validate` passed ``; the detector must not silently ignore the same claim when Markdown backticks are present.
+- Gate run: RED self-test added two backticked cases: with an empty receipt dir, `` `make validate` passed `` must fail as a missing command receipt; with a fresh matching `anti-slop-command-receipt.v1` for `command_string: make validate`, `command_tags: [make:validate]`, `exit_code: 0`, and current `git_head`, the same artifact must pass and include a `command_receipt` claim. Before repair, both backticked artifacts exited PASS with no `command_receipt` section, and `python3 scripts/gate_claims.py --self-test` failed on the two new checks.
+- Eval run: —
+- Decision: Updated the make-passed detector to support both unbackticked `make validate passed` and backticked `` `make validate` passed `` while preserving target extraction (`validate`) and existing pytest/tests/command-exited matching. Direct probes now show missing receipt exit 1 and fresh receipt exit 0 for the backticked claim.
+- Rejected/deferred: Did not widen command receipts into semantic correctness, output interpretation, benchmark validity, support, safety, advice-quality, reasoning, source-truth, or canon claims. Did not touch frozen evals, canon, registry decisions, source-card statuses, local-only artifacts, or unrelated docs.
+- Follow-up: Keep PR #35 review focused on command/metric receipt mechanics and this detector repair.
+
 ## 2026-06-07
 
 - Ingested: —

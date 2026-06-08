@@ -25,8 +25,8 @@ references and receipts.
 | Test refs | Hard | A test node such as `tests/test_api.py::test_limits` | The test file exists and defines the named test/class node | Whether the test was run, passed, covers the claimed behavior, or proves correctness | PR says it is covered by `tests/test_api.py::test_limits` but that node is missing |
 | Issue refs | Advisory by default; hard with registry | `#123` plus an optional numbers-only issue registry passed with `--issue-registry` | With a registry, the issue number appears in that registry; without a registry, the ref is reported advisory only | Issue state, labels, priority, user intent, or whether the PR fixes it | PR says "Fixes #4123" but `4123` is absent from the supplied registry |
 | Commit refs | Advisory | A 7-40 character hex token checked against local git at `--root` | Local git can resolve the token as a commit object when possible | Whether the commit belongs to this branch/PR, why it matters, or whether a hex token was intended as a commit | PR cites `9f3a2b1`, but local git cannot resolve it |
-| Command receipts | Advisory | A command named in the PR body and/or a cited receipt artifact committed under the repo | Any cited receipt path can be resolved as a file ref | Whether the command actually ran in the stated environment, whether output is complete, or whether the result remains true after later edits | PR says "`make validate` passed" but cites no receipt and the acceptance gate later fails |
-| Benchmark receipts | Advisory | A public-safe benchmark/eval receipt path, decision doc, or run packet | The cited receipt artifact resolves if path-like | Benchmark correctness, judge quality, source truth, hidden condition maps, raw outputs, or any claim outside the frozen decision boundary | PR says a benchmark supports a broad advice claim when the cited decision only supports mechanical lineage |
+| Command receipts | Hard for detected command-pass/exit claims | A fresh `anti-slop-command-receipt.v1` JSON receipt under `--receipts` | The command string/tag matches the claim, the receipt exit code matches the claimed result, and the receipt git head matches current `--root` HEAD when available | Whether the command proves correctness, whether output is complete, whether the environment was appropriate, or whether later edits invalidate the result semantically | Agent says "`make validate` passed" but no matching fresh receipt exists, the receipt is nonzero, or its git head is stale |
+| Benchmark metric receipts | Hard for detected simple metric claims | A fresh command receipt with `metrics`, passed through `--receipts` | A stated scalar value (`score is 0.82`) or before/after pair (`score improved from 0.70 to 0.82`) appears exactly in a fresh receipt | Benchmark validity, judge quality, sample quality, statistical meaning, source truth, hidden condition maps, raw outputs, or any claim outside the receipt values | Agent says "score is 0.82" but the receipt says `0.81`, is stale, or is missing |
 | Docs-updated claims | Advisory | A cited docs path such as `docs/foo.md` or `README.md` | The cited doc path resolves when path-like | Whether the doc was changed in this PR, accurately reflects behavior, or covers all user-facing surfaces | PR says "Docs updated" but only cites an existing unchanged README |
 | Fixed / safe / supported claims | Out of scope | No artifact makes these mechanically verifiable by this resolver | Nothing beyond any references embedded inside the claim | Correctness, safety, security, user impact, causal fix quality, source support, advice quality, or reasoning quality | PR says "Fixed the race condition safely" while all refs resolve; the resolver still cannot prove the fix or safety claim |
 
@@ -47,7 +47,9 @@ references and receipts.
   `AGENT_FINAL_REPORT.md`; reuses the `anti-slop-pr` resolver engine. Supports
   structured `anti-slop-claims.v1` JSON receipts with per-ref line/type/tier/
   status/reason/evidence entries, plus optional local-git `--diff` changed-file
-  checks.
+  checks and `--receipts` command/metric receipt checks.
+- `anti-slop-run`: local command receipt writer for `anti-slop-command-receipt.v1`
+  JSON. Hashes stdout/stderr by default and can record explicit metrics.
 - `anti-slop-pr`: PR-body surface #1 and compatibility wrapper/preset.
 - `anti-slop-pr-event`: reads the PR body from GitHub Actions event JSON without
   a GitHub API token and runs `anti-slop-pr`.
@@ -57,5 +59,5 @@ references and receipts.
 All current surfaces are stdlib-only and do not call a model, hosted API,
 network service, vector store, RAG layer, or runtime server.
 
-Not implemented here: command-receipt validation, benchmark-receipt validation,
-semantic diff review, or any correctness/support/safety judgment.
+Not implemented here: semantic diff review, benchmark validity review, command
+output interpretation, or any correctness/support/safety judgment.
