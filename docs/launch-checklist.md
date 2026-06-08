@@ -9,6 +9,10 @@ docs without widening the product claim.
 - `make launch-check`: README proof links/metrics, product/package naming,
   `docs/privacy-security.md`, `docs/package-install-naming.md`, workflow report
   mode, Step Summary support, demo output, and history placement.
+- `make launch-decision-check`: `docs/release-install-plan.md`,
+  `docs/demo-repo.md`, `docs/maintainer-outreach-packet.md`,
+  `docs/launch-decision.md`, release pin guidance, outreach evidence links, and
+  go/no-go completeness.
 - `make adoption-smoke`: vendorable report-mode workflow, artifact retention,
   Step Summary tables, fabricated-ref report mode, command receipts, and claims
   JSON.
@@ -46,6 +50,15 @@ docs without widening the product claim.
   API/token requirement is added; no external outreach is performed.
 - No release or tag is created by this tranche; install guidance can mention
   pinning to a tag or full commit SHA.
+- Release/tag readiness must follow
+  [`docs/release-install-plan.md`](release-install-plan.md); operator approval
+  is required before creating a tag.
+- Demo and launch assets must follow [`docs/demo-repo.md`](demo-repo.md).
+- Maintainer outreach must follow
+  [`docs/maintainer-outreach-packet.md`](maintainer-outreach-packet.md) and
+  remain opt-in only.
+- The current go/no-go status is recorded in
+  [`docs/launch-decision.md`](launch-decision.md).
 - No frozen evals, canon, registry decisions, source-card statuses, raw sources,
   local-only artifacts, credentials, answer keys, private paths, raw API JSON,
   raw transcripts, or raw copyrighted text are touched or committed.

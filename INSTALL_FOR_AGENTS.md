@@ -63,6 +63,8 @@ The unpinned preview install is useful for first trials but tracks repo head.
 Pinned tags/SHAs are the safer supply-chain posture for repeatable CI. This repo
 does not create a release in this install step; use an existing reviewed tag or
 commit once one is chosen by the adopter.
+See [`docs/release-install-plan.md`](docs/release-install-plan.md) for the
+release readiness checklist, exact tag/SHA pin flow, and adopter update path.
 
 ## 2. Self-test (proves the install, offline)
 
@@ -85,6 +87,7 @@ make agent-claim-benchmark  # 50 synthetic checker cases
 make agent-claim-audit      # report-mode audit over committed real PR bodies
 make adoption-smoke         # workflow-template + artifact-retention smoke
 make launch-check           # launch-facing docs/proof/naming/privacy check
+make launch-decision-check  # release plan, demo assets, outreach packet, decision memo
 ```
 
 ## 3. Check a PR body locally
@@ -165,6 +168,10 @@ For generic final reports, use the copyable contract in
 For data handling, artifact upload risk, and forbidden report/receipt content,
 see [`docs/privacy-security.md`](docs/privacy-security.md). For the machine and
 manual launch gate, see [`docs/launch-checklist.md`](docs/launch-checklist.md).
+For demo assets, see [`docs/demo-repo.md`](docs/demo-repo.md). For future
+opt-in outreach copy, see
+[`docs/maintainer-outreach-packet.md`](docs/maintainer-outreach-packet.md). For
+the current go/no-go status, see [`docs/launch-decision.md`](docs/launch-decision.md).
 
 For a minimal PR-body-only workflow without artifact upload, the older
 `templates/anti-slop-pr.yml` remains available.

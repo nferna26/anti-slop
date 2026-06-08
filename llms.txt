@@ -19,6 +19,10 @@
 - [docs/package-install-naming.md](docs/package-install-naming.md): product/package naming posture. Anti-Slop Receipts is the product; `anti-slop-lineage` remains the distribution.
 - [docs/privacy-security.md](docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry, no GitHub API token, no model, and forbidden content.
 - [docs/launch-checklist.md](docs/launch-checklist.md): machine and manual launch checks.
+- [docs/release-install-plan.md](docs/release-install-plan.md): release/tag readiness and reproducible tag/SHA pin flow; no tag is created without operator approval.
+- [docs/demo-repo.md](docs/demo-repo.md): fake-report/receipt-backed demo script, screenshot/GIF checklist, and launch copy.
+- [docs/maintainer-outreach-packet.md](docs/maintainer-outreach-packet.md): opt-in-only maintainer message, evidence summary format, opt-out rules, and no-contact conditions.
+- [docs/launch-decision.md](docs/launch-decision.md): current evidence-based go/no-go decision.
 - [docs/external-dry-run-policy.md](docs/external-dry-run-policy.md): report-mode-only external dry-run policy; no outreach, token, model, GitHub API, or adoption runtime.
 - [docs/kill-criteria.md](docs/kill-criteria.md): kill dashboard; unknown adoption data is marked UNKNOWN, not PASS.
 - One-line user prompt: "Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."
@@ -36,6 +40,7 @@ Exact commands:
 - GitHub Actions: copy `templates/anti-slop-report.yml` -> `.github/workflows/anti-slop-report.yml` (report mode; appends `$GITHUB_STEP_SUMMARY`; uploads `.anti-slop/receipts/*.json` and `.anti-slop/claims.json` when present)
 - Adoption smoke: `make adoption-smoke`
 - Launch check: `make launch-check`
+- Launch decision check: `make launch-decision-check`
 - External dry-run smoke: `make external-dry-run-smoke` and `make external-dry-run-compat`
 - External cluster smoke: `make external-dry-run-cluster-smoke` and `make external-dry-run-cluster-compat`
 - Demo/proof from this repo: `make agent-claim-demo`, `make agent-claim-benchmark`, `make agent-claim-audit`

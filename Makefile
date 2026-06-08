@@ -118,6 +118,11 @@ adoption-smoke:
 launch-check:
 	python3 scripts/launch_check.py
 
+# Launch decision check: machine-check release pin guidance, demo assets,
+# outreach packet evidence links, and go/no-go memo completeness.
+launch-decision-check:
+	python3 scripts/launch_decision_check.py
+
 # External dry-run smoke: report-mode-only dry run over committed public-safe
 # saved PR-body artifacts, plus schema/policy compatibility checks.
 external-dry-run-smoke:
