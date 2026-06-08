@@ -1,0 +1,25 @@
+{
+  "empty_root_subset": {
+    "advisory_rate": 0.4667,
+    "artifact_count": 5,
+    "checkable_claim_count": 15,
+    "checkable_claims_per_100_lines": 8.72,
+    "hard_unresolved_rate": 1.0,
+    "root_mode": "empty_public_fixture_root_unavailable"
+  },
+  "interpretation": "Real checkouts test whether empty-root hard failures remain unresolved when the target repo tree is available.",
+  "policy_version": "external-dry-run-policy.v1",
+  "real_checkout_subset": {
+    "advisory_rate": 0.4,
+    "artifact_count": 5,
+    "checkable_claim_count": 15,
+    "checkable_claims_per_100_lines": 8.72,
+    "checkout_success_count": 5,
+    "hard_unresolved_rate": 0.25,
+    "root_mode": "real_public_checkout_pr_head",
+    "status": "real_checkout_useful"
+  },
+  "schema_version": "anti-slop-real-checkout-comparison.v1",
+  "selected_target_count": 5,
+  "status": "dry_run_not_adoption"
+}

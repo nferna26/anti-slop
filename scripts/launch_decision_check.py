@@ -28,10 +28,10 @@ OUTREACH = ROOT / "docs" / "maintainer-outreach-packet.md"
 DECISION = ROOT / "docs" / "launch-decision.md"
 
 ALLOWED_DECISIONS = {
-    "launch",
-    "launch narrower",
-    "continue private learning loop",
-    "pause",
+    "continue_private_learning_loop",
+    "prepare_tag_only",
+    "prepare_opt_in_outreach",
+    "pause_or_narrow",
 }
 
 
@@ -133,7 +133,10 @@ def check_decision(errors: list[str]) -> None:
         "proof/external-dry-run/summary.md",
         "proof/external-dry-run/expanded/summary.md",
         "proof/external-dry-run/expanded/actionability.json",
+        "proof/real-checkout-learning/summary.json",
+        "proof/real-checkout-learning/actionability.json",
         "proof/command-receipt-dogfood/summary.json",
+        "proof/real-command-receipt-dogfood/summary.json",
         "proof/external-dry-run/clusters.md",
         "proof/external-dry-run/kill-criteria.json",
         "benchmarks/agent-claim-corpus-v0.1/results/summary.json",
@@ -142,6 +145,7 @@ def check_decision(errors: list[str]) -> None:
         "benchmark mutations",
         "install success",
         "command receipt dogfood",
+        "real checkout",
         "outreach readiness",
         "FAIL",
         "UNKNOWN",

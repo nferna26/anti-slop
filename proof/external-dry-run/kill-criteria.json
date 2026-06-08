@@ -9,15 +9,15 @@
       "threshold": "<5 claims/100 lines"
     },
     {
-      "evidence": "Expanded external sample aggregate labels: 66.7% non-actionable over non-excluded findings.",
+      "evidence": "Real-checkout labels: 12.5% non-actionable over non-excluded findings.",
       "id": "non_actionable_after_repairs_above_50_percent",
-      "status": "FAIL",
+      "status": "PASS",
       "threshold": ">50% non-actionable after repairs"
     },
     {
-      "evidence": "Expanded external sample aggregate labels: 0.0% actionable over non-excluded findings; 5 unclear, 8 excluded.",
+      "evidence": "Real-checkout labels: 25.0% actionable over non-excluded findings; 5 unclear, 0 excluded.",
       "id": "useful_findings_below_20_percent",
-      "status": "FAIL",
+      "status": "PASS",
       "threshold": "<20% useful findings"
     },
     {
@@ -27,7 +27,7 @@
       "threshold": "<70% install success"
     },
     {
-      "evidence": "Command receipt dogfood fixture: 100% receipt-backed command claims passed; raw receipts are regenerated in a temp repo and not committed.",
+      "evidence": "real current-work command receipt dogfood: 100% receipt-backed command claims passed; raw receipts are regenerated in temporary storage and not committed.",
       "id": "command_receipt_dogfood_below_25_percent",
       "status": "PASS",
       "threshold": "<25% command receipt dogfood"
@@ -53,6 +53,10 @@
   ],
   "expanded_external_summary": "proof/external-dry-run/expanded/summary.json",
   "overall_status": "watch",
+  "real_checkout_actionability_labels": "proof/real-checkout-learning/actionability.json",
+  "real_checkout_status": "real_checkout_useful",
+  "real_checkout_summary": "proof/real-checkout-learning/summary.json",
+  "real_command_receipt_dogfood": "proof/real-command-receipt-dogfood/summary.json",
   "schema_version": "anti-slop-kill-criteria.v1",
   "source_summary": "proof/external-dry-run/summary.json"
 }

@@ -151,6 +151,18 @@ actionability-label-check:
 command-receipt-dogfood:
 	python3 scripts/command_receipt_dogfood.py --self-test
 
+# Real-checkout private learning: selected external public PR bodies checked
+# against local-only public repo checkouts, plus reviewer actionability labels
+# and current-work command receipt dogfood.
+real-checkout-smoke:
+	python3 scripts/real_checkout_learning.py --self-test
+
+real-checkout-actionability-check:
+	python3 scripts/real_checkout_learning.py --check-actionability
+
+real-command-receipt-dogfood:
+	python3 scripts/real_command_receipt_dogfood.py --self-test
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:

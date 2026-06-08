@@ -198,6 +198,12 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
   aggregate actionability labels; raw external line text omitted.
 - [`proof/command-receipt-dogfood/summary.md`](proof/command-receipt-dogfood/summary.md):
   public-safe command-receipt dogfood summary.
+- [`proof/real-checkout-learning/summary.md`](proof/real-checkout-learning/summary.md):
+  private-learning report-mode loop over selected external public PR bodies
+  checked against temporary public repo checkouts.
+- [`proof/real-command-receipt-dogfood/summary.md`](proof/real-command-receipt-dogfood/summary.md):
+  current-work command-receipt dogfood; raw local-cwd receipts are regenerated
+  in temporary storage and are not committed.
 - [`proof/external-dry-run/clusters.md`](proof/external-dry-run/clusters.md):
   public-safe cluster memo and no-change resolver decision.
 - [`docs/kill-criteria.md`](docs/kill-criteria.md): kill-criteria dashboard

@@ -1,0 +1,42 @@
+{
+  "claim_check": "anti-slop-claims --receipts",
+  "command_receipt_claims": 2,
+  "command_receipt_passed": 2,
+  "commands": [
+    {
+      "anti_slop_run_exit": 0,
+      "command": "python3 scripts/real_checkout_learning.py --check",
+      "id": "real-checkout-final-report"
+    },
+    {
+      "anti_slop_run_exit": 0,
+      "command": "python3 scripts/real_checkout_learning.py --check-actionability",
+      "id": "real-checkout-actionability-final-report"
+    }
+  ],
+  "dogfood_rate": 1.0,
+  "notes": [
+    "Public-safe summary only; raw receipts contain local cwd and are intentionally not committed.",
+    "This proves local command receipt matching only, not correctness, relevance, support, safety, source truth, advice quality, reasoning, benchmark validity, statistical meaning, or canon."
+  ],
+  "receipt_source": "generated at smoke time with anti-slop-run; raw receipts are not committed",
+  "report_count": 2,
+  "reports": [
+    {
+      "claim_check_exit": 0,
+      "command_receipt_claims": 1,
+      "command_receipt_passed": 1,
+      "id": "real-checkout-final-report",
+      "report": "proof/real-command-receipt-dogfood/reports/real-checkout-final-report.md"
+    },
+    {
+      "claim_check_exit": 0,
+      "command_receipt_claims": 1,
+      "command_receipt_passed": 1,
+      "id": "real-checkout-actionability-final-report",
+      "report": "proof/real-command-receipt-dogfood/reports/real-checkout-actionability-final-report.md"
+    }
+  ],
+  "schema_version": "anti-slop-real-command-receipt-dogfood.v1",
+  "status": "pass"
+}
