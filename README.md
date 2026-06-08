@@ -35,10 +35,14 @@ is explicit opt-in once a repo is ready.
 Markdown/text artifact such as `AGENT_FINAL_REPORT.md` and uses the same
 reference resolver engine as `anti-slop-pr`.
 
-This is a packaging/API shape change, not a semantic expansion. The generic
-entrypoint still resolves references only; it does not add diff-aware changed-file
-checks, command-receipt validation, benchmark-receipt validation, or a new JSON
-receipt schema.
+It can also write a structured JSON receipt (`--json`) and, when supplied a
+local git diff/range (`--diff`), check changed-file language near path-like refs:
+"updated `docs/foo.md`" is hard-checked against the supplied diff. Without
+`--diff`, changed-file claims stay advisory/skipped.
+
+This remains reference/receipt resolution only. It does not add command-receipt
+validation, benchmark-receipt validation, semantic diff review, or correctness
+judgment.
 
 ## Install It
 
@@ -55,6 +59,7 @@ anti-slop-pr --self-test
 anti-slop-pr-event --self-test
 anti-slop-claims --self-test
 anti-slop-claims --root . AGENT_FINAL_REPORT.md --report
+anti-slop-claims --root . --json claims.json --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md
 anti-slop-pr --root . <pr-body.md> --report
 ```
 
@@ -71,8 +76,10 @@ The supported-claims matrix is load-bearing:
   supplied.
 - Advisory refs: commit refs; issue refs without a registry.
 - Path-only resolution can be used for cited docs or receipt artifact paths, but
-  this tranche does not implement diff-aware changed-file checks,
-  command-receipt validation, or benchmark-receipt validation.
+  command-receipt validation and benchmark-receipt validation are not
+  implemented.
+- Changed-file language near path-like refs is hard only when `--diff` is
+  supplied; otherwise it is advisory/skipped.
 - Out of scope: "fixed", "safe", "supported", "correct", and similar claims
   whose truth cannot be mechanically proven by reference resolution.
 
@@ -180,9 +187,10 @@ is mechanical and reproducible:
   generic artifact-checking entrypoint for deterministic agent claim
   verification. It accepts Markdown/text artifacts such as
   `AGENT_FINAL_REPORT.md` and reuses the `anti-slop-pr` resolver engine for
-  file / test / source-card / issue / commit references. This is packaging/API
-  shape only; it does not add diff-aware changed-file checks, command receipts,
-  benchmark receipts, or a new JSON receipt schema. Self-tested
+  file / test / source-card / issue / commit references. It can write
+  `anti-slop-claims.v1` JSON receipts and can hard-check changed-file language
+  against a supplied local git diff/range. It does not validate command receipts,
+  benchmark receipts, semantic correctness, or support. Self-tested
   (`make claims-self-test`) and package-smoked (`make package-smoke`).
 - `pr-provenance` (`scripts/gate_pr_provenance.py`, `anti-slop-pr`) -
   *implemented*: surface #1 PR-body preset for deterministic agent claim

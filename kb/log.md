@@ -26,6 +26,30 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not implement a generic JSON receipt schema, diff-aware changed-file checks, command-receipt validation, or benchmark-receipt validation. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, source-card statuses, or local-only artifacts. Did not add model/API/RAG/vector-store/runtime dependencies, GitHub API calls, or tokens. Did not commit secrets, `.env`, private paths, raw API JSON, answer keys, or raw copyrighted text. No claim is made beyond reference/receipt resolution; correctness, relevance, source truth, support, advice quality, reasoning, safety, and canon remain out of scope.
 - Follow-up: CORE-956 + CORE-957: define the generic JSON receipt shape and add diff-aware changed-file checks without widening the resolver's claim boundary.
 
+(Week 2B JSON/diff tranche — same day, separate entry)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: —
+- Gate run: PR #33 (`codex/week2a-claims-entrypoint`, commit `dbcba19`) was rerun locally before merge: `make claims-self-test`, `make pr-provenance-self-test`, `make pr-provenance-event-self-test`, `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, and `git diff --check` exited 0. PR #33 was clean/mergeable with green CI and was merged into `codex/locator-accuracy-v1-benchmark-run` on 2026-06-07, updating integration to `c634693`. RED evidence for Week 2B: after adding RED assertions, `python3 scripts/gate_claims.py --self-test` failed with argparse rejecting `--json`; direct probes `python3 scripts/gate_claims.py --root proof/claims-demo/fixture-root --json /tmp/claims-red.json proof/claims-demo/valid/AGENT_FINAL_REPORT.md` and `python3 scripts/gate_claims.py --root proof/claims-demo/diff/fixture-root --diff HEAD~1..HEAD proof/claims-demo/diff/changed/AGENT_FINAL_REPORT.md` both exited 2 as unrecognized arguments. GREEN targeted checks passed: `python3 scripts/gate_claims.py --self-test` now verifies JSON hard pass / hard fail / advisory entries and diff-mode changed-file pass / existing-but-not-changed fail / no-diff advisory / ordinary file-resolution pass; a direct JSON probe writes `anti-slop-claims.v1` with per-claim `line`, `text`, `ref`, `type`, `tier`, `status`, `reason`, and `resolver_evidence`.
+- Eval run: —
+- Decision: Added CORE-956 and CORE-957 to `anti-slop-claims`. CORE-956: `--json <path>` writes a structured `anti-slop-claims.v1` receipt for generic artifacts, including artifact path, root, pass/fail, ignore info, legacy check summaries, diff metadata, and per-ref claim entries with line/type/tier/status/reason/evidence. CORE-957: `--diff <range>` uses local `git diff --name-only <range>` to hard-check changed-file language near path-like refs (`added`, `updated`, `changed`, `modified`, etc.); existing-but-not-changed paths fail under diff mode, while missing diff leaves changed-file claims advisory/skipped. Ordinary file resolution remains independent of diff mode. Updated `Makefile`, README, install docs, `llms.txt`, `docs/agent-claim-verification.md`, `docs/pr-provenance.md`, and `kb/index.md` accordingly.
+- Rejected/deferred: Did not implement command-receipt validation, benchmark-receipt validation, semantic diff review, model/API/RAG/vector-store/runtime dependency, GitHub API call, token use, or any correctness/relevance/source-truth/support/safety/advice-quality/reasoning/canon claim. Did not touch frozen evals, generator-swap outputs, canon, registry decisions, source-card statuses, or local-only artifacts. Did not commit secrets, `.env`, private paths, raw API JSON, answer keys, or raw copyrighted text.
+- Follow-up: Next tranche should add adoption ergonomics around the JSON receipt: stable receipt examples, CI artifact upload guidance, and optionally a composite GitHub Action wrapper while preserving report-mode default.
+
+(Week 2B PR #34 repair — invalid diff enforcement)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: Invalid or unavailable supplied `--diff` ranges must not silently weaken changed-file enforcement to advisory mode.
+- Gate run: Added a RED self-test fixture with an existing `docs/existing.md` file and an agent report saying `Updated docs/existing.md`; before repair, `anti-slop-claims --root <repo> --diff definitely-not-a-ref <report>` marked the changed-file claim advisory and returned PASS. GREEN checks now require exit 1, `diff.mode: unavailable`, the git error reason, and a hard failed `changed_file` JSON entry. Direct invalid-diff probe exits 1.
+- Eval run: —
+- Decision: When `--diff` is omitted, changed-file claims remain advisory/skipped. When `--diff` is supplied and `git diff --name-only <range>` succeeds, existing pass/fail behavior remains. When `--diff` is supplied but git diff fails or is unavailable, changed-file claims are hard failures and the command exits 1.
+- Rejected/deferred: Did not change PR-body behavior, command receipts, benchmark receipts, semantic diff review, model/API/RAG/vector-store/runtime dependency, or any correctness/relevance/source-truth/support/safety/advice-quality/reasoning/canon claim. Did not touch frozen evals, canon, registry decisions, source-card statuses, or unrelated docs.
+- Follow-up: Keep PR #34 review focused on the generic receipt/diff tranche plus this enforcement repair.
+
 ## 2026-05-30
 
 - Ingested: —
