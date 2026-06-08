@@ -7,6 +7,11 @@ Anti-Slop resolves references and receipts only. It does not prove correctness,
 relevance, source truth, support, safety, advice quality, reasoning, benchmark
 validity, statistical meaning, or canon.
 
+Package/install naming is documented in
+[`docs/package-install-naming.md`](package-install-naming.md). Privacy/security
+rules and forbidden report/receipt content are documented in
+[`docs/privacy-security.md`](privacy-security.md).
+
 ## Local Receipt Flow
 
 Run commands through `anti-slop-run` before claiming they passed:

@@ -113,6 +113,11 @@ agent-install-smoke:
 adoption-smoke:
 	python3 scripts/adoption_smoke.py
 
+# Launch check: machine-check launch-facing proof links, naming posture,
+# privacy/security docs, report-mode workflow defaults, and Step Summary support.
+launch-check:
+	python3 scripts/launch_check.py
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:

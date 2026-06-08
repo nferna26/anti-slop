@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(RC-cleanliness tranche)
+
+- Ingested: PR #38 merged cleanly after focused rerun (`make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `d52ebc57554a4e8f84299212fc81f465995d4a8c`.
+- Mapped: —
+- Carded: —
+- Tension preserved: Release-candidate launch copy must be receipt-first and package/install-honest without expanding Anti-Slop Receipts into correctness, relevance, source-truth, support, safety, advice-quality, reasoning, benchmark-validity, statistical-meaning, canon, or broad "slop detector" claims.
+- Gate run: RED evidence captured before GREEN by adding `make launch-check` and `scripts/launch_check.py`; the initial run failed because `docs/package-install-naming.md`, `docs/privacy-security.md`, and `docs/launch-checklist.md` were absent, README / install / `llms.txt` / template / KB surfaces lacked required links, the workflow template did not name Anti-Slop Receipts, and the KB log did not record CORE-967 through CORE-970. GREEN `make launch-check` now covers README proof links/metrics, product/package naming, privacy/security, launch checklist, workflow report mode, Step Summary support, demo output, and history placement.
+- Eval run: —
+- Decision: CORE-967 merged PR #38 and verified the receipt-first baseline. CORE-968 documented the naming posture: Anti-Slop Receipts is the product, `anti-slop-lineage` remains the current distribution, `anti-slop-claims` is the canonical checker, `anti-slop-run` is the receipt producer, `anti-slop-pr-event` is the GitHub PR-body preset, and `anti-slop-pr` remains the compatibility wrapper. CORE-969 added `docs/privacy-security.md` for local execution, stdout/stderr hashes by default, bounded excerpt risks, artifact upload risk, no telemetry, no GitHub API token, no model, and forbidden report/receipt content. CORE-970 added `docs/launch-checklist.md` plus `make launch-check`.
+- Rejected/deferred: Did not create a release or tag, add aliases, require GitHub API/token, add model/API/RAG/vector-store/runtime dependency, add telemetry, open external PRs, contact candidate repos, touch frozen evals/canon/registry decisions/source-card statuses/raw sources/local-only artifacts, commit credentials/private paths/raw API JSON/answer keys/raw transcripts/raw copyrighted text, or claim anything beyond deterministic reference/receipt resolution.
+- Follow-up: CORE-971 through CORE-974 should run external dry-run/report-mode loops on public repos, collect false-positive clusters, decide whether any narrow enforcement presets are justified, and keep all outreach opt-in and report-mode first.
+
 (Launch-hardening tranche)
 
 - Ingested: PR #37 merged cleanly after focused rerun (`make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `1758c7f9efcd1bd4ff0f5a152eeb078df140a374`.

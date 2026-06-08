@@ -1,4 +1,4 @@
-# Anti-Slop agent claim verification
+# Anti-Slop Receipts agent claim verification
 
 > Make AI coding agents cite receipts, not vibes.
 >
@@ -16,6 +16,9 @@
 ## Install it (for agents)
 
 - [INSTALL_FOR_AGENTS.md](INSTALL_FOR_AGENTS.md): the full install-and-wire-CI protocol.
+- [docs/package-install-naming.md](docs/package-install-naming.md): product/package naming posture. Anti-Slop Receipts is the product; `anti-slop-lineage` remains the distribution.
+- [docs/privacy-security.md](docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry, no GitHub API token, no model, and forbidden content.
+- [docs/launch-checklist.md](docs/launch-checklist.md): machine and manual launch checks.
 - One-line user prompt: "Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."
 
 Exact commands:
@@ -30,6 +33,7 @@ Exact commands:
 - Check a PR body: `anti-slop-pr --root . <pr-body.md>`  (add `--report` for advisory)
 - GitHub Actions: copy `templates/anti-slop-report.yml` -> `.github/workflows/anti-slop-report.yml` (report mode; appends `$GITHUB_STEP_SUMMARY`; uploads `.anti-slop/receipts/*.json` and `.anti-slop/claims.json` when present)
 - Adoption smoke: `make adoption-smoke`
+- Launch check: `make launch-check`
 - Demo/proof from this repo: `make agent-claim-demo`, `make agent-claim-benchmark`, `make agent-claim-audit`
 
 ## Reference
@@ -40,7 +44,7 @@ Exact commands:
 - [docs/pr-provenance.md](docs/pr-provenance.md): usage, tiers, ignore directives, "First 60 seconds", GitHub Actions recipe.
 - [docs/adoption-loop.md](docs/adoption-loop.md): report-mode external adoption playbook and candidate targets.
 - [docs/citation-lineage-gate.md](docs/citation-lineage-gate.md): the reused source-card/source resolver (the one benchmark-backed primitive).
-- [README.md](README.md): the Anti-Slop front door and evidence history.
+- [README.md](README.md): the Anti-Slop Receipts front door; books-KB/eval-lab history is preserved below the fold.
 
 ## Tiers (deterministic vs advisory)
 

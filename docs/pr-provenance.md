@@ -15,6 +15,10 @@ runtime.
 It is a *resolver*, not a judge. See "What it cannot catch" and the broader
 supported-claims matrix in
 [`agent-claim-verification.md`](agent-claim-verification.md).
+Package/install naming is documented in
+[`docs/package-install-naming.md`](package-install-naming.md). Privacy/security
+rules for reports, receipts, and uploaded artifacts are documented in
+[`docs/privacy-security.md`](privacy-security.md).
 
 ## Why this matters
 
