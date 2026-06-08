@@ -16,6 +16,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not implement semantic command-output interpretation, benchmark validity review, statistical review, command environment attestation beyond receipt fields, model/API/RAG/vector-store/runtime dependency, GitHub API call, token use, or any correctness/relevance/source-truth/support/safety/advice-quality/reasoning/canon claim. Did not touch frozen evals, canon, registry decisions, source-card statuses, local-only artifacts, raw copyrighted text, credentials, private paths, raw API JSON, answer keys, or hidden maps.
 - Follow-up: Next tranche should improve adopter ergonomics: CI artifact upload for `.anti-slop/receipts`, receipt retention guidance, and optional workflow examples that run `anti-slop-run` before `anti-slop-claims --receipts`.
 
+(Week 3 PR #35 repair — backticked make command claims)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: Docs promise command receipts for claims like `` `make validate` passed ``; the detector must not silently ignore the same claim when Markdown backticks are present.
+- Gate run: RED self-test added two backticked cases: with an empty receipt dir, `` `make validate` passed `` must fail as a missing command receipt; with a fresh matching `anti-slop-command-receipt.v1` for `command_string: make validate`, `command_tags: [make:validate]`, `exit_code: 0`, and current `git_head`, the same artifact must pass and include a `command_receipt` claim. Before repair, both backticked artifacts exited PASS with no `command_receipt` section, and `python3 scripts/gate_claims.py --self-test` failed on the two new checks.
+- Eval run: —
+- Decision: Updated the make-passed detector to support both unbackticked `make validate passed` and backticked `` `make validate` passed `` while preserving target extraction (`validate`) and existing pytest/tests/command-exited matching. Direct probes now show missing receipt exit 1 and fresh receipt exit 0 for the backticked claim.
+- Rejected/deferred: Did not widen command receipts into semantic correctness, output interpretation, benchmark validity, support, safety, advice-quality, reasoning, source-truth, or canon claims. Did not touch frozen evals, canon, registry decisions, source-card statuses, local-only artifacts, or unrelated docs.
+- Follow-up: Keep PR #35 review focused on command/metric receipt mechanics and this detector repair.
+
 ## 2026-06-07
 
 - Ingested: —

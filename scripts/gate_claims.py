@@ -37,7 +37,10 @@ CHANGED_WORD_RE = re.compile(
     re.IGNORECASE,
 )
 COMMAND_EXIT_RE = re.compile(r"\bcommand\s+`([^`]+)`\s+exited\s+(-?\d+)\b", re.IGNORECASE)
-MAKE_PASSED_RE = re.compile(r"\bmake\s+([A-Za-z0-9_.:-]+)\s+pass(?:ed|es)?\b", re.IGNORECASE)
+MAKE_PASSED_RE = re.compile(
+    r"(?:`make\s+([A-Za-z0-9_.:-]+)`|\bmake\s+([A-Za-z0-9_.:-]+))\s+pass(?:ed|es)?\b",
+    re.IGNORECASE,
+)
 PYTEST_PASSED_RE = re.compile(r"\bpytest\b.*\bpass(?:ed|es)?\b", re.IGNORECASE)
 TESTS_PASS_RE = re.compile(r"\btests?\s+pass(?:ed|es)?\b", re.IGNORECASE)
 NUM_RE = r"-?\d+(?:\.\d+)?"
@@ -301,7 +304,7 @@ def _command_claims(text: str) -> list[dict]:
                 "expected_exit": int(match.group(2)),
             })
         for match in MAKE_PASSED_RE.finditer(line):
-            target = match.group(1)
+            target = match.group(1) or match.group(2)
             claims.append({
                 "line": number,
                 "ref": f"make {target}",
@@ -749,6 +752,8 @@ def self_test() -> int:
 
         command_pass = root / "receipts" / "command-pass.md"
         command_missing = root / "receipts" / "command-missing.md"
+        command_backtick_pass = root / "receipts" / "command-backtick-pass.md"
+        command_backtick_missing = root / "receipts" / "command-backtick-missing.md"
         command_nonzero = root / "receipts" / "command-nonzero.md"
         command_stale = root / "receipts" / "command-stale.md"
         metric_pass = root / "receipts" / "metric-pass.md"
@@ -756,6 +761,8 @@ def self_test() -> int:
         metric_missing = root / "receipts" / "metric-missing.md"
         command_pass_json = root / "command-pass.json"
         command_missing_json = root / "command-missing.json"
+        command_backtick_pass_json = root / "command-backtick-pass.json"
+        command_backtick_missing_json = root / "command-backtick-missing.json"
         command_nonzero_json = root / "command-nonzero.json"
         command_stale_json = root / "command-stale.json"
         metric_pass_json = root / "metric-pass.json"
@@ -763,6 +770,8 @@ def self_test() -> int:
         metric_missing_json = root / "metric-missing.json"
         _write(command_pass, "# Agent Final Report\n\nmake validate passed.\n")
         _write(command_missing, "# Agent Final Report\n\npytest passed.\n")
+        _write(command_backtick_pass, "# Agent Final Report\n\n`make validate` passed.\n")
+        _write(command_backtick_missing, "# Agent Final Report\n\n`make validate` passed.\n")
         _write(command_nonzero, "# Agent Final Report\n\nmake validate passed.\n")
         _write(command_stale, "# Agent Final Report\n\nmake validate passed.\n")
         _write(metric_pass, "# Agent Final Report\n\nscore is 0.82. score improved from 0.70 to 0.82.\n")
@@ -772,6 +781,12 @@ def self_test() -> int:
                                   "--json", str(command_pass_json), str(command_pass)])
         command_missing_exit = main(["--root", str(diff_root), "--receipts", str(empty_receipts),
                                      "--json", str(command_missing_json), str(command_missing)])
+        command_backtick_pass_exit = main(["--root", str(diff_root), "--receipts", str(command_receipts),
+                                           "--json", str(command_backtick_pass_json),
+                                           str(command_backtick_pass)])
+        command_backtick_missing_exit = main(["--root", str(diff_root), "--receipts", str(empty_receipts),
+                                              "--json", str(command_backtick_missing_json),
+                                              str(command_backtick_missing)])
         command_nonzero_exit = main(["--root", str(diff_root), "--receipts", str(nonzero_receipts),
                                      "--json", str(command_nonzero_json), str(command_nonzero)])
         command_stale_exit = main(["--root", str(diff_root), "--receipts", str(stale_receipts),
@@ -785,6 +800,11 @@ def self_test() -> int:
         command_pass_data = json.loads(command_pass_json.read_text(encoding="utf-8")) if command_pass_json.exists() else {}
         command_missing_data = (json.loads(command_missing_json.read_text(encoding="utf-8"))
                                 if command_missing_json.exists() else {})
+        command_backtick_pass_data = (json.loads(command_backtick_pass_json.read_text(encoding="utf-8"))
+                                      if command_backtick_pass_json.exists() else {})
+        command_backtick_missing_data = (
+            json.loads(command_backtick_missing_json.read_text(encoding="utf-8"))
+            if command_backtick_missing_json.exists() else {})
         command_nonzero_data = (json.loads(command_nonzero_json.read_text(encoding="utf-8"))
                                 if command_nonzero_json.exists() else {})
         command_stale_data = (json.loads(command_stale_json.read_text(encoding="utf-8"))
@@ -850,6 +870,17 @@ def self_test() -> int:
              command_pass_exit == 0 and any(c.get("type") == "command_receipt"
                                             and c.get("status") == "pass"
                                             for c in command_pass_data.get("claims", []))),
+            ("command receipt backs backticked make validate passed",
+             command_backtick_pass_exit == 0 and any(c.get("type") == "command_receipt"
+                                                     and c.get("ref") == "make validate"
+                                                     and c.get("status") == "pass"
+                                                     for c in command_backtick_pass_data.get("claims", []))),
+            ("missing command receipt fails backticked make validate passed",
+             command_backtick_missing_exit == 1 and any(c.get("type") == "command_receipt"
+                                                        and c.get("ref") == "make validate"
+                                                        and c.get("status") == "fail"
+                                                        and "missing" in c.get("reason", "")
+                                                        for c in command_backtick_missing_data.get("claims", []))),
             ("missing command receipt fails",
              command_missing_exit == 1 and any(c.get("type") == "command_receipt"
                                                and c.get("status") == "fail"
