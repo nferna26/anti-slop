@@ -11,6 +11,9 @@ reasoning, benchmark validity, statistical meaning, or canon.
 Before any adoption trial, use the launch posture in
 [`docs/package-install-naming.md`](package-install-naming.md) and the data
 handling rules in [`docs/privacy-security.md`](privacy-security.md).
+For report-mode target learning before outreach, use
+[`docs/external-dry-run-policy.md`](external-dry-run-policy.md); a dry run is
+not adoption and does not authorize PRs, comments, or maintainer contact.
 
 ## Target Criteria
 

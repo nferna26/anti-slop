@@ -179,6 +179,10 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
   schema.
 - [`docs/pr-provenance.md`](docs/pr-provenance.md): PR-body preset details.
 - [`docs/adoption-loop.md`](docs/adoption-loop.md): external adoption playbook.
+- [`docs/external-dry-run-policy.md`](docs/external-dry-run-policy.md):
+  report-mode-only external dry-run policy and aggregate schema.
+- [`proof/external-dry-run/summary.md`](proof/external-dry-run/summary.md):
+  first saved-public-PR-body dry-run aggregate (`dry_run_not_adoption`).
 - [`docs/history/books-kb-eval-lab.md`](docs/history/books-kb-eval-lab.md):
   preserved books-KB, eval-lab, canon, and historical evidence context.
 

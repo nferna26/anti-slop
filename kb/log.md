@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(External dry-run tranche)
+
+- Ingested: PR #39 merged cleanly after focused rerun (`make launch-check`, `make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `70718c88a9d1b0232423248cad59b4fe6ba81f72`.
+- Mapped: —
+- Carded: —
+- Tension preserved: External learning must stay report-mode-only and public-safe; a dry run can measure reference/receipt resolver fit, but it must not become automated adoption, outreach, correctness review, benchmark-validity claim, source-truth claim, safety claim, advice-quality claim, reasoning claim, canon claim, or a GitHub API/token/model dependency.
+- Gate run: RED evidence captured before GREEN by adding `make external-dry-run-smoke` and `scripts/external_dry_run.py`; the initial run failed because `docs/external-dry-run-policy.md` and `proof/external-dry-run/targets.json` were absent. GREEN `make external-dry-run-smoke` now runs existing report-mode checkers over committed public-safe saved PR bodies, writes `proof/external-dry-run/summary.json` / `.md`, and validates the `anti-slop-external-dry-run.v1` aggregate schema and `external-dry-run-policy.v1` policy. `make external-dry-run-compat` checks committed aggregates without regenerating.
+- Eval run: —
+- Decision: Added CORE-971 through CORE-974. CORE-971: added a report-mode external dry-run harness that invokes `anti-slop-pr-event --report --json` or `anti-slop-claims --report --json` against committed local artifacts; it does not fork resolver logic. CORE-972: added `docs/external-dry-run-policy.md` defining allowed inputs, committed outputs, redaction/aggregation, public PR-body handling, no-token/no-model/no-GitHub-API/no-auto-outreach constraints, opt-in outreach boundary, and `anti-slop-external-dry-run.v1`. CORE-973: configured 10 saved public PR-body artifacts (`nferna26/anti-slop` PR #26 through #35) from already committed public-safe fixtures. CORE-974: added aggregate schema compatibility checks. First aggregate: 10 artifacts, 92 checkable claims, 19.33 claims/100 lines, 17.6% hard unresolved rate, 16.3% advisory rate, top reasons `issue refs advisory without registry` (15), `file refs that do not resolve` (8), and `source/card refs that do not resolve` (4). Kill-criterion risk passed the `<5 claims/100 lines` threshold; verdict `useful` for continued report-mode dry runs, not launch hype.
+- Rejected/deferred: Did not fetch live external PR bodies at runtime, add GitHub API/token/model/network dependency, open external PRs, post comments, contact maintainers, automate adoption, switch to enforcement, commit private paths/secrets/raw API JSON/answer keys/raw transcripts/raw copyrighted text/local-only artifacts/hidden maps, or touch frozen evals/canon/registry decisions/source-card statuses.
+- Follow-up: CORE-975 through CORE-978 should expand the dry-run sample with separately reviewed public artifacts from multiple AI/devtool repos, cluster false positives by maintainability impact, and draft an opt-in outreach packet only if report-mode density remains useful and noise remains manageable.
+
 (RC-cleanliness tranche)
 
 - Ingested: PR #38 merged cleanly after focused rerun (`make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `d52ebc57554a4e8f84299212fc81f465995d4a8c`.
