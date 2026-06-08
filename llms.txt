@@ -43,6 +43,8 @@ Exact commands:
 - Launch decision check: `make launch-decision-check`
 - External dry-run smoke: `make external-dry-run-smoke` and `make external-dry-run-compat`
 - External cluster smoke: `make external-dry-run-cluster-smoke` and `make external-dry-run-cluster-compat`
+- Expanded external sample: `make external-sample-smoke`, `make external-sample-compat`, and `make actionability-label-check`
+- Command receipt dogfood: `make command-receipt-dogfood`
 - Demo/proof from this repo: `make agent-claim-demo`, `make agent-claim-benchmark`, `make agent-claim-audit`
 
 ## Reference

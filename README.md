@@ -192,6 +192,12 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
   report-mode-only external dry-run policy and aggregate schema.
 - [`proof/external-dry-run/summary.md`](proof/external-dry-run/summary.md):
   first saved-public-PR-body dry-run aggregate (`dry_run_not_adoption`).
+- [`proof/external-dry-run/expanded/summary.md`](proof/external-dry-run/expanded/summary.md):
+  expanded 12-repo saved-public-PR-body dry-run aggregate.
+- [`proof/external-dry-run/expanded/actionability.md`](proof/external-dry-run/expanded/actionability.md):
+  aggregate actionability labels; raw external line text omitted.
+- [`proof/command-receipt-dogfood/summary.md`](proof/command-receipt-dogfood/summary.md):
+  public-safe command-receipt dogfood summary.
 - [`proof/external-dry-run/clusters.md`](proof/external-dry-run/clusters.md):
   public-safe cluster memo and no-change resolver decision.
 - [`docs/kill-criteria.md`](docs/kill-criteria.md): kill-criteria dashboard

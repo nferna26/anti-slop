@@ -1,0 +1,47 @@
+{
+  "external_sample": {
+    "advisory_rate": 0.6522,
+    "artifact_count": 12,
+    "checkable_claims_per_100_lines": 6.32,
+    "hard_unresolved_rate": 1.0,
+    "repo_count": 12,
+    "root_mode": "empty_public_fixture_root_unavailable",
+    "top_reasons": [
+      {
+        "count": 10,
+        "reason": "commit refs advisory under local-git resolution"
+      },
+      {
+        "count": 8,
+        "reason": "file refs that do not resolve"
+      },
+      {
+        "count": 5,
+        "reason": "issue refs advisory without registry"
+      }
+    ]
+  },
+  "interpretation": "External sample increases public-repo coverage but root-dependent hard failures are not maintainer-actionable until checked against real local checkouts.",
+  "schema_version": "anti-slop-external-sample-comparison.v1",
+  "status": "dry_run_not_adoption",
+  "this_repo_sample": {
+    "advisory_rate": 0.163,
+    "artifact_count": 10,
+    "checkable_claims_per_100_lines": 19.33,
+    "hard_unresolved_rate": 0.1765,
+    "top_reasons": [
+      {
+        "count": 15,
+        "reason": "issue refs advisory without registry"
+      },
+      {
+        "count": 8,
+        "reason": "file refs that do not resolve"
+      },
+      {
+        "count": 4,
+        "reason": "source/card refs that do not resolve"
+      }
+    ]
+  }
+}

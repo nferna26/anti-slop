@@ -131,6 +131,9 @@ def check_decision(errors: list[str]) -> None:
             )
     for snippet in [
         "proof/external-dry-run/summary.md",
+        "proof/external-dry-run/expanded/summary.md",
+        "proof/external-dry-run/expanded/actionability.json",
+        "proof/command-receipt-dogfood/summary.json",
         "proof/external-dry-run/clusters.md",
         "proof/external-dry-run/kill-criteria.json",
         "benchmarks/agent-claim-corpus-v0.1/results/summary.json",
@@ -140,6 +143,7 @@ def check_decision(errors: list[str]) -> None:
         "install success",
         "command receipt dogfood",
         "outreach readiness",
+        "FAIL",
         "UNKNOWN",
         "PASS",
         "next narrow tranche",

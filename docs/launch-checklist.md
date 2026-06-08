@@ -25,6 +25,15 @@ docs without widening the product claim.
   no-change resolver memo, and regenerate kill-criteria status.
 - `make external-dry-run-cluster-compat`: compatibility check for committed
   cluster and kill-criteria artifacts.
+- `make external-sample-smoke`: report-mode-only expanded sample over saved
+  public PR bodies from external AI/devtool repos.
+- `make external-sample-compat`: compatibility check for the expanded external
+  sample summary, comparison, target manifest, and actionability labels.
+- `make actionability-label-check`: validates aggregate actionability labels
+  without raw external line text.
+- `make command-receipt-dogfood`: regenerates local anti-slop-run receipts in a
+  temporary repo and checks a public-safe `AGENT_FINAL_REPORT.md` fixture with
+  `anti-slop-claims --receipts`.
 - `make agent-claim-demo`: fake report fails with exact line reasons and
   receipt-backed report passes.
 - `make agent-claim-benchmark`: regenerates the synthetic corpus summary at

@@ -1,0 +1,413 @@
+{
+  "advisory_count": 15,
+  "advisory_rate": 0.6522,
+  "artifact_count": 12,
+  "artifacts": [
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 0.0,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 0,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 0,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "id": "openai-openai-python-pr-3366",
+      "kind": "saved_public_pr_body",
+      "line_count": 13,
+      "mode": "report",
+      "origin_url": "https://github.com/openai/openai-python/pull/3366",
+      "repo": "openai/openai-python",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/openai-openai-python-pr-3366.md",
+      "target": "openai/openai-python#3366",
+      "top_reasons": []
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 15.79,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 3,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 3,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 3,
+      "hard_unresolved_count": 3,
+      "id": "openai-openai-agents-python-pr-3544",
+      "kind": "saved_public_pr_body",
+      "line_count": 19,
+      "mode": "report",
+      "origin_url": "https://github.com/openai/openai-agents-python/pull/3544",
+      "repo": "openai/openai-agents-python",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/openai-openai-agents-python-pr-3544.md",
+      "target": "openai/openai-agents-python#3544",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          3
+        ]
+      ]
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 2.17,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 1,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 1,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "id": "anthropics-anthropic-sdk-python-pr-1642",
+      "kind": "saved_public_pr_body",
+      "line_count": 46,
+      "mode": "report",
+      "origin_url": "https://github.com/anthropics/anthropic-sdk-python/pull/1642",
+      "repo": "anthropics/anthropic-sdk-python",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/anthropics-anthropic-sdk-python-pr-1642.md",
+      "target": "anthropics/anthropic-sdk-python#1642",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 0.0,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 0,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 0,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "id": "langchain-ai-langchain-pr-37963",
+      "kind": "saved_public_pr_body",
+      "line_count": 1,
+      "mode": "report",
+      "origin_url": "https://github.com/langchain-ai/langchain/pull/37963",
+      "repo": "langchain-ai/langchain",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/langchain-ai-langchain-pr-37963.md",
+      "target": "langchain-ai/langchain#37963",
+      "top_reasons": []
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 0.0,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 0,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 0,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "id": "run-llama-llama-index-pr-21789",
+      "kind": "saved_public_pr_body",
+      "line_count": 50,
+      "mode": "report",
+      "origin_url": "https://github.com/run-llama/llama_index/pull/21789",
+      "repo": "run-llama/llama_index",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/run-llama-llama-index-pr-21789.md",
+      "target": "run-llama/llama_index#21789",
+      "top_reasons": []
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 0.0,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 0,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 0,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "id": "microsoft-autogen-pr-7463",
+      "kind": "saved_public_pr_body",
+      "line_count": 15,
+      "mode": "report",
+      "origin_url": "https://github.com/microsoft/autogen/pull/7463",
+      "repo": "microsoft/autogen",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/microsoft-autogen-pr-7463.md",
+      "target": "microsoft/autogen#7463",
+      "top_reasons": []
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 11.11,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 1,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 1,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "id": "pydantic-pydantic-ai-pr-5805",
+      "kind": "saved_public_pr_body",
+      "line_count": 9,
+      "mode": "report",
+      "origin_url": "https://github.com/pydantic/pydantic-ai/pull/5805",
+      "repo": "pydantic/pydantic-ai",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/pydantic-pydantic-ai-pr-5805.md",
+      "target": "pydantic/pydantic-ai#5805",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claims_per_100_lines": 6.25,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 1,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 0,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "id": "browser-use-browser-use-pr-4920",
+      "kind": "saved_public_pr_body",
+      "line_count": 16,
+      "mode": "report",
+      "origin_url": "https://github.com/browser-use/browser-use/pull/4920",
+      "repo": "browser-use/browser-use",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/browser-use-browser-use-pr-4920.md",
+      "target": "browser-use/browser-use#4920",
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claims_per_100_lines": 3.33,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 1,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 0,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "id": "continuedev-continue-pr-12156",
+      "kind": "saved_public_pr_body",
+      "line_count": 30,
+      "mode": "report",
+      "origin_url": "https://github.com/continuedev/continue/pull/12156",
+      "repo": "continuedev/continue",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/continuedev-continue-pr-12156.md",
+      "target": "continuedev/continue#12156",
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 6,
+      "checkable_claims_per_100_lines": 12.7,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 8,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 2,
+        "issue": 5,
+        "test": 0
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 2,
+      "id": "modelcontextprotocol-python-sdk-pr-2773",
+      "kind": "saved_public_pr_body",
+      "line_count": 63,
+      "mode": "report",
+      "origin_url": "https://github.com/modelcontextprotocol/python-sdk/pull/2773",
+      "repo": "modelcontextprotocol/python-sdk",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/modelcontextprotocol-python-sdk-pr-2773.md",
+      "target": "modelcontextprotocol/python-sdk#2773",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          5
+        ],
+        [
+          "file refs that do not resolve",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claims_per_100_lines": 5.71,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 2,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 1,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "id": "crewaiinc-crewai-pr-6042",
+      "kind": "saved_public_pr_body",
+      "line_count": 35,
+      "mode": "report",
+      "origin_url": "https://github.com/CrewAIInc/crewAI/pull/6042",
+      "repo": "CrewAIInc/crewAI",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/crewaiinc-crewai-pr-6042.md",
+      "target": "CrewAIInc/crewAI#6042",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          1
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 6,
+      "checkable_claims_per_100_lines": 8.96,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 6,
+      "claim_types": {
+        "card": 0,
+        "commit": 6,
+        "file": 0,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "id": "all-hands-ai-openhands-pr-14706",
+      "kind": "saved_public_pr_body",
+      "line_count": 67,
+      "mode": "report",
+      "origin_url": "https://github.com/All-Hands-AI/OpenHands/pull/14706",
+      "repo": "All-Hands-AI/OpenHands",
+      "root_mode": "empty_public_fixture_root_unavailable",
+      "source": "proof/external-dry-run/expanded/bodies/all-hands-ai-openhands-pr-14706.md",
+      "target": "All-Hands-AI/OpenHands#14706",
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          6
+        ]
+      ]
+    }
+  ],
+  "checkable_claim_count": 23,
+  "checkable_claims_per_100_lines": 6.32,
+  "hard_claim_count": 8,
+  "hard_unresolved_count": 8,
+  "hard_unresolved_rate": 1.0,
+  "notes": [
+    "Report mode only; no outreach, adoption, GitHub API, token, model, or network runtime.",
+    "External repo checkouts are not committed; root-dependent hard failures are actionability-labeled separately.",
+    "Resolver facts only; not correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon."
+  ],
+  "repo_count": 12,
+  "required_artifact_count": 10,
+  "root_mode": "empty_public_fixture_root_unavailable",
+  "sample_status": "sufficient_external_public_artifacts",
+  "schema_version": "anti-slop-external-sample-expansion.v1",
+  "status": "dry_run_not_adoption",
+  "target": "saved public PR bodies from external AI/devtool repos",
+  "top_claim_types": [
+    {
+      "count": 10,
+      "type": "commit"
+    },
+    {
+      "count": 8,
+      "type": "file"
+    },
+    {
+      "count": 5,
+      "type": "issue"
+    },
+    {
+      "count": 0,
+      "type": "card"
+    },
+    {
+      "count": 0,
+      "type": "test"
+    }
+  ],
+  "top_reasons": [
+    {
+      "count": 10,
+      "reason": "commit refs advisory under local-git resolution"
+    },
+    {
+      "count": 8,
+      "reason": "file refs that do not resolve"
+    },
+    {
+      "count": 5,
+      "reason": "issue refs advisory without registry"
+    }
+  ],
+  "total_lines": 364
+}

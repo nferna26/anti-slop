@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(Private-learning expansion tranche)
+
+- Ingested: PR #42 merged cleanly after focused rerun (`make launch-decision-check`, `make launch-check`, `make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `ee22635a0cf1c3069ff6886b83ec7bc1bc53fb59`.
+- Mapped: —
+- Carded: —
+- Tension preserved: Expanded external learning must stay report-mode-only and public-safe: no release/tag, outreach, maintainer contact, external PR/comment, token, hosted model, GitHub API runtime, telemetry, private repo, write permission, enforcement-by-default, correctness claim, source-truth claim, benchmark-validity claim, advice-quality claim, safety claim, reasoning claim, statistical-meaning claim, or canon claim.
+- Gate run: RED evidence captured before GREEN by adding `make external-sample-smoke`, `make external-sample-compat`, `make actionability-label-check`, and `make command-receipt-dogfood`; the initial run failed because expanded target policy snippets, `proof/external-dry-run/expanded/targets.json`, `anti-slop-actionability-labels.v1`, and `proof/command-receipt-dogfood/AGENT_FINAL_REPORT.md` were absent. GREEN checks now validate 12 distinct external public PR-body artifacts, aggregate comparison, actionability labels, and command receipt dogfood.
+- Eval run: —
+- Decision: Expanded beyond this repo with 12 separately reviewed public AI/devtool saved PR bodies: `openai/openai-python#3366`, `openai/openai-agents-python#3544`, `anthropics/anthropic-sdk-python#1642`, `langchain-ai/langchain#37963`, `run-llama/llama_index#21789`, `microsoft/autogen#7463`, `pydantic/pydantic-ai#5805`, `browser-use/browser-use#4920`, `continuedev/continue#12156`, `modelcontextprotocol/python-sdk#2773`, `CrewAIInc/crewAI#6042`, and `All-Hands-AI/OpenHands#14706`. Expanded aggregate: 12 artifacts, 12 repos, 23 checkable claims, 6.32 claims/100 lines, 100.0% hard unresolved under empty-root fixture mode, 65.2% advisory, top reasons commit refs advisory under local-git resolution (10), file refs unresolved under root-unavailable mode (8), and issue refs advisory without registry (5). Actionability labels: 0 actionable, 10 non-actionable, 5 unclear, 8 excluded, useful-findings status FAIL. Command receipt dogfood: public-safe `AGENT_FINAL_REPORT.md` fixture, 2 detected command receipt claims, 100% receipt-backed pass; raw local-cwd receipts regenerated in temp and not committed. Launch decision remains `continue private learning loop`.
+- Rejected/deferred: Did not create a release tag, request tag approval, open external PRs, post comments, contact maintainers, add GitHub API/token/model/network/runtime dependency, automate adoption, switch to enforcement, relax resolver patterns, touch frozen evals/canon/registry decisions/source-card statuses, or commit secrets/private paths/raw API JSON/answer keys/raw transcripts/raw copyrighted text/local-only paths/hidden maps.
+- Follow-up: No matching Linear issue tranche existed for this private-learning expansion; suggested new issue names are `CORE-983: external checkout re-run subset`, `CORE-984: external actionability reviewer labels`, `CORE-985: command-receipt dogfood in real agent reports`, and `CORE-986: operator tag/outreach decision gate`.
+
 (Launch decision tranche)
 
 - Ingested: PR #41 merged cleanly after focused rerun (`make external-dry-run-cluster-smoke`, `make external-dry-run-cluster-compat`, `make external-dry-run-smoke`, `make external-dry-run-compat`, `make agent-claim-benchmark`, `make launch-check`, `make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `41ec6daafa77e67204fe622f32d24c6c1bde1101`.

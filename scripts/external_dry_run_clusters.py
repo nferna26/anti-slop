@@ -25,6 +25,8 @@ NO_CHANGE_MEMO = OUT_DIR / "no-change-memo.md"
 KILL_JSON = OUT_DIR / "kill-criteria.json"
 FIXTURE_JSON = OUT_DIR / "fixtures" / "cluster-fixture.json"
 KILL_DOC = ROOT / "docs" / "kill-criteria.md"
+ACTIONABILITY_JSON = OUT_DIR / "expanded" / "actionability.json"
+DOGFOOD_JSON = ROOT / "proof" / "command-receipt-dogfood" / "summary.json"
 
 CLUSTER_SCHEMA = "anti-slop-external-dry-run-clusters.v1"
 KILL_SCHEMA = "anti-slop-kill-criteria.v1"
@@ -328,9 +330,42 @@ def build_no_change_memo(cluster_summary: dict[str, Any], dry_summary: dict[str,
 
 def build_kill_dashboard(dry_summary: dict[str, Any]) -> dict[str, Any]:
     density = float(dry_summary["checkable_claims_per_100_lines"])
+    actionability = read_json(ACTIONABILITY_JSON) if ACTIONABILITY_JSON.is_file() else None
+    dogfood = read_json(DOGFOOD_JSON) if DOGFOOD_JSON.is_file() else None
+    useful_status = "UNKNOWN"
+    useful_evidence = "No maintainer/reviewer usefulness labels yet."
+    non_actionable_status = "UNKNOWN"
+    non_actionable_evidence = "No human actionability labeling or repair loop yet."
+    if actionability:
+        action_summary = actionability.get("summary", {})
+        actionable_rate = float(action_summary.get("actionable_rate", 0.0))
+        non_actionable_rate = float(action_summary.get("non_actionable_rate", 0.0))
+        useful_status = "FAIL" if actionable_rate < 0.20 else "PASS"
+        useful_evidence = (
+            f"Expanded external sample aggregate labels: {actionable_rate:.1%} actionable "
+            f"over non-excluded findings; {action_summary.get('unclear_count', 0)} unclear, "
+            f"{action_summary.get('excluded_count', 0)} excluded."
+        )
+        non_actionable_status = "FAIL" if non_actionable_rate > 0.50 else "PASS"
+        non_actionable_evidence = (
+            f"Expanded external sample aggregate labels: {non_actionable_rate:.1%} "
+            "non-actionable over non-excluded findings."
+        )
+    dogfood_status = "UNKNOWN"
+    dogfood_evidence = "External dry-run sample is PR-body only."
+    if dogfood:
+        rate = float(dogfood.get("dogfood_rate", 0.0))
+        dogfood_status = "PASS" if rate >= 0.25 else "FAIL"
+        dogfood_evidence = (
+            f"Command receipt dogfood fixture: {rate:.0%} receipt-backed command claims passed; "
+            "raw receipts are regenerated in a temp repo and not committed."
+        )
     return {
         "schema_version": KILL_SCHEMA,
         "source_summary": rel(SUMMARY_JSON),
+        "expanded_external_summary": rel(OUT_DIR / "expanded" / "summary.json"),
+        "actionability_labels": rel(ACTIONABILITY_JSON),
+        "command_receipt_dogfood": rel(DOGFOOD_JSON),
         "overall_status": "watch",
         "criteria": [
             {
@@ -341,15 +376,15 @@ def build_kill_dashboard(dry_summary: dict[str, Any]) -> dict[str, Any]:
             },
             {
                 "id": "non_actionable_after_repairs_above_50_percent",
-                "status": "UNKNOWN",
+                "status": non_actionable_status,
                 "threshold": ">50% non-actionable after repairs",
-                "evidence": "No human actionability labeling or repair loop yet.",
+                "evidence": non_actionable_evidence,
             },
             {
                 "id": "useful_findings_below_20_percent",
-                "status": "UNKNOWN",
+                "status": useful_status,
                 "threshold": "<20% useful findings",
-                "evidence": "No maintainer/reviewer usefulness labels yet.",
+                "evidence": useful_evidence,
             },
             {
                 "id": "install_success_below_70_percent",
@@ -359,9 +394,9 @@ def build_kill_dashboard(dry_summary: dict[str, Any]) -> dict[str, Any]:
             },
             {
                 "id": "command_receipt_dogfood_below_25_percent",
-                "status": "UNKNOWN",
+                "status": dogfood_status,
                 "threshold": "<25% command receipt dogfood",
-                "evidence": "External dry-run sample is PR-body only.",
+                "evidence": dogfood_evidence,
             },
             {
                 "id": "maintainer_keep_rate_zero_of_10",
