@@ -68,7 +68,7 @@ From a checkout of this repo, the Week 4 proof/demo commands are also offline:
 ```sh
 make agent-claim-demo       # fake report FAILS; receipt-backed report PASSES
 make agent-claim-benchmark  # 50 synthetic checker cases
-make agent-claim-audit      # report-mode audit over committed public-safe artifacts
+make agent-claim-audit      # report-mode audit over committed real PR bodies
 ```
 
 ## 3. Check a PR body locally

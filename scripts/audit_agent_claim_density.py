@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Public-safe report-mode audit of real agent/PR-body claim density.
+"""Public-safe report-mode audit of real PR-body claim density.
 
-The committed repo currently has a small saved-PR-body corpus, so this audit
-combines those PR bodies with curated public-safe KB log entries that record
-real agent/tranche reports. It always exits 0: this is evidence for adoption
-calibration, not an enforcement gate.
+This audit reads committed public PR-body fixtures only. It never fills the
+sample with KB log snippets or synthetic cases. It always exits 0: this is
+evidence for adoption calibration, not an enforcement gate. When fewer than 20
+real PR bodies are present, the generated summary is marked insufficient rather
+than reporting a PASS trend.
 """
 
 from __future__ import annotations
@@ -14,27 +15,16 @@ from pathlib import Path
 import json
 import re
 import sys
-import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "proof" / "agent-claim-audit"
+BODIES_DIR = OUT_DIR / "bodies"
 SUMMARY_JSON = OUT_DIR / "summary.json"
 SUMMARY_MD = OUT_DIR / "summary.md"
-PR_BODIES = ROOT / "proof" / "pr-provenance-dogfood" / "bodies"
-KB_LOG = ROOT / "kb" / "log.md"
+MIN_REAL_ARTIFACTS = 20
 
 sys.path.insert(0, str(ROOT / "scripts"))
 import gate_claims  # noqa: E402
-
-KB_PREFIXES = (
-    "- Gate run:",
-    "- Decision:",
-    "- Rejected/deferred:",
-    "- Follow-up:",
-    "- Tooling:",
-    "- Tooling/OSS-readiness:",
-    "- Eval run:",
-)
 
 
 def rel(path: Path) -> str:
@@ -48,53 +38,19 @@ def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def kb_log_chunks(limit: int) -> list[dict]:
-    chunks: list[dict] = []
-    current_date = "unknown"
-    for line_no, raw in enumerate(read(KB_LOG).splitlines(), start=1):
-        if raw.startswith("## "):
-            current_date = raw.removeprefix("## ").strip()
-            continue
-        stripped = raw.strip()
-        if not stripped.startswith(KB_PREFIXES):
-            continue
-        if len(stripped) < 80:
-            continue
-        prefix = stripped.split(":", 1)[0].removeprefix("- ").lower().replace("/", "-")
-        chunks.append({
-            "id": f"kb-log-{len(chunks) + 1:02d}",
-            "kind": "kb-log-entry",
-            "source": f"kb/log.md:{line_no}",
-            "date": current_date,
-            "title": f"{current_date} {prefix}",
-            "text": f"# KB Log Entry\n\nSource: kb/log.md:{line_no}\n\n{stripped}\n",
-        })
-        if len(chunks) >= limit:
-            break
-    return chunks
-
-
-def artifact_inputs(tmp: Path) -> list[dict]:
+def artifact_inputs() -> list[dict]:
     artifacts: list[dict] = []
-    for path in sorted(PR_BODIES.glob("*.txt")):
+    for path in sorted(BODIES_DIR.glob("pr-*.md")):
+        number = path.stem.removeprefix("pr-")
         artifacts.append({
-            "id": f"saved-{path.stem}",
-            "kind": "saved-pr-body",
+            "id": f"pr-{number}",
+            "kind": "real-pr-body",
             "source": rel(path),
+            "origin_url": f"https://github.com/nferna26/anti-slop/pull/{number}",
             "path": path,
             "text": read(path),
         })
-
-    needed = max(0, 20 - len(artifacts))
-    for chunk in kb_log_chunks(needed):
-        path = tmp / f"{chunk['id']}.md"
-        path.write_text(chunk["text"], encoding="utf-8")
-        chunk["path"] = path
-        artifacts.append(chunk)
-
-    if len(artifacts) < 20:
-        raise RuntimeError(f"need at least 20 real public-safe artifacts, found {len(artifacts)}")
-    return artifacts[:20]
+    return artifacts
 
 
 def normalize_reason(reason: str) -> str:
@@ -160,15 +116,27 @@ def summarize(items: list[dict], results: list[dict]) -> dict:
     unresolved_rate = round(hard_fails / hard_claims, 4) if hard_claims else 0.0
     density = round(total_claims / total_lines * 100, 2) if total_lines else 0.0
     artifacts_with_claims = sum(1 for r in results if r["claim_count"])
-    # Falsifier trend: report-mode adoption is trending pass only if real
-    # public-safe artifacts have nontrivial checkable density and unresolved
-    # hard claims stay under a conservative calibration threshold.
-    falsifier_trend = (
-        "pass" if artifacts_with_claims >= 15 and density >= 8.0 and unresolved_rate <= 0.35
-        else "fail"
-    )
+    sample_sufficient = len(results) >= MIN_REAL_ARTIFACTS
+    if sample_sufficient:
+        # Falsifier trend: report-mode adoption is trending pass only if real
+        # public-safe PR bodies have nontrivial checkable density and unresolved
+        # hard claims stay under a conservative calibration threshold.
+        falsifier_trend = (
+            "pass" if artifacts_with_claims >= 15 and density >= 8.0 and unresolved_rate <= 0.35
+            else "fail"
+        )
+        audit_status = "complete"
+        sample_status = "sufficient_real_sample"
+    else:
+        falsifier_trend = "insufficient"
+        audit_status = "blocked_insufficient_real_artifacts"
+        sample_status = "insufficient_sample"
     return {
         "schema_version": "anti-slop-agent-claim-density-audit.v0.1",
+        "audit_status": audit_status,
+        "sample_status": sample_status,
+        "required_real_artifacts": MIN_REAL_ARTIFACTS,
+        "real_artifact_count": len(results),
         "artifact_count": len(results),
         "artifact_mix": dict(sorted(Counter(item["kind"] for item in items).items())),
         "total_lines": total_lines,
@@ -183,7 +151,7 @@ def summarize(items: list[dict], results: list[dict]) -> dict:
         "thirty_day_falsifier": {
             "trend": falsifier_trend,
             "rule": "pass if >=15 artifacts have claims, density >=8.0 claims/100 lines, and hard unresolved rate <=0.35",
-            "scope": "report-mode calibration over committed public-safe real artifacts",
+            "scope": "report-mode calibration over committed public-safe real PR bodies",
         },
         "artifacts": results,
     }
@@ -193,14 +161,16 @@ def markdown(summary: dict) -> str:
     lines = [
         "# Agent Claim Density Audit",
         "",
-        "Report-mode audit over committed public-safe real artifacts. This does not contact external repos, call a model/API, or read local-only artifacts.",
+        "Report-mode audit over committed public-safe real PR bodies. This does not contact external repos at runtime, call a model/API, or read local-only artifacts.",
         "",
-        "Scope note: the committed saved-PR-body corpus currently has 8 PR bodies, so this audit uses 8 saved PR bodies plus 12 curated `kb/log.md` tranche/report entries. The KB entries are real public-safe project reports, not synthetic benchmark cases.",
+        "Scope note: the audit sample is the committed `proof/agent-claim-audit/bodies/pr-*.md` fixture set. The runner does not use `kb/log.md` snippets, synthetic benchmark cases, raw transcripts, local-only artifacts, or generated filler.",
         "",
         "A finding here means a reference or receipt did or did not resolve in the current checkout. It does not judge correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.",
         "",
         "## Summary",
         "",
+        f"- Audit status: {summary['audit_status']}",
+        f"- Sample status: {summary['sample_status']} ({summary['real_artifact_count']} / {summary['required_real_artifacts']} required real artifacts)",
         f"- Artifacts: {summary['artifact_count']} ({summary['artifact_mix']})",
         f"- Checkable claim density: {summary['checkable_claim_density_per_100_lines']} claims / 100 lines",
         f"- Hard unresolved rate: {summary['unresolved_hard_claim_rate']:.1%}",
@@ -232,16 +202,15 @@ def markdown(summary: dict) -> str:
 
 
 def main() -> int:
-    with tempfile.TemporaryDirectory() as tmp:
-        items = artifact_inputs(Path(tmp))
-        results = [audit_one(item) for item in items]
+    items = artifact_inputs()
+    results = [audit_one(item) for item in items]
     summary = summarize(items, results)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     SUMMARY_JSON.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     SUMMARY_MD.write_text(markdown(summary), encoding="utf-8")
     print(
         "agent-claim audit: "
-        f"{summary['artifact_count']} artifacts, "
+        f"{summary['artifact_count']} artifacts ({summary['sample_status']}), "
         f"density={summary['checkable_claim_density_per_100_lines']} claims/100 lines, "
         f"unresolved={summary['unresolved_hard_claim_rate']:.1%}, "
         f"30-day-trend={summary['thirty_day_falsifier']['trend']}"

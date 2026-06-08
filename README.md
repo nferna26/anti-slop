@@ -77,10 +77,11 @@ claims. The current summary reports 100.0% catch rate over enforceable false
 cases and 0.0% false-fail rate over expected-valid cases.
 
 `make agent-claim-audit` runs a public-safe report-mode audit over committed
-real artifacts: the saved PR-body corpus plus curated KB log tranche/report
-entries. The current summary reports 41.98 checkable claims per 100 lines,
-12.8% hard unresolved rate, and a 30-day falsifier trend of PASS under the
-declared threshold.
+real PR bodies from this repo's merged PRs. The current summary covers 25 real
+PR bodies, reports 25.55 checkable claims per 100 lines, 9.5% hard unresolved
+rate, and a 30-day falsifier trend of PASS under the declared threshold. If the
+committed real-body sample ever drops below 20 artifacts, the audit summary is
+marked `blocked_insufficient_real_artifacts` / `insufficient_sample`, not PASS.
 
 These numbers do not prove semantic correctness, relevance, benchmark validity,
 statistical meaning, support, safety, advice quality, source truth, reasoning,

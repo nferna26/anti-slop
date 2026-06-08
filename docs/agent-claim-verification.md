@@ -65,9 +65,9 @@ references and receipts.
   across file, changed-file, test, issue, commit, command-receipt, and
   metric-receipt claims. It measures resolver behavior, not agent/model quality.
 - `make agent-claim-audit`: public-safe report-mode density audit over committed
-  real artifacts. It reports checkable-claim density, hard unresolved rate,
+  real PR bodies. It reports checkable-claim density, hard unresolved rate,
   candidate false-positive clusters, top claim types, and the 30-day falsifier
-  trend.
+  trend; fewer than 20 real bodies is marked insufficient, not PASS.
 - [`adoption-loop.md`](adoption-loop.md): external report-mode adoption playbook
   with target criteria, install prompt, PR template, metrics, opt-out etiquette,
   and candidate repositories for later review.
