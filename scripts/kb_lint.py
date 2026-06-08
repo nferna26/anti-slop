@@ -6,7 +6,7 @@ Checks:
 - kb/log.md exists.
 - AGENTS.md exists at repo root.
 - README.md has no "Archived Legacy Work" section.
-- README.md contains "Objective", "Publication Rule", "Proof Surface", and "Start" sections.
+- README.md contains the receipt-first launch sections.
 - Local Markdown links are not broken.
 - Public Markdown files do not name raw-source filename extensions (.epub, .pdf,
   .mobi, .azw, .azw3, .djvu, .cbz, .cbr) except inside .gitignore,
@@ -32,7 +32,15 @@ README = ROOT / "README.md"
 EXCLUDED_PARTS = {".git", "_archive", "local-only", "__pycache__"}
 WIKI_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
-REQUIRED_README_SECTIONS = ["Objective", "Publication Rule", "Proof Surface", "Start"]
+REQUIRED_README_SECTIONS = [
+    "Problem",
+    "Install",
+    "60-Second Demo",
+    "GitHub Action",
+    "Supported Claim Types",
+    "Non-Goals",
+    "Privacy And Security",
+]
 README_FORBIDDEN_SECTION = "Archived Legacy Work"
 
 RAW_EXTENSION_RE = re.compile(

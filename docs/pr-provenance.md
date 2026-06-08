@@ -55,8 +55,17 @@ what the PR *cites* is real — not whether the change is good.
 
 `anti-slop-pr-event` reads the PR body straight from the event payload
 (`$GITHUB_EVENT_PATH`) — **no GitHub API, no token**. Non-PR triggers SKIP
-(exit 0), so the step is harmless anywhere. Start in **report mode** (advisory),
-then drop `--report` to **enforce**:
+(exit 0), so the step is harmless anywhere. When `$GITHUB_STEP_SUMMARY` is
+available, it appends a compact Markdown result table. Start in **report mode**
+(advisory), then drop `--report` to **enforce**.
+
+For turnkey adoption, copy
+[`../templates/anti-slop-report.yml`](../templates/anti-slop-report.yml) to
+`.github/workflows/anti-slop-report.yml`. The template includes optional
+`anti-slop-run` receipts, `anti-slop-claims` JSON, Step Summary tables, and CI
+artifact retention.
+
+Minimal workflow:
 
 ```yaml
 # .github/workflows/pr-provenance.yml
@@ -82,9 +91,9 @@ jobs:
       # - run: anti-slop-pr-event --root . --issue-registry .known-issues.txt
 ```
 
-For reproducibility, pin the install to a tag/commit (e.g.
-`anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag>`) and the
-`actions/*` steps to their SHAs.
+For reproducibility, pin the install to a release tag or full commit SHA (e.g.
+`anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>`)
+and the `actions/*` steps to their SHAs.
 
 `anti-slop-pr-event --root . --report` is also runnable locally with a saved
 event JSON via `--event path/to/event.json`. Self-test:
@@ -118,7 +127,9 @@ make pr-provenance-dogfood     # report over this repo's own saved PR bodies
 
 Exit `0` when every hard reference resolves, `1` when any hard reference is
 unresolved, `2` on usage error. `--report` forces exit 0 (advisory mode). With
-`--json OUT` it also writes a JSON receipt.
+`--json OUT` it also writes a JSON receipt. `--github-summary OUT` writes the
+same compact Markdown table that GitHub Actions receives through
+`$GITHUB_STEP_SUMMARY`.
 
 ## What it checks (tiers — deterministic vs advisory)
 

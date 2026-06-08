@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(Launch-hardening tranche)
+
+- Ingested: PR #37 merged cleanly after focused rerun (`make adoption-smoke`, `make package-smoke`, `make kb-lint`, `git diff --check`). Merge commit: `1758c7f9efcd1bd4ff0f5a152eeb078df140a374`.
+- Mapped: —
+- Carded: —
+- Tension preserved: Launch copy must make adoption turnkey and receipt-first without expanding the claim into correctness, relevance, source-truth, support, safety, advice-quality, reasoning, benchmark-validity, statistical-meaning, or canon.
+- Gate run: RED evidence captured by tightening `make adoption-smoke` before GREEN. The smoke failed because the workflow template lacked `GITHUB_STEP_SUMMARY`, README proof metrics were not tied to committed summary JSON paths / exact generated phrases, and neither `anti-slop-pr-event` nor `anti-slop-claims` wrote a Step Summary table. A second RED pass showed `make kb-lint` failing because the old README section contract still required `Objective`, `Publication Rule`, `Proof Surface`, and `Start`. GREEN `make adoption-smoke` now covers the report-mode workflow template, Step Summary tables, README proof metrics against committed JSON summaries, fabricated-ref report-mode behavior, command receipts, and claims JSON artifacts; `make kb-lint` now checks the receipt-first launch sections.
+- Eval run: —
+- Decision: Rewrote the README as the Anti-Slop Receipts front door: problem, install, 60-second demo, report-mode GitHub Action, supported claim types, non-goals, privacy/security, agent report contract, and smoke-checked proof metrics. Preserved the books-KB/eval-lab/canon history at `docs/history/books-kb-eval-lab.md`. Added `docs/agent-report-contract.md` with copyable `AGENT_FINAL_REPORT.md` structure and receipt examples for `pytest`, `npm`, `pnpm`, `cargo`, `go`, and `make`. Added GitHub Step Summary output to `anti-slop-pr-event` and `anti-slop-claims`, and added preview-vs-pinned install guidance to the workflow/docs.
+- Rejected/deferred: Did not create a release, add a model/API/RAG/vector-store/runtime, add telemetry, require GitHub API/token, open external PRs, contact candidate repos, touch frozen evals/canon/registry decisions/source-card statuses/raw sources/local-only artifacts, commit credentials/private paths/raw API JSON/answer keys, or claim anything beyond deterministic reference/receipt resolution.
+- Follow-up: External public-repo dry-run loop: collect report-mode outputs, cluster false positives, and decide whether any narrow enforcement presets are justified.
+
 (Post-Week-4 launch-readiness tranche)
 
 - Ingested: —

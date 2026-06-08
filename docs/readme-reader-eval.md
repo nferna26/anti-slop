@@ -1,10 +1,18 @@
 # README Reader Eval
 
-Date: 2026-05-19
+Date: 2026-05-19; launch-hardening note added 2026-06-08
 
 ## Eval Question
 
-Fast forward one year. If different readers land on the README, do they know what Anti-Slop books-kb is, why it matters, and how to try or evaluate it?
+Fast forward one year. If different readers land on the README, do they know
+what Anti-Slop Receipts is, why it matters, how to install report mode, how to
+read receipt artifacts, and what the tool explicitly does not prove?
+
+Historical note: the original May 2026 reader eval targeted the older
+books-KB/eval-lab front door. That history is now preserved under
+[`history/books-kb-eval-lab.md`](history/books-kb-eval-lab.md); the public
+README is the launch front door for deterministic agent report reference/receipt
+resolution.
 
 ## Current README Score Before Revision
 
@@ -33,13 +41,13 @@ Overall: 6 / 10
 
 ## Revision Goals
 
-- Lead with the problem and testable bet.
-- Make the persistent Markdown KB the product shape.
-- Explain the value for new readers, executives, customers, and research partners.
-- Add an obvious first workflow.
-- Add a proof plan that says what would falsify or narrow the claim.
-- Add `kb/index.md` and `kb/log.md`.
-- Add KB linting so the shape is operational.
+- Lead with the agent-report receipt problem.
+- Make `anti-slop-claims` the canonical checker, `anti-slop-run` the receipt
+  producer, and `anti-slop-pr-event` the GitHub PR-body preset.
+- Add an obvious install path, 60-second demo, and report-mode workflow.
+- Keep non-goals and privacy/security constraints above the fold.
+- Tie README proof numbers to committed summary JSON.
+- Preserve the books-KB/eval-lab history without making it the product category.
 
 ## Projected Score After Revision
 
@@ -58,10 +66,10 @@ The missing point depends on real receipts: populated corpus, reviewed cards, fa
 
 ## Implemented Shape Changes
 
-- Rewrote the README around problem, objective, proof surface, audience value, and try-it path.
-- Added `kb/` as the maintained Markdown knowledgebase front door.
-- Added `kb/index.md` and `kb/log.md`.
-- Added KB question and synthesis templates.
-- Added `proof/README.md` to separate evidence standards from project ambition.
-- Added `scripts/kb_lint.py`.
-- Added `make kb-lint`.
+- Rewrote the README around the receipt-first product surface: problem,
+  install, demo, GitHub Action, supported claim types, non-goals,
+  privacy/security, and smoke-checked proof metrics.
+- Added `docs/agent-report-contract.md` for copyable `AGENT_FINAL_REPORT.md`
+  structure and command receipt examples.
+- Moved books-KB/eval-lab/canon history to `docs/history/books-kb-eval-lab.md`.
+- Updated `make kb-lint` to enforce the new receipt-first launch sections.

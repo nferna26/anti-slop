@@ -9,12 +9,16 @@ from __future__ import annotations
 
 from pathlib import Path
 import json
+import os
 import subprocess
 import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "templates" / "anti-slop-report.yml"
+README = ROOT / "README.md"
+BENCHMARK_SUMMARY = ROOT / "benchmarks" / "agent-claim-corpus-v0.1" / "results" / "summary.json"
+AUDIT_SUMMARY = ROOT / "proof" / "agent-claim-audit" / "summary.json"
 
 
 def write(path: Path, text: str) -> None:
@@ -22,8 +26,18 @@ def write(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def run(cmd: list[str], cwd: Path | None = None) -> subprocess.CompletedProcess:
-    return subprocess.run(cmd, cwd=str(cwd) if cwd else None, capture_output=True, text=True)
+def run(cmd: list[str], cwd: Path | None = None,
+        env: dict[str, str] | None = None) -> subprocess.CompletedProcess:
+    proc_env = os.environ.copy()
+    if env:
+        proc_env.update(env)
+    return subprocess.run(
+        cmd,
+        cwd=str(cwd) if cwd else None,
+        env=proc_env,
+        capture_output=True,
+        text=True,
+    )
 
 
 def git(root: Path, *args: str) -> None:
@@ -41,15 +55,54 @@ def check_template() -> list[str]:
         "anti-slop-pr-event --root . --report",
         "anti-slop-run -- make validate",
         "anti-slop-claims --root . --receipts .anti-slop/receipts --json .anti-slop/claims.json --report AGENT_FINAL_REPORT.md",
+        "ANTI_SLOP_INSTALL_SPEC",
+        "pip install \"$ANTI_SLOP_INSTALL_SPEC\"",
+        "@<tag-or-full-sha>",
         "actions/upload-artifact",
         ".anti-slop/receipts/*.json",
         ".anti-slop/claims.json",
         "if-no-files-found: ignore",
         "Report mode",
+        "GITHUB_STEP_SUMMARY",
     ]
     for snippet in required:
         if snippet not in text:
             errors.append(f"workflow template missing snippet: {snippet}")
+    return errors
+
+
+def _percent(value: object) -> str:
+    return f"{float(value):.1%}"
+
+
+def check_readme_metrics() -> list[str]:
+    errors: list[str] = []
+    if not README.is_file():
+        return ["missing README.md"]
+    if not BENCHMARK_SUMMARY.is_file():
+        errors.append(f"missing benchmark summary: {BENCHMARK_SUMMARY.relative_to(ROOT)}")
+    if not AUDIT_SUMMARY.is_file():
+        errors.append(f"missing audit summary: {AUDIT_SUMMARY.relative_to(ROOT)}")
+    if errors:
+        return errors
+
+    text = README.read_text(encoding="utf-8")
+    benchmark = json.loads(BENCHMARK_SUMMARY.read_text(encoding="utf-8"))
+    audit = json.loads(AUDIT_SUMMARY.read_text(encoding="utf-8"))
+    expected = [
+        str(BENCHMARK_SUMMARY.relative_to(ROOT)),
+        str(AUDIT_SUMMARY.relative_to(ROOT)),
+        f"{benchmark['case_count']}-case",
+        f"{_percent(benchmark['catch_rate'])} catch rate",
+        f"{_percent(benchmark['false_fail_rate'])} false-fail rate",
+        f"{audit['artifact_count']} real PR bodies",
+        f"{audit['checkable_claim_density_per_100_lines']} checkable claims per 100 lines",
+        f"{audit['unresolved_hard_claim_rate']:.1%} hard unresolved rate",
+        f"30-day falsifier trend: {audit['thirty_day_falsifier']['trend'].upper()}",
+    ]
+    for snippet in expected:
+        if snippet not in text:
+            errors.append(f"README metric/source claim missing or stale: {snippet}")
     return errors
 
 
@@ -59,6 +112,7 @@ def pr_event_report_mode_smoke(tmp: Path) -> list[str]:
     write(repo / "docs" / "exists.md", "# Exists\n")
     event = tmp / "pull_request.json"
     receipt = tmp / "pr-event-receipt.json"
+    step_summary = tmp / "pr-step-summary.md"
     event.write_text(json.dumps({
         "pull_request": {
             "number": 99,
@@ -73,7 +127,7 @@ def pr_event_report_mode_smoke(tmp: Path) -> list[str]:
         "--root", str(repo),
         "--json", str(receipt),
         "--report",
-    ])
+    ], env={"GITHUB_STEP_SUMMARY": str(step_summary)})
     if proc.returncode != 0:
         errors.append(f"anti-slop-pr-event --report exited {proc.returncode}")
     if "UNRESOLVED line 1: file does not resolve: docs/missing.md" not in proc.stdout:
@@ -84,6 +138,13 @@ def pr_event_report_mode_smoke(tmp: Path) -> list[str]:
         data = json.loads(receipt.read_text(encoding="utf-8"))
         if data.get("passed") is not False:
             errors.append("report-mode PR receipt should record passed=false for fabricated refs")
+    if not step_summary.is_file():
+        errors.append("report-mode PR check did not write $GITHUB_STEP_SUMMARY")
+    else:
+        summary = step_summary.read_text(encoding="utf-8")
+        for snippet in ("## Anti-Slop PR Body Report", "| Result |", "| FAIL |"):
+            if snippet not in summary:
+                errors.append(f"PR step summary missing snippet: {snippet}")
     return errors
 
 
@@ -117,6 +178,7 @@ def generic_artifact_receipt_smoke(tmp: Path) -> list[str]:
         errors.append("anti-slop-run did not write .anti-slop/receipts/*.json")
 
     claims_json = repo / ".anti-slop" / "claims.json"
+    claims_step_summary = repo / ".anti-slop" / "claims-step-summary.md"
     claims = run([
         sys.executable,
         str(ROOT / "scripts" / "gate_claims.py"),
@@ -125,7 +187,7 @@ def generic_artifact_receipt_smoke(tmp: Path) -> list[str]:
         "--json", str(claims_json),
         "--report",
         str(repo / "AGENT_FINAL_REPORT.md"),
-    ])
+    ], env={"GITHUB_STEP_SUMMARY": str(claims_step_summary)})
     if claims.returncode != 0:
         errors.append(f"anti-slop-claims --report exited {claims.returncode}")
     if "UNRESOLVED line 3: file does not resolve: docs/missing.md" not in claims.stdout:
@@ -141,11 +203,19 @@ def generic_artifact_receipt_smoke(tmp: Path) -> list[str]:
         claim_types = {c.get("type") for c in data.get("claims", [])}
         if "command_receipt" not in claim_types:
             errors.append("claims JSON missing command_receipt entry")
+    if not claims_step_summary.is_file():
+        errors.append("anti-slop-claims did not write $GITHUB_STEP_SUMMARY")
+    else:
+        summary = claims_step_summary.read_text(encoding="utf-8")
+        for snippet in ("## Anti-Slop Claims Report", "| Result |", "| FAIL |"):
+            if snippet not in summary:
+                errors.append(f"claims step summary missing snippet: {snippet}")
     return errors
 
 
 def main() -> int:
     errors = check_template()
+    errors.extend(check_readme_metrics())
     with tempfile.TemporaryDirectory() as tmp:
         tmp_path = Path(tmp)
         errors.extend(pr_event_report_mode_smoke(tmp_path))
@@ -155,7 +225,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("ADOPTION SMOKE PASSED: report-mode workflow template, PR findings, command receipts, and claims JSON artifacts are covered.")
+    print("ADOPTION SMOKE PASSED: report-mode workflow template, Step Summary tables, README proof metrics, PR findings, command receipts, and claims JSON artifacts are covered.")
     return 0
 
 

@@ -23,6 +23,7 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -646,6 +647,41 @@ def render(receipt: dict) -> str:
     return "\n".join([base, *sections])
 
 
+def _summary_path(arg_path: Path | None) -> Path | None:
+    if arg_path is not None:
+        return arg_path
+    env_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    return Path(env_path) if env_path else None
+
+
+def _append(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(text)
+
+
+def github_summary(receipt: dict, report_mode: bool) -> str:
+    mode = "report" if report_mode else "enforce"
+    claims = receipt.get("claims", [])
+    hard_failures = sum(1 for c in claims if c.get("tier") == "hard" and c.get("status") == "fail")
+    advisory = sum(1 for c in claims if c.get("status") == "advisory")
+    by_type: dict[str, int] = {}
+    for claim in claims:
+        claim_type = claim.get("type", "unknown")
+        by_type[claim_type] = by_type.get(claim_type, 0) + 1
+    result = "PASS" if receipt.get("passed") else "FAIL"
+    return (
+        "## Anti-Slop Claims Report\n\n"
+        "| Result | Mode | Claims | Hard failures | Advisory | File | Test | Changed file | Command receipt | Metric receipt |\n"
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n"
+        f"| {result} | {mode} | {len(claims)} | {hard_failures} | {advisory} | "
+        f"{by_type.get('file', 0)} | {by_type.get('test', 0)} | "
+        f"{by_type.get('changed_file', 0)} | {by_type.get('command_receipt', 0)} | "
+        f"{by_type.get('metric_receipt', 0)} |\n\n"
+        "Report mode prints findings and exits 0. Scope: reference/receipt resolution only; not correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.\n\n"
+    )
+
+
 def _write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -939,6 +975,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
                         help="advisory mode: print findings but always exit 0")
     parser.add_argument("--json", type=Path,
                         help="write structured anti-slop-claims JSON receipt")
+    parser.add_argument("--github-summary", type=Path,
+                        help="append a compact Markdown report to this path (default: $GITHUB_STEP_SUMMARY)")
     parser.add_argument("--diff", dest="diff_range",
                         help="local git diff/range for changed-file claim checks")
     parser.add_argument("--receipts", type=Path,
@@ -968,6 +1006,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.json:
         args.json.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
         print(f"Receipt: {args.json}")
+    summary_path = _summary_path(args.github_summary)
+    if summary_path:
+        _append(summary_path, github_summary(receipt, args.report))
     if args.report:
         print("(--report: advisory mode, exit 0 regardless of unresolved refs)")
         return 0

@@ -1,25 +1,26 @@
-# Install Anti-Slop agent claim verification (`anti-slop-pr` surface)
+# Install Anti-Slop Receipts
 
 Make AI coding agents cite receipts, not vibes.
 
-A protocol a coding agent (or a person) can follow to add Anti-Slop's first
-agent-claim-verification surface, **`anti-slop-pr`**, to any repository: install
-it, wire a report-mode GitHub PR check, run a smoke, and open a PR.
+This is a protocol a coding agent or person can follow to add deterministic
+reference/receipt resolution to a repository, wire a report-mode GitHub PR
+check, run a smoke, and open a PR.
 
-**What `anti-slop-pr` does (narrow):** it is a deterministic **reference
-and receipt resolver** for claims in AI-written PR descriptions. PR bodies are
-surface #1, not the category. It checks whether the **file, test, source-card,
-issue, and commit** references a PR body cites actually **resolve** against the
-repo. It does **not** prove the change is correct, relevant, supported, safe, or
-true, and says nothing about source truth, advice quality, reasoning, or canon.
-It is a checker, not a judge. No model, no network, no GitHub API, no token.
+**Canonical checker:** `anti-slop-claims` checks Markdown/text artifacts such as
+`AGENT_FINAL_REPORT.md`.
 
-The package also exposes **`anti-slop-claims`**, the generic Markdown/text
-artifact entrypoint. `anti-slop-pr` remains the PR-body surface and compatibility
-wrapper; `anti-slop-claims` is for non-PR artifacts such as
-`AGENT_FINAL_REPORT.md`. It also exposes **`anti-slop-run`**, a local command
-receipt writer used when an agent wants to claim that a command passed or a
-simple metric value was observed.
+**Receipt producer:** `anti-slop-run` writes local command/metric receipts under
+`.anti-slop/receipts/`.
+
+**GitHub preset:** `anti-slop-pr-event` checks PR bodies from the Actions event
+payload. `anti-slop-pr` remains the PR-body compatibility wrapper.
+
+Anti-Slop checks whether cited **file, test, source-card, issue, commit,
+command, and metric** references resolve against repo state and local receipts.
+It does **not** prove the change is correct, relevant, supported, safe, or true,
+and says nothing about source truth, advice quality, reasoning, benchmark
+validity, statistical meaning, or canon. It is a checker, not a judge. No model,
+no network runtime, no GitHub API, no token.
 
 > **Copy/paste user prompt:** "Install report-mode Anti-Slop in this repo, copy
 > the turnkey workflow, run the smoke, and open a PR."
@@ -33,14 +34,17 @@ simple metric value was observed.
 
 ## 1. Install
 
-Pick one. Both give you the `anti-slop-pr` and `anti-slop-pr-event` commands.
-They also install `anti-slop-claims` and `anti-slop-run`.
+Pick one. Both give you `anti-slop-claims`, `anti-slop-run`, `anti-slop-pr`,
+and `anti-slop-pr-event`.
 
 ```sh
-# Option A — pip install from the repo (preview; pin to a tag/commit for repro):
+# Option A — preview install from repo head:
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 
-# Option B — vendor the four stdlib files (no install), then run with python3:
+# Option A2 — reproducible install pinned to a release tag or full commit SHA:
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>"
+
+# Option B — vendor the five stdlib files (no install), then run with python3:
 #   scripts/gate_citation_lineage.py   (the resolver, reused unchanged)
 #   scripts/gate_pr_provenance.py      (anti-slop-pr)
 #   scripts/gate_claims.py             (anti-slop-claims)
@@ -50,11 +54,16 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 # Or:     python3 path/to/gate_claims.py --root . <artifact.md>
 ```
 
+The unpinned preview install is useful for first trials but tracks repo head.
+Pinned tags/SHAs are the safer supply-chain posture for repeatable CI. This repo
+does not create a release in this install step; use an existing reviewed tag or
+commit once one is chosen by the adopter.
+
 ## 2. Self-test (proves the install, offline)
 
 ```sh
 anti-slop-pr --self-test          # 22 checks
-anti-slop-pr-event --self-test    # 8 checks
+anti-slop-pr-event --self-test    # 9 checks incl. GitHub Step Summary
 anti-slop-claims --self-test      # JSON + diff-aware generic artifact fixtures
 anti-slop-run --self-test         # command receipts, nonzero receipts, metrics
 ```
@@ -137,11 +146,16 @@ env:
 
 When enabled, the workflow runs `anti-slop-run -- make validate`, then checks
 `AGENT_FINAL_REPORT.md` with `anti-slop-claims --receipts .anti-slop/receipts
---json .anti-slop/claims.json --report`. The final upload step retains
-`.anti-slop/receipts/*.json` and `.anti-slop/claims.json` as CI artifacts. Those
-JSON files are local command/reference receipts only; they do not prove
-correctness, relevance, support, benchmark validity, safety, source truth,
-advice quality, reasoning, or canon.
+--json .anti-slop/claims.json --report`. `anti-slop-pr-event` and
+`anti-slop-claims` append compact Markdown tables to `$GITHUB_STEP_SUMMARY` when
+GitHub provides it. The final upload step retains `.anti-slop/receipts/*.json`
+and `.anti-slop/claims.json` as CI artifacts. Those JSON files are local
+command/reference receipts only; they do not prove correctness, relevance,
+support, benchmark validity, safety, source truth, advice quality, reasoning, or
+canon.
+
+For generic final reports, use the copyable contract in
+[`docs/agent-report-contract.md`](docs/agent-report-contract.md).
 
 For a minimal PR-body-only workflow without artifact upload, the older
 `templates/anti-slop-pr.yml` remains available.
