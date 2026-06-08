@@ -28,12 +28,14 @@ Exact commands:
 - Check command/metric claims: `anti-slop-claims --root . --receipts .anti-slop/receipts AGENT_FINAL_REPORT.md`
 - Check a PR body: `anti-slop-pr --root . <pr-body.md>`  (add `--report` for advisory)
 - GitHub Actions: copy `templates/anti-slop-pr.yml` → `.github/workflows/` (report mode; drop `--report` to enforce)
+- Demo/proof from this repo: `make agent-claim-demo`, `make agent-claim-benchmark`, `make agent-claim-audit`
 
 ## Reference
 
 - [docs/agent-claim-verification.md](docs/agent-claim-verification.md): supported-claims matrix and out-of-scope boundary.
 - [docs/command-receipts.md](docs/command-receipts.md): `anti-slop-run` receipt schema, freshness, metrics, and no-secret-dumping rules.
 - [docs/pr-provenance.md](docs/pr-provenance.md): usage, tiers, ignore directives, "First 60 seconds", GitHub Actions recipe.
+- [docs/adoption-loop.md](docs/adoption-loop.md): report-mode external adoption playbook and candidate targets.
 - [docs/citation-lineage-gate.md](docs/citation-lineage-gate.md): the reused source-card/source resolver (the one benchmark-backed primitive).
 - [README.md](README.md): the Anti-Slop front door and evidence history.
 

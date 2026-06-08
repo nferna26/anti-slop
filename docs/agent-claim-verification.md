@@ -56,6 +56,22 @@ references and receipts.
 - `anti-slop-lineage`: resolves public-KB source/card lineage and is reused by
   `anti-slop-pr` for source-card refs.
 
+## Proof and Adoption Surface
+
+- `make agent-claim-demo`: 60-second offline demo. A fake agent report fails
+  with line-level reasons; a receipt-backed report passes. Sample output:
+  [`../proof/agent-claim-demo/sample-output.md`](../proof/agent-claim-demo/sample-output.md).
+- `make agent-claim-benchmark`: deterministic 50-case synthetic checker corpus
+  across file, changed-file, test, issue, commit, command-receipt, and
+  metric-receipt claims. It measures resolver behavior, not agent/model quality.
+- `make agent-claim-audit`: public-safe report-mode density audit over committed
+  real PR bodies. It reports checkable-claim density, hard unresolved rate,
+  candidate false-positive clusters, top claim types, and the 30-day falsifier
+  trend; fewer than 20 real bodies is marked insufficient, not PASS.
+- [`adoption-loop.md`](adoption-loop.md): external report-mode adoption playbook
+  with target criteria, install prompt, PR template, metrics, opt-out etiquette,
+  and candidate repositories for later review.
+
 All current surfaces are stdlib-only and do not call a model, hosted API,
 network service, vector store, RAG layer, or runtime server.
 

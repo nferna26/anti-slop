@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(Week 4 agent-claim verification benchmark/adoption tranche)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: The Week 4 proof surface must show that agent claim verification can catch deterministic reference/receipt failures without widening Anti-Slop into a correctness, relevance, source-truth, support, safety, advice-quality, reasoning, benchmark-validity, statistical-meaning, or canon judge.
+- Gate run: RED evidence captured before GREEN by adding `make agent-claim-benchmark`, `make agent-claim-audit`, and `make agent-claim-demo` targets first; each exited 2 because the expected script did not exist (`scripts/benchmark_agent_claims.py`, `scripts/audit_agent_claim_density.py`, `scripts/demo_agent_claim_verification.py`). GREEN runs now pass: `make agent-claim-benchmark` reports 50 cases, 100.0% catch rate over enforceable false cases, 0.0% false-fail rate, and 100.0% expectation match; repaired `make agent-claim-audit` now reports 25 committed real PR bodies (`proof/agent-claim-audit/bodies/pr-11.md` through `pr-35.md`), 25.55 claims/100 lines, 9.5% hard unresolved rate, and 30-day trend PASS; `make agent-claim-demo` shows the fake report FAILing with line reasons and the receipt-backed report PASSing.
+- Eval run: —
+- Decision: Added CORE-963 through CORE-966. CORE-963: added `benchmarks/agent-claim-corpus-v0.1/` with 50 synthetic true/false checker cases across file, changed-file, test, issue, commit, command-receipt, and metric-receipt claims plus `scripts/benchmark_agent_claims.py`, which writes JSON and Markdown summaries. CORE-964: added `scripts/audit_agent_claim_density.py` and committed public-safe audit summaries over 25 real merged PR bodies; the audit runner reads only `proof/agent-claim-audit/bodies/pr-*.md` and marks fewer than 20 real bodies as `blocked_insufficient_real_artifacts` / `insufficient_sample` rather than PASS. CORE-965: added the launch demo under `proof/agent-claim-demo/` plus `make agent-claim-demo`, where a fake agent report fails and a receipt-backed report passes. CORE-966: added `docs/adoption-loop.md` with target criteria, report-mode install prompt, PR template, metrics table, opt-out etiquette, and 10 candidate OSS/AI repos for later manual review. Updated README, install docs, `llms.txt`, supported-claims docs, PR-provenance docs, and KB index.
+- Rejected/deferred: Did not open external PRs, contact candidate repos, add model/API/network/GitHub API/token runtime dependency, touch frozen evals/canon/source-card statuses/registry decisions/local-only artifacts, commit raw copyrighted text, credentials, private paths, raw API JSON, answer keys, or hidden maps, or claim semantic correctness/relevance/source truth/support/safety/advice quality/reasoning/benchmark validity/statistical meaning/canon.
+- Follow-up: Next tranche should package the adoption loop into a reusable report-mode workflow/action and add CI artifact-retention guidance for `.anti-slop/receipts` and `anti-slop-claims --json` outputs.
+
 (Week 3 command/metric receipt tranche)
 
 - Ingested: —

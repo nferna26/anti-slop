@@ -128,6 +128,19 @@ claims-self-test:
 run-self-test:
 	python3 scripts/anti_slop_run.py --self-test
 
+# Synthetic checker benchmark: run the deterministic agent-claim corpus and
+# write JSON + Markdown summaries. Offline; no model/API/network.
+agent-claim-benchmark:
+	python3 scripts/benchmark_agent_claims.py
+
+# Public-safe report-mode audit over committed real agent/PR-body artifacts.
+agent-claim-audit:
+	python3 scripts/audit_agent_claim_density.py
+
+# Launch demo: fake report FAILS with line reasons; receipt-backed report PASSES.
+agent-claim-demo:
+	python3 scripts/demo_agent_claim_verification.py
+
 # Stranger-reproducible demo: a passing and an intentionally-failing PR body
 # checked against a self-contained fixture root (no GitHub API, model, or network).
 pr-provenance-demo:

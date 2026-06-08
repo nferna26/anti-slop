@@ -91,6 +91,10 @@ event JSON via `--event path/to/event.json`. Self-test:
 `anti-slop-pr-event --self-test`; offline demo over fixture events:
 `make pr-provenance-event-demo`.
 
+For the broader agent-claim-verification launch demo and checker evidence:
+`make agent-claim-demo`, `make agent-claim-benchmark`, and
+`make agent-claim-audit`.
+
 ## Install / run
 
 ```sh
