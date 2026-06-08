@@ -7,9 +7,11 @@
 > AI-written PR descriptions. Both check whether file / test / source-card /
 > issue / commit references actually RESOLVE against the repo. `anti-slop-claims`
 > can write structured JSON receipts and can hard-check changed-file wording
-> against a supplied local git diff/range. They do NOT verify correctness,
-> relevance, support, safety, source truth, advice quality, reasoning, or canon.
-> Stdlib only; no model, network, GitHub API, or token.
+> against a supplied local git diff/range. `anti-slop-run` writes local command
+> receipts; `anti-slop-claims --receipts` checks command-pass/exit and simple
+> metric claims against fresh receipts. They do NOT verify correctness,
+> relevance, support, benchmark validity, safety, source truth, advice quality,
+> reasoning, or canon. Stdlib only; no model, network, GitHub API, or token.
 
 ## Install it (for agents)
 
@@ -18,22 +20,25 @@
 
 Exact commands:
 - Install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"`
-- Self-test: `anti-slop-claims --self-test`, `anti-slop-pr --self-test`, and `anti-slop-pr-event --self-test`
+- Self-test: `anti-slop-claims --self-test`, `anti-slop-run --self-test`, `anti-slop-pr --self-test`, and `anti-slop-pr-event --self-test`
 - Check a generic artifact: `anti-slop-claims --root . AGENT_FINAL_REPORT.md`  (add `--report` for advisory)
 - Write JSON: `anti-slop-claims --root . --json claims.json AGENT_FINAL_REPORT.md`
 - Diff-aware changed-file check: `anti-slop-claims --root . --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md`
+- Write a command receipt: `anti-slop-run -- make validate`
+- Check command/metric claims: `anti-slop-claims --root . --receipts .anti-slop/receipts AGENT_FINAL_REPORT.md`
 - Check a PR body: `anti-slop-pr --root . <pr-body.md>`  (add `--report` for advisory)
 - GitHub Actions: copy `templates/anti-slop-pr.yml` → `.github/workflows/` (report mode; drop `--report` to enforce)
 
 ## Reference
 
 - [docs/agent-claim-verification.md](docs/agent-claim-verification.md): supported-claims matrix and out-of-scope boundary.
+- [docs/command-receipts.md](docs/command-receipts.md): `anti-slop-run` receipt schema, freshness, metrics, and no-secret-dumping rules.
 - [docs/pr-provenance.md](docs/pr-provenance.md): usage, tiers, ignore directives, "First 60 seconds", GitHub Actions recipe.
 - [docs/citation-lineage-gate.md](docs/citation-lineage-gate.md): the reused source-card/source resolver (the one benchmark-backed primitive).
 - [README.md](README.md): the Anti-Slop front door and evidence history.
 
 ## Tiers (deterministic vs advisory)
 
-- Deterministic (hard fail): file refs (path-like), test nodes, source-card/source refs.
+- Deterministic (hard fail): file refs (path-like), test nodes, source-card/source refs, changed-file refs under `--diff`, command/metric claims when detected.
 - Advisory (never fails): issue refs without a registry; commit-SHA refs.
 - Default adoption is report mode; blocking enforcement is explicit opt-in.

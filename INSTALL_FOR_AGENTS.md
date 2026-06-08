@@ -17,7 +17,9 @@ It is a checker, not a judge. No model, no network, no GitHub API, no token.
 The package also exposes **`anti-slop-claims`**, the generic Markdown/text
 artifact entrypoint. `anti-slop-pr` remains the PR-body surface and compatibility
 wrapper; `anti-slop-claims` is for non-PR artifacts such as
-`AGENT_FINAL_REPORT.md`.
+`AGENT_FINAL_REPORT.md`. It also exposes **`anti-slop-run`**, a local command
+receipt writer used when an agent wants to claim that a command passed or a
+simple metric value was observed.
 
 > **Copy/paste user prompt:** "Install anti-slop-pr in this repo, run the smoke,
 > add report-mode CI, and open a PR."
@@ -32,7 +34,7 @@ wrapper; `anti-slop-claims` is for non-PR artifacts such as
 ## 1. Install
 
 Pick one. Both give you the `anti-slop-pr` and `anti-slop-pr-event` commands.
-They also install `anti-slop-claims`.
+They also install `anti-slop-claims` and `anti-slop-run`.
 
 ```sh
 # Option A — pip install from the repo (preview; pin to a tag/commit for repro):
@@ -42,6 +44,7 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 #   scripts/gate_citation_lineage.py   (the resolver, reused unchanged)
 #   scripts/gate_pr_provenance.py      (anti-slop-pr)
 #   scripts/gate_claims.py             (anti-slop-claims)
+#   scripts/anti_slop_run.py           (anti-slop-run)
 #   scripts/pr_provenance_from_github_event.py  (anti-slop-pr-event)
 # Run as: python3 path/to/gate_pr_provenance.py --root . <pr-body.md>
 # Or:     python3 path/to/gate_claims.py --root . <artifact.md>
@@ -53,6 +56,7 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 anti-slop-pr --self-test          # 22 checks
 anti-slop-pr-event --self-test    # 8 checks
 anti-slop-claims --self-test      # JSON + diff-aware generic artifact fixtures
+anti-slop-run --self-test         # command receipts, nonzero receipts, metrics
 ```
 
 From a checkout of this repo, the full end-to-end smoke (throwaway venv + temp
@@ -83,11 +87,20 @@ anti-slop-claims --root . --json claims.json AGENT_FINAL_REPORT.md
 
 # Hard-check changed-file wording against a local git diff/range:
 anti-slop-claims --root . --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md
+
+# Write local command receipts before claiming commands passed:
+anti-slop-run -- make validate
+anti-slop-claims --root . --receipts .anti-slop/receipts AGENT_FINAL_REPORT.md
+
+# Record simple metric values on command receipts:
+anti-slop-run --metric score=0.82 -- python3 scripts/report_score.py
+anti-slop-run --metric score.before=0.70 --metric score.after=0.82 -- python3 scripts/report_score.py
 ```
 
 This is the same resolver engine used by `anti-slop-pr`. JSON receipts and
 diff-aware changed-file checks do not prove semantic correctness, relevance, or
-support. Command-receipt and benchmark-receipt validation are not implemented.
+support. Command and metric receipts prove only local command/metric facts, not
+semantic correctness, benchmark validity, or support.
 
 ## 4. Add the GitHub PR check (report mode by default)
 

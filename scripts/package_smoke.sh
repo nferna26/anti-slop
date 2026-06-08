@@ -11,8 +11,9 @@
 #   4. anti-slop-pr --self-test                             -> exit 0
 #   5. anti-slop-pr-event --self-test                       -> exit 0
 #   6. anti-slop-claims --self-test                         -> exit 0
-#   7. generic AGENT_FINAL_REPORT valid fixture             -> exit 0 (PASS)
-#   8. generic AGENT_FINAL_REPORT fabricated fixture        -> exit 1 (FAIL)
+#   7. anti-slop-run --self-test                            -> exit 0
+#   8. generic AGENT_FINAL_REPORT valid fixture             -> exit 0 (PASS)
+#   9. generic AGENT_FINAL_REPORT fabricated fixture        -> exit 1 (FAIL)
 #
 # Deterministic in behaviour (the asserted CLI outcomes are fixed); no model, no
 # API, no credentials. Install prefers a normal isolated `pip install` (which may
@@ -70,6 +71,8 @@ EVCLI="$BIN/anti-slop-pr-event"
 [ -x "$EVCLI" ] || { echo "FAIL: console script not installed at $EVCLI"; exit 1; }
 CLAIMSCLI="$BIN/anti-slop-claims"
 [ -x "$CLAIMSCLI" ] || { echo "FAIL: console script not installed at $CLAIMSCLI"; exit 1; }
+RUNCLI="$BIN/anti-slop-run"
+[ -x "$RUNCLI" ] || { echo "FAIL: console script not installed at $RUNCLI"; exit 1; }
 
 # 1. installed anti-slop-lineage self-test
 "$CLI" --self-test >/dev/null 2>&1; st=$?
@@ -83,25 +86,28 @@ CLAIMSCLI="$BIN/anti-slop-claims"
 "$EVCLI" --self-test >/dev/null 2>&1; evst=$?
 # 6. installed anti-slop-claims generic-artifact self-test
 "$CLAIMSCLI" --self-test >/dev/null 2>&1; claimst=$?
-# 7. generic final-report fixture: valid file ref -> PASS
+# 7. installed anti-slop-run command-receipt self-test
+"$RUNCLI" --self-test >/dev/null 2>&1; runst=$?
+# 8. generic final-report fixture: valid file ref -> PASS
 "$CLAIMSCLI" --root "$CLAIMS_ROOT" "$CLAIMS_GOOD" >/dev/null 2>&1; claimsgood=$?
-# 8. generic final-report fixture: fabricated file ref -> FAIL
+# 9. generic final-report fixture: fabricated file ref -> FAIL
 "$CLAIMSCLI" --root "$CLAIMS_ROOT" "$CLAIMS_BAD" >/dev/null 2>&1; claimsbad=$?
 
-echo "[1/8] installed anti-slop-lineage --self-test  -> exit $st   (expect 0)"
-echo "[2/8] CLI audit brief-assisted (--root)        -> exit $good (expect 0 / PASS)"
-echo "[3/8] CLI audit source-free   (--root)         -> exit $slop (expect 1 / FAIL)"
-echo "[4/8] installed anti-slop-pr --self-test        -> exit $prst (expect 0)"
-echo "[5/8] installed anti-slop-pr-event --self-test  -> exit $evst (expect 0)"
-echo "[6/8] installed anti-slop-claims --self-test    -> exit $claimst (expect 0)"
-echo "[7/8] claims valid AGENT_FINAL_REPORT          -> exit $claimsgood (expect 0 / PASS)"
-echo "[8/8] claims fabricated AGENT_FINAL_REPORT     -> exit $claimsbad (expect 1 / FAIL)"
+echo "[1/9] installed anti-slop-lineage --self-test  -> exit $st   (expect 0)"
+echo "[2/9] CLI audit brief-assisted (--root)        -> exit $good (expect 0 / PASS)"
+echo "[3/9] CLI audit source-free   (--root)         -> exit $slop (expect 1 / FAIL)"
+echo "[4/9] installed anti-slop-pr --self-test        -> exit $prst (expect 0)"
+echo "[5/9] installed anti-slop-pr-event --self-test  -> exit $evst (expect 0)"
+echo "[6/9] installed anti-slop-claims --self-test    -> exit $claimst (expect 0)"
+echo "[7/9] installed anti-slop-run --self-test       -> exit $runst (expect 0)"
+echo "[8/9] claims valid AGENT_FINAL_REPORT          -> exit $claimsgood (expect 0 / PASS)"
+echo "[9/9] claims fabricated AGENT_FINAL_REPORT     -> exit $claimsbad (expect 1 / FAIL)"
 
 if [ "$st" -eq 0 ] && [ "$good" -eq 0 ] && [ "$slop" -eq 1 ] \
-   && [ "$prst" -eq 0 ] && [ "$evst" -eq 0 ] && [ "$claimst" -eq 0 ] \
+   && [ "$prst" -eq 0 ] && [ "$evst" -eq 0 ] && [ "$claimst" -eq 0 ] && [ "$runst" -eq 0 ] \
    && [ "$claimsgood" -eq 0 ] && [ "$claimsbad" -eq 1 ]; then
-  echo "PACKAGE SMOKE PASSED: installed anti-slop-lineage + anti-slop-pr + anti-slop-pr-event + anti-slop-claims self-test and audit the fixtures identically to the in-tree gates."
+  echo "PACKAGE SMOKE PASSED: installed anti-slop-lineage + anti-slop-pr + anti-slop-pr-event + anti-slop-claims + anti-slop-run self-tests and audit the fixtures identically to the in-tree gates."
   exit 0
 fi
-echo "PACKAGE SMOKE FAILED (lineage=$st good=$good slop=$slop pr=$prst event=$evst claims=$claimst claims_good=$claimsgood claims_bad=$claimsbad)."
+echo "PACKAGE SMOKE FAILED (lineage=$st good=$good slop=$slop pr=$prst event=$evst claims=$claimst run=$runst claims_good=$claimsgood claims_bad=$claimsbad)."
 exit 1

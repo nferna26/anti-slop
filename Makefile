@@ -125,6 +125,9 @@ claims:
 claims-self-test:
 	python3 scripts/gate_claims.py --self-test
 
+run-self-test:
+	python3 scripts/anti_slop_run.py --self-test
+
 # Stranger-reproducible demo: a passing and an intentionally-failing PR body
 # checked against a self-contained fixture root (no GitHub API, model, or network).
 pr-provenance-demo:

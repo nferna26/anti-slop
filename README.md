@@ -40,9 +40,14 @@ local git diff/range (`--diff`), check changed-file language near path-like refs
 "updated `docs/foo.md`" is hard-checked against the supplied diff. Without
 `--diff`, changed-file claims stay advisory/skipped.
 
-This remains reference/receipt resolution only. It does not add command-receipt
-validation, benchmark-receipt validation, semantic diff review, or correctness
-judgment.
+`anti-slop-run` writes local command receipts under `.anti-slop/receipts/`.
+`anti-slop-claims --receipts <dir>` can then require fresh receipts for claims
+such as "make validate passed", "pytest passed", "tests pass", command exit-code
+claims, and simple metric claims such as "score is 0.82".
+
+This remains reference/receipt resolution only. Command and metric receipts
+record local facts; they do not add semantic diff review, benchmark validity, or
+correctness judgment.
 
 ## Install It
 
@@ -58,14 +63,19 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 anti-slop-pr --self-test
 anti-slop-pr-event --self-test
 anti-slop-claims --self-test
+anti-slop-run --self-test
 anti-slop-claims --root . AGENT_FINAL_REPORT.md --report
+anti-slop-run -- make validate
+anti-slop-claims --root . --receipts .anti-slop/receipts AGENT_FINAL_REPORT.md
 anti-slop-claims --root . --json claims.json --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md
 anti-slop-pr --root . <pr-body.md> --report
 ```
 
 See [`docs/pr-provenance.md`](docs/pr-provenance.md) for usage and
 [`docs/agent-claim-verification.md`](docs/agent-claim-verification.md) for the
-supported-claims matrix.
+supported-claims matrix. See
+[`docs/command-receipts.md`](docs/command-receipts.md) for the command/metric
+receipt schema.
 
 ## What It Checks
 
@@ -76,10 +86,14 @@ The supported-claims matrix is load-bearing:
   supplied.
 - Advisory refs: commit refs; issue refs without a registry.
 - Path-only resolution can be used for cited docs or receipt artifact paths, but
-  command-receipt validation and benchmark-receipt validation are not
-  implemented.
+  command and metric claims need fresh local receipts to be hard-checked.
 - Changed-file language near path-like refs is hard only when `--diff` is
   supplied; otherwise it is advisory/skipped.
+- Command claims such as "make validate passed" are hard when detected: they
+  must match an `anti-slop-run` receipt with the expected exit code and current
+  git HEAD.
+- Metric claims such as "score is 0.82" or "score improved from 0.70 to 0.82"
+  are hard when detected: they must match values in fresh command receipts.
 - Out of scope: "fixed", "safe", "supported", "correct", and similar claims
   whose truth cannot be mechanically proven by reference resolution.
 
@@ -189,9 +203,17 @@ is mechanical and reproducible:
   `AGENT_FINAL_REPORT.md` and reuses the `anti-slop-pr` resolver engine for
   file / test / source-card / issue / commit references. It can write
   `anti-slop-claims.v1` JSON receipts and can hard-check changed-file language
-  against a supplied local git diff/range. It does not validate command receipts,
-  benchmark receipts, semantic correctness, or support. Self-tested
-  (`make claims-self-test`) and package-smoked (`make package-smoke`).
+  against a supplied local git diff/range. With `--receipts`, it can hard-check
+  command exit-code and simple metric claims against fresh local receipts. It
+  does not validate semantic correctness, benchmark validity, or support.
+  Self-tested (`make claims-self-test`) and package-smoked (`make package-smoke`).
+- `command-receipts` (`scripts/anti_slop_run.py`, `anti-slop-run`) -
+  *implemented*: local command receipt writer. It runs a command, writes
+  `anti-slop-command-receipt.v1` JSON under `.anti-slop/receipts/`, records
+  command/cwd/exit code/duration/git head/timestamp/tool version, hashes
+  stdout/stderr by default, and optionally records bounded excerpts and metrics.
+  Nonzero commands still write receipts and return the command exit code.
+  Self-tested (`make run-self-test`) and package-smoked (`make package-smoke`).
 - `pr-provenance` (`scripts/gate_pr_provenance.py`, `anti-slop-pr`) -
   *implemented*: surface #1 PR-body preset for deterministic agent claim
   verification. It
