@@ -21,8 +21,8 @@ wrapper; `anti-slop-claims` is for non-PR artifacts such as
 receipt writer used when an agent wants to claim that a command passed or a
 simple metric value was observed.
 
-> **Copy/paste user prompt:** "Install anti-slop-pr in this repo, run the smoke,
-> add report-mode CI, and open a PR."
+> **Copy/paste user prompt:** "Install report-mode Anti-Slop in this repo, copy
+> the turnkey workflow, run the smoke, and open a PR."
 
 ## Prerequisites
 
@@ -69,6 +69,7 @@ From a checkout of this repo, the Week 4 proof/demo commands are also offline:
 make agent-claim-demo       # fake report FAILS; receipt-backed report PASSES
 make agent-claim-benchmark  # 50 synthetic checker cases
 make agent-claim-audit      # report-mode audit over committed real PR bodies
+make adoption-smoke         # workflow-template + artifact-retention smoke
 ```
 
 ## 3. Check a PR body locally
@@ -112,10 +113,10 @@ semantic correctness, benchmark validity, or support.
 
 ## 4. Add the GitHub PR check (report mode by default)
 
-Copy `templates/anti-slop-pr.yml` to `.github/workflows/anti-slop-pr.yml`. It
-runs on `pull_request`, reads the PR body from the event payload (no token), and
-runs the agent claim verification surface in **report mode** (advisory — never
-fails the check):
+Copy `templates/anti-slop-report.yml` to
+`.github/workflows/anti-slop-report.yml`. It runs on `pull_request`, reads the
+PR body from the event payload, and runs the agent claim verification surface in
+**report mode** (advisory — never fails the check):
 
 ```yaml
 permissions: { contents: read }     # no write/token scope
@@ -125,6 +126,25 @@ permissions: { contents: read }     # no write/token scope
 
 `anti-slop-pr-event` SKIPs non-PR events (exit 0), so the step is harmless on
 push / schedule / comment triggers.
+
+The template also includes opt-in receipt steps:
+
+```yaml
+env:
+  ANTI_SLOP_RUN_VALIDATE: "true"
+  ANTI_SLOP_CHECK_AGENT_REPORT: "true"
+```
+
+When enabled, the workflow runs `anti-slop-run -- make validate`, then checks
+`AGENT_FINAL_REPORT.md` with `anti-slop-claims --receipts .anti-slop/receipts
+--json .anti-slop/claims.json --report`. The final upload step retains
+`.anti-slop/receipts/*.json` and `.anti-slop/claims.json` as CI artifacts. Those
+JSON files are local command/reference receipts only; they do not prove
+correctness, relevance, support, benchmark validity, safety, source truth,
+advice quality, reasoning, or canon.
+
+For a minimal PR-body-only workflow without artifact upload, the older
+`templates/anti-slop-pr.yml` remains available.
 
 ## 5. Optional: resolve issue refs (`#123`)
 
@@ -170,8 +190,9 @@ A block of example references.
 ## Stop conditions (done / when to stop)
 
 - **Done** when: the self-tests pass, a local `anti-slop-pr --root . <body>`
-  resolves a real PR body, `.github/workflows/anti-slop-pr.yml` exists in report
-  mode, and a PR is opened with that change.
+  resolves a real PR body,
+  `.github/workflows/anti-slop-report.yml` exists in report mode, receipt upload
+  behavior is understood, and a PR is opened with that change.
 - **Stop and report** if: Python < 3.9, the install cannot run offline and no
   network is available, or the repo forbids adding workflows — record the blocker
   rather than weakening the checker or adding a token/API.

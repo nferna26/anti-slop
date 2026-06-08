@@ -16,7 +16,7 @@
 ## Install it (for agents)
 
 - [INSTALL_FOR_AGENTS.md](INSTALL_FOR_AGENTS.md): the full install-and-wire-CI protocol.
-- One-line user prompt: "Install anti-slop-pr in this repo, run the smoke, add report-mode CI, and open a PR."
+- One-line user prompt: "Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."
 
 Exact commands:
 - Install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"`
@@ -27,7 +27,8 @@ Exact commands:
 - Write a command receipt: `anti-slop-run -- make validate`
 - Check command/metric claims: `anti-slop-claims --root . --receipts .anti-slop/receipts AGENT_FINAL_REPORT.md`
 - Check a PR body: `anti-slop-pr --root . <pr-body.md>`  (add `--report` for advisory)
-- GitHub Actions: copy `templates/anti-slop-pr.yml` → `.github/workflows/` (report mode; drop `--report` to enforce)
+- GitHub Actions: copy `templates/anti-slop-report.yml` -> `.github/workflows/anti-slop-report.yml` (report mode; uploads `.anti-slop/receipts/*.json` and `.anti-slop/claims.json` when present)
+- Adoption smoke: `make adoption-smoke`
 - Demo/proof from this repo: `make agent-claim-demo`, `make agent-claim-benchmark`, `make agent-claim-audit`
 
 ## Reference

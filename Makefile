@@ -107,6 +107,12 @@ package-smoke:
 agent-install-smoke:
 	bash scripts/agent_install_smoke.sh
 
+# Adoption smoke: validate the vendorable report-mode workflow template and
+# prove the underlying PR/report/receipt commands expose findings + artifacts
+# while exiting 0 in report mode. Offline; no GitHub API, model, or token.
+adoption-smoke:
+	python3 scripts/adoption_smoke.py
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:

@@ -92,7 +92,7 @@ or canon.
 Point a coding agent at [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md) (short
 entrypoint: [`llms.txt`](llms.txt)) with this prompt:
 
-> **"Install anti-slop-pr in this repo, run the smoke, add report-mode CI, and open a PR."**
+> **"Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."**
 
 The core commands are:
 
@@ -107,7 +107,19 @@ anti-slop-run -- make validate
 anti-slop-claims --root . --receipts .anti-slop/receipts AGENT_FINAL_REPORT.md
 anti-slop-claims --root . --json claims.json --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md
 anti-slop-pr --root . <pr-body.md> --report
+make adoption-smoke
 ```
+
+For GitHub Actions, copy
+[`templates/anti-slop-report.yml`](templates/anti-slop-report.yml) to
+`.github/workflows/anti-slop-report.yml`. It runs
+`anti-slop-pr-event --root . --report` by default, so fabricated refs are
+reported without blocking. Optional env flags can also run
+`anti-slop-run -- make validate` and
+`anti-slop-claims --receipts .anti-slop/receipts --json .anti-slop/claims.json --report AGENT_FINAL_REPORT.md`.
+The workflow uploads `.anti-slop/receipts/*.json` and `.anti-slop/claims.json`
+when present; those artifacts are local command/reference receipts, not proof of
+correctness.
 
 See [`docs/pr-provenance.md`](docs/pr-provenance.md) for usage and
 [`docs/agent-claim-verification.md`](docs/agent-claim-verification.md) for the

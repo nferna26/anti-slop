@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-08
 
+(Post-Week-4 launch-readiness tranche)
+
+- Ingested: —
+- Mapped: —
+- Carded: —
+- Tension preserved: Adoption ergonomics must make report-mode Anti-Slop easier to install without turning receipt retention into a correctness, relevance, source-truth, support, safety, advice-quality, reasoning, benchmark-validity, statistical-meaning, or canon claim.
+- Gate run: RED evidence captured before GREEN: after adding `make adoption-smoke` and `scripts/adoption_smoke.py`, `make adoption-smoke` exited 2 because `templates/anti-slop-report.yml` was missing. GREEN `make adoption-smoke` now validates the vendorable workflow template, proves `anti-slop-pr-event --root . --report` exits 0 while exposing a fabricated `docs/missing.md` finding, proves `anti-slop-run -- make validate` writes `.anti-slop/receipts/*.json`, and proves `anti-slop-claims --receipts .anti-slop/receipts --json .anti-slop/claims.json --report AGENT_FINAL_REPORT.md` exits 0 while writing claims JSON with unresolved refs recorded.
+- Eval run: —
+- Decision: Added the turnkey report-mode workflow template `templates/anti-slop-report.yml`. It runs `anti-slop-pr-event --root . --report` by default, keeps optional `anti-slop-run -- make validate` and generic final-report checks behind env flags, and uploads `.anti-slop/receipts/*.json` plus `.anti-slop/claims.json` when present. Added `make adoption-smoke` and `scripts/adoption_smoke.py` as the local launch/adoption smoke. Updated README, install docs, `llms.txt`, adoption-loop docs, KB index, and the minimal `templates/anti-slop-pr.yml` pointer.
+- Rejected/deferred: Did not add a model/API/runtime dependency, GitHub API call, token requirement, enforcement-by-default, external outreach, external PR, semantic correctness/relevance/source-truth/support/safety/advice-quality/reasoning/benchmark-validity/statistical-meaning/canon claim, private path, secret, raw transcript, credential, raw API JSON, answer key, or hidden canon. Artifact upload retains local JSON receipts only; it is not proof of correctness.
+- Follow-up: Next useful tranche is a pinned-release/install hardening pass: tag/version guidance, SHA-pinned workflow examples, and a small adopter migration note for moving from report mode to explicit narrow enforcement.
+
 (Week 4 agent-claim verification benchmark/adoption tranche)
 
 - Ingested: —
