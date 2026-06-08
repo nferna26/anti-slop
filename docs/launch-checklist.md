@@ -12,6 +12,11 @@ docs without widening the product claim.
 - `make adoption-smoke`: vendorable report-mode workflow, artifact retention,
   Step Summary tables, fabricated-ref report mode, command receipts, and claims
   JSON.
+- `make external-dry-run-smoke`: report-mode-only dry run over committed
+  public-safe saved PR bodies plus `anti-slop-external-dry-run.v1`
+  schema/policy compatibility checks.
+- `make external-dry-run-compat`: compatibility check for committed external
+  dry-run policy, target manifest, and aggregate summaries.
 - `make agent-claim-demo`: fake report fails with exact line reasons and
   receipt-backed report passes.
 - `make agent-claim-benchmark`: regenerates the synthetic corpus summary at

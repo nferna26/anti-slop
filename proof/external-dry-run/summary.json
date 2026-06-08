@@ -1,0 +1,433 @@
+{
+  "advisory_count": 15,
+  "advisory_rate": 0.163,
+  "artifact_count": 10,
+  "artifacts": [
+    {
+      "advisory_count": 3,
+      "checkable_claims_per_100_lines": 25.71,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 9,
+      "claim_types": {
+        "card": 0,
+        "commit": 2,
+        "file": 4,
+        "issue": 3,
+        "test": 0
+      },
+      "hard_claim_count": 4,
+      "hard_unresolved_count": 0,
+      "id": "anti-slop-pr-26",
+      "kind": "saved_public_pr_body",
+      "line_count": 35,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/26",
+      "source": "proof/agent-claim-audit/bodies/pr-26.md",
+      "target": "nferna26/anti-slop#26",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          3
+        ]
+      ]
+    },
+    {
+      "advisory_count": 3,
+      "checkable_claims_per_100_lines": 45.45,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 20,
+      "claim_types": {
+        "card": 4,
+        "commit": 1,
+        "file": 11,
+        "issue": 3,
+        "test": 1
+      },
+      "hard_claim_count": 16,
+      "hard_unresolved_count": 8,
+      "id": "anti-slop-pr-27",
+      "kind": "saved_public_pr_body",
+      "line_count": 44,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/27",
+      "source": "proof/agent-claim-audit/bodies/pr-27.md",
+      "target": "nferna26/anti-slop#27",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          4
+        ],
+        [
+          "source/card refs that do not resolve",
+          4
+        ],
+        [
+          "issue refs advisory without registry",
+          3
+        ]
+      ]
+    },
+    {
+      "advisory_count": 3,
+      "checkable_claims_per_100_lines": 26.19,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 11,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 7,
+        "issue": 3,
+        "test": 0
+      },
+      "hard_claim_count": 7,
+      "hard_unresolved_count": 0,
+      "id": "anti-slop-pr-28",
+      "kind": "saved_public_pr_body",
+      "line_count": 42,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/28",
+      "source": "proof/agent-claim-audit/bodies/pr-28.md",
+      "target": "nferna26/anti-slop#28",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          3
+        ]
+      ]
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claims_per_100_lines": 7.55,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 4,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 2,
+        "issue": 1,
+        "test": 0
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 0,
+      "id": "anti-slop-pr-29",
+      "kind": "saved_public_pr_body",
+      "line_count": 53,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/29",
+      "source": "proof/agent-claim-audit/bodies/pr-29.md",
+      "target": "nferna26/anti-slop#29",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claims_per_100_lines": 7.55,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 4,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 2,
+        "issue": 1,
+        "test": 0
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 0,
+      "id": "anti-slop-pr-30",
+      "kind": "saved_public_pr_body",
+      "line_count": 53,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/30",
+      "source": "proof/agent-claim-audit/bodies/pr-30.md",
+      "target": "nferna26/anti-slop#30",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claims_per_100_lines": 17.24,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 10,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 8,
+        "issue": 1,
+        "test": 0
+      },
+      "hard_claim_count": 8,
+      "hard_unresolved_count": 0,
+      "id": "anti-slop-pr-31",
+      "kind": "saved_public_pr_body",
+      "line_count": 58,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/31",
+      "source": "proof/agent-claim-audit/bodies/pr-31.md",
+      "target": "nferna26/anti-slop#31",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claims_per_100_lines": 16.28,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 7,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 6,
+        "issue": 1,
+        "test": 0
+      },
+      "hard_claim_count": 6,
+      "hard_unresolved_count": 0,
+      "id": "anti-slop-pr-32",
+      "kind": "saved_public_pr_body",
+      "line_count": 43,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/32",
+      "source": "proof/agent-claim-audit/bodies/pr-32.md",
+      "target": "nferna26/anti-slop#32",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 19.72,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 14,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 14,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 14,
+      "hard_unresolved_count": 3,
+      "id": "anti-slop-pr-33",
+      "kind": "saved_public_pr_body",
+      "line_count": 71,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/33",
+      "source": "proof/agent-claim-audit/bodies/pr-33.md",
+      "target": "nferna26/anti-slop#33",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          3
+        ]
+      ]
+    },
+    {
+      "advisory_count": 2,
+      "checkable_claims_per_100_lines": 28.21,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 11,
+      "claim_types": {
+        "card": 0,
+        "commit": 2,
+        "file": 7,
+        "issue": 2,
+        "test": 0
+      },
+      "hard_claim_count": 7,
+      "hard_unresolved_count": 1,
+      "id": "anti-slop-pr-34",
+      "kind": "saved_public_pr_body",
+      "line_count": 39,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/34",
+      "source": "proof/agent-claim-audit/bodies/pr-34.md",
+      "target": "nferna26/anti-slop#34",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "file refs that do not resolve",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 5.26,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 2,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 2,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 0,
+      "id": "anti-slop-pr-35",
+      "kind": "saved_public_pr_body",
+      "line_count": 38,
+      "mode": "report",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/35",
+      "source": "proof/agent-claim-audit/bodies/pr-35.md",
+      "target": "nferna26/anti-slop#35",
+      "top_reasons": []
+    }
+  ],
+  "checkable_claim_count": 92,
+  "checkable_claims_per_100_lines": 19.33,
+  "hard_claim_count": 68,
+  "hard_unresolved_count": 12,
+  "hard_unresolved_rate": 0.1765,
+  "kill_criterion": {
+    "risk": "pass",
+    "rule": "fail if checkable_claims_per_100_lines < 5.0"
+  },
+  "notes": [
+    "Report mode only; no outreach, adoption, GitHub API, token, model, or network runtime.",
+    "Resolver facts only; not correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon."
+  ],
+  "policy_version": "external-dry-run-policy.v1",
+  "required_artifact_count": 10,
+  "sample_status": "sufficient_saved_public_artifacts",
+  "schema_version": "anti-slop-external-dry-run.v1",
+  "status": "dry_run_not_adoption",
+  "target": "saved public PR bodies from nferna26/anti-slop",
+  "targets": [
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-26",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/26",
+      "source": "proof/agent-claim-audit/bodies/pr-26.md",
+      "target": "nferna26/anti-slop#26"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-27",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/27",
+      "source": "proof/agent-claim-audit/bodies/pr-27.md",
+      "target": "nferna26/anti-slop#27"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-28",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/28",
+      "source": "proof/agent-claim-audit/bodies/pr-28.md",
+      "target": "nferna26/anti-slop#28"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-29",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/29",
+      "source": "proof/agent-claim-audit/bodies/pr-29.md",
+      "target": "nferna26/anti-slop#29"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-30",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/30",
+      "source": "proof/agent-claim-audit/bodies/pr-30.md",
+      "target": "nferna26/anti-slop#30"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-31",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/31",
+      "source": "proof/agent-claim-audit/bodies/pr-31.md",
+      "target": "nferna26/anti-slop#31"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-32",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/32",
+      "source": "proof/agent-claim-audit/bodies/pr-32.md",
+      "target": "nferna26/anti-slop#32"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-33",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/33",
+      "source": "proof/agent-claim-audit/bodies/pr-33.md",
+      "target": "nferna26/anti-slop#33"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-34",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/34",
+      "source": "proof/agent-claim-audit/bodies/pr-34.md",
+      "target": "nferna26/anti-slop#34"
+    },
+    {
+      "checker": "anti-slop-pr-event",
+      "id": "anti-slop-pr-35",
+      "kind": "saved_public_pr_body",
+      "origin_url": "https://github.com/nferna26/anti-slop/pull/35",
+      "source": "proof/agent-claim-audit/bodies/pr-35.md",
+      "target": "nferna26/anti-slop#35"
+    }
+  ],
+  "top_claim_types": [
+    {
+      "count": 63,
+      "type": "file"
+    },
+    {
+      "count": 15,
+      "type": "issue"
+    },
+    {
+      "count": 9,
+      "type": "commit"
+    },
+    {
+      "count": 4,
+      "type": "card"
+    },
+    {
+      "count": 1,
+      "type": "test"
+    }
+  ],
+  "top_reasons": [
+    {
+      "count": 15,
+      "reason": "issue refs advisory without registry"
+    },
+    {
+      "count": 8,
+      "reason": "file refs that do not resolve"
+    },
+    {
+      "count": 4,
+      "reason": "source/card refs that do not resolve"
+    }
+  ],
+  "total_lines": 476,
+  "usefulness": "useful"
+}

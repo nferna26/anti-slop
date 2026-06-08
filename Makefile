@@ -118,6 +118,14 @@ adoption-smoke:
 launch-check:
 	python3 scripts/launch_check.py
 
+# External dry-run smoke: report-mode-only dry run over committed public-safe
+# saved PR-body artifacts, plus schema/policy compatibility checks.
+external-dry-run-smoke:
+	python3 scripts/external_dry_run.py --self-test
+
+external-dry-run-compat:
+	python3 scripts/external_dry_run.py --check
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:
