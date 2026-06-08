@@ -13,6 +13,9 @@
 # The anti-slop commands below do not call a model, GitHub API, or external
 # runtime. The upload-artifact step only retains local JSON evidence produced by
 # the job.
+#
+# GitHub Actions exposes $GITHUB_STEP_SUMMARY automatically. anti-slop-pr-event
+# and anti-slop-claims append compact Markdown tables there when it is present.
 name: anti-slop-report
 
 on:
@@ -23,6 +26,10 @@ permissions:
   contents: read
 
 env:
+  # Preview install: tracks the repo default branch. For reproducible CI, pin to
+  # a release tag or full commit SHA, for example:
+  # anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>
+  ANTI_SLOP_INSTALL_SPEC: "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
   # Default adoption checks PR bodies only. Flip these to "true" once your repo
   # has a stable AGENT_FINAL_REPORT.md convention and wants retained command
   # receipts / generic artifact JSON.
@@ -40,7 +47,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Anti-Slop
-        run: pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
+        run: pip install "$ANTI_SLOP_INSTALL_SPEC"
 
       - name: PR body claim verification (report mode)
         run: anti-slop-pr-event --root . --report

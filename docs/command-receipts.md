@@ -10,6 +10,9 @@ that a local receipt contains a stated number. Neither proves correctness,
 relevance, source truth, support, benchmark validity, safety, advice quality,
 reasoning, or canon.
 
+For a copyable final-report structure and common stack examples, see
+[`agent-report-contract.md`](agent-report-contract.md).
+
 ## Write A Command Receipt
 
 ```sh

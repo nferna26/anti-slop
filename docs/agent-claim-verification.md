@@ -47,12 +47,15 @@ references and receipts.
   `AGENT_FINAL_REPORT.md`; reuses the `anti-slop-pr` resolver engine. Supports
   structured `anti-slop-claims.v1` JSON receipts with per-ref line/type/tier/
   status/reason/evidence entries, plus optional local-git `--diff` changed-file
-  checks and `--receipts` command/metric receipt checks.
+  checks and `--receipts` command/metric receipt checks. In GitHub Actions it
+  appends a compact Markdown table to `$GITHUB_STEP_SUMMARY` when that path is
+  present, or to `--github-summary <path>` when supplied.
 - `anti-slop-run`: local command receipt writer for `anti-slop-command-receipt.v1`
   JSON. Hashes stdout/stderr by default and can record explicit metrics.
 - `anti-slop-pr`: PR-body surface #1 and compatibility wrapper/preset.
 - `anti-slop-pr-event`: reads the PR body from GitHub Actions event JSON without
-  a GitHub API token and runs `anti-slop-pr`.
+  a GitHub API token and runs `anti-slop-pr`. It also writes a compact
+  `$GITHUB_STEP_SUMMARY` table when available.
 - `anti-slop-lineage`: resolves public-KB source/card lineage and is reused by
   `anti-slop-pr` for source-card refs.
 
@@ -71,6 +74,9 @@ references and receipts.
 - [`adoption-loop.md`](adoption-loop.md): external report-mode adoption playbook
   with target criteria, install prompt, PR template, metrics, opt-out etiquette,
   and candidate repositories for later review.
+- [`agent-report-contract.md`](agent-report-contract.md): copyable
+  `AGENT_FINAL_REPORT.md` structure and receipt examples for `pytest`, `npm`,
+  `pnpm`, `cargo`, `go`, and `make`.
 
 All current surfaces are stdlib-only and do not call a model, hosted API,
 network service, vector store, RAG layer, or runtime server.

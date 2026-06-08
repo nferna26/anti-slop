@@ -11,7 +11,7 @@ so the same workflow step is harmless on push / schedule / comment triggers.
 
 Exit: 0 if every hard reference resolves (or SKIP, or ``--report``); 1 if a hard
 reference is unresolved. Supports ``--root``, ``--issue-registry``,
-``--require-reviewed-cards``, ``--report``, ``--json``.
+``--require-reviewed-cards``, ``--report``, ``--json``, ``--github-summary``.
 """
 
 from __future__ import annotations
@@ -65,6 +65,48 @@ def check_event(event_path, event_name, root, registry, require_reviewed_cards) 
     return receipt
 
 
+def _summary_path(arg_path: Path | None) -> Path | None:
+    if arg_path is not None:
+        return arg_path
+    env_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    return Path(env_path) if env_path else None
+
+
+def _append(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(text)
+
+
+def _github_summary(receipt: dict | None, report_mode: bool, skip_reason: str = "") -> str:
+    mode = "report" if report_mode else "enforce"
+    if receipt is None:
+        return (
+            "## Anti-Slop PR Body Report\n\n"
+            "| Result | Mode | Detail |\n"
+            "| --- | --- | --- |\n"
+            f"| SKIP | {mode} | {skip_reason or 'no pull_request body found'} |\n\n"
+            "Scope: reference/receipt resolution only; not correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.\n\n"
+        )
+    checks = receipt.get("checks", {})
+    hard_kinds = ("file", "test", "issue", "card")
+    hard_unresolved = sum(len(checks.get(k, {}).get("unresolved", [])) for k in hard_kinds)
+    advisory = sum(len(checks.get(k, {}).get("advisory", [])) for k in checks)
+    result = "PASS" if receipt.get("passed") else "FAIL"
+    return (
+        "## Anti-Slop PR Body Report\n\n"
+        "| Result | Mode | Hard unresolved | Advisory refs | File refs | Test refs | Issue refs | Card refs | Commit refs |\n"
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n"
+        f"| {result} | {mode} | {hard_unresolved} | {advisory} | "
+        f"{checks.get('file', {}).get('refs_checked', 0)} | "
+        f"{checks.get('test', {}).get('refs_checked', 0)} | "
+        f"{checks.get('issue', {}).get('refs_checked', 0)} | "
+        f"{checks.get('card', {}).get('refs_checked', 0)} | "
+        f"{checks.get('commit', {}).get('refs_checked', 0)} |\n\n"
+        "Report mode prints findings and exits 0. Scope: reference/receipt resolution only; not correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.\n\n"
+    )
+
+
 def parse_args(argv: list[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--event", help="event JSON path (default: $GITHUB_EVENT_PATH)")
@@ -76,6 +118,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     p.add_argument("--report", action="store_true",
                    help="advisory mode: print findings but always exit 0")
     p.add_argument("--json", type=Path, help="write the JSON receipt to this path")
+    p.add_argument("--github-summary", type=Path,
+                   help="append a compact Markdown report to this path (default: $GITHUB_STEP_SUMMARY)")
     p.add_argument("--self-test", action="store_true", help="run the deterministic self-test")
     return p.parse_args(argv)
 
@@ -90,14 +134,19 @@ def main(argv: list[str] | None = None) -> int:
     # directly is not skipped by an unrelated ambient event name like 'push').
     event_name = args.event_name or (None if args.event else os.environ.get("GITHUB_EVENT_NAME"))
     registry = pr.load_issue_registry(args.issue_registry)
+    summary_path = _summary_path(args.github_summary)
     receipt = check_event(event_path, event_name, args.root, registry,
                           args.require_reviewed_cards)
     if receipt is None:
+        if summary_path:
+            _append(summary_path, _github_summary(None, args.report, "not a PR event or no PR body"))
         return 0  # SKIP
     print(pr.render(receipt))
     if args.json:
         args.json.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
         print(f"Receipt: {args.json}")
+    if summary_path:
+        _append(summary_path, _github_summary(receipt, args.report))
     if args.report:
         print("(--report: advisory mode, exit 0 regardless of unresolved refs)")
         return 0
@@ -112,7 +161,10 @@ def _write(path: Path, content: str) -> None:
 def self_test() -> int:
     # Hermetic: clear ambient GitHub env so the no-event SKIP check does not read
     # a real event when the self-test itself runs inside GitHub Actions.
-    saved = {k: os.environ.pop(k, None) for k in ("GITHUB_EVENT_PATH", "GITHUB_EVENT_NAME")}
+    saved = {
+        k: os.environ.pop(k, None)
+        for k in ("GITHUB_EVENT_PATH", "GITHUB_EVENT_NAME", "GITHUB_STEP_SUMMARY")
+    }
     try:
         return _self_test_body()
     finally:
@@ -146,6 +198,7 @@ def _self_test_body() -> int:
                     "Example: `docs/ghost.md`.\n<!-- anti-slop-pr: ignore-end -->\n"
                     "Real: `docs/example.md`.")
         nonstr = event(12345)  # non-string body must be handled (no crash) -> PASS
+        summary = Path(tmp) / "step-summary.md"
         non_pr = Path(tmp) / "push.json"
         non_pr.write_text(json.dumps({"ref": "refs/heads/main", "commits": []}), encoding="utf-8")
 
@@ -167,6 +220,11 @@ def _self_test_body() -> int:
              and check_event(ign, "pull_request", r, reg, False)["ignores"]["ignored_lines"] >= 1),
             ("non-string PR body -> handled, no crash, PASS exit 0",
              main(["--event", nonstr, "--event-name", "pull_request", "--root", r]) == 0),
+            ("GitHub Step Summary writes a compact table",
+             main(["--event", fab, "--event-name", "pull_request", "--root", r,
+                   "--report", "--github-summary", str(summary)]) == 0
+             and "## Anti-Slop PR Body Report" in summary.read_text(encoding="utf-8")
+             and "| FAIL | report |" in summary.read_text(encoding="utf-8")),
         ]
     failed = [name for name, ok in checks if not ok]
     if failed:
@@ -174,9 +232,9 @@ def _self_test_body() -> int:
         for name in failed:
             print(f"  - {name}")
         return 1
-    print("pr-provenance-event self-test passed (8 checks: clean PASS, fabricated FAIL, "
+    print("pr-provenance-event self-test passed (9 checks: clean PASS, fabricated FAIL, "
           "--report non-fail, non-PR skip by name, non-PR skip by payload, no-event skip, "
-          "ignore-directive PASS with audit, non-string-body handled).")
+          "ignore-directive PASS with audit, non-string-body handled, GitHub Step Summary).")
     return 0
 
 
