@@ -1,0 +1,663 @@
+{
+  "advisory_false_cases": 6,
+  "by_claim_type": {
+    "changed_file": {
+      "advisory_false_cases": 1,
+      "cases": 8,
+      "catch_rate": 1.0,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": 0.0
+    },
+    "command_receipt": {
+      "advisory_false_cases": 0,
+      "cases": 8,
+      "catch_rate": 1.0,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": 0.0
+    },
+    "commit": {
+      "advisory_false_cases": 3,
+      "cases": 6,
+      "catch_rate": null,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": 0.0
+    },
+    "file": {
+      "advisory_false_cases": 0,
+      "cases": 8,
+      "catch_rate": 1.0,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": 0.0
+    },
+    "issue": {
+      "advisory_false_cases": 2,
+      "cases": 6,
+      "catch_rate": 1.0,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": 0.0
+    },
+    "metric_receipt": {
+      "advisory_false_cases": 0,
+      "cases": 6,
+      "catch_rate": 1.0,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": 0.0
+    },
+    "test": {
+      "advisory_false_cases": 0,
+      "cases": 8,
+      "catch_rate": 1.0,
+      "expectation_match_rate": 1.0,
+      "false_fail_rate": 0.0
+    }
+  },
+  "case_count": 50,
+  "catch_rate": 1.0,
+  "caught_enforceable_false_cases": 18,
+  "enforceable_false_cases": 18,
+  "expectation_match_rate": 1.0,
+  "false_fail_rate": 0.0,
+  "results": [
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "file-001-existing",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "file-002-line-ok",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: file does not resolve: docs/missing.md"
+      ],
+      "id": "file-003-missing",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: docs/existing.md has 4 lines, ref needs >= 99"
+      ],
+      "id": "file-004-line-too-high",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "file-005-src",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "file-006-nested",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "file-007-config",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "file",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: file does not resolve: docs/nested/missing.md"
+      ],
+      "id": "file-008-missing-nested",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "changed_file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "changed-001-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "changed_file",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "changed-file claim not found in supplied diff: docs/unchanged.md"
+      ],
+      "id": "changed-002-existing-unchanged",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "no --diff supplied; changed-file claims are advisory/skipped"
+      ],
+      "claim_type": "changed_file",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "changed-003-no-diff-advisory",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "changed_file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "changed-004-reference-only",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "changed_file",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "changed-005-modified-src",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "changed_file",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "changed-file claim not found in supplied diff: config/settings.json"
+      ],
+      "id": "changed-006-config-unchanged",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "changed_file",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "supplied --diff could not be checked: fatal: ambiguous argument 'definitely-not-a-ref': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'"
+      ],
+      "id": "changed-007-invalid-diff",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "no --diff supplied; changed-file claims are advisory/skipped"
+      ],
+      "claim_type": "changed_file",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "changed-008-no-diff-unchanged-advisory",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "test-001-valid",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "test-002-other-valid",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: test node not defined in tests/test_claims.py: test_missing"
+      ],
+      "id": "test-003-missing-node",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: test file does not resolve: tests/test_missing.py"
+      ],
+      "id": "test-004-missing-file",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "test-005-class-node",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "test-006-async-node",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: test node not defined in tests/test_claims.py: Testwidget"
+      ],
+      "id": "test-007-case-sensitive-fail",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "test",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: test node not defined in tests/test_claims.py: test_nope"
+      ],
+      "id": "test-008-missing-alt-node",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "issue",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "issue-001-registry-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "issue",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: issue does not resolve: #9999"
+      ],
+      "id": "issue-002-registry-fail",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "line 3: #9999 (advisory \u2014 no --issue-registry to resolve against)"
+      ],
+      "claim_type": "issue",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "issue-003-no-registry-advisory",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "issue",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "issue-004-registry-pass-second",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "issue",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "line 3: issue does not resolve: #303"
+      ],
+      "id": "issue-005-registry-fail-second",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "line 3: #404 (advisory \u2014 no --issue-registry to resolve against)"
+      ],
+      "claim_type": "issue",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "issue-006-no-registry-advisory-second",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "commit",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "commit-001-valid",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "line 3: deadbee does not resolve to a local commit (advisory \u2014 may be a non-commit hash)"
+      ],
+      "claim_type": "commit",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "commit-002-fabricated-advisory",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "commit",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "commit-003-valid-prefix",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "line 3: cafe123 does not resolve to a local commit (advisory \u2014 may be a non-commit hash)"
+      ],
+      "claim_type": "commit",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "commit-004-fabricated-second",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "commit",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "commit-005-valid-repeat",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [
+        "line 3: badc0de does not resolve to a local commit (advisory \u2014 may be a non-commit hash)"
+      ],
+      "claim_type": "commit",
+      "enforceable": false,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "commit-006-fabricated-repeat",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "command-001-make-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "command-002-backticked-make-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "missing command receipt for claim: make validate"
+      ],
+      "id": "command-003-missing",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "command-004-pytest-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "command-005-tests-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "command-006-exact-exit",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "matching command receipt exit_code 2, expected 0"
+      ],
+      "id": "command-007-nonzero-mismatch",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "command_receipt",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "stale command receipt for claim: make validate"
+      ],
+      "id": "command-008-stale",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "metric_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "metric-001-score-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "metric_receipt",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "metric receipt mismatch for claim: score=0.82"
+      ],
+      "id": "metric-002-score-mismatch",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "metric_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "metric-003-improved-pass",
+      "matched_expectation": true,
+      "truth": true
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "metric_receipt",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "metric receipt mismatch for claim: score:0.70->0.82"
+      ],
+      "id": "metric-004-improved-mismatch",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": false,
+      "advisory_reasons": [],
+      "claim_type": "metric_receipt",
+      "enforceable": true,
+      "expected_pass": false,
+      "hard_fail_reasons": [
+        "missing metric receipt for claim: score=0.82"
+      ],
+      "id": "metric-005-missing",
+      "matched_expectation": true,
+      "truth": false
+    },
+    {
+      "actual_pass": true,
+      "advisory_reasons": [],
+      "claim_type": "metric_receipt",
+      "enforceable": true,
+      "expected_pass": true,
+      "hard_fail_reasons": [],
+      "id": "metric-006-accuracy-pass",
+      "matched_expectation": true,
+      "truth": true
+    }
+  ],
+  "schema_version": "anti-slop-agent-claim-benchmark.v0.1"
+}

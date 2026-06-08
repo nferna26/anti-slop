@@ -49,6 +49,43 @@ This remains reference/receipt resolution only. Command and metric receipts
 record local facts; they do not add semantic diff review, benchmark validity, or
 correctness judgment.
 
+## 60-Second Demo
+
+Run the launch demo:
+
+```sh
+make agent-claim-demo
+```
+
+It checks two committed sample reports against a temporary local fixture. The
+fake report fails with exact line reasons; the receipt-backed report passes.
+Committed sample output lives at
+[`proof/agent-claim-demo/sample-output.md`](proof/agent-claim-demo/sample-output.md).
+
+## Benchmark and Audit
+
+The Week 4 proof surface is about the checker, not agents or models:
+
+```sh
+make agent-claim-benchmark
+make agent-claim-audit
+```
+
+`make agent-claim-benchmark` runs a deterministic 50-case synthetic corpus over
+file, changed-file, test, issue, commit, command-receipt, and metric-receipt
+claims. The current summary reports 100.0% catch rate over enforceable false
+cases and 0.0% false-fail rate over expected-valid cases.
+
+`make agent-claim-audit` runs a public-safe report-mode audit over committed
+real artifacts: the saved PR-body corpus plus curated KB log tranche/report
+entries. The current summary reports 41.98 checkable claims per 100 lines,
+12.8% hard unresolved rate, and a 30-day falsifier trend of PASS under the
+declared threshold.
+
+These numbers do not prove semantic correctness, relevance, benchmark validity,
+statistical meaning, support, safety, advice quality, source truth, reasoning,
+or canon.
+
 ## Install It
 
 Point a coding agent at [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md) (short
@@ -75,7 +112,8 @@ See [`docs/pr-provenance.md`](docs/pr-provenance.md) for usage and
 [`docs/agent-claim-verification.md`](docs/agent-claim-verification.md) for the
 supported-claims matrix. See
 [`docs/command-receipts.md`](docs/command-receipts.md) for the command/metric
-receipt schema.
+receipt schema. See [`docs/adoption-loop.md`](docs/adoption-loop.md) for the
+report-mode external adoption playbook.
 
 ## What It Checks
 

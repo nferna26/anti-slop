@@ -63,6 +63,14 @@ From a checkout of this repo, the full end-to-end smoke (throwaway venv + temp
 adopter repo; install → self-tests → clean PASS / fabricated FAIL; offline, no
 GitHub API) is: `make agent-install-smoke`.
 
+From a checkout of this repo, the Week 4 proof/demo commands are also offline:
+
+```sh
+make agent-claim-demo       # fake report FAILS; receipt-backed report PASSES
+make agent-claim-benchmark  # 50 synthetic checker cases
+make agent-claim-audit      # report-mode audit over committed public-safe artifacts
+```
+
 ## 3. Check a PR body locally
 
 ```sh

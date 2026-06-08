@@ -1,0 +1,441 @@
+{
+  "artifact_count": 20,
+  "artifact_mix": {
+    "kb-log-entry": 12,
+    "saved-pr-body": 8
+  },
+  "artifacts": [
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 47.06,
+      "claim_count": 8,
+      "claim_types": {
+        "file": 8
+      },
+      "hard_claim_count": 8,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "saved-pr-11",
+      "kind": "saved-pr-body",
+      "line_count": 17,
+      "passed": true,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-11.txt"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 8.57,
+      "claim_count": 3,
+      "claim_types": {
+        "file": 3
+      },
+      "hard_claim_count": 3,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "saved-pr-19",
+      "kind": "saved-pr-body",
+      "line_count": 35,
+      "passed": true,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-19.txt"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 62.86,
+      "claim_count": 22,
+      "claim_types": {
+        "card_id": 6,
+        "card_path": 1,
+        "changed_file": 1,
+        "file": 4,
+        "source_card": 6,
+        "source_id": 4
+      },
+      "hard_claim_count": 21,
+      "hard_fail_clusters": {
+        "unresolved card_id reference": 2,
+        "unresolved source_card reference": 1
+      },
+      "hard_fail_count": 3,
+      "id": "saved-pr-21",
+      "kind": "saved-pr-body",
+      "line_count": 35,
+      "passed": false,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-21.txt"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 68.57,
+      "claim_count": 24,
+      "claim_types": {
+        "card_id": 3,
+        "card_path": 1,
+        "file": 6,
+        "source_card": 4,
+        "source_id": 10
+      },
+      "hard_claim_count": 24,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "saved-pr-22",
+      "kind": "saved-pr-body",
+      "line_count": 35,
+      "passed": true,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-22.txt"
+    },
+    {
+      "advisory_count": 6,
+      "checkable_claim_density_per_100_lines": 34.88,
+      "claim_count": 15,
+      "claim_types": {
+        "changed_file": 3,
+        "commit": 2,
+        "file": 7,
+        "issue": 3
+      },
+      "hard_claim_count": 7,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "saved-pr-24",
+      "kind": "saved-pr-body",
+      "line_count": 43,
+      "passed": true,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-24.txt"
+    },
+    {
+      "advisory_count": 2,
+      "checkable_claim_density_per_100_lines": 16.22,
+      "claim_count": 6,
+      "claim_types": {
+        "commit": 2,
+        "file": 2,
+        "issue": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "saved-pr-25",
+      "kind": "saved-pr-body",
+      "line_count": 37,
+      "passed": true,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-25.txt"
+    },
+    {
+      "advisory_count": 3,
+      "checkable_claim_density_per_100_lines": 25.0,
+      "claim_count": 9,
+      "claim_types": {
+        "commit": 2,
+        "file": 4,
+        "issue": 3
+      },
+      "hard_claim_count": 4,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "saved-pr-26",
+      "kind": "saved-pr-body",
+      "line_count": 36,
+      "passed": true,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-26.txt"
+    },
+    {
+      "advisory_count": 10,
+      "checkable_claim_density_per_100_lines": 60.0,
+      "claim_count": 27,
+      "claim_types": {
+        "card_id": 2,
+        "changed_file": 7,
+        "commit": 1,
+        "file": 11,
+        "issue": 3,
+        "source_card": 2,
+        "test": 1
+      },
+      "hard_claim_count": 16,
+      "hard_fail_clusters": {
+        "path refs that do not resolve in current checkout": 4,
+        "unresolved card_id reference": 2,
+        "unresolved source_card reference": 2
+      },
+      "hard_fail_count": 8,
+      "id": "saved-pr-27",
+      "kind": "saved-pr-body",
+      "line_count": 45,
+      "passed": false,
+      "source": "proof/pr-provenance-dogfood/bodies/pr-27.txt"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 80.0,
+      "claim_count": 4,
+      "claim_types": {
+        "file": 4
+      },
+      "hard_claim_count": 4,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-01",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:13"
+    },
+    {
+      "advisory_count": 3,
+      "checkable_claim_density_per_100_lines": 140.0,
+      "claim_count": 7,
+      "claim_types": {
+        "changed_file": 3,
+        "file": 4
+      },
+      "hard_claim_count": 4,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-02",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:15"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 20.0,
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-03",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:16"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 20.0,
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-04",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:17"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 40.0,
+      "claim_count": 2,
+      "claim_types": {
+        "file": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-05",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:25"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 60.0,
+      "claim_count": 3,
+      "claim_types": {
+        "changed_file": 1,
+        "file": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-06",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:27"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 20.0,
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-07",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:28"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 20.0,
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-08",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:29"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 80.0,
+      "claim_count": 4,
+      "claim_types": {
+        "changed_file": 1,
+        "command_receipt": 1,
+        "file": 2
+      },
+      "hard_claim_count": 3,
+      "hard_fail_clusters": {
+        "missing command receipts for historical validation claims": 1
+      },
+      "hard_fail_count": 1,
+      "id": "kb-log-09",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": false,
+      "source": "kb/log.md:37"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 60.0,
+      "claim_count": 3,
+      "claim_types": {
+        "command_receipt": 2,
+        "file": 1
+      },
+      "hard_claim_count": 3,
+      "hard_fail_clusters": {
+        "missing command receipts for historical validation claims": 2
+      },
+      "hard_fail_count": 2,
+      "id": "kb-log-10",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": false,
+      "source": "kb/log.md:39"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 20.0,
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-11",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:40"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 40.0,
+      "claim_count": 2,
+      "claim_types": {
+        "file": 1,
+        "issue": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "kb-log-12",
+      "kind": "kb-log-entry",
+      "line_count": 5,
+      "passed": true,
+      "source": "kb/log.md:41"
+    }
+  ],
+  "artifacts_with_claims": 20,
+  "candidate_false_positive_clusters": [
+    [
+      "unresolved card_id reference",
+      4
+    ],
+    [
+      "path refs that do not resolve in current checkout",
+      4
+    ],
+    [
+      "unresolved source_card reference",
+      3
+    ],
+    [
+      "missing command receipts for historical validation claims",
+      3
+    ]
+  ],
+  "checkable_claim_density_per_100_lines": 41.98,
+  "claim_count": 144,
+  "hard_claim_count": 109,
+  "hard_fail_count": 14,
+  "schema_version": "anti-slop-agent-claim-density-audit.v0.1",
+  "thirty_day_falsifier": {
+    "rule": "pass if >=15 artifacts have claims, density >=8.0 claims/100 lines, and hard unresolved rate <=0.35",
+    "scope": "report-mode calibration over committed public-safe real artifacts",
+    "trend": "pass"
+  },
+  "top_claim_types": [
+    [
+      "file",
+      66
+    ],
+    [
+      "changed_file",
+      16
+    ],
+    [
+      "source_id",
+      14
+    ],
+    [
+      "source_card",
+      12
+    ],
+    [
+      "issue",
+      12
+    ],
+    [
+      "card_id",
+      11
+    ],
+    [
+      "commit",
+      7
+    ],
+    [
+      "command_receipt",
+      3
+    ],
+    [
+      "card_path",
+      2
+    ],
+    [
+      "test",
+      1
+    ]
+  ],
+  "total_lines": 343,
+  "unresolved_hard_claim_rate": 0.1284
+}
