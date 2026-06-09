@@ -1,12 +1,13 @@
 # Launch Decision
 
-Decision: prepare_tag_only
+Decision: tag_created_no_outreach
 
 This decision is based on the current committed proof artifacts. It is not a
 public launch approval, not an outreach authorization, and not a release/tag
-approval.
-No outreach, GitHub release, tag action, or enforcement default change is
-approved without operator approval.
+approval for any future tag. The `anti-slop-receipts-v0.1.0` tag was created
+with operator approval at `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`.
+No outreach, GitHub release, external PR/comment, maintainer contact,
+enforcement workflow, or enforcement default change is approved by that tag.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It
 does not prove correctness, relevance, source truth, support, safety, advice
@@ -24,6 +25,7 @@ quality, reasoning, benchmark validity, statistical meaning, or canon.
 - Command receipt dogfood: `proof/command-receipt-dogfood/summary.json`
 - Real command receipt dogfood: `proof/real-command-receipt-dogfood/summary.json`
 - Fresh install smoke: `proof/fresh-install-smoke/summary.json`
+- Tag install smoke: `proof/tag-install-smoke/summary.json`
 - Tag approval packet: `docs/tag-approval-packet.md`
 - Operator tag decision memo: `docs/operator-tag-decision.md`
 - Cluster memo: `proof/external-dry-run/clusters.md`
@@ -57,8 +59,8 @@ quality, reasoning, benchmark validity, statistical meaning, or canon.
   100.0% expectation match, 100.0% catch rate over enforceable false cases, and
   0.0% false-fail rate.
 - install success: UNKNOWN for external adopters. Local install and package
-  smokes pass, and the fresh public git/SHA install smoke passes, but there are
-  no external adopter install attempts.
+  smokes pass; the fresh public git/SHA install smoke and the pushed-tag install
+  smoke pass. There are still no external adopter install attempts.
 - actionability labels: FAIL for launch. Aggregate labels over the expanded
   sample record 0.0% actionable and 66.7% non-actionable over non-excluded
   findings; 8 root-unavailable path failures are excluded.
@@ -79,7 +81,7 @@ quality, reasoning, benchmark validity, statistical meaning, or canon.
 | claim density | PASS | `proof/external-dry-run/summary.md`: 19.33 claims/100 lines |
 | non-actionable after repairs | PASS | Real checkout labels: 12.5% non-actionable over non-excluded findings |
 | useful findings | PASS | Real checkout labels: 25.0% actionable over non-excluded findings |
-| install success | UNKNOWN | No external install attempts; local smoke is not adopter data |
+| install success | UNKNOWN | No external install attempts; local/tag smoke is not adopter data |
 | command receipt dogfood | PASS | Public-safe fixture plus two current-work reports: 100% receipt-backed command claims passed |
 | maintainer keep-rate | UNKNOWN | No outreach or adoption PRs were opened |
 | stale proof metrics | PASS | `make launch-check` validates README/proof metric links |
@@ -90,11 +92,12 @@ quality, reasoning, benchmark validity, statistical meaning, or canon.
 The real checkout loop answered the immediate falsifier: empty-root failures
 were too noisy, but selected real public checkout roots produced concrete,
 reviewer-actionable receipt-resolution findings. That is enough to prepare a
-tag-only operator gate for reproducible installs.
+tag-only operator gate for reproducible installs. That gate produced and pushed
+`anti-slop-receipts-v0.1.0`.
 
 This is not enough for outreach or enforcement. External install success is
 UNKNOWN, maintainer keep-rate is UNKNOWN, platform clone risk is UNKNOWN, and no
-maintainer has opted in. The next narrow tranche should prepare a release/tag
-approval packet from the current proof, run one more install dry run from a
-fresh checkout, and ask the operator whether to create a pinned tag. Outreach
-remains out of scope until after a separate opt-in decision.
+maintainer has opted in. The next narrow tranche should decide whether to
+create a GitHub release from the existing tag or keep collecting external
+install/adoption evidence. Outreach remains out of scope until after a separate
+opt-in decision.

@@ -1,14 +1,16 @@
 # Tag Approval Packet
 
-Decision: ready_to_request_operator_tag
+Decision: tag_created_no_outreach
 
-Candidate commit: `4bda4fd727018a2a027ba8c660c48c30b8aa2144`
+Candidate commit: `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`
 
-This packet is an operator decision aid for a pinned Anti-Slop Receipts tag.
-No tag has been created. No GitHub release has been created. No outreach, external
-PR, maintainer contact, comment, issue, enforcement workflow, or default
-enforcement change is authorized by this packet. Tag creation still requires
-operator approval required after reviewing this packet.
+This packet records the operator-approved pinned Anti-Slop Receipts tag.
+Tag status: `anti-slop-receipts-v0.1.0` created and pushed.
+No GitHub release has been created. No outreach, external PR, maintainer
+contact, comment, issue, enforcement workflow, or default enforcement change is
+authorized by this packet. This packet records that operator approval required
+before tag creation was granted for this tranche only; future tag or release
+actions still require separate approval.
 There is no enforcement workflow and no outreach approval in this packet.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It does not prove correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.
@@ -17,17 +19,19 @@ Anti-Slop Receipts remains deterministic reference/receipt resolution only. It d
 
 - Product: Anti-Slop Receipts.
 - Distribution: `anti-slop-lineage`.
-- Candidate commit: `4bda4fd727018a2a027ba8c660c48c30b8aa2144`.
-- Candidate source: PR #44 merge commit, after the real-checkout learning loop.
-- Proposed tag name for operator review: `anti-slop-receipts-v0.1.0`.
-- Install spec after tag approval: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0`.
-- Reproducible SHA install already checked: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@4bda4fd727018a2a027ba8c660c48c30b8aa2144`.
+- Candidate commit: `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`.
+- Candidate source: PR #45 merge commit, including the tag-approval packet and
+  fresh-install smoke scripts.
+- Tag name: `anti-slop-receipts-v0.1.0`.
+- Install spec: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0`.
+- Reproducible SHA install already checked: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`.
 
 ## Evidence
 
-- CI status: green. PR #44 reported green `gates` and `package` checks before
-  merge; this tag-approval PR must also be green before any operator action.
+- CI status: green. PR #45 reported green `gates` and `package` checks before
+  merge; this release-finalization PR must also be green after tag creation.
 - Fresh install smoke: PASS. See `proof/fresh-install-smoke/summary.json`.
+- Tag install smoke: PASS. See `proof/tag-install-smoke/summary.json`.
 - Real checkout evidence: PASS. See `proof/real-checkout-learning/summary.json`
   and `proof/real-checkout-learning/actionability.json`.
 - Command receipt dogfood: PASS. See
@@ -61,10 +65,10 @@ Anti-Slop Receipts remains deterministic reference/receipt resolution only. It d
 
 ## Operator Boundary
 
-This packet can support an operator decision to create a pinned tag, but it does
-not create that tag. Do not create a tag from automation. Do not create a GitHub
-release from this packet. Do not contact maintainers. Do not open outreach PRs,
-comments, or issues. Do not change report mode into enforcement by default.
+This packet records the operator-approved tag creation. Do not force-move this
+tag. Do not create a GitHub release from this packet. Do not contact
+maintainers. Do not open outreach PRs, comments, or issues. Do not change report
+mode into enforcement by default.
 
-The next step, if the operator approves, is a human-run tag command against the
-candidate commit in `docs/operator-tag-decision.md`.
+The next step is not another tag action. Any GitHub release or maintainer
+outreach remains a separate operator decision.

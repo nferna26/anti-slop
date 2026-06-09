@@ -19,19 +19,21 @@
 - [docs/package-install-naming.md](docs/package-install-naming.md): product/package naming posture. Anti-Slop Receipts is the product; `anti-slop-lineage` remains the distribution.
 - [docs/privacy-security.md](docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry, no GitHub API token, no model, and forbidden content.
 - [docs/launch-checklist.md](docs/launch-checklist.md): machine and manual launch checks.
-- [docs/release-install-plan.md](docs/release-install-plan.md): release/tag readiness and reproducible tag/SHA pin flow; no tag is created without operator approval.
-- [docs/tag-approval-packet.md](docs/tag-approval-packet.md): operator-ready tag approval packet for the current candidate commit.
-- [docs/operator-tag-decision.md](docs/operator-tag-decision.md): exact next operator action if a pinned tag is approved.
+- [docs/release-install-plan.md](docs/release-install-plan.md): release/tag readiness and reproducible tag/SHA pin flow; `anti-slop-receipts-v0.1.0` exists, while GitHub release/outreach/enforcement remain unapproved.
+- [docs/tag-approval-packet.md](docs/tag-approval-packet.md): tag approval packet for `anti-slop-receipts-v0.1.0`.
+- [docs/operator-tag-decision.md](docs/operator-tag-decision.md): exact tag target and operator decision record.
 - [proof/fresh-install-smoke/summary.md](proof/fresh-install-smoke/summary.md): fresh public git/SHA install smoke for the candidate commit.
+- [proof/tag-install-smoke/summary.md](proof/tag-install-smoke/summary.md): fresh public tag install smoke for `anti-slop-receipts-v0.1.0`.
 - [docs/demo-repo.md](docs/demo-repo.md): fake-report/receipt-backed demo script, screenshot/GIF checklist, and launch copy.
 - [docs/maintainer-outreach-packet.md](docs/maintainer-outreach-packet.md): opt-in-only maintainer message, evidence summary format, opt-out rules, and no-contact conditions.
 - [docs/launch-decision.md](docs/launch-decision.md): current evidence-based go/no-go decision.
 - [docs/external-dry-run-policy.md](docs/external-dry-run-policy.md): report-mode-only external dry-run policy; no outreach, token, model, GitHub API, or adoption runtime.
 - [docs/kill-criteria.md](docs/kill-criteria.md): kill dashboard; unknown adoption data is marked UNKNOWN, not PASS.
 - One-line user prompt: "Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."
-- Tag gate boundary: deterministic reference/receipt resolution only; no outreach or tag action happens without operator approval.
+- Tag gate boundary: deterministic reference/receipt resolution only; no GitHub release, outreach, or enforcement action is approved by the v0.1.0 tag; future release or outreach action requires operator approval.
 
 Exact commands:
+- Pinned tag install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"`
 - Preview install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"`
 - Pinned install for reproducible CI: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>"`
 - Self-test: `anti-slop-claims --self-test`, `anti-slop-run --self-test`, `anti-slop-pr --self-test`, and `anti-slop-pr-event --self-test`

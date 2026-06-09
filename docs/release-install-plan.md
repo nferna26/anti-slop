@@ -9,11 +9,11 @@ The public command hierarchy stays:
 - `anti-slop-pr`: PR-body compatibility wrapper.
 - `anti-slop-lineage`: source/card lineage compatibility command.
 
-Do not create a release tag from this tranche. A release tag requires operator
-approval after the checklist below is re-run on the exact commit to be tagged.
-This plan is deterministic reference/receipt resolution only; no outreach,
-GitHub release, tag action, or enforcement default change happens without
-operator approval.
+The `anti-slop-receipts-v0.1.0` tag was created with operator approval at
+`75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`. Do not force-move it. Future tags,
+GitHub releases, outreach, or enforcement default changes require separate
+operator approval. This plan is deterministic reference/receipt resolution only.
+There is no outreach approval in this release/install plan.
 
 ## Pinning Flow
 
@@ -26,6 +26,7 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 Reproducible CI install pinned to a tag or full commit SHA:
 
 ```sh
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>"
 ```
 
@@ -36,7 +37,7 @@ workflow templates once the adopter chooses a revision.
 
 ## release readiness checklist
 
-Before tagging, the operator should verify:
+Before a future tag or GitHub release, the operator should verify:
 
 - PR CI is green on the release candidate commit.
 - `make launch-decision-check`, `make launch-check`, `make adoption-smoke`,
@@ -53,6 +54,8 @@ Before tagging, the operator should verify:
 - The launch decision in `docs/launch-decision.md` is reviewed and still
   matches the evidence.
 - The tag name, release notes, and install examples have operator approval.
+- Existing tag proof remains public-safe:
+  `proof/tag-install-smoke/summary.json`.
 
 ## adopter update path
 

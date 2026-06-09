@@ -2,9 +2,11 @@
 
 Draft release notes for operator review.
 
-No release tag has been created. These notes are a draft for operator review
-only. No outreach, GitHub release, tag action, or enforcement default change is
-approved without operator approval.
+The `anti-slop-receipts-v0.1.0` tag exists. These notes are still a draft for
+operator review only. No GitHub release has been created. No outreach, external
+PR/comment, maintainer contact, or enforcement default change is approved by the
+tag.
+Any GitHub release publication still requires operator approval.
 
 ## Anti-Slop Receipts preview
 
@@ -27,6 +29,7 @@ Install examples:
 
 ```sh
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>"
 ```
 

@@ -30,6 +30,7 @@ DECISION = ROOT / "docs" / "launch-decision.md"
 ALLOWED_DECISIONS = {
     "continue_private_learning_loop",
     "prepare_tag_only",
+    "tag_created_no_outreach",
     "prepare_opt_in_outreach",
     "pause_or_narrow",
 }
@@ -69,7 +70,7 @@ def check_release_plan(errors: list[str]) -> None:
         "Anti-Slop Receipts is the product",
         "anti-slop-lineage remains the Python distribution",
         "operator approval",
-        "Do not create a release tag from this tranche",
+        "anti-slop-receipts-v0.1.0",
         "pip install \"anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>\"",
         "full commit SHA",
         "release readiness checklist",
@@ -78,7 +79,8 @@ def check_release_plan(errors: list[str]) -> None:
     ], errors)
     require_snippets(RELEASE_NOTES, [
         "Draft release notes",
-        "No release tag has been created",
+        "anti-slop-receipts-v0.1.0",
+        "No GitHub release has been created",
         "deterministic reference/receipt resolution only",
         "anti-slop-claims",
         "anti-slop-run",
@@ -137,6 +139,8 @@ def check_decision(errors: list[str]) -> None:
         "proof/real-checkout-learning/actionability.json",
         "proof/command-receipt-dogfood/summary.json",
         "proof/real-command-receipt-dogfood/summary.json",
+        "proof/fresh-install-smoke/summary.json",
+        "proof/tag-install-smoke/summary.json",
         "proof/external-dry-run/clusters.md",
         "proof/external-dry-run/kill-criteria.json",
         "benchmarks/agent-claim-corpus-v0.1/results/summary.json",

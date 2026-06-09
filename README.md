@@ -9,8 +9,11 @@ receipts, and simple metric receipts resolve against the local repo state.
 It is intentionally narrow. A PASS means the cited references/receipts resolved.
 It does **not** prove correctness, relevance, source truth, support, safety,
 advice quality, reasoning, benchmark validity, statistical meaning, or canon.
-Release/tag approval remains deterministic reference/receipt resolution only;
-no outreach or tag action happens without operator approval.
+The `anti-slop-receipts-v0.1.0` tag is available for pinned installs. There is
+no outreach, GitHub release, or enforcement workflow approved by that tag.
+Release status remains deterministic reference/receipt resolution only; no
+outreach, future tag, GitHub release, or enforcement action happens without
+operator approval.
 
 ## Problem
 
@@ -31,7 +34,16 @@ store, telemetry, GitHub API, or token requirement.
 
 ## Install
 
-Preview install from the public repo:
+Pinned install from the public tag:
+
+```sh
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"
+anti-slop-claims --self-test
+anti-slop-run --self-test
+anti-slop-pr-event --self-test
+```
+
+Preview install from the public repo head:
 
 ```sh
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
@@ -177,11 +189,13 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
 - [`docs/release-install-plan.md`](docs/release-install-plan.md):
   release/tag readiness, reproducible tag/SHA pin flow, and adopter update path.
 - [`docs/tag-approval-packet.md`](docs/tag-approval-packet.md):
-  operator-ready tag approval packet for the current candidate commit.
+  tag approval packet and no-outreach boundary for `anti-slop-receipts-v0.1.0`.
 - [`docs/operator-tag-decision.md`](docs/operator-tag-decision.md):
-  exact next operator action if a pinned tag is approved.
+  tag target and operator decision record.
 - [`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md):
   fresh public git/SHA install smoke for the candidate commit.
+- [`proof/tag-install-smoke/summary.md`](proof/tag-install-smoke/summary.md):
+  fresh public tag install smoke for `anti-slop-receipts-v0.1.0`.
 - [`docs/privacy-security.md`](docs/privacy-security.md): local execution,
   receipt contents, artifact upload risk, and forbidden content.
 - [`docs/launch-checklist.md`](docs/launch-checklist.md): machine and manual

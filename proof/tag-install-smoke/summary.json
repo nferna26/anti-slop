@@ -1,5 +1,4 @@
 {
-  "candidate_commit": "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649",
   "commands": [
     {
       "command": "anti-slop-lineage --self-test",
@@ -33,16 +32,21 @@
     }
   ],
   "install": {
-    "method": "documented public git/SHA pip install",
+    "method": "documented public tag pip install",
     "package": "anti-slop-lineage",
     "status": "pass"
   },
-  "install_spec": "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649",
+  "install_spec": "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0",
   "notes": [
-    "Fresh install checks only that the documented git/SHA install path and installed CLIs smoke on this machine.",
+    "Tag install checks only that the pushed tag resolves to the target commit and installed CLIs smoke on this machine.",
     "It is not external adopter install success, correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon evidence.",
     "No raw venv logs, local paths, raw API JSON, external repo contents, secrets, or stdout/stderr dumps are committed."
   ],
+  "remote_tag": {
+    "peeled_commit": "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649",
+    "status": "pass",
+    "tag_object": "7b959f4bbb41082c143b36444db1061b3acb9a9b"
+  },
   "report_mode_demo": {
     "command": "anti-slop-claims --report --json AGENT_FINAL_REPORT.md",
     "exit_code": 0,
@@ -50,11 +54,8 @@
     "status": "pass"
   },
   "repository": "nferna26/anti-slop",
-  "schema_version": "anti-slop-fresh-install-smoke.v1",
-  "source_clone": {
-    "checked_out_commit": "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649",
-    "status": "pass",
-    "storage": "temporary local-only checkout; not committed"
-  },
-  "status": "pass"
+  "schema_version": "anti-slop-tag-install-smoke.v1",
+  "status": "pass",
+  "tag_name": "anti-slop-receipts-v0.1.0",
+  "target_commit": "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649"
 }
