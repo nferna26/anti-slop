@@ -13,6 +13,7 @@ receipts.
 - [Package/install naming](../docs/package-install-naming.md): Anti-Slop Receipts product name, current `anti-slop-lineage` distribution, command hierarchy, and pinned install posture.
 - [Release/install plan](../docs/release-install-plan.md): `anti-slop-receipts-v0.1.1` clean tag path, historical `anti-slop-receipts-v0.1.0` disclosure, exact tag/SHA pin examples, adopter update path, and operator-approval boundary for future releases.
 - [v0.1.1 GitHub Release body](../docs/github-release-v0.1.1.md): exact narrow public preview release title/body, install command, usage, boundary language, no-outreach/no-enforcement status, and repo description/topics suggestion.
+- [Public preview release proof](../proof/public-preview-release/summary.md): created v0.1.1 GitHub Release URL, tag object/peeled commit, default-branch front-door commit, boundaries, and next friendly-install step.
 - [Tag approval packet](../docs/tag-approval-packet.md): clean v0.1.1 tag path, source-doc invariant, evidence links, fresh/tag-install results, residual UNKNOWNs, and no-outreach/no-enforcement boundary.
 - [Operator tag decision memo](../docs/operator-tag-decision.md): clean `anti-slop-receipts-v0.1.1` path, operator boundary, and no-outreach/no-enforcement decision record.
 - [Fresh install smoke](../proof/fresh-install-smoke/summary.md): candidate commit installed from public git/SHA in temporary storage; installed CLIs and report-mode demo passed.
