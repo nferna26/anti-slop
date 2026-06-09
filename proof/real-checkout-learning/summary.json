@@ -1,0 +1,254 @@
+{
+  "advisory_count": 6,
+  "advisory_rate": 0.4,
+  "artifact_count": 5,
+  "artifacts": [
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 15.79,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 3,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 3,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 3,
+      "hard_unresolved_count": 0,
+      "id": "openai-openai-agents-python-pr-3544",
+      "kind": "saved_public_pr_body",
+      "line_count": 19,
+      "mode": "report",
+      "origin_url": "https://github.com/openai/openai-agents-python/pull/3544",
+      "repo": "openai/openai-agents-python",
+      "root_mode": "real_public_checkout_pr_head",
+      "source": "proof/external-dry-run/expanded/bodies/openai-openai-agents-python-pr-3544.md",
+      "target": "openai/openai-agents-python#3544",
+      "top_reasons": []
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 2.17,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 1,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 1,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 0,
+      "id": "anthropics-anthropic-sdk-python-pr-1642",
+      "kind": "saved_public_pr_body",
+      "line_count": 46,
+      "mode": "report",
+      "origin_url": "https://github.com/anthropics/anthropic-sdk-python/pull/1642",
+      "repo": "anthropics/anthropic-sdk-python",
+      "root_mode": "real_public_checkout_pr_head",
+      "source": "proof/external-dry-run/expanded/bodies/anthropics-anthropic-sdk-python-pr-1642.md",
+      "target": "anthropics/anthropic-sdk-python#1642",
+      "top_reasons": []
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 11.11,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 1,
+      "claim_types": {
+        "card": 0,
+        "commit": 0,
+        "file": 1,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "id": "pydantic-pydantic-ai-pr-5805",
+      "kind": "saved_public_pr_body",
+      "line_count": 9,
+      "mode": "report",
+      "origin_url": "https://github.com/pydantic/pydantic-ai/pull/5805",
+      "repo": "pydantic/pydantic-ai",
+      "root_mode": "real_public_checkout_pr_head",
+      "source": "proof/external-dry-run/expanded/bodies/pydantic-pydantic-ai-pr-5805.md",
+      "target": "pydantic/pydantic-ai#5805",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 6,
+      "checkable_claims_per_100_lines": 12.7,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 8,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 2,
+        "issue": 5,
+        "test": 0
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 0,
+      "id": "modelcontextprotocol-python-sdk-pr-2773",
+      "kind": "saved_public_pr_body",
+      "line_count": 63,
+      "mode": "report",
+      "origin_url": "https://github.com/modelcontextprotocol/python-sdk/pull/2773",
+      "repo": "modelcontextprotocol/python-sdk",
+      "root_mode": "real_public_checkout_pr_head",
+      "source": "proof/external-dry-run/expanded/bodies/modelcontextprotocol-python-sdk-pr-2773.md",
+      "target": "modelcontextprotocol/python-sdk#2773",
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          5
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ]
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claims_per_100_lines": 5.71,
+      "checker": "anti-slop-pr-event",
+      "claim_count": 2,
+      "claim_types": {
+        "card": 0,
+        "commit": 1,
+        "file": 1,
+        "issue": 0,
+        "test": 0
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "id": "crewaiinc-crewai-pr-6042",
+      "kind": "saved_public_pr_body",
+      "line_count": 35,
+      "mode": "report",
+      "origin_url": "https://github.com/CrewAIInc/crewAI/pull/6042",
+      "repo": "CrewAIInc/crewAI",
+      "root_mode": "real_public_checkout_pr_head",
+      "source": "proof/external-dry-run/expanded/bodies/crewaiinc-crewai-pr-6042.md",
+      "target": "CrewAIInc/crewAI#6042",
+      "top_reasons": [
+        [
+          "file refs that do not resolve",
+          1
+        ]
+      ]
+    }
+  ],
+  "checkable_claim_count": 15,
+  "checkable_claims_per_100_lines": 8.72,
+  "checkout_blocked_count": 0,
+  "checkout_records": [
+    {
+      "blocked_reason": "",
+      "checkout_ref": "refs/pull/3544/head",
+      "checkout_status": "checked_out",
+      "head": "40ceb8b90bfdc6f1e38ab45e5dd6287e0ad1667c",
+      "id": "openai-openai-agents-python-pr-3544",
+      "repo": "openai/openai-agents-python",
+      "target": "openai/openai-agents-python#3544"
+    },
+    {
+      "blocked_reason": "",
+      "checkout_ref": "refs/pull/1642/head",
+      "checkout_status": "checked_out",
+      "head": "b775b2a5ebfda342237ef4b86cd884069d73ed06",
+      "id": "anthropics-anthropic-sdk-python-pr-1642",
+      "repo": "anthropics/anthropic-sdk-python",
+      "target": "anthropics/anthropic-sdk-python#1642"
+    },
+    {
+      "blocked_reason": "",
+      "checkout_ref": "refs/pull/5805/head",
+      "checkout_status": "checked_out",
+      "head": "b68b0f74e3b1e946d922b552815e3d0627001ac3",
+      "id": "pydantic-pydantic-ai-pr-5805",
+      "repo": "pydantic/pydantic-ai",
+      "target": "pydantic/pydantic-ai#5805"
+    },
+    {
+      "blocked_reason": "",
+      "checkout_ref": "refs/pull/2773/head",
+      "checkout_status": "checked_out",
+      "head": "3c13fc95ddbdaee00a6ad201efd5374ee01d3673",
+      "id": "modelcontextprotocol-python-sdk-pr-2773",
+      "repo": "modelcontextprotocol/python-sdk",
+      "target": "modelcontextprotocol/python-sdk#2773"
+    },
+    {
+      "blocked_reason": "",
+      "checkout_ref": "refs/pull/6042/head",
+      "checkout_status": "checked_out",
+      "head": "988d1e8cfd069d83ec835ee730495578cafda317",
+      "id": "crewaiinc-crewai-pr-6042",
+      "repo": "CrewAIInc/crewAI",
+      "target": "CrewAIInc/crewAI#6042"
+    }
+  ],
+  "checkout_success_count": 5,
+  "hard_claim_count": 8,
+  "hard_unresolved_count": 2,
+  "hard_unresolved_rate": 0.25,
+  "notes": [
+    "Report mode only; no outreach, adoption, GitHub API, token, model, or private repo.",
+    "Public repo checkouts are temporary local-only storage and are not committed.",
+    "Committed outputs omit raw resolver receipts, raw external file contents, and raw line text.",
+    "Resolver facts only; not correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon."
+  ],
+  "policy_version": "external-dry-run-policy.v1",
+  "required_checkout_success_count": 3,
+  "root_mode": "real_public_checkout_pr_head",
+  "schema_version": "anti-slop-real-checkout-learning.v1",
+  "status": "real_checkout_useful",
+  "target": "selected external public PR bodies checked against real local public PR-head checkouts",
+  "top_claim_types": [
+    {
+      "count": 8,
+      "type": "file"
+    },
+    {
+      "count": 5,
+      "type": "issue"
+    },
+    {
+      "count": 2,
+      "type": "commit"
+    },
+    {
+      "count": 0,
+      "type": "card"
+    },
+    {
+      "count": 0,
+      "type": "test"
+    }
+  ],
+  "top_reasons": [
+    {
+      "count": 5,
+      "reason": "issue refs advisory without registry"
+    },
+    {
+      "count": 2,
+      "reason": "file refs that do not resolve"
+    },
+    {
+      "count": 1,
+      "reason": "commit refs advisory under local-git resolution"
+    }
+  ],
+  "total_lines": 172
+}

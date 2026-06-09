@@ -1,0 +1,124 @@
+{
+  "allowed_labels": [
+    "actionable",
+    "excluded",
+    "non_actionable",
+    "unclear"
+  ],
+  "label_scope": "every real-root finding; raw line text omitted",
+  "labels": [
+    {
+      "claim_type": "file",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "pydantic-pydantic-ai-pr-5805:1",
+      "label": "actionable",
+      "line": 8,
+      "normalized_reason": "file refs that do not resolve",
+      "reason": "A root-backed unresolved file/test reference is a concrete receipt-resolution finding.",
+      "ref_shape": "path depth=8 ext=.md",
+      "status": "fail",
+      "target_id": "pydantic-pydantic-ai-pr-5805"
+    },
+    {
+      "claim_type": "issue",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "modelcontextprotocol-python-sdk-pr-2773:1",
+      "label": "unclear",
+      "line": 1,
+      "normalized_reason": "issue refs advisory without registry",
+      "reason": "Offline issue refs need a supplied issue registry before maintainer actionability.",
+      "ref_shape": "issue-number",
+      "status": "advisory",
+      "target_id": "modelcontextprotocol-python-sdk-pr-2773"
+    },
+    {
+      "claim_type": "issue",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "modelcontextprotocol-python-sdk-pr-2773:2",
+      "label": "unclear",
+      "line": 1,
+      "normalized_reason": "issue refs advisory without registry",
+      "reason": "Offline issue refs need a supplied issue registry before maintainer actionability.",
+      "ref_shape": "issue-number",
+      "status": "advisory",
+      "target_id": "modelcontextprotocol-python-sdk-pr-2773"
+    },
+    {
+      "claim_type": "issue",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "modelcontextprotocol-python-sdk-pr-2773:3",
+      "label": "unclear",
+      "line": 1,
+      "normalized_reason": "issue refs advisory without registry",
+      "reason": "Offline issue refs need a supplied issue registry before maintainer actionability.",
+      "ref_shape": "issue-number",
+      "status": "advisory",
+      "target_id": "modelcontextprotocol-python-sdk-pr-2773"
+    },
+    {
+      "claim_type": "issue",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "modelcontextprotocol-python-sdk-pr-2773:4",
+      "label": "unclear",
+      "line": 1,
+      "normalized_reason": "issue refs advisory without registry",
+      "reason": "Offline issue refs need a supplied issue registry before maintainer actionability.",
+      "ref_shape": "issue-number",
+      "status": "advisory",
+      "target_id": "modelcontextprotocol-python-sdk-pr-2773"
+    },
+    {
+      "claim_type": "issue",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "modelcontextprotocol-python-sdk-pr-2773:5",
+      "label": "unclear",
+      "line": 16,
+      "normalized_reason": "issue refs advisory without registry",
+      "reason": "Offline issue refs need a supplied issue registry before maintainer actionability.",
+      "ref_shape": "issue-number",
+      "status": "advisory",
+      "target_id": "modelcontextprotocol-python-sdk-pr-2773"
+    },
+    {
+      "claim_type": "commit",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "modelcontextprotocol-python-sdk-pr-2773:6",
+      "label": "non_actionable",
+      "line": 63,
+      "normalized_reason": "commit refs advisory under local-git resolution",
+      "reason": "Commit advisory means the checker resolved only local-git existence, not maintainer action.",
+      "ref_shape": "commit-sha",
+      "status": "advisory",
+      "target_id": "modelcontextprotocol-python-sdk-pr-2773"
+    },
+    {
+      "claim_type": "file",
+      "evidence_scope": "real_checkout_aggregate_finding",
+      "finding_id": "crewaiinc-crewai-pr-6042:1",
+      "label": "actionable",
+      "line": 12,
+      "normalized_reason": "file refs that do not resolve",
+      "reason": "A root-backed unresolved file/test reference is a concrete receipt-resolution finding.",
+      "ref_shape": "path depth=1 ext=.py",
+      "status": "fail",
+      "target_id": "crewaiinc-crewai-pr-6042"
+    }
+  ],
+  "notes": [
+    "Labels are reviewer triage over resolver findings, not semantic correctness/relevance judgments.",
+    "Raw line text and full resolver receipts are omitted."
+  ],
+  "policy_version": "external-dry-run-policy.v1",
+  "schema_version": "anti-slop-real-checkout-actionability.v1",
+  "summary": {
+    "actionable_count": 2,
+    "actionable_rate": 0.25,
+    "excluded_count": 0,
+    "excluded_rate": 0.0,
+    "non_actionable_count": 1,
+    "non_actionable_rate": 0.125,
+    "total_labeled_findings": 8,
+    "unclear_count": 5,
+    "useful_findings_status": "PASS"
+  }
+}

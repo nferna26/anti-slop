@@ -27,6 +27,9 @@ FIXTURE_JSON = OUT_DIR / "fixtures" / "cluster-fixture.json"
 KILL_DOC = ROOT / "docs" / "kill-criteria.md"
 ACTIONABILITY_JSON = OUT_DIR / "expanded" / "actionability.json"
 DOGFOOD_JSON = ROOT / "proof" / "command-receipt-dogfood" / "summary.json"
+REAL_CHECKOUT_JSON = ROOT / "proof" / "real-checkout-learning" / "summary.json"
+REAL_ACTIONABILITY_JSON = ROOT / "proof" / "real-checkout-learning" / "actionability.json"
+REAL_DOGFOOD_JSON = ROOT / "proof" / "real-command-receipt-dogfood" / "summary.json"
 
 CLUSTER_SCHEMA = "anti-slop-external-dry-run-clusters.v1"
 KILL_SCHEMA = "anti-slop-kill-criteria.v1"
@@ -330,8 +333,13 @@ def build_no_change_memo(cluster_summary: dict[str, Any], dry_summary: dict[str,
 
 def build_kill_dashboard(dry_summary: dict[str, Any]) -> dict[str, Any]:
     density = float(dry_summary["checkable_claims_per_100_lines"])
-    actionability = read_json(ACTIONABILITY_JSON) if ACTIONABILITY_JSON.is_file() else None
-    dogfood = read_json(DOGFOOD_JSON) if DOGFOOD_JSON.is_file() else None
+    real_checkout = read_json(REAL_CHECKOUT_JSON) if REAL_CHECKOUT_JSON.is_file() else None
+    real_actionability = read_json(REAL_ACTIONABILITY_JSON) if REAL_ACTIONABILITY_JSON.is_file() else None
+    expanded_actionability = read_json(ACTIONABILITY_JSON) if ACTIONABILITY_JSON.is_file() else None
+    actionability = real_actionability or expanded_actionability
+    dogfood = read_json(REAL_DOGFOOD_JSON) if REAL_DOGFOOD_JSON.is_file() else (
+        read_json(DOGFOOD_JSON) if DOGFOOD_JSON.is_file() else None
+    )
     useful_status = "UNKNOWN"
     useful_evidence = "No maintainer/reviewer usefulness labels yet."
     non_actionable_status = "UNKNOWN"
@@ -340,15 +348,16 @@ def build_kill_dashboard(dry_summary: dict[str, Any]) -> dict[str, Any]:
         action_summary = actionability.get("summary", {})
         actionable_rate = float(action_summary.get("actionable_rate", 0.0))
         non_actionable_rate = float(action_summary.get("non_actionable_rate", 0.0))
+        source = "Real-checkout" if real_actionability else "Expanded external sample aggregate"
         useful_status = "FAIL" if actionable_rate < 0.20 else "PASS"
         useful_evidence = (
-            f"Expanded external sample aggregate labels: {actionable_rate:.1%} actionable "
+            f"{source} labels: {actionable_rate:.1%} actionable "
             f"over non-excluded findings; {action_summary.get('unclear_count', 0)} unclear, "
             f"{action_summary.get('excluded_count', 0)} excluded."
         )
         non_actionable_status = "FAIL" if non_actionable_rate > 0.50 else "PASS"
         non_actionable_evidence = (
-            f"Expanded external sample aggregate labels: {non_actionable_rate:.1%} "
+            f"{source} labels: {non_actionable_rate:.1%} "
             "non-actionable over non-excluded findings."
         )
     dogfood_status = "UNKNOWN"
@@ -356,16 +365,21 @@ def build_kill_dashboard(dry_summary: dict[str, Any]) -> dict[str, Any]:
     if dogfood:
         rate = float(dogfood.get("dogfood_rate", 0.0))
         dogfood_status = "PASS" if rate >= 0.25 else "FAIL"
+        source = "real current-work command receipt dogfood" if REAL_DOGFOOD_JSON.is_file() else "command receipt dogfood fixture"
         dogfood_evidence = (
-            f"Command receipt dogfood fixture: {rate:.0%} receipt-backed command claims passed; "
-            "raw receipts are regenerated in a temp repo and not committed."
+            f"{source}: {rate:.0%} receipt-backed command claims passed; "
+            "raw receipts are regenerated in temporary storage and not committed."
         )
     return {
         "schema_version": KILL_SCHEMA,
         "source_summary": rel(SUMMARY_JSON),
         "expanded_external_summary": rel(OUT_DIR / "expanded" / "summary.json"),
         "actionability_labels": rel(ACTIONABILITY_JSON),
+        "real_checkout_summary": rel(REAL_CHECKOUT_JSON),
+        "real_checkout_actionability_labels": rel(REAL_ACTIONABILITY_JSON),
         "command_receipt_dogfood": rel(DOGFOOD_JSON),
+        "real_command_receipt_dogfood": rel(REAL_DOGFOOD_JSON),
+        "real_checkout_status": real_checkout.get("status") if real_checkout else "UNKNOWN",
         "overall_status": "watch",
         "criteria": [
             {
