@@ -163,6 +163,12 @@ real-checkout-actionability-check:
 real-command-receipt-dogfood:
 	python3 scripts/real_command_receipt_dogfood.py --self-test
 
+# Public-repo receipt mining: validate the aggregate-only public PR-body study.
+# The live miner is explicit (`python3 scripts/public_pr_receipt_study.py
+# --run-live`) so CI does not depend on network/GitHub state.
+public-pr-receipt-study:
+	python3 scripts/public_pr_receipt_study.py --check
+
 # Tag approval gate: operator-ready decision packet and fresh-checkout install
 # proof. This never creates a tag, GitHub release, outreach PR, or enforcement
 # workflow.

@@ -1,0 +1,63 @@
+{
+  "allowed_labels": [
+    "actionable",
+    "excluded",
+    "non_actionable",
+    "unclear"
+  ],
+  "label_scope": "bounded aggregate clusters; raw PR line text omitted",
+  "labels": [
+    {
+      "cluster_key": "commit refs advisory under local-git resolution",
+      "count": 274,
+      "evidence_scope": "aggregate_cluster",
+      "label": "non_actionable",
+      "reason": "Commit advisories are resolver caveats, not maintainer-ready findings."
+    },
+    {
+      "cluster_key": "issue refs advisory without registry",
+      "count": 249,
+      "evidence_scope": "aggregate_cluster",
+      "label": "unclear",
+      "reason": "Offline issue references need a supplied registry before maintainer actionability."
+    },
+    {
+      "cluster_key": "file refs unresolved",
+      "count": 28,
+      "evidence_scope": "aggregate_cluster",
+      "label": "actionable",
+      "reason": "Root-backed unresolved file/test refs are concrete reference-resolution findings."
+    },
+    {
+      "cluster_key": "command claims without receipts",
+      "count": 26,
+      "evidence_scope": "aggregate_cluster",
+      "label": "unclear",
+      "reason": "Natural PR bodies lack receipt attachment; useful actionability likely needs an explicit report/receipt workflow."
+    },
+    {
+      "cluster_key": "sparse PR bodies",
+      "count": 3,
+      "evidence_scope": "aggregate_cluster",
+      "label": "non_actionable",
+      "reason": "Sparse natural PR bodies are a surface limitation, not a concrete repair item."
+    }
+  ],
+  "notes": [
+    "Labels are reviewer triage over aggregate resolver clusters, not semantic correctness/relevance judgments.",
+    "No raw external PR line text or full resolver receipts are committed."
+  ],
+  "policy_version": "public-pr-receipt-study-policy.v1",
+  "schema_version": "anti-slop-public-pr-actionability.v1",
+  "summary": {
+    "actionable_count": 28,
+    "actionable_rate": 0.0483,
+    "cluster_count": 5,
+    "excluded_count": 0,
+    "non_actionable_count": 277,
+    "non_actionable_rate": 0.4776,
+    "total_labeled_findings": 580,
+    "unclear_count": 275,
+    "unclear_rate": 0.4741
+  }
+}

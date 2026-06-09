@@ -1,0 +1,123 @@
+{
+  "schema_version": "anti-slop-public-pr-receipt-targets.v1",
+  "policy_version": "public-pr-receipt-study-policy.v1",
+  "status": "dry_run_not_adoption",
+  "target_selection_criteria": [
+    "Start from 15-30 popular public AI/devtool repositories with active merged PR traffic.",
+    "Fetch recent merged public PR bodies only; do not fetch private repos or raw external repo contents into git.",
+    "Prefer PR bodies with agent/receipt-ish language: agent, Codex, Claude, Copilot, generated, validation, tests pass, pytest, make, benchmark, metric, score, updated, added, changed, or issue/file/test/commit reference patterns.",
+    "Allow bounded fallback to recent merged PR bodies when a repo has fewer filter matches so sparse PR-body prevalence is measured honestly.",
+    "Run report mode only. No outreach, maintainer contact, comments, external PRs/issues, enforcement, or model calls. No target project tests/builds."
+  ],
+  "fetch_policy": {
+    "tool": "gh pr list over public repositories",
+    "state": "merged",
+    "default_fetch_limit_per_repo": 20,
+    "default_selected_limit_per_repo": 5,
+    "minimum_sample_artifacts": 50,
+    "minimum_sample_repos": 10,
+    "committed_outputs": "aggregate JSON/Markdown only; no raw PR bodies, raw API JSON, raw resolver receipts, temp paths, or external repo contents"
+  },
+  "repositories": [
+    {
+      "repo": "openai/openai-python",
+      "category": "AI SDK",
+      "selection_reason": "popular public AI SDK with active PR traffic"
+    },
+    {
+      "repo": "openai/openai-agents-python",
+      "category": "AI agent SDK",
+      "selection_reason": "public AI agent framework with agent-report-like PR language"
+    },
+    {
+      "repo": "anthropics/anthropic-sdk-python",
+      "category": "AI SDK",
+      "selection_reason": "popular public AI SDK with validation-heavy PR bodies"
+    },
+    {
+      "repo": "pydantic/pydantic-ai",
+      "category": "AI agent framework",
+      "selection_reason": "public Python AI agent framework"
+    },
+    {
+      "repo": "modelcontextprotocol/python-sdk",
+      "category": "AI/devtool protocol SDK",
+      "selection_reason": "public MCP SDK with file/test/issue reference patterns"
+    },
+    {
+      "repo": "browser-use/browser-use",
+      "category": "AI agent framework",
+      "selection_reason": "public AI browser-agent project"
+    },
+    {
+      "repo": "continuedev/continue",
+      "category": "AI devtool",
+      "selection_reason": "popular AI coding assistant/devtool repository"
+    },
+    {
+      "repo": "All-Hands-AI/OpenHands",
+      "category": "AI coding agent",
+      "selection_reason": "popular public AI coding-agent repository"
+    },
+    {
+      "repo": "CrewAIInc/crewAI",
+      "category": "AI agent framework",
+      "selection_reason": "popular public multi-agent framework"
+    },
+    {
+      "repo": "langchain-ai/langchain",
+      "category": "AI framework",
+      "selection_reason": "popular public AI/devtool framework with high PR volume"
+    },
+    {
+      "repo": "run-llama/llama_index",
+      "category": "AI framework",
+      "selection_reason": "popular public AI data/framework repository"
+    },
+    {
+      "repo": "microsoft/autogen",
+      "category": "AI agent framework",
+      "selection_reason": "popular public AI agent framework"
+    },
+    {
+      "repo": "huggingface/transformers",
+      "category": "AI framework",
+      "selection_reason": "popular public AI/devtool repository with validation-heavy PR bodies"
+    },
+    {
+      "repo": "vllm-project/vllm",
+      "category": "AI serving/devtool",
+      "selection_reason": "popular public AI inference/devtool project"
+    },
+    {
+      "repo": "microsoft/semantic-kernel",
+      "category": "AI agent framework",
+      "selection_reason": "popular public AI agent/orchestration framework"
+    },
+    {
+      "repo": "langfuse/langfuse",
+      "category": "AI observability devtool",
+      "selection_reason": "public AI observability/devtool project"
+    },
+    {
+      "repo": "vercel/ai",
+      "category": "AI SDK",
+      "selection_reason": "popular public AI SDK with active PR traffic"
+    },
+    {
+      "repo": "cline/cline",
+      "category": "AI coding agent",
+      "selection_reason": "popular public AI coding-agent repository"
+    },
+    {
+      "repo": "sst/opencode",
+      "category": "AI coding agent",
+      "selection_reason": "public AI coding-agent/devtool repository"
+    },
+    {
+      "repo": "supabase/supabase",
+      "category": "developer platform",
+      "selection_reason": "popular public devtool repository included as adjacent developer-tool control"
+    }
+  ]
+}

@@ -1,0 +1,1757 @@
+{
+  "advisory_count": 523,
+  "advisory_rate": 0.6705,
+  "artifact_count": 50,
+  "artifacts": [
+    {
+      "advisory_count": 0,
+      "artifact_id": "openai-openai-python-0074f1c642",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 4.17,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 0,
+      "line_count": 24,
+      "mode": "report",
+      "repo": "openai/openai-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 18,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 324
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "openai-openai-python-1e6bad4c7f",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 0.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 0,
+      "claim_types": {},
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 10,
+      "mode": "report",
+      "repo": "openai/openai-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 12,
+      "sparse_body": true,
+      "top_reasons": [],
+      "word_count": 51
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "openai-openai-python-17380a8cd2",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 8.33,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 2,
+      "claim_types": {
+        "file": 2
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 0,
+      "line_count": 24,
+      "mode": "report",
+      "repo": "openai/openai-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 9,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 153
+    },
+    {
+      "advisory_count": 1,
+      "artifact_id": "openai-openai-python-7fcf8caed9",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 76.67,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 46,
+      "claim_types": {
+        "commit": 46
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 60,
+      "mode": "report",
+      "repo": "openai/openai-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 8,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ],
+      "word_count": 498
+    },
+    {
+      "advisory_count": 1,
+      "artifact_id": "openai-openai-python-d0c08aad8f",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 21.88,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 7,
+      "claim_types": {
+        "commit": 6,
+        "issue": 1
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 32,
+      "mode": "report",
+      "repo": "openai/openai-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 8,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ],
+      "word_count": 188
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "openai-openai-agents-python-a3f77924d4",
+      "category": "AI agent SDK",
+      "checkable_claims_per_100_lines": 37.5,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 9,
+      "claim_types": {
+        "command_receipt": 3,
+        "file": 6
+      },
+      "hard_claim_count": 9,
+      "hard_unresolved_count": 3,
+      "line_count": 24,
+      "mode": "report",
+      "repo": "openai/openai-agents-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 27,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "command claims without receipts",
+          3
+        ]
+      ],
+      "word_count": 272
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "openai-openai-agents-python-32aee3e1ca",
+      "category": "AI agent SDK",
+      "checkable_claims_per_100_lines": 37.25,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 19,
+      "claim_types": {
+        "command_receipt": 3,
+        "commit": 3,
+        "file": 13
+      },
+      "hard_claim_count": 16,
+      "hard_unresolved_count": 3,
+      "line_count": 51,
+      "mode": "report",
+      "repo": "openai/openai-agents-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 24,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "command claims without receipts",
+          3
+        ]
+      ],
+      "word_count": 574
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "openai-openai-agents-python-7aef63fbbf",
+      "category": "AI agent SDK",
+      "checkable_claims_per_100_lines": 55.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 11,
+      "claim_types": {
+        "file": 11
+      },
+      "hard_claim_count": 11,
+      "hard_unresolved_count": 0,
+      "line_count": 20,
+      "mode": "report",
+      "repo": "openai/openai-agents-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 23,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 237
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "openai-openai-agents-python-448c65c572",
+      "category": "AI agent SDK",
+      "checkable_claims_per_100_lines": 25.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 4,
+      "claim_types": {
+        "command_receipt": 1,
+        "file": 3
+      },
+      "hard_claim_count": 4,
+      "hard_unresolved_count": 1,
+      "line_count": 16,
+      "mode": "report",
+      "repo": "openai/openai-agents-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 20,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 99
+    },
+    {
+      "advisory_count": 2,
+      "artifact_id": "openai-openai-agents-python-e70b8b3437",
+      "category": "AI agent SDK",
+      "checkable_claims_per_100_lines": 18.52,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 5,
+      "claim_types": {
+        "command_receipt": 2,
+        "file": 1,
+        "issue": 2
+      },
+      "hard_claim_count": 3,
+      "hard_unresolved_count": 2,
+      "line_count": 27,
+      "mode": "report",
+      "repo": "openai/openai-agents-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 20,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "command claims without receipts",
+          2
+        ]
+      ],
+      "word_count": 159
+    },
+    {
+      "advisory_count": 3,
+      "artifact_id": "anthropics-anthropic-sdk-python-9e758ca8ca",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 30.3,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 10,
+      "claim_types": {
+        "commit": 8,
+        "issue": 2
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 33,
+      "mode": "report",
+      "repo": "anthropics/anthropic-sdk-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 18,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ],
+      "word_count": 229
+    },
+    {
+      "advisory_count": 3,
+      "artifact_id": "anthropics-anthropic-sdk-python-4924a02ee2",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 40.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 16,
+      "claim_types": {
+        "commit": 14,
+        "issue": 2
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 40,
+      "mode": "report",
+      "repo": "anthropics/anthropic-sdk-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 17,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ],
+      "word_count": 273
+    },
+    {
+      "advisory_count": 3,
+      "artifact_id": "anthropics-anthropic-sdk-python-648a3c2d04",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 30.3,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 10,
+      "claim_types": {
+        "commit": 8,
+        "issue": 2
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 33,
+      "mode": "report",
+      "repo": "anthropics/anthropic-sdk-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 13,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ],
+      "word_count": 232
+    },
+    {
+      "advisory_count": 4,
+      "artifact_id": "anthropics-anthropic-sdk-python-190b7df047",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 44.44,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 16,
+      "claim_types": {
+        "commit": 14,
+        "issue": 2
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 36,
+      "mode": "report",
+      "repo": "anthropics/anthropic-sdk-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 13,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          2
+        ]
+      ],
+      "word_count": 276
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "anthropics-anthropic-sdk-python-b2d6420bf5",
+      "category": "AI SDK",
+      "checkable_claims_per_100_lines": 9.38,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 3,
+      "claim_types": {
+        "file": 3
+      },
+      "hard_claim_count": 3,
+      "hard_unresolved_count": 0,
+      "line_count": 32,
+      "mode": "report",
+      "repo": "anthropics/anthropic-sdk-python",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 12,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 166
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "pydantic-pydantic-ai-672f8a9a50",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 11.11,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "line_count": 9,
+      "mode": "report",
+      "repo": "pydantic/pydantic-ai",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 19,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          1
+        ]
+      ],
+      "word_count": 191
+    },
+    {
+      "advisory_count": 264,
+      "artifact_id": "pydantic-pydantic-ai-e82bbc678c",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 37.03,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 267,
+      "claim_types": {
+        "commit": 136,
+        "file": 3,
+        "issue": 128
+      },
+      "hard_claim_count": 3,
+      "hard_unresolved_count": 3,
+      "line_count": 721,
+      "mode": "report",
+      "repo": "pydantic/pydantic-ai",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 18,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          136
+        ],
+        [
+          "issue refs advisory without registry",
+          128
+        ],
+        [
+          "file refs unresolved",
+          3
+        ]
+      ],
+      "word_count": 10249
+    },
+    {
+      "advisory_count": 1,
+      "artifact_id": "pydantic-pydantic-ai-5fcd89b3c4",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 60.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 12,
+      "claim_types": {
+        "file": 6,
+        "issue": 1,
+        "test": 5
+      },
+      "hard_claim_count": 11,
+      "hard_unresolved_count": 1,
+      "line_count": 20,
+      "mode": "report",
+      "repo": "pydantic/pydantic-ai",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 17,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          1
+        ],
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ],
+      "word_count": 164
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "pydantic-pydantic-ai-fce2c96451",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 0.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 0,
+      "claim_types": {},
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 1,
+      "mode": "report",
+      "repo": "pydantic/pydantic-ai",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 17,
+      "sparse_body": true,
+      "top_reasons": [],
+      "word_count": 49
+    },
+    {
+      "advisory_count": 1,
+      "artifact_id": "pydantic-pydantic-ai-0204392734",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 29.17,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 7,
+      "claim_types": {
+        "file": 6,
+        "issue": 1
+      },
+      "hard_claim_count": 6,
+      "hard_unresolved_count": 1,
+      "line_count": 24,
+      "mode": "report",
+      "repo": "pydantic/pydantic-ai",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 16,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          1
+        ],
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ],
+      "word_count": 570
+    },
+    {
+      "advisory_count": 1,
+      "artifact_id": "modelcontextprotocol-python-sdk-a40acec887",
+      "category": "AI/devtool protocol SDK",
+      "checkable_claims_per_100_lines": 13.33,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 6,
+      "claim_types": {
+        "command_receipt": 2,
+        "commit": 1,
+        "file": 3
+      },
+      "hard_claim_count": 5,
+      "hard_unresolved_count": 2,
+      "line_count": 45,
+      "mode": "report",
+      "repo": "modelcontextprotocol/python-sdk",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 27,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "command claims without receipts",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ]
+      ],
+      "word_count": 663
+    },
+    {
+      "advisory_count": 5,
+      "artifact_id": "modelcontextprotocol-python-sdk-9f1c855fc7",
+      "category": "AI/devtool protocol SDK",
+      "checkable_claims_per_100_lines": 19.61,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 10,
+      "claim_types": {
+        "command_receipt": 1,
+        "commit": 1,
+        "file": 4,
+        "issue": 4
+      },
+      "hard_claim_count": 5,
+      "hard_unresolved_count": 1,
+      "line_count": 51,
+      "mode": "report",
+      "repo": "modelcontextprotocol/python-sdk",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 22,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          4
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ],
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 755
+    },
+    {
+      "advisory_count": 1,
+      "artifact_id": "modelcontextprotocol-python-sdk-bb3f3de814",
+      "category": "AI/devtool protocol SDK",
+      "checkable_claims_per_100_lines": 16.98,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 9,
+      "claim_types": {
+        "command_receipt": 1,
+        "commit": 1,
+        "file": 7
+      },
+      "hard_claim_count": 8,
+      "hard_unresolved_count": 1,
+      "line_count": 53,
+      "mode": "report",
+      "repo": "modelcontextprotocol/python-sdk",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 22,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ],
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 678
+    },
+    {
+      "advisory_count": 2,
+      "artifact_id": "modelcontextprotocol-python-sdk-7976378c3d",
+      "category": "AI/devtool protocol SDK",
+      "checkable_claims_per_100_lines": 12.5,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 6,
+      "claim_types": {
+        "command_receipt": 1,
+        "commit": 1,
+        "file": 2,
+        "issue": 1,
+        "test": 1
+      },
+      "hard_claim_count": 4,
+      "hard_unresolved_count": 2,
+      "line_count": 48,
+      "mode": "report",
+      "repo": "modelcontextprotocol/python-sdk",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 20,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          1
+        ],
+        [
+          "issue refs advisory without registry",
+          1
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ],
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 444
+    },
+    {
+      "advisory_count": 2,
+      "artifact_id": "modelcontextprotocol-python-sdk-52b4eb1524",
+      "category": "AI/devtool protocol SDK",
+      "checkable_claims_per_100_lines": 6.67,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 3,
+      "claim_types": {
+        "command_receipt": 1,
+        "commit": 1,
+        "issue": 1
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "line_count": 45,
+      "mode": "report",
+      "repo": "modelcontextprotocol/python-sdk",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 19,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          1
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          1
+        ],
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 616
+    },
+    {
+      "advisory_count": 3,
+      "artifact_id": "browser-use-browser-use-0b94b7b09a",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 21.43,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 9,
+      "claim_types": {
+        "command_receipt": 2,
+        "commit": 1,
+        "file": 3,
+        "issue": 3
+      },
+      "hard_claim_count": 5,
+      "hard_unresolved_count": 3,
+      "line_count": 42,
+      "mode": "report",
+      "repo": "browser-use/browser-use",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 29,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          3
+        ],
+        [
+          "command claims without receipts",
+          2
+        ],
+        [
+          "file refs unresolved",
+          1
+        ]
+      ],
+      "word_count": 490
+    },
+    {
+      "advisory_count": 3,
+      "artifact_id": "browser-use-browser-use-dacf61b217",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 9.23,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 6,
+      "claim_types": {
+        "command_receipt": 1,
+        "commit": 1,
+        "file": 1,
+        "issue": 3
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 1,
+      "line_count": 65,
+      "mode": "report",
+      "repo": "browser-use/browser-use",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 25,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          3
+        ],
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 487
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "browser-use-browser-use-f77a0681bd",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 28.12,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 9,
+      "claim_types": {
+        "command_receipt": 2,
+        "commit": 1,
+        "file": 6
+      },
+      "hard_claim_count": 8,
+      "hard_unresolved_count": 2,
+      "line_count": 32,
+      "mode": "report",
+      "repo": "browser-use/browser-use",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 21,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "command claims without receipts",
+          2
+        ]
+      ],
+      "word_count": 368
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "browser-use-browser-use-4e979b1ccb",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 9.52,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 2,
+      "claim_types": {
+        "commit": 1,
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 0,
+      "line_count": 21,
+      "mode": "report",
+      "repo": "browser-use/browser-use",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 20,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 317
+    },
+    {
+      "advisory_count": 3,
+      "artifact_id": "browser-use-browser-use-933de6ea2a",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 10.29,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 7,
+      "claim_types": {
+        "commit": 1,
+        "file": 3,
+        "issue": 3
+      },
+      "hard_claim_count": 3,
+      "hard_unresolved_count": 1,
+      "line_count": 68,
+      "mode": "report",
+      "repo": "browser-use/browser-use",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 20,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          3
+        ],
+        [
+          "file refs unresolved",
+          1
+        ]
+      ],
+      "word_count": 515
+    },
+    {
+      "advisory_count": 2,
+      "artifact_id": "continuedev-continue-eff60170c9",
+      "category": "AI devtool",
+      "checkable_claims_per_100_lines": 7.32,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 3,
+      "claim_types": {
+        "commit": 3
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 41,
+      "mode": "report",
+      "repo": "continuedev/continue",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 19,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          2
+        ]
+      ],
+      "word_count": 431
+    },
+    {
+      "advisory_count": 44,
+      "artifact_id": "continuedev-continue-4ede447fb5",
+      "category": "AI devtool",
+      "checkable_claims_per_100_lines": 33.58,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 45,
+      "claim_types": {
+        "commit": 20,
+        "issue": 25
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 134,
+      "mode": "report",
+      "repo": "continuedev/continue",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 17,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          25
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          19
+        ]
+      ],
+      "word_count": 1612
+    },
+    {
+      "advisory_count": 55,
+      "artifact_id": "continuedev-continue-c2b8e1d881",
+      "category": "AI devtool",
+      "checkable_claims_per_100_lines": 47.06,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 56,
+      "claim_types": {
+        "commit": 43,
+        "file": 1,
+        "issue": 12
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 0,
+      "line_count": 119,
+      "mode": "report",
+      "repo": "continuedev/continue",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 14,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          43
+        ],
+        [
+          "issue refs advisory without registry",
+          12
+        ]
+      ],
+      "word_count": 1051
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "continuedev-continue-92e4ab4e41",
+      "category": "AI devtool",
+      "checkable_claims_per_100_lines": 3.85,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 1,
+      "claim_types": {
+        "commit": 1
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 26,
+      "mode": "report",
+      "repo": "continuedev/continue",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 14,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 178
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "continuedev-continue-2c809ea5c8",
+      "category": "AI devtool",
+      "checkable_claims_per_100_lines": 28.57,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 2,
+      "claim_types": {
+        "command_receipt": 2
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 2,
+      "line_count": 7,
+      "mode": "report",
+      "repo": "continuedev/continue",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 13,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "command claims without receipts",
+          2
+        ]
+      ],
+      "word_count": 86
+    },
+    {
+      "advisory_count": 10,
+      "artifact_id": "all-hands-ai-openhands-b8afd94b61",
+      "category": "AI coding agent",
+      "checkable_claims_per_100_lines": 32.2,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 19,
+      "claim_types": {
+        "command_receipt": 1,
+        "commit": 2,
+        "file": 8,
+        "issue": 8
+      },
+      "hard_claim_count": 9,
+      "hard_unresolved_count": 8,
+      "line_count": 59,
+      "mode": "report",
+      "repo": "All-Hands-AI/OpenHands",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 33,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          8
+        ],
+        [
+          "file refs unresolved",
+          7
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          2
+        ],
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 799
+    },
+    {
+      "advisory_count": 4,
+      "artifact_id": "all-hands-ai-openhands-40906c3397",
+      "category": "AI coding agent",
+      "checkable_claims_per_100_lines": 17.31,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 9,
+      "claim_types": {
+        "command_receipt": 1,
+        "commit": 5,
+        "file": 1,
+        "issue": 2
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 1,
+      "line_count": 52,
+      "mode": "report",
+      "repo": "All-Hands-AI/OpenHands",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 29,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          2
+        ],
+        [
+          "command claims without receipts",
+          1
+        ]
+      ],
+      "word_count": 635
+    },
+    {
+      "advisory_count": 5,
+      "artifact_id": "all-hands-ai-openhands-9ea702613b",
+      "category": "AI coding agent",
+      "checkable_claims_per_100_lines": 41.67,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 10,
+      "claim_types": {
+        "command_receipt": 2,
+        "commit": 2,
+        "file": 2,
+        "issue": 3,
+        "test": 1
+      },
+      "hard_claim_count": 5,
+      "hard_unresolved_count": 2,
+      "line_count": 24,
+      "mode": "report",
+      "repo": "All-Hands-AI/OpenHands",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 24,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          3
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          2
+        ],
+        [
+          "command claims without receipts",
+          2
+        ]
+      ],
+      "word_count": 211
+    },
+    {
+      "advisory_count": 3,
+      "artifact_id": "all-hands-ai-openhands-f61f599146",
+      "category": "AI coding agent",
+      "checkable_claims_per_100_lines": 14.06,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 9,
+      "claim_types": {
+        "commit": 2,
+        "file": 6,
+        "issue": 1
+      },
+      "hard_claim_count": 6,
+      "hard_unresolved_count": 2,
+      "line_count": 64,
+      "mode": "report",
+      "repo": "All-Hands-AI/OpenHands",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 19,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          2
+        ],
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ],
+      "word_count": 317
+    },
+    {
+      "advisory_count": 4,
+      "artifact_id": "all-hands-ai-openhands-18a2dc5a85",
+      "category": "AI coding agent",
+      "checkable_claims_per_100_lines": 14.29,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 6,
+      "claim_types": {
+        "commit": 2,
+        "file": 2,
+        "issue": 2
+      },
+      "hard_claim_count": 2,
+      "hard_unresolved_count": 2,
+      "line_count": 42,
+      "mode": "report",
+      "repo": "All-Hands-AI/OpenHands",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 18,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          2
+        ],
+        [
+          "issue refs advisory without registry",
+          2
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          2
+        ]
+      ],
+      "word_count": 321
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "crewaiinc-crewai-8464d88d2c",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 4.55,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 2,
+      "claim_types": {
+        "commit": 1,
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 0,
+      "line_count": 44,
+      "mode": "report",
+      "repo": "CrewAIInc/crewAI",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 18,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 456
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "crewaiinc-crewai-2b56fde052",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 8.33,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 1,
+      "claim_types": {
+        "commit": 1
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 12,
+      "mode": "report",
+      "repo": "CrewAIInc/crewAI",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 18,
+      "sparse_body": false,
+      "top_reasons": [],
+      "word_count": 136
+    },
+    {
+      "advisory_count": 2,
+      "artifact_id": "crewaiinc-crewai-c90bdfcf73",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 12.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 3,
+      "claim_types": {
+        "commit": 1,
+        "issue": 2
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 25,
+      "mode": "report",
+      "repo": "CrewAIInc/crewAI",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 16,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          2
+        ]
+      ],
+      "word_count": 166
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "crewaiinc-crewai-8b273b9708",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 5.71,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 2,
+      "claim_types": {
+        "commit": 1,
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "line_count": 35,
+      "mode": "report",
+      "repo": "CrewAIInc/crewAI",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 16,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          1
+        ]
+      ],
+      "word_count": 264
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "crewaiinc-crewai-185c0ffc48",
+      "category": "AI agent framework",
+      "checkable_claims_per_100_lines": 5.71,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 2,
+      "claim_types": {
+        "commit": 1,
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "line_count": 35,
+      "mode": "report",
+      "repo": "CrewAIInc/crewAI",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 14,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "file refs unresolved",
+          1
+        ]
+      ],
+      "word_count": 372
+    },
+    {
+      "advisory_count": 37,
+      "artifact_id": "langchain-ai-langchain-74cee002bc",
+      "category": "AI framework",
+      "checkable_claims_per_100_lines": 28.57,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 38,
+      "claim_types": {
+        "commit": 20,
+        "file": 1,
+        "issue": 17
+      },
+      "hard_claim_count": 1,
+      "hard_unresolved_count": 1,
+      "line_count": 133,
+      "mode": "report",
+      "repo": "langchain-ai/langchain",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 16,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          20
+        ],
+        [
+          "issue refs advisory without registry",
+          17
+        ],
+        [
+          "file refs unresolved",
+          1
+        ]
+      ],
+      "word_count": 2072
+    },
+    {
+      "advisory_count": 1,
+      "artifact_id": "langchain-ai-langchain-66dd886148",
+      "category": "AI framework",
+      "checkable_claims_per_100_lines": 4.35,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 1,
+      "claim_types": {
+        "issue": 1
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 23,
+      "mode": "report",
+      "repo": "langchain-ai/langchain",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 15,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          1
+        ]
+      ],
+      "word_count": 157
+    },
+    {
+      "advisory_count": 0,
+      "artifact_id": "langchain-ai-langchain-bdd395f426",
+      "category": "AI framework",
+      "checkable_claims_per_100_lines": 0.0,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 0,
+      "claim_types": {},
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 5,
+      "mode": "report",
+      "repo": "langchain-ai/langchain",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 15,
+      "sparse_body": true,
+      "top_reasons": [],
+      "word_count": 115
+    },
+    {
+      "advisory_count": 28,
+      "artifact_id": "langchain-ai-langchain-e4b6a81fbe",
+      "category": "AI framework",
+      "checkable_claims_per_100_lines": 35.11,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 33,
+      "claim_types": {
+        "commit": 13,
+        "file": 5,
+        "issue": 15
+      },
+      "hard_claim_count": 5,
+      "hard_unresolved_count": 5,
+      "line_count": 94,
+      "mode": "report",
+      "repo": "langchain-ai/langchain",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 11,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "issue refs advisory without registry",
+          15
+        ],
+        [
+          "commit refs advisory under local-git resolution",
+          13
+        ],
+        [
+          "file refs unresolved",
+          5
+        ]
+      ],
+      "word_count": 1101
+    },
+    {
+      "advisory_count": 25,
+      "artifact_id": "langchain-ai-langchain-d6f4393c3f",
+      "category": "AI framework",
+      "checkable_claims_per_100_lines": 39.68,
+      "checkout_ref_mode": "merge_commit",
+      "checkout_status": "checked_out",
+      "claim_count": 25,
+      "claim_types": {
+        "commit": 20,
+        "issue": 5
+      },
+      "hard_claim_count": 0,
+      "hard_unresolved_count": 0,
+      "line_count": 63,
+      "mode": "report",
+      "repo": "langchain-ai/langchain",
+      "root_mode": "temporary_public_checkout",
+      "selection_mode": "filter_match",
+      "selection_score": 10,
+      "sparse_body": false,
+      "top_reasons": [
+        [
+          "commit refs advisory under local-git resolution",
+          20
+        ],
+        [
+          "issue refs advisory without registry",
+          5
+        ]
+      ],
+      "word_count": 873
+    }
+  ],
+  "blockers": [],
+  "checkable_claim_count": 780,
+  "checkable_claims_per_100_lines": 28.43,
+  "checkout_blocked_count": 0,
+  "checkout_success_count": 50,
+  "fetch_limit_per_repo": 20,
+  "fetch_records": [
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 19,
+      "repo": "openai/openai-python",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 17,
+      "repo": "openai/openai-agents-python",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 20,
+      "repo": "anthropics/anthropic-sdk-python",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 20,
+      "repo": "pydantic/pydantic-ai",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 20,
+      "repo": "modelcontextprotocol/python-sdk",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 20,
+      "repo": "browser-use/browser-use",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 20,
+      "repo": "continuedev/continue",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 20,
+      "repo": "All-Hands-AI/OpenHands",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 20,
+      "repo": "CrewAIInc/crewAI",
+      "selected": 5,
+      "status": "fetched"
+    },
+    {
+      "fallback_selected": 0,
+      "fetched": 20,
+      "filter_matches": 16,
+      "repo": "langchain-ai/langchain",
+      "selected": 5,
+      "status": "fetched"
+    }
+  ],
+  "hard_claim_count": 148,
+  "hard_unresolved_count": 54,
+  "hard_unresolved_rate": 0.3649,
+  "notes": [
+    "Report mode only; no outreach, comments, external PRs/issues, maintainer contact, or enforcement.",
+    "No target project tests/builds were run; checkouts were used only for deterministic reference resolution.",
+    "Committed outputs omit raw PR body text, raw resolver receipts, raw API JSON, temp paths, and external repo contents.",
+    "Findings are reference/receipt-resolution facts only; not correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon."
+  ],
+  "policy_version": "public-pr-receipt-study-policy.v1",
+  "recent_sparse_candidate_count": 10,
+  "repo_count": 10,
+  "repos": [
+    "All-Hands-AI/OpenHands",
+    "CrewAIInc/crewAI",
+    "anthropics/anthropic-sdk-python",
+    "browser-use/browser-use",
+    "continuedev/continue",
+    "langchain-ai/langchain",
+    "modelcontextprotocol/python-sdk",
+    "openai/openai-agents-python",
+    "openai/openai-python",
+    "pydantic/pydantic-ai"
+  ],
+  "requested_artifact_count": 50,
+  "requested_repo_count": 10,
+  "sample_status": "sufficient_public_pr_sample",
+  "sampled_artifact_count_by_repo": {
+    "All-Hands-AI/OpenHands": 5,
+    "CrewAIInc/crewAI": 5,
+    "anthropics/anthropic-sdk-python": 5,
+    "browser-use/browser-use": 5,
+    "continuedev/continue": 5,
+    "langchain-ai/langchain": 5,
+    "modelcontextprotocol/python-sdk": 5,
+    "openai/openai-agents-python": 5,
+    "openai/openai-python": 5,
+    "pydantic/pydantic-ai": 5
+  },
+  "schema_version": "anti-slop-public-pr-receipt-study.v1",
+  "selected_by": {
+    "filter_match": 50
+  },
+  "selected_limit_per_repo": 5,
+  "sparse_pr_body_count": 3,
+  "status": "dry_run_not_adoption",
+  "surface_comparison": {
+    "agent_final_report": "not directly sampled in this public-repo loop; existing dogfood reports show the structured surface can carry command receipts, but external adoption evidence is still needed",
+    "current_hypothesis": "AGENT_FINAL_REPORT.md is likely a cleaner receipt surface than natural PR bodies when teams want command/metric receipts, because natural PR bodies often mention validation without attaching machine-readable receipts",
+    "natural_pr_bodies": "sampled here"
+  },
+  "target": "recent merged public PR bodies from popular AI/devtool repos",
+  "top_claim_types": [
+    {
+      "count": 383,
+      "type": "commit"
+    },
+    {
+      "count": 249,
+      "type": "issue"
+    },
+    {
+      "count": 115,
+      "type": "file"
+    },
+    {
+      "count": 26,
+      "type": "command_receipt"
+    },
+    {
+      "count": 7,
+      "type": "test"
+    }
+  ],
+  "top_reasons": [
+    {
+      "count": 274,
+      "reason": "commit refs advisory under local-git resolution"
+    },
+    {
+      "count": 249,
+      "reason": "issue refs advisory without registry"
+    },
+    {
+      "count": 28,
+      "reason": "file refs unresolved"
+    },
+    {
+      "count": 26,
+      "reason": "command claims without receipts"
+    },
+    {
+      "count": 3,
+      "reason": "sparse PR bodies"
+    }
+  ],
+  "total_lines": 2744
+}
