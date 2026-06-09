@@ -1,13 +1,16 @@
 # Launch Decision
 
-Decision: tag_created_no_outreach
+Decision: clean_v011_tag_path
 
 This decision is based on the current committed proof artifacts. It is not a
 public launch approval, not an outreach authorization, and not a release/tag
-approval for any future tag. The `anti-slop-receipts-v0.1.0` tag was created
-with operator approval at `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`.
-No outreach, GitHub release, external PR/comment, maintainer contact,
-enforcement workflow, or enforcement default change is approved by that tag.
+approval for any future tag. The historical `anti-slop-receipts-v0.1.0` tag
+exists and must not be force-moved. The clean public tag path after PR #46 is
+`anti-slop-receipts-v0.1.1`. No outreach, GitHub release, external PR/comment,
+maintainer contact, enforcement workflow, or enforcement default change is
+approved by either tag.
+Operator approval is still required before any GitHub release, outreach,
+external maintainer contact, or enforcement default change.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It
 does not prove correctness, relevance, source truth, support, safety, advice
@@ -20,9 +23,16 @@ PR #46 finalization: `docs/tag-approval-packet.md` inside the tag says
 Decision: `ready_to_request_operator_tag`, candidate
 `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.
 The installable package smoke passes, but the tag's embedded docs predate PR
-#46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or
-the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and
-fresh tag-install proof passes.
+#46 finalization. GitHub release from v0.1.0 requires explicit disclosure.
+
+## v0.1.1 Source-Doc Invariant
+
+`anti-slop-receipts-v0.1.1` is the clean tag path after PR #46. This source
+tree is written to remain truthful when viewed before tag creation, after tag
+creation, and when viewed from the tag itself. Do not force-move any tag.
+The post-tag install proof may live outside the tag commit because it can only be
+generated after the tag exists. Absence of post-tag proof inside the tagged
+source tree is expected, not stale-doc evidence.
 
 ## Evidence Links
 
@@ -70,8 +80,8 @@ fresh tag-install proof passes.
   100.0% expectation match, 100.0% catch rate over enforceable false cases, and
   0.0% false-fail rate.
 - install success: UNKNOWN for external adopters. Local install and package
-  smokes pass; the fresh public git/SHA install smoke and the pushed-tag install
-  smoke pass. There are still no external adopter install attempts.
+  smokes pass; the fresh public git/SHA install smoke and pushed-tag install
+  smokes pass. There are still no external adopter install attempts.
 - actionability labels: FAIL for launch. Aggregate labels over the expanded
   sample record 0.0% actionable and 66.7% non-actionable over non-excluded
   findings; 8 root-unavailable path failures are excluded.
@@ -103,12 +113,13 @@ fresh tag-install proof passes.
 The real checkout loop answered the immediate falsifier: empty-root failures
 were too noisy, but selected real public checkout roots produced concrete,
 reviewer-actionable receipt-resolution findings. That is enough to prepare a
-tag-only operator gate for reproducible installs. That gate produced and pushed
-`anti-slop-receipts-v0.1.0`.
+tag-only operator gate for reproducible installs. That gate produced
+`anti-slop-receipts-v0.1.0`, and PR #46 disclosed why v0.1.1 is the clean tag
+path.
 
 This is not enough for outreach or enforcement. External install success is
 UNKNOWN, maintainer keep-rate is UNKNOWN, platform clone risk is UNKNOWN, and no
-maintainer has opted in. The next narrow tranche should decide whether to
-create a GitHub release from the existing tag or keep collecting external
+maintainer has opted in. The next narrow tranche should decide whether to send
+the clean v0.1.1 tag to Pro Mode launch review or keep collecting external
 install/adoption evidence. Outreach remains out of scope until after a separate
 opt-in decision.

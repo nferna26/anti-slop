@@ -9,17 +9,24 @@ receipts, and simple metric receipts resolve against the local repo state.
 It is intentionally narrow. A PASS means the cited references/receipts resolved.
 It does **not** prove correctness, relevance, source truth, support, safety,
 advice quality, reasoning, benchmark validity, statistical meaning, or canon.
-The `anti-slop-receipts-v0.1.0` tag is available for pinned installs. There is
-no outreach, GitHub release, or enforcement workflow approved by that tag.
+The `anti-slop-receipts-v0.1.1` tag is the clean public tag path after PR #46.
+The historical `anti-slop-receipts-v0.1.0` tag remains available for pinned
+installs and must not be force-moved. There is no outreach, GitHub release, or
+enforcement workflow approved by either tag.
 Release status remains deterministic reference/receipt resolution only; no
 outreach, future tag, GitHub release, or enforcement action happens without
 operator approval.
 
 Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The
-installable package smoke passes, but `docs/tag-approval-packet.md` inside the
-tag still says the pre-finalization state. GitHub release from v0.1.0 requires
-explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1`
-after PR #46 merges and fresh tag-install proof passes.
+v0.1.0 installable package smoke passes, but `docs/tag-approval-packet.md`
+inside that tag still says the pre-finalization state. GitHub release from
+v0.1.0 requires explicit disclosure.
+
+v0.1.1 Source-Doc Invariant: `anti-slop-receipts-v0.1.1` source docs are
+written to remain truthful when viewed before tag creation, after tag creation,
+and when viewed from the tag itself. The post-tag install proof may live outside the
+tag commit because it can only be generated after the tag exists. Do not
+force-move any tag.
 
 ## Problem
 
@@ -43,7 +50,7 @@ store, telemetry, GitHub API, or token requirement.
 Pinned install from the public tag:
 
 ```sh
-pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1"
 anti-slop-claims --self-test
 anti-slop-run --self-test
 anti-slop-pr-event --self-test
@@ -195,13 +202,13 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
 - [`docs/release-install-plan.md`](docs/release-install-plan.md):
   release/tag readiness, reproducible tag/SHA pin flow, and adopter update path.
 - [`docs/tag-approval-packet.md`](docs/tag-approval-packet.md):
-  tag approval packet and no-outreach boundary for `anti-slop-receipts-v0.1.0`.
+  tag approval packet and no-outreach boundary for `anti-slop-receipts-v0.1.1`.
 - [`docs/operator-tag-decision.md`](docs/operator-tag-decision.md):
   tag target and operator decision record.
 - [`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md):
   fresh public git/SHA install smoke for the candidate commit.
 - [`proof/tag-install-smoke/summary.md`](proof/tag-install-smoke/summary.md):
-  fresh public tag install smoke for `anti-slop-receipts-v0.1.0`.
+  fresh public tag install smoke for the current clean tag path.
 - [`docs/privacy-security.md`](docs/privacy-security.md): local execution,
   receipt contents, artifact upload risk, and forbidden content.
 - [`docs/launch-checklist.md`](docs/launch-checklist.md): machine and manual

@@ -31,6 +31,7 @@ ALLOWED_DECISIONS = {
     "continue_private_learning_loop",
     "prepare_tag_only",
     "tag_created_no_outreach",
+    "clean_v011_tag_path",
     "prepare_opt_in_outreach",
     "pause_or_narrow",
 }
@@ -71,6 +72,9 @@ def check_release_plan(errors: list[str]) -> None:
         "anti-slop-lineage remains the Python distribution",
         "operator approval",
         "anti-slop-receipts-v0.1.0",
+        "anti-slop-receipts-v0.1.1",
+        "v0.1.1 Source-Doc Invariant",
+        "post-tag install proof may live outside the tag commit",
         "pip install \"anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>\"",
         "full commit SHA",
         "release readiness checklist",
@@ -80,6 +84,8 @@ def check_release_plan(errors: list[str]) -> None:
     require_snippets(RELEASE_NOTES, [
         "Draft release notes",
         "anti-slop-receipts-v0.1.0",
+        "anti-slop-receipts-v0.1.1",
+        "v0.1.1 Source-Doc Invariant",
         "No GitHub release has been created",
         "deterministic reference/receipt resolution only",
         "anti-slop-claims",

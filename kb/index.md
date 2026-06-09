@@ -11,12 +11,14 @@ receipts.
 - [Agent report contract](../docs/agent-report-contract.md): copyable `AGENT_FINAL_REPORT.md` structure and receipt examples for `pytest`, `npm`, `pnpm`, `cargo`, `go`, and `make`.
 - [Install Anti-Slop Receipts (agent protocol)](../INSTALL_FOR_AGENTS.md): point a coding agent at this to install `anti-slop-claims` / `anti-slop-run`, wire report-mode CI, and open a PR (short entrypoint: [`llms.txt`](../llms.txt)).
 - [Package/install naming](../docs/package-install-naming.md): Anti-Slop Receipts product name, current `anti-slop-lineage` distribution, command hierarchy, and pinned install posture.
-- [Release/install plan](../docs/release-install-plan.md): `anti-slop-receipts-v0.1.0` tag status, exact tag/SHA pin examples, adopter update path, and operator-approval boundary for future releases.
-- [Tag approval packet](../docs/tag-approval-packet.md): tag target, evidence links, fresh/tag-install results, residual UNKNOWNs, and no-release/no-outreach boundary.
-- [Operator tag decision memo](../docs/operator-tag-decision.md): exact `anti-slop-receipts-v0.1.0` target and operator decision record.
+- [Release/install plan](../docs/release-install-plan.md): `anti-slop-receipts-v0.1.1` clean tag path, historical `anti-slop-receipts-v0.1.0` disclosure, exact tag/SHA pin examples, adopter update path, and operator-approval boundary for future releases.
+- [Tag approval packet](../docs/tag-approval-packet.md): clean v0.1.1 tag path, source-doc invariant, evidence links, fresh/tag-install results, residual UNKNOWNs, and no-release/no-outreach boundary.
+- [Operator tag decision memo](../docs/operator-tag-decision.md): clean `anti-slop-receipts-v0.1.1` path, operator boundary, and no-release/no-outreach decision record.
 - [Fresh install smoke](../proof/fresh-install-smoke/summary.md): candidate commit installed from public git/SHA in temporary storage; installed CLIs and report-mode demo passed.
-- [Tag install smoke](../proof/tag-install-smoke/summary.md): pushed `anti-slop-receipts-v0.1.0` tag installed in temporary storage; installed CLIs and report-mode demo passed.
-- Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes.
+- [Tag install smoke](../proof/tag-install-smoke/summary.md): current clean tag path install smoke; post-tag proof may live outside the tag commit because it can only be generated after the tag exists.
+- [Historical v0.1.0 tag install smoke](../proof/tag-install-smoke/v0.1.0/summary.md): pushed `anti-slop-receipts-v0.1.0` tag installed in temporary storage; installed CLIs and report-mode demo passed.
+- Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. GitHub release from v0.1.0 requires explicit disclosure.
+- v0.1.1 Source-Doc Invariant: `anti-slop-receipts-v0.1.1` source docs remain truthful when viewed before tag creation, after tag creation, and from the tag itself; the post-tag install proof may live outside the tag commit. Do not force-move any tag.
 - [Privacy and security](../docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry/API/model/token runtime, and forbidden report/receipt content.
 - [Launch checklist](../docs/launch-checklist.md): machine and manual launch gates, including `make launch-check`.
 - [Demo repo assets](../docs/demo-repo.md): reproducible fake-report/receipt-backed demo, Step Summary/report-mode flow, screenshot/GIF checklist, and launch copy.

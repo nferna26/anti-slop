@@ -25,9 +25,11 @@ SUMMARY_MD = OUT_DIR / "summary.md"
 REPO_URL = "https://github.com/nferna26/anti-slop.git"
 PACKAGE_SPEC_BASE = "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 SCHEMA = "anti-slop-tag-install-smoke.v1"
-TAG_NAME = "anti-slop-receipts-v0.1.0"
-TARGET_COMMIT = "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649"
+TAG_NAME = "anti-slop-receipts-v0.1.1"
+LEGACY_TAG_NAME = "anti-slop-receipts-v0.1.0"
 STALE_TAG_DOC_CANDIDATE = "4bda4fd727018a2a027ba8c660c48c30b8aa2144"
+SOURCE_INVARIANT = "v0.1.1 Source-Doc Invariant"
+POST_TAG_PROOF = "post-tag install proof may live outside the tag commit"
 COMMANDS = [
     "anti-slop-lineage",
     "anti-slop-pr",
@@ -70,7 +72,7 @@ def unavailable_summary(stage: str, status: str = "fail") -> dict[str, Any]:
         "schema_version": SCHEMA,
         "status": status,
         "tag_name": TAG_NAME,
-        "target_commit": TARGET_COMMIT,
+        "target_commit": "",
         "repository": "nferna26/anti-slop",
         "install_spec": f"{PACKAGE_SPEC_BASE}@{TAG_NAME}",
         "failed_stage": stage,
@@ -103,32 +105,49 @@ def remote_tag_target() -> dict[str, str]:
             peeled = sha
     if not direct and not peeled:
         return {"status": "missing"}
-    return {
-        "status": "pass" if (peeled or direct) == TARGET_COMMIT else "fail",
-        "tag_object": direct,
-        "peeled_commit": peeled or direct,
-    }
+    return {"status": "pass", "tag_object": direct, "peeled_commit": peeled or direct}
+
+
+def paragraphs(text: str) -> list[str]:
+    return [block.strip() for block in re.split(r"\n\s*\n", text) if block.strip()]
+
+
+def has_v011_stale_mixing(text: str) -> bool:
+    for paragraph in paragraphs(text):
+        if TAG_NAME not in paragraph:
+            continue
+        if (
+            "No tag has been created" in paragraph
+            or "ready_to_request_operator_tag" in paragraph
+        ):
+            return True
+    return False
 
 
 def tag_source_docs() -> dict[str, Any]:
     packet = run(["git", "show", f"{TAG_NAME}:docs/tag-approval-packet.md"])
     text = packet.stdout if packet.returncode == 0 else ""
-    stale = (
-        "Decision: ready_to_request_operator_tag" in text
-        and STALE_TAG_DOC_CANDIDATE in text
-        and "No tag has been created" in text
+    clean = (
+        SOURCE_INVARIANT in text
+        and POST_TAG_PROOF in text
+        and TAG_NAME in text
+        and not has_v011_stale_mixing(text)
     )
     return {
-        "status": "stale_pre_finalization_docs" if stale else "unexpected",
+        "status": "clean_v011_source_docs" if clean else "unexpected",
         "path": "docs/tag-approval-packet.md",
-        "decision": "ready_to_request_operator_tag" if "Decision: ready_to_request_operator_tag" in text else "unknown",
-        "candidate_commit": STALE_TAG_DOC_CANDIDATE if STALE_TAG_DOC_CANDIDATE in text else "unknown",
-        "contains_no_tag_created": "No tag has been created" in text,
+        "contains_source_invariant": SOURCE_INVARIANT in text,
+        "contains_post_tag_proof_outside_tag_commit": POST_TAG_PROOF in text,
+        "v011_stale_mixed": has_v011_stale_mixing(text),
+        "legacy_v010_disclosure_present": (
+            LEGACY_TAG_NAME in text
+            and STALE_TAG_DOC_CANDIDATE in text
+            and "No tag has been created" in text
+        ),
         "disclosure": (
-            "tag's embedded docs predate PR #46 finalization; installable package "
-            "smoke passes, but any GitHub release from v0.1.0 requires explicit "
-            "disclosure, or the safer path is creating anti-slop-receipts-v0.1.1 "
-            "after PR #46 merges and fresh tag-install proof passes"
+            "v0.1.1 tag-source docs are written to remain truthful before tag "
+            "creation, after tag creation, and when viewed from the tag itself; "
+            "post-tag install proof may live outside the tag commit"
         ),
     }
 
@@ -141,6 +160,7 @@ def run_smoke() -> dict[str, Any]:
         summary["remote_tag"] = tag
         summary["tag_source_docs"] = source_docs
         return summary
+    target_commit = str(tag["peeled_commit"])
 
     with tempfile.TemporaryDirectory(prefix="anti-slop-tag-install-") as tmp:
         tmp_path = Path(tmp)
@@ -198,15 +218,16 @@ def run_smoke() -> dict[str, Any]:
             "fabricated_ref_exposed": findings_exposed,
         }
         smoke_passed = (
-            tag.get("peeled_commit") == TARGET_COMMIT
+            bool(target_commit)
             and all(item["status"] == "pass" for item in command_results)
             and report_mode_demo["status"] == "pass"
+            and source_docs["status"] == "clean_v011_source_docs"
         )
         return {
             "schema_version": SCHEMA,
             "status": "pass" if smoke_passed else "fail",
             "tag_name": TAG_NAME,
-            "target_commit": TARGET_COMMIT,
+            "target_commit": target_commit,
             "repository": "nferna26/anti-slop",
             "install_spec": install_spec,
             "remote_tag": tag,
@@ -220,8 +241,8 @@ def run_smoke() -> dict[str, Any]:
             "report_mode_demo": report_mode_demo,
             "notes": [
                 "Tag install checks only that the pushed tag resolves to the target commit and installed CLIs smoke on this machine.",
-                "Do not force-move anti-slop-receipts-v0.1.0; the tag's embedded docs predate PR #46 finalization.",
-                "Installable package smoke passes, but a GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating anti-slop-receipts-v0.1.1 after PR #46 merges and fresh tag-install proof passes.",
+                "Do not force-move anti-slop-receipts-v0.1.0 or anti-slop-receipts-v0.1.1.",
+                "v0.1.1 source docs explain that post-tag install proof may live outside the tag commit because it can only be generated after the tag exists.",
                 "It is not external adopter install success, correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon evidence.",
                 "No raw venv logs, local paths, raw API JSON, external repo contents, secrets, or stdout/stderr dumps are committed.",
             ],
@@ -252,10 +273,10 @@ def write_markdown(summary: dict[str, Any]) -> None:
             "",
             "## Tag Source Disclosure",
             "",
-            "- Do not force-move `anti-slop-receipts-v0.1.0`.",
-            "- The tag's embedded docs predate PR #46 finalization: `docs/tag-approval-packet.md` inside the tag says Decision: `ready_to_request_operator_tag`, candidate `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.",
-            "- The installable package smoke passes, but the tag's embedded docs predate PR #46 finalization.",
-            "- Any GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes.",
+            "- Do not force-move `anti-slop-receipts-v0.1.0` or `anti-slop-receipts-v0.1.1`.",
+            "- v0.1.1 Source-Doc Invariant is present in the tag source.",
+            "- The tag source explains that post-tag install proof may live outside the tag commit because proof can only be generated after the tag exists.",
+            "- The historical v0.1.0 stale-tag disclosure remains separate from v0.1.1.",
             "",
             "## Commands",
             "",
@@ -288,15 +309,15 @@ def validate_summary(errors: list[str]) -> dict[str, Any] | None:
         errors.append(f"tag install schema mismatch: {data.get('schema_version')}")
     if data.get("tag_name") != TAG_NAME:
         errors.append(f"tag install tag_name must be {TAG_NAME}: {data.get('tag_name')}")
-    if data.get("target_commit") != TARGET_COMMIT:
-        errors.append(f"tag install target_commit must be {TARGET_COMMIT}: {data.get('target_commit')}")
+    if not re.fullmatch(r"[0-9a-f]{40}", str(data.get("target_commit", ""))):
+        errors.append(f"tag install target_commit must be a full SHA: {data.get('target_commit')}")
     if data.get("status") != "pass":
         errors.append(f"tag install status must be pass: {data.get('status')}")
     if data.get("status") == "pass":
         if data.get("install_spec") != f"{PACKAGE_SPEC_BASE}@{TAG_NAME}":
             errors.append("tag install spec must use the public tag")
-        if data.get("remote_tag", {}).get("peeled_commit") != TARGET_COMMIT:
-            errors.append("tag install remote tag must peel to the target commit")
+        if data.get("remote_tag", {}).get("peeled_commit") != data.get("target_commit"):
+            errors.append("tag install remote tag must peel to the recorded target commit")
         command_names = {str(item.get("command", "")).split()[0] for item in data.get("commands", [])}
         missing = sorted(set(COMMANDS) - command_names)
         if missing:
@@ -308,10 +329,10 @@ def validate_summary(errors: list[str]) -> dict[str, Any] | None:
         if demo.get("status") != "pass" or demo.get("fabricated_ref_exposed") is not True:
             errors.append("tag install report-mode demo must exit 0 and expose fabricated ref")
         source_docs = data.get("tag_source_docs", {})
-        if source_docs.get("status") != "stale_pre_finalization_docs":
-            errors.append("tag install summary must disclose stale pre-finalization tag-source docs")
-        if source_docs.get("candidate_commit") != STALE_TAG_DOC_CANDIDATE:
-            errors.append("tag install source-doc candidate must record the stale PR #44 SHA")
+        if source_docs.get("status") != "clean_v011_source_docs":
+            errors.append("tag install summary must disclose clean v0.1.1 source docs")
+        if source_docs.get("contains_post_tag_proof_outside_tag_commit") is not True:
+            errors.append("tag install summary must record post-tag proof outside-tag invariant")
     text = json.dumps(data, sort_keys=True)
     for forbidden in (str(ROOT), "/Users/", "/private/var/", "GITHUB_TOKEN", "OPENAI_API_KEY", "ANTHROPIC_API_KEY"):
         if forbidden in text:
@@ -336,7 +357,7 @@ def self_test() -> int:
         return 1
     print(
         "TAG INSTALL SMOKE PASSED: "
-        f"{TAG_NAME} resolves to {TARGET_COMMIT}; "
+        f"{TAG_NAME} resolves to {summary['target_commit']}; "
         f"{len(summary['commands'])} installed command self-tests and report-mode demo passed."
     )
     return 0

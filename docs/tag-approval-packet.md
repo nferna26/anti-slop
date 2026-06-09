@@ -1,16 +1,15 @@
 # Tag Approval Packet
 
-Decision: tag_created_no_outreach
+Decision: clean_v011_tag_path
 
-Candidate commit: `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`
-
-This packet records the operator-approved pinned Anti-Slop Receipts tag.
-Tag status: `anti-slop-receipts-v0.1.0` created and pushed.
+This packet prepares the clean public Anti-Slop Receipts tag path after PR #46.
+The historical `anti-slop-receipts-v0.1.0` tag remains untouched.
 No GitHub release has been created. No outreach, external PR, maintainer
 contact, comment, issue, enforcement workflow, or default enforcement change is
-authorized by this packet. This packet records that operator approval required
-before tag creation was granted for this tranche only; future tag or release
-actions still require separate approval.
+authorized by this packet. Future tag or release actions still require separate
+operator approval.
+operator approval required before any future GitHub release, outreach, external
+maintainer contact, or enforcement default change.
 There is no enforcement workflow and no outreach approval in this packet.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It does not prove correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.
@@ -22,27 +21,33 @@ PR #46 finalization: `docs/tag-approval-packet.md` inside the tag says
 Decision: `ready_to_request_operator_tag`, candidate
 `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.
 The installable package smoke passes, but the tag's embedded docs predate PR
-#46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or
-the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and
-fresh tag-install proof passes.
+#46 finalization. GitHub release from v0.1.0 requires explicit disclosure.
+
+## v0.1.1 Source-Doc Invariant
+
+`anti-slop-receipts-v0.1.1` is the clean tag path after PR #46. This source
+tree is written to remain truthful when viewed before tag creation, after tag
+creation, and when viewed from the tag itself. Do not force-move any tag.
+The post-tag install proof may live outside the tag commit because it can only be
+generated after the tag exists. Absence of post-tag proof inside the tagged
+source tree is expected, not stale-doc evidence.
 
 ## Candidate
 
 - Product: Anti-Slop Receipts.
 - Distribution: `anti-slop-lineage`.
-- Candidate commit: `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`.
-- Candidate source: PR #45 merge commit, including the tag-approval packet and
-  fresh-install smoke scripts.
-- Tag name: `anti-slop-receipts-v0.1.0`.
-- Install spec: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0`.
-- Reproducible SHA install already checked: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`.
+- Clean tag path: `anti-slop-receipts-v0.1.1`.
+- Historical disclosed tag: `anti-slop-receipts-v0.1.0`.
+- Install spec after the v0.1.1 tag exists:
+  `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1`.
 
 ## Evidence
 
-- CI status: green. PR #45 reported green `gates` and `package` checks before
-  merge; this release-finalization PR must also be green after tag creation.
+- CI status: green for PR #46; this clean-tag PR must also be green before
+  any release publication.
 - Fresh install smoke: PASS. See `proof/fresh-install-smoke/summary.json`.
-- Tag install smoke: PASS. See `proof/tag-install-smoke/summary.json`.
+- Tag install smoke: v0.1.1 proof may live outside the tag commit. See
+  `proof/tag-install-smoke/summary.json` after it is generated.
 - Real checkout evidence: PASS. See `proof/real-checkout-learning/summary.json`
   and `proof/real-checkout-learning/actionability.json`.
 - Command receipt dogfood: PASS. See
@@ -76,10 +81,9 @@ fresh tag-install proof passes.
 
 ## Operator Boundary
 
-This packet records the operator-approved tag creation. Do not force-move this
+This packet records the clean v0.1.1 tag path. Do not force-move this or any
 tag. Do not create a GitHub release from this packet. Do not contact
 maintainers. Do not open outreach PRs, comments, or issues. Do not change report
 mode into enforcement by default.
 
-The next step is not another tag action. Any GitHub release or maintainer
-outreach remains a separate operator decision.
+Any GitHub release or maintainer outreach remains a separate operator decision.

@@ -60,6 +60,11 @@ docs without widening the product claim.
   API/token requirement is added; no external outreach is performed.
 - `anti-slop-receipts-v0.1.0` exists for pinned installs; do not force-move it.
   No GitHub release, outreach, or enforcement change is approved by that tag.
+- v0.1.1 Source-Doc Invariant: `anti-slop-receipts-v0.1.1` is the clean tag
+  path after PR #46. The source docs must remain truthful when viewed before tag
+  creation, after tag creation, and when viewed from the tag itself. Do not
+  force-move any tag. The post-tag install proof may live outside the tag commit
+  because it can only be generated after the tag exists.
 - Future release/tag readiness must follow
   [`docs/release-install-plan.md`](release-install-plan.md); operator approval
   is required before creating a new tag or GitHub release.
