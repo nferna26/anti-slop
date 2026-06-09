@@ -42,6 +42,7 @@ docs without widening the product claim.
   `proof/agent-claim-audit/summary.json`.
 - `make claims-self-test && make run-self-test`.
 - `make agent-install-smoke && make package-smoke`.
+- `make tag-approval-check && make fresh-install-smoke && make tag-install-smoke`.
 - `make pr-provenance-demo && make pr-provenance-event-demo`.
 - `make validate && make check-raw && make kb-lint`.
 - `python3 -m py_compile scripts/*.py`.
@@ -57,11 +58,11 @@ docs without widening the product claim.
   front-door copy.
 - No model/API/RAG/vector-store/runtime dependency, telemetry, or GitHub
   API/token requirement is added; no external outreach is performed.
-- No release or tag is created by this tranche; install guidance can mention
-  pinning to a tag or full commit SHA.
-- Release/tag readiness must follow
+- `anti-slop-receipts-v0.1.0` exists for pinned installs; do not force-move it.
+  No GitHub release, outreach, or enforcement change is approved by that tag.
+- Future release/tag readiness must follow
   [`docs/release-install-plan.md`](release-install-plan.md); operator approval
-  is required before creating a tag.
+  is required before creating a new tag or GitHub release.
 - Demo and launch assets must follow [`docs/demo-repo.md`](demo-repo.md).
 - Maintainer outreach must follow
   [`docs/maintainer-outreach-packet.md`](maintainer-outreach-packet.md) and
@@ -86,6 +87,8 @@ docs without widening the product claim.
   [`proof/agent-claim-demo/sample-output.md`](../proof/agent-claim-demo/sample-output.md)
 - Report-mode workflow:
   [`templates/anti-slop-report.yml`](../templates/anti-slop-report.yml)
+- Tag install smoke:
+  [`proof/tag-install-smoke/summary.json`](../proof/tag-install-smoke/summary.json)
 
 The proof links measure resolver behavior and launch consistency only. They do
 not prove semantic correctness, source truth, benchmark validity, statistical

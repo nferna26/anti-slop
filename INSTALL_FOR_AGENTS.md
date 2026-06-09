@@ -43,7 +43,10 @@ Pick one. Both give you `anti-slop-claims`, `anti-slop-run`, `anti-slop-pr`,
 and `anti-slop-pr-event`.
 
 ```sh
-# Option A — preview install from repo head:
+# Option A — pinned install from the v0.1.0 tag:
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"
+
+# Option A1 — preview install from repo head:
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 
 # Option A2 — reproducible install pinned to a release tag or full commit SHA:
@@ -60,17 +63,27 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-
 ```
 
 The unpinned preview install is useful for first trials but tracks repo head.
-Pinned tags/SHAs are the safer supply-chain posture for repeatable CI. This repo
-does not create a release in this install step; use an existing reviewed tag or
-commit once one is chosen by the adopter.
+Pinned tags/SHAs are the safer supply-chain posture for repeatable CI. The
+`anti-slop-receipts-v0.1.0` tag exists for reproducible installs; no GitHub
+release, outreach, external PR/comment, maintainer contact, enforcement
+workflow, or default enforcement change is approved by that tag.
+There is no outreach approval in this install path.
 See [`docs/release-install-plan.md`](docs/release-install-plan.md) for the
 release readiness checklist, exact tag/SHA pin flow, and adopter update path.
 For the current operator tag gate, see
 [`docs/tag-approval-packet.md`](docs/tag-approval-packet.md),
 [`docs/operator-tag-decision.md`](docs/operator-tag-decision.md), and
-[`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md).
-That gate is deterministic reference/receipt resolution only; no outreach or
-tag action happens without operator approval.
+[`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md),
+plus the pushed-tag smoke at
+[`proof/tag-install-smoke/summary.md`](proof/tag-install-smoke/summary.md).
+That gate is deterministic reference/receipt resolution only; future release,
+outreach, or enforcement action still requires operator approval.
+
+Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The
+installable package smoke passes, but `docs/tag-approval-packet.md` inside the
+tag still says the pre-finalization state. GitHub release from v0.1.0 requires
+explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1`
+after PR #46 merges and fresh tag-install proof passes.
 
 ## 2. Self-test (checks the install, offline)
 
@@ -178,10 +191,11 @@ For demo assets, see [`docs/demo-repo.md`](docs/demo-repo.md). For future
 opt-in outreach copy, see
 [`docs/maintainer-outreach-packet.md`](docs/maintainer-outreach-packet.md). For
 the current go/no-go status, see [`docs/launch-decision.md`](docs/launch-decision.md).
-For the tag approval packet and fresh-install proof, see
+For the tag approval packet and install proof, see
 [`docs/tag-approval-packet.md`](docs/tag-approval-packet.md),
 [`docs/operator-tag-decision.md`](docs/operator-tag-decision.md), and
-[`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md).
+[`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md),
+[`proof/tag-install-smoke/summary.md`](proof/tag-install-smoke/summary.md).
 
 For a minimal PR-body-only workflow without artifact upload, the older
 `templates/anti-slop-pr.yml` remains available.

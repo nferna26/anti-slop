@@ -2,8 +2,8 @@
 
 - Schema: `anti-slop-fresh-install-smoke.v1`
 - Status: `pass`
-- Candidate commit: `4bda4fd727018a2a027ba8c660c48c30b8aa2144`
-- Install spec: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@4bda4fd727018a2a027ba8c660c48c30b8aa2144`
+- Candidate commit: `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`
+- Install spec: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`
 
 This smoke uses temporary storage and installs from the public git/SHA spec, not a local editable checkout. Raw venv logs and temp paths are not committed.
 

@@ -26,7 +26,7 @@ PACKET = ROOT / "docs" / "tag-approval-packet.md"
 REPO_URL = "https://github.com/nferna26/anti-slop.git"
 PACKAGE_SPEC_BASE = "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
 SCHEMA = "anti-slop-fresh-install-smoke.v1"
-DEFAULT_CANDIDATE_COMMIT = "4bda4fd727018a2a027ba8c660c48c30b8aa2144"
+DEFAULT_CANDIDATE_COMMIT = "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649"
 COMMANDS = [
     "anti-slop-lineage",
     "anti-slop-pr",

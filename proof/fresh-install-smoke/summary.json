@@ -1,5 +1,5 @@
 {
-  "candidate_commit": "4bda4fd727018a2a027ba8c660c48c30b8aa2144",
+  "candidate_commit": "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649",
   "commands": [
     {
       "command": "anti-slop-lineage --self-test",
@@ -37,7 +37,7 @@
     "package": "anti-slop-lineage",
     "status": "pass"
   },
-  "install_spec": "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@4bda4fd727018a2a027ba8c660c48c30b8aa2144",
+  "install_spec": "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649",
   "notes": [
     "Fresh install checks only that the documented git/SHA install path and installed CLIs smoke on this machine.",
     "It is not external adopter install success, correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon evidence.",
@@ -52,7 +52,7 @@
   "repository": "nferna26/anti-slop",
   "schema_version": "anti-slop-fresh-install-smoke.v1",
   "source_clone": {
-    "checked_out_commit": "4bda4fd727018a2a027ba8c660c48c30b8aa2144",
+    "checked_out_commit": "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649",
     "status": "pass",
     "storage": "temporary local-only checkout; not committed"
   },

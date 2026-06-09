@@ -172,6 +172,9 @@ tag-approval-check:
 fresh-install-smoke:
 	python3 scripts/fresh_install_smoke.py --self-test
 
+tag-install-smoke:
+	python3 scripts/tag_install_smoke.py --self-test
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:

@@ -4,6 +4,34 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-09
 
+(PR #46 tag-source truthfulness repair)
+
+- Ingested: The pushed `anti-slop-receipts-v0.1.0` tag peels to `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`, but the tag's embedded docs predate PR #46 finalization. In that tag source tree, `docs/tag-approval-packet.md` says Decision: `ready_to_request_operator_tag`, candidate `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.
+- Mapped: —
+- Carded: —
+- Tension preserved: Do not force-move `anti-slop-receipts-v0.1.0`. The installable package smoke passes, but the tag's embedded docs predate PR #46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes. No GitHub release, outreach, external PR/comment/issue, maintainer contact, enforcement workflow, or enforcement default change was created.
+- Gate run: RED evidence captured by extending `make tag-approval-check` to require stale-tag-source disclosure. The check failed across release-facing docs and entrypoints until the disclosure was added. GREEN requires current docs and `proof/tag-install-smoke/summary.md` to disclose the stale tag-source docs and validates the pushed tag source still contains the stale markers.
+- Eval run: —
+- Decision: PR #46 can be merged as disclosure-only for the existing v0.1.0 tag. For public release publication, either explicitly disclose the v0.1.0 embedded-doc mismatch or follow with a v0.1.1 tag tranche after PR #46 merges and fresh tag-install proof passes.
+- Rejected/deferred: Did not force-move or recreate `anti-slop-receipts-v0.1.0`; did not create a new tag, GitHub release, outreach, maintainer contact, or enforcement workflow.
+- Follow-up: Prefer a v0.1.1 tag tranche after PR #46 merges if the operator wants a tag whose embedded docs already contain the finalization/disclosure state.
+
+## 2026-06-09
+
+(v0.1.0 release-finalization tranche)
+
+- Ingested: PR #45 was confirmed merged into `codex/locator-accuracy-v1-benchmark-run` at `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`; the branch started from that merge commit. The existing `anti-slop-receipts-v0.1.0` tag was absent locally and remotely before creation.
+- Mapped: —
+- Carded: —
+- Tension preserved: The tag finalization is a pinned install artifact only. No GitHub release, outreach PR/comment/issue, maintainer contact, enforcement workflow, or enforcement default change was created. Anti-Slop Receipts remains deterministic reference/receipt resolution only; no correctness, relevance, source-truth, support, safety, advice-quality, reasoning, benchmark-validity, statistical-meaning, or canon claim.
+- Gate run: RED evidence captured before GREEN by extending `make tag-approval-check` to require the PR #45 merge commit and, in final tag state, tag-install proof. The RED run failed on the stale PR #44 candidate `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, missing `proof/tag-install-smoke/summary.json`, missing tag-install links, and missing CORE-995 through CORE-998 log coverage. A new `make tag-install-smoke` RED run failed before the tag existed. GREEN retargeted the candidate to `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`, regenerated `proof/fresh-install-smoke/summary.json` / `.md`, and then pushed the annotated `anti-slop-receipts-v0.1.0` tag after pre-tag gates passed.
+- Eval run: —
+- Decision: Added CORE-995 through CORE-998. CORE-995 retargeted candidate docs/proof/scripts to the PR #45 merge commit and reran the fresh public git/SHA install smoke. CORE-996 created and pushed annotated tag `anti-slop-receipts-v0.1.0`; the pushed tag peels to `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`. CORE-997 added `scripts/tag_install_smoke.py`, `make tag-install-smoke`, and `proof/tag-install-smoke/summary.json` / `.md`; the tag install PASSed five installed CLI self-tests and a minimal report-mode fabricated-ref demo. CORE-998 updated README/install docs/release notes draft/operator decision/launch checklist/KB index/log/llms so tag status and install commands agree; decision is `tag_created_no_outreach`.
+- Rejected/deferred: Did not force-move a tag, create a GitHub release, contact maintainers, open external PRs/comments/issues, add tokens/models/APIs, commit raw venv logs, temp paths, raw API JSON, answer keys, raw transcripts, raw external repo contents, secrets, or private paths. External adopter install success, maintainer keep-rate, and platform clone risk remain UNKNOWN.
+- Follow-up: Decide whether to create a GitHub release from the existing tag or keep collecting external install/adoption evidence. Outreach remains a separate opt-in decision.
+
+## 2026-06-09
+
 (Tag-approval gate tranche)
 
 - Ingested: PR #44 was confirmed merged into `codex/locator-accuracy-v1-benchmark-run` at `4bda4fd727018a2a027ba8c660c48c30b8aa2144`; local base was current and clean before branching.
