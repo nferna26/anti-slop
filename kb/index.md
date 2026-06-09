@@ -16,6 +16,7 @@ receipts.
 - [Operator tag decision memo](../docs/operator-tag-decision.md): exact `anti-slop-receipts-v0.1.0` target and operator decision record.
 - [Fresh install smoke](../proof/fresh-install-smoke/summary.md): candidate commit installed from public git/SHA in temporary storage; installed CLIs and report-mode demo passed.
 - [Tag install smoke](../proof/tag-install-smoke/summary.md): pushed `anti-slop-receipts-v0.1.0` tag installed in temporary storage; installed CLIs and report-mode demo passed.
+- Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes.
 - [Privacy and security](../docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry/API/model/token runtime, and forbidden report/receipt content.
 - [Launch checklist](../docs/launch-checklist.md): machine and manual launch gates, including `make launch-check`.
 - [Demo repo assets](../docs/demo-repo.md): reproducible fake-report/receipt-backed demo, Step Summary/report-mode flow, screenshot/GIF checklist, and launch copy.

@@ -31,6 +31,7 @@
 - [docs/kill-criteria.md](docs/kill-criteria.md): kill dashboard; unknown adoption data is marked UNKNOWN, not PASS.
 - One-line user prompt: "Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."
 - Tag gate boundary: deterministic reference/receipt resolution only; no GitHub release, outreach, or enforcement action is approved by the v0.1.0 tag; future release or outreach action requires operator approval.
+- Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes.
 
 Exact commands:
 - Pinned tag install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"`

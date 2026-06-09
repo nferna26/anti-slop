@@ -79,6 +79,12 @@ plus the pushed-tag smoke at
 That gate is deterministic reference/receipt resolution only; future release,
 outreach, or enforcement action still requires operator approval.
 
+Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The
+installable package smoke passes, but `docs/tag-approval-packet.md` inside the
+tag still says the pre-finalization state. GitHub release from v0.1.0 requires
+explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1`
+after PR #46 merges and fresh tag-install proof passes.
+
 ## 2. Self-test (checks the install, offline)
 
 ```sh

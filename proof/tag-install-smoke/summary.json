@@ -39,6 +39,8 @@
   "install_spec": "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0",
   "notes": [
     "Tag install checks only that the pushed tag resolves to the target commit and installed CLIs smoke on this machine.",
+    "Do not force-move anti-slop-receipts-v0.1.0; the tag's embedded docs predate PR #46 finalization.",
+    "Installable package smoke passes, but a GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating anti-slop-receipts-v0.1.1 after PR #46 merges and fresh tag-install proof passes.",
     "It is not external adopter install success, correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon evidence.",
     "No raw venv logs, local paths, raw API JSON, external repo contents, secrets, or stdout/stderr dumps are committed."
   ],
@@ -57,5 +59,13 @@
   "schema_version": "anti-slop-tag-install-smoke.v1",
   "status": "pass",
   "tag_name": "anti-slop-receipts-v0.1.0",
+  "tag_source_docs": {
+    "candidate_commit": "4bda4fd727018a2a027ba8c660c48c30b8aa2144",
+    "contains_no_tag_created": true,
+    "decision": "ready_to_request_operator_tag",
+    "disclosure": "tag's embedded docs predate PR #46 finalization; installable package smoke passes, but any GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating anti-slop-receipts-v0.1.1 after PR #46 merges and fresh tag-install proof passes",
+    "path": "docs/tag-approval-packet.md",
+    "status": "stale_pre_finalization_docs"
+  },
   "target_commit": "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649"
 }

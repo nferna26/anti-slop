@@ -15,6 +15,17 @@ GitHub releases, outreach, or enforcement default changes require separate
 operator approval. This plan is deterministic reference/receipt resolution only.
 There is no outreach approval in this release/install plan.
 
+## v0.1.0 Tag Source Disclosure
+
+Do not force-move `anti-slop-receipts-v0.1.0`. The tag's embedded docs predate
+PR #46 finalization: `docs/tag-approval-packet.md` inside the tag says
+Decision: `ready_to_request_operator_tag`, candidate
+`4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.
+The installable package smoke passes, but the tag's embedded docs predate PR
+#46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or
+the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and
+fresh tag-install proof passes.
+
 ## Pinning Flow
 
 Preview install from repo head:

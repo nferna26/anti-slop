@@ -27,6 +27,7 @@ PACKAGE_SPEC_BASE = "anti-slop-lineage @ git+https://github.com/nferna26/anti-sl
 SCHEMA = "anti-slop-tag-install-smoke.v1"
 TAG_NAME = "anti-slop-receipts-v0.1.0"
 TARGET_COMMIT = "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649"
+STALE_TAG_DOC_CANDIDATE = "4bda4fd727018a2a027ba8c660c48c30b8aa2144"
 COMMANDS = [
     "anti-slop-lineage",
     "anti-slop-pr",
@@ -109,11 +110,36 @@ def remote_tag_target() -> dict[str, str]:
     }
 
 
+def tag_source_docs() -> dict[str, Any]:
+    packet = run(["git", "show", f"{TAG_NAME}:docs/tag-approval-packet.md"])
+    text = packet.stdout if packet.returncode == 0 else ""
+    stale = (
+        "Decision: ready_to_request_operator_tag" in text
+        and STALE_TAG_DOC_CANDIDATE in text
+        and "No tag has been created" in text
+    )
+    return {
+        "status": "stale_pre_finalization_docs" if stale else "unexpected",
+        "path": "docs/tag-approval-packet.md",
+        "decision": "ready_to_request_operator_tag" if "Decision: ready_to_request_operator_tag" in text else "unknown",
+        "candidate_commit": STALE_TAG_DOC_CANDIDATE if STALE_TAG_DOC_CANDIDATE in text else "unknown",
+        "contains_no_tag_created": "No tag has been created" in text,
+        "disclosure": (
+            "tag's embedded docs predate PR #46 finalization; installable package "
+            "smoke passes, but any GitHub release from v0.1.0 requires explicit "
+            "disclosure, or the safer path is creating anti-slop-receipts-v0.1.1 "
+            "after PR #46 merges and fresh tag-install proof passes"
+        ),
+    }
+
+
 def run_smoke() -> dict[str, Any]:
     tag = remote_tag_target()
+    source_docs = tag_source_docs()
     if tag.get("status") != "pass":
         summary = unavailable_summary("remote_tag")
         summary["remote_tag"] = tag
+        summary["tag_source_docs"] = source_docs
         return summary
 
     with tempfile.TemporaryDirectory(prefix="anti-slop-tag-install-") as tmp:
@@ -184,6 +210,7 @@ def run_smoke() -> dict[str, Any]:
             "repository": "nferna26/anti-slop",
             "install_spec": install_spec,
             "remote_tag": tag,
+            "tag_source_docs": source_docs,
             "install": {
                 "status": "pass",
                 "method": "documented public tag pip install",
@@ -193,6 +220,8 @@ def run_smoke() -> dict[str, Any]:
             "report_mode_demo": report_mode_demo,
             "notes": [
                 "Tag install checks only that the pushed tag resolves to the target commit and installed CLIs smoke on this machine.",
+                "Do not force-move anti-slop-receipts-v0.1.0; the tag's embedded docs predate PR #46 finalization.",
+                "Installable package smoke passes, but a GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating anti-slop-receipts-v0.1.1 after PR #46 merges and fresh tag-install proof passes.",
                 "It is not external adopter install success, correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon evidence.",
                 "No raw venv logs, local paths, raw API JSON, external repo contents, secrets, or stdout/stderr dumps are committed.",
             ],
@@ -220,6 +249,13 @@ def write_markdown(summary: dict[str, Any]) -> None:
             "## Remote Tag",
             "",
             f"- Peeled commit: `{remote.get('peeled_commit')}`",
+            "",
+            "## Tag Source Disclosure",
+            "",
+            "- Do not force-move `anti-slop-receipts-v0.1.0`.",
+            "- The tag's embedded docs predate PR #46 finalization: `docs/tag-approval-packet.md` inside the tag says Decision: `ready_to_request_operator_tag`, candidate `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.",
+            "- The installable package smoke passes, but the tag's embedded docs predate PR #46 finalization.",
+            "- Any GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes.",
             "",
             "## Commands",
             "",
@@ -271,6 +307,11 @@ def validate_summary(errors: list[str]) -> dict[str, Any] | None:
         demo = data.get("report_mode_demo", {})
         if demo.get("status") != "pass" or demo.get("fabricated_ref_exposed") is not True:
             errors.append("tag install report-mode demo must exit 0 and expose fabricated ref")
+        source_docs = data.get("tag_source_docs", {})
+        if source_docs.get("status") != "stale_pre_finalization_docs":
+            errors.append("tag install summary must disclose stale pre-finalization tag-source docs")
+        if source_docs.get("candidate_commit") != STALE_TAG_DOC_CANDIDATE:
+            errors.append("tag install source-doc candidate must record the stale PR #44 SHA")
     text = json.dumps(data, sort_keys=True)
     for forbidden in (str(ROOT), "/Users/", "/private/var/", "GITHUB_TOKEN", "OPENAI_API_KEY", "ANTHROPIC_API_KEY"):
         if forbidden in text:

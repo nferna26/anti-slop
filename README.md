@@ -15,6 +15,12 @@ Release status remains deterministic reference/receipt resolution only; no
 outreach, future tag, GitHub release, or enforcement action happens without
 operator approval.
 
+Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The
+installable package smoke passes, but `docs/tag-approval-packet.md` inside the
+tag still says the pre-finalization state. GitHub release from v0.1.0 requires
+explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1`
+after PR #46 merges and fresh tag-install proof passes.
+
 ## Problem
 
 AI coding agents often write confident reports that cite files, tests, commands,
