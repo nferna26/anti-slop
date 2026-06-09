@@ -4,6 +4,20 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-09
 
+(Clean v0.1.1 tag-source tranche)
+
+- Ingested: PR #46 was merged into `codex/locator-accuracy-v1-benchmark-run` at `cdf4ef9b755d6d83515e5b764541b3f2c7198b92`; `anti-slop-receipts-v0.1.0` remains the historical tag and must not be force-moved.
+- Mapped: —
+- Carded: —
+- Tension preserved: The clean public tag path is `anti-slop-receipts-v0.1.1`. The v0.1.1 Source-Doc Invariant requires release docs to remain truthful when viewed before tag creation, after tag creation, and from the tag itself. The post-tag install proof may live outside the tag commit because it can only be generated after the tag exists. No GitHub release, outreach, external PR/comment/issue, maintainer contact, enforcement workflow, or enforcement default change is authorized.
+- Gate run: RED evidence captured by extending `make tag-approval-check` so v0.1.1 docs fail if they mix stale "No tag has been created" / `ready_to_request_operator_tag` wording with the clean tag path, fail if the tag-source invariant is absent, fail if the post-tag proof location is not explained, and fail if the v0.1.0 disclosure disappears. GREEN pre-tag gates passed, then `anti-slop-receipts-v0.1.1` was created as annotated tag object `2d8e625edee6c9ca6f22eff3d748ca661c9d4ae6` peeling to `4bb51ced8035d0984515002197306dfc737e1f09`. `make tag-install-smoke` then passed from the public tag and wrote `proof/tag-install-smoke/summary.json` / `.md`.
+- Eval run: —
+- Decision: Retargeted release-facing docs, install examples, tag approval packet, operator decision memo, launch decision/checklist, README, install docs, `llms.txt`, and KB index toward the clean v0.1.1 tag path while preserving the v0.1.0 stale-source disclosure as historical context. The current top-level tag-install proof is v0.1.1; the v0.1.0 proof remains under `proof/tag-install-smoke/v0.1.0/`.
+- Rejected/deferred: Did not force-move or recreate `anti-slop-receipts-v0.1.0`; did not create a GitHub release, external outreach, maintainer contact, enforcement workflow, token/API/model dependency, raw log, local-only path, secret, credential, raw API JSON, raw external repo content, answer key, or raw transcript.
+- Follow-up: Decide whether the clean v0.1.1 tag is ready for Pro Mode launch review or whether more private adoption/install evidence is needed. No GitHub release or outreach has been approved.
+
+## 2026-06-09
+
 (PR #46 tag-source truthfulness repair)
 
 - Ingested: The pushed `anti-slop-receipts-v0.1.0` tag peels to `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`, but the tag's embedded docs predate PR #46 finalization. In that tag source tree, `docs/tag-approval-packet.md` says Decision: `ready_to_request_operator_tag`, candidate `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.

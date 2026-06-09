@@ -2,9 +2,9 @@
 
 - Schema: `anti-slop-tag-install-smoke.v1`
 - Status: `pass`
-- Tag: `anti-slop-receipts-v0.1.1`
-- Target commit: `4bb51ced8035d0984515002197306dfc737e1f09`
-- Install spec: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1`
+- Tag: `anti-slop-receipts-v0.1.0`
+- Target commit: `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`
+- Install spec: `anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0`
 
 This smoke installs from the public tag in temporary storage, not a local editable checkout. Raw venv logs and temp paths are not committed.
 
@@ -12,14 +12,14 @@ Boundary: this checks only tag resolution and install/CLI smoke facts. It is not
 
 ## Remote Tag
 
-- Peeled commit: `4bb51ced8035d0984515002197306dfc737e1f09`
+- Peeled commit: `75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`
 
 ## Tag Source Disclosure
 
-- Do not force-move `anti-slop-receipts-v0.1.0` or `anti-slop-receipts-v0.1.1`.
-- v0.1.1 Source-Doc Invariant is present in the tag source.
-- The tag source explains that post-tag install proof may live outside the tag commit because proof can only be generated after the tag exists.
-- The historical v0.1.0 stale-tag disclosure remains separate from v0.1.1.
+- Do not force-move `anti-slop-receipts-v0.1.0`.
+- The tag's embedded docs predate PR #46 finalization: `docs/tag-approval-packet.md` inside the tag says Decision: `ready_to_request_operator_tag`, candidate `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.
+- The installable package smoke passes, but the tag's embedded docs predate PR #46 finalization.
+- Any GitHub release from v0.1.0 requires explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes.
 
 ## Commands
 

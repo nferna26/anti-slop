@@ -43,8 +43,8 @@ Pick one. Both give you `anti-slop-claims`, `anti-slop-run`, `anti-slop-pr`,
 and `anti-slop-pr-event`.
 
 ```sh
-# Option A — pinned install from the v0.1.0 tag:
-pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"
+# Option A — pinned install from the clean v0.1.1 tag:
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1"
 
 # Option A1 — preview install from repo head:
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
@@ -64,9 +64,11 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-
 
 The unpinned preview install is useful for first trials but tracks repo head.
 Pinned tags/SHAs are the safer supply-chain posture for repeatable CI. The
-`anti-slop-receipts-v0.1.0` tag exists for reproducible installs; no GitHub
-release, outreach, external PR/comment, maintainer contact, enforcement
-workflow, or default enforcement change is approved by that tag.
+`anti-slop-receipts-v0.1.1` is the clean public tag path after PR #46. The
+historical `anti-slop-receipts-v0.1.0` tag exists for reproducible installs and
+must not be force-moved; no GitHub release, outreach, external PR/comment,
+maintainer contact, enforcement workflow, or default enforcement change is
+approved by either tag.
 There is no outreach approval in this install path.
 See [`docs/release-install-plan.md`](docs/release-install-plan.md) for the
 release readiness checklist, exact tag/SHA pin flow, and adopter update path.
@@ -80,10 +82,15 @@ That gate is deterministic reference/receipt resolution only; future release,
 outreach, or enforcement action still requires operator approval.
 
 Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The
-installable package smoke passes, but `docs/tag-approval-packet.md` inside the
-tag still says the pre-finalization state. GitHub release from v0.1.0 requires
-explicit disclosure, or the safer path is creating `anti-slop-receipts-v0.1.1`
-after PR #46 merges and fresh tag-install proof passes.
+v0.1.0 installable package smoke passes, but `docs/tag-approval-packet.md`
+inside that tag still says the pre-finalization state. GitHub release from
+v0.1.0 requires explicit disclosure.
+
+v0.1.1 Source-Doc Invariant: `anti-slop-receipts-v0.1.1` source docs are
+written to remain truthful when viewed before tag creation, after tag creation,
+and when viewed from the tag itself. The post-tag install proof may live outside the
+tag commit because it can only be generated after the tag exists. Do not
+force-move any tag.
 
 ## 2. Self-test (checks the install, offline)
 

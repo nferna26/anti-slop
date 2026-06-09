@@ -17,6 +17,7 @@ LLMS = ROOT / "llms.txt"
 RELEASE_PLAN = ROOT / "docs" / "release-install-plan.md"
 RELEASE_NOTES = ROOT / "docs" / "release-notes-draft.md"
 LAUNCH_DECISION = ROOT / "docs" / "launch-decision.md"
+CHECKLIST = ROOT / "docs" / "launch-checklist.md"
 PACKET = ROOT / "docs" / "tag-approval-packet.md"
 MEMO = ROOT / "docs" / "operator-tag-decision.md"
 KB_INDEX = ROOT / "kb" / "index.md"
@@ -32,13 +33,20 @@ KILL = ROOT / "proof" / "external-dry-run" / "kill-criteria.json"
 
 FRESH_SCHEMA = "anti-slop-fresh-install-smoke.v1"
 TAG_SCHEMA = "anti-slop-tag-install-smoke.v1"
-TAG_NAME = "anti-slop-receipts-v0.1.0"
-EXPECTED_CANDIDATE_COMMIT = "75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649"
+TAG_NAME = "anti-slop-receipts-v0.1.1"
+LEGACY_TAG_NAME = "anti-slop-receipts-v0.1.0"
 STALE_TAG_DOC_CANDIDATE = "4bda4fd727018a2a027ba8c660c48c30b8aa2144"
-ALLOWED_PACKET_DECISIONS = {"ready_to_request_operator_tag", "tag_created_no_outreach", "not_ready_for_tag", "blocked"}
+ALLOWED_PACKET_DECISIONS = {
+    "ready_to_request_operator_tag",
+    "tag_created_no_outreach",
+    "clean_v011_tag_path",
+    "not_ready_for_tag",
+    "blocked",
+}
 ALLOWED_OPERATOR_DECISIONS = {
     "request_operator_create_tag",
     "tag_created_no_outreach",
+    "clean_v011_tag_path",
     "continue_private_learning_loop",
     "pause_or_narrow",
 }
@@ -64,7 +72,6 @@ STALE_TAG_SOURCE_DISCLOSURE = [
     "Do not force-move `anti-slop-receipts-v0.1.0`",
     "installable package smoke passes",
     "GitHub release from v0.1.0 requires explicit disclosure",
-    "safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and fresh tag-install proof passes",
 ]
 STALE_TAG_SOURCE_DOCS = [
     PACKET,
@@ -78,6 +85,22 @@ STALE_TAG_SOURCE_LINKS = [
     INSTALL,
     LLMS,
     KB_INDEX,
+]
+V011_SOURCE_DOC_DISCLOSURE = [
+    "v0.1.1 Source-Doc Invariant",
+    "post-tag install proof may live outside the tag commit",
+    "viewed before tag creation",
+    "viewed from the tag itself",
+    "Do not force-move any tag",
+    TAG_NAME,
+]
+V011_SOURCE_DOCS = [
+    PACKET,
+    MEMO,
+    RELEASE_PLAN,
+    RELEASE_NOTES,
+    LAUNCH_DECISION,
+    CHECKLIST,
 ]
 
 
@@ -126,6 +149,10 @@ def require_normalized_snippets(path: Path, snippets: list[str], errors: list[st
             errors.append(f"{rel(path)} missing snippet: {snippet}")
 
 
+def paragraphs(text: str) -> list[str]:
+    return [block.strip() for block in re.split(r"\n\s*\n", text) if block.strip()]
+
+
 def require_link(path: Path, target: Path, errors: list[str]) -> None:
     text = read(path, errors)
     if not text:
@@ -164,10 +191,8 @@ def decision_line(text: str) -> str:
 
 
 def validate_expected_candidate(name: str, candidate: str, errors: list[str]) -> None:
-    if candidate != EXPECTED_CANDIDATE_COMMIT:
-        errors.append(
-            f"{name} candidate must be {EXPECTED_CANDIDATE_COMMIT}, got {candidate or 'missing'}"
-        )
+    if candidate and not re.fullmatch(r"[0-9a-f]{40}", candidate):
+        errors.append(f"{name} candidate must be a full SHA when present, got {candidate}")
 
 
 def validate_fresh_summary(errors: list[str]) -> dict[str, Any]:
@@ -181,7 +206,6 @@ def validate_fresh_summary(errors: list[str]) -> dict[str, Any]:
     candidate = str(data.get("candidate_commit", ""))
     if not re.fullmatch(r"[0-9a-f]{40}", candidate):
         errors.append(f"fresh install candidate must be full SHA: {candidate}")
-    validate_expected_candidate("fresh install summary", candidate, errors)
     if data.get("status") == "pass":
         commands = {str(item.get("command", "")).split()[0] for item in data.get("commands", [])}
         for required in ("anti-slop-lineage", "anti-slop-pr", "anti-slop-pr-event", "anti-slop-claims", "anti-slop-run"):
@@ -220,10 +244,10 @@ def validate_tag_summary(errors: list[str]) -> dict[str, Any]:
         if data.get("report_mode_demo", {}).get("fabricated_ref_exposed") is not True:
             errors.append("tag install summary must expose a fabricated report-mode ref")
         source_docs = data.get("tag_source_docs", {})
-        if source_docs.get("status") != "stale_pre_finalization_docs":
-            errors.append("tag install summary must disclose stale pre-finalization tag-source docs")
-        if source_docs.get("candidate_commit") != STALE_TAG_DOC_CANDIDATE:
-            errors.append("tag install summary must record stale PR #44 source-doc candidate")
+        if source_docs.get("status") != "clean_v011_source_docs":
+            errors.append("tag install summary must disclose clean v0.1.1 tag-source docs")
+        if source_docs.get("contains_post_tag_proof_outside_tag_commit") is not True:
+            errors.append("tag install summary must record post-tag proof outside-tag invariant")
     text = json.dumps(data, sort_keys=True)
     for forbidden in (str(ROOT), "/Users/", "/private/var/", "GITHUB_TOKEN", "OPENAI_API_KEY", "ANTHROPIC_API_KEY"):
         if forbidden in text:
@@ -232,9 +256,9 @@ def validate_tag_summary(errors: list[str]) -> dict[str, Any]:
         errors.append(f"missing tag install Markdown summary: {rel(TAG_MD)}")
     else:
         tag_md = normalize_ws(TAG_MD.read_text(encoding="utf-8"))
-        for snippet in STALE_TAG_SOURCE_DISCLOSURE:
+        for snippet in V011_SOURCE_DOC_DISCLOSURE:
             if normalize_ws(snippet) not in tag_md:
-                errors.append(f"{rel(TAG_MD)} missing stale-source disclosure snippet: {snippet}")
+                errors.append(f"{rel(TAG_MD)} missing v0.1.1 source-doc snippet: {snippet}")
     return data
 
 
@@ -246,8 +270,6 @@ def check_packet(errors: list[str]) -> None:
     if decision not in ALLOWED_PACKET_DECISIONS:
         errors.append(f"{rel(PACKET)} decision must be one of {sorted(ALLOWED_PACKET_DECISIONS)}")
     candidate = packet_candidate(text)
-    if not candidate:
-        errors.append(f"{rel(PACKET)} missing full Candidate commit line")
     validate_expected_candidate("tag packet", candidate, errors)
     fresh = validate_fresh_summary(errors)
     if fresh and candidate and fresh.get("candidate_commit") != candidate:
@@ -257,10 +279,12 @@ def check_packet(errors: list[str]) -> None:
         if tag and candidate and tag.get("target_commit") != candidate:
             errors.append("tag packet candidate commit must match tag install summary")
         state_snippets = [
-            "Tag status: `anti-slop-receipts-v0.1.0` created and pushed",
+            f"Tag status: `{TAG_NAME}` created and pushed",
             "Tag install smoke: PASS",
             rel(TAG_SUMMARY),
         ]
+    elif decision == "clean_v011_tag_path":
+        state_snippets = V011_SOURCE_DOC_DISCLOSURE
     else:
         state_snippets = ["No tag has been created"]
     for snippet in [
@@ -299,10 +323,12 @@ def check_memo(errors: list[str]) -> None:
     validate_expected_candidate("operator memo", candidate, errors)
     if decision == "tag_created_no_outreach":
         state_snippets = [
-            "Tag status: `anti-slop-receipts-v0.1.0` created and pushed",
+            f"Tag status: `{TAG_NAME}` created and pushed",
             "Exact tag target",
             "No GitHub release",
         ]
+    elif decision == "clean_v011_tag_path":
+        state_snippets = V011_SOURCE_DOC_DISCLOSURE
     else:
         state_snippets = [
             "Exact operator action needed next",
@@ -374,18 +400,24 @@ def check_docs_links(errors: list[str]) -> None:
     ]
     if final_tag_state:
         log_snippets.extend(["CORE-995", "CORE-996", "CORE-997", "CORE-998", "tag-install-smoke"])
+    if decision_line(packet_text) == "clean_v011_tag_path":
+        log_snippets.extend([
+            "anti-slop-receipts-v0.1.1",
+            "v0.1.1 Source-Doc Invariant",
+            "post-tag install proof may live outside the tag commit",
+        ])
     require_snippets(KB_LOG, log_snippets, errors)
 
 
 def check_stale_tag_source_disclosure(errors: list[str]) -> None:
-    tag_packet = git_show(f"{TAG_NAME}:docs/tag-approval-packet.md")
+    tag_packet = git_show(f"{LEGACY_TAG_NAME}:docs/tag-approval-packet.md")
     for snippet in [
         "Decision: ready_to_request_operator_tag",
         STALE_TAG_DOC_CANDIDATE,
         "No tag has been created",
     ]:
         if snippet not in tag_packet:
-            errors.append(f"{TAG_NAME} embedded tag packet no longer shows expected stale-source marker: {snippet}")
+            errors.append(f"{LEGACY_TAG_NAME} embedded tag packet no longer shows expected stale-source marker: {snippet}")
 
     for path in STALE_TAG_SOURCE_DOCS:
         require_normalized_snippets(path, STALE_TAG_SOURCE_DISCLOSURE, errors)
@@ -399,6 +431,25 @@ def check_stale_tag_source_disclosure(errors: list[str]) -> None:
             ],
             errors,
         )
+
+
+def check_v011_source_doc_invariant(errors: list[str]) -> None:
+    for path in V011_SOURCE_DOCS:
+        require_normalized_snippets(path, V011_SOURCE_DOC_DISCLOSURE, errors)
+
+    for path in RELEASE_FACING + [KB_INDEX]:
+        text = read(path, errors)
+        if not text:
+            continue
+        for paragraph in paragraphs(text):
+            if TAG_NAME not in paragraph:
+                continue
+            normalized = normalize_ws(paragraph)
+            for stale in ("`No tag has been created`", "No tag has been created", "ready_to_request_operator_tag"):
+                if stale in normalized:
+                    errors.append(
+                        f"{rel(path)} has stale v0.1.1 wording mixed with {stale}: {normalized[:180]}"
+                    )
 
 
 def check_supporting_evidence(errors: list[str]) -> None:
@@ -429,6 +480,7 @@ def main() -> int:
     check_release_language(errors)
     check_docs_links(errors)
     check_stale_tag_source_disclosure(errors)
+    check_v011_source_doc_invariant(errors)
     check_supporting_evidence(errors)
     if errors:
         print("TAG APPROVAL CHECK FAILED:")

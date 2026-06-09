@@ -9,11 +9,13 @@ The public command hierarchy stays:
 - `anti-slop-pr`: PR-body compatibility wrapper.
 - `anti-slop-lineage`: source/card lineage compatibility command.
 
-The `anti-slop-receipts-v0.1.0` tag was created with operator approval at
-`75ac7fbe80f62d50409ebc8fe1f736e9bc2fa649`. Do not force-move it. Future tags,
-GitHub releases, outreach, or enforcement default changes require separate
-operator approval. This plan is deterministic reference/receipt resolution only.
-There is no outreach approval in this release/install plan.
+The historical `anti-slop-receipts-v0.1.0` tag was created with operator
+approval and must not be force-moved. The clean public tag path after PR #46 is
+`anti-slop-receipts-v0.1.1`. GitHub releases, outreach, or enforcement default
+changes require separate operator approval. This plan is deterministic
+reference/receipt resolution only. There is no outreach approval in this
+release/install plan.
+The release posture remains deterministic reference/receipt resolution only.
 
 ## v0.1.0 Tag Source Disclosure
 
@@ -22,9 +24,16 @@ PR #46 finalization: `docs/tag-approval-packet.md` inside the tag says
 Decision: `ready_to_request_operator_tag`, candidate
 `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, and `No tag has been created`.
 The installable package smoke passes, but the tag's embedded docs predate PR
-#46 finalization. GitHub release from v0.1.0 requires explicit disclosure, or
-the safer path is creating `anti-slop-receipts-v0.1.1` after PR #46 merges and
-fresh tag-install proof passes.
+#46 finalization. GitHub release from v0.1.0 requires explicit disclosure.
+
+## v0.1.1 Source-Doc Invariant
+
+`anti-slop-receipts-v0.1.1` is the clean tag path after PR #46. This source
+tree is written to remain truthful when viewed before tag creation, after tag
+creation, and when viewed from the tag itself. Do not force-move any tag.
+The post-tag install proof may live outside the tag commit because it can only be
+generated after the tag exists. Absence of post-tag proof inside the tagged
+source tree is expected, not stale-doc evidence.
 
 ## Pinning Flow
 
@@ -38,6 +47,7 @@ Reproducible CI install pinned to a tag or full commit SHA:
 
 ```sh
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.0"
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1"
 pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>"
 ```
 
@@ -67,6 +77,8 @@ Before a future tag or GitHub release, the operator should verify:
 - The tag name, release notes, and install examples have operator approval.
 - Existing tag proof remains public-safe:
   `proof/tag-install-smoke/summary.json`.
+- v0.1.1 post-tag install proof may live outside the tag commit and should be
+  checked from the branch/PR that records proof after tag creation.
 
 ## adopter update path
 
