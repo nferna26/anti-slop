@@ -12,6 +12,9 @@ receipts.
 - [Install Anti-Slop Receipts (agent protocol)](../INSTALL_FOR_AGENTS.md): point a coding agent at this to install `anti-slop-claims` / `anti-slop-run`, wire report-mode CI, and open a PR (short entrypoint: [`llms.txt`](../llms.txt)).
 - [Package/install naming](../docs/package-install-naming.md): Anti-Slop Receipts product name, current `anti-slop-lineage` distribution, command hierarchy, and pinned install posture.
 - [Release/install plan](../docs/release-install-plan.md): release/tag readiness, exact tag/SHA pin examples, adopter update path, and operator-approval boundary.
+- [Tag approval packet](../docs/tag-approval-packet.md): candidate commit, evidence links, fresh-install result, residual UNKNOWNs, and no-tag-without-operator-approval boundary.
+- [Operator tag decision memo](../docs/operator-tag-decision.md): exact next operator action if a pinned tag is approved; no action taken by the repo.
+- [Fresh install smoke](../proof/fresh-install-smoke/summary.md): candidate commit installed from public git/SHA in temporary storage; installed CLIs and report-mode demo passed.
 - [Privacy and security](../docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry/API/model/token runtime, and forbidden report/receipt content.
 - [Launch checklist](../docs/launch-checklist.md): machine and manual launch gates, including `make launch-check`.
 - [Demo repo assets](../docs/demo-repo.md): reproducible fake-report/receipt-backed demo, Step Summary/report-mode flow, screenshot/GIF checklist, and launch copy.

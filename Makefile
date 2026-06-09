@@ -163,6 +163,15 @@ real-checkout-actionability-check:
 real-command-receipt-dogfood:
 	python3 scripts/real_command_receipt_dogfood.py --self-test
 
+# Tag approval gate: operator-ready decision packet and fresh-checkout install
+# proof. This never creates a tag, GitHub release, outreach PR, or enforcement
+# workflow.
+tag-approval-check:
+	python3 scripts/tag_approval_check.py
+
+fresh-install-smoke:
+	python3 scripts/fresh_install_smoke.py --self-test
+
 # anti-slop-pr: deterministic PR-description provenance checker. Resolves the
 # issue / file / test / source-card references a PR body cites against a repo or
 # fixture root; stdlib-only, no GitHub API / model / network. Usage:

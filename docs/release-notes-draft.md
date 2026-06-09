@@ -3,7 +3,8 @@
 Draft release notes for operator review.
 
 No release tag has been created. These notes are a draft for operator review
-only.
+only. No outreach, GitHub release, tag action, or enforcement default change is
+approved without operator approval.
 
 ## Anti-Slop Receipts preview
 

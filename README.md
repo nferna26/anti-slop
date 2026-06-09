@@ -9,6 +9,8 @@ receipts, and simple metric receipts resolve against the local repo state.
 It is intentionally narrow. A PASS means the cited references/receipts resolved.
 It does **not** prove correctness, relevance, source truth, support, safety,
 advice quality, reasoning, benchmark validity, statistical meaning, or canon.
+Release/tag approval remains deterministic reference/receipt resolution only;
+no outreach or tag action happens without operator approval.
 
 ## Problem
 
@@ -174,6 +176,12 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
   product/package naming posture and pinned install guidance.
 - [`docs/release-install-plan.md`](docs/release-install-plan.md):
   release/tag readiness, reproducible tag/SHA pin flow, and adopter update path.
+- [`docs/tag-approval-packet.md`](docs/tag-approval-packet.md):
+  operator-ready tag approval packet for the current candidate commit.
+- [`docs/operator-tag-decision.md`](docs/operator-tag-decision.md):
+  exact next operator action if a pinned tag is approved.
+- [`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md):
+  fresh public git/SHA install smoke for the candidate commit.
 - [`docs/privacy-security.md`](docs/privacy-security.md): local execution,
   receipt contents, artifact upload risk, and forbidden content.
 - [`docs/launch-checklist.md`](docs/launch-checklist.md): machine and manual
