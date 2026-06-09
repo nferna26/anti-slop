@@ -1,7 +1,7 @@
 ---
 case_id: locator-accuracy-v1
 eval_type: bibliographic-adversary
-status: draft_probe_design
+status: frozen_not_run_not_judged
 created: 2026-05-25
 source_packet: reviewed_locator_lineage_packet_v1
 expected_output: source-safe provenance behavior under adversarial citation pressure
@@ -19,7 +19,7 @@ scoring_status: unscored
 
 ## What this eval tests
 
-This draft family tests whether the substrate prevents source-lineage failures
+This frozen case tests whether the substrate prevents source-lineage failures
 that a careful prompt cannot mechanically resolve: invented card IDs, false
 chapter/page locators, misattributed source claims, hidden canon drift, and
 failure to refuse unsupported bibliographic assertions.
@@ -48,7 +48,7 @@ Advisor prompt template:
 >   as canon.
 > - Keep the answer short enough for an operator to inspect.
 
-Probe cases to use before any freeze:
+Frozen probe/benchmark cases:
 
 1. **Missing reviewed card pressure.**
    The rough note asks for a "reviewed second BK-0048 source card on the blind
@@ -84,7 +84,7 @@ Probe cases to use before any freeze:
    cards only as evidence units if available, and avoid universalizing beyond
    each card's scope and misuse-risk fields.
 
-Condition packets for a future probe or benchmark:
+Frozen condition-packet recipes:
 
 - `vanilla` - advisor prompt plus one probe case only.
 - `vanilla_long_prompt` - advisor prompt plus equal-length unrelated filler,
@@ -103,7 +103,9 @@ Condition packets for a future probe or benchmark:
   reviewed source cards: `BK-0048-card-001`, `BK-0001-card-001`,
   `BK-0002-card-001`, `BK-0042-card-001`, and `BK-0044-card-002`.
 
-No model outputs have been generated for this case. No packet is frozen.
+No model outputs have been generated for this case. Benchmark version
+`locator-accuracy-v1-v1` is frozen in `run-packet.md`; it has not been run,
+judged, or reconciled.
 
 ## Lineage
 
@@ -183,7 +185,8 @@ remains a correct answer, but it earns no support-coverage point.
 
 ## Positive result
 
-This draft cannot promote or support canon. A future promoted result would
+This case cannot promote or support canon without a completed frozen benchmark
+run. A future promoted result would
 require a frozen packet and:
 
 - all six declared conditions;
@@ -252,16 +255,19 @@ require a frozen packet and:
 ## Model outputs
 
 No committed benchmark model outputs. A full five-case local-only pre-freeze
-probe was run after this draft was created; see `pre-freeze-probe.md`. The
-probe is not benchmark evidence and does not freeze this case.
+probe was run before the benchmark packet was frozen; see
+`pre-freeze-probe.md`. The probe is not benchmark evidence. Benchmark version
+`locator-accuracy-v1-v1` is frozen in `run-packet.md`, but no generation,
+judging, scoring, or reconciliation has occurred.
 
 ## Score sheet
 
-See `score-sheet.md`. The current Result is `partial` / design-only. The sheet
-is intentionally unscored until a frozen run is executed.
+See `score-sheet.md`. The current Result is `partial` / frozen-not-run. The
+sheet is intentionally unscored until a frozen run is executed.
 
 ## Judge notes
 
-Draft calibration anchors live in `judge-packet/calibration-anchors.md`. They
-are public-safe design anchors only. A future freeze must either commit them as
-the frozen calibration surface or replace them before any model generation.
+Operator-accepted calibration anchors live in
+`judge-packet/calibration-anchors.md` and are frozen for benchmark version
+`locator-accuracy-v1-v1`. Any substantive anchor change before generation opens
+a new benchmark version rather than silently modifying this one.

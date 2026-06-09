@@ -1,0 +1,45 @@
+## What
+
+Ships the first public workflow MVP: **`anti-slop-pr`** — a deterministic, stdlib-only checker for the references an AI-written PR description cites. It catches fabricated issue / file / test / source-card references **before merge**. No GitHub API, no model, no network, no runtime. It **resolves references; it does not judge** relevance, correctness, support, advice quality, source truth, or canon.
+
+Draft for operator review. PR #26 merged at `9861d34`.
+
+## How it works
+
+- `scripts/gate_pr_provenance.py` resolves a PR body's references against a repo or fixture `--root`, exits nonzero on unresolved references, and emits a human report + JSON receipt.
+- **Tiers are explicit.** Deterministic-hard (unresolved → exit 1): **file** refs (`docs/foo.md`, `path.py:L10`), **test** refs (`tests/x.py::name` — file exists *and* defines the node), **card/source** refs (`BK-1234-card-001`). Deterministic-against-a-registry, **advisory otherwise**: **issue** refs (`#123`) — offline there's no issue state without a credential, and this tool adds none.
+- **No fork.** The card/source check *is* `anti-slop-lineage`: it reuses `gate_citation_lineage.build_index` + `check_paths` unchanged (gate module byte-identical). HTML comments are ignored (GitHub hides them).
+- **Benchmark scope is honest.** Only the card/source resolution is benchmark-backed (locator-accuracy-v4). The file/test/issue checks are new stdlib resolution and carry **no** benchmark claim — they apply the same "does it resolve?" idea.
+- **Low false-positive.** A file token is a ref only when backtick-delimited or path-like (contains `/`), so bare library/tech mentions in prose (`Express.js`, `main.go`, `C.h`) are ignored, not failed. Test detection handles `async def`.
+- Installable: `anti-slop-pr` console entry point alongside `anti-slop-lineage`; `make package-smoke` now self-tests both.
+
+## Commands added
+
+`make pr-provenance ROOT=. PR=body.md [ISSUES=known-issues.txt]` · `make pr-provenance-self-test` · `make pr-provenance-demo`. CLI: `anti-slop-pr`, `python3 scripts/gate_pr_provenance.py`.
+
+## Demo (offline, stranger-reproducible)
+
+`proof/pr-provenance-demo/` ships a self-contained `fixture-root/` + a passing PR body and an intentionally-failing one. `make pr-provenance-demo`:
+- `pass-pr.md` → PASS (file 2/0, test 2/0, issue 2/0, card 3/0).
+- `fail-pr.md` → FAIL — catches a fake issue (`#9999`), a missing doc (`docs/missing.md`), an undefined test node (`::test_nope`), a fabricated card (`BK-7099-card-001`), and a line-overflow ref (`docs/example.md:L99`).
+
+## Files changed
+
+New: `scripts/gate_pr_provenance.py`, `scripts/demo_pr_provenance.py`, `docs/pr-provenance.md`, `proof/pr-provenance-demo/` (fixtures). Modified: `Makefile`, `pyproject.toml` (entry point + module), `scripts/package_smoke.sh` (self-tests `anti-slop-pr`), `README.md`, `kb/index.md`, `kb/log.md`.
+
+## What did NOT happen
+
+- No model/API/RAG/vector-store/runtime; no GitHub API call. No fork of the gate.
+- No frozen eval / canon / registry / source-card-status change; generator-swap outputs untouched.
+- No raw copyrighted text, credentials, private paths, answer keys, or hidden canon.
+
+## Acceptance (all green)
+
+`make validate && check-raw && kb-lint` · `py_compile scripts/*.py` · citation-lineage + no-universalization self-tests · `gate_pr_provenance --self-test` (13 checks) · `make citation-dogfood && demo && holdout-smoke && package-smoke` · `make pr-provenance-self-test && pr-provenance-demo` · `artifact_preflight --strict` (0 blockers) · `git diff --check`. Private-path sweep clean. The offline `gates` CI job now also runs the PR-provenance self-test + demo.
+
+## Next PR
+
+Optionally add commit-ref resolution (via local git), wire `make pr-provenance-demo` into CI, and dogfood `anti-slop-pr` on this repo's own PR descriptions.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+

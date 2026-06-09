@@ -1,0 +1,62 @@
+{
+  "actionability_labels": "proof/external-dry-run/expanded/actionability.json",
+  "command_receipt_dogfood": "proof/command-receipt-dogfood/summary.json",
+  "criteria": [
+    {
+      "evidence": "19.33 claims/100 lines in first saved-public sample",
+      "id": "claim_density_below_5_per_100_lines",
+      "status": "PASS",
+      "threshold": "<5 claims/100 lines"
+    },
+    {
+      "evidence": "Real-checkout labels: 12.5% non-actionable over non-excluded findings.",
+      "id": "non_actionable_after_repairs_above_50_percent",
+      "status": "PASS",
+      "threshold": ">50% non-actionable after repairs"
+    },
+    {
+      "evidence": "Real-checkout labels: 25.0% actionable over non-excluded findings; 5 unclear, 0 excluded.",
+      "id": "useful_findings_below_20_percent",
+      "status": "PASS",
+      "threshold": "<20% useful findings"
+    },
+    {
+      "evidence": "No external install attempts; local smoke is not adopter data.",
+      "id": "install_success_below_70_percent",
+      "status": "UNKNOWN",
+      "threshold": "<70% install success"
+    },
+    {
+      "evidence": "real current-work command receipt dogfood: 100% receipt-backed command claims passed; raw receipts are regenerated in temporary storage and not committed.",
+      "id": "command_receipt_dogfood_below_25_percent",
+      "status": "PASS",
+      "threshold": "<25% command receipt dogfood"
+    },
+    {
+      "evidence": "No outreach or adoption PRs were opened.",
+      "id": "maintainer_keep_rate_zero_of_10",
+      "status": "UNKNOWN",
+      "threshold": "0/10 maintainer keep-rate"
+    },
+    {
+      "evidence": "`make launch-check` validates committed proof metric links.",
+      "id": "stale_proof_metrics",
+      "status": "PASS",
+      "threshold": "README/proof metrics stale"
+    },
+    {
+      "evidence": "No platform-comparison data yet.",
+      "id": "platform_clone_risk",
+      "status": "UNKNOWN",
+      "threshold": "platform clone makes repo workflow unnecessary"
+    }
+  ],
+  "expanded_external_summary": "proof/external-dry-run/expanded/summary.json",
+  "overall_status": "watch",
+  "real_checkout_actionability_labels": "proof/real-checkout-learning/actionability.json",
+  "real_checkout_status": "real_checkout_useful",
+  "real_checkout_summary": "proof/real-checkout-learning/summary.json",
+  "real_command_receipt_dogfood": "proof/real-command-receipt-dogfood/summary.json",
+  "schema_version": "anti-slop-kill-criteria.v1",
+  "source_summary": "proof/external-dry-run/summary.json"
+}

@@ -1,0 +1,14 @@
+{
+  "claim_check": "anti-slop-claims --receipts",
+  "command_receipt_claims": 2,
+  "command_receipt_passed": 2,
+  "dogfood_rate": 1.0,
+  "notes": [
+    "Public-safe summary only; raw receipt contains local cwd and is intentionally not committed.",
+    "This proves local command receipt matching only, not correctness, support, safety, or benchmark validity."
+  ],
+  "receipt_source": "generated at smoke time with anti-slop-run; raw receipts are not committed",
+  "report": "proof/command-receipt-dogfood/AGENT_FINAL_REPORT.md",
+  "schema_version": "anti-slop-command-receipt-dogfood.v1",
+  "status": "pass"
+}

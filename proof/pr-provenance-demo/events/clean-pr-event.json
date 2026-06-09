@@ -1,0 +1,7 @@
+{
+  "action": "opened",
+  "pull_request": {
+    "number": 101,
+    "body": "Closes #42. Adds `docs/example.md`, covered by `tests/test_example.py::test_widget`; supported by reviewed `BK-7001-card-001`.\n"
+  }
+}

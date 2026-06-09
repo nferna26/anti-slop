@@ -1,0 +1,68 @@
+name: ci
+
+# Two jobs. The `gates` job is a deterministic, offline dogfood of the Anti-Slop
+# KB gates and the citation-lineage tool: no model, API, network, credential, or
+# raw book — stdlib-only Python plus make. The `package` job may use the package
+# index over the network to install the CLI for its smoke, but uses no model,
+# API, or credentials.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Manifest + registry validation
+        run: make validate
+      - name: No raw copyrighted text
+        run: make check-raw
+      - name: KB lint
+        run: make kb-lint
+      - name: Scripts compile
+        run: python3 -m py_compile scripts/*.py
+      - name: Citation-lineage gate self-test
+        run: python3 scripts/gate_citation_lineage.py --self-test
+      - name: No-universalization gate self-test
+        run: python3 scripts/gate_no_universalization.py --self-test
+      - name: PR-provenance gate self-test
+        run: python3 scripts/gate_pr_provenance.py --self-test
+      - name: PR-provenance event-wrapper self-test
+        run: python3 scripts/pr_provenance_from_github_event.py --self-test
+      - name: Citation-lineage dogfood (corpus + eval design/decision docs)
+        run: make citation-dogfood
+      - name: Citation-lineage demo (compile-brief -> gate -> receipt)
+        run: make demo
+      - name: PR-provenance demo (fixture PR bodies -> resolver -> receipt)
+        run: make pr-provenance-demo
+      - name: PR-provenance event-wrapper demo (fixture events -> resolver -> receipt)
+        run: make pr-provenance-event-demo
+      - name: Artifact preflight (strict)
+        run: python3 scripts/artifact_preflight.py --strict
+
+  package:
+    runs-on: ubuntu-latest
+    # Installs the anti-slop-lineage CLI into a throwaway venv and proves the
+    # INSTALLED console command self-tests and audits the holdout fixture
+    # identically to the in-tree gate. Uses pip's build backend (package-index
+    # network), so it is a SEPARATE job from the offline `gates` job above;
+    # still no model, API, or credential.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Package smoke (install CLI + self-test + holdout audit)
+        run: make package-smoke
+      - name: Agent-install smoke (INSTALL_FOR_AGENTS.md commands end-to-end)
+        run: make agent-install-smoke

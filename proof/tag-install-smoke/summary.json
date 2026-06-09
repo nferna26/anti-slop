@@ -1,0 +1,72 @@
+{
+  "commands": [
+    {
+      "command": "anti-slop-lineage --self-test",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "anti-slop-pr --self-test",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "anti-slop-pr-event --self-test",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "anti-slop-claims --self-test",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "command": "anti-slop-run --self-test",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "status": "pass"
+    }
+  ],
+  "install": {
+    "method": "documented public tag pip install",
+    "package": "anti-slop-lineage",
+    "status": "pass"
+  },
+  "install_spec": "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1",
+  "notes": [
+    "Tag install checks only that the pushed tag resolves to the target commit and installed CLIs smoke on this machine.",
+    "Do not force-move anti-slop-receipts-v0.1.0 or anti-slop-receipts-v0.1.1.",
+    "v0.1.1 source docs explain that post-tag install proof may live outside the tag commit because it can only be generated after the tag exists.",
+    "It is not external adopter install success, correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon evidence.",
+    "No raw venv logs, local paths, raw API JSON, external repo contents, secrets, or stdout/stderr dumps are committed."
+  ],
+  "remote_tag": {
+    "peeled_commit": "4bb51ced8035d0984515002197306dfc737e1f09",
+    "status": "pass",
+    "tag_object": "2d8e625edee6c9ca6f22eff3d748ca661c9d4ae6"
+  },
+  "report_mode_demo": {
+    "command": "anti-slop-claims --report --json AGENT_FINAL_REPORT.md",
+    "exit_code": 0,
+    "fabricated_ref_exposed": true,
+    "status": "pass"
+  },
+  "repository": "nferna26/anti-slop",
+  "schema_version": "anti-slop-tag-install-smoke.v1",
+  "status": "pass",
+  "tag_name": "anti-slop-receipts-v0.1.1",
+  "tag_source_docs": {
+    "contains_post_tag_proof_outside_tag_commit": true,
+    "contains_source_invariant": true,
+    "disclosure": "v0.1.1 tag-source docs are written to remain truthful before tag creation, after tag creation, and when viewed from the tag itself; post-tag install proof may live outside the tag commit",
+    "legacy_v010_disclosure_present": true,
+    "path": "docs/tag-approval-packet.md",
+    "status": "clean_v011_source_docs",
+    "v011_stale_mixed": false
+  },
+  "target_commit": "4bb51ced8035d0984515002197306dfc737e1f09"
+}

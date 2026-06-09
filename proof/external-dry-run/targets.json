@@ -1,0 +1,102 @@
+[
+  {
+    "id": "anti-slop-pr-26",
+    "target": "nferna26/anti-slop#26",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-26.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/26",
+    "number": 26,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-27",
+    "target": "nferna26/anti-slop#27",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-27.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/27",
+    "number": 27,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-28",
+    "target": "nferna26/anti-slop#28",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-28.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/28",
+    "number": 28,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-29",
+    "target": "nferna26/anti-slop#29",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-29.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/29",
+    "number": 29,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-30",
+    "target": "nferna26/anti-slop#30",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-30.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/30",
+    "number": 30,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-31",
+    "target": "nferna26/anti-slop#31",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-31.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/31",
+    "number": 31,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-32",
+    "target": "nferna26/anti-slop#32",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-32.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/32",
+    "number": 32,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-33",
+    "target": "nferna26/anti-slop#33",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-33.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/33",
+    "number": 33,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-34",
+    "target": "nferna26/anti-slop#34",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-34.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/34",
+    "number": 34,
+    "root": "."
+  },
+  {
+    "id": "anti-slop-pr-35",
+    "target": "nferna26/anti-slop#35",
+    "kind": "saved_public_pr_body",
+    "checker": "anti-slop-pr-event",
+    "artifact_path": "proof/agent-claim-audit/bodies/pr-35.md",
+    "origin_url": "https://github.com/nferna26/anti-slop/pull/35",
+    "number": 35,
+    "root": "."
+  }
+]

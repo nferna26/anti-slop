@@ -1,0 +1,73 @@
+# Anti-Slop Receipts agent claim verification
+
+> Make AI coding agents cite receipts, not vibes.
+>
+> Deterministic agent claim verification for AI coding agents. Generic entrypoint:
+> `anti-slop-claims`. Surface #1 / compatibility preset: `anti-slop-pr` for
+> AI-written PR descriptions. Both check whether file / test / source-card /
+> issue / commit references actually RESOLVE against the repo. `anti-slop-claims`
+> can write structured JSON receipts and can hard-check changed-file wording
+> against a supplied local git diff/range. `anti-slop-run` writes local command
+> receipts; `anti-slop-claims --receipts` checks command-pass/exit and simple
+> metric claims against fresh receipts. They do NOT verify correctness,
+> relevance, support, benchmark validity, safety, source truth, advice quality,
+> reasoning, or canon. Stdlib only; no model, network, GitHub API, or token.
+
+## Install it (for agents)
+
+- [INSTALL_FOR_AGENTS.md](INSTALL_FOR_AGENTS.md): the full install-and-wire-CI protocol.
+- [docs/package-install-naming.md](docs/package-install-naming.md): product/package naming posture. Anti-Slop Receipts is the product; `anti-slop-lineage` remains the distribution.
+- [docs/privacy-security.md](docs/privacy-security.md): local execution, stdout/stderr hashes, artifact upload risk, no telemetry, no GitHub API token, no model, and forbidden content.
+- [docs/launch-checklist.md](docs/launch-checklist.md): machine and manual launch checks.
+- [docs/release-install-plan.md](docs/release-install-plan.md): release/tag readiness and reproducible tag/SHA pin flow; `anti-slop-receipts-v0.1.1` is the clean tag path, while outreach/enforcement remain unapproved.
+- [docs/github-release-v0.1.1.md](docs/github-release-v0.1.1.md): exact narrow public preview GitHub Release title/body, install commands, boundaries, and repo metadata suggestion.
+- [docs/tag-approval-packet.md](docs/tag-approval-packet.md): tag approval packet for `anti-slop-receipts-v0.1.1`.
+- [docs/operator-tag-decision.md](docs/operator-tag-decision.md): exact tag target and operator decision record.
+- [proof/fresh-install-smoke/summary.md](proof/fresh-install-smoke/summary.md): fresh public git/SHA install smoke for the candidate commit.
+- [proof/tag-install-smoke/summary.md](proof/tag-install-smoke/summary.md): fresh public tag install smoke for the current clean tag path.
+- [docs/demo-repo.md](docs/demo-repo.md): fake-report/receipt-backed demo script, screenshot/GIF checklist, and launch copy.
+- [docs/maintainer-outreach-packet.md](docs/maintainer-outreach-packet.md): opt-in-only maintainer message, evidence summary format, opt-out rules, and no-contact conditions.
+- [docs/launch-decision.md](docs/launch-decision.md): current evidence-based go/no-go decision.
+- [docs/external-dry-run-policy.md](docs/external-dry-run-policy.md): report-mode-only external dry-run policy; no outreach, token, model, GitHub API, or adoption runtime.
+- [docs/kill-criteria.md](docs/kill-criteria.md): kill dashboard; unknown adoption data is marked UNKNOWN, not PASS.
+- One-line user prompt: "Install report-mode Anti-Slop in this repo, copy the turnkey workflow, run the smoke, and open a PR."
+- Tag gate boundary: deterministic reference/receipt resolution only; no outreach, HN/X launch blast, external PR/comment/issue, maintainer contact, enforcement workflow, or enforcement default change is approved by the release; future tag or outreach action requires operator approval.
+- Tag-source disclosure: the v0.1.0 tag's embedded docs predate PR #46 finalization. GitHub release from v0.1.0 requires explicit disclosure.
+- v0.1.1 Source-Doc Invariant: `anti-slop-receipts-v0.1.1` source docs remain truthful when viewed before tag creation, after tag creation, and from the tag itself; post-tag install proof may live outside the tag commit. Do not force-move any tag.
+
+Exact commands:
+- Pinned tag install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1"`
+- Preview install: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"`
+- Pinned install for reproducible CI: `pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>"`
+- Self-test: `anti-slop-claims --self-test`, `anti-slop-run --self-test`, `anti-slop-pr --self-test`, and `anti-slop-pr-event --self-test`
+- Check a generic artifact: `anti-slop-claims --root . AGENT_FINAL_REPORT.md`  (add `--report` for advisory)
+- Write JSON: `anti-slop-claims --root . --json claims.json AGENT_FINAL_REPORT.md`
+- Diff-aware changed-file check: `anti-slop-claims --root . --diff HEAD~1..HEAD AGENT_FINAL_REPORT.md`
+- Write a command receipt: `anti-slop-run -- make validate`
+- Check command/metric claims: `anti-slop-claims --root . --receipts .anti-slop/receipts AGENT_FINAL_REPORT.md`
+- Check a PR body: `anti-slop-pr --root . <pr-body.md>`  (add `--report` for advisory)
+- GitHub Actions: copy `templates/anti-slop-report.yml` -> `.github/workflows/anti-slop-report.yml` (report mode; appends `$GITHUB_STEP_SUMMARY`; uploads `.anti-slop/receipts/*.json` and `.anti-slop/claims.json` when present)
+- Adoption smoke: `make adoption-smoke`
+- Launch check: `make launch-check`
+- Launch decision check: `make launch-decision-check`
+- External dry-run smoke: `make external-dry-run-smoke` and `make external-dry-run-compat`
+- External cluster smoke: `make external-dry-run-cluster-smoke` and `make external-dry-run-cluster-compat`
+- Expanded external sample: `make external-sample-smoke`, `make external-sample-compat`, and `make actionability-label-check`
+- Command receipt dogfood: `make command-receipt-dogfood`
+- Demo/proof from this repo: `make agent-claim-demo`, `make agent-claim-benchmark`, `make agent-claim-audit`
+
+## Reference
+
+- [docs/agent-claim-verification.md](docs/agent-claim-verification.md): supported-claims matrix and out-of-scope boundary.
+- [docs/agent-report-contract.md](docs/agent-report-contract.md): copyable `AGENT_FINAL_REPORT.md` structure and command examples.
+- [docs/command-receipts.md](docs/command-receipts.md): `anti-slop-run` receipt schema, freshness, metrics, and no-secret-dumping rules.
+- [docs/pr-provenance.md](docs/pr-provenance.md): usage, tiers, ignore directives, "First 60 seconds", GitHub Actions recipe.
+- [docs/adoption-loop.md](docs/adoption-loop.md): report-mode external adoption playbook and candidate targets.
+- [docs/citation-lineage-gate.md](docs/citation-lineage-gate.md): the reused source-card/source resolver (the one benchmark-backed primitive).
+- [README.md](README.md): the Anti-Slop Receipts front door; books-KB/eval-lab history is preserved below the fold.
+
+## Tiers (deterministic vs advisory)
+
+- Deterministic (hard fail): file refs (path-like), test nodes, source-card/source refs, changed-file refs under `--diff`, command/metric claims when detected.
+- Advisory (never fails): issue refs without a registry; commit-SHA refs.
+- Default adoption is report mode; blocking enforcement is explicit opt-in.

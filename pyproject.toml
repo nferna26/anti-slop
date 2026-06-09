@@ -1,0 +1,65 @@
+# Packaging for deterministic Anti-Slop claim-verification CLIs.
+#
+# This installs the existing gate modules as importable modules and console
+# commands. It does NOT fork or reimplement the gates: the package entry points
+# call the scripts' own main() functions or a thin wrapper over an existing
+# resolver engine, so installed CLIs and checkout-mode commands keep the same
+# behavior.
+#
+# Scope of the tools (narrow, deterministic/advisory): they audit whether cited
+# references and receipts RESOLVE to repo artifacts. That is all. They are NOT
+# advisors, do NOT call any model/API/network, do NOT prove source truth,
+# correctness, relevance, support, advice quality, reasoning, safety, or canon.
+#
+# stdlib-only: no runtime dependencies.
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anti-slop-lineage"
+version = "0.1.0"
+description = "Deterministic agent claim verification CLIs: resolve cited lineage, PR-body, and generic artifact references against repo artifacts. Not an advisor, not a model, not canon."
+requires-python = ">=3.9"
+dependencies = []
+license = { text = "Apache-2.0" }
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+keywords = ["claim-verification", "citation", "lineage", "provenance", "deterministic", "audit"]
+
+[project.scripts]
+# The CLI IS the gate's own main() — same args (file paths, --root,
+# --require-reviewed, --self-test), same exit codes (0 pass / 1 findings /
+# 2 usage). The installed CLI ships NO corpus: pass --root <kb-root> to point it
+# at a checkout or fixture tree (or use --self-test, which builds its own
+# temporary fixture roots).
+anti-slop-lineage = "gate_citation_lineage:main"
+# anti-slop-pr: deterministic PR-description provenance checker (resolves issue /
+# file / test / card references; reuses the gate_citation_lineage resolver for
+# card refs). Same stdlib-only, no model/API/network posture.
+anti-slop-pr = "gate_pr_provenance:main"
+# anti-slop-claims: generic artifact checker. Reuses the anti-slop-pr resolver
+# engine for non-PR Markdown/text artifacts; packaging/API shape only, not a
+# semantic expansion.
+anti-slop-claims = "gate_claims:main"
+# anti-slop-run: local command receipt writer for command/metric claims. It
+# writes hashed stdout/stderr receipts by default; no model/API/network runtime.
+anti-slop-run = "anti_slop_run:main"
+# anti-slop-pr-event: GitHub Actions wrapper — reads the PR body from a
+# pull_request event JSON ($GITHUB_EVENT_PATH) and runs anti-slop-pr. No GitHub
+# API; event payload + local checkout only. Non-PR events SKIP (exit 0).
+anti-slop-pr-event = "pr_provenance_from_github_event:main"
+
+[tool.setuptools]
+# Package only the existing gate modules and thin wrappers — explicit
+# py-modules disables package auto-discovery, so nothing else under scripts/ is
+# swept in. The wrappers import gate_pr_provenance / gate_citation_lineage, so
+# all resolver modules ship together.
+py-modules = ["gate_citation_lineage", "gate_pr_provenance", "gate_claims", "anti_slop_run", "pr_provenance_from_github_event"]
+
+[tool.setuptools.package-dir]
+"" = "scripts"

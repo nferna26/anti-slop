@@ -1,0 +1,43 @@
+{
+  "allowed_labels": [
+    "actionable",
+    "non_actionable",
+    "unclear",
+    "excluded"
+  ],
+  "labels": [
+    {
+      "cluster_key": "commit|advisory|commit refs advisory under local-git resolution",
+      "count": 10,
+      "evidence_scope": "aggregate_cluster",
+      "label": "non_actionable",
+      "reason": "Commit refs are advisory in this root-unavailable external sample; no maintainer action is justified without a local checkout and reviewer context."
+    },
+    {
+      "cluster_key": "file|fail|file refs that do not resolve",
+      "count": 8,
+      "evidence_scope": "excluded_root_unavailable",
+      "label": "excluded",
+      "reason": "External repo checkouts are not committed, so path-resolution failures against the empty fixture root are excluded from usefulness rates."
+    },
+    {
+      "cluster_key": "issue|advisory|issue refs advisory without registry",
+      "count": 5,
+      "evidence_scope": "aggregate_cluster",
+      "label": "unclear",
+      "reason": "Issue refs could become actionable with a supplied issue registry, but this dry run has no maintainer context or registry."
+    }
+  ],
+  "schema_version": "anti-slop-actionability-labels.v1",
+  "summary": {
+    "actionable_count": 0,
+    "actionable_rate": 0.0,
+    "excluded_count": 8,
+    "excluded_rate": 0.3478,
+    "non_actionable_count": 10,
+    "non_actionable_rate": 0.6667,
+    "total_labeled_findings": 23,
+    "unclear_count": 5,
+    "useful_findings_status": "FAIL"
+  }
+}

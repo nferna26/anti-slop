@@ -8,9 +8,10 @@ scoring_status: unscored
 
 # Substrate Brief Audit
 
-This audit records the exact compiled brief used for the full local-only
-pre-freeze probe. The compiled brief itself stays local-only; it is a
-machine-compiled packet from reviewed public cards and is not canon.
+This audit records the compiled brief used for the full local-only pre-freeze
+probe and the equivalent frozen benchmark brief for `locator-accuracy-v1-v1`.
+The compiled briefs stay local-only; they are machine-compiled packets from
+reviewed public cards and are not canon.
 
 ## Recipe
 
@@ -24,13 +25,21 @@ python3 scripts/compile_brief.py locator-accuracy-full-probe \
   --question "Correct the rough source-backed note. Use only reviewed public KB lineage available in the brief; refuse unsupported card IDs, locators, quotes, and canon claims."
 ```
 
-Local-only output:
+Local-only probe output:
 
 - `local-only/probes/locator-accuracy-v1-full-2026-05-25/compiled-brief.md`
 
-Hash:
+Probe hash:
 
 - `sha256: 0b2195e7fe7e674ce724396700a7188a0d90ff5048e9dbb40491f1461ceafd62`
+
+Frozen benchmark output:
+
+- `local-only/runs/locator-accuracy-v1-v1/substrate-brief.md`
+
+Frozen benchmark hash:
+
+- `sha256: e1391a54f84fdad9ec6b2792801b07b049eb63cfb8ddac2e8b2df7f7173280f5`
 
 Size:
 
@@ -50,6 +59,6 @@ Size:
 
 ## Boundary
 
-This audit supports reproducibility of the local probe only. A future frozen
-benchmark must freeze its own condition packet recipe and hashes before
-generation.
+This audit supports reproducibility of the local probe and the frozen
+benchmark brief. The benchmark's condition-packet recipes and hashes are frozen
+separately in `run-packet.md`.

@@ -1,0 +1,7 @@
+{
+  "action": "opened",
+  "pull_request": {
+    "number": 103,
+    "body": "Documents the checker.\n\n<!-- anti-slop-pr: ignore-start -->\nExample refs: `docs/does-not-exist.md`, `BK-7099-card-001`, #9999.\n<!-- anti-slop-pr: ignore-end -->\n\nThe real change adds `docs/example.md`.\n"
+  }
+}

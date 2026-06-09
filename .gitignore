@@ -37,3 +37,10 @@ __pycache__/
 # Env
 .env
 .env.*
+
+# Python packaging build artifacts (from `pip install .` / `make package-smoke`)
+build/
+dist/
+*.egg-info/
+**/*.egg-info/
+.venv/

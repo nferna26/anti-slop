@@ -1,0 +1,534 @@
+{
+  "artifact_count": 25,
+  "artifact_mix": {
+    "real-pr-body": 25
+  },
+  "artifacts": [
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 47.06,
+      "claim_count": 8,
+      "claim_types": {
+        "file": 8
+      },
+      "hard_claim_count": 8,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-11",
+      "kind": "real-pr-body",
+      "line_count": 17,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-11.md"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 16.67,
+      "claim_count": 3,
+      "claim_types": {
+        "changed_file": 1,
+        "file": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-12",
+      "kind": "real-pr-body",
+      "line_count": 18,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-12.md"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 10.0,
+      "claim_count": 2,
+      "claim_types": {
+        "file": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-13",
+      "kind": "real-pr-body",
+      "line_count": 20,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-13.md"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 9.09,
+      "claim_count": 2,
+      "claim_types": {
+        "file": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-14",
+      "kind": "real-pr-body",
+      "line_count": 22,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-14.md"
+    },
+    {
+      "advisory_count": 2,
+      "checkable_claim_density_per_100_lines": 21.74,
+      "claim_count": 5,
+      "claim_types": {
+        "changed_file": 2,
+        "file": 3
+      },
+      "hard_claim_count": 3,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-15",
+      "kind": "real-pr-body",
+      "line_count": 23,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-15.md"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 9.09,
+      "claim_count": 2,
+      "claim_types": {
+        "file": 1,
+        "issue": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-16",
+      "kind": "real-pr-body",
+      "line_count": 22,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-16.md"
+    },
+    {
+      "advisory_count": 2,
+      "checkable_claim_density_per_100_lines": 33.33,
+      "claim_count": 7,
+      "claim_types": {
+        "changed_file": 2,
+        "file": 5
+      },
+      "hard_claim_count": 5,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-17",
+      "kind": "real-pr-body",
+      "line_count": 21,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-17.md"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 19.23,
+      "claim_count": 5,
+      "claim_types": {
+        "file": 5
+      },
+      "hard_claim_count": 5,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-18",
+      "kind": "real-pr-body",
+      "line_count": 26,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-18.md"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 8.57,
+      "claim_count": 3,
+      "claim_types": {
+        "file": 3
+      },
+      "hard_claim_count": 3,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-19",
+      "kind": "real-pr-body",
+      "line_count": 35,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-19.md"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 2.13,
+      "claim_count": 1,
+      "claim_types": {
+        "file": 1
+      },
+      "hard_claim_count": 1,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-20",
+      "kind": "real-pr-body",
+      "line_count": 47,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-20.md"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 62.86,
+      "claim_count": 22,
+      "claim_types": {
+        "card_id": 6,
+        "card_path": 1,
+        "changed_file": 1,
+        "file": 4,
+        "source_card": 6,
+        "source_id": 4
+      },
+      "hard_claim_count": 21,
+      "hard_fail_clusters": {
+        "unresolved card_id reference": 2,
+        "unresolved source_card reference": 1
+      },
+      "hard_fail_count": 3,
+      "id": "pr-21",
+      "kind": "real-pr-body",
+      "line_count": 35,
+      "passed": false,
+      "source": "proof/agent-claim-audit/bodies/pr-21.md"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 68.57,
+      "claim_count": 24,
+      "claim_types": {
+        "card_id": 3,
+        "card_path": 1,
+        "file": 6,
+        "source_card": 4,
+        "source_id": 10
+      },
+      "hard_claim_count": 24,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-22",
+      "kind": "real-pr-body",
+      "line_count": 35,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-22.md"
+    },
+    {
+      "advisory_count": 5,
+      "checkable_claim_density_per_100_lines": 27.03,
+      "claim_count": 10,
+      "claim_types": {
+        "changed_file": 3,
+        "commit": 1,
+        "file": 4,
+        "issue": 2
+      },
+      "hard_claim_count": 4,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-23",
+      "kind": "real-pr-body",
+      "line_count": 37,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-23.md"
+    },
+    {
+      "advisory_count": 6,
+      "checkable_claim_density_per_100_lines": 35.71,
+      "claim_count": 15,
+      "claim_types": {
+        "changed_file": 3,
+        "commit": 2,
+        "file": 7,
+        "issue": 3
+      },
+      "hard_claim_count": 7,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-24",
+      "kind": "real-pr-body",
+      "line_count": 42,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-24.md"
+    },
+    {
+      "advisory_count": 2,
+      "checkable_claim_density_per_100_lines": 16.67,
+      "claim_count": 6,
+      "claim_types": {
+        "commit": 2,
+        "file": 2,
+        "issue": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-25",
+      "kind": "real-pr-body",
+      "line_count": 36,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-25.md"
+    },
+    {
+      "advisory_count": 3,
+      "checkable_claim_density_per_100_lines": 25.71,
+      "claim_count": 9,
+      "claim_types": {
+        "commit": 2,
+        "file": 4,
+        "issue": 3
+      },
+      "hard_claim_count": 4,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-26",
+      "kind": "real-pr-body",
+      "line_count": 35,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-26.md"
+    },
+    {
+      "advisory_count": 10,
+      "checkable_claim_density_per_100_lines": 61.36,
+      "claim_count": 27,
+      "claim_types": {
+        "card_id": 2,
+        "changed_file": 7,
+        "commit": 1,
+        "file": 11,
+        "issue": 3,
+        "source_card": 2,
+        "test": 1
+      },
+      "hard_claim_count": 16,
+      "hard_fail_clusters": {
+        "path refs that do not resolve in current checkout": 4,
+        "unresolved card_id reference": 2,
+        "unresolved source_card reference": 2
+      },
+      "hard_fail_count": 8,
+      "id": "pr-27",
+      "kind": "real-pr-body",
+      "line_count": 44,
+      "passed": false,
+      "source": "proof/agent-claim-audit/bodies/pr-27.md"
+    },
+    {
+      "advisory_count": 9,
+      "checkable_claim_density_per_100_lines": 40.48,
+      "claim_count": 17,
+      "claim_types": {
+        "changed_file": 6,
+        "commit": 1,
+        "file": 7,
+        "issue": 3
+      },
+      "hard_claim_count": 7,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-28",
+      "kind": "real-pr-body",
+      "line_count": 42,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-28.md"
+    },
+    {
+      "advisory_count": 2,
+      "checkable_claim_density_per_100_lines": 9.43,
+      "claim_count": 5,
+      "claim_types": {
+        "changed_file": 1,
+        "commit": 1,
+        "file": 2,
+        "issue": 1
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-29",
+      "kind": "real-pr-body",
+      "line_count": 53,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-29.md"
+    },
+    {
+      "advisory_count": 1,
+      "checkable_claim_density_per_100_lines": 7.55,
+      "claim_count": 4,
+      "claim_types": {
+        "commit": 1,
+        "file": 2,
+        "issue": 1
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-30",
+      "kind": "real-pr-body",
+      "line_count": 53,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-30.md"
+    },
+    {
+      "advisory_count": 5,
+      "checkable_claim_density_per_100_lines": 24.14,
+      "claim_count": 14,
+      "claim_types": {
+        "changed_file": 4,
+        "commit": 1,
+        "file": 8,
+        "issue": 1
+      },
+      "hard_claim_count": 8,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-31",
+      "kind": "real-pr-body",
+      "line_count": 58,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-31.md"
+    },
+    {
+      "advisory_count": 2,
+      "checkable_claim_density_per_100_lines": 18.6,
+      "claim_count": 8,
+      "claim_types": {
+        "changed_file": 1,
+        "file": 6,
+        "issue": 1
+      },
+      "hard_claim_count": 6,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-32",
+      "kind": "real-pr-body",
+      "line_count": 43,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-32.md"
+    },
+    {
+      "advisory_count": 5,
+      "checkable_claim_density_per_100_lines": 26.76,
+      "claim_count": 19,
+      "claim_types": {
+        "changed_file": 5,
+        "file": 14
+      },
+      "hard_claim_count": 14,
+      "hard_fail_clusters": {
+        "path refs that do not resolve in current checkout": 3
+      },
+      "hard_fail_count": 3,
+      "id": "pr-33",
+      "kind": "real-pr-body",
+      "line_count": 71,
+      "passed": false,
+      "source": "proof/agent-claim-audit/bodies/pr-33.md"
+    },
+    {
+      "advisory_count": 4,
+      "checkable_claim_density_per_100_lines": 33.33,
+      "claim_count": 13,
+      "claim_types": {
+        "changed_file": 2,
+        "commit": 2,
+        "file": 7,
+        "issue": 2
+      },
+      "hard_claim_count": 7,
+      "hard_fail_clusters": {
+        "path refs that do not resolve in current checkout": 1
+      },
+      "hard_fail_count": 1,
+      "id": "pr-34",
+      "kind": "real-pr-body",
+      "line_count": 39,
+      "passed": false,
+      "source": "proof/agent-claim-audit/bodies/pr-34.md"
+    },
+    {
+      "advisory_count": 0,
+      "checkable_claim_density_per_100_lines": 5.26,
+      "claim_count": 2,
+      "claim_types": {
+        "file": 2
+      },
+      "hard_claim_count": 2,
+      "hard_fail_clusters": {},
+      "hard_fail_count": 0,
+      "id": "pr-35",
+      "kind": "real-pr-body",
+      "line_count": 38,
+      "passed": true,
+      "source": "proof/agent-claim-audit/bodies/pr-35.md"
+    }
+  ],
+  "artifacts_with_claims": 25,
+  "audit_status": "complete",
+  "candidate_false_positive_clusters": [
+    [
+      "path refs that do not resolve in current checkout",
+      8
+    ],
+    [
+      "unresolved card_id reference",
+      4
+    ],
+    [
+      "unresolved source_card reference",
+      3
+    ]
+  ],
+  "checkable_claim_density_per_100_lines": 25.55,
+  "claim_count": 233,
+  "hard_claim_count": 158,
+  "hard_fail_count": 15,
+  "real_artifact_count": 25,
+  "required_real_artifacts": 20,
+  "sample_status": "sufficient_real_sample",
+  "schema_version": "anti-slop-agent-claim-density-audit.v0.1",
+  "thirty_day_falsifier": {
+    "rule": "pass if >=15 artifacts have claims, density >=8.0 claims/100 lines, and hard unresolved rate <=0.35",
+    "scope": "report-mode calibration over committed public-safe real PR bodies",
+    "trend": "pass"
+  },
+  "top_claim_types": [
+    [
+      "file",
+      118
+    ],
+    [
+      "changed_file",
+      38
+    ],
+    [
+      "issue",
+      23
+    ],
+    [
+      "source_id",
+      14
+    ],
+    [
+      "commit",
+      14
+    ],
+    [
+      "source_card",
+      12
+    ],
+    [
+      "card_id",
+      11
+    ],
+    [
+      "card_path",
+      2
+    ],
+    [
+      "test",
+      1
+    ]
+  ],
+  "total_lines": 912,
+  "unresolved_hard_claim_rate": 0.0949
+}

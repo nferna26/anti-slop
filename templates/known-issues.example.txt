@@ -1,0 +1,10 @@
+# Example issue-number registry for anti-slop-pr (--issue-registry).
+# One valid issue number per line; a leading '#' is optional; lines like this
+# (starting with '# ' followed by words) are comments and are ignored.
+#
+# Generate the real thing offline from your tracker, e.g.:
+#   gh issue list --state all --limit 1000 --json number -q '.[].number' > .known-issues.txt
+# It is numbers only — no titles, bodies, or credentials.
+1
+2
+42

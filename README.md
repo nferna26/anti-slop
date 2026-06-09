@@ -1,139 +1,265 @@
-# Anti-Slop books-kb
+# Anti-Slop Receipts
 
-Anti-Slop books-kb is a governed Markdown knowledgebase for making AI-assisted advice inspectable before it becomes operational.
+**Make AI coding agents cite receipts, not vibes.**
 
-## Objective
+Anti-Slop Receipts is deterministic **reference and receipt resolution** for AI
+agent reports. It checks whether cited files, tests, issues, commits, command
+receipts, and simple metric receipts resolve against the local repo state.
 
-Build a citation-traceable, contradiction-aware advisory substrate from a sourced 200-book corpus.
+It is intentionally narrow. A PASS means the cited references/receipts resolved.
+It does **not** prove correctness, relevance, source truth, support, safety,
+advice quality, reasoning, benchmark validity, statistical meaning, or canon.
+The `anti-slop-receipts-v0.1.1` tag is the clean public tag path after PR #46.
+The historical `anti-slop-receipts-v0.1.0` tag remains available for pinned
+installs and must not be force-moved. The narrow public preview GitHub Release
+body is recorded in [`docs/github-release-v0.1.1.md`](docs/github-release-v0.1.1.md).
+No outreach, HN/X launch blast, external PR/comment/issue, maintainer contact,
+or enforcement workflow is approved by either tag or release.
+Release status remains deterministic reference/receipt resolution only; no
+outreach, future tag, or enforcement action happens without separate operator
+approval.
+Separate operator approval is still required for any future tag, outreach, or
+enforcement action.
 
-The claim is deliberately narrow:
+Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The
+v0.1.0 installable package smoke passes, but `docs/tag-approval-packet.md`
+inside that tag still says the pre-finalization state. GitHub release from
+v0.1.0 requires explicit disclosure.
 
-> A maintained knowledgebase with source lineage, contradiction handling, deterministic gates, and operator approval can reduce slop compared with vanilla model use and vanilla model use with famous manually supplied sources.
+v0.1.1 Source-Doc Invariant: `anti-slop-receipts-v0.1.1` source docs are
+written to remain truthful when viewed before tag creation, after tag creation,
+and when viewed from the tag itself. The post-tag install proof may live outside the
+tag commit because it can only be generated after the tag exists. Do not
+force-move any tag.
 
-This repo proves the method, not possession of books.
+## Problem
 
-## Why
+AI coding agents often write confident reports that cite files, tests, commands,
+metrics, issues, or commits that do not exist. Reviewers then have to separate
+"the agent said it" from "the repo has a receipt for it."
 
-AI can sound strategic while quietly failing at the parts that matter: fabricated lineage, famous-source defaults, flattened contradictions, universal advice from narrow cases, and no audit trail for what changed the recommendation.
+Anti-Slop makes those claims inspectable before merge:
 
-Anti-Slop turns that into a workflow:
+- `anti-slop-run` writes local command/metric receipts.
+- `anti-slop-claims` is the canonical checker for `AGENT_FINAL_REPORT.md` and
+  other Markdown/text artifacts.
+- `anti-slop-pr-event` is the GitHub Actions PR-body preset for report-mode
+  adoption.
 
-```text
-source -> map -> card -> preserve tension -> propose canon -> test -> publish receipts
-```
+Everything is stdlib-only at runtime: no model, hosted API, RAG layer, vector
+store, telemetry, GitHub API, or token requirement.
 
-The point is not to make AI sound more informed. The point is to make advice accountable: what sources were allowed, what claims were rejected, what contradictions remained unresolved, what gates failed, and what changed in the KB.
+## Install
 
-## What This Is
-
-This is a Karpathy-style persistent Markdown knowledgebase, not a prompt pack and not query-time RAG.
-
-- Raw sources stay local-only.
-- Public-safe Markdown pages compound over time.
-- Maps and cards organize source lineage.
-- Tension cards preserve disagreement instead of smoothing it away.
-- Canon requires explicit operator approval.
-- Evals and gates test whether the method beats simpler baselines.
-
-## What This Is Not
-
-- Not a public archive of copyrighted book text.
-- Not a raw document dump.
-- Not a vector store of book contents.
-- Not a replacement for the books.
-- Not a claim that 200 books automatically make AI advice better.
-
-Canon Patch Trial is prior context only. It is not the active workstream and not a gate.
-
-## Publication Rule
-
-Raw copyrighted book text must never be committed.
-
-No PDFs, EPUBs, MOBIs, AZW files, OCR dumps, extracted text, copied chapters, long excerpts, public raw-text prompts, or public embeddings of copyrighted source text.
-
-Public artifacts are receipts: metadata, locators, short conservative excerpts when necessary, paraphrases, cards, evals, gate logs, model-output metadata, decisions, and methodology notes.
-
-## Authority Order
-
-- Book maps are discovery aids, not canon.
-- Source cards are evidence units, not canon.
-- Claim/tension cards are synthesis units, not canon.
-- Canon candidates are proposals.
-- Canon requires operator approval.
-
-Machine-generated maps or summaries must never become hidden canon.
-
-## Proof Surface
-
-The first eval families:
-
-- bibliographic adversary
-- contradiction preservation
-- canon promotion tournament
-- long-tail transfer
-- source-lineage hostile
-
-The first gates:
-
-- citation-lineage
-- source-diversity
-- canon-duplication
-- contradiction
-- quote-limit
-- authority-order
-- no-universalization
-
-Positive evidence requires more than a better-sounding answer. It requires fewer critical failures, better source fit, better contradiction preservation, and better gate compliance than baselines.
-
-See [proof/README.md](proof/README.md).
-
-## Start
-
-Current status: Phase 0 (scaffold + rules) and Phase 1 (manifest + acquisition registry) closed. `corpus/manifests/books-200.yaml` carries the operator-provided 200-book corpus. `corpus/manifests/source-id-registry.yaml` locks wave-1 at BK-0001 through BK-0050. `corpus/manifests/acquisition-registry.yaml` carries the public-safe rights/access view.
-
-Run:
+Pinned install from the public tag:
 
 ```sh
-make validate
-make check-raw
-make kb-lint
-make report
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1"
+anti-slop-claims --self-test
+anti-slop-run --self-test
+anti-slop-pr-event --self-test
 ```
 
-Create artifacts:
+Preview install from the public repo head:
 
 ```sh
-python3 scripts/new_book_map.py <source_id>
-python3 scripts/new_source_card.py <source_id>
-python3 scripts/new_claim_tension_card.py <slug>
-python3 scripts/new_canon_candidate.py <slug>
-python3 scripts/new_eval_case.py <eval_type> <case_id>
-python3 scripts/new_gate_log.py <run_id>
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop"
+anti-slop-claims --self-test
+anti-slop-run --self-test
+anti-slop-pr-event --self-test
 ```
 
-Next useful path:
+For reproducible CI, pin the git dependency to a release tag or full commit SHA:
 
-1. Verify rights/access for BK-0020 and BK-0046 (currently `raw_source_status: metadata_only`).
-2. Verify edition / publisher / ISBN / year for the wave-1 books with local filename evidence; lift `edition_verified` in the acquisition registry.
-3. Pick a locator scheme per source; lift `locator_confidence` from `none` only on verification.
-4. Create the first public-safe book map (start with a wave-1 map candidate).
-5. Run gates.
-6. Log the result in `kb/log.md`.
+```sh
+pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>"
+```
+
+The unpinned preview install is easier for first adoption but tracks repo head.
+Pinning is the safer supply-chain posture once a repo depends on the check.
+
+Product/package naming is intentionally conservative: Anti-Slop Receipts is the
+product, the current Python distribution remains `anti-slop-lineage`, and the
+primary commands remain `anti-slop-claims`, `anti-slop-run`,
+`anti-slop-pr-event`, and `anti-slop-pr`. See
+[`docs/package-install-naming.md`](docs/package-install-naming.md).
+
+## 60-Second Demo
+
+```sh
+make agent-claim-demo
+```
+
+The demo checks two committed sample reports against a temporary local fixture:
+a fake report FAILS with exact line reasons, and a receipt-backed report PASSES.
+Sample output is committed at
+[`proof/agent-claim-demo/sample-output.md`](proof/agent-claim-demo/sample-output.md).
+
+## GitHub Action
+
+Copy the vendorable report-mode workflow:
+
+```sh
+cp templates/anti-slop-report.yml .github/workflows/anti-slop-report.yml
+```
+
+By default it runs:
+
+```sh
+anti-slop-pr-event --root . --report
+```
+
+Report mode prints findings and exits 0. Enforcement is explicit opt-in by
+removing `--report` after a repo has enough boring report-mode data.
+
+The workflow can also retain useful CI artifacts:
+
+```yaml
+ANTI_SLOP_RUN_VALIDATE: "true"
+ANTI_SLOP_CHECK_AGENT_REPORT: "true"
+```
+
+Those options run `anti-slop-run -- make validate`, check
+`AGENT_FINAL_REPORT.md` with `anti-slop-claims --receipts .anti-slop/receipts
+--json .anti-slop/claims.json --report`, append compact Markdown tables to
+`$GITHUB_STEP_SUMMARY`, and upload `.anti-slop/receipts/*.json` plus
+`.anti-slop/claims.json`. These artifacts are local command/reference facts, not
+proof of correctness.
+
+## Supported Claim Types
+
+- File refs: path-like refs such as `docs/foo.md` or `scripts/tool.py:L42`.
+- Changed-file claims: "updated `docs/foo.md`" checked against `--diff` when
+  supplied; advisory/skipped without a diff.
+- Test refs: `tests/test_api.py::test_limits`.
+- Issue refs: advisory by default; hard only with a supplied numbers registry.
+- Commit refs: advisory local-git resolution.
+- Command claims: "`make validate` passed", "pytest passed", "tests pass", or
+  ``command `make validate` exited 0``, backed by fresh `anti-slop-run` receipts.
+- Metric claims: "score is 0.82" or "score improved from 0.70 to 0.82", backed
+  by fresh receipt metrics.
+
+See [`docs/agent-claim-verification.md`](docs/agent-claim-verification.md) for
+the full matrix.
+
+## Non-Goals
+
+Anti-Slop Receipts is not:
+
+- a model, hosted service, agent runtime, telemetry layer, RAG layer, or vector
+  store;
+- a correctness checker;
+- a relevance, support, safety, advice-quality, reasoning, benchmark-validity,
+  statistical-meaning, source-truth, or canon judge;
+- a public archive of copyrighted source text.
+
+## Privacy And Security
+
+Receipts are local JSON artifacts. By default, `anti-slop-run` stores hashes and
+byte counts for stdout/stderr, not raw output. Bounded excerpts are explicit
+opt-in; do not enable excerpts for commands that may print secrets,
+credentials, `.env` values, private paths, raw API JSON, answer keys, raw
+transcripts, or raw copyrighted text.
+
+The GitHub workflow uses `permissions: contents: read`. Anti-Slop commands read
+event JSON and local checkout files; they do not require a GitHub API token.
+See [`docs/privacy-security.md`](docs/privacy-security.md) for the full
+privacy/security launch boundary and forbidden report/receipt content.
+
+## Agent Report Contract
+
+Use [`docs/agent-report-contract.md`](docs/agent-report-contract.md) for a
+copyable `AGENT_FINAL_REPORT.md` structure and receipt examples for `pytest`,
+`npm`, `pnpm`, `cargo`, `go`, and `make`.
+
+Minimal local flow:
+
+```sh
+anti-slop-run -- make validate
+anti-slop-claims --root . --receipts .anti-slop/receipts --json .anti-slop/claims.json --report AGENT_FINAL_REPORT.md
+```
+
+## Proof Metrics
+
+README proof numbers are smoke-checked against committed summaries:
+
+- [`benchmarks/agent-claim-corpus-v0.1/results/summary.json`](benchmarks/agent-claim-corpus-v0.1/results/summary.json):
+  55-case synthetic checker corpus including 5 cluster-derived regression cases;
+  100.0% catch rate over enforceable false cases; 0.0% false-fail rate over
+  expected-valid cases.
+- [`proof/agent-claim-audit/summary.json`](proof/agent-claim-audit/summary.json):
+  25 real PR bodies; 25.55 checkable claims per 100 lines; 9.5% hard unresolved rate;
+  30-day falsifier trend: PASS.
+
+These numbers measure resolver behavior and report-mode calibration only. They
+do not prove semantic correctness, source truth, benchmark validity,
+statistical meaning, support, safety, advice quality, reasoning, or canon.
+
+## Docs
+
+- [`INSTALL_FOR_AGENTS.md`](INSTALL_FOR_AGENTS.md): copy-paste install protocol.
+- [`llms.txt`](llms.txt): compact agent entrypoint.
+- [`templates/anti-slop-report.yml`](templates/anti-slop-report.yml): report-mode
+  GitHub Actions workflow with optional receipt artifacts.
+- [`docs/package-install-naming.md`](docs/package-install-naming.md):
+  product/package naming posture and pinned install guidance.
+- [`docs/release-install-plan.md`](docs/release-install-plan.md):
+  release/tag readiness, reproducible tag/SHA pin flow, and adopter update path.
+- [`docs/github-release-v0.1.1.md`](docs/github-release-v0.1.1.md):
+  exact narrow public preview GitHub Release title/body, install command,
+  usage, boundary language, and repo metadata suggestion.
+- [`docs/tag-approval-packet.md`](docs/tag-approval-packet.md):
+  tag approval packet and no-outreach boundary for `anti-slop-receipts-v0.1.1`.
+- [`docs/operator-tag-decision.md`](docs/operator-tag-decision.md):
+  tag target and operator decision record.
+- [`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md):
+  fresh public git/SHA install smoke for the candidate commit.
+- [`proof/tag-install-smoke/summary.md`](proof/tag-install-smoke/summary.md):
+  fresh public tag install smoke for the current clean tag path.
+- [`docs/privacy-security.md`](docs/privacy-security.md): local execution,
+  receipt contents, artifact upload risk, and forbidden content.
+- [`docs/launch-checklist.md`](docs/launch-checklist.md): machine and manual
+  launch checks.
+- [`docs/demo-repo.md`](docs/demo-repo.md): demo repo script, screenshot/GIF
+  checklist, and short launch copy.
+- [`docs/maintainer-outreach-packet.md`](docs/maintainer-outreach-packet.md):
+  opt-in maintainer message, evidence summary format, and no-contact rules.
+- [`docs/launch-decision.md`](docs/launch-decision.md): current evidence-based
+  go/no-go decision.
+- [`docs/command-receipts.md`](docs/command-receipts.md): command/metric receipt
+  schema.
+- [`docs/pr-provenance.md`](docs/pr-provenance.md): PR-body preset details.
+- [`docs/adoption-loop.md`](docs/adoption-loop.md): external adoption playbook.
+- [`docs/external-dry-run-policy.md`](docs/external-dry-run-policy.md):
+  report-mode-only external dry-run policy and aggregate schema.
+- [`proof/external-dry-run/summary.md`](proof/external-dry-run/summary.md):
+  first saved-public-PR-body dry-run aggregate (`dry_run_not_adoption`).
+- [`proof/external-dry-run/expanded/summary.md`](proof/external-dry-run/expanded/summary.md):
+  expanded 12-repo saved-public-PR-body dry-run aggregate.
+- [`proof/external-dry-run/expanded/actionability.md`](proof/external-dry-run/expanded/actionability.md):
+  aggregate actionability labels; raw external line text omitted.
+- [`proof/command-receipt-dogfood/summary.md`](proof/command-receipt-dogfood/summary.md):
+  public-safe command-receipt dogfood summary.
+- [`proof/real-checkout-learning/summary.md`](proof/real-checkout-learning/summary.md):
+  private-learning report-mode loop over selected external public PR bodies
+  checked against temporary public repo checkouts.
+- [`proof/real-command-receipt-dogfood/summary.md`](proof/real-command-receipt-dogfood/summary.md):
+  current-work command-receipt dogfood; raw local-cwd receipts are regenerated
+  in temporary storage and are not committed.
+- [`proof/external-dry-run/clusters.md`](proof/external-dry-run/clusters.md):
+  public-safe cluster memo and no-change resolver decision.
+- [`docs/kill-criteria.md`](docs/kill-criteria.md): kill-criteria dashboard
+  for usefulness signals and unknowns.
+- [`docs/history/books-kb-eval-lab.md`](docs/history/books-kb-eval-lab.md):
+  preserved books-KB, eval-lab, canon, and historical evidence context.
 
 ## Repo Map
 
-- `kb/`: maintained Markdown KB, index, log, question and synthesis templates.
-- `corpus/`: manifests, maps, source cards, tension cards, canon candidates.
-- `canon/`: operator-approved concepts, patterns, guardrails, and playbooks.
-- `evals/`: proof-surface cases.
-- `gates/`: gate definitions.
-- `proof/`: claims, baselines, proof thresholds, and falsifiers.
-- `runs/`: model-output metadata, gate logs, and score sheets.
-- `registry/`: accepted, rejected, deferred, and retired decisions.
-- `scripts/`: local validation and artifact helpers.
-
-## Claim Boundary
-
-This project does not yet prove that Anti-Slop improves advice. It provides the scaffold for testing that claim.
-
-If evals show no meaningful delta over simpler baselines, the method should narrow or reset.
+- `scripts/`: local CLIs and validation helpers.
+- `templates/`: vendorable workflow and PR-body examples.
+- `proof/`: demo and audit summaries.
+- `benchmarks/`: synthetic checker corpus.
+- `docs/`: user docs, contract docs, and preserved history.
+- `kb/`, `corpus/`, `canon/`, `evals/`, `registry/`, `runs/`: historical
+  books-KB/eval-lab artifacts retained as public evidence, not the product
+  front door.

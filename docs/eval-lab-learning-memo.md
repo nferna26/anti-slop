@@ -11,6 +11,103 @@ A negative or inconclusive eval result is progress: it tells us what is **not**
 yet shown, narrows the next case design, and prevents an unsupported advice
 claim from being promoted. The lab's job is to record those honestly.
 
+## 2026-05-29 — locator-accuracy v4 is benchmark-supported (mechanical lineage), and the primitive is now a dogfooded gate
+
+`locator-accuracy-v4-v1` recorded `benchmark_supported` under a frozen,
+pre-registered rule applied by two independent, different-family hosted judges
+(`claude-opus-4-7`, `gpt-5.4-2026-03-05`) that each passed exact calibration on
+anchors A-L. Both scored the substrate at SO3 ~0.975 and every source-free
+control (vanilla, vanilla_long_prompt, generic_advice_prompted,
+criteria_prompted_no_sources, famous_sources_supplied) at SO3 0.000. This is the
+lab's first `benchmark_supported` decision.
+
+What it shows is narrow and mechanical: under adversarial citation pressure the
+substrate adds inspectable reviewed public-KB lineage (correct card ID +
+reviewed locator + supported claim, with unsupported excess refused) where
+source-free prompting — including a careful criteria prompt and famous-source
+awareness — cannot. It is **not** a claim about advice quality or source truth,
+and it does not promote canon. The deferred "substrate beats a careful criteria
+prompt on open reasoning quality" claim remains unsupported (the v12 criteria
+ceiling stands for that surface).
+
+v4 was a scoring-surface repair of `v3-v1` (which recorded `do_not_promote`): a
+mechanical F4/F5 canon-refusal definition plus calibration anchors K (decline
+canon = SO3) and L (assert/apply rule = SO0). The repair was validated by an
+independent forensic review as correcting an over-read, not lowering the bar;
+the guard (anchor L) is preserved and both routes fire it. `v3-v1` is frozen
+history and is unchanged.
+
+Method note: the supported primitive is now operationalized as a deterministic
+tool. `scripts/gate_citation_lineage.py` gained a `--require-reviewed`
+forward-reference check (a source-card reference must resolve to a *reviewed*
+card, self-references excepted) and a `--root` flag; `make citation-dogfood`
+runs it over the KB's own lineage artifacts (corpus cards/maps + eval
+design/decision docs, excluding model-outputs/ which are test artifacts), and
+`make demo` shows the compile-brief -> sample-output -> gate -> receipt pipeline
+with no API key or raw book. Dogfooding found no unresolved or unreviewed
+cross-references; the one unreviewed card (`BK-0003-card-001`) is only
+self-referenced. The `BK-0023-card-001` card named as a defect in planning is in
+fact operator-reviewed (2026-05-21) and all references to it resolve; its one
+genuinely-stale internal clause (it says BK-0002 has no reviewed source card,
+but `BK-0002-card-001` now exists) is recorded as a follow-up, not silently
+edited into an operator-approved card.
+
+## 2026-05-28 — locator-accuracy v2 produced a real mechanical signal but did not promote
+
+`locator-accuracy-v2-v1` was the first bibliographic-adversary benchmark to run
+the full frozen path: hosted-primary calibration cleared, 240 real
+`gemma-4-31b-it-mlx` outputs were generated, the OUT-NN packet was judged
+condition-blind by hosted Anthropic r2 and hosted OpenAI r3, and reconciliation
+was performed aggregate-only after blind scoring.
+
+The mechanical-lineage signal is real but non-promotional. Both judges scored
+`substrate_workflow` at zero F1-F5 failures, and both assigned support coverage
+only to the substrate (43 under Anthropic, 41 under OpenAI). The safe controls
+often refused cleanly, but they did not add valid reviewed public-KB support
+coverage. This is the narrow signal the family was designed to test:
+inspectable lineage, not better advice.
+
+The frozen Positive-result rule still blocked promotion. Hosted OpenAI cleared
+route-local, but hosted Anthropic assigned total failure count 0 to 208/240
+outputs (86.7%), tripping the pre-registered non-discriminating-judge guard.
+Anthropic also missed the primary failure-rate margin against
+`famous_sources_supplied`: substrate 0 failures versus famous-sources 9
+failures is a +0.225 margin, below the frozen +0.250 threshold. Because the
+rule requires at least two different-family judge routes to clear
+independently, the case stays `partial` with `eval_decision: do_not_promote`.
+
+Methodology lesson: the mechanical-citation direction is more promising than
+open-ended advice quality, but judge discrimination remains load-bearing. A
+future version should preserve the mechanical-lineage claim while making the
+scoring surface less floor-saturated for safe refusals, and it must do that in
+a new frozen version rather than rescuing v2 after the fact.
+
+## 2026-05-27 — locator-accuracy v1 reached freeze but failed judge calibration
+
+`locator-accuracy-v1-v1` was the first full benchmark attempt in the
+bibliographic-adversary / mechanical-lineage family. It froze the advisor
+prompt, five provenance-pressure cases, six conditions, the F1-F5 rubric,
+valid-support coverage metric, X/Y/Z coverage-substitution rule, famous-sources
+coverage rule, condition-packet hashes, substrate-brief hash, and judge-route
+pre-registration before generation.
+
+The packet did not proceed to the 240-output benchmark. Both hosted primary
+judge routes failed exact calibration before generation: Anthropic
+`claude-opus-4-7` missed F5 on anchors D and E, while OpenAI `gpt-5.4` missed F5
+on D and over-fired F1 on E. Both routes matched the coverage anchors G-L, but
+the pre-registered eligibility rule required exact F1-F5 agreement as well. The
+local LM Studio backstop was unavailable because LM Studio exposed only the
+Gemma generator family plus an embedding model. Under the frozen rule, the run
+stopped before benchmark output generation.
+
+This is not a substrate-performance negative. It is a calibration-stage
+negative: the mechanical-lineage family produced a plausible probe signal, but
+the F5 refusal-failure boundary was not judge-stable when paired with F3
+misattribution and F4/F1 evidence-laundering anchors. The right repair is a new
+version with clearer calibration instructions or anchors around "failure to
+refuse" versus adjacent provenance failures, not a rescue of v1-v1 after the
+fact.
+
 ## 2026-05-25 — boundary-transfer v1 failed the pre-freeze separation gate
 
 The `halo-effect-boundary-blind-measurement-v1` draft moved out of the

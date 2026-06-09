@@ -69,6 +69,167 @@ gate-citation-lineage:
 gate-citation-lineage-self-test:
 	python3 scripts/gate_citation_lineage.py --self-test
 
+# Dogfood the deterministic citation-lineage gate over the KB's own lineage
+# artifacts: every source/card reference must resolve, and (--require-reviewed)
+# every source-card reference must resolve to a REVIEWED card. Scope is the
+# lineage-bearing artifacts (corpus cards/maps + eval design/decision docs); it
+# excludes model-outputs/ and judge-packet/outputs/, which are test artifacts
+# that may cite fabricated lineage by design (that is the model behaviour an
+# eval scores, not a KB defect). Fails the build on any unresolved lineage.
+citation-dogfood:
+	@python3 scripts/gate_citation_lineage.py --require-reviewed \
+		$$(find corpus/source-cards corpus/claim-tension-cards corpus/book-maps -name '*.md') \
+		$$(find evals -name '*.md' -not -path '*/model-outputs/*' -not -path '*/judge-packet/outputs/*')
+
+# Stranger-reproducible demo of the mechanical-lineage primitive:
+# compile_brief -> static sample corrected note -> gate_citation_lineage ->
+# receipt. No API key, network, model runtime, or raw book required.
+demo:
+	python3 scripts/demo_citation_lineage.py
+
+# Holdout-transfer smoke (holdout_smoke_not_benchmark): does the deterministic
+# citation-lineage primitive transfer to a NON-benchmark-shaped corpus? Runs the
+# unmodified gate over a self-contained synthetic naturalist fixture corpus via
+# --root. No API key, network, model runtime, or raw book. Not a benchmark.
+holdout-smoke:
+	python3 scripts/holdout_smoke.py
+
+# Package smoke: install the anti-slop-lineage CLI (pyproject.toml) into a
+# throwaway isolated venv, then prove the INSTALLED console command self-tests
+# and audits the holdout fixture identically to the in-tree gate. Offline; no
+# network/model/API. The packaged CLI is the gate's own main() (no behaviour fork).
+package-smoke:
+	bash scripts/package_smoke.sh
+
+# Agent-install smoke: exercise the INSTALL_FOR_AGENTS.md commands end-to-end in a
+# throwaway venv + temp adopter repo (install, self-tests, clean PASS / fabricated
+# FAIL, event SKIP/report, shipped example body). Offline; no GitHub API.
+agent-install-smoke:
+	bash scripts/agent_install_smoke.sh
+
+# Adoption smoke: validate the vendorable report-mode workflow template and
+# prove the underlying PR/report/receipt commands expose findings + artifacts
+# while exiting 0 in report mode. Offline; no GitHub API, model, or token.
+adoption-smoke:
+	python3 scripts/adoption_smoke.py
+
+# Launch check: machine-check launch-facing proof links, naming posture,
+# privacy/security docs, report-mode workflow defaults, and Step Summary support.
+launch-check:
+	python3 scripts/launch_check.py
+
+# Launch decision check: machine-check release pin guidance, demo assets,
+# outreach packet evidence links, and go/no-go memo completeness.
+launch-decision-check:
+	python3 scripts/launch_decision_check.py
+
+# External dry-run smoke: report-mode-only dry run over committed public-safe
+# saved PR-body artifacts, plus schema/policy compatibility checks.
+external-dry-run-smoke:
+	python3 scripts/external_dry_run.py --self-test
+
+external-dry-run-compat:
+	python3 scripts/external_dry_run.py --check
+
+external-dry-run-cluster-smoke:
+	python3 scripts/external_dry_run_clusters.py --self-test
+
+external-dry-run-cluster-compat:
+	python3 scripts/external_dry_run_clusters.py --check
+
+# Private learning expansion: separately reviewed external public PR bodies,
+# aggregate actionability labels, and command-receipt dogfood.
+external-sample-smoke:
+	python3 scripts/external_sample_expansion.py --self-test
+
+external-sample-compat:
+	python3 scripts/external_sample_expansion.py --check
+
+actionability-label-check:
+	python3 scripts/external_sample_expansion.py --check-actionability
+
+command-receipt-dogfood:
+	python3 scripts/command_receipt_dogfood.py --self-test
+
+# Real-checkout private learning: selected external public PR bodies checked
+# against local-only public repo checkouts, plus reviewer actionability labels
+# and current-work command receipt dogfood.
+real-checkout-smoke:
+	python3 scripts/real_checkout_learning.py --self-test
+
+real-checkout-actionability-check:
+	python3 scripts/real_checkout_learning.py --check-actionability
+
+real-command-receipt-dogfood:
+	python3 scripts/real_command_receipt_dogfood.py --self-test
+
+# Tag approval gate: operator-ready decision packet and fresh-checkout install
+# proof. This never creates a tag, GitHub release, outreach PR, or enforcement
+# workflow.
+tag-approval-check:
+	python3 scripts/tag_approval_check.py
+
+fresh-install-smoke:
+	python3 scripts/fresh_install_smoke.py --self-test
+
+tag-install-smoke:
+	python3 scripts/tag_install_smoke.py --self-test
+
+# anti-slop-pr: deterministic PR-description provenance checker. Resolves the
+# issue / file / test / source-card references a PR body cites against a repo or
+# fixture root; stdlib-only, no GitHub API / model / network. Usage:
+#   make pr-provenance ROOT=. PR=path/to/pr-body.md   (add ISSUES=file to resolve #refs)
+pr-provenance:
+	python3 scripts/gate_pr_provenance.py --root $(ROOT) $(if $(ISSUES),--issue-registry $(ISSUES)) $(PR)
+
+pr-provenance-self-test:
+	python3 scripts/gate_pr_provenance.py --self-test
+
+# anti-slop-claims: generic artifact reference/receipt resolver. Uses the same
+# resolver engine as anti-slop-pr for non-PR Markdown/text artifacts.
+claims:
+	python3 scripts/gate_claims.py --root $(ROOT) $(if $(ISSUES),--issue-registry $(ISSUES)) $(if $(DIFF),--diff $(DIFF)) $(if $(JSON),--json $(JSON)) $(ARTIFACT)
+
+claims-self-test:
+	python3 scripts/gate_claims.py --self-test
+
+run-self-test:
+	python3 scripts/anti_slop_run.py --self-test
+
+# Synthetic checker benchmark: run the deterministic agent-claim corpus and
+# write JSON + Markdown summaries. Offline; no model/API/network.
+agent-claim-benchmark:
+	python3 scripts/benchmark_agent_claims.py
+
+# Public-safe report-mode audit over committed real agent/PR-body artifacts.
+agent-claim-audit:
+	python3 scripts/audit_agent_claim_density.py
+
+# Launch demo: fake report FAILS with line reasons; receipt-backed report PASSES.
+agent-claim-demo:
+	python3 scripts/demo_agent_claim_verification.py
+
+# Stranger-reproducible demo: a passing and an intentionally-failing PR body
+# checked against a self-contained fixture root (no GitHub API, model, or network).
+pr-provenance-demo:
+	python3 scripts/demo_pr_provenance.py
+
+# Dogfood: run anti-slop-pr over this repo's own (committed, public-safe) PR-body
+# copies and report. Offline; always exits 0 (evidence, not a gate).
+pr-provenance-dogfood:
+	python3 scripts/dogfood_pr_provenance.py
+
+# GitHub Actions event wrapper: read the PR body from a pull_request event JSON
+# and run anti-slop-pr (no GitHub API; event payload + local checkout only).
+pr-provenance-event-self-test:
+	python3 scripts/pr_provenance_from_github_event.py --self-test
+
+# Deterministic demo over committed fixture event payloads (clean PASS, fabricated
+# FAIL, --report non-fail, non-PR SKIP, ignore-directive PASS) + a report-only run
+# on a saved real PR body. Offline; no GitHub API.
+pr-provenance-event-demo:
+	python3 scripts/demo_pr_provenance_event.py
+
 gate-no-universalization:
 	python3 scripts/gate_no_universalization.py $(FILE)
 

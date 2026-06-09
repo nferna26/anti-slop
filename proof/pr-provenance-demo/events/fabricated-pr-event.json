@@ -1,0 +1,7 @@
+{
+  "action": "opened",
+  "pull_request": {
+    "number": 102,
+    "body": "Closes #9999. Adds `docs/does-not-exist.md` and cites fabricated `BK-7099-card-001`.\n"
+  }
+}

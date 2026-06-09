@@ -1,15 +1,16 @@
 ---
 case_id: locator-accuracy-v1
 eval_type: bibliographic-adversary
-status: draft_pre_freeze
+status: filled_pre_run
 created: 2026-05-25
 scoring_status: unscored
 ---
 
 # Calibration Anchors
 
-These anchors are draft, public-safe, and not yet frozen. They exist to test
-whether future judges can score countable provenance failures before any model
+These anchors are public-safe, operator-accepted, and frozen for benchmark
+version `locator-accuracy-v1-v1`. They test whether planned judges can score
+countable provenance failures and valid support coverage before any benchmark
 outputs are generated.
 
 ## Surface 1: Judge-Facing Anchors
@@ -126,7 +127,7 @@ Withhold this section until after judges score Surface 1B.
 | K | 0 | Correct card with locator drift earns no coverage. |
 | L | 0 | Famous-source/title memory without reviewed public-KB lineage earns no coverage. |
 
-Eligibility idea for a future freeze: exact agreement on F1-F5 for A-F, exact
-agreement on valid support coverage for G-L, and zero unresolved-lineage misses
-on F1. If fewer than two different-family routes pass, the anchor set is not
-ready.
+Eligibility rule for `locator-accuracy-v1-v1`: exact agreement on F1-F5 for
+A-F, exact agreement on valid support coverage for G-L, and zero
+unresolved-lineage misses on F1. If fewer than two different-family routes
+pass, the benchmark stops before generation and records the blocker.

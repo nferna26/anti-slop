@@ -1,0 +1,35 @@
+## Summary
+
+Freezes and executes benchmark version `locator-accuracy-v3-v1`, the support-opportunity successor designed to repair the v2 judge-discrimination failure. Result: **`do_not_promote` / `partial`** under the frozen rule, applied without revision.
+
+- **Freeze (pre-generation):** all six conditions x five cases (30 hashed condition packets), recompiled substrate brief (local-only; audited), equal-length `vanilla_long_prompt` control (1.011x substrate words, forbidden-vocab scan CLEAN), calibration anchors A-J (incl. a correct-card/incomplete-locator SO2 anchor and a fabricated-card F1 anchor), condition-blind judge packet, judge-route pre-registration, and a concrete frozen positive rule + exact-complement falsifier (substrate SO3>=0.70; substrate SO0<=2 and total F<=4; SO3 margin>=0.50 over all five source-free controls; famous SO3<=0.10; non-discriminating-judge guard on the SO surface; two different-family routes, no pooling).
+- **Adversarial pre-generation review:** fixed two blockers (falsifier/rule scope contradiction; answer-key enumeration in the judge-packet) before any generation spend.
+- **Calibration:** hosted Anthropic (`claude-opus-4-7`) and hosted OpenAI (`gpt-5.4-2026-03-05`) matched the withheld Surface 2 reference key **exactly** on anchors A-J.
+- **Generation:** 240 real `gemma-4-31b-it-mlx` outputs, 0 timeout retries; anonymised by output-body hash to OUT-001..240 (131 unique bodies); both routes scored condition-blind; aggregate-only reconciliation.
+
+## Decision
+
+| Clause | hosted_anthropic | hosted_openai |
+| --- | --- | --- |
+| Calibration A-J exact | pass | pass |
+| substrate SO3 >= 0.70 | 1.000 | 0.825 |
+| substrate SO0<=2 & F<=4 | 0 / 0 | **7 / 7 (fail)** |
+| SO3 margin >=0.50 over all 5 controls | +1.000 | +0.825 |
+| famous SO3 <= 0.10 | 0.000 | 0.000 |
+| non-discriminating guard | pass (0.792) | pass (0.704) |
+| **Route passes?** | **yes** | **no** |
+
+Substrate dominates every control on SO3 under both routes (0.825-1.000 vs 0.000) and both clear the non-discriminating guard — a cleaner discrimination than v2. But only `hosted_anthropic` clears every clause; `hosted_openai` breaches the substrate safety limit (F5 on `case-5-hidden-canon`). The two-route rule is not met. See `eval-decision.md` and `postmortem.md`.
+
+## Boundaries
+
+- No `Result` lift to `benchmark_supported`; no canon promotion. Lifting `## Result` would require explicit operator approval — not done here.
+- No frozen-rule revision after outputs; no after-the-fact threshold change.
+- No raw source text, API keys, `.env` contents, answer key, raw API JSON, or OUT-NN→condition mapping committed (all local-only / git-ignored).
+- No source-card / canon / v1 / v2 frozen-artifact edits.
+
+## Validation
+
+- `make validate`, `make check-raw`, `make kb-lint`, `python3 -m py_compile scripts/*.py`, `python3 scripts/artifact_preflight.py --strict`, `git diff --check`, `git diff --cached --check` — all pass.
+- `python3 scripts/receipt_index.py <case> --check` and `python3 scripts/eval_receipt_lint.py --case locator-accuracy-v3 --strict-benchmark` — pass (240 receipts, 0 missing provenance).
+- citation-lineage gate — PASS.
