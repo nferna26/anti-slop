@@ -4,6 +4,18 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-09
 
+(Public PR receipt-mining loop)
+
+- Ingested: Anti-Slop Receipts v0.1.1 is released as a narrow prerelease. The next learning question is whether recent public AI/devtool PR bodies contain enough mechanically checkable reference/receipt claims to justify broader launch work, and whether natural PR bodies are noisier than structured `AGENT_FINAL_REPORT.md` artifacts.
+- Mapped: —
+- Carded: —
+- Tension preserved: This loop is report-mode only. No outreach, external PR/comment/issue, maintainer contact, enforcement workflow, arbitrary target project tests/builds, model/API call, raw PR body commit, raw API JSON commit, temp checkout path commit, secret, token, private path, raw external repo content, or name-and-shame example was added. Findings remain deterministic reference/receipt resolution only.
+- Gate run: RED evidence captured before GREEN: `make public-pr-receipt-study` initially failed because the Makefile target was absent, and `test -f proof/public-pr-receipt-study/summary.json` exited 1. GREEN added `scripts/public_pr_receipt_study.py`, `make public-pr-receipt-study`, a 20-repo target manifest, aggregate-only proof, actionability labels, and `docs/public-pr-receipt-study.md`.
+- Eval run: Live public PR-body mining run fetched recent merged public PR bodies with `gh`, selected 50 filter-matching PR bodies across 10 AI/devtool repositories, shallow-checked out public merge commits in temporary storage, and ran `anti-slop-pr` plus `anti-slop-claims --receipts <empty-dir>` in report mode. Aggregate: 50 PR bodies, 10 repos, 50/50 checkouts, 780 checkable claims, 28.43 claims/100 lines, 36.5% hard unresolved rate, 67.0% advisory rate, and 3 sparse selected PR bodies.
+- Decision: The result is publishable as a narrow public-safe learning memo, not as maintainer-ready evidence or launch hype. Top clusters are commit advisories (274), issue advisories without registry (249), unresolved file refs (28), command claims without receipts (26), and sparse PR bodies (3). Aggregate actionability labels: 28 actionable, 277 non-actionable, 275 unclear, 0 excluded. Natural PR bodies are checkable but noisy; structured `AGENT_FINAL_REPORT.md` remains the next surface to test for receipt-backed adoption.
+- Rejected/deferred: Did not contact maintainers, open external PRs/comments/issues, run target project builds/tests, commit raw PR bodies or raw external repo contents, publish raw line examples, add enforcement, or broaden claims to correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.
+- Follow-up: Run a friendly opt-in install/report-mode loop or compare structured `AGENT_FINAL_REPORT.md` artifacts against the same aggregate metrics before any broader launch/outreach decision.
+
 (Narrow public preview release prep)
 
 - Ingested: GitHub default branch is `main`, and `main` still opened with old `Anti-Slop books-kb` framing while `codex/locator-accuracy-v1-benchmark-run` carried the Receipts front door at merge `ebd56addc9700c34a7420289b9119a7953cbaa59`. The clean install tag `anti-slop-receipts-v0.1.1` exists and peels to `4bb51ced8035d0984515002197306dfc737e1f09`.
