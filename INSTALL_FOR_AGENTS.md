@@ -65,8 +65,14 @@ does not create a release in this install step; use an existing reviewed tag or
 commit once one is chosen by the adopter.
 See [`docs/release-install-plan.md`](docs/release-install-plan.md) for the
 release readiness checklist, exact tag/SHA pin flow, and adopter update path.
+For the current operator tag gate, see
+[`docs/tag-approval-packet.md`](docs/tag-approval-packet.md),
+[`docs/operator-tag-decision.md`](docs/operator-tag-decision.md), and
+[`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md).
+That gate is deterministic reference/receipt resolution only; no outreach or
+tag action happens without operator approval.
 
-## 2. Self-test (proves the install, offline)
+## 2. Self-test (checks the install, offline)
 
 ```sh
 anti-slop-pr --self-test          # 22 checks
@@ -126,7 +132,7 @@ anti-slop-run --metric score.before=0.70 --metric score.after=0.82 -- python3 sc
 
 This is the same resolver engine used by `anti-slop-pr`. JSON receipts and
 diff-aware changed-file checks do not prove semantic correctness, relevance, or
-support. Command and metric receipts prove only local command/metric facts, not
+support. Command and metric receipts record only local command/metric facts, not
 semantic correctness, benchmark validity, or support.
 
 ## 4. Add the GitHub PR check (report mode by default)
@@ -172,6 +178,10 @@ For demo assets, see [`docs/demo-repo.md`](docs/demo-repo.md). For future
 opt-in outreach copy, see
 [`docs/maintainer-outreach-packet.md`](docs/maintainer-outreach-packet.md). For
 the current go/no-go status, see [`docs/launch-decision.md`](docs/launch-decision.md).
+For the tag approval packet and fresh-install proof, see
+[`docs/tag-approval-packet.md`](docs/tag-approval-packet.md),
+[`docs/operator-tag-decision.md`](docs/operator-tag-decision.md), and
+[`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md).
 
 For a minimal PR-body-only workflow without artifact upload, the older
 `templates/anti-slop-pr.yml` remains available.

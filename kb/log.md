@@ -2,6 +2,20 @@
 
 This is the chronological memory layer for public-safe KB changes.
 
+## 2026-06-09
+
+(Tag-approval gate tranche)
+
+- Ingested: PR #44 was confirmed merged into `codex/locator-accuracy-v1-benchmark-run` at `4bda4fd727018a2a027ba8c660c48c30b8aa2144`; local base was current and clean before branching.
+- Mapped: —
+- Carded: —
+- Tension preserved: The tag gate is an operator-ready decision packet only. No tag, GitHub release, outreach PR, maintainer contact, comment, issue, enforcement workflow, or enforcement default change was created. Anti-Slop Receipts remains deterministic reference/receipt resolution only; no correctness, relevance, source-truth, support, safety, advice-quality, reasoning, benchmark-validity, statistical-meaning, or canon claim.
+- Gate run: RED evidence captured before GREEN by adding `make tag-approval-check` and `make fresh-install-smoke`; initial failures reported missing `docs/tag-approval-packet.md`, `docs/operator-tag-decision.md`, and `proof/fresh-install-smoke/summary.json`. A release-language RED pass then flagged missing tag/fresh-install links and broad wording such as "proves the install." GREEN `tag-approval-check` now validates the operator packet, decision memo, fresh-install summary, release-facing claim language, residual UNKNOWNs, and no-outreach/no-enforcement/no-tag boundaries. GREEN `fresh-install-smoke` installs from the documented public git/SHA spec in temporary storage.
+- Eval run: —
+- Decision: Added CORE-991 through CORE-994. CORE-991 created `docs/tag-approval-packet.md` for candidate commit `4bda4fd727018a2a027ba8c660c48c30b8aa2144`, with evidence links, CI status, real-checkout evidence, command receipt dogfood, install guidance, residual UNKNOWNs, and no-tag-without-operator-approval boundary; packet decision is `ready_to_request_operator_tag`. CORE-992 added `proof/fresh-install-smoke/summary.json` / `.md`: public git/SHA install PASS, five installed command self-tests PASS, and a minimal report-mode fabricated-ref demo PASS. CORE-993 hardened release-facing language and checks for unbounded `prove/proves`, broad slop-detector wording, source-truth/advice-quality drift, missing UNKNOWNs, and missing no-outreach/operator-approval boundaries. CORE-994 added `docs/operator-tag-decision.md` with decision `request_operator_create_tag` and exact manual tag command; the repo did not run it.
+- Rejected/deferred: Did not create a tag, GitHub release, external PR/comment/issue, maintainer contact, enforcement workflow, token/API/model dependency, raw venv log, local-only path, raw API JSON, answer key, raw transcript, raw external repo content, secret, or private path. External adopter install success, maintainer keep-rate, and platform clone risk remain UNKNOWN.
+- Follow-up: Operator should review the packet and, only if approved, manually create the proposed `anti-slop-receipts-v0.1.0` tag at `4bda4fd727018a2a027ba8c660c48c30b8aa2144`. Outreach remains a separate opt-in decision after the tag/install posture is settled.
+
 ## 2026-06-08
 
 (Real-checkout private-learning tranche)

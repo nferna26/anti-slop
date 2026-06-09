@@ -11,6 +11,9 @@ The public command hierarchy stays:
 
 Do not create a release tag from this tranche. A release tag requires operator
 approval after the checklist below is re-run on the exact commit to be tagged.
+This plan is deterministic reference/receipt resolution only; no outreach,
+GitHub release, tag action, or enforcement default change happens without
+operator approval.
 
 ## Pinning Flow
 

@@ -5,6 +5,8 @@ Decision: prepare_tag_only
 This decision is based on the current committed proof artifacts. It is not a
 public launch approval, not an outreach authorization, and not a release/tag
 approval.
+No outreach, GitHub release, tag action, or enforcement default change is
+approved without operator approval.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It
 does not prove correctness, relevance, source truth, support, safety, advice
@@ -21,6 +23,9 @@ quality, reasoning, benchmark validity, statistical meaning, or canon.
 - Real checkout actionability: `proof/real-checkout-learning/actionability.json`
 - Command receipt dogfood: `proof/command-receipt-dogfood/summary.json`
 - Real command receipt dogfood: `proof/real-command-receipt-dogfood/summary.json`
+- Fresh install smoke: `proof/fresh-install-smoke/summary.json`
+- Tag approval packet: `docs/tag-approval-packet.md`
+- Operator tag decision memo: `docs/operator-tag-decision.md`
 - Cluster memo: `proof/external-dry-run/clusters.md`
 - Kill criteria JSON: `proof/external-dry-run/kill-criteria.json`
 - Benchmark summary: `benchmarks/agent-claim-corpus-v0.1/results/summary.json`
@@ -52,7 +57,8 @@ quality, reasoning, benchmark validity, statistical meaning, or canon.
   100.0% expectation match, 100.0% catch rate over enforceable false cases, and
   0.0% false-fail rate.
 - install success: UNKNOWN for external adopters. Local install and package
-  smokes pass, but there are no external install attempts.
+  smokes pass, and the fresh public git/SHA install smoke passes, but there are
+  no external adopter install attempts.
 - actionability labels: FAIL for launch. Aggregate labels over the expanded
   sample record 0.0% actionable and 66.7% non-actionable over non-excluded
   findings; 8 root-unavailable path failures are excluded.
