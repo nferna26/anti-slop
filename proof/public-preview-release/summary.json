@@ -1,0 +1,38 @@
+{
+  "schema_version": "anti-slop-public-preview-release.v1",
+  "status": "created",
+  "release_url": "https://github.com/nferna26/anti-slop/releases/tag/anti-slop-receipts-v0.1.1",
+  "release_title": "Anti-Slop Receipts v0.1.1 \u2014 deterministic receipt checks for AI coding-agent reports",
+  "tag_name": "anti-slop-receipts-v0.1.1",
+  "tag_object": "2d8e625edee6c9ca6f22eff3d748ca661c9d4ae6",
+  "peeled_commit": "4bb51ced8035d0984515002197306dfc737e1f09",
+  "default_branch": "main",
+  "default_branch_front_door_commit": "ed37ac5e79f824133edcbd703aaf814a2e595e82",
+  "published_at": "2026-06-09T13:26:23Z",
+  "is_prerelease": true,
+  "is_draft": false,
+  "release_body_path": "docs/github-release-v0.1.1.md",
+  "front_door_decision": "PR integration into main; default branch was not changed",
+  "repo_description_recommendation": "Deterministic receipt checks for AI coding-agent reports. Report mode by default; no model/API/token.",
+  "repo_topics_recommendation": [
+    "ai-agents",
+    "developer-tools",
+    "github-actions",
+    "ci",
+    "receipts",
+    "provenance",
+    "python",
+    "anti-slop"
+  ],
+  "boundaries": [
+    "deterministic reference/receipt resolution only",
+    "report mode remains default",
+    "no outreach",
+    "no external PR/comment/issue",
+    "no maintainer contact",
+    "no HN/X launch blast",
+    "no enforcement workflow",
+    "no correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon claim"
+  ],
+  "next_step": "Run 2-3 friendly external installs in report mode."
+}

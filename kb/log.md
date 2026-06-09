@@ -16,6 +16,18 @@ This is the chronological memory layer for public-safe KB changes.
 - Rejected/deferred: Did not force-move tags, create outreach, contact maintainers, open external PRs/comments/issues, add enforcement, add a model/API/token dependency, commit secrets, private paths, raw logs, raw API JSON, temp paths, or raw external repo contents.
 - Follow-up: After release creation, run 2-3 friendly external installs in report mode; no broad launch yet.
 
+(Narrow public preview release created)
+
+- Ingested: PR #48 merged the Receipts front door into `main` at `ed37ac5e79f824133edcbd703aaf814a2e595e82`; GitHub default branch remains `main` and now opens with `Anti-Slop Receipts`. GitHub Release `anti-slop-receipts-v0.1.1` was created as a prerelease at <https://github.com/nferna26/anti-slop/releases/tag/anti-slop-receipts-v0.1.1>.
+- Mapped: —
+- Carded: —
+- Tension preserved: The release points at existing tag `anti-slop-receipts-v0.1.1` without force-moving any tag. The GitHub Release record is the publication receipt; the tag source docs were authored before a GitHub Release record could exist. The release remains deterministic reference/receipt resolution only and report mode remains default.
+- Gate run: Public-safe release status proof added at `proof/public-preview-release/summary.json` / `.md`. PR #48 CI passed before merge (`gates`, `package`), and local gates for the release prep passed: `make launch-check && make launch-decision-check`, `make tag-approval-check && make tag-install-smoke`, `make adoption-smoke`, `make validate && make check-raw && make kb-lint`, `python3 -m py_compile scripts/*.py`, `python3 scripts/artifact_preflight.py --strict`, and `git diff --check`.
+- Eval run: —
+- Decision: Public preview release is created; no HN/X launch blast, outreach, external PR/comment/issue, maintainer contact, enforcement workflow, enforcement default change, future tag, telemetry, model/API/token dependency, or broad correctness/safety/review claim was created.
+- Rejected/deferred: Did not update repository description/topics directly; recorded recommended metadata in `docs/github-release-v0.1.1.md` and `proof/public-preview-release/summary.md`. Did not contact maintainers or run external installs in this tranche.
+- Follow-up: Run 2-3 friendly external installs in report mode and record install friction/actionability before any broader launch or outreach decision.
+
 ## 2026-06-09
 
 (Clean v0.1.1 tag-source tranche)
