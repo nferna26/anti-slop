@@ -16,6 +16,7 @@ INSTALL = ROOT / "INSTALL_FOR_AGENTS.md"
 LLMS = ROOT / "llms.txt"
 RELEASE_PLAN = ROOT / "docs" / "release-install-plan.md"
 RELEASE_NOTES = ROOT / "docs" / "release-notes-draft.md"
+RELEASE_BODY = ROOT / "docs" / "github-release-v0.1.1.md"
 LAUNCH_DECISION = ROOT / "docs" / "launch-decision.md"
 CHECKLIST = ROOT / "docs" / "launch-checklist.md"
 PACKET = ROOT / "docs" / "tag-approval-packet.md"
@@ -288,7 +289,8 @@ def check_packet(errors: list[str]) -> None:
     else:
         state_snippets = ["No tag has been created"]
     for snippet in [
-        "No GitHub release has been created",
+        "At the time this packet was created, no GitHub Release had been created",
+        "docs/github-release-v0.1.1.md",
         "operator approval required",
         "CI status: green",
         "Fresh install smoke: PASS",
@@ -302,6 +304,7 @@ def check_packet(errors: list[str]) -> None:
         "deterministic reference/receipt resolution only",
         BOUNDARY,
         rel(FRESH_SUMMARY),
+        rel(RELEASE_BODY),
         rel(REAL_CHECKOUT),
         rel(REAL_ACTIONABILITY),
         rel(REAL_DOGFOOD),
@@ -343,6 +346,7 @@ def check_memo(errors: list[str]) -> None:
         "platform clone risk: UNKNOWN",
         "deterministic reference/receipt resolution only",
         BOUNDARY,
+        "docs/github-release-v0.1.1.md",
         *state_snippets,
     ]:
         if snippet not in text:
@@ -385,7 +389,7 @@ def check_docs_links(errors: list[str]) -> None:
     packet_text = read(PACKET, errors)
     final_tag_state = decision_line(packet_text) == "tag_created_no_outreach"
     for path in (README, INSTALL, LLMS, KB_INDEX):
-        targets = [PACKET, MEMO, FRESH_MD]
+        targets = [PACKET, MEMO, FRESH_MD, RELEASE_BODY]
         if final_tag_state:
             targets.append(TAG_MD)
         for target in targets:
@@ -405,6 +409,8 @@ def check_docs_links(errors: list[str]) -> None:
             "anti-slop-receipts-v0.1.1",
             "v0.1.1 Source-Doc Invariant",
             "post-tag install proof may live outside the tag commit",
+            "Narrow public preview release prep",
+            "docs/github-release-v0.1.1.md",
         ])
     require_snippets(KB_LOG, log_snippets, errors)
 

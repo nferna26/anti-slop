@@ -68,6 +68,9 @@ docs without widening the product claim.
 - Future release/tag readiness must follow
   [`docs/release-install-plan.md`](release-install-plan.md); operator approval
   is required before creating a new tag or GitHub release.
+- Narrow public preview release body must match
+  [`docs/github-release-v0.1.1.md`](github-release-v0.1.1.md); the GitHub
+  Release record is the publication receipt and may live outside the tag commit.
 - Demo and launch assets must follow [`docs/demo-repo.md`](demo-repo.md).
 - Maintainer outreach must follow
   [`docs/maintainer-outreach-packet.md`](maintainer-outreach-packet.md) and

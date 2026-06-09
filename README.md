@@ -11,11 +11,15 @@ It does **not** prove correctness, relevance, source truth, support, safety,
 advice quality, reasoning, benchmark validity, statistical meaning, or canon.
 The `anti-slop-receipts-v0.1.1` tag is the clean public tag path after PR #46.
 The historical `anti-slop-receipts-v0.1.0` tag remains available for pinned
-installs and must not be force-moved. There is no outreach, GitHub release, or
-enforcement workflow approved by either tag.
+installs and must not be force-moved. The narrow public preview GitHub Release
+body is recorded in [`docs/github-release-v0.1.1.md`](docs/github-release-v0.1.1.md).
+No outreach, HN/X launch blast, external PR/comment/issue, maintainer contact,
+or enforcement workflow is approved by either tag or release.
 Release status remains deterministic reference/receipt resolution only; no
-outreach, future tag, GitHub release, or enforcement action happens without
-operator approval.
+outreach, future tag, or enforcement action happens without separate operator
+approval.
+Separate operator approval is still required for any future tag, outreach, or
+enforcement action.
 
 Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The
 v0.1.0 installable package smoke passes, but `docs/tag-approval-packet.md`
@@ -201,6 +205,9 @@ statistical meaning, support, safety, advice quality, reasoning, or canon.
   product/package naming posture and pinned install guidance.
 - [`docs/release-install-plan.md`](docs/release-install-plan.md):
   release/tag readiness, reproducible tag/SHA pin flow, and adopter update path.
+- [`docs/github-release-v0.1.1.md`](docs/github-release-v0.1.1.md):
+  exact narrow public preview GitHub Release title/body, install command,
+  usage, boundary language, and repo metadata suggestion.
 - [`docs/tag-approval-packet.md`](docs/tag-approval-packet.md):
   tag approval packet and no-outreach boundary for `anti-slop-receipts-v0.1.1`.
 - [`docs/operator-tag-decision.md`](docs/operator-tag-decision.md):

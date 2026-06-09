@@ -4,6 +4,20 @@ This is the chronological memory layer for public-safe KB changes.
 
 ## 2026-06-09
 
+(Narrow public preview release prep)
+
+- Ingested: GitHub default branch is `main`, and `main` still opened with old `Anti-Slop books-kb` framing while `codex/locator-accuracy-v1-benchmark-run` carried the Receipts front door at merge `ebd56addc9700c34a7420289b9119a7953cbaa59`. The clean install tag `anti-slop-receipts-v0.1.1` exists and peels to `4bb51ced8035d0984515002197306dfc737e1f09`.
+- Mapped: —
+- Carded: —
+- Tension preserved: The safest front-door path is to merge the integration branch into `main`, not to change the default branch to a Codex integration branch. A narrow public preview GitHub Release may point at the existing v0.1.1 tag only after the default branch front door is Receipts-first and local gates pass. No force-moved tags, HN/X launch blast, outreach, external PR/comment/issue, maintainer contact, enforcement workflow, or enforcement default change is authorized.
+- Gate run: Added `docs/github-release-v0.1.1.md` with exact release title/body, install command, usage, boundary, tag-source note, and repository description/topics suggestion. Updated launch/release checks to require the release body and the `narrow_public_preview_release` decision while preserving the deterministic reference/receipt-resolution-only boundary.
+- Eval run: —
+- Decision: Proceed by PR-merging the Receipts integration state into `main`; create the GitHub Release from existing tag `anti-slop-receipts-v0.1.1` only after that PR is green/merged and local gates pass. The release record, not the tag source commit, is the publication receipt.
+- Rejected/deferred: Did not force-move tags, create outreach, contact maintainers, open external PRs/comments/issues, add enforcement, add a model/API/token dependency, commit secrets, private paths, raw logs, raw API JSON, temp paths, or raw external repo contents.
+- Follow-up: After release creation, run 2-3 friendly external installs in report mode; no broad launch yet.
+
+## 2026-06-09
+
 (Clean v0.1.1 tag-source tranche)
 
 - Ingested: PR #46 was merged into `codex/locator-accuracy-v1-benchmark-run` at `cdf4ef9b755d6d83515e5b764541b3f2c7198b92`; `anti-slop-receipts-v0.1.0` remains the historical tag and must not be force-moved.

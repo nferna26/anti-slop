@@ -4,9 +4,10 @@ Decision: clean_v011_tag_path
 
 This memo records the clean public tag path for Anti-Slop Receipts after PR #46.
 The historical `anti-slop-receipts-v0.1.0` tag remains untouched. No GitHub
-release has been created. No outreach has happened. No enforcement workflow or
-enforcement default change has been made.
-Operator approval is still required before any GitHub release, outreach,
+Release had been created when this memo was written. Current public preview
+release body/status is governed by `docs/github-release-v0.1.1.md`. No outreach
+has happened. No enforcement workflow or enforcement default change has been
+made. Operator approval is still required before any future tag, outreach,
 external maintainer contact, or enforcement default change.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It does not prove correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.
@@ -48,6 +49,7 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-
 ## Evidence Basis
 
 - Tag approval packet: `docs/tag-approval-packet.md`
+- GitHub Release body: `docs/github-release-v0.1.1.md`
 - Fresh install smoke: `proof/fresh-install-smoke/summary.json`
 - Tag install smoke: `proof/tag-install-smoke/summary.json` after the v0.1.1
   tag exists; this post-tag proof may live outside the tag commit.
@@ -69,6 +71,6 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-
 ## Boundaries
 
 No outreach is approved by this decision. No enforcement is approved by this
-decision. No GitHub release is approved by this decision. Release notes should
-not be published until the operator separately chooses whether to create a
-GitHub release.
+decision. The narrow public preview GitHub Release may point at the existing
+v0.1.1 tag only after the default branch front door is Receipts-first and local
+gates pass.

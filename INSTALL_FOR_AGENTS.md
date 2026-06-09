@@ -66,9 +66,10 @@ The unpinned preview install is useful for first trials but tracks repo head.
 Pinned tags/SHAs are the safer supply-chain posture for repeatable CI. The
 `anti-slop-receipts-v0.1.1` is the clean public tag path after PR #46. The
 historical `anti-slop-receipts-v0.1.0` tag exists for reproducible installs and
-must not be force-moved; no GitHub release, outreach, external PR/comment,
-maintainer contact, enforcement workflow, or default enforcement change is
-approved by either tag.
+must not be force-moved. The narrow public preview GitHub Release body is
+recorded in `docs/github-release-v0.1.1.md`; no outreach, HN/X launch blast,
+external PR/comment/issue, maintainer contact, enforcement workflow, or default
+enforcement change is approved by either tag or release.
 There is no outreach approval in this install path.
 See [`docs/release-install-plan.md`](docs/release-install-plan.md) for the
 release readiness checklist, exact tag/SHA pin flow, and adopter update path.
@@ -78,7 +79,7 @@ For the current operator tag gate, see
 [`proof/fresh-install-smoke/summary.md`](proof/fresh-install-smoke/summary.md),
 plus the pushed-tag smoke at
 [`proof/tag-install-smoke/summary.md`](proof/tag-install-smoke/summary.md).
-That gate is deterministic reference/receipt resolution only; future release,
+That gate is deterministic reference/receipt resolution only; future tag,
 outreach, or enforcement action still requires operator approval.
 
 Tag-source disclosure: the tag's embedded docs predate PR #46 finalization. The

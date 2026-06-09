@@ -11,8 +11,9 @@ The public command hierarchy stays:
 
 The historical `anti-slop-receipts-v0.1.0` tag was created with operator
 approval and must not be force-moved. The clean public tag path after PR #46 is
-`anti-slop-receipts-v0.1.1`. GitHub releases, outreach, or enforcement default
-changes require separate operator approval. This plan is deterministic
+`anti-slop-receipts-v0.1.1`. The narrow public preview GitHub Release body is
+recorded in `docs/github-release-v0.1.1.md`; outreach, future tags, or
+enforcement default changes require separate operator approval. This plan is deterministic
 reference/receipt resolution only. There is no outreach approval in this
 release/install plan.
 The release posture remains deterministic reference/receipt resolution only.
@@ -58,7 +59,7 @@ workflow templates once the adopter chooses a revision.
 
 ## release readiness checklist
 
-Before a future tag or GitHub release, the operator should verify:
+Before a future tag or GitHub Release publication, the operator should verify:
 
 - PR CI is green on the release candidate commit.
 - `make launch-decision-check`, `make launch-check`, `make adoption-smoke`,
@@ -74,11 +75,15 @@ Before a future tag or GitHub release, the operator should verify:
 - README proof metrics still come from committed JSON/Markdown summaries.
 - The launch decision in `docs/launch-decision.md` is reviewed and still
   matches the evidence.
-- The tag name, release notes, and install examples have operator approval.
+- The tag name, release notes, install examples, and
+  `docs/github-release-v0.1.1.md` body have operator approval.
 - Existing tag proof remains public-safe:
   `proof/tag-install-smoke/summary.json`.
 - v0.1.1 post-tag install proof may live outside the tag commit and should be
   checked from the branch/PR that records proof after tag creation.
+- The GitHub Release record is the publication receipt; release-created status
+  may live outside the tag commit because it can only exist after the tag and
+  default-branch front door are ready.
 
 ## adopter update path
 

@@ -1,16 +1,15 @@
 # Launch Decision
 
-Decision: clean_v011_tag_path
+Decision: narrow_public_preview_release
 
-This decision is based on the current committed proof artifacts. It is not a
-public launch approval, not an outreach authorization, and not a release/tag
-approval for any future tag. The historical `anti-slop-receipts-v0.1.0` tag
-exists and must not be force-moved. The clean public tag path after PR #46 is
-`anti-slop-receipts-v0.1.1`. No outreach, GitHub release, external PR/comment,
-maintainer contact, enforcement workflow, or enforcement default change is
-approved by either tag.
-Operator approval is still required before any GitHub release, outreach,
-external maintainer contact, or enforcement default change.
+This decision is based on the current committed proof artifacts and Pro Mode
+launch review. It approves a narrow public preview GitHub Release pointing at
+the existing `anti-slop-receipts-v0.1.1` tag after the GitHub default branch
+front door is Receipts-first and local gates pass. It does not authorize HN/X
+launch, outreach, external PR/comment/issue, maintainer contact, enforcement
+workflow, enforcement default change, or future tags.
+Separate operator approval is still required for any future tag, outreach, or
+enforcement action.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It
 does not prove correctness, relevance, source truth, support, safety, advice
@@ -49,6 +48,7 @@ source tree is expected, not stale-doc evidence.
 - Tag install smoke: `proof/tag-install-smoke/summary.json`
 - Tag approval packet: `docs/tag-approval-packet.md`
 - Operator tag decision memo: `docs/operator-tag-decision.md`
+- GitHub Release body: `docs/github-release-v0.1.1.md`
 - Cluster memo: `proof/external-dry-run/clusters.md`
 - Kill criteria JSON: `proof/external-dry-run/kill-criteria.json`
 - Benchmark summary: `benchmarks/agent-claim-corpus-v0.1/results/summary.json`
@@ -119,7 +119,7 @@ path.
 
 This is not enough for outreach or enforcement. External install success is
 UNKNOWN, maintainer keep-rate is UNKNOWN, platform clone risk is UNKNOWN, and no
-maintainer has opted in. The next narrow tranche should decide whether to send
-the clean v0.1.1 tag to Pro Mode launch review or keep collecting external
-install/adoption evidence. Outreach remains out of scope until after a separate
-opt-in decision.
+maintainer has opted in. Pro Mode review now supports a narrow public preview
+GitHub Release after the default branch front door is fixed. The next step after
+that release is 2-3 friendly external installs in report mode. Outreach remains
+out of scope until after a separate opt-in decision.

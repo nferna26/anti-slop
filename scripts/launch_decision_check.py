@@ -23,6 +23,7 @@ KB_LOG = ROOT / "kb" / "log.md"
 
 RELEASE_PLAN = ROOT / "docs" / "release-install-plan.md"
 RELEASE_NOTES = ROOT / "docs" / "release-notes-draft.md"
+RELEASE_BODY = ROOT / "docs" / "github-release-v0.1.1.md"
 DEMO_REPO = ROOT / "docs" / "demo-repo.md"
 OUTREACH = ROOT / "docs" / "maintainer-outreach-packet.md"
 DECISION = ROOT / "docs" / "launch-decision.md"
@@ -32,6 +33,7 @@ ALLOWED_DECISIONS = {
     "prepare_tag_only",
     "tag_created_no_outreach",
     "clean_v011_tag_path",
+    "narrow_public_preview_release",
     "prepare_opt_in_outreach",
     "pause_or_narrow",
 }
@@ -75,6 +77,8 @@ def check_release_plan(errors: list[str]) -> None:
         "anti-slop-receipts-v0.1.1",
         "v0.1.1 Source-Doc Invariant",
         "post-tag install proof may live outside the tag commit",
+        "docs/github-release-v0.1.1.md",
+        "GitHub Release record is the publication receipt",
         "pip install \"anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-or-full-sha>\"",
         "full commit SHA",
         "release readiness checklist",
@@ -82,15 +86,30 @@ def check_release_plan(errors: list[str]) -> None:
         "No correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon claim",
     ], errors)
     require_snippets(RELEASE_NOTES, [
-        "Draft release notes",
+        "Release body source",
         "anti-slop-receipts-v0.1.0",
         "anti-slop-receipts-v0.1.1",
         "v0.1.1 Source-Doc Invariant",
-        "No GitHub release has been created",
+        "GitHub Release title",
         "deterministic reference/receipt resolution only",
         "anti-slop-claims",
         "anti-slop-run",
         "anti-slop-pr-event",
+    ], errors)
+    require_snippets(RELEASE_BODY, [
+        "Anti-Slop Receipts v0.1.1 — deterministic receipt checks for AI coding-agent reports",
+        "pip install \"anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@anti-slop-receipts-v0.1.1\"",
+        "anti-slop-claims --self-test",
+        "anti-slop-run -- make validate",
+        "anti-slop-claims",
+        "Report mode remains default",
+        "does not prove correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon",
+        "not a code review, security review, test-quality review, semantic diff review, or advice-quality review",
+        "No outreach, external PR/comment/issue, maintainer contact, HN/X launch blast",
+        "GitHub Release record is the publication receipt",
+        "tag source docs were authored before a GitHub Release record could exist",
+        "2-3 friendly external installs",
+        "Suggested repository metadata",
     ], errors)
 
 
@@ -147,6 +166,7 @@ def check_decision(errors: list[str]) -> None:
         "proof/real-command-receipt-dogfood/summary.json",
         "proof/fresh-install-smoke/summary.json",
         "proof/tag-install-smoke/summary.json",
+        "docs/github-release-v0.1.1.md",
         "proof/external-dry-run/clusters.md",
         "proof/external-dry-run/kill-criteria.json",
         "benchmarks/agent-claim-corpus-v0.1/results/summary.json",
@@ -160,7 +180,7 @@ def check_decision(errors: list[str]) -> None:
         "FAIL",
         "UNKNOWN",
         "PASS",
-        "next narrow tranche",
+        "2-3 friendly external installs",
         "deterministic reference/receipt resolution only",
     ]:
         if snippet not in text:
@@ -181,7 +201,7 @@ def check_decision(errors: list[str]) -> None:
 
 def check_cross_links(errors: list[str]) -> None:
     for path in (README, INSTALL, LLMS, CHECKLIST, KB_INDEX):
-        for target in (RELEASE_PLAN, DEMO_REPO, OUTREACH, DECISION):
+        for target in (RELEASE_PLAN, RELEASE_BODY, DEMO_REPO, OUTREACH, DECISION):
             require_link(path, target, errors)
     require_snippets(KB_LOG, [
         "CORE-979",

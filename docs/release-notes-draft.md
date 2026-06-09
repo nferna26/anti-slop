@@ -1,13 +1,15 @@
-# Draft Release Notes
+# Release Notes Source
 
-Draft release notes for operator review.
+Release body source for the narrow public preview.
 
 The historical `anti-slop-receipts-v0.1.0` tag exists. The clean public tag
-path after PR #46 is `anti-slop-receipts-v0.1.1`. These notes are still a draft
-for operator review only. No GitHub release has been created. No outreach,
-external PR/comment, maintainer contact, or enforcement default change is
-approved by either tag.
-Any GitHub release publication still requires operator approval.
+path after PR #46 is `anti-slop-receipts-v0.1.1`. The exact GitHub Release
+title/body for this public preview lives in
+`docs/github-release-v0.1.1.md`. No outreach, HN/X launch blast, external
+PR/comment/issue, maintainer contact, or enforcement default change is approved
+by either tag or release.
+Separate operator approval is still required for any future tag, outreach, or
+enforcement action.
 
 ## v0.1.0 Tag Source Disclosure
 
@@ -28,6 +30,9 @@ generated after the tag exists. Absence of post-tag proof inside the tagged
 source tree is expected, not stale-doc evidence.
 
 ## Anti-Slop Receipts preview
+
+GitHub Release title:
+`Anti-Slop Receipts v0.1.1 — deterministic receipt checks for AI coding-agent reports`
 
 Anti-Slop Receipts provides deterministic reference/receipt resolution only for
 AI-agent reports and PR bodies.
@@ -56,3 +61,8 @@ pip install "anti-slop-lineage @ git+https://github.com/nferna26/anti-slop@<tag-
 Boundary: this release resolves references and receipts. It does not prove
 correctness, relevance, source truth, support, safety, advice quality,
 reasoning, benchmark validity, statistical meaning, or canon.
+
+The GitHub Release record is the publication receipt. The tag source docs were
+authored before a GitHub Release record could exist, so release-created status
+lives in the release record and current default branch docs, not inside the tag
+commit.

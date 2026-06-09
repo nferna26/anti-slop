@@ -4,12 +4,13 @@ Decision: clean_v011_tag_path
 
 This packet prepares the clean public Anti-Slop Receipts tag path after PR #46.
 The historical `anti-slop-receipts-v0.1.0` tag remains untouched.
-No GitHub release has been created. No outreach, external PR, maintainer
-contact, comment, issue, enforcement workflow, or default enforcement change is
-authorized by this packet. Future tag or release actions still require separate
-operator approval.
-operator approval required before any future GitHub release, outreach, external
-maintainer contact, or enforcement default change.
+At the time this packet was created, no GitHub Release had been created. Current
+public preview release body/status is governed by
+`docs/github-release-v0.1.1.md`. No outreach, external PR/comment/issue,
+maintainer contact, enforcement workflow, or default enforcement change is
+authorized by this packet or the release.
+operator approval required before any future tag, outreach, external maintainer
+contact, or enforcement default change.
 There is no enforcement workflow and no outreach approval in this packet.
 
 Anti-Slop Receipts remains deterministic reference/receipt resolution only. It does not prove correctness, relevance, source truth, support, safety, advice quality, reasoning, benchmark validity, statistical meaning, or canon.
@@ -56,6 +57,7 @@ source tree is expected, not stale-doc evidence.
 - Launch decision: see `docs/launch-decision.md`.
 - Release/install plan: see `docs/release-install-plan.md`.
 - Draft release notes: see `docs/release-notes-draft.md`.
+- GitHub Release body: see `docs/github-release-v0.1.1.md`.
 
 ## Current Signals
 
@@ -82,8 +84,10 @@ source tree is expected, not stale-doc evidence.
 ## Operator Boundary
 
 This packet records the clean v0.1.1 tag path. Do not force-move this or any
-tag. Do not create a GitHub release from this packet. Do not contact
-maintainers. Do not open outreach PRs, comments, or issues. Do not change report
-mode into enforcement by default.
+tag. A narrow public preview GitHub Release may point at the existing v0.1.1 tag
+only after the default branch front door is Receipts-first and local gates pass.
+Do not contact maintainers. Do not open outreach PRs, comments, or issues. Do
+not change report mode into enforcement by default.
 
-Any GitHub release or maintainer outreach remains a separate operator decision.
+Any future tag, broad launch, or maintainer outreach remains a separate operator
+decision.
